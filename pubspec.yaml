@@ -1,0 +1,98 @@
+name: i_connect
+description: iFrontiers Connect customer engagement platform
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State Management & Utils
+  provider: ^6.1.5+1
+  intl: ^0.20.2
+  uuid: ^4.3.3
+  email_validator: ^3.0.0
+
+  # Environment
+  flutter_dotenv: ^6.0.1
+
+  # URL Launcher
+  url_launcher: ^6.2.1
+
+  # Navigation
+  go_router: ^17.2.2
+
+  # Backend & Database
+  supabase_flutter: ^2.3.0
+
+  # Firebase
+  firebase_core: ^4.7.0
+  firebase_messaging: ^16.2.0
+
+  # Image Handling
+  cached_network_image: ^3.3.1
+  image_picker: ^1.0.7
+
+  # Storage
+  shared_preferences: ^2.2.2
+
+  # Sharing
+  share_plus: ^13.0.0
+
+  # Charts (Analytics Dashboard)
+  fl_chart: ^1.2.0
+
+  # Calendar
+  table_calendar: ^3.1.2
+
+  # Fonts
+  google_fonts: ^8.1.0
+
+  # Export (v24)
+  # NOTE: switched from the `excel` package to pure-CSV generation because the
+  # excel pkg's pure-Dart source ballooned the Dart frontend compiler's heap
+  # and triggered "zone.cc: 96: error: Out of memory" on low-RAM laptops.
+  # CSV opens natively in Excel and ships with zero added deps.
+  path_provider: ^2.1.5
+
+  # Offline mode (v24)
+  connectivity_plus: ^6.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.3.10
+
+# App Icon Configuration
+# v24 — adaptive icon sizing notes:
+#   Android adaptive icons require the visible content of the foreground PNG
+#   to fit inside the inner 66dp of the 108dp canvas (≈ 33% padding).  The
+#   raw logo touched the edge, so launchers that crop with a circle mask
+#   "enlarged" the logo and clipped corners.
+#   Fix: ship a pre-padded foreground at assets/app_icon_foreground.png
+#   (transparent edges, logo centred in the inner 66%). The main app_icon.png
+#   stays as-is for legacy non-adaptive launchers.
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/app_icon.png"
+  adaptive_icon_background: "#262261"
+  adaptive_icon_foreground: "assets/app_icon_foreground.png"
+  min_sdk_android: 21
+  remove_alpha_ios: true
+
+flutter:
+  generate: true
+  uses-material-design: true
+  assets:
+    - .env
+    - assets/app_icon.png
+    - assets/app_icon_foreground.png
+    - assets/splash_logo.png

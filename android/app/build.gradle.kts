@@ -1,0 +1,74 @@
+import java.util.Properties
+import java.io.FileInputStream
+
+// Load keystore properties
+val keystorePropertiesFile = rootProject.file("key.properties")
+val keystoreProperties = Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+}
+
+plugins {
+    id("com.android.application")
+    id("kotlin-android")
+    id("dev.flutter.flutter-gradle-plugin")
+    id("com.google.gms.google-services")
+}
+
+android {
+    namespace = "com.ifrontiers.iconnect"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    signingConfigs {
+        create("release") {
+            keystoreProperties.getProperty("keyAlias")?.let { keyAlias = it }
+            keystoreProperties.getProperty("keyPassword")?.let { keyPassword = it }
+            keystoreProperties.getProperty("storeFile")?.let { storeFile = file(it) }
+            keystoreProperties.getProperty("storePassword")?.let { storePassword = it }
+        }
+    }
+
+    defaultConfig {
+        applicationId = "com.ifrontiers.iconnect"
+        minSdk = flutter.minSdkVersion
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0.0"
+
+        // Production ABIs are ARM-only — earlier x86 builds OOM'd the Windows linker.
+        // For debug builds we also include x86_64 so Intel/AMD emulators (sdk gphone64 x86 64) can run.
+        // Release builds stay ARM-only.
+        val isDebugBuild = gradle.startParameter.taskNames.any {
+            it.lowercase().contains("debug") ||
+                it.lowercase().contains("install") && !it.lowercase().contains("release")
+        }
+        ndk {
+            abiFilters += listOf("arm64-v8a", "armeabi-v7a")
+            if (isDebugBuild) {
+                abiFilters += "x86_64"
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.getByName("release")
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {}

@@ -1,0 +1,8 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "explorer.excludeGitIgnore": true,
+    "emulator.emulatorPathWindows": "C:\\Users\\sheha\\AppData\\Local\\Android\\Sdk\\emulator",
+    "emulator.emulatorPath": "C:\\Users\\sheha\\AppData\\Local\\Android\\Sdk\\emulator",
+    "emulator.androidColdBoot": true,
+    "emulator.androidExtraBootArgs": "C:\\Users\\sheha\\AppData\\Local\\Android\\Sdk\\emulator -avd Medium_Phone"
+}

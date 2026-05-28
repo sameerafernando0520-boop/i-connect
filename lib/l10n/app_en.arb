@@ -1,0 +1,1279 @@
+{
+  "@@locale": "en",
+
+  "appName": "i Connect",
+  "companyName": "iFrontiers (Pvt) Ltd",
+  "currency": "LKR",
+  "currencySymbol": "Rs.",
+
+
+  "commonSave": "Save",
+  "commonCancel": "Cancel",
+  "commonDelete": "Delete",
+  "commonSubmit": "Submit",
+  "commonClose": "Close",
+  "commonBack": "Back",
+  "commonOk": "OK",
+  "commonYes": "Yes",
+  "commonNo": "No",
+  "commonConfirm": "Confirm",
+  "commonDone": "Done",
+  "commonEdit": "Edit",
+  "commonUpdate": "Update",
+  "commonCreate": "Create",
+  "commonAdd": "Add",
+  "commonRemove": "Remove",
+  "commonSearch": "Search",
+  "commonFilter": "Filter",
+  "commonRetry": "Retry",
+  "commonShare": "Share",
+  "commonCopy": "Copy",
+  "commonSend": "Send",
+  "commonView": "View",
+  "commonMore": "More",
+  "commonShowAll": "Show All",
+  "commonSeeAll": "See All",
+  "commonViewAll": "View All",
+  "commonClear": "Clear",
+  "commonReset": "Reset",
+  "commonApply": "Apply",
+  "commonContinue": "Continue",
+  "commonNext": "Next",
+  "commonSkip": "Skip",
+  "commonRefresh": "Refresh",
+  "commonLoading": "Loading...",
+  "commonProcessing": "Processing...",
+  "commonSaving": "Saving...",
+  "commonDeleting": "Deleting...",
+  "commonRequired": "Required",
+  "commonOptional": "Optional",
+  "commonCopied": "Copied!",
+  "commonSaved": "Saved",
+  "commonDeleted": "Deleted",
+  "commonUpdated": "Updated",
+  "commonCreated": "Created",
+  "commonEnabled": "Enabled",
+  "commonDisabled": "Disabled",
+  "commonActive": "Active",
+  "commonInactive": "Inactive",
+  "commonAll": "All",
+  "commonNone": "None",
+  "commonOther": "Other",
+  "commonUnknown": "Unknown",
+  "commonNa": "N/A",
+  "commonNoData": "No data available",
+  "commonNoResults": "No results found",
+  "commonTryAgain": "Try Again",
+  "commonSomethingWentWrong": "Something went wrong",
+  "commonSelectDate": "Select Date",
+  "commonSelectTime": "Select Time",
+  "commonPickImage": "Pick Image",
+  "commonTakePhoto": "Take Photo",
+  "commonChooseGallery": "Choose from Gallery",
+  "commonUploading": "Uploading...",
+  "commonSuccess": "Success",
+  "commonError": "Error",
+  "commonWarning": "Warning",
+  "commonInfo": "Info",
+  "commonAreYouSure": "Are you sure?",
+  "commonCannotUndo": "This action cannot be undone.",
+  "commonNoInternet": "No internet connection",
+  "commonPullToRefresh": "Pull to refresh",
+
+
+  "labelEmail": "Email",
+  "labelPassword": "Password",
+  "labelConfirmPassword": "Confirm Password",
+  "labelPhone": "Phone Number",
+  "labelFullName": "Full Name",
+  "labelCompanyName": "Company Name",
+  "labelCity": "City",
+  "labelAddress": "Address",
+  "labelDate": "Date",
+  "labelTime": "Time",
+  "labelDuration": "Duration",
+  "labelStatus": "Status",
+  "labelPriority": "Priority",
+  "labelCategory": "Category",
+  "labelType": "Type",
+  "labelDescription": "Description",
+  "labelNotes": "Notes",
+  "labelAmount": "Amount",
+  "labelTotal": "Total",
+  "labelTax": "Tax",
+  "labelSubtotal": "Subtotal",
+  "labelDiscount": "Discount",
+  "labelQuantity": "Quantity",
+  "labelPrice": "Price",
+  "labelUnitPrice": "Unit Price",
+  "labelSerialNumber": "Serial Number",
+  "labelModel": "Model",
+  "labelBrand": "Brand",
+  "labelSubject": "Subject",
+  "labelLocation": "Location",
+  "labelRating": "Rating",
+  "labelFeedback": "Feedback",
+  "labelReference": "Reference",
+  "labelDueDate": "Due Date",
+  "labelStartDate": "Start Date",
+  "labelEndDate": "End Date",
+  "labelCreatedAt": "Created",
+  "labelUpdatedAt": "Updated",
+
+
+  "authWelcomeBack": "Welcome Back",
+  "authSignIn": "Sign In",
+  "authSignUp": "Sign Up",
+  "authCreateAccount": "Create Account",
+  "authLoginSubtitle": "Sign in to continue to i Connect",
+  "authSignupSubtitle": "Join i Connect to get started",
+  "authEmailHint": "Enter your email",
+  "authPasswordHint": "Enter your password",
+  "authConfirmPasswordHint": "Re-enter your password",
+  "authFullNameHint": "Enter your full name",
+  "authPhoneHint": "Enter your phone number",
+  "authCompanyHint": "Enter your company name",
+  "authReferralCodeHint": "Referral code (optional)",
+  "authForgotPassword": "Forgot Password?",
+  "authNoAccount": "Don't have an account?",
+  "authHaveAccount": "Already have an account?",
+  "authLoginButton": "Login",
+  "authRegisterButton": "Register",
+  "authSigningIn": "Signing in...",
+  "authCreatingAccount": "Creating account...",
+  "authPasswordsNoMatch": "Passwords do not match",
+  "authAccountCreated": "Account created successfully!",
+  "authLoginSuccess": "Login successful",
+  "authLogout": "Logout",
+  "authLogoutTitle": "Logout",
+  "authLogoutConfirm": "Are you sure you want to logout?",
+  "authLoggingOut": "Logging out...",
+  "authWelcomeNew": "Welcome to i Connect!",
+  "authTermsPrefix": "By creating an account, you agree to our ",
+  "authTermsLink": "Terms & Conditions",
+
+
+  "navHome": "Home",
+  "navCatalog": "Catalog",
+  "navTickets": "Tickets",
+  "navProfile": "Profile",
+  "navSupport": "Support",
+  "navMachines": "My Machines",
+  "navKnowledgeBase": "Knowledge Base",
+  "navNotifications": "Notifications",
+  "navSettings": "Settings",
+  "navDashboard": "Dashboard",
+  "navSchedule": "My Schedule",
+  "navInquiries": "Inquiries",
+  "navCustomers": "Customers",
+  "navEngineers": "Engineers",
+  "navAnalytics": "Analytics",
+
+
+  "homeGoodMorning": "Good Morning",
+  "homeGoodAfternoon": "Good Afternoon",
+  "homeGoodEvening": "Good Evening",
+  "homeWelcome": "Hello, {name}!",
+  "@homeWelcome": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "homeQuickActions": "Quick Actions",
+  "homeRecentTickets": "Recent Tickets",
+  "homeNoRecentTickets": "No recent tickets",
+  "homeViewAllTickets": "View All Tickets",
+  "homeMyMachines": "My Machines",
+  "homeNoMachines": "No registered machines",
+  "homePointsBalance": "{points} pts",
+  "@homePointsBalance": {
+    "placeholders": {
+      "points": { "type": "int" }
+    }
+  },
+  "homeStreak": "{days}-day streak",
+  "@homeStreak": {
+    "placeholders": {
+      "days": { "type": "int" }
+    }
+  },
+  "homeDailyLoginReward": "Daily login reward earned!",
+  "homeCurrentTier": "Current Tier",
+  "homePromotions": "Promotions",
+  "homeExploreMore": "Explore More",
+  "homeServiceDue": "Service due",
+  "homeWarrantyExpiring": "Warranty expiring soon",
+
+
+  "catalogTitle": "Machine Catalog",
+  "catalogSearch": "Search machines...",
+  "catalogCategories": "Categories",
+  "catalogAllCategories": "All Categories",
+  "catalogFilter": "Filter",
+  "catalogSort": "Sort By",
+  "catalogPriceLowHigh": "Price: Low to High",
+  "catalogPriceHighLow": "Price: High to Low",
+  "catalogNewest": "Newest First",
+  "catalogSpecifications": "Specifications",
+  "catalogFeatures": "Features",
+  "catalogApplications": "Applications",
+  "catalogDescription": "Description",
+  "catalogRelatedMachines": "Related Machines",
+  "catalogNoMachines": "No machines found",
+  "catalogSaved": "Saved",
+  "catalogSave": "Save",
+  "catalogRemoveSaved": "Removed from saved",
+  "catalogAddedSaved": "Added to saved",
+  "catalogRecentlyViewed": "Recently Viewed",
+  "catalogOrderNow": "Order Now",
+  "catalogRequestQuote": "Request Quote",
+  "catalogViewBrochure": "View Brochure",
+  "catalogWatchVideo": "Watch Video",
+  "catalogMachineDetails": "Machine Details",
+  "catalogPriceDisplay": "Rs. {price}",
+  "@catalogPriceDisplay": {
+    "placeholders": {
+      "price": { "type": "String" }
+    }
+  },
+  "catalogPriceOnRequest": "Price on Request",
+
+
+  "ticketTitle": "My Tickets",
+  "ticketCreate": "Create Ticket",
+  "ticketCreateNew": "New Support Ticket",
+  "ticketNumber": "#{number}",
+  "@ticketNumber": {
+    "placeholders": {
+      "number": { "type": "String" }
+    }
+  },
+  "ticketSubject": "Subject",
+  "ticketSubjectHint": "Brief description of the issue",
+  "ticketDescription": "Description",
+  "ticketDescriptionHint": "Describe your issue in detail...",
+  "ticketSelectMachine": "Select Machine",
+  "ticketSelectCategory": "Select Category",
+  "ticketSelectPriority": "Select Priority",
+  "ticketSelectType": "Select Type",
+  "ticketAttachPhotos": "Attach Photos",
+  "ticketAttachments": "Attachments",
+  "ticketSubmit": "Submit Ticket",
+  "ticketSubmitting": "Submitting...",
+  "ticketSubmitted": "Ticket submitted successfully",
+  "ticketNoTickets": "No tickets yet",
+  "ticketNoTicketsDesc": "Your support tickets will appear here",
+  "ticketAssignedTo": "Assigned to",
+  "ticketUnassigned": "Unassigned",
+  "ticketCreatedOn": "Created on",
+  "ticketLastUpdated": "Last updated",
+  "ticketDealValue": "Deal Value",
+  "ticketQuoteAmount": "Quote Amount",
+  "ticketFollowUp": "Follow-up Date",
+  "ticketEstimatedResolution": "Estimated Resolution",
+  "ticketSalesStage": "Sales Stage",
+  "ticketHotLead": "Hot Lead",
+  "ticketReopened": "Reopened",
+  "ticketEscalated": "Escalated",
+  "ticketEscalationReason": "Escalation Reason",
+  "ticketQuantity": "Quantity",
+  "ticketDeliveryAddress": "Delivery Address",
+  "ticketStatusOpen": "Open",
+  "ticketStatusInProgress": "In Progress",
+  "ticketStatusResolved": "Resolved",
+  "ticketStatusClosed": "Closed",
+  "ticketStatusEscalated": "Escalated",
+  "ticketStatusPending": "Pending",
+  "ticketStatusOnHold": "On Hold",
+  "ticketPriorityLow": "Low",
+  "ticketPriorityMedium": "Medium",
+  "ticketPriorityHigh": "High",
+  "ticketPriorityCritical": "Critical",
+  "ticketTypeSupport": "Support",
+  "ticketTypeInquiry": "Inquiry",
+  "ticketTypeMaintenance": "Maintenance",
+  "ticketTypeComplaint": "Complaint",
+  "ticketCategoryGeneral": "General",
+  "ticketCategoryTechnical": "Technical",
+  "ticketCategoryBilling": "Billing",
+  "ticketCategorySales": "Sales",
+
+
+  "chatTypeMessage": "Type a message...",
+  "chatSend": "Send",
+  "chatSending": "Sending...",
+  "chatAttachment": "Attachment",
+  "chatAddAttachment": "Add Attachment",
+  "chatInternalNote": "Internal Note",
+  "chatInternalNoteHint": "This note is only visible to staff",
+  "chatInternalBanner": "Internal note — not visible to customer",
+  "chatNoMessages": "No messages yet",
+  "chatStartConversation": "Start the conversation",
+  "chatLoadEarlier": "Load earlier messages",
+  "chatNewMessage": "New Message",
+  "chatYou": "You",
+  "chatAdmin": "Admin",
+  "chatEngineer": "Engineer",
+  "chatCustomer": "Customer",
+  "chatImageSent": "Image sent",
+  "chatQuickReplies": "Quick Replies",
+
+
+  "profileTitle": "My Profile",
+  "profileEdit": "Edit Profile",
+  "profileChangePhoto": "Change Photo",
+  "profileRemovePhoto": "Remove Photo",
+  "profilePersonalInfo": "Personal Information",
+  "profileContactInfo": "Contact Information",
+  "profileSettings": "Settings",
+  "profileDarkMode": "Dark Mode",
+  "profileLanguage": "Language",
+  "profileNotifications": "Notifications",
+  "profileAbout": "About",
+  "profileVersion": "Version {version}",
+  "@profileVersion": {
+    "placeholders": {
+      "version": { "type": "String" }
+    }
+  },
+  "profileUpdate": "Update Profile",
+  "profileUpdating": "Updating...",
+  "profileUpdated": "Profile updated successfully",
+  "profileBio": "Bio",
+  "profileSpecializations": "Specializations",
+  "profileAvailability": "Availability",
+  "profileAvailable": "Available",
+  "profileUnavailable": "Unavailable",
+  "profileBusy": "Busy",
+  "profileCompletionTitle": "Complete Your Profile",
+  "profileCompletionDesc": "Fill in all fields to earn 100 bonus points!",
+
+
+  "machineTitle": "My Machines",
+  "machineRegister": "Register Machine",
+  "machineRegisterNew": "Register New Machine",
+  "machineSerialNumber": "Serial Number",
+  "machineSerialHint": "Enter serial number",
+  "machinePurchaseDate": "Purchase Date",
+  "machineWarrantyEnd": "Warranty End Date",
+  "machineNextService": "Next Service Due",
+  "machineInstallAddress": "Installation Address",
+  "machineStatus": "Machine Status",
+  "machineActive": "Active",
+  "machineInactive": "Inactive",
+  "machineUnderRepair": "Under Repair",
+  "machineNoMachines": "No machines registered",
+  "machineNoMachinesDesc": "Register your machines to track service history",
+  "machineDetails": "Machine Details",
+  "machineServiceHistory": "Service History",
+  "machineRegistered": "Machine registered successfully",
+  "machineRegistering": "Registering...",
+  "machinePurchaseInfo": "Purchase Information",
+  "machineWarrantyInfo": "Warranty Information",
+  "machineWarrantyActive": "Warranty Active",
+  "machineWarrantyExpired": "Warranty Expired",
+
+
+  "supportTitle": "Support",
+  "supportOptions": "Support Options",
+  "supportCreateTicket": "Create Support Ticket",
+  "supportTrackTickets": "Track Tickets",
+  "supportKnowledgeBase": "Knowledge Base",
+  "supportMyMachines": "My Machines",
+  "supportFaqs": "FAQs",
+  "supportContactUs": "Contact Us",
+  "supportCallUs": "Call Us",
+  "supportEmailUs": "Email Us",
+  "supportMySchedules": "My Schedules",
+  "supportRequestService": "Request Service",
+  "supportOrderMachine": "Order a Machine",
+  "supportViewSchedule": "View Schedule",
+
+
+  "scheduleTitle": "My Schedules",
+  "scheduleUpcoming": "Upcoming",
+  "schedulePast": "Past",
+  "scheduleToday": "Today",
+  "scheduleTomorrow": "Tomorrow",
+  "scheduleRequestService": "Request Service",
+  "scheduleServiceType": "Service Type",
+  "scheduleSelectType": "Select Service Type",
+  "scheduleDate": "Scheduled Date",
+  "scheduleTime": "Scheduled Time",
+  "scheduleDuration": "Duration",
+  "scheduleDurationMin": "{minutes} min",
+  "@scheduleDurationMin": {
+    "placeholders": {
+      "minutes": { "type": "int" }
+    }
+  },
+  "scheduleLocation": "Service Location",
+  "scheduleEngineer": "Engineer",
+  "scheduleMachine": "Machine",
+  "scheduleSelectMachine": "Select Machine",
+  "scheduleSelectDate": "Select Date",
+  "scheduleSelectTime": "Select Time",
+  "scheduleDescription": "Description",
+  "scheduleDescriptionHint": "Describe what service you need...",
+  "scheduleCustomerNotes": "Customer Notes",
+  "scheduleAdminNotes": "Admin Notes",
+  "scheduleEngineerNotes": "Engineer Notes",
+  "scheduleServiceReport": "Service Report",
+  "scheduleRateService": "Rate Service",
+  "scheduleRateTitle": "How was the service?",
+  "scheduleSubmitRating": "Submit Rating",
+  "scheduleRatingSubmitted": "Rating submitted. Thank you!",
+  "scheduleFeedbackHint": "Share your experience (optional)...",
+  "scheduleCancelSchedule": "Cancel Schedule",
+  "scheduleReschedule": "Reschedule",
+  "scheduleCancelReason": "Cancellation Reason",
+  "scheduleCancelReasonHint": "Why are you cancelling?",
+  "scheduleCancelled": "Schedule cancelled",
+  "scheduleRescheduled": "Schedule rescheduled",
+  "scheduleConfirmed": "Schedule confirmed",
+  "scheduleNoUpcoming": "No upcoming schedules",
+  "scheduleNoUpcomingDesc": "Your upcoming service appointments will appear here",
+  "scheduleNoPast": "No past schedules",
+  "scheduleNoPastDesc": "Your completed services will appear here",
+  "scheduleRequestSubmitted": "Service request submitted",
+  "scheduleSubmitting": "Submitting...",
+  "scheduleUseMachineAddress": "Use machine address",
+  "scheduleEstimatedDuration": "Estimated Duration",
+  "scheduleRecurring": "Recurring",
+  "scheduleRecurrenceRule": "Recurrence",
+  "scheduleMonthly": "Monthly",
+  "scheduleQuarterly": "Quarterly",
+  "scheduleBiannual": "Every 6 Months",
+  "scheduleAnnual": "Annual",
+  "scheduleCountdownToday": "Today",
+  "scheduleCountdownTomorrow": "Tomorrow",
+  "scheduleCountdownDays": "In {days} days",
+  "@scheduleCountdownDays": {
+    "placeholders": {
+      "days": { "type": "int" }
+    }
+  },
+  "scheduleCountdownDaysAgo": "{days} days ago",
+  "@scheduleCountdownDaysAgo": {
+    "placeholders": {
+      "days": { "type": "int" }
+    }
+  },
+  "scheduleTypePreventive": "Preventive Maintenance",
+  "scheduleTypeRepair": "Repair",
+  "scheduleTypeInspection": "Inspection",
+  "scheduleTypeInstallation": "Installation",
+  "scheduleTypeWarrantyVisit": "Warranty Visit",
+  "scheduleStatusRequested": "Requested",
+  "scheduleStatusScheduled": "Scheduled",
+  "scheduleStatusConfirmed": "Confirmed",
+  "scheduleStatusInProgress": "In Progress",
+  "scheduleStatusCompleted": "Completed",
+  "scheduleStatusCancelled": "Cancelled",
+  "scheduleStatusRescheduled": "Rescheduled",
+  "scheduleNoMachines": "No registered machines found",
+  "scheduleLocationHint": "Enter service location",
+  "scheduleCustomerNotesHint": "Any notes for the service team...",
+  "scheduleAllTypes": "All Types",
+  "requestServiceInfoBanner": "Submit your preferred date and time. Our team will confirm and assign an engineer.",
+  "requestServiceWhatNeed": "What do you need?",
+  "requestServiceTitleLabel": "Title",
+  "requestServiceTitleHint": "e.g. Machine not starting",
+  "requestServiceTitleValidator": "Please enter a title",
+  "requestServiceSelectMachineOptional": "Select Machine (Optional)",
+  "requestServicePreferredDateTime": "Preferred Date & Time",
+  "requestServiceAddressHint": "Address for the service visit",
+  "requestServiceUseInstallAddress": "Use machine installation address",
+  "requestServiceAdditionalNotes": "Additional Notes",
+  "requestServiceDescHint": "Describe the issue or service needed...",
+  "requestServiceNotesHint": "Any special requirements or access instructions...",
+  "requestServiceSubmitting": "Submitting...",
+  "requestServiceSubmitButton": "Submit Request",
+  "requestServiceNoRegisteredMachines": "No registered machines. You can still request service.",
+  "requestServiceFailedToSubmit": "Failed to submit: {error}",
+  "@requestServiceFailedToSubmit": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  },
+  "requestServiceMachineFallback": "Machine",
+  "requestServiceModelSerial": "{model} · S/N: {serial}",
+  "@requestServiceModelSerial": {
+    "placeholders": {
+      "model": { "type": "String" },
+      "serial": { "type": "String" }
+    }
+  },
+  "scheduleNewSchedule": "New Schedule",
+  "scheduleScheduleDetail": "Schedule Detail",
+  "scheduleCreatedBy": "Created by",
+  "scheduleLinkedTicket": "Linked Ticket",
+  "scheduleCompleteService": "Complete Service",
+  "scheduleReportRequired": "Service report is required to complete",
+  "scheduleWriteReport": "Write Service Report",
+  "scheduleReportHint": "Describe the work performed, parts used, findings...",
+  "scheduleDeleteSchedule": "Delete Schedule",
+  "scheduleDeleteConfirm": "Are you sure you want to delete this schedule?",
+  "scheduleDeleted": "Schedule deleted",
+  "scheduleNewDate": "New Date",
+  "scheduleNewTime": "New Time",
+  "scheduleRescheduleConfirm": "Confirm Reschedule",
+
+
+  "invoiceTitle": "Invoices",
+  "invoiceMyInvoices": "My Invoices",
+  "invoiceCreate": "Create Invoice",
+  "invoiceNumber": "Invoice #{number}",
+  "@invoiceNumber": {
+    "placeholders": {
+      "number": { "type": "String" }
+    }
+  },
+  "invoiceDate": "Invoice Date",
+  "invoiceDueDate": "Due Date",
+  "invoiceItems": "Items",
+  "invoiceAddItem": "Add Item",
+  "invoiceRemoveItem": "Remove Item",
+  "invoiceItemName": "Item Name",
+  "invoiceItemDesc": "Item Description",
+  "invoiceUnitPrice": "Unit Price",
+  "invoiceQuantity": "Quantity",
+  "invoiceLineTotal": "Line Total",
+  "invoiceSubtotal": "Subtotal",
+  "invoiceTaxRate": "Tax Rate",
+  "invoiceTaxAmount": "Tax Amount",
+  "invoiceDiscount": "Discount",
+  "invoiceGrandTotal": "Grand Total",
+  "invoiceNotes": "Notes",
+  "invoiceTerms": "Terms & Conditions",
+  "invoiceSend": "Send Invoice",
+  "invoiceSending": "Sending...",
+  "invoiceSent": "Invoice sent",
+  "invoiceMarkPaid": "Mark as Paid",
+  "invoiceRecordPayment": "Record Payment",
+  "invoiceNoInvoices": "No invoices",
+  "invoiceNoInvoicesDesc": "Your invoices will appear here",
+  "invoiceStatusDraft": "Draft",
+  "invoiceStatusSent": "Sent",
+  "invoiceStatusPaid": "Paid",
+  "invoiceStatusPartial": "Partially Paid",
+  "invoiceStatusOverdue": "Overdue",
+  "invoiceStatusCancelled": "Cancelled",
+  "invoiceStatusVoid": "Void",
+  "invoiceStatusViewed": "Viewed",
+  "invoiceStatusRefunded": "Refunded",
+  "invoiceStatusPartialShort": "Partial",
+  "invoiceLoadFailed": "Failed to load invoices",
+  "invoiceBalanceAmount": "Balance: {amount}",
+  "@invoiceBalanceAmount": {
+    "placeholders": {
+      "amount": { "type": "String" }
+    }
+  },
+  "invoiceOverdueByDays": "{days, plural, =1{Overdue by 1 day} other{Overdue by {days} days}}",
+  "@invoiceOverdueByDays": {
+    "placeholders": {
+      "days": { "type": "int" }
+    }
+  },
+  "invoiceDueToday": "Due today",
+  "invoiceDueInDays": "{days, plural, =1{Due in 1 day} other{Due in {days} days}}",
+  "@invoiceDueInDays": {
+    "placeholders": {
+      "days": { "type": "int" }
+    }
+  },
+  "invoiceNoInvoicesYet": "No invoices yet",
+  "invoiceFilterNoResults": "No {filter} invoices",
+  "@invoiceFilterNoResults": {
+    "placeholders": {
+      "filter": { "type": "String" }
+    }
+  },
+  "invoiceBalanceDue": "Balance Due",
+  "invoiceTotalPaid": "Total Paid",
+  "invoiceSelectCustomer": "Select Customer",
+  "invoiceSelectTicket": "Select Ticket",
+  "invoiceCreating": "Creating invoice...",
+  "invoiceCreated": "Invoice created successfully",
+  "invoiceDetail": "Invoice Detail",
+  "invoiceBillTo": "Bill To",
+  "invoiceFrom": "From",
+  "invoicePaymentHistory": "Payment History",
+
+
+  "quotationTitle": "Quotations",
+  "quotationMyQuotations": "My Quotations",
+  "quotationCreate": "Create Quotation",
+  "quotationNumber": "Quote #{number}",
+  "@quotationNumber": {
+    "placeholders": {
+      "number": { "type": "String" }
+    }
+  },
+  "quotationDate": "Quotation Date",
+  "quotationValidUntil": "Valid Until",
+  "quotationItems": "Items",
+  "quotationAddItem": "Add Item",
+  "quotationSubtotal": "Subtotal",
+  "quotationTax": "Tax",
+  "quotationTotal": "Total",
+  "quotationNotes": "Notes",
+  "quotationTerms": "Terms & Conditions",
+  "quotationSend": "Send Quotation",
+  "quotationSending": "Sending...",
+  "quotationSent": "Quotation sent",
+  "quotationConvertToInvoice": "Convert to Invoice",
+  "quotationNoQuotations": "No quotations",
+  "quotationNoQuotationsDesc": "Your quotations will appear here",
+  "quotationStatusDraft": "Draft",
+  "quotationStatusSent": "Sent",
+  "quotationStatusAccepted": "Accepted",
+  "quotationStatusRejected": "Rejected",
+  "quotationStatusExpired": "Expired",
+  "quotationStatusConverted": "Converted",
+  "quotationDetail": "Quotation Detail",
+  "quotationCreating": "Creating quotation...",
+  "quotationCreated": "Quotation created successfully",
+  "quotationSelectCustomer": "Select Customer",
+  "quotationSelectInquiry": "Select Inquiry",
+  "quotationAccept": "Accept",
+  "quotationReject": "Reject",
+
+
+  "paymentTitle": "Payments",
+  "paymentDashboard": "Payment Dashboard",
+  "paymentRecord": "Record Payment",
+  "paymentRecording": "Recording...",
+  "paymentRecorded": "Payment recorded",
+  "paymentAmount": "Payment Amount",
+  "paymentMethod": "Payment Method",
+  "paymentReference": "Payment Reference",
+  "paymentReferenceHint": "Transaction ID, cheque number, etc.",
+  "paymentDate": "Payment Date",
+  "paymentNotes": "Payment Notes",
+  "paymentNotesHint": "Additional notes...",
+  "paymentReceived": "Payment Received",
+  "paymentTotalReceived": "Total Received",
+  "paymentTotalOutstanding": "Total Outstanding",
+  "paymentOverdue": "Overdue",
+  "paymentRecent": "Recent Payments",
+  "paymentNoPayments": "No payments recorded",
+  "paymentMethodCash": "Cash",
+  "paymentMethodBank": "Bank Transfer",
+  "paymentMethodCheque": "Cheque",
+  "paymentMethodCard": "Card",
+  "paymentMethodOnline": "Online",
+  "paymentSummary": "Payment Summary",
+  "paymentAmountHint": "Enter amount",
+
+
+  "installmentTitle": "Installments",
+  "installmentMyPlans": "My Installment Plans",
+  "installmentPlan": "Installment Plan",
+  "installmentTotalAmount": "Total Amount",
+  "installmentDownPayment": "Down Payment",
+  "installmentMonthlyPayment": "Monthly Payment",
+  "installmentNumInstallments": "Number of Installments",
+  "installmentInterestRate": "Interest Rate",
+  "installmentStartDate": "Start Date",
+  "installmentEndDate": "End Date",
+  "installmentNumber": "Installment {number} of {total}",
+  "@installmentNumber": {
+    "placeholders": {
+      "number": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "installmentDueDate": "Due Date",
+  "installmentAmount": "Amount",
+  "installmentPaid": "Paid",
+  "installmentPending": "Pending",
+  "installmentOverdue": "Overdue",
+  "installmentTotalPaid": "Total Paid",
+  "installmentTotalRemaining": "Remaining",
+  "installmentNextDue": "Next Due",
+  "installmentNoPlans": "No installment plans",
+  "installmentNoPlansDesc": "Your installment plans will appear here",
+  "installmentPaymentHistory": "Payment History",
+  "installmentMarkPaid": "Mark as Paid",
+  "installmentDetail": "Installment Detail",
+  "installmentProgress": "{paid} of {total} paid",
+  "@installmentProgress": {
+    "placeholders": {
+      "paid": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "installmentOnTime": "On Time",
+  "installmentLate": "Late",
+  "installmentPaidBadge": "PAID",
+  "installmentUnknownMachine": "Unknown Machine",
+  "installmentMyInstallments": "My Installments",
+  "installmentSerialLabel": "SN: {serial}",
+  "@installmentSerialLabel": {
+    "placeholders": {
+      "serial": { "type": "String" }
+    }
+  },
+  "installmentPaymentsCount": "{paid} / {total} payments",
+  "@installmentPaymentsCount": {
+    "placeholders": {
+      "paid": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "installmentPaymentsOverdue": "{count} payment(s) overdue",
+  "@installmentPaymentsOverdue": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "installmentNextDueDetails": "Next due: {date} — {amount}",
+  "@installmentNextDueDetails": {
+    "placeholders": {
+      "date": { "type": "String" },
+      "amount": { "type": "String" }
+    }
+  },
+  "installmentNoPlansTitle": "No Installment Plans",
+  "installmentNoPlansDescTwoLine": "Your installment plans will\nappear here when created.",
+
+
+  "referralTitle": "Referral Program",
+  "referralMyCode": "My Referral Code",
+  "referralShareCode": "Share Code",
+  "referralCopyCode": "Copy Code",
+  "referralCodeCopied": "Referral code copied!",
+  "referralHowItWorks": "How It Works",
+  "referralStep1": "Share Your Code",
+  "referralStep1Desc": "Share your unique referral code with friends and colleagues",
+  "referralStep2": "They Sign Up",
+  "referralStep2Desc": "When they create an account using your code, you get notified",
+  "referralStep3": "Earn Rewards",
+  "referralStep3Desc": "Once they make a qualifying purchase, you earn commission!",
+  "referralTotalReferrals": "Total Referrals",
+  "referralQualified": "Qualified",
+  "referralPending": "Pending",
+  "referralEarnings": "Earnings",
+  "referralTotalEarnings": "Total Earnings",
+  "referralHistory": "Referral History",
+  "referralNoReferrals": "No referrals yet",
+  "referralNoReferralsDesc": "Share your code to start earning rewards",
+  "referralShareMessage": "Join i Connect with my referral code: {code}\nDownload the app and sign up to get started!",
+  "@referralShareMessage": {
+    "placeholders": {
+      "code": { "type": "String" }
+    }
+  },
+  "referralStatusPending": "Pending",
+  "referralStatusSignedUp": "Signed Up",
+  "referralStatusCooling": "Cooling Period",
+  "referralStatusApproved": "Approved",
+  "referralStatusPaid": "Paid",
+  "referralStatusExpired": "Expired",
+  "referralStatusRejected": "Rejected",
+  "referralCommission": "Commission",
+  "referralCommissionRate": "{rate}%",
+  "@referralCommissionRate": {
+    "placeholders": {
+      "rate": { "type": "String" }
+    }
+  },
+  "referralManagement": "Referral Management",
+  "referralRules": "Commission Rules",
+  "referralApprove": "Approve & Pay",
+  "referralReject": "Reject",
+
+
+  "tierTitle": "Loyalty Program",
+  "tierCurrentTier": "Current Tier",
+  "tierPoints": "Points",
+  "tierPointsValue": "{points} pts",
+  "@tierPointsValue": {
+    "placeholders": {
+      "points": { "type": "int" }
+    }
+  },
+  "tierNextTier": "Next Tier",
+  "tierProgress": "Progress",
+  "tierProgressValue": "{current} / {needed} pts",
+  "@tierProgressValue": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "needed": { "type": "int" }
+    }
+  },
+  "tierBenefits": "Benefits",
+  "tierNoBenefits": "No benefits available",
+  "tierBronze": "Bronze",
+  "tierSilver": "Silver",
+  "tierGold": "Gold",
+  "tierPlatinum": "Platinum",
+  "tierMultiplier": "{mult}x points",
+  "@tierMultiplier": {
+    "placeholders": {
+      "mult": { "type": "String" }
+    }
+  },
+  "tierPointsToNext": "{points} pts to next tier",
+  "@tierPointsToNext": {
+    "placeholders": {
+      "points": { "type": "int" }
+    }
+  },
+  "tierManagement": "Tier Management",
+  "tierThresholds": "Tier Thresholds",
+  "tierEditThreshold": "Edit Threshold",
+  "tierEditBenefit": "Edit Benefit",
+  "tierAddBenefit": "Add Benefit",
+  "tierBenefitName": "Benefit Name",
+  "tierBenefitDesc": "Benefit Description",
+  "tierMinPoints": "Minimum Points",
+  "tierMaxPoints": "Maximum Points",
+  "tierReached": "You've reached {tier}!",
+  "@tierReached": {
+    "placeholders": {
+      "tier": { "type": "String" }
+    }
+  },
+
+
+  "knowledgeTitle": "Knowledge Base",
+  "knowledgeSearch": "Search articles...",
+  "knowledgeCategories": "Categories",
+  "knowledgeAllArticles": "All Articles",
+  "knowledgeReadMore": "Read More",
+  "knowledgeRelated": "Related Articles",
+  "knowledgeNoArticles": "No articles found",
+  "knowledgeNoArticlesDesc": "Articles and guides will appear here",
+  "knowledgeViews": "{count} views",
+  "@knowledgeViews": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "knowledgeBookmark": "Bookmark",
+  "knowledgeBookmarked": "Bookmarked",
+  "knowledgeRemoveBookmark": "Remove Bookmark",
+  "knowledgeShareArticle": "Share Article",
+  "knowledgeLastUpdated": "Last updated",
+  "knowledgeAuthor": "Author",
+  "knowledgeTags": "Tags",
+
+
+  "notificationTitle": "Notifications",
+  "notificationAll": "All",
+  "notificationUnread": "Unread",
+  "notificationMarkAllRead": "Mark All Read",
+  "notificationNoNotifications": "No notifications",
+  "notificationNoNotificationsDesc": "You're all caught up!",
+  "notificationSettings": "Notification Settings",
+  "notificationPush": "Push Notifications",
+  "notificationEmail": "Email Notifications",
+  "notificationTicketUpdates": "Ticket Updates",
+  "notificationNewMessages": "New Messages",
+  "notificationPromotions": "Promotions",
+  "notificationScheduleReminders": "Schedule Reminders",
+  "notificationPaymentReminders": "Payment Reminders",
+  "notificationJustNow": "Just now",
+
+
+  "adminDashboard": "Admin Dashboard",
+  "adminAnalytics": "Analytics",
+  "adminSettings": "Settings",
+  "adminCustomers": "Customers",
+  "adminEngineers": "Engineers",
+  "adminMachines": "Machines",
+  "adminTickets": "Tickets",
+  "adminInquiries": "Inquiries",
+  "adminBusinessHub": "Business Hub",
+  "adminTotalCustomers": "Total Customers",
+  "adminTotalEngineers": "Total Engineers",
+  "adminTotalMachines": "Total Machines",
+  "adminActiveTickets": "Active Tickets",
+  "adminOpenInquiries": "Open Inquiries",
+  "adminRevenue": "Revenue",
+  "adminRecentActivity": "Recent Activity",
+  "adminQuickActions": "Quick Actions",
+  "adminAssignEngineer": "Assign Engineer",
+  "adminSelectEngineer": "Select Engineer",
+  "adminNoEngineersAvailable": "No engineers available",
+  "adminChangeStatus": "Change Status",
+  "adminAdminNotes": "Admin Notes",
+  "adminAddNote": "Add Note",
+  "adminInternalNotes": "Internal Notes",
+  "adminBroadcast": "Broadcast Notification",
+  "adminBroadcastTitle": "Title",
+  "adminBroadcastBody": "Message Body",
+  "adminBroadcastTitleHint": "Notification title",
+  "adminBroadcastBodyHint": "Write your message...",
+  "adminSendBroadcast": "Send Broadcast",
+  "adminBroadcasting": "Sending...",
+  "adminBroadcastSent": "Broadcast sent successfully",
+  "adminInviteEngineer": "Invite Engineer",
+  "adminInviteEmail": "Engineer Email",
+  "adminInviteEmailHint": "Enter engineer's email",
+  "adminSendInvite": "Send Invite",
+  "adminInviteSending": "Sending invite...",
+  "adminInviteSent": "Invite sent successfully",
+  "adminRegisterMachine": "Register Machine",
+  "adminServiceCalendar": "Service Calendar",
+  "adminPaymentDashboard": "Payment Dashboard",
+  "adminInvoiceManagement": "Invoice Management",
+  "adminQuotationManagement": "Quotation Management",
+  "adminReferralProgram": "Referral Program",
+  "adminLoyaltyTiers": "Loyalty Tiers",
+  "adminManageRules": "Manage Rules",
+  "adminCustomerDetail": "Customer Detail",
+  "adminEngineerDetail": "Engineer Detail",
+  "adminNoCustomers": "No customers found",
+  "adminNoEngineers": "No engineers found",
+  "adminCreateSchedule": "Create Schedule",
+  "adminViewSchedule": "View Schedule",
+  "adminAllSchedules": "All Schedules",
+  "adminPromotionalBanners": "Promotional Banners",
+  "adminMachineManagement": "Machine Management",
+  "adminCustomerManagement": "Customer Management",
+  "adminEngineerManagement": "Engineer Management",
+  "adminTicketManagement": "Ticket Management",
+  "adminInquiryManagement": "Inquiry Management",
+  "adminTotalRevenue": "Total Revenue",
+  "adminMonthlyRevenue": "Monthly Revenue",
+  "adminPendingPayments": "Pending Payments",
+  "adminOverduePayments": "Overdue Payments",
+
+
+  "inquiryTitle": "Inquiries",
+  "inquiryDetail": "Inquiry Detail",
+  "inquiryCustomerInfo": "Customer Info",
+  "inquiryMachineInfo": "Machine Info",
+  "inquiryDealValue": "Deal Value",
+  "inquirySalesPipeline": "Sales Pipeline",
+  "inquiryInternalNotes": "Internal Notes",
+  "inquiryChat": "Chat",
+  "inquiryCreateQuotation": "Create Quotation",
+  "inquiryNoInquiries": "No inquiries",
+  "inquiryStageNew": "New",
+  "inquiryStageContacted": "Contacted",
+  "inquiryStageQualified": "Qualified",
+  "inquiryStageProposal": "Proposal",
+  "inquiryStageNegotiation": "Negotiation",
+  "inquiryStageClosed": "Closed Won",
+  "inquiryStageLost": "Closed Lost",
+
+
+  "engineerDashboard": "Engineer Dashboard",
+  "engineerMyAssignments": "My Assignments",
+  "engineerToday": "Today",
+  "engineerUpcoming": "Upcoming",
+  "engineerDone": "Done",
+  "engineerNoAssignments": "No assignments",
+  "engineerNoToday": "No tasks for today",
+  "engineerNoTodayDesc": "Enjoy your free time!",
+  "engineerNoUpcoming": "No upcoming tasks",
+  "engineerNoUpcomingDesc": "No scheduled tasks ahead",
+  "engineerNoDone": "No completed tasks",
+  "engineerNoDoneDesc": "Completed tasks will appear here",
+  "engineerConfirm": "Confirm",
+  "engineerStart": "Start Service",
+  "engineerComplete": "Complete",
+  "engineerServiceReport": "Service Report",
+  "engineerReportRequired": "A service report is required to complete this service",
+  "engineerWriteReport": "Write Report",
+  "engineerReportHint": "Describe the work performed, parts used, findings...",
+  "engineerSubmitReport": "Submit Report",
+  "engineerReportSubmitted": "Report submitted",
+  "engineerNotes": "Engineer Notes",
+  "engineerUpdateNotes": "Update Notes",
+  "engineerNotesHint": "Your notes about this service...",
+  "engineerNotesUpdated": "Notes updated",
+  "engineerCustomerRating": "Customer Rating",
+  "engineerNoRating": "No rating yet",
+  "engineerPendingTasks": "Pending",
+  "engineerActiveTasks": "Active",
+  "engineerCompletedTasks": "Completed",
+  "engineerSchedule": "My Schedule",
+  "engineerGreeting": "Hello, {name}",
+  "@engineerGreeting": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "engineerTodaySummary": "Today's Summary",
+  "engineerPendingCount": "{count} pending",
+  "@engineerPendingCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "engineerActiveCount": "{count} active",
+  "@engineerActiveCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "engineerCallCustomer": "Call Customer",
+  "engineerViewLocation": "View Location",
+  "engineerStarted": "Service started",
+  "engineerCompleted": "Service completed",
+
+
+  "statusActive": "Active",
+  "statusInactive": "Inactive",
+  "statusPending": "Pending",
+  "statusApproved": "Approved",
+  "statusRejected": "Rejected",
+  "statusExpired": "Expired",
+  "statusCompleted": "Completed",
+  "statusCancelled": "Cancelled",
+  "statusInProgress": "In Progress",
+  "statusOpen": "Open",
+  "statusClosed": "Closed",
+  "statusResolved": "Resolved",
+  "statusEscalated": "Escalated",
+  "statusOnHold": "On Hold",
+  "statusDraft": "Draft",
+  "statusSent": "Sent",
+  "statusPaid": "Paid",
+  "statusUnpaid": "Unpaid",
+  "statusOverdue": "Overdue",
+  "statusPartial": "Partial",
+  "statusScheduled": "Scheduled",
+  "statusConfirmed": "Confirmed",
+  "statusRescheduled": "Rescheduled",
+  "statusRequested": "Requested",
+
+
+  "timeToday": "Today",
+  "timeYesterday": "Yesterday",
+  "timeTomorrow": "Tomorrow",
+  "timeJustNow": "Just now",
+  "timeMinutesAgo": "{count} min ago",
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "timeHoursAgo": "{count}h ago",
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "timeDaysAgo": "{count}d ago",
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "timeMinutes": "{count} minutes",
+  "@timeMinutes": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "timeHours": "{count} hours",
+  "@timeHours": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "timeDays": "{count} days",
+  "@timeDays": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "timeWeeks": "{count} weeks",
+  "@timeWeeks": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "timeMonths": "{count} months",
+  "@timeMonths": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "timeAgo": "{time} ago",
+  "@timeAgo": {
+    "placeholders": {
+      "time": { "type": "String" }
+    }
+  },
+
+
+  "errorGeneric": "Something went wrong. Please try again.",
+  "errorNetwork": "Network error. Check your connection.",
+  "errorTimeout": "Request timed out. Please try again.",
+  "errorUnauthorized": "Session expired. Please login again.",
+  "errorNotFound": "Not found",
+  "errorServer": "Server error. Please try again later.",
+  "errorInvalidInput": "Invalid input. Please check and try again.",
+  "errorRequired": "This field is required",
+  "errorInvalidEmail": "Please enter a valid email",
+  "errorPasswordShort": "Password must be at least 6 characters",
+  "errorNoInternet": "No internet connection",
+  "errorLoadFailed": "Failed to load data",
+  "errorSaveFailed": "Failed to save",
+  "errorDeleteFailed": "Failed to delete",
+  "errorUploadFailed": "Failed to upload",
+  "errorPermissionDenied": "Permission denied",
+  "errorAlreadyExists": "Already exists",
+  "errorMinLength": "Must be at least {count} characters",
+  "@errorMinLength": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "errorMaxLength": "Must be at most {count} characters",
+  "@errorMaxLength": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+
+  "validationRequired": "This field is required",
+  "validationEmail": "Enter a valid email address",
+  "validationPhone": "Enter a valid phone number",
+  "validationMinLength": "Minimum {count} characters required",
+  "@validationMinLength": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "validationPasswordMatch": "Passwords do not match",
+  "validationNumberOnly": "Please enter numbers only",
+  "validationPositiveNumber": "Must be a positive number",
+  "validationSelectOption": "Please select an option",
+  "validationDateInvalid": "Please select a valid date",
+  "validationAmountInvalid": "Please enter a valid amount",
+
+
+  "orderTitle": "Order Machine",
+  "orderFormTitle": "Machine Order Form",
+  "orderQuantity": "Quantity",
+  "orderDeliveryAddress": "Delivery Address",
+  "orderDeliveryHint": "Enter delivery address",
+  "orderAdditionalNotes": "Additional Notes",
+  "orderNotesHint": "Any special requirements...",
+  "orderSubmit": "Submit Order",
+  "orderSubmitting": "Submitting order...",
+  "orderSubmitted": "Order submitted successfully",
+  "orderReview": "Review Order",
+  "orderSummary": "Order Summary",
+  "orderMachine": "Machine",
+  "orderUnitPrice": "Unit Price",
+  "orderTotalPrice": "Total Price",
+
+
+  "salesStageNew": "New Lead",
+  "salesStageContacted": "Contacted",
+  "salesStageQualified": "Qualified",
+  "salesStageProposal": "Proposal Sent",
+  "salesStageNegotiation": "Negotiation",
+  "salesStageClosedWon": "Closed Won",
+  "salesStageClosedLost": "Closed Lost",
+  "salesStageFollowUp": "Follow Up",
+
+
+  "pointsEarned": "+{points} points earned!",
+  "@pointsEarned": {
+    "placeholders": {
+      "points": { "type": "int" }
+    }
+  },
+  "pointsAccountCreation": "Welcome bonus",
+  "pointsProfileComplete": "Profile completion bonus",
+  "pointsTicketCreated": "Ticket creation reward",
+  "pointsArticleRead": "Knowledge article reward",
+  "pointsServiceRating": "Service rating reward",
+  "pointsMachinePurchase": "Machine purchase reward",
+  "pointsInstallmentPaid": "Payment reward",
+  "pointsTicketResolved": "Ticket resolved reward",
+  "pointsDailyLogin": "Daily login reward",
+  "pointsReferralSignup": "Referral signup reward",
+  "pointsReferralQualified": "Referral qualified reward",
+
+
+  "deleteConfirmTitle": "Delete",
+  "deleteConfirmMessage": "Are you sure you want to delete this? This action cannot be undone.",
+  "cancelConfirmTitle": "Cancel",
+  "cancelConfirmMessage": "Are you sure you want to cancel?",
+  "unsavedChangesTitle": "Unsaved Changes",
+  "unsavedChangesMessage": "You have unsaved changes. Discard them?",
+  "discardButton": "Discard",
+  "keepEditingButton": "Keep Editing",
+
+
+  "emptyStateTickets": "No tickets found",
+  "emptyStateTicketsDesc": "Create a support ticket to get help",
+  "emptyStateMachines": "No machines registered",
+  "emptyStateMachinesDesc": "Register your machines for service tracking",
+  "emptyStateSchedules": "No schedules found",
+  "emptyStateSchedulesDesc": "Service schedules will appear here",
+  "emptyStateInvoices": "No invoices found",
+  "emptyStateInvoicesDesc": "Your invoices will appear here",
+  "emptyStateQuotations": "No quotations found",
+  "emptyStateQuotationsDesc": "Your quotations will appear here",
+  "emptyStateNotifications": "No notifications",
+  "emptyStateNotificationsDesc": "You're all caught up!",
+  "emptyStateCustomers": "No customers found",
+  "emptyStateEngineers": "No engineers found",
+  "emptyStateReferrals": "No referrals yet",
+  "emptyStateReferralsDesc": "Share your referral code to get started",
+  "emptyStateArticles": "No articles found",
+  "emptyStateArticlesDesc": "Knowledge base articles will appear here",
+  "emptyStatePayments": "No payments recorded",
+  "emptyStatePaymentsDesc": "Payment records will appear here",
+
+
+  "calendarMonth": "Month",
+  "calendarWeek": "Week",
+  "calendarDay": "Day",
+  "calendarToday": "Today",
+  "calendarNoEvents": "No events on this day",
+  "calendarEventsCount": "{count} events",
+  "@calendarEventsCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+
+  "analyticsOverview": "Overview",
+  "analyticsTicketsByStatus": "Tickets by Status",
+  "analyticsTicketsByPriority": "Tickets by Priority",
+  "analyticsResponseTime": "Avg. Response Time",
+  "analyticsResolutionTime": "Avg. Resolution Time",
+  "analyticsCustomerGrowth": "Customer Growth",
+  "analyticsRevenueChart": "Revenue",
+  "analyticsTopEngineers": "Top Engineers",
+  "analyticsCustomerSatisfaction": "Customer Satisfaction",
+  "analyticsPeriodWeek": "This Week",
+  "analyticsPeriodMonth": "This Month",
+  "analyticsPeriodQuarter": "This Quarter",
+  "analyticsPeriodYear": "This Year",
+
+
+  "settingsTitle": "Settings",
+  "settingsGeneral": "General",
+  "settingsAppearance": "Appearance",
+  "settingsDarkMode": "Dark Mode",
+  "settingsLanguage": "Language",
+  "settingsNotifications": "Notifications",
+  "settingsPrivacy": "Privacy",
+  "settingsAbout": "About",
+  "settingsHelp": "Help & Support",
+  "settingsRateApp": "Rate App",
+  "settingsShareApp": "Share App",
+  "settingsTerms": "Terms of Service",
+  "settingsPrivacyPolicy": "Privacy Policy",
+  "settingsAppVersion": "App Version",
+  "settingsSelectLanguage": "Select Language",
+  "settingsLanguageChanged": "Language changed",
+  "settingsThemeChanged": "Theme changed"
+}

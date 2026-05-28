@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "projects": {
+    "default": "iconnect"
+  },
+  "functions": [
+    {
+      "slug": "invite-engineer",
+      "importMapPath": null,
+      "environments": ["production", "staging", "development"],
+      "verify_jwt": true,
+      "memory": 512,
+      "cpu": 1,
+      "timeout_sec": 60
+    },
+    {
+      "slug": "create-engineer",
+      "importMapPath": null,
+      "environments": ["production", "staging", "development"],
+      "verify_jwt": false,
+      "memory": 512,
+      "cpu": 1,
+      "timeout_sec": 60
+    },
+    {
+      "slug": "create-engineering-admin",
+      "importMapPath": null,
+      "environments": ["production", "staging", "development"],
+      "verify_jwt": false,
+      "memory": 512,
+      "cpu": 1,
+      "timeout_sec": 60
+    }
+  ]
+}
