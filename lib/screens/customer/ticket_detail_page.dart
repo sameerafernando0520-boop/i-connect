@@ -24,6 +24,7 @@ import '../../config/brand_colors.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/common/estimate_chat_card.dart';
 import '../../widgets/common/chat_message_attachments.dart';
+import '../../widgets/common/engineer_route_map.dart';
 
 class TicketDetailPage extends StatefulWidget {
   final String ticketId;
@@ -1324,6 +1325,36 @@ class _TicketDetailPageState extends State<TicketDetailPage>
               _buildTopBar(isDark),
               _buildTicketHeader(isDark),
               if (_assignedEngineer != null) _buildEngineerBar(isDark),
+              if ((_ticket!['status'] as String?) == 'en_route')
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4, bottom: 6),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.navigation_rounded,
+                                size: 16, color: Color(0xFF16A34A)),
+                            const SizedBox(width: 6),
+                            Text(
+                              'Your engineer is on the way',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 13,
+                                color: isDark
+                                    ? Brand.darkTextPrimary
+                                    : Brand.royalBlueDark,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      EngineerRouteMap(ticketId: widget.ticketId),
+                    ],
+                  ),
+                ),
               if (_ticket!['estimated_resolution'] != null && !isClosed)
                 _buildEstimatedResolution(isDark),
               Expanded(child: _buildChatArea(isDark)),

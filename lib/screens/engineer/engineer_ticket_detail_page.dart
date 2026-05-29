@@ -1,8 +1,10 @@
 // lib/screens/engineer/engineer_ticket_detail_page.dart
 
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart'
     show
         RealtimeChannel,
@@ -47,6 +49,9 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
   RealtimeChannel? _msgChannel;
   RealtimeChannel? _ticketChannel;
 
+  // ── Live location sharing (en-route) ──
+  StreamSubscription<Position>? _locSub;
+
   // ── Presence ──
   bool _isOtherOnline = false;
 
@@ -68,6 +73,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
 
   @override
   void dispose() {
+    _locSub?.cancel();
     _msgCtrl.dispose();
     _scrollCtrl.removeListener(_onChatScroll);
     _scrollCtrl.dispose();
@@ -128,6 +134,13 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
       });
 
       _scrollToBottom();
+
+      // Resume live location sharing if this ticket is still en-route.
+      if (_ticket['status'] == 'en_route' &&
+          _ticket['assigned_to'] == uid &&
+          _locSub == null) {
+        _startLocationStream();
+      }
 
       // Fire-and-forget: mark messages as read
       _markMessagesAsRead();
@@ -457,6 +470,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
       if (!mounted) return;
 
       setState(() => _ticket = {..._ticket, 'status': newStatus});
+      if (newStatus != 'en_route') _stopLocationStream();
       _showSnackBar(
         'Status updated to ${newStatus.replaceAll("_", " ").toUpperCase()}',
         icon: Icons.check_circle_rounded,
@@ -465,6 +479,64 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
       if (!mounted) return;
       _showSnackBar('Failed to update: $e', isError: true);
     }
+  }
+
+  // ── En-route live location sharing ──────────────────────────
+  Future<void> _toggleEnRoute() async {
+    final status = _ticket['status'] as String? ?? '';
+    if (status == 'en_route') {
+      await _updateStatus('in_progress'); // also stops the stream
+      return;
+    }
+    if (!await Geolocator.isLocationServiceEnabled()) {
+      _showSnackBar('Please enable location services', isError: true);
+      return;
+    }
+    var perm = await Geolocator.checkPermission();
+    if (perm == LocationPermission.denied) {
+      perm = await Geolocator.requestPermission();
+    }
+    if (perm == LocationPermission.denied ||
+        perm == LocationPermission.deniedForever) {
+      _showSnackBar('Location permission is needed to share your route',
+          isError: true);
+      return;
+    }
+    await _updateStatus('en_route');
+    await _startLocationStream();
+  }
+
+  Future<void> _startLocationStream() async {
+    await _locSub?.cancel();
+    final uid = _currentUserId;
+    if (uid == null) return;
+    try {
+      _upsertLocation(uid, await Geolocator.getCurrentPosition());
+    } catch (_) {}
+    _locSub = Geolocator.getPositionStream(
+      locationSettings: const LocationSettings(
+        accuracy: LocationAccuracy.high,
+        distanceFilter: 25,
+      ),
+    ).listen((p) => _upsertLocation(uid, p));
+  }
+
+  Future<void> _upsertLocation(String uid, Position p) async {
+    try {
+      await SupabaseConfig.client.from('ticket_engineer_locations').upsert({
+        'ticket_id': widget.ticketId,
+        'engineer_id': uid,
+        'lat': p.latitude,
+        'lng': p.longitude,
+        'heading': p.heading,
+        'updated_at': DateTime.now().toIso8601String(),
+      });
+    } catch (_) {}
+  }
+
+  Future<void> _stopLocationStream() async {
+    await _locSub?.cancel();
+    _locSub = null;
   }
 
   Future<void> _escalateTicket() async {
@@ -926,6 +998,22 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
         ],
       ),
       actions: [
+        if (_ticket['assigned_to'] == _currentUserId)
+          IconButton(
+            icon: Icon(
+              status == 'en_route'
+                  ? Icons.navigation_rounded
+                  : Icons.navigation_outlined,
+              color: status == 'en_route'
+                  ? const Color(0xFF16A34A)
+                  : (isDark ? Brand.darkTextSecondary : Brand.subtleLight),
+              size: 22,
+            ),
+            onPressed: _toggleEnRoute,
+            tooltip: status == 'en_route'
+                ? 'Stop sharing live location'
+                : 'On my way — share live location',
+          ),
         IconButton(
           icon: Icon(
             escalated ? Icons.flag_rounded : Icons.flag_outlined,
