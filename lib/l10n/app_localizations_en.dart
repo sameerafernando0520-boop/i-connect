@@ -754,6 +754,36 @@ class SEn extends S {
   String get ticketReopen => 'Reopen Ticket';
 
   @override
+  String get ticketAttachImage => 'Attach Image';
+
+  @override
+  String get ticketCamera => 'Camera';
+
+  @override
+  String get ticketGallery => 'Gallery';
+
+  @override
+  String get ticketRateExperience => 'How was your experience?';
+
+  @override
+  String get ticketRateSubtitle => 'Rate our support to help us improve';
+
+  @override
+  String get ticketRateTitle => 'Rate Your Experience';
+
+  @override
+  String get ticketFeedbackHint => 'Share your feedback (optional)';
+
+  @override
+  String get ticketSubmitRating => 'Submit Rating';
+
+  @override
+  String get ticketOrderDetails => 'Order Details';
+
+  @override
+  String get ticketConversationEnded => 'This conversation has ended';
+
+  @override
   String get ticketSubmit => 'Submit Ticket';
 
   @override

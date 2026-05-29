@@ -753,6 +753,37 @@ class STa extends S {
   String get ticketReopen => 'டிக்கெட்டை மீண்டும் திற';
 
   @override
+  String get ticketAttachImage => 'படத்தை இணைக்கவும்';
+
+  @override
+  String get ticketCamera => 'கேமரா';
+
+  @override
+  String get ticketGallery => 'கேலரி';
+
+  @override
+  String get ticketRateExperience => 'உங்கள் அனுபவம் எப்படி இருந்தது?';
+
+  @override
+  String get ticketRateSubtitle => 'நாங்கள் மேம்பட எங்கள் ஆதரவை மதிப்பிடுங்கள்';
+
+  @override
+  String get ticketRateTitle => 'உங்கள் அனுபவத்தை மதிப்பிடுங்கள்';
+
+  @override
+  String get ticketFeedbackHint =>
+      'உங்கள் கருத்தைப் பகிரவும் (விருப்பத்தேர்வு)';
+
+  @override
+  String get ticketSubmitRating => 'மதிப்பீட்டைச் சமர்ப்பி';
+
+  @override
+  String get ticketOrderDetails => 'ஆர்டர் விவரங்கள்';
+
+  @override
+  String get ticketConversationEnded => 'இந்த உரையாடல் முடிந்தது';
+
+  @override
   String get ticketSubmit => 'டிக்கெட் சமர்ப்பி';
 
   @override

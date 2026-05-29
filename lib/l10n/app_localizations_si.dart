@@ -752,6 +752,37 @@ class SSi extends S {
   String get ticketReopen => 'ටිකට්පත නැවත විවෘත කරන්න';
 
   @override
+  String get ticketAttachImage => 'පින්තූරයක් අමුණන්න';
+
+  @override
+  String get ticketCamera => 'කැමරාව';
+
+  @override
+  String get ticketGallery => 'ගැලරිය';
+
+  @override
+  String get ticketRateExperience => 'ඔබගේ අත්දැකීම කෙසේද?';
+
+  @override
+  String get ticketRateSubtitle =>
+      'අපව වැඩිදියුණු කිරීමට අපගේ සහාය ශ්‍රේණිගත කරන්න';
+
+  @override
+  String get ticketRateTitle => 'ඔබගේ අත්දැකීම ශ්‍රේණිගත කරන්න';
+
+  @override
+  String get ticketFeedbackHint => 'ඔබගේ ප්‍රතිපෝෂණය බෙදාගන්න (විකල්ප)';
+
+  @override
+  String get ticketSubmitRating => 'ශ්‍රේණිගත කිරීම යොමු කරන්න';
+
+  @override
+  String get ticketOrderDetails => 'ඇණවුම් විස්තර';
+
+  @override
+  String get ticketConversationEnded => 'මෙම සංවාදය අවසන් වී ඇත';
+
+  @override
   String get ticketSubmit => 'ටිකට්පත ඉදිරිපත් කරන්න';
 
   @override

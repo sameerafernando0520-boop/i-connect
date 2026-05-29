@@ -1563,6 +1563,66 @@ abstract class S {
   /// **'Reopen Ticket'**
   String get ticketReopen;
 
+  /// No description provided for @ticketAttachImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Attach Image'**
+  String get ticketAttachImage;
+
+  /// No description provided for @ticketCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get ticketCamera;
+
+  /// No description provided for @ticketGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get ticketGallery;
+
+  /// No description provided for @ticketRateExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'How was your experience?'**
+  String get ticketRateExperience;
+
+  /// No description provided for @ticketRateSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate our support to help us improve'**
+  String get ticketRateSubtitle;
+
+  /// No description provided for @ticketRateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate Your Experience'**
+  String get ticketRateTitle;
+
+  /// No description provided for @ticketFeedbackHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your feedback (optional)'**
+  String get ticketFeedbackHint;
+
+  /// No description provided for @ticketSubmitRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Rating'**
+  String get ticketSubmitRating;
+
+  /// No description provided for @ticketOrderDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Details'**
+  String get ticketOrderDetails;
+
+  /// No description provided for @ticketConversationEnded.
+  ///
+  /// In en, this message translates to:
+  /// **'This conversation has ended'**
+  String get ticketConversationEnded;
+
   /// No description provided for @ticketSubmit.
   ///
   /// In en, this message translates to:

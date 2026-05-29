@@ -625,7 +625,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
               ),
             ),
             const SizedBox(height: 20),
-            Text('Attach Image',
+            Text(S.of(context)!.ticketAttachImage,
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -637,7 +637,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                 Expanded(
                   child: _buildSourceButton(
                     icon: Icons.camera_alt_rounded,
-                    label: 'Camera',
+                    label: S.of(context)!.ticketCamera,
                     color: Brand.royalBlue,
                     onTap: () => Navigator.pop(sheetCtx, ImageSource.camera),
                     isDark: isDark,
@@ -647,7 +647,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                 Expanded(
                   child: _buildSourceButton(
                     icon: Icons.photo_library_rounded,
-                    label: 'Gallery',
+                    label: S.of(context)!.ticketGallery,
                     color: Brand.lightGreen,
                     onTap: () => Navigator.pop(sheetCtx, ImageSource.gallery),
                     isDark: isDark,
@@ -2058,7 +2058,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                   color:
                       isDark ? Brand.lightGreenBright : Brand.lightGreenDark),
               const SizedBox(width: 8),
-              Text('Order Details',
+              Text(S.of(context)!.ticketOrderDetails,
                   style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
@@ -3241,14 +3241,14 @@ class _TicketDetailPageState extends State<TicketDetailPage>
         top: false,
         child: Column(
           children: [
-            Text('How was your experience?',
+            Text(S.of(context)!.ticketRateExperience,
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w600,
                     color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
                     letterSpacing: -0.3)),
             const SizedBox(height: 4),
-            Text('Rate our support to help us improve',
+            Text(S.of(context)!.ticketRateSubtitle,
                 style: TextStyle(
                     fontSize: 12,
                     color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
@@ -3325,7 +3325,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                   ),
                 ),
                 const SizedBox(height: 22),
-                Text('Rate Your Experience',
+                Text(S.of(context)!.ticketRateTitle,
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
@@ -3388,7 +3388,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                       fontWeight: FontWeight.w500),
                   cursorColor: isDark ? Brand.royalBlueGlow : Brand.royalBlue,
                   decoration: InputDecoration(
-                    hintText: 'Share your feedback (optional)',
+                    hintText: S.of(context)!.ticketFeedbackHint,
                     hintStyle: TextStyle(
                         color: isDark
                             ? Colors.white24
@@ -3449,8 +3449,8 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                               offset: const Offset(0, 5)),
                         ],
                       ),
-                      child: const Center(
-                        child: Text('Submit Rating',
+                      child: Center(
+                        child: Text(S.of(context)!.ticketSubmitRating,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
@@ -3560,7 +3560,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                         ],
                       ),
                     ] else
-                      Text('This conversation has ended',
+                      Text(S.of(context)!.ticketConversationEnded,
                           style: TextStyle(
                               fontSize: 12,
                               color: isDark
