@@ -1005,6 +1005,18 @@ abstract class S {
   /// **'Knowledge Base'**
   String get navKnowledgeBase;
 
+  /// No description provided for @navMachinesShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Machines'**
+  String get navMachinesShort;
+
+  /// No description provided for @navKnowledge.
+  ///
+  /// In en, this message translates to:
+  /// **'Knowledge'**
+  String get navKnowledge;
+
   /// No description provided for @navNotifications.
   ///
   /// In en, this message translates to:

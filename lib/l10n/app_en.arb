@@ -160,6 +160,8 @@
   "navSupport": "Support",
   "navMachines": "My Machines",
   "navKnowledgeBase": "Knowledge Base",
+  "navMachinesShort": "Machines",
+  "navKnowledge": "Knowledge",
   "navNotifications": "Notifications",
   "navSettings": "Settings",
   "navDashboard": "Dashboard",

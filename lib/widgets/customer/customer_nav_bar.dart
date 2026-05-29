@@ -12,6 +12,7 @@
 
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../l10n/s.dart';
 import '../../widgets/common/ic_icons.dart';
 
 class CustomerNavBar extends StatelessWidget {
@@ -29,6 +30,7 @@ class CustomerNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final t = S.of(context)!;
     return Container(
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
@@ -67,14 +69,14 @@ class CustomerNavBar extends StatelessWidget {
                 selected: currentIndex == 0,
                 onTap: () => onTabSelected(0),
                 isDark: isDark,
-                label: 'Home',
+                label: t.navHome,
                 builder: (c) => Icon(Icons.home_rounded, color: c, size: 24),
               ),
               _AnimatedNavItem(
                 selected: currentIndex == 1,
                 onTap: () => onTabSelected(1),
                 isDark: isDark,
-                label: 'Machines',
+                label: t.navMachinesShort,
                 builder: (c) => IcTwinGearIcon(
                   primaryColor: c,
                   secondaryColor: currentIndex == 1
@@ -88,7 +90,7 @@ class CustomerNavBar extends StatelessWidget {
                 selected: currentIndex == 3,
                 onTap: () => onTabSelected(3),
                 isDark: isDark,
-                label: 'Knowledge',
+                label: t.navKnowledge,
                 builder: (c) =>
                     Icon(Icons.auto_stories_rounded, color: c, size: 24),
               ),
@@ -96,7 +98,7 @@ class CustomerNavBar extends StatelessWidget {
                 selected: currentIndex == 4,
                 onTap: () => onTabSelected(4),
                 isDark: isDark,
-                label: 'Profile',
+                label: t.navProfile,
                 builder: (c) => Icon(Icons.person_rounded, color: c, size: 24),
               ),
             ],

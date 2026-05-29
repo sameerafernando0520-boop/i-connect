@@ -462,6 +462,12 @@ class SSi extends S {
   String get navKnowledgeBase => 'දැනුම් පදනම';
 
   @override
+  String get navMachinesShort => 'යන්ත්‍ර';
+
+  @override
+  String get navKnowledge => 'දැනුම';
+
+  @override
   String get navNotifications => 'දැනුම්දීම්';
 
   @override

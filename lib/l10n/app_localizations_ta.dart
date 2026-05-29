@@ -462,6 +462,12 @@ class STa extends S {
   String get navKnowledgeBase => 'அறிவுத் தளம்';
 
   @override
+  String get navMachinesShort => 'இயந்திரங்கள்';
+
+  @override
+  String get navKnowledge => 'அறிவு';
+
+  @override
   String get navNotifications => 'அறிவிப்புகள்';
 
   @override

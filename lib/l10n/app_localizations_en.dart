@@ -462,6 +462,12 @@ class SEn extends S {
   String get navKnowledgeBase => 'Knowledge Base';
 
   @override
+  String get navMachinesShort => 'Machines';
+
+  @override
+  String get navKnowledge => 'Knowledge';
+
+  @override
   String get navNotifications => 'Notifications';
 
   @override
