@@ -2043,6 +2043,78 @@ abstract class S {
   /// **'Support'**
   String get supportTitle;
 
+  /// No description provided for @supportCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Support Center'**
+  String get supportCenter;
+
+  /// No description provided for @supportHowCanWeHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'How can we help?'**
+  String get supportHowCanWeHelp;
+
+  /// No description provided for @supportChooseOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an option below to get started'**
+  String get supportChooseOption;
+
+  /// No description provided for @supportTechnical.
+  ///
+  /// In en, this message translates to:
+  /// **'Technical Support'**
+  String get supportTechnical;
+
+  /// No description provided for @supportTechnicalDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Machine issues, maintenance & troubleshooting'**
+  String get supportTechnicalDesc;
+
+  /// No description provided for @supportGeneralInquiry.
+  ///
+  /// In en, this message translates to:
+  /// **'General Inquiry'**
+  String get supportGeneralInquiry;
+
+  /// No description provided for @supportGeneralInquiryDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Product info, pricing & availability questions'**
+  String get supportGeneralInquiryDesc;
+
+  /// No description provided for @supportPlaceOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Place an Order'**
+  String get supportPlaceOrder;
+
+  /// No description provided for @supportPlaceOrderDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Order machines, parts or consumables'**
+  String get supportPlaceOrderDesc;
+
+  /// No description provided for @supportMySchedules.
+  ///
+  /// In en, this message translates to:
+  /// **'My Schedules'**
+  String get supportMySchedules;
+
+  /// No description provided for @supportMySchedulesDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'View and request service visits'**
+  String get supportMySchedulesDesc;
+
+  /// No description provided for @supportRecentTickets.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Tickets'**
+  String get supportRecentTickets;
+
   /// No description provided for @supportOptions.
   ///
   /// In en, this message translates to:
@@ -2096,12 +2168,6 @@ abstract class S {
   /// In en, this message translates to:
   /// **'Email Us'**
   String get supportEmailUs;
-
-  /// No description provided for @supportMySchedules.
-  ///
-  /// In en, this message translates to:
-  /// **'My Schedules'**
-  String get supportMySchedules;
 
   /// No description provided for @supportRequestService.
   ///

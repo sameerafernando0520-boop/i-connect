@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../l10n/s.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/common/ic_icons.dart';
 import 'order_form_page.dart';
@@ -506,6 +507,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final t = S.of(context)!;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: isDark
@@ -517,7 +519,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
         backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
         appBar: AppBar(
           title: Text(
-            'Support Center',
+            t.supportCenter,
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w600,
@@ -547,26 +549,24 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                       const SizedBox(height: 28),
                       _buildOptionCard(
                         icon: Icons.build_rounded,
-                        title: 'Technical Support',
-                        subtitle:
-                            'Machine issues, maintenance & troubleshooting',
+                        title: t.supportTechnical,
+                        subtitle: t.supportTechnicalDesc,
                         accentColor: Brand.royalBlue,
                         isDark: isDark,
                         onTap: () => _showCreateTicketSheet('support'),
                       ),
                       _buildOptionCard(
                         icon: Icons.help_outline_rounded,
-                        title: 'General Inquiry',
-                        subtitle:
-                            'Product info, pricing & availability questions',
+                        title: t.supportGeneralInquiry,
+                        subtitle: t.supportGeneralInquiryDesc,
                         accentColor: Brand.lightGreen,
                         isDark: isDark,
                         onTap: () => _showCreateTicketSheet('inquiry'),
                       ),
                       _buildOptionCard(
                         icon: Icons.local_shipping_rounded,
-                        title: 'Place an Order',
-                        subtitle: 'Order machines, parts or consumables',
+                        title: t.supportPlaceOrder,
+                        subtitle: t.supportPlaceOrderDesc,
                         accentColor: const Color(0xFFE65100),
                         isDark: isDark,
                         onTap: () => Navigator.push(
@@ -578,8 +578,8 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                       ),
                       _buildOptionCard(
                         icon: Icons.calendar_month_rounded,
-                        title: 'My Schedules',
-                        subtitle: 'View and request service visits',
+                        title: t.supportMySchedules,
+                        subtitle: t.supportMySchedulesDesc,
                         accentColor: const Color(0xFF14B8A6),
                         isDark: isDark,
                         onTap: () => Navigator.push(
@@ -640,9 +640,9 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'How can we help?',
-                  style: TextStyle(
+                Text(
+                  S.of(context)!.supportHowCanWeHelp,
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                     color: Colors.white,
@@ -650,7 +650,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Choose an option below to get started',
+                  S.of(context)!.supportChooseOption,
                   style: TextStyle(
                     fontSize: 13,
                     color: Colors.white.withAlpha(((0.8) * 255).toInt()),
@@ -766,7 +766,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Recent Tickets',
+              S.of(context)!.supportRecentTickets,
               style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w700,
@@ -775,9 +775,9 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
             ),
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text(
-                'View All',
-                style: TextStyle(
+              child: Text(
+                S.of(context)!.commonViewAll,
+                style: const TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
                   color: Brand.royalBlueLight,

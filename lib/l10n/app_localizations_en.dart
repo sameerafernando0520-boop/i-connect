@@ -995,6 +995,44 @@ class SEn extends S {
   String get supportTitle => 'Support';
 
   @override
+  String get supportCenter => 'Support Center';
+
+  @override
+  String get supportHowCanWeHelp => 'How can we help?';
+
+  @override
+  String get supportChooseOption => 'Choose an option below to get started';
+
+  @override
+  String get supportTechnical => 'Technical Support';
+
+  @override
+  String get supportTechnicalDesc =>
+      'Machine issues, maintenance & troubleshooting';
+
+  @override
+  String get supportGeneralInquiry => 'General Inquiry';
+
+  @override
+  String get supportGeneralInquiryDesc =>
+      'Product info, pricing & availability questions';
+
+  @override
+  String get supportPlaceOrder => 'Place an Order';
+
+  @override
+  String get supportPlaceOrderDesc => 'Order machines, parts or consumables';
+
+  @override
+  String get supportMySchedules => 'My Schedules';
+
+  @override
+  String get supportMySchedulesDesc => 'View and request service visits';
+
+  @override
+  String get supportRecentTickets => 'Recent Tickets';
+
+  @override
   String get supportOptions => 'Support Options';
 
   @override
@@ -1020,9 +1058,6 @@ class SEn extends S {
 
   @override
   String get supportEmailUs => 'Email Us';
-
-  @override
-  String get supportMySchedules => 'My Schedules';
 
   @override
   String get supportRequestService => 'Request Service';

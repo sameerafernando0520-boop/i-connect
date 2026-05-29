@@ -996,6 +996,44 @@ class SSi extends S {
   String get supportTitle => 'සහාය';
 
   @override
+  String get supportCenter => 'සහාය මධ්‍යස්ථානය';
+
+  @override
+  String get supportHowCanWeHelp => 'අපි ඔබට කෙසේ උදව් කරමුද?';
+
+  @override
+  String get supportChooseOption => 'ආරම්භ කිරීමට පහත විකල්පයක් තෝරන්න';
+
+  @override
+  String get supportTechnical => 'තාක්ෂණික සහාය';
+
+  @override
+  String get supportTechnicalDesc => 'යන්ත්‍ර ගැටලු, නඩත්තුව සහ දෝෂ නිරාකරණය';
+
+  @override
+  String get supportGeneralInquiry => 'සාමාන්‍ය විමසීම';
+
+  @override
+  String get supportGeneralInquiryDesc =>
+      'නිෂ්පාදන තොරතුරු, මිල සහ ලබා ගැනීමේ හැකියාව පිළිබඳ ප්‍රශ්න';
+
+  @override
+  String get supportPlaceOrder => 'ඇණවුමක් කරන්න';
+
+  @override
+  String get supportPlaceOrderDesc =>
+      'යන්ත්‍ර, අමතර කොටස් හෝ පරිභෝජ්‍ය ද්‍රව්‍ය ඇණවුම් කරන්න';
+
+  @override
+  String get supportMySchedules => 'මගේ කාලසටහන්';
+
+  @override
+  String get supportMySchedulesDesc => 'සේවා පැමිණීම් බලන්න සහ ඉල්ලන්න';
+
+  @override
+  String get supportRecentTickets => 'මෑත ටිකට්පත්';
+
+  @override
   String get supportOptions => 'සහාය විකල්ප';
 
   @override
@@ -1021,9 +1059,6 @@ class SSi extends S {
 
   @override
   String get supportEmailUs => 'ඊමේල් කරන්න';
-
-  @override
-  String get supportMySchedules => 'මගේ කාලසටහන්';
 
   @override
   String get supportRequestService => 'සේවාවක් ඉල්ලන්න';

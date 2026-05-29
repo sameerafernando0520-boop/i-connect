@@ -377,6 +377,18 @@
 
 
   "supportTitle": "Support",
+  "supportCenter": "Support Center",
+  "supportHowCanWeHelp": "How can we help?",
+  "supportChooseOption": "Choose an option below to get started",
+  "supportTechnical": "Technical Support",
+  "supportTechnicalDesc": "Machine issues, maintenance & troubleshooting",
+  "supportGeneralInquiry": "General Inquiry",
+  "supportGeneralInquiryDesc": "Product info, pricing & availability questions",
+  "supportPlaceOrder": "Place an Order",
+  "supportPlaceOrderDesc": "Order machines, parts or consumables",
+  "supportMySchedules": "My Schedules",
+  "supportMySchedulesDesc": "View and request service visits",
+  "supportRecentTickets": "Recent Tickets",
   "supportOptions": "Support Options",
   "supportCreateTicket": "Create Support Ticket",
   "supportTrackTickets": "Track Tickets",

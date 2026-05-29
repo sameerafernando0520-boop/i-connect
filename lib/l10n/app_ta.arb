@@ -347,6 +347,18 @@
 
 
   "supportTitle": "ஆதரவு",
+  "supportCenter": "ஆதரவு மையம்",
+  "supportHowCanWeHelp": "நாங்கள் எப்படி உதவ முடியும்?",
+  "supportChooseOption": "தொடங்க கீழே ஒரு விருப்பத்தைத் தேர்ந்தெடுக்கவும்",
+  "supportTechnical": "தொழில்நுட்ப ஆதரவு",
+  "supportTechnicalDesc": "இயந்திர சிக்கல்கள், பராமரிப்பு & சரிசெய்தல்",
+  "supportGeneralInquiry": "பொது விசாரணை",
+  "supportGeneralInquiryDesc": "தயாரிப்பு தகவல், விலை & கிடைக்கும் தன்மை கேள்விகள்",
+  "supportPlaceOrder": "ஆர்டர் செய்யவும்",
+  "supportPlaceOrderDesc": "இயந்திரங்கள், பாகங்கள் அல்லது நுகர்பொருட்களை ஆர்டர் செய்யவும்",
+  "supportMySchedules": "எனது அட்டவணைகள்",
+  "supportMySchedulesDesc": "சேவை வருகைகளைப் பார்த்து கோரவும்",
+  "supportRecentTickets": "சமீபத்திய டிக்கெட்டுகள்",
   "supportOptions": "ஆதரவு விருப்பங்கள்",
   "supportCreateTicket": "ஆதரவு டிக்கெட் உருவாக்கு",
   "supportTrackTickets": "டிக்கெட்டுகளைக் கண்காணி",

@@ -347,6 +347,18 @@
 
 
   "supportTitle": "සහාය",
+  "supportCenter": "සහාය මධ්‍යස්ථානය",
+  "supportHowCanWeHelp": "අපි ඔබට කෙසේ උදව් කරමුද?",
+  "supportChooseOption": "ආරම්භ කිරීමට පහත විකල්පයක් තෝරන්න",
+  "supportTechnical": "තාක්ෂණික සහාය",
+  "supportTechnicalDesc": "යන්ත්‍ර ගැටලු, නඩත්තුව සහ දෝෂ නිරාකරණය",
+  "supportGeneralInquiry": "සාමාන්‍ය විමසීම",
+  "supportGeneralInquiryDesc": "නිෂ්පාදන තොරතුරු, මිල සහ ලබා ගැනීමේ හැකියාව පිළිබඳ ප්‍රශ්න",
+  "supportPlaceOrder": "ඇණවුමක් කරන්න",
+  "supportPlaceOrderDesc": "යන්ත්‍ර, අමතර කොටස් හෝ පරිභෝජ්‍ය ද්‍රව්‍ය ඇණවුම් කරන්න",
+  "supportMySchedules": "මගේ කාලසටහන්",
+  "supportMySchedulesDesc": "සේවා පැමිණීම් බලන්න සහ ඉල්ලන්න",
+  "supportRecentTickets": "මෑත ටිකට්පත්",
   "supportOptions": "සහාය විකල්ප",
   "supportCreateTicket": "සහාය ටිකට්පතක් සාදන්න",
   "supportTrackTickets": "ටිකට්පත් නිරීක්ෂණය කරන්න",

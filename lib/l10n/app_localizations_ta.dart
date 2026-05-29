@@ -997,6 +997,46 @@ class STa extends S {
   String get supportTitle => 'ஆதரவு';
 
   @override
+  String get supportCenter => 'ஆதரவு மையம்';
+
+  @override
+  String get supportHowCanWeHelp => 'நாங்கள் எப்படி உதவ முடியும்?';
+
+  @override
+  String get supportChooseOption =>
+      'தொடங்க கீழே ஒரு விருப்பத்தைத் தேர்ந்தெடுக்கவும்';
+
+  @override
+  String get supportTechnical => 'தொழில்நுட்ப ஆதரவு';
+
+  @override
+  String get supportTechnicalDesc =>
+      'இயந்திர சிக்கல்கள், பராமரிப்பு & சரிசெய்தல்';
+
+  @override
+  String get supportGeneralInquiry => 'பொது விசாரணை';
+
+  @override
+  String get supportGeneralInquiryDesc =>
+      'தயாரிப்பு தகவல், விலை & கிடைக்கும் தன்மை கேள்விகள்';
+
+  @override
+  String get supportPlaceOrder => 'ஆர்டர் செய்யவும்';
+
+  @override
+  String get supportPlaceOrderDesc =>
+      'இயந்திரங்கள், பாகங்கள் அல்லது நுகர்பொருட்களை ஆர்டர் செய்யவும்';
+
+  @override
+  String get supportMySchedules => 'எனது அட்டவணைகள்';
+
+  @override
+  String get supportMySchedulesDesc => 'சேவை வருகைகளைப் பார்த்து கோரவும்';
+
+  @override
+  String get supportRecentTickets => 'சமீபத்திய டிக்கெட்டுகள்';
+
+  @override
   String get supportOptions => 'ஆதரவு விருப்பங்கள்';
 
   @override
@@ -1022,9 +1062,6 @@ class STa extends S {
 
   @override
   String get supportEmailUs => 'மின்னஞ்சல் அனுப்பவும்';
-
-  @override
-  String get supportMySchedules => 'எனது அட்டவணைகள்';
 
   @override
   String get supportRequestService => 'சேவை கோரு';
