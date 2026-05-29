@@ -552,6 +552,18 @@ class SSi extends S {
   String get homeWarrantyExpiring => 'වගකීම ඉක්මනින් අවසන් වේ';
 
   @override
+  String get homeConnectionIssue => 'සම්බන්ධතා ගැටලුව';
+
+  @override
+  String get homeRecentActivity => 'මෑත ක්‍රියාකාරකම්';
+
+  @override
+  String get homeBrowseCatalog => 'ලේඛනය බලන්න';
+
+  @override
+  String get homeBrowseCatalogDesc => 'ගවේෂණය කර ආරම්භ කිරීමට අපගේ ලේඛනය බලන්න';
+
+  @override
   String get catalogTitle => 'යන්ත්‍ර නිෂ්පාදන ලේඛනය';
 
   @override

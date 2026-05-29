@@ -32,6 +32,7 @@ import 'package:intl/intl.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../l10n/s.dart';
 import '../../utils/time_utils.dart';
 import '../../utils/string_utils.dart';
 import '../../widgets/common/nav_badge_indicator.dart';
@@ -1142,7 +1143,7 @@ class _HomePageState extends State<HomePage>
                     : Brand.royalBlue.withAlpha(31)),
           ),
           child: Row(mainAxisSize: MainAxisSize.min, children: [
-            Text('View All',
+            Text(S.of(context)!.commonViewAll,
                 style: TextStyle(
                   color: isDark ? Brand.darkIconActive : Brand.royalBlue,
                   fontSize: 12,
@@ -1417,7 +1418,7 @@ class _HomePageState extends State<HomePage>
         Expanded(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('Connection Issue',
+          Text(S.of(context)!.homeConnectionIssue,
               style: TextStyle(
                   color: isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400,
                   fontWeight: FontWeight.w700,
@@ -1445,7 +1446,7 @@ class _HomePageState extends State<HomePage>
               decoration: BoxDecoration(
                   color: Colors.red.withAlpha(isDark ? 38 : 31),
                   borderRadius: BorderRadius.circular(10)),
-              child: Text('Retry',
+              child: Text(S.of(context)!.commonRetry,
                   style: TextStyle(
                       color: isDark
                           ? const Color(0xFFFF6B6B)
@@ -2361,7 +2362,7 @@ class _HomePageState extends State<HomePage>
               // ── Stats Row ──
               Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text('My Machines',
+                  Text(S.of(context)!.homeMyMachines,
                       style: TextStyle(
                           color: isDark
                               ? Brand.darkTextSecondary
@@ -2847,7 +2848,7 @@ class _HomePageState extends State<HomePage>
                 borderRadius: BorderRadius.circular(2),
               )),
           const SizedBox(width: 10),
-          Text('My Machines',
+          Text(S.of(context)!.homeMyMachines,
               style: TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.w700,
@@ -2901,13 +2902,14 @@ class _HomePageState extends State<HomePage>
                 size: 36,
                 color: isDark ? Brand.darkIconActive : Brand.royalBlue)),
         const SizedBox(height: 20),
-        Text('No machines registered yet',
+        Text(S.of(context)!.homeNoMachines,
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
                 color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),
         const SizedBox(height: 6),
-        Text('Browse our catalog to explore and get started',
+        Text(S.of(context)!.homeBrowseCatalogDesc,
+            textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 13,
                 color: isDark ? Brand.darkTextSecondary : Brand.subtleLight)),
@@ -2916,8 +2918,8 @@ class _HomePageState extends State<HomePage>
           onPressed: () => Navigator.push(
               context, MaterialPageRoute(builder: (_) => const CatalogPage())),
           icon: const Icon(Icons.storefront_rounded, size: 18),
-          label: const Text('Browse Catalog',
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14)),
+          label: Text(S.of(context)!.homeBrowseCatalog,
+              style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14)),
           style: ElevatedButton.styleFrom(
             backgroundColor: isDark ? Brand.darkIconActive : Brand.royalBlue,
             foregroundColor: Colors.white,
@@ -3120,7 +3122,7 @@ class _HomePageState extends State<HomePage>
                 borderRadius: BorderRadius.circular(2),
               )),
           const SizedBox(width: 10),
-          Text('Recent Activity',
+          Text(S.of(context)!.homeRecentActivity,
               style: TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.w700,

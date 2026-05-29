@@ -190,6 +190,10 @@
   "homeExploreMore": "තවත් ගවේෂණය කරන්න",
   "homeServiceDue": "සේවා නියමිතයි",
   "homeWarrantyExpiring": "වගකීම ඉක්මනින් අවසන් වේ",
+  "homeConnectionIssue": "සම්බන්ධතා ගැටලුව",
+  "homeRecentActivity": "මෑත ක්‍රියාකාරකම්",
+  "homeBrowseCatalog": "ලේඛනය බලන්න",
+  "homeBrowseCatalogDesc": "ගවේෂණය කර ආරම්භ කිරීමට අපගේ ලේඛනය බලන්න",
 
 
   "catalogTitle": "යන්ත්‍ර නිෂ්පාදන ලේඛනය",

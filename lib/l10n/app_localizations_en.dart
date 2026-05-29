@@ -552,6 +552,19 @@ class SEn extends S {
   String get homeWarrantyExpiring => 'Warranty expiring soon';
 
   @override
+  String get homeConnectionIssue => 'Connection Issue';
+
+  @override
+  String get homeRecentActivity => 'Recent Activity';
+
+  @override
+  String get homeBrowseCatalog => 'Browse Catalog';
+
+  @override
+  String get homeBrowseCatalogDesc =>
+      'Browse our catalog to explore and get started';
+
+  @override
   String get catalogTitle => 'Machine Catalog';
 
   @override

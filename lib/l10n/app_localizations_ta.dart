@@ -552,6 +552,19 @@ class STa extends S {
   String get homeWarrantyExpiring => 'உத்தரவாதம் விரைவில் முடிவடையும்';
 
   @override
+  String get homeConnectionIssue => 'இணைப்பு சிக்கல்';
+
+  @override
+  String get homeRecentActivity => 'சமீபத்திய செயல்பாடு';
+
+  @override
+  String get homeBrowseCatalog => 'பட்டியலைப் பார்';
+
+  @override
+  String get homeBrowseCatalogDesc =>
+      'ஆராய்ந்து தொடங்க எங்கள் பட்டியலைப் பார்க்கவும்';
+
+  @override
   String get catalogTitle => 'இயந்திர தயாரிப்புப் பட்டியல்';
 
   @override

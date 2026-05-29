@@ -1173,6 +1173,30 @@ abstract class S {
   /// **'Warranty expiring soon'**
   String get homeWarrantyExpiring;
 
+  /// No description provided for @homeConnectionIssue.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection Issue'**
+  String get homeConnectionIssue;
+
+  /// No description provided for @homeRecentActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Activity'**
+  String get homeRecentActivity;
+
+  /// No description provided for @homeBrowseCatalog.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse Catalog'**
+  String get homeBrowseCatalog;
+
+  /// No description provided for @homeBrowseCatalogDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse our catalog to explore and get started'**
+  String get homeBrowseCatalogDesc;
+
   /// No description provided for @catalogTitle.
   ///
   /// In en, this message translates to:

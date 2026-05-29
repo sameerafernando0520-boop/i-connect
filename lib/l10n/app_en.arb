@@ -205,6 +205,10 @@
   "homeExploreMore": "Explore More",
   "homeServiceDue": "Service due",
   "homeWarrantyExpiring": "Warranty expiring soon",
+  "homeConnectionIssue": "Connection Issue",
+  "homeRecentActivity": "Recent Activity",
+  "homeBrowseCatalog": "Browse Catalog",
+  "homeBrowseCatalogDesc": "Browse our catalog to explore and get started",
 
 
   "catalogTitle": "Machine Catalog",
