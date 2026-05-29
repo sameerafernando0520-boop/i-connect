@@ -1073,6 +1073,49 @@ class SSi extends S {
       'සියලු ක්ෂේත්‍ර පුරවා ලකුණු 100ක් උපයන්න!';
 
   @override
+  String get profileLoading => 'පැතිකඩ පූරණය වෙමින්...';
+
+  @override
+  String get profileLoadFailed => 'පැතිකඩ පූරණය කිරීමට අසමත් විය';
+
+  @override
+  String get profileEngagementProgress => 'සහභාගීත්ව ප්‍රගතිය';
+
+  @override
+  String get profileAccountInfo => 'ගිණුම් තොරතුරු';
+
+  @override
+  String get profileQuickNav => 'ඉක්මන් සංචලනය';
+
+  @override
+  String get profileMyDocuments => 'මගේ ලේඛන';
+
+  @override
+  String get profileMyInvoices => 'මගේ ඉන්වොයිස්';
+
+  @override
+  String get profileMyInvoicesDesc => 'ඉන්වොයිස් බලන්න, බාගන්න සහ ගෙවන්න';
+
+  @override
+  String get profileMyQuotations => 'මගේ මිල කැඳවීම්';
+
+  @override
+  String get profileMyQuotationsDesc => 'අපේක්ෂිත සහ පිළිගත් මිල කැඳවීම් බලන්න';
+
+  @override
+  String get profileMyInstallments => 'මගේ වාරික';
+
+  @override
+  String get profileMyInstallmentsDesc =>
+      'ගෙවීම් නිරීක්ෂණය කර රිසිට්පත් උඩුගත කරන්න';
+
+  @override
+  String get profileContactSupport => 'සම්බන්ධතා සහ සහාය';
+
+  @override
+  String get profileAppearance => 'පෙනුම';
+
+  @override
   String get machineTitle => 'මගේ යන්ත්‍ර';
 
   @override

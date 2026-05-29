@@ -2193,6 +2193,90 @@ abstract class S {
   /// **'Fill in all fields to earn 100 bonus points!'**
   String get profileCompletionDesc;
 
+  /// No description provided for @profileLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading profile...'**
+  String get profileLoading;
+
+  /// No description provided for @profileLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to Load Profile'**
+  String get profileLoadFailed;
+
+  /// No description provided for @profileEngagementProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Engagement Progress'**
+  String get profileEngagementProgress;
+
+  /// No description provided for @profileAccountInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Information'**
+  String get profileAccountInfo;
+
+  /// No description provided for @profileQuickNav.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Navigation'**
+  String get profileQuickNav;
+
+  /// No description provided for @profileMyDocuments.
+  ///
+  /// In en, this message translates to:
+  /// **'My Documents'**
+  String get profileMyDocuments;
+
+  /// No description provided for @profileMyInvoices.
+  ///
+  /// In en, this message translates to:
+  /// **'My Invoices'**
+  String get profileMyInvoices;
+
+  /// No description provided for @profileMyInvoicesDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'View, download and pay invoices'**
+  String get profileMyInvoicesDesc;
+
+  /// No description provided for @profileMyQuotations.
+  ///
+  /// In en, this message translates to:
+  /// **'My Quotations'**
+  String get profileMyQuotations;
+
+  /// No description provided for @profileMyQuotationsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'View pending and accepted quotes'**
+  String get profileMyQuotationsDesc;
+
+  /// No description provided for @profileMyInstallments.
+  ///
+  /// In en, this message translates to:
+  /// **'My Installments'**
+  String get profileMyInstallments;
+
+  /// No description provided for @profileMyInstallmentsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Track payments and upload receipts'**
+  String get profileMyInstallmentsDesc;
+
+  /// No description provided for @profileContactSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact & Support'**
+  String get profileContactSupport;
+
+  /// No description provided for @profileAppearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get profileAppearance;
+
   /// No description provided for @machineTitle.
   ///
   /// In en, this message translates to:

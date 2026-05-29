@@ -979,7 +979,7 @@ class _ProfilePageState extends State<ProfilePage>
                               isDark ? Brand.darkIconActive : Brand.royalBlue,
                           strokeWidth: 3)))),
           const SizedBox(height: 16),
-          Text('Loading profile...',
+          Text(S.of(context)!.profileLoading,
               style: TextStyle(
                   fontSize: 14,
                   color: isDark ? Brand.darkTextSecondary : Brand.subtleLight)),
@@ -1069,7 +1069,7 @@ class _ProfilePageState extends State<ProfilePage>
                 size: 36,
                 color: isDark ? const Color(0xFFFF6B6B) : Colors.red)),
         const SizedBox(height: 20),
-        Text('Failed to Load Profile',
+        Text(S.of(context)!.profileLoadFailed,
             style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
@@ -1092,7 +1092,7 @@ class _ProfilePageState extends State<ProfilePage>
                               : Brand.borderLight),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(14))),
-                  child: Text('Go Back',
+                  child: Text(S.of(context)!.commonBack,
                       style: TextStyle(
                           color: isDark
                               ? Brand.darkTextSecondary
@@ -1113,7 +1113,7 @@ class _ProfilePageState extends State<ProfilePage>
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(14))),
-                  child: const Text('Retry',
+                  child: Text(S.of(context)!.commonRetry,
                       style: TextStyle(fontWeight: FontWeight.w700)))),
         ]),
       ]),
@@ -1136,7 +1136,7 @@ class _ProfilePageState extends State<ProfilePage>
             }),
             const SizedBox(width: 14),
             Expanded(
-                child: Text('My Profile',
+                child: Text(S.of(context)!.profileTitle,
                     style: TextStyle(
                         fontSize: 21,
                         fontWeight: FontWeight.w600,
@@ -1529,7 +1529,7 @@ class _ProfilePageState extends State<ProfilePage>
               color: isDark ? Brand.darkIconActive : Brand.royalBlue, size: 20),
           const SizedBox(width: 8),
           Expanded(
-              child: Text('Complete Your Profile',
+              child: Text(S.of(context)!.profileCompletionTitle,
                   style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
@@ -1706,7 +1706,7 @@ class _ProfilePageState extends State<ProfilePage>
                   size: 22)),
           const SizedBox(width: 10),
           Expanded(
-              child: Text('Engagement Progress',
+              child: Text(S.of(context)!.profileEngagementProgress,
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
@@ -2237,7 +2237,7 @@ class _ProfilePageState extends State<ProfilePage>
                 _sectionIcon(Icons.person_rounded, isDark),
                 const SizedBox(width: 10),
                 Expanded(
-                    child: Text('Account Information',
+                    child: Text(S.of(context)!.profileAccountInfo,
                         style: _sectionTitle(isDark))),
                 if (!_isEditing && !_accountInfoExpanded)
                   AnimatedRotation(
@@ -2697,7 +2697,7 @@ class _ProfilePageState extends State<ProfilePage>
                             end: Alignment.bottomCenter),
                         borderRadius: BorderRadius.circular(2))),
                 const SizedBox(width: 10),
-                Text('Quick Navigation',
+                Text(S.of(context)!.profileQuickNav,
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -2809,7 +2809,7 @@ class _ProfilePageState extends State<ProfilePage>
                         end: Alignment.bottomCenter),
                     borderRadius: BorderRadius.circular(2))),
             const SizedBox(width: 10),
-            Text('My Documents',
+            Text(S.of(context)!.profileMyDocuments,
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
@@ -2822,8 +2822,8 @@ class _ProfilePageState extends State<ProfilePage>
           isDark: isDark,
           icon: Icons.receipt_long_rounded,
           accent: isDark ? Brand.darkIconActive : Brand.royalBlue,
-          title: 'My Invoices',
-          subtitle: 'View, download and pay invoices',
+          title: S.of(context)!.profileMyInvoices,
+          subtitle: S.of(context)!.profileMyInvoicesDesc,
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(builder: (_) => const MyInvoicesPage()),
@@ -2834,8 +2834,8 @@ class _ProfilePageState extends State<ProfilePage>
           isDark: isDark,
           icon: Icons.request_quote_rounded,
           accent: isDark ? const Color(0xFFCE93D8) : const Color(0xFF6A1B9A),
-          title: 'My Quotations',
-          subtitle: 'View pending and accepted quotes',
+          title: S.of(context)!.profileMyQuotations,
+          subtitle: S.of(context)!.profileMyQuotationsDesc,
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(builder: (_) => const MyQuotationsPage()),
@@ -2846,8 +2846,8 @@ class _ProfilePageState extends State<ProfilePage>
           isDark: isDark,
           icon: Icons.payments_rounded,
           accent: isDark ? Brand.lightGreenBright : Brand.lightGreen,
-          title: 'My Installments',
-          subtitle: 'Track payments and upload receipts',
+          title: S.of(context)!.profileMyInstallments,
+          subtitle: S.of(context)!.profileMyInstallmentsDesc,
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(builder: (_) => const CustomerInstallmentsPage()),
@@ -3013,7 +3013,7 @@ class _ProfilePageState extends State<ProfilePage>
           Row(children: [
             _sectionIcon(Icons.contact_support_rounded, isDark),
             const SizedBox(width: 10),
-            Text('Contact & Support', style: _sectionTitle(isDark)),
+            Text(S.of(context)!.profileContactSupport, style: _sectionTitle(isDark)),
           ]),
           const SizedBox(height: 16),
           // Use Wrap for flexible layout when many contacts
@@ -3069,7 +3069,7 @@ class _ProfilePageState extends State<ProfilePage>
           Row(children: [
             _sectionIcon(Icons.palette_rounded, isDark),
             const SizedBox(width: 10),
-            Expanded(child: Text('Appearance', style: _sectionTitle(isDark))),
+            Expanded(child: Text(S.of(context)!.profileAppearance, style: _sectionTitle(isDark))),
             Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(

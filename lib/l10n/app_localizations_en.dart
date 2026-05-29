@@ -1074,6 +1074,48 @@ class SEn extends S {
       'Fill in all fields to earn 100 bonus points!';
 
   @override
+  String get profileLoading => 'Loading profile...';
+
+  @override
+  String get profileLoadFailed => 'Failed to Load Profile';
+
+  @override
+  String get profileEngagementProgress => 'Engagement Progress';
+
+  @override
+  String get profileAccountInfo => 'Account Information';
+
+  @override
+  String get profileQuickNav => 'Quick Navigation';
+
+  @override
+  String get profileMyDocuments => 'My Documents';
+
+  @override
+  String get profileMyInvoices => 'My Invoices';
+
+  @override
+  String get profileMyInvoicesDesc => 'View, download and pay invoices';
+
+  @override
+  String get profileMyQuotations => 'My Quotations';
+
+  @override
+  String get profileMyQuotationsDesc => 'View pending and accepted quotes';
+
+  @override
+  String get profileMyInstallments => 'My Installments';
+
+  @override
+  String get profileMyInstallmentsDesc => 'Track payments and upload receipts';
+
+  @override
+  String get profileContactSupport => 'Contact & Support';
+
+  @override
+  String get profileAppearance => 'Appearance';
+
+  @override
   String get machineTitle => 'My Machines';
 
   @override

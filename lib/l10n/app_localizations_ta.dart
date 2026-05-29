@@ -1077,6 +1077,51 @@ class STa extends S {
       'அனைத்து புலங்களையும் நிரப்பி 100 போனஸ் புள்ளிகள் பெறுங்கள்!';
 
   @override
+  String get profileLoading => 'சுயவிவரம் ஏற்றுகிறது...';
+
+  @override
+  String get profileLoadFailed => 'சுயவிவரத்தை ஏற்ற முடியவில்லை';
+
+  @override
+  String get profileEngagementProgress => 'ஈடுபாட்டு முன்னேற்றம்';
+
+  @override
+  String get profileAccountInfo => 'கணக்கு தகவல்';
+
+  @override
+  String get profileQuickNav => 'விரைவு வழிசெலுத்தல்';
+
+  @override
+  String get profileMyDocuments => 'எனது ஆவணங்கள்';
+
+  @override
+  String get profileMyInvoices => 'எனது விலைப்பட்டியல்கள்';
+
+  @override
+  String get profileMyInvoicesDesc =>
+      'விலைப்பட்டியல்களைப் பார், பதிவிறக்கு, செலுத்து';
+
+  @override
+  String get profileMyQuotations => 'எனது மேற்கோள்கள்';
+
+  @override
+  String get profileMyQuotationsDesc =>
+      'நிலுவை மற்றும் ஏற்கப்பட்ட மேற்கோள்களைப் பார்';
+
+  @override
+  String get profileMyInstallments => 'எனது தவணைகள்';
+
+  @override
+  String get profileMyInstallmentsDesc =>
+      'கட்டணங்களைக் கண்காணித்து ரசீதுகளைப் பதிவேற்று';
+
+  @override
+  String get profileContactSupport => 'தொடர்பு & ஆதரவு';
+
+  @override
+  String get profileAppearance => 'தோற்றம்';
+
+  @override
   String get machineTitle => 'எனது இயந்திரங்கள்';
 
   @override
