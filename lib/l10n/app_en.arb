@@ -743,6 +743,12 @@
   "quotationSelectInquiry": "Select Inquiry",
   "quotationAccept": "Accept",
   "quotationReject": "Reject",
+  "quotationLoadFailed": "Failed to load quotations",
+  "quotationDetailLoadFailed": "Failed to load details",
+  "quotationDates": "Dates",
+  "quotationSummary": "Summary",
+  "quotationProcessing": "Processing…",
+  "quotationAcceptQuotation": "Accept Quotation",
 
 
   "paymentTitle": "Payments",
@@ -801,6 +807,7 @@
   "installmentNoPlansDesc": "Your installment plans will appear here",
   "installmentPaymentHistory": "Payment History",
   "installmentMarkPaid": "Mark as Paid",
+  "installmentPay": "Pay Installment",
   "installmentDetail": "Installment Detail",
   "installmentProgress": "{paid} of {total} paid",
   "@installmentProgress": {

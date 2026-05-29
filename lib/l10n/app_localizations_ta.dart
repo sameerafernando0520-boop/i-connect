@@ -1971,6 +1971,24 @@ class STa extends S {
   String get quotationReject => 'நிராகரி';
 
   @override
+  String get quotationLoadFailed => 'மேற்கோள்களை ஏற்ற முடியவில்லை';
+
+  @override
+  String get quotationDetailLoadFailed => 'விவரங்களை ஏற்ற முடியவில்லை';
+
+  @override
+  String get quotationDates => 'தேதிகள்';
+
+  @override
+  String get quotationSummary => 'சுருக்கம்';
+
+  @override
+  String get quotationProcessing => 'செயலாக்குகிறது…';
+
+  @override
+  String get quotationAcceptQuotation => 'மேற்கோளை ஏற்கவும்';
+
+  @override
   String get paymentTitle => 'பணம் செலுத்தல்கள்';
 
   @override
@@ -2116,6 +2134,9 @@ class STa extends S {
 
   @override
   String get installmentMarkPaid => 'செலுத்தப்பட்டதாகக் குறி';
+
+  @override
+  String get installmentPay => 'தவணையைச் செலுத்து';
 
   @override
   String get installmentDetail => 'தவணை விவரம்';

@@ -657,6 +657,12 @@
   "quotationSelectInquiry": "විමසීම තෝරන්න",
   "quotationAccept": "පිළිගන්න",
   "quotationReject": "ප්‍රතික්ෂේප කරන්න",
+  "quotationLoadFailed": "මිල ගණන් පත්‍ර පූරණය කිරීමට අසමත් විය",
+  "quotationDetailLoadFailed": "විස්තර පූරණය කිරීමට අසමත් විය",
+  "quotationDates": "දින",
+  "quotationSummary": "සාරාංශය",
+  "quotationProcessing": "සැකසෙමින්…",
+  "quotationAcceptQuotation": "මිල ගණන් පත්‍රය පිළිගන්න",
 
 
   "paymentTitle": "ගෙවීම්",
@@ -709,6 +715,7 @@
   "installmentNoPlansDesc": "ඔබගේ වාරික සැලසුම් මෙහි දිස්වනු ඇත",
   "installmentPaymentHistory": "ගෙවීම් ඉතිහාසය",
   "installmentMarkPaid": "ගෙවූ ලෙස සලකුණු කරන්න",
+  "installmentPay": "වාරිකය ගෙවන්න",
   "installmentDetail": "වාරික විස්තර",
   "installmentProgress": "{total} න් {paid} ක් ගෙවා ඇත",
   "installmentOnTime": "නියමිත වේලාවට",

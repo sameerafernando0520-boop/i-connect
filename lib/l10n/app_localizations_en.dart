@@ -1957,6 +1957,24 @@ class SEn extends S {
   String get quotationReject => 'Reject';
 
   @override
+  String get quotationLoadFailed => 'Failed to load quotations';
+
+  @override
+  String get quotationDetailLoadFailed => 'Failed to load details';
+
+  @override
+  String get quotationDates => 'Dates';
+
+  @override
+  String get quotationSummary => 'Summary';
+
+  @override
+  String get quotationProcessing => 'Processing…';
+
+  @override
+  String get quotationAcceptQuotation => 'Accept Quotation';
+
+  @override
   String get paymentTitle => 'Payments';
 
   @override
@@ -2102,6 +2120,9 @@ class SEn extends S {
 
   @override
   String get installmentMarkPaid => 'Mark as Paid';
+
+  @override
+  String get installmentPay => 'Pay Installment';
 
   @override
   String get installmentDetail => 'Installment Detail';

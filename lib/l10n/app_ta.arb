@@ -657,6 +657,12 @@
   "quotationSelectInquiry": "விசாரணையைத் தேர்ந்தெடு",
   "quotationAccept": "ஏற்றுக்கொள்",
   "quotationReject": "நிராகரி",
+  "quotationLoadFailed": "மேற்கோள்களை ஏற்ற முடியவில்லை",
+  "quotationDetailLoadFailed": "விவரங்களை ஏற்ற முடியவில்லை",
+  "quotationDates": "தேதிகள்",
+  "quotationSummary": "சுருக்கம்",
+  "quotationProcessing": "செயலாக்குகிறது…",
+  "quotationAcceptQuotation": "மேற்கோளை ஏற்கவும்",
 
 
   "paymentTitle": "பணம் செலுத்தல்கள்",
@@ -709,6 +715,7 @@
   "installmentNoPlansDesc": "உங்கள் தவணைத் திட்டங்கள் இங்கே தோன்றும்",
   "installmentPaymentHistory": "செலுத்தல் வரலாறு",
   "installmentMarkPaid": "செலுத்தப்பட்டதாகக் குறி",
+  "installmentPay": "தவணையைச் செலுத்து",
   "installmentDetail": "தவணை விவரம்",
   "installmentProgress": "{total} இல் {paid} செலுத்தப்பட்டது",
   "installmentOnTime": "சரியான நேரத்தில்",

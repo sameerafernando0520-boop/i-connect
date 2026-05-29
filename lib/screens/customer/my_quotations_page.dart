@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
+import '../../l10n/s.dart';
 
 // ── file-level helpers ──────────────────────────────────────────
 final _cur = NumberFormat('#,##0.00', 'en_US');
@@ -108,7 +109,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
           content: Row(children: [
             const Icon(Icons.error_outline, color: Colors.white, size: 18),
             const SizedBox(width: 8),
-            const Expanded(child: Text('Failed to load quotations')),
+            Expanded(child: Text(S.of(context)!.quotationLoadFailed)),
           ]),
           behavior: SnackBarBehavior.floating,
           backgroundColor: const Color(0xFFEF4444),
@@ -545,7 +546,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
           content: Row(children: [
             const Icon(Icons.error_outline, color: Colors.white, size: 18),
             const SizedBox(width: 8),
-            const Expanded(child: Text('Failed to load details')),
+            Expanded(child: Text(S.of(context)!.quotationDetailLoadFailed)),
           ]),
           behavior: SnackBarBehavior.floating,
           backgroundColor: const Color(0xFFEF4444),
@@ -665,7 +666,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
           content: Row(children: [
             const Icon(Icons.error_outline, color: Colors.white, size: 18),
             const SizedBox(width: 8),
-            const Expanded(child: Text('Something went wrong')),
+            Expanded(child: Text(S.of(context)!.commonSomethingWentWrong)),
           ]),
           behavior: SnackBarBehavior.floating,
           backgroundColor: const Color(0xFFEF4444),
@@ -818,7 +819,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
     }
 
     return _section(
-      title: 'Dates',
+      title: S.of(context)!.quotationDates,
       icon: Icons.event_outlined,
       isDark: isDark,
       child: Column(
@@ -995,7 +996,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
     }
 
     return _section(
-      title: 'Summary',
+      title: S.of(context)!.quotationSummary,
       icon: Icons.calculate_outlined,
       isDark: isDark,
       child: Column(
@@ -1051,7 +1052,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
   // ── notes ───────────────────────────────────────────────────
   Widget _buildNotes(bool isDark) {
     return _section(
-      title: 'Notes',
+      title: S.of(context)!.quotationNotes,
       icon: Icons.notes_rounded,
       isDark: isDark,
       child: Text(
@@ -1090,7 +1091,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
           child: OutlinedButton.icon(
             onPressed: _responding ? null : () => _respond('rejected'),
             icon: const Icon(Icons.close_rounded, size: 18),
-            label: const Text('Reject'),
+            label: Text(S.of(context)!.quotationReject),
             style: OutlinedButton.styleFrom(
               foregroundColor: const Color(0xFFEF4444),
               side: const BorderSide(color: Color(0xFFEF4444)),
@@ -1117,7 +1118,9 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
                     ),
                   )
                 : const Icon(Icons.check_rounded, size: 18),
-            label: Text(_responding ? 'Processing…' : 'Accept Quotation'),
+            label: Text(_responding
+                ? S.of(context)!.quotationProcessing
+                : S.of(context)!.quotationAcceptQuotation),
             style: FilledButton.styleFrom(
               backgroundColor: Brand.lightGreen,
               foregroundColor: Colors.white,

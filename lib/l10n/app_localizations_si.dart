@@ -1959,6 +1959,24 @@ class SSi extends S {
   String get quotationReject => 'ප්‍රතික්ෂේප කරන්න';
 
   @override
+  String get quotationLoadFailed => 'මිල ගණන් පත්‍ර පූරණය කිරීමට අසමත් විය';
+
+  @override
+  String get quotationDetailLoadFailed => 'විස්තර පූරණය කිරීමට අසමත් විය';
+
+  @override
+  String get quotationDates => 'දින';
+
+  @override
+  String get quotationSummary => 'සාරාංශය';
+
+  @override
+  String get quotationProcessing => 'සැකසෙමින්…';
+
+  @override
+  String get quotationAcceptQuotation => 'මිල ගණන් පත්‍රය පිළිගන්න';
+
+  @override
   String get paymentTitle => 'ගෙවීම්';
 
   @override
@@ -2103,6 +2121,9 @@ class SSi extends S {
 
   @override
   String get installmentMarkPaid => 'ගෙවූ ලෙස සලකුණු කරන්න';
+
+  @override
+  String get installmentPay => 'වාරිකය ගෙවන්න';
 
   @override
   String get installmentDetail => 'වාරික විස්තර';

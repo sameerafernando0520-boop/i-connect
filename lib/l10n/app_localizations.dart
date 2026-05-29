@@ -3861,6 +3861,42 @@ abstract class S {
   /// **'Reject'**
   String get quotationReject;
 
+  /// No description provided for @quotationLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load quotations'**
+  String get quotationLoadFailed;
+
+  /// No description provided for @quotationDetailLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load details'**
+  String get quotationDetailLoadFailed;
+
+  /// No description provided for @quotationDates.
+  ///
+  /// In en, this message translates to:
+  /// **'Dates'**
+  String get quotationDates;
+
+  /// No description provided for @quotationSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Summary'**
+  String get quotationSummary;
+
+  /// No description provided for @quotationProcessing.
+  ///
+  /// In en, this message translates to:
+  /// **'Processing…'**
+  String get quotationProcessing;
+
+  /// No description provided for @quotationAcceptQuotation.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept Quotation'**
+  String get quotationAcceptQuotation;
+
   /// No description provided for @paymentTitle.
   ///
   /// In en, this message translates to:
@@ -4148,6 +4184,12 @@ abstract class S {
   /// In en, this message translates to:
   /// **'Mark as Paid'**
   String get installmentMarkPaid;
+
+  /// No description provided for @installmentPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay Installment'**
+  String get installmentPay;
 
   /// No description provided for @installmentDetail.
   ///

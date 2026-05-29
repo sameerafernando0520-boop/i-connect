@@ -427,7 +427,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
                 child: ElevatedButton.icon(
                   onPressed: () => _openSubmitPayment(plan),
                   icon: const Icon(Icons.payments_rounded, size: 18),
-                  label: const Text('Pay Installment'),
+                  label: Text(S.of(context)!.installmentPay),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Brand.royalBlue,
                     foregroundColor: Colors.white,
