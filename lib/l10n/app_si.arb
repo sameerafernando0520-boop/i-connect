@@ -764,6 +764,15 @@
   "notificationScheduleReminders": "කාලසටහන් මතක් කිරීම්",
   "notificationPaymentReminders": "ගෙවීම් මතක් කිරීම්",
   "notificationJustNow": "මේ දැන්",
+  "notificationSystem": "පද්ධතිය",
+  "notificationNoUnread": "කියවා නැති දැනුම්දීම් නැත",
+  "notificationNoSystem": "පද්ධති පණිවිඩ නැත",
+  "notificationSystemDesc": "නිවේදන මෙහි දිස් වේ",
+  "notificationDeleteConfirm": "දැනුම්දීම මකන්නද?",
+  "notificationMarkRead": "කියවූ ලෙස සලකුණු කරන්න",
+  "notificationLoadFailed": "දැනුම්දීම් පූරණය කිරීමට අසමත් විය",
+  "notificationPullRetry": "නැවත උත්සාහ කිරීමට පහළට අදින්න",
+  "notificationDeleteBody": "මෙම දැනුම්දීම ස්ථිරවම ඉවත් කරනු ලැබේ.",
 
 
   "adminDashboard": "පරිපාලක උපකරණ පුවරුව",

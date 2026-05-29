@@ -2285,6 +2285,34 @@ class STa extends S {
   String get notificationJustNow => 'இப்போது';
 
   @override
+  String get notificationSystem => 'கணினி';
+
+  @override
+  String get notificationNoUnread => 'படிக்காத அறிவிப்புகள் இல்லை';
+
+  @override
+  String get notificationNoSystem => 'கணினி செய்திகள் இல்லை';
+
+  @override
+  String get notificationSystemDesc => 'அறிவிப்புகள் இங்கே தோன்றும்';
+
+  @override
+  String get notificationDeleteConfirm => 'அறிவிப்பை நீக்கவா?';
+
+  @override
+  String get notificationMarkRead => 'படித்ததாகக் குறி';
+
+  @override
+  String get notificationLoadFailed => 'அறிவிப்புகளை ஏற்ற முடியவில்லை';
+
+  @override
+  String get notificationPullRetry => 'மீண்டும் முயற்சிக்க கீழே இழுக்கவும்';
+
+  @override
+  String get notificationDeleteBody =>
+      'இந்த அறிவிப்பு நிரந்தரமாக நீக்கப்படும்.';
+
+  @override
   String get adminDashboard => 'நிர்வாகக் கட்டுப்பாட்டுப் பலகை';
 
   @override

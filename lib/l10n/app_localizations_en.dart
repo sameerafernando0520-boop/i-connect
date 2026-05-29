@@ -2273,6 +2273,34 @@ class SEn extends S {
   String get notificationJustNow => 'Just now';
 
   @override
+  String get notificationSystem => 'System';
+
+  @override
+  String get notificationNoUnread => 'No unread notifications';
+
+  @override
+  String get notificationNoSystem => 'No system messages';
+
+  @override
+  String get notificationSystemDesc => 'Announcements will appear here';
+
+  @override
+  String get notificationDeleteConfirm => 'Delete Notification?';
+
+  @override
+  String get notificationMarkRead => 'Mark read';
+
+  @override
+  String get notificationLoadFailed => 'Failed to load notifications';
+
+  @override
+  String get notificationPullRetry => 'Pull down to try again';
+
+  @override
+  String get notificationDeleteBody =>
+      'This notification will be permanently removed.';
+
+  @override
   String get adminDashboard => 'Admin Dashboard';
 
   @override

@@ -14,6 +14,7 @@ import 'package:supabase_flutter/supabase_flutter.dart'
         PostgresChangeFilterType;
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../l10n/s.dart';
 import '../../utils/time_utils.dart';
 import 'notification_settings_page.dart';
 import 'ticket_detail_page.dart';
@@ -687,14 +688,16 @@ class _NotificationListPageState extends State<NotificationListPage>
                             _buildList(
                               _unread,
                               isDark,
-                              emptyLabel: 'All caught up!',
-                              emptySubLabel: 'No unread notifications',
+                              emptyLabel:
+                                  S.of(context)!.notificationNoNotificationsDesc,
+                              emptySubLabel: S.of(context)!.notificationNoUnread,
                             ),
                             _buildList(
                               _system,
                               isDark,
-                              emptyLabel: 'No system messages',
-                              emptySubLabel: 'Announcements will appear here',
+                              emptyLabel: S.of(context)!.notificationNoSystem,
+                              emptySubLabel:
+                                  S.of(context)!.notificationSystemDesc,
                             ),
                           ],
                         ),
@@ -751,7 +754,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                     Icons.done_all_rounded,
                     isDark,
                     _markAllRead,
-                    tooltip: 'Mark all read',
+                    tooltip: S.of(context)!.notificationMarkAllRead,
                     activeColor:
                         isDark ? Brand.lightGreenBright : Brand.lightGreen,
                   ),
@@ -764,7 +767,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                   context,
                   MaterialPageRoute(
                       builder: (_) => const NotificationSettingsPage())),
-              tooltip: 'Notification settings',
+              tooltip: S.of(context)!.notificationSettings,
             ),
         ]),
       ),
@@ -838,10 +841,10 @@ class _NotificationListPageState extends State<NotificationListPage>
           unselectedLabelStyle:
               const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
           tabs: [
-            const Tab(text: 'All'),
+            Tab(text: S.of(context)!.notificationAll),
             Tab(
               child: Row(mainAxisSize: MainAxisSize.min, children: [
-                const Text('Unread'),
+                Text(S.of(context)!.notificationUnread),
                 if (unreadCount > 0) ...[
                   const SizedBox(width: 5),
                   Container(
@@ -860,7 +863,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                 ],
               ]),
             ),
-            const Tab(text: 'System'),
+            Tab(text: S.of(context)!.notificationSystem),
           ],
         ),
       ),
@@ -962,14 +965,14 @@ class _NotificationListPageState extends State<NotificationListPage>
                   backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
-                  title: Text('Delete Notification?',
+                  title: Text(S.of(context)!.notificationDeleteConfirm,
                       style: TextStyle(
                           color: isDark
                               ? Brand.darkTextPrimary
                               : Brand.royalBlueDark,
                           fontWeight: FontWeight.w700)),
                   content: Text(
-                      'This notification will be permanently removed.',
+                      S.of(context)!.notificationDeleteBody,
                       style: TextStyle(
                           color: isDark
                               ? Brand.darkTextSecondary
@@ -977,7 +980,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                   actions: [
                     TextButton(
                         onPressed: () => Navigator.pop(dialogCtx, false),
-                        child: Text('Cancel',
+                        child: Text(S.of(context)!.commonCancel,
                             style: TextStyle(
                                 color: isDark
                                     ? Brand.darkTextSecondary
@@ -990,8 +993,8 @@ class _NotificationListPageState extends State<NotificationListPage>
                             elevation: 0,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10))),
-                        child: const Text('Delete',
-                            style: TextStyle(fontWeight: FontWeight.w700))),
+                        child: Text(S.of(context)!.commonDelete,
+                            style: const TextStyle(fontWeight: FontWeight.w700))),
                   ],
                 ),
               ) ??
@@ -1171,7 +1174,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                                               : Brand.royalBlue)
                                           .withAlpha(((0.15) * 255).toInt())),
                                 ),
-                                child: Text('Mark read',
+                                child: Text(S.of(context)!.notificationMarkRead,
                                     style: TextStyle(
                                       fontSize: 11,
                                       fontWeight: FontWeight.w700,
@@ -1227,7 +1230,7 @@ class _NotificationListPageState extends State<NotificationListPage>
               color: isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400,
               size: 24),
           const SizedBox(height: 4),
-          Text('Delete',
+          Text(S.of(context)!.commonDelete,
               style: TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.w700,
@@ -1304,14 +1307,14 @@ class _NotificationListPageState extends State<NotificationListPage>
                   color: isDark ? const Color(0xFFFF6B6B) : Colors.red),
             ),
             const SizedBox(height: 16),
-            Text('Failed to load notifications',
+            Text(S.of(context)!.notificationLoadFailed,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
                   color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
                 )),
             const SizedBox(height: 8),
-            Text('Pull down to try again',
+            Text(S.of(context)!.notificationPullRetry,
                 style: TextStyle(
                     fontSize: 13,
                     color:
@@ -1326,8 +1329,8 @@ class _NotificationListPageState extends State<NotificationListPage>
                 _loadNotifications();
               },
               icon: const Icon(Icons.refresh_rounded, size: 18),
-              label: const Text('Retry',
-                  style: TextStyle(fontWeight: FontWeight.w700)),
+              label: Text(S.of(context)!.commonRetry,
+                  style: const TextStyle(fontWeight: FontWeight.w700)),
               style: ElevatedButton.styleFrom(
                 backgroundColor:
                     isDark ? Brand.darkIconActive : Brand.royalBlue,

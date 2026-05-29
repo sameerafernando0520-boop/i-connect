@@ -925,6 +925,15 @@
   "notificationScheduleReminders": "Schedule Reminders",
   "notificationPaymentReminders": "Payment Reminders",
   "notificationJustNow": "Just now",
+  "notificationSystem": "System",
+  "notificationNoUnread": "No unread notifications",
+  "notificationNoSystem": "No system messages",
+  "notificationSystemDesc": "Announcements will appear here",
+  "notificationDeleteConfirm": "Delete Notification?",
+  "notificationMarkRead": "Mark read",
+  "notificationLoadFailed": "Failed to load notifications",
+  "notificationPullRetry": "Pull down to try again",
+  "notificationDeleteBody": "This notification will be permanently removed.",
 
 
   "adminDashboard": "Admin Dashboard",

@@ -4431,6 +4431,60 @@ abstract class S {
   /// **'Just now'**
   String get notificationJustNow;
 
+  /// No description provided for @notificationSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get notificationSystem;
+
+  /// No description provided for @notificationNoUnread.
+  ///
+  /// In en, this message translates to:
+  /// **'No unread notifications'**
+  String get notificationNoUnread;
+
+  /// No description provided for @notificationNoSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'No system messages'**
+  String get notificationNoSystem;
+
+  /// No description provided for @notificationSystemDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Announcements will appear here'**
+  String get notificationSystemDesc;
+
+  /// No description provided for @notificationDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Notification?'**
+  String get notificationDeleteConfirm;
+
+  /// No description provided for @notificationMarkRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark read'**
+  String get notificationMarkRead;
+
+  /// No description provided for @notificationLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load notifications'**
+  String get notificationLoadFailed;
+
+  /// No description provided for @notificationPullRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Pull down to try again'**
+  String get notificationPullRetry;
+
+  /// No description provided for @notificationDeleteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This notification will be permanently removed.'**
+  String get notificationDeleteBody;
+
   /// No description provided for @adminDashboard.
   ///
   /// In en, this message translates to:

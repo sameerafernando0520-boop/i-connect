@@ -2273,6 +2273,33 @@ class SSi extends S {
   String get notificationJustNow => 'මේ දැන්';
 
   @override
+  String get notificationSystem => 'පද්ධතිය';
+
+  @override
+  String get notificationNoUnread => 'කියවා නැති දැනුම්දීම් නැත';
+
+  @override
+  String get notificationNoSystem => 'පද්ධති පණිවිඩ නැත';
+
+  @override
+  String get notificationSystemDesc => 'නිවේදන මෙහි දිස් වේ';
+
+  @override
+  String get notificationDeleteConfirm => 'දැනුම්දීම මකන්නද?';
+
+  @override
+  String get notificationMarkRead => 'කියවූ ලෙස සලකුණු කරන්න';
+
+  @override
+  String get notificationLoadFailed => 'දැනුම්දීම් පූරණය කිරීමට අසමත් විය';
+
+  @override
+  String get notificationPullRetry => 'නැවත උත්සාහ කිරීමට පහළට අදින්න';
+
+  @override
+  String get notificationDeleteBody => 'මෙම දැනුම්දීම ස්ථිරවම ඉවත් කරනු ලැබේ.';
+
+  @override
   String get adminDashboard => 'පරිපාලක උපකරණ පුවරුව';
 
   @override
