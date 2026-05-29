@@ -647,6 +647,24 @@ class SSi extends S {
   String get catalogPriceOnRequest => 'මිල ගණන් විමසන්න';
 
   @override
+  String get catalogSortDefault => 'පෙරනිමි';
+
+  @override
+  String get catalogSortBrand => 'වෙළඳ නාමය අනුව';
+
+  @override
+  String get catalogFilterBrand => 'වෙළඳ නාමය අනුව පෙරහන';
+
+  @override
+  String get catalogOwned => 'හිමිකර ඇත';
+
+  @override
+  String get catalogMachineUnavailable => 'යන්ත්‍රය තවදුරටත් නොමැත';
+
+  @override
+  String get catalogNoMachinesAvailable => 'මේ මොහොතේ යන්ත්‍ර නොමැත';
+
+  @override
   String get ticketTitle => 'මගේ ටිකට්පත්';
 
   @override

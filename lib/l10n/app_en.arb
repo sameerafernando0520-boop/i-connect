@@ -243,6 +243,12 @@
     }
   },
   "catalogPriceOnRequest": "Price on Request",
+  "catalogSortDefault": "Default",
+  "catalogSortBrand": "By Brand",
+  "catalogFilterBrand": "Filter by Brand",
+  "catalogOwned": "OWNED",
+  "catalogMachineUnavailable": "Machine no longer available",
+  "catalogNoMachinesAvailable": "No machines available at the moment",
 
 
   "ticketTitle": "My Tickets",

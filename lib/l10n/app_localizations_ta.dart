@@ -648,6 +648,24 @@ class STa extends S {
   String get catalogPriceOnRequest => 'விலை கேட்டு அறியவும்';
 
   @override
+  String get catalogSortDefault => 'இயல்புநிலை';
+
+  @override
+  String get catalogSortBrand => 'பிராண்ட் வாரியாக';
+
+  @override
+  String get catalogFilterBrand => 'பிராண்ட் வாரியாக வடிகட்டு';
+
+  @override
+  String get catalogOwned => 'சொந்தமானது';
+
+  @override
+  String get catalogMachineUnavailable => 'இயந்திரம் இனி கிடைக்கவில்லை';
+
+  @override
+  String get catalogNoMachinesAvailable => 'இந்த நேரத்தில் இயந்திரங்கள் இல்லை';
+
+  @override
   String get ticketTitle => 'எனது டிக்கெட்டுகள்';
 
   @override

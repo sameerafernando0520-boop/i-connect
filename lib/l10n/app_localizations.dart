@@ -1359,6 +1359,42 @@ abstract class S {
   /// **'Price on Request'**
   String get catalogPriceOnRequest;
 
+  /// No description provided for @catalogSortDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Default'**
+  String get catalogSortDefault;
+
+  /// No description provided for @catalogSortBrand.
+  ///
+  /// In en, this message translates to:
+  /// **'By Brand'**
+  String get catalogSortBrand;
+
+  /// No description provided for @catalogFilterBrand.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by Brand'**
+  String get catalogFilterBrand;
+
+  /// No description provided for @catalogOwned.
+  ///
+  /// In en, this message translates to:
+  /// **'OWNED'**
+  String get catalogOwned;
+
+  /// No description provided for @catalogMachineUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Machine no longer available'**
+  String get catalogMachineUnavailable;
+
+  /// No description provided for @catalogNoMachinesAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No machines available at the moment'**
+  String get catalogNoMachinesAvailable;
+
   /// No description provided for @ticketTitle.
   ///
   /// In en, this message translates to:

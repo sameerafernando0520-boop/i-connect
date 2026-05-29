@@ -648,6 +648,25 @@ class SEn extends S {
   String get catalogPriceOnRequest => 'Price on Request';
 
   @override
+  String get catalogSortDefault => 'Default';
+
+  @override
+  String get catalogSortBrand => 'By Brand';
+
+  @override
+  String get catalogFilterBrand => 'Filter by Brand';
+
+  @override
+  String get catalogOwned => 'OWNED';
+
+  @override
+  String get catalogMachineUnavailable => 'Machine no longer available';
+
+  @override
+  String get catalogNoMachinesAvailable =>
+      'No machines available at the moment';
+
+  @override
   String get ticketTitle => 'My Tickets';
 
   @override

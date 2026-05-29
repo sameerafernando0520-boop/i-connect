@@ -223,6 +223,12 @@
   "catalogMachineDetails": "යන්ත්‍ර විස්තර",
   "catalogPriceDisplay": "රු. {price}",
   "catalogPriceOnRequest": "මිල ගණන් විමසන්න",
+  "catalogSortDefault": "පෙරනිමි",
+  "catalogSortBrand": "වෙළඳ නාමය අනුව",
+  "catalogFilterBrand": "වෙළඳ නාමය අනුව පෙරහන",
+  "catalogOwned": "හිමිකර ඇත",
+  "catalogMachineUnavailable": "යන්ත්‍රය තවදුරටත් නොමැත",
+  "catalogNoMachinesAvailable": "මේ මොහොතේ යන්ත්‍ර නොමැත",
 
 
   "ticketTitle": "මගේ ටිකට්පත්",

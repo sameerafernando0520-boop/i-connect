@@ -18,6 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../l10n/s.dart';
 import 'machine_detail_page.dart';
 
 // ── Custom Icons (private to this file) ──────────────────────
@@ -500,7 +501,9 @@ class _CatalogPageState extends State<CatalogPage> {
       if (!mounted) return;
       HapticFeedback.lightImpact();
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(was ? 'Removed from saved' : 'Saved to wishlist'),
+          content: Text(was
+              ? S.of(context)!.catalogRemoveSaved
+              : S.of(context)!.catalogAddedSaved),
           duration: const Duration(seconds: 1),
           behavior: SnackBarBehavior.floating,
           shape:
@@ -555,8 +558,8 @@ class _CatalogPageState extends State<CatalogPage> {
         machine = Map<String, dynamic>.from(data);
       } catch (_) {
         if (!mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            content: Text('Machine no longer available'),
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(S.of(context)!.catalogMachineUnavailable),
             behavior: SnackBarBehavior.floating));
         return;
       }
@@ -729,7 +732,7 @@ class _CatalogPageState extends State<CatalogPage> {
         Expanded(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('Machine Catalog',
+          Text(S.of(context)!.catalogTitle,
               style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w600,
@@ -835,7 +838,7 @@ class _CatalogPageState extends State<CatalogPage> {
               color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
               fontWeight: FontWeight.w500),
           decoration: InputDecoration(
-              hintText: 'Search machines, brands, models...',
+              hintText: S.of(context)!.catalogSearch,
               hintStyle: TextStyle(
                   color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                   fontSize: 14),
@@ -1194,7 +1197,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                   : Brand.subtleLight.withAlpha(77),
                               borderRadius: BorderRadius.circular(2)))),
                   const SizedBox(height: 20),
-                  Text('Filter by Brand',
+                  Text(S.of(context)!.catalogFilterBrand,
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
@@ -1264,7 +1267,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                   : Brand.subtleLight.withAlpha(77),
                               borderRadius: BorderRadius.circular(2)))),
                   const SizedBox(height: 20),
-                  Text('Sort By',
+                  Text(S.of(context)!.catalogSort,
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
@@ -1365,7 +1368,7 @@ class _CatalogPageState extends State<CatalogPage> {
                         color: Brand.royalBlue,
                         borderRadius: BorderRadius.circular(2))),
                 const SizedBox(width: 8),
-                Text('Recently Viewed',
+                Text(S.of(context)!.catalogRecentlyViewed,
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -1604,13 +1607,13 @@ class _CatalogPageState extends State<CatalogPage> {
                                     Brand.lightGreenBright
                                   ]),
                                   borderRadius: BorderRadius.circular(8)),
-                              child: const Row(
+                              child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Icon(Icons.check_circle,
+                                    const Icon(Icons.check_circle,
                                         size: 10, color: Colors.white),
-                                    SizedBox(width: 3),
-                                    Text('OWNED',
+                                    const SizedBox(width: 3),
+                                    Text(S.of(context)!.catalogOwned,
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 11,
@@ -1713,9 +1716,9 @@ class _CatalogPageState extends State<CatalogPage> {
                                               },
                                               borderRadius:
                                                   BorderRadius.circular(12),
-                                              child: const Center(
-                                                  child: Text('View Details',
-                                                      style: TextStyle(
+                                              child: Center(
+                                                  child: Text(S.of(context)!.machineViewDetails,
+                                                      style: const TextStyle(
                                                           fontSize: 11,
                                                           fontWeight:
                                                               FontWeight.w700,
@@ -2179,7 +2182,7 @@ class _CatalogPageState extends State<CatalogPage> {
                   child: const Icon(Icons.error_outline,
                       size: 34, color: Colors.red)),
               const SizedBox(height: 20),
-              Text('Something went wrong',
+              Text(S.of(context)!.commonSomethingWentWrong,
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
@@ -2205,8 +2208,8 @@ class _CatalogPageState extends State<CatalogPage> {
                           borderRadius: BorderRadius.circular(14)),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 28, vertical: 12)),
-                  child: const Text('Try Again',
-                      style: TextStyle(
+                  child: Text(S.of(context)!.commonTryAgain,
+                      style: const TextStyle(
                           fontWeight: FontWeight.w700, fontSize: 14))),
             ])));
   }
@@ -2242,7 +2245,7 @@ class _CatalogPageState extends State<CatalogPage> {
                       size: 34,
                       color: isDark ? Brand.royalBlueGlow : Brand.royalBlue)),
               const SizedBox(height: 20),
-              Text('No machines found',
+              Text(S.of(context)!.catalogNoMachines,
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
@@ -2253,7 +2256,7 @@ class _CatalogPageState extends State<CatalogPage> {
               Text(
                   _hasFilters()
                       ? 'Try adjusting your filters or search'
-                      : 'No machines available at the moment',
+                      : S.of(context)!.catalogNoMachinesAvailable,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 13,
@@ -2311,8 +2314,8 @@ class _CatalogPageState extends State<CatalogPage> {
                           borderRadius: BorderRadius.circular(14)),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 28, vertical: 12)),
-                  child: const Text('Clear All Filters',
-                      style: TextStyle(
+                  child: Text(S.of(context)!.machineClearFilters,
+                      style: const TextStyle(
                           fontWeight: FontWeight.w700, fontSize: 14))),
             ])));
   }
@@ -2357,7 +2360,7 @@ class _CatalogPageState extends State<CatalogPage> {
                       : Brand.royalBlue.withAlpha(64),
                   24))),
       const SizedBox(height: 6),
-      Text('No image',
+      Text(S.of(context)!.machineNoImage,
           style: TextStyle(
               fontSize: 11,
               color: isDark

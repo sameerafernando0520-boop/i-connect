@@ -223,6 +223,12 @@
   "catalogMachineDetails": "இயந்திர விவரங்கள்",
   "catalogPriceDisplay": "ரூ. {price}",
   "catalogPriceOnRequest": "விலை கேட்டு அறியவும்",
+  "catalogSortDefault": "இயல்புநிலை",
+  "catalogSortBrand": "பிராண்ட் வாரியாக",
+  "catalogFilterBrand": "பிராண்ட் வாரியாக வடிகட்டு",
+  "catalogOwned": "சொந்தமானது",
+  "catalogMachineUnavailable": "இயந்திரம் இனி கிடைக்கவில்லை",
+  "catalogNoMachinesAvailable": "இந்த நேரத்தில் இயந்திரங்கள் இல்லை",
 
 
   "ticketTitle": "எனது டிக்கெட்டுகள்",
