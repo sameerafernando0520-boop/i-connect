@@ -710,6 +710,49 @@ class STa extends S {
   String get ticketAttachments => 'இணைப்புகள்';
 
   @override
+  String get ticketLoading => 'டிக்கெட் ஏற்றுகிறது...';
+
+  @override
+  String get ticketLoadFailed => 'டிக்கெட்டை ஏற்ற முடியவில்லை';
+
+  @override
+  String get ticketNoMessages => 'இன்னும் செய்திகள் இல்லை';
+
+  @override
+  String get ticketStartConversation =>
+      'உரையாடலைத் தொடங்க ஒரு செய்தியை அனுப்பவும்';
+
+  @override
+  String get ticketTypeMessage => 'ஒரு செய்தியைத் தட்டச்சு செய்யவும்...';
+
+  @override
+  String get ticketOptions => 'டிக்கெட் விருப்பங்கள்';
+
+  @override
+  String get ticketRefresh => 'டிக்கெட்டைப் புதுப்பி';
+
+  @override
+  String get ticketShowDetails => 'விவரங்களைக் காட்டு';
+
+  @override
+  String get ticketHideDetails => 'விவரங்களை மறை';
+
+  @override
+  String get ticketCopyNumber => 'டிக்கெட் எண்ணை நகலெடு';
+
+  @override
+  String get ticketCallEngineer => 'பொறியாளரை அழை';
+
+  @override
+  String get ticketCallSupport => 'iFrontiers ஆதரவை அழை';
+
+  @override
+  String get ticketClose => 'டிக்கெட்டை மூடு';
+
+  @override
+  String get ticketReopen => 'டிக்கெட்டை மீண்டும் திற';
+
+  @override
   String get ticketSubmit => 'டிக்கெட் சமர்ப்பி';
 
   @override

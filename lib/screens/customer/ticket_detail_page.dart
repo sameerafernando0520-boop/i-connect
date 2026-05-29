@@ -25,6 +25,7 @@ import '../../utils/time_utils.dart';
 import '../../widgets/common/estimate_chat_card.dart';
 import '../../widgets/common/chat_message_attachments.dart';
 import '../../widgets/common/engineer_route_map.dart';
+import '../../l10n/s.dart';
 
 class TicketDetailPage extends StatefulWidget {
   final String ticketId;
@@ -1214,7 +1215,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                   ),
                 ),
                 const SizedBox(height: 18),
-                Text('Loading ticket...',
+                Text(S.of(context)!.ticketLoading,
                     style: TextStyle(
                         fontSize: 14,
                         color: isDark
@@ -1252,7 +1253,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                       size: 38, color: Colors.red),
                 ),
                 const SizedBox(height: 18),
-                Text('Failed to load ticket',
+                Text(S.of(context)!.ticketLoadFailed,
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -1277,14 +1278,14 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                             offset: const Offset(0, 5)),
                       ],
                     ),
-                    child: const Row(
+                    child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.refresh_rounded,
+                        const Icon(Icons.refresh_rounded,
                             color: Colors.white, size: 18),
-                        SizedBox(width: 8),
-                        Text('Retry',
-                            style: TextStyle(
+                        const SizedBox(width: 8),
+                        Text(S.of(context)!.commonRetry,
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700)),
                       ],
@@ -2409,14 +2410,14 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                   color: isDark ? Brand.royalBlueGlow : Brand.royalBlue),
             ),
             const SizedBox(height: 18),
-            Text('No messages yet',
+            Text(S.of(context)!.ticketNoMessages,
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w700,
                     color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
                     letterSpacing: -0.3)),
             const SizedBox(height: 6),
-            Text('Send a message to start the conversation',
+            Text(S.of(context)!.ticketStartConversation,
                 style: TextStyle(
                     fontSize: 13,
                     color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
@@ -3147,7 +3148,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                       cursorColor:
                           isDark ? Brand.royalBlueGlow : Brand.royalBlue,
                       decoration: InputDecoration(
-                        hintText: 'Type a message...',
+                        hintText: S.of(context)!.ticketTypeMessage,
                         hintStyle: TextStyle(
                           color: isDark
                               ? Colors.white24
@@ -3640,7 +3641,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
               ),
             ),
             const SizedBox(height: 20),
-            Text('Ticket Options',
+            Text(S.of(context)!.ticketOptions,
                 style: TextStyle(
                     fontSize: 19,
                     fontWeight: FontWeight.w600,
@@ -3649,7 +3650,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             const SizedBox(height: 16),
             _buildOptionItem(
               icon: Icons.refresh_rounded,
-              label: 'Refresh Ticket',
+              label: S.of(context)!.ticketRefresh,
               color: Brand.royalBlueLight,
               isDark: isDark,
               onTap: () {
@@ -3659,7 +3660,9 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             ),
             _buildOptionItem(
               icon: Icons.info_outline_rounded,
-              label: _isHeaderExpanded ? 'Hide Details' : 'Show Details',
+              label: _isHeaderExpanded
+                  ? S.of(context)!.ticketHideDetails
+                  : S.of(context)!.ticketShowDetails,
               color: isDark ? Brand.royalBlueGlow : Brand.royalBlueDark,
               isDark: isDark,
               onTap: () {
@@ -3669,7 +3672,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             ),
             _buildOptionItem(
               icon: Icons.copy_rounded,
-              label: 'Copy Ticket Number',
+              label: S.of(context)!.ticketCopyNumber,
               color: isDark ? Brand.royalBlueGlow : Brand.royalBlue,
               isDark: isDark,
               onTap: () {
@@ -3682,7 +3685,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             if (_assignedEngineer?['phone_number'] != null)
               _buildOptionItem(
                 icon: Icons.phone_rounded,
-                label: 'Call Engineer',
+                label: S.of(context)!.ticketCallEngineer,
                 color: Brand.lightGreen,
                 isDark: isDark,
                 onTap: () {
@@ -3692,7 +3695,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
               ),
             _buildOptionItem(
               icon: Icons.phone_in_talk_rounded,
-              label: 'Call iFrontiers Support',
+              label: S.of(context)!.ticketCallSupport,
               color: Brand.lightGreenBright,
               isDark: isDark,
               onTap: () {
@@ -3703,7 +3706,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             if (!isClosed)
               _buildOptionItem(
                 icon: Icons.cancel_rounded,
-                label: 'Close Ticket',
+                label: S.of(context)!.ticketClose,
                 color: Colors.red,
                 isDark: isDark,
                 onTap: () {
@@ -3714,7 +3717,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             if (isClosed)
               _buildOptionItem(
                 icon: Icons.refresh_rounded,
-                label: 'Reopen Ticket',
+                label: S.of(context)!.ticketReopen,
                 color: Colors.orange,
                 isDark: isDark,
                 onTap: () {

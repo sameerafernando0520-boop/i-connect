@@ -710,6 +710,48 @@ class SSi extends S {
   String get ticketAttachments => 'ඇමුණුම්';
 
   @override
+  String get ticketLoading => 'ටිකට්පත පූරණය වෙමින්...';
+
+  @override
+  String get ticketLoadFailed => 'ටිකට්පත පූරණය කිරීමට අසමත් විය';
+
+  @override
+  String get ticketNoMessages => 'තවම පණිවිඩ නැත';
+
+  @override
+  String get ticketStartConversation => 'සංවාදය ආරම්භ කිරීමට පණිවිඩයක් යවන්න';
+
+  @override
+  String get ticketTypeMessage => 'පණිවිඩයක් ටයිප් කරන්න...';
+
+  @override
+  String get ticketOptions => 'ටිකට්පත් විකල්ප';
+
+  @override
+  String get ticketRefresh => 'ටිකට්පත නැවුම් කරන්න';
+
+  @override
+  String get ticketShowDetails => 'විස්තර පෙන්වන්න';
+
+  @override
+  String get ticketHideDetails => 'විස්තර සඟවන්න';
+
+  @override
+  String get ticketCopyNumber => 'ටිකට් අංකය පිටපත් කරන්න';
+
+  @override
+  String get ticketCallEngineer => 'ඉංජිනේරුට අමතන්න';
+
+  @override
+  String get ticketCallSupport => 'iFrontiers සහායට අමතන්න';
+
+  @override
+  String get ticketClose => 'ටිකට්පත වසන්න';
+
+  @override
+  String get ticketReopen => 'ටිකට්පත නැවත විවෘත කරන්න';
+
+  @override
   String get ticketSubmit => 'ටිකට්පත ඉදිරිපත් කරන්න';
 
   @override

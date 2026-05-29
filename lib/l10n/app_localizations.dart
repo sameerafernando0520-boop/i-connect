@@ -1479,6 +1479,90 @@ abstract class S {
   /// **'Attachments'**
   String get ticketAttachments;
 
+  /// No description provided for @ticketLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading ticket...'**
+  String get ticketLoading;
+
+  /// No description provided for @ticketLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load ticket'**
+  String get ticketLoadFailed;
+
+  /// No description provided for @ticketNoMessages.
+  ///
+  /// In en, this message translates to:
+  /// **'No messages yet'**
+  String get ticketNoMessages;
+
+  /// No description provided for @ticketStartConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a message to start the conversation'**
+  String get ticketStartConversation;
+
+  /// No description provided for @ticketTypeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Type a message...'**
+  String get ticketTypeMessage;
+
+  /// No description provided for @ticketOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Ticket Options'**
+  String get ticketOptions;
+
+  /// No description provided for @ticketRefresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh Ticket'**
+  String get ticketRefresh;
+
+  /// No description provided for @ticketShowDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Details'**
+  String get ticketShowDetails;
+
+  /// No description provided for @ticketHideDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide Details'**
+  String get ticketHideDetails;
+
+  /// No description provided for @ticketCopyNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy Ticket Number'**
+  String get ticketCopyNumber;
+
+  /// No description provided for @ticketCallEngineer.
+  ///
+  /// In en, this message translates to:
+  /// **'Call Engineer'**
+  String get ticketCallEngineer;
+
+  /// No description provided for @ticketCallSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Call iFrontiers Support'**
+  String get ticketCallSupport;
+
+  /// No description provided for @ticketClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close Ticket'**
+  String get ticketClose;
+
+  /// No description provided for @ticketReopen.
+  ///
+  /// In en, this message translates to:
+  /// **'Reopen Ticket'**
+  String get ticketReopen;
+
   /// No description provided for @ticketSubmit.
   ///
   /// In en, this message translates to:

@@ -711,6 +711,49 @@ class SEn extends S {
   String get ticketAttachments => 'Attachments';
 
   @override
+  String get ticketLoading => 'Loading ticket...';
+
+  @override
+  String get ticketLoadFailed => 'Failed to load ticket';
+
+  @override
+  String get ticketNoMessages => 'No messages yet';
+
+  @override
+  String get ticketStartConversation =>
+      'Send a message to start the conversation';
+
+  @override
+  String get ticketTypeMessage => 'Type a message...';
+
+  @override
+  String get ticketOptions => 'Ticket Options';
+
+  @override
+  String get ticketRefresh => 'Refresh Ticket';
+
+  @override
+  String get ticketShowDetails => 'Show Details';
+
+  @override
+  String get ticketHideDetails => 'Hide Details';
+
+  @override
+  String get ticketCopyNumber => 'Copy Ticket Number';
+
+  @override
+  String get ticketCallEngineer => 'Call Engineer';
+
+  @override
+  String get ticketCallSupport => 'Call iFrontiers Support';
+
+  @override
+  String get ticketClose => 'Close Ticket';
+
+  @override
+  String get ticketReopen => 'Reopen Ticket';
+
+  @override
   String get ticketSubmit => 'Submit Ticket';
 
   @override
