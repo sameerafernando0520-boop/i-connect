@@ -682,6 +682,27 @@ class SEn extends S {
   String get ticketSubmit => 'Submit Ticket';
 
   @override
+  String get ticketChooseMachineHint => 'Choose your machine';
+
+  @override
+  String get ticketSubjectRequired => 'Subject is required';
+
+  @override
+  String get ticketDescriptionRequired => 'Description is required';
+
+  @override
+  String get ticketCreatedSuccess => 'Support ticket created!';
+
+  @override
+  String get inquiryCreateNew => 'New Inquiry';
+
+  @override
+  String get inquirySubmit => 'Submit Inquiry';
+
+  @override
+  String get inquirySubmittedSuccess => 'Inquiry submitted!';
+
+  @override
   String get ticketSubmitting => 'Submitting...';
 
   @override

@@ -683,6 +683,27 @@ class SSi extends S {
   String get ticketSubmit => 'ටිකට්පත ඉදිරිපත් කරන්න';
 
   @override
+  String get ticketChooseMachineHint => 'ඔබගේ යන්ත්‍රය තෝරන්න';
+
+  @override
+  String get ticketSubjectRequired => 'විෂය අවශ්‍යයි';
+
+  @override
+  String get ticketDescriptionRequired => 'විස්තරය අවශ්‍යයි';
+
+  @override
+  String get ticketCreatedSuccess => 'සහාය ටිකට්පත සාදන ලදී!';
+
+  @override
+  String get inquiryCreateNew => 'නව විමසීමක්';
+
+  @override
+  String get inquirySubmit => 'විමසීම ඉදිරිපත් කරන්න';
+
+  @override
+  String get inquirySubmittedSuccess => 'විමසීම ඉදිරිපත් කරන ලදී!';
+
+  @override
   String get ticketSubmitting => 'ඉදිරිපත් කරමින්...';
 
   @override

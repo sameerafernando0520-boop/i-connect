@@ -682,6 +682,28 @@ class STa extends S {
   String get ticketSubmit => 'டிக்கெட் சமர்ப்பி';
 
   @override
+  String get ticketChooseMachineHint =>
+      'உங்கள் இயந்திரத்தைத் தேர்ந்தெடுக்கவும்';
+
+  @override
+  String get ticketSubjectRequired => 'தலைப்பு தேவை';
+
+  @override
+  String get ticketDescriptionRequired => 'விளக்கம் தேவை';
+
+  @override
+  String get ticketCreatedSuccess => 'ஆதரவு டிக்கெட் உருவாக்கப்பட்டது!';
+
+  @override
+  String get inquiryCreateNew => 'புதிய விசாரணை';
+
+  @override
+  String get inquirySubmit => 'விசாரணையைச் சமர்ப்பி';
+
+  @override
+  String get inquirySubmittedSuccess => 'விசாரணை சமர்ப்பிக்கப்பட்டது!';
+
+  @override
   String get ticketSubmitting => 'சமர்ப்பிக்கிறது...';
 
   @override

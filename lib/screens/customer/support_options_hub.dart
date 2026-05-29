@@ -110,6 +110,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
   // ── Ticket Creation Bottom Sheet ─────────────────────────
   void _showCreateTicketSheet(String ticketType) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final t = S.of(context)!;
     final formKey = GlobalKey<FormState>();
     final subjectCtrl = TextEditingController();
     final descCtrl = TextEditingController();
@@ -118,7 +119,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
     bool isSubmitting = false;
 
     final isSupport = ticketType == 'support';
-    final title = isSupport ? 'New Support Ticket' : 'New Inquiry';
+    final title = isSupport ? t.ticketCreateNew : t.inquiryCreateNew;
     final icon = isSupport ? Icons.build_rounded : Icons.help_outline_rounded;
     final accent = isSupport ? Brand.royalBlue : Brand.lightGreen;
 
@@ -192,10 +193,11 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
 
                       // ── Machine Dropdown (support only) ──
                       if (isSupport && _customerMachines.isNotEmpty) ...[
-                        _sheetLabel('Select Machine', isDark),
+                        _sheetLabel(t.ticketSelectMachine, isDark),
                         const SizedBox(height: 8),
                         DropdownButtonFormField<String>(
-                          decoration: _inputDeco(isDark, 'Choose your machine'),
+                          decoration:
+                              _inputDeco(isDark, t.ticketChooseMachineHint),
                           dropdownColor:
                               isDark ? Brand.darkCardElevated : Brand.cardLight,
                           style: TextStyle(
@@ -220,7 +222,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                       ],
 
                       // ── Subject ──
-                      _sheetLabel('Subject *', isDark),
+                      _sheetLabel('${t.ticketSubject} *', isDark),
                       const SizedBox(height: 8),
                       TextFormField(
                         controller: subjectCtrl,
@@ -228,17 +230,16 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                           color:
                               isDark ? Brand.darkTextPrimary : Colors.black87,
                         ),
-                        decoration:
-                            _inputDeco(isDark, 'Brief summary of your request'),
+                        decoration: _inputDeco(isDark, t.ticketSubjectHint),
                         textCapitalization: TextCapitalization.sentences,
                         validator: (v) => (v == null || v.trim().isEmpty)
-                            ? 'Subject is required'
+                            ? t.ticketSubjectRequired
                             : null,
                       ),
                       const SizedBox(height: 18),
 
                       // ── Description ──
-                      _sheetLabel('Description *', isDark),
+                      _sheetLabel('${t.ticketDescription} *', isDark),
                       const SizedBox(height: 8),
                       TextFormField(
                         controller: descCtrl,
@@ -246,18 +247,18 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                           color:
                               isDark ? Brand.darkTextPrimary : Colors.black87,
                         ),
-                        decoration: _inputDeco(
-                            isDark, 'Describe your issue in detail...'),
+                        decoration:
+                            _inputDeco(isDark, t.ticketDescriptionHint),
                         maxLines: 4,
                         textCapitalization: TextCapitalization.sentences,
                         validator: (v) => (v == null || v.trim().isEmpty)
-                            ? 'Description is required'
+                            ? t.ticketDescriptionRequired
                             : null,
                       ),
                       const SizedBox(height: 18),
 
                       // ── Priority ──
-                      _sheetLabel('Priority', isDark),
+                      _sheetLabel(t.labelPriority, isDark),
                       const SizedBox(height: 10),
                       Row(
                         children: ['low', 'medium', 'high', 'urgent'].map((p) {
@@ -337,8 +338,8 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                                     if (!mounted) return;
                                     _showSuccessSnackbar(
                                       isSupport
-                                          ? 'Support ticket created!'
-                                          : 'Inquiry submitted!',
+                                          ? t.ticketCreatedSuccess
+                                          : t.inquirySubmittedSuccess,
                                     );
                                     _loadData();
                                   } catch (e) {
@@ -385,9 +386,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                                   ),
                                 )
                               : Text(
-                                  isSupport
-                                      ? 'Submit Ticket'
-                                      : 'Submit Inquiry',
+                                  isSupport ? t.ticketSubmit : t.inquirySubmit,
                                   style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700,

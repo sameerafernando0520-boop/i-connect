@@ -1425,6 +1425,48 @@ abstract class S {
   /// **'Submit Ticket'**
   String get ticketSubmit;
 
+  /// No description provided for @ticketChooseMachineHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your machine'**
+  String get ticketChooseMachineHint;
+
+  /// No description provided for @ticketSubjectRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Subject is required'**
+  String get ticketSubjectRequired;
+
+  /// No description provided for @ticketDescriptionRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Description is required'**
+  String get ticketDescriptionRequired;
+
+  /// No description provided for @ticketCreatedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Support ticket created!'**
+  String get ticketCreatedSuccess;
+
+  /// No description provided for @inquiryCreateNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New Inquiry'**
+  String get inquiryCreateNew;
+
+  /// No description provided for @inquirySubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Inquiry'**
+  String get inquirySubmit;
+
+  /// No description provided for @inquirySubmittedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Inquiry submitted!'**
+  String get inquirySubmittedSuccess;
+
   /// No description provided for @ticketSubmitting.
   ///
   /// In en, this message translates to:
