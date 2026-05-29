@@ -1100,6 +1100,44 @@ class SSi extends S {
       'සේවාව නිරීක්ෂණය කිරීමට සහ සහාය ලබා ගැනීමට\nඔබගේ iFrontiers යන්ත්‍ර ලියාපදිංචි කරන්න.';
 
   @override
+  String get catalogPlaceOrder => 'ඇණවුම් කරන්න';
+
+  @override
+  String get machineInquire => 'විමසන්න';
+
+  @override
+  String get machineSubmitOrder => 'ඇණවුම් ඉල්ලීම යොමු කරන්න';
+
+  @override
+  String get machineReviewNote =>
+      'අපගේ කණ්ඩායම සමාලෝචනය කර\nපැය 24 ක් ඇතුළත ප්‍රතිචාර දක්වනු ඇත.';
+
+  @override
+  String get machineOpenChat => 'කතාබහ විවෘත කරන්න';
+
+  @override
+  String get machineContinueBrowsing => 'පිරික්සීම දිගටම කරගෙන යන්න';
+
+  @override
+  String get machineNoImage => 'පින්තූරයක් නැත';
+
+  @override
+  String get machineYouOwn => 'ඔබ මෙම යන්ත්‍රය හිමිකරගෙන සිටී';
+
+  @override
+  String get machineQuoteHint =>
+      'පුද්ගලාරෝපිත මිල ගණනක් ලබා ගැනීමට තට්ටු කරන්න';
+
+  @override
+  String get machineNeedHelp => 'තේරීමට උදව් අවශ්‍යද?';
+
+  @override
+  String get machineExpertsGuide => 'අපගේ විශේෂඥයින්ට ඔබට මග පෙන්විය හැක';
+
+  @override
+  String get machineCall => 'අමතන්න';
+
+  @override
   String get supportTitle => 'සහාය';
 
   @override

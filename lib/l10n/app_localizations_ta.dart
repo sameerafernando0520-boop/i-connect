@@ -1103,6 +1103,44 @@ class STa extends S {
       'சேவையைக் கண்காணிக்கவும் ஆதரவைப் பெறவும்\nஉங்கள் iFrontiers இயந்திரங்களைப் பதிவு செய்யவும்.';
 
   @override
+  String get catalogPlaceOrder => 'ஆர்டர் செய்யவும்';
+
+  @override
+  String get machineInquire => 'விசாரிக்கவும்';
+
+  @override
+  String get machineSubmitOrder => 'ஆர்டர் கோரிக்கையைச் சமர்ப்பிக்கவும்';
+
+  @override
+  String get machineReviewNote =>
+      'எங்கள் குழு பரிசீலித்து\n24 மணி நேரத்தில் பதிலளிக்கும்.';
+
+  @override
+  String get machineOpenChat => 'அரட்டையைத் திற';
+
+  @override
+  String get machineContinueBrowsing => 'உலாவலைத் தொடரவும்';
+
+  @override
+  String get machineNoImage => 'படம் இல்லை';
+
+  @override
+  String get machineYouOwn => 'இந்த இயந்திரம் உங்களுடையது';
+
+  @override
+  String get machineQuoteHint => 'தனிப்பயன் விலைப்புள்ளி பெற தட்டவும்';
+
+  @override
+  String get machineNeedHelp => 'தேர்வு செய்ய உதவி வேண்டுமா?';
+
+  @override
+  String get machineExpertsGuide =>
+      'எங்கள் நிபுணர்கள் உங்களுக்கு வழிகாட்டுவார்கள்';
+
+  @override
+  String get machineCall => 'அழை';
+
+  @override
   String get supportTitle => 'ஆதரவு';
 
   @override

@@ -1100,6 +1100,43 @@ class SEn extends S {
       'Register your iFrontiers machines\nto track service and get support.';
 
   @override
+  String get catalogPlaceOrder => 'Place Order';
+
+  @override
+  String get machineInquire => 'Inquire';
+
+  @override
+  String get machineSubmitOrder => 'Submit Order Request';
+
+  @override
+  String get machineReviewNote =>
+      'Our team will review and\nrespond within 24 hours.';
+
+  @override
+  String get machineOpenChat => 'Open Chat';
+
+  @override
+  String get machineContinueBrowsing => 'Continue Browsing';
+
+  @override
+  String get machineNoImage => 'No image available';
+
+  @override
+  String get machineYouOwn => 'You own this machine';
+
+  @override
+  String get machineQuoteHint => 'Tap to get a personalized quote';
+
+  @override
+  String get machineNeedHelp => 'Need Help Choosing?';
+
+  @override
+  String get machineExpertsGuide => 'Our experts can guide you';
+
+  @override
+  String get machineCall => 'Call';
+
+  @override
   String get supportTitle => 'Support';
 
   @override

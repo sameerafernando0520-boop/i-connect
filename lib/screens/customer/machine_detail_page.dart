@@ -11,6 +11,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../l10n/s.dart';
 import '../../utils/machine_image_helper.dart';
 import 'ticket_detail_page.dart';
 import 'my_machines_page.dart';
@@ -487,7 +488,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                              Text('Place Order',
+                              Text(S.of(context)!.catalogPlaceOrder,
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w700,
@@ -546,14 +547,14 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                             blurRadius: 14,
                                             offset: const Offset(0, 5))
                                       ]),
-                                  child: const Row(
+                                  child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Icon(Icons.send_rounded,
+                                        const Icon(Icons.send_rounded,
                                             color: Colors.white, size: 20),
                                         SizedBox(width: 8),
-                                        Text('Submit Order Request',
+                                        Text(S.of(context)!.machineSubmitOrder,
                                             style: TextStyle(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w700,
@@ -707,7 +708,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                       : Brand.royalBlue,
                                   letterSpacing: 0.5))),
                       const SizedBox(height: 14),
-                      Text('Our team will review and\nrespond within 24 hours.',
+                      Text(S.of(context)!.machineReviewNote,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 13,
@@ -748,14 +749,14 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                                 blurRadius: 14,
                                                 offset: const Offset(0, 5))
                                           ]),
-                                      child: const Row(
+                                      child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            Icon(Icons.chat_rounded,
+                                            const Icon(Icons.chat_rounded,
                                                 color: Colors.white, size: 18),
                                             SizedBox(width: 8),
-                                            Text('Open Chat',
+                                            Text(S.of(context)!.machineOpenChat,
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 15,
@@ -766,7 +767,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                           onTap: () => Navigator.pop(dialogCtx),
                           child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 8),
-                              child: Text('Continue Browsing',
+                              child: Text(S.of(context)!.machineContinueBrowsing,
                                   style: TextStyle(
                                       fontSize: 14,
                                       color: isDark
@@ -1226,7 +1227,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                       : Brand.royalBlue.withAlpha(51),
                   36))),
       const SizedBox(height: 12),
-      Text('No image available',
+      Text(S.of(context)!.machineNoImage,
           style: TextStyle(
               fontSize: 13,
               color: isDark ? Brand.darkTextSecondary : Brand.subtleLight)),
@@ -1253,8 +1254,8 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
               child: const Icon(Icons.check_circle,
                   color: Colors.white, size: 18)),
           const SizedBox(width: 12),
-          const Expanded(
-              child: Text('You own this machine',
+          Expanded(
+              child: Text(S.of(context)!.machineYouOwn,
                   style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
@@ -1868,7 +1869,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                        Text('Price Available on Request',
+                        Text(S.of(context)!.catalogPriceOnRequest,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w700,
@@ -1876,7 +1877,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                     ? Colors.white
                                     : Brand.royalBlueDark)),
                         const SizedBox(height: 4),
-                        Text('Tap to get a personalized quote',
+                        Text(S.of(context)!.machineQuoteHint,
                             style: TextStyle(
                                 fontSize: 12,
                                 color: isDark
@@ -1920,13 +1921,13 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                Text('Need Help Choosing?',
+                Text(S.of(context)!.machineNeedHelp,
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
                         color: isDark ? Colors.white : Brand.royalBlueDark)),
                 const SizedBox(height: 4),
-                Text('Our experts can guide you',
+                Text(S.of(context)!.machineExpertsGuide,
                     style: TextStyle(
                         fontSize: 12,
                         color: isDark
@@ -1945,10 +1946,10 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                           gradient: const LinearGradient(
                               colors: [Brand.royalBlue, Brand.royalBlueLight]),
                           borderRadius: BorderRadius.circular(12)),
-                      child: const Row(children: [
-                        Icon(Icons.phone, color: Colors.white, size: 14),
-                        SizedBox(width: 6),
-                        Text('Call',
+                      child: Row(children: [
+                        const Icon(Icons.phone, color: Colors.white, size: 14),
+                        const SizedBox(width: 6),
+                        Text(S.of(context)!.machineCall,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,
@@ -1973,7 +1974,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                         end: Alignment.bottomCenter),
                     borderRadius: BorderRadius.circular(2))),
             const SizedBox(width: 10),
-            Text('Similar Machines',
+            Text(S.of(context)!.catalogRelatedMachines,
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -2151,7 +2152,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                           : Brand.royalBlue,
                                       size: 18),
                                   const SizedBox(width: 8),
-                                  Text('Inquire',
+                                  Text(S.of(context)!.machineInquire,
                                       style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w700,
@@ -2189,13 +2190,13 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                   height: 20,
                                   child: CircularProgressIndicator(
                                       color: Colors.white, strokeWidth: 2.5)))
-                          : const Row(
+                          : Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                  Icon(Icons.shopping_cart_rounded,
+                                  const Icon(Icons.shopping_cart_rounded,
                                       color: Colors.white, size: 18),
-                                  SizedBox(width: 8),
-                                  Text('Place Order',
+                                  const SizedBox(width: 8),
+                                  Text(S.of(context)!.catalogPlaceOrder,
                                       style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w700,

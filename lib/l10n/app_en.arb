@@ -408,6 +408,18 @@
   "machineLoadError": "Could not load your machines.\nPlease check your connection and try again.",
   "machineNoMatchDesc": "No machines match your search or filter.\nTry adjusting your criteria.",
   "machineRegisterDesc": "Register your iFrontiers machines\nto track service and get support.",
+  "catalogPlaceOrder": "Place Order",
+  "machineInquire": "Inquire",
+  "machineSubmitOrder": "Submit Order Request",
+  "machineReviewNote": "Our team will review and\nrespond within 24 hours.",
+  "machineOpenChat": "Open Chat",
+  "machineContinueBrowsing": "Continue Browsing",
+  "machineNoImage": "No image available",
+  "machineYouOwn": "You own this machine",
+  "machineQuoteHint": "Tap to get a personalized quote",
+  "machineNeedHelp": "Need Help Choosing?",
+  "machineExpertsGuide": "Our experts can guide you",
+  "machineCall": "Call",
 
 
   "supportTitle": "Support",

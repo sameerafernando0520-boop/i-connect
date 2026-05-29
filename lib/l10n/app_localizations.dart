@@ -2241,6 +2241,78 @@ abstract class S {
   /// **'Register your iFrontiers machines\nto track service and get support.'**
   String get machineRegisterDesc;
 
+  /// No description provided for @catalogPlaceOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Place Order'**
+  String get catalogPlaceOrder;
+
+  /// No description provided for @machineInquire.
+  ///
+  /// In en, this message translates to:
+  /// **'Inquire'**
+  String get machineInquire;
+
+  /// No description provided for @machineSubmitOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Order Request'**
+  String get machineSubmitOrder;
+
+  /// No description provided for @machineReviewNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Our team will review and\nrespond within 24 hours.'**
+  String get machineReviewNote;
+
+  /// No description provided for @machineOpenChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Chat'**
+  String get machineOpenChat;
+
+  /// No description provided for @machineContinueBrowsing.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue Browsing'**
+  String get machineContinueBrowsing;
+
+  /// No description provided for @machineNoImage.
+  ///
+  /// In en, this message translates to:
+  /// **'No image available'**
+  String get machineNoImage;
+
+  /// No description provided for @machineYouOwn.
+  ///
+  /// In en, this message translates to:
+  /// **'You own this machine'**
+  String get machineYouOwn;
+
+  /// No description provided for @machineQuoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to get a personalized quote'**
+  String get machineQuoteHint;
+
+  /// No description provided for @machineNeedHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Need Help Choosing?'**
+  String get machineNeedHelp;
+
+  /// No description provided for @machineExpertsGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Our experts can guide you'**
+  String get machineExpertsGuide;
+
+  /// No description provided for @machineCall.
+  ///
+  /// In en, this message translates to:
+  /// **'Call'**
+  String get machineCall;
+
   /// No description provided for @supportTitle.
   ///
   /// In en, this message translates to:
