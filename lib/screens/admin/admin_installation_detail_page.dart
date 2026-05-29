@@ -788,7 +788,7 @@ class _AdminInstallationDetailPageState
                                       BorderRadius.circular(5)),
                               child: Text(_capitalize(roleStr),
                                   style: TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 11,
                                       color: roleColor,
                                       fontWeight: FontWeight.w700)),
                             ),
@@ -796,7 +796,7 @@ class _AdminInstallationDetailPageState
                             Text(
                               _capitalize(engStatus),
                               style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 11,
                                   color:
                                       AdminColors.textSub(context)),
                             ),

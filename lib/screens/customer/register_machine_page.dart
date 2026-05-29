@@ -1475,7 +1475,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                         child: Text(
                           '$count',
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.bold,
                             color: isSelected
                                 ? (isDark
@@ -1525,7 +1525,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                       Text(
                         '1 selected',
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.bold,
                           color: accent,
                         ),
@@ -1672,7 +1672,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                         child: Text(
                           machine['brand'] ?? '',
                           style: TextStyle(
-                            fontSize: 9,
+                            fontSize: 11,
                             fontWeight: FontWeight.bold,
                             color: accent,
                           ),
@@ -1698,7 +1698,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                     Text(
                       machine['sub_category'],
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         color: (isDark
                                 ? Brand.darkTextSecondary
                                 : Brand.subtleLight)
@@ -2181,7 +2181,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                   Text(
                     (wt['label'] as String).split(' ').first,
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 11,
                       fontWeight:
                           isSelected ? FontWeight.bold : FontWeight.w500,
                       color: isSelected
@@ -2620,7 +2620,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                   Text(
                     '${_installationPhotos.length}/4',
                     style: TextStyle(
-                      fontSize: 9,
+                      fontSize: 11,
                       color:
                           isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                     ),

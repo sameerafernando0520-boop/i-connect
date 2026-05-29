@@ -490,7 +490,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                     ),
                     child: Text(_brand,
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color:
                               isDark ? Brand.darkIconActive : Brand.royalBlue,
@@ -507,7 +507,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                     ),
                     child: Text(_subCategory,
                         style: const TextStyle(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         )),
@@ -540,7 +540,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                       const SizedBox(width: 5),
                       Text(_status.toUpperCase(),
                           style: const TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
                             letterSpacing: 0.3,
@@ -787,7 +787,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
           const SizedBox(height: 2),
           Text(label,
               style: TextStyle(
-                fontSize: 9,
+                fontSize: 11,
                 color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                 fontWeight: FontWeight.w600,
               )),
@@ -1037,12 +1037,12 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text('Purchase date',
                 style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 11,
                     color:
                         isDark ? Brand.darkTextTertiary : Brand.subtleLight)),
             Text('Expiry date',
                 style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 11,
                     color:
                         isDark ? Brand.darkTextTertiary : Brand.subtleLight)),
           ]),
@@ -1140,7 +1140,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(label,
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 11,
                   color: isDark ? Brand.darkTextTertiary : Brand.subtleLight,
                   fontWeight: FontWeight.w500,
                 )),
@@ -1527,7 +1527,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
             const SizedBox(height: 4),
             Text(label,
                 style: TextStyle(
-                  fontSize: 9,
+                  fontSize: 11,
                   fontWeight: FontWeight.w700,
                   color: isSelected
                       ? Colors.white

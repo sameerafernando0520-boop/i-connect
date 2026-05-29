@@ -375,7 +375,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
             Text(
               label.toUpperCase(),
               style: TextStyle(
-                fontSize: 9,
+                fontSize: 11,
                 fontWeight: FontWeight.w600,
                 color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                 letterSpacing: 0.4,
@@ -464,7 +464,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                   ),
                   child: Text(
                     '$supportCount',
-                    style: const TextStyle(fontSize: 10),
+                    style: const TextStyle(fontSize: 11),
                   ),
                 ),
               ],
@@ -487,7 +487,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                   ),
                   child: Text(
                     '$inquiryCount',
-                    style: const TextStyle(fontSize: 10),
+                    style: const TextStyle(fontSize: 11),
                   ),
                 ),
               ],
@@ -592,7 +592,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                       child: Text(
                         '$count',
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.bold,
                           color: isSelected
                               ? (isDark
@@ -744,7 +744,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                             Text(
                               TimeUtils.getTimeAgo(createdAt),
                               style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 11,
                                 color: (isDark
                                         ? Brand.darkTextSecondary
                                         : Brand.subtleLight)
@@ -781,7 +781,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                             Text(
                               _formatStatus(status).toUpperCase(),
                               style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w700,
                                 color: statusColor,
                                 letterSpacing: 0.3,
@@ -974,7 +974,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                             Text(
                               priority.toUpperCase(),
                               style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w700,
                                 color: _getPriorityColor(priority),
                                 letterSpacing: 0.3,
@@ -999,7 +999,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                         child: Text(
                           ticketType.toUpperCase(),
                           style: TextStyle(
-                            fontSize: 9,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: _getTypeColor(ticketType),
                             letterSpacing: 0.3,
@@ -1021,7 +1021,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                           Text(
                             _formatDate(createdAt),
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 11,
                               color: (isDark
                                       ? Brand.darkTextSecondary
                                       : Brand.subtleLight)

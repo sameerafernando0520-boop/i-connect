@@ -232,11 +232,11 @@ class _MaTiersPageState extends State<MaTiersPage>
               Icon(icons[i], color: colors[i], size: 22),
               const SizedBox(height: 4),
               Text(tiers[i],
-                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: colors[i])),
+                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: colors[i])),
               if (threshold != null) ...[
                 const SizedBox(height: 2),
                 Text('${threshold['min_points']}+',
-                    style: TextStyle(fontSize: 9, color: AdminColors.textHint(context))),
+                    style: TextStyle(fontSize: 11, color: AdminColors.textHint(context))),
               ],
             ]),
           ),
@@ -379,7 +379,7 @@ class _MaTiersPageState extends State<MaTiersPage>
             if (benefitType != null) ...[
               const SizedBox(height: 2),
               Text(_cap(benefitType),
-                  style: TextStyle(fontSize: 10, color: AdminColors.textHint(context))),
+                  style: TextStyle(fontSize: 11, color: AdminColors.textHint(context))),
             ],
           ]),
         ),

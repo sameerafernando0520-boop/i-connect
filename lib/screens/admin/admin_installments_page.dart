@@ -376,7 +376,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
             Text(
               label,
               style: TextStyle(
-                fontSize: 9,
+                fontSize: 11,
                 // FIX: replaced Colors.grey.shade500
                 color: _textSub(isDark),
               ),
@@ -705,7 +705,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
                             Text(
                               status.toUpperCase(),
                               style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 11,
                                 fontWeight: FontWeight.bold,
                                 color: statusColor,
                               ),

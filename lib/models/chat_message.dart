@@ -18,6 +18,13 @@ class ChatMessage {
   final String? senderName;
   final String? senderPhoto;
 
+  /// text | image | document | voice | location
+  final String messageType;
+
+  /// Type-specific extras, e.g. {duration_ms} for voice,
+  /// {lat,lng,label} for location, {filename,size} for document.
+  final Map<String, dynamic>? metadata;
+
   ChatMessage({
     this.id,
     required this.ticketId,
@@ -33,6 +40,8 @@ class ChatMessage {
     this.status = MessageStatus.sent,
     this.senderName,
     this.senderPhoto,
+    this.messageType = 'text',
+    this.metadata,
   });
 
   // M12: Whitelist of server-recognized sender roles. Anything else we see on
@@ -85,6 +94,10 @@ class ChatMessage {
       status: MessageStatus.sent,
       senderName: sender?['full_name'] as String?,
       senderPhoto: sender?['profile_photo'] as String?,
+      messageType: (j['message_type'] as String?) ?? 'text',
+      metadata: j['metadata'] is Map
+          ? Map<String, dynamic>.from(j['metadata'] as Map)
+          : null,
     );
   }
 
@@ -94,6 +107,8 @@ class ChatMessage {
     required String message,
     bool isInternal = false,
     List<String> attachments = const [],
+    String messageType = 'text',
+    Map<String, dynamic>? metadata,
   }) =>
       ChatMessage(
         ticketId: ticketId,
@@ -104,6 +119,8 @@ class ChatMessage {
         isInternal: isInternal,
         createdAt: DateTime.now(),
         status: MessageStatus.sending,
+        messageType: messageType,
+        metadata: metadata,
       );
 
   ChatMessage copyWith({
@@ -130,5 +147,7 @@ class ChatMessage {
         status: status ?? this.status,
         senderName: senderName ?? this.senderName,
         senderPhoto: senderPhoto ?? this.senderPhoto,
+        messageType: messageType,
+        metadata: metadata,
       );
 }

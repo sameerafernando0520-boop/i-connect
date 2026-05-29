@@ -622,7 +622,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                             child: Text('${_bookmarkedIds.length}',
                                 style: const TextStyle(
                                     color: Colors.white,
-                                    fontSize: 8,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w700)),
                           ),
                         ),
@@ -721,7 +721,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
       const SizedBox(height: 4),
       Text(label.toUpperCase(),
           style: TextStyle(
-              fontSize: 9,
+              fontSize: 11,
               color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
               fontWeight: FontWeight.w600,
               letterSpacing: 0.4)),
@@ -1286,7 +1286,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                   const SizedBox(width: 4),
                   Text(_getTypeLabel(contentType),
                       style: TextStyle(
-                          fontSize: 9,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color: color,
                           letterSpacing: 0.3)),
@@ -1295,7 +1295,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             if (article['machine_category'] != null)
               Text(article['machine_category'],
                   style: TextStyle(
-                      fontSize: 9,
+                      fontSize: 11,
                       color:
                           isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                       fontWeight: FontWeight.w500)),
@@ -1317,7 +1317,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             const SizedBox(width: 4),
             Text('${article['views'] ?? 0}',
                 style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 11,
                     color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                     fontWeight: FontWeight.w500)),
           ]),
@@ -1461,7 +1461,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                     SizedBox(width: 4),
                     Text('Most Popular',
                         style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: Brand.lightGreenBright,
                             letterSpacing: 0.3)),
@@ -1490,7 +1490,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                     const SizedBox(width: 4),
                     Text(_getTypeLabel(contentType),
                         style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             color: Colors.white.withAlpha(((0.5) * 255).toInt()),
                             fontWeight: FontWeight.w600)),
                   ])),
@@ -1529,7 +1529,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                             borderRadius: BorderRadius.circular(10)),
                         child: Text('#$tag',
                             style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 11,
                                 color: Colors.white.withAlpha(((0.35) * 255).toInt()),
                                 fontWeight: FontWeight.w600)));
                   }).toList()),
@@ -1658,7 +1658,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                               child: Text(
                                   _getTypeLabel(contentType).toUpperCase(),
                                   style: TextStyle(
-                                      fontSize: 9,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.w700,
                                       color: color,
                                       letterSpacing: 0.5))),
@@ -1667,7 +1667,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                             Flexible(
                                 child: Text(article['machine_category'],
                                     style: TextStyle(
-                                        fontSize: 9,
+                                        fontSize: 11,
                                         color: isDark
                                             ? Brand.darkTextSecondary
                                             : Brand.subtleLight,
@@ -1678,7 +1678,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                           if (timeAgo.isNotEmpty)
                             Text(timeAgo,
                                 style: TextStyle(
-                                    fontSize: 10,
+                                    fontSize: 11,
                                     color: isDark
                                         ? Brand.darkTextTertiary
                                         : Brand.subtleLight.withAlpha(((0.6) * 255).toInt()),
@@ -1705,7 +1705,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                           const SizedBox(width: 4),
                           Text('$readTime min',
                               style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 11,
                                   color: isDark
                                       ? Brand.darkTextSecondary
                                       : Brand.subtleLight,
@@ -1719,7 +1719,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                           const SizedBox(width: 4),
                           Text('${article['views'] ?? 0}',
                               style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 11,
                                   color: isDark
                                       ? Brand.darkTextSecondary
                                       : Brand.subtleLight,
@@ -1734,7 +1734,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                             const SizedBox(width: 4),
                             Text('${tags.length}',
                                 style: TextStyle(
-                                    fontSize: 10,
+                                    fontSize: 11,
                                     color: isDark
                                         ? Brand.darkTextSecondary
                                         : Brand.subtleLight,

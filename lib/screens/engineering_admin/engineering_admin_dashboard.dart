@@ -240,7 +240,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                             crossAxisCount: 2,
                             mainAxisSpacing: 10,
                             crossAxisSpacing: 10,
-                            childAspectRatio: 1.55,
+                            mainAxisExtent: 92,
                           ),
                           delegate: SliverChildListDelegate(
                               _buildKpiTiles(isDark)),
@@ -438,7 +438,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                 ),
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Icon(a.icon, color: a.color, size: 22),
+              child: Icon(a.icon, color: a.color, size: 26),
             ),
             const SizedBox(height: 6),
             Text(
@@ -447,7 +447,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 10.5,
+                fontSize: 11,
                 fontWeight: FontWeight.w700,
                 height: 1.15,
                 color: isDark
@@ -718,7 +718,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(18),
           border: Border.all(
             color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
           ),
@@ -732,55 +732,55 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                   ),
                 ],
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: 34,
-                  height: 34,
-                  decoration: BoxDecoration(
-                    color: color.withAlpha(isDark ? 45 : 25),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Icon(icon, size: 17, color: color),
-                ),
-                Icon(Icons.chevron_right_rounded,
-                    size: 15,
-                    color: AdminColors.textHint(context).withAlpha(150)),
-              ],
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: color.withAlpha(isDark ? 45 : 25),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, size: 24, color: color),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '$value',
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.w800,
-                    color: isDark
-                        ? Brand.darkTextPrimary
-                        : const Color(0xFF0F172A),
-                    height: 1,
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '$value',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      color: isDark
+                          ? Brand.darkTextPrimary
+                          : const Color(0xFF0F172A),
+                      height: 1,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  label,
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 0.2,
-                    color: AdminColors.textHint(context),
+                  const SizedBox(height: 3),
+                  Text(
+                    label,
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 0.2,
+                      color: AdminColors.textHint(context),
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
+                ],
+              ),
             ),
+            Icon(Icons.chevron_right_rounded,
+                size: 18,
+                color: AdminColors.textHint(context).withAlpha(150)),
           ],
         ),
       ),
@@ -899,7 +899,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                             child: Text(
                               '$activeJobs',
                               style: const TextStyle(
-                                fontSize: 9,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white,
                               ),
@@ -913,7 +913,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                 Text(
                   firstName,
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 11,
                     fontWeight: FontWeight.w600,
                     color: isDark
                         ? Brand.darkTextSecondary
@@ -925,7 +925,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                 Text(
                   ringLabel,
                   style: TextStyle(
-                    fontSize: 9,
+                    fontSize: 11,
                     fontWeight: FontWeight.w600,
                     color: ringColor,
                   ),
@@ -1136,7 +1136,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                         child: Text(
                           ticketNum,
                           style: TextStyle(
-                            fontSize: 9,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: statusColor,
                           ),
@@ -1168,7 +1168,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                 child: const Text(
                   'Unassigned',
                   style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 11,
                       fontWeight: FontWeight.w700,
                       color: _eaRed),
                 ),
@@ -1188,7 +1188,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         fontWeight: FontWeight.w600,
                         color: _eaAccent,
                       ),
@@ -1341,7 +1341,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                   const SizedBox(height: 2),
                   Text(timeAgo,
                       style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 11,
                           color: AdminColors.textHint(context))),
                 ],
               ),
@@ -1746,7 +1746,7 @@ class _MoreModuleCard extends StatelessWidget {
                 color: iconColor.withAlpha(isDark ? 45 : 25),
                 borderRadius: BorderRadius.circular(14),
               ),
-              child: Icon(icon, color: iconColor, size: 24),
+              child: Icon(icon, color: iconColor, size: 28),
             ),
             const SizedBox(width: 16),
             Expanded(

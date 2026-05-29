@@ -1357,7 +1357,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                                             child: const Text(
                                               'Inactive',
                                               style: TextStyle(
-                                                fontSize: 9,
+                                                fontSize: 11,
                                                 fontWeight: FontWeight.w700,
                                                 color: AdminColors.error,
                                               ),

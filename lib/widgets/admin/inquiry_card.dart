@@ -156,7 +156,7 @@ class InquiryCard extends StatelessWidget {
       child: Text(
         label,
         style: TextStyle(
-          fontSize: 9,
+          fontSize: 11,
           fontWeight: FontWeight.w700,
           color: color,
           letterSpacing: 0.5,

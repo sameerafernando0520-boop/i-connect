@@ -365,7 +365,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
               ),
               child: Text(type.replaceAll('_', ' ').toUpperCase(),
                   style: const TextStyle(
-                    fontSize: 10,
+                    fontSize: 11,
                     fontWeight: FontWeight.w700,
                     color: _eaAccent,
                     letterSpacing: 0.5,

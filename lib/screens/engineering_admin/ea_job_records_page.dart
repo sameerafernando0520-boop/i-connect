@@ -787,7 +787,7 @@ class _MiniAvatar extends StatelessWidget {
           style: const TextStyle(
             color: Brand.royalBlue,
             fontWeight: FontWeight.w700,
-            fontSize: 10,
+            fontSize: 11,
           ),
         ),
       ),

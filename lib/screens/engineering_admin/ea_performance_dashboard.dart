@@ -1140,7 +1140,7 @@ class _SingleEngineerTrends extends StatelessWidget {
                     interval: 20,
                     getTitlesWidget: (v, _) => Text(
                       '${v.toInt()}%',
-                      style: TextStyle(fontSize: 10, color: AdminColors.textHint(context)),
+                      style: TextStyle(fontSize: 11, color: AdminColors.textHint(context)),
                     ),
                   ),
                 ),
@@ -1153,7 +1153,7 @@ class _SingleEngineerTrends extends StatelessWidget {
                       if (idx < 0 || idx >= labels.length) return const SizedBox.shrink();
                       return Text(
                         labels[idx],
-                        style: TextStyle(fontSize: 10, color: AdminColors.textHint(context)),
+                        style: TextStyle(fontSize: 11, color: AdminColors.textHint(context)),
                       );
                     },
                   ),
@@ -1273,7 +1273,7 @@ class _TeamTrends extends StatelessWidget {
                     interval: 20,
                     getTitlesWidget: (v, _) => Text(
                       '${v.toInt()}%',
-                      style: TextStyle(fontSize: 10, color: AdminColors.textHint(context)),
+                      style: TextStyle(fontSize: 11, color: AdminColors.textHint(context)),
                     ),
                   ),
                 ),
@@ -1286,7 +1286,7 @@ class _TeamTrends extends StatelessWidget {
                       if (idx < 0 || idx >= labels.length) return const SizedBox.shrink();
                       return Text(
                         labels[idx],
-                        style: TextStyle(fontSize: 9, color: AdminColors.textHint(context)),
+                        style: TextStyle(fontSize: 11, color: AdminColors.textHint(context)),
                       );
                     },
                   ),

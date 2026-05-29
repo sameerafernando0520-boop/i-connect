@@ -1007,7 +1007,7 @@ class _MaHomePageState extends State<MaHomePage> {
                 Text(
                   k.label,
                   style: TextStyle(
-                    fontSize: 10.5,
+                    fontSize: 11,
                     fontWeight: FontWeight.w600,
                     color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                   ),
@@ -1018,7 +1018,7 @@ class _MaHomePageState extends State<MaHomePage> {
                   Text(
                     k.badge!,
                     style: TextStyle(
-                      fontSize: 9,
+                      fontSize: 11,
                       fontWeight: FontWeight.w700,
                       color: k.color,
                     ),

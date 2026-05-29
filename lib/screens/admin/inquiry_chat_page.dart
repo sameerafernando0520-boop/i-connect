@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 // FIX: type-only imports acceptable per rules
 import 'package:supabase_flutter/supabase_flutter.dart'
     show
@@ -1003,6 +1004,47 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        if (!isCurrentUser) ...[
+                          Builder(builder: (_) {
+                            final photo = (message['sender']
+                                    as Map<String, dynamic>?)?['profile_photo']
+                                as String?;
+                            final tint =
+                                isAdmin ? AdminColors.primary : Brand.royalBlue;
+                            final fb = Container(
+                              width: 24,
+                              height: 24,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: tint.withAlpha(30),
+                              ),
+                              child: Icon(
+                                senderType == 'engineer'
+                                    ? Icons.engineering_rounded
+                                    : isAdmin
+                                        ? Icons.support_agent_rounded
+                                        : Icons.person_rounded,
+                                size: 14,
+                                color: tint,
+                              ),
+                            );
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 6),
+                              child: (photo == null || photo.isEmpty)
+                                  ? fb
+                                  : ClipOval(
+                                      child: CachedNetworkImage(
+                                        imageUrl: photo,
+                                        width: 24,
+                                        height: 24,
+                                        fit: BoxFit.cover,
+                                        placeholder: (_, __) => fb,
+                                        errorWidget: (_, __, ___) => fb,
+                                      ),
+                                    ),
+                            );
+                          }),
+                        ],
                         Text(
                           isAdmin
                               ? (isCurrentUser
@@ -1030,7 +1072,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                             child: Text(
                               'INTERNAL',
                               style: TextStyle(
-                                fontSize: 8,
+                                fontSize: 11,
                                 fontWeight: FontWeight.bold,
                                 color: isDark ? _warningColor : _warningDark,
                                 letterSpacing: 0.3,

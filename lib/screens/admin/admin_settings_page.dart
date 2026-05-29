@@ -1838,7 +1838,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                             ),
                             child: const Text('INACTIVE',
                                 style: TextStyle(
-                                    fontSize: 9,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w700,
                                     letterSpacing: 0.5,
                                     color: Colors.orange)),

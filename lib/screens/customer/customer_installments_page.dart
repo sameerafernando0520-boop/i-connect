@@ -277,7 +277,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
                         Text(
                           'PAID',
                           style: TextStyle(
-                            fontSize: 9,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: isDark
                                 ? Brand.lightGreenBright

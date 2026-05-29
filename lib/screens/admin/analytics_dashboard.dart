@@ -1149,7 +1149,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                   child: Text(
                     _volumeLabels[idx],
                     style: TextStyle(
-                      fontSize: 9,
+                      fontSize: 11,
                       color: _textMuted,
                     ),
                   ),
@@ -1599,7 +1599,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                   child: Text(
                     _growthLabels[idx],
                     style: TextStyle(
-                      fontSize: 8,
+                      fontSize: 11,
                       color: _textMuted,
                     ),
                   ),

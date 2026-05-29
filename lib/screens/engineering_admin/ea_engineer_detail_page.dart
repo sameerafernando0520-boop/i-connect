@@ -583,7 +583,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
         Text(
           label,
           style: TextStyle(
-              fontSize: 10,
+              fontSize: 11,
               color: isDark ? Brand.darkTextSecondary : const Color(0xFF64748B)),
         ),
       ],
@@ -996,7 +996,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
           Text(
             label,
             style: TextStyle(
-              fontSize: 9,
+              fontSize: 11,
               color: AdminColors.textHint(context),
             ),
             textAlign: TextAlign.center,
@@ -1020,7 +1020,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
           Text(
             label,
             style: TextStyle(
-              fontSize: 10,
+              fontSize: 11,
               color: AdminColors.textHint(context),
             ),
           ),
@@ -1461,7 +1461,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                 child: Text(
                   myRole,
                   style: const TextStyle(
-                      fontSize: 10,
+                      fontSize: 11,
                       color: _eaAccent,
                       fontWeight: FontWeight.w600),
                 ),
@@ -2008,7 +2008,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
       child: Text(
         label,
         style: TextStyle(
-            fontSize: 10,
+            fontSize: 11,
             fontWeight: FontWeight.w700,
             color: color),
       ),

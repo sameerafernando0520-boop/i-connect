@@ -452,7 +452,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
                                     child: Text(
                                       itemType.toUpperCase(),
                                       style: const TextStyle(
-                                        fontSize: 9,
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         color: AdminColors.primary,
                                       ),
@@ -728,7 +728,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
                                 Text(
                                   verified ? 'Verified' : 'Pending',
                                   style: TextStyle(
-                                    fontSize: 9,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w600,
                                     color: verified
                                         ? AdminColors.success

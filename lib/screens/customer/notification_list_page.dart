@@ -853,7 +853,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                     ),
                     child: Text('$unreadCount',
                         style: const TextStyle(
-                            fontSize: 9,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: Colors.white)),
                   ),
@@ -1095,7 +1095,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                                       DateTime.parse(createdAt))
                                   : '',
                               style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 11,
                                 color: isDark
                                     ? Brand.darkTextTertiary
                                     : Colors.black38,
@@ -1144,7 +1144,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                                 const SizedBox(width: 5),
                                 Text(_typeLabel(type).toUpperCase(),
                                     style: TextStyle(
-                                      fontSize: 9,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.w700,
                                       color: ntype.color,
                                       letterSpacing: 0.3,
@@ -1173,7 +1173,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                                 ),
                                 child: Text('Mark read',
                                     style: TextStyle(
-                                      fontSize: 9,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.w700,
                                       color: isDark
                                           ? Brand.darkIconActive
@@ -1229,7 +1229,7 @@ class _NotificationListPageState extends State<NotificationListPage>
           const SizedBox(height: 4),
           Text('Delete',
               style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 11,
                   fontWeight: FontWeight.w700,
                   color:
                       isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400)),

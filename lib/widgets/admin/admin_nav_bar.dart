@@ -216,7 +216,7 @@ class AdminNavBar extends StatelessWidget {
                         badge > 9 ? '9+' : '$badge',
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 9,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -229,7 +229,7 @@ class AdminNavBar extends StatelessWidget {
           Text(
             label,
             style: TextStyle(
-              fontSize: 10,
+              fontSize: 11,
               fontWeight: sel ? FontWeight.w700 : FontWeight.w500,
               color: sel
                   ? (isDark ? Brand.royalBlueGlow : AdminColors.primary)

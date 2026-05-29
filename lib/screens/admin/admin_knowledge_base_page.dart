@@ -467,7 +467,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
                         child: Text(
                           t.label.toUpperCase(),
                           style: TextStyle(
-                              fontSize: 9,
+                              fontSize: 11,
                               fontWeight: FontWeight.w800,
                               letterSpacing: 0.6,
                               color: t.color),
@@ -485,7 +485,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
                           child: Text(
                             'DRAFT',
                             style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w800,
                                 color: AdminColors.warning),
                           ),
@@ -569,7 +569,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
                   Text(
                     published ? 'Live' : 'Draft',
                     style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         fontWeight: FontWeight.w700,
                         color: published
                             ? AdminColors.success

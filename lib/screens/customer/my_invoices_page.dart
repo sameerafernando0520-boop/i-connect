@@ -395,7 +395,7 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
         _statusLabel(t, status).toUpperCase(),
         style: TextStyle(
           color: c,
-          fontSize: 9,
+          fontSize: 11,
           fontWeight: FontWeight.w700,
           letterSpacing: 0.5,
         ),

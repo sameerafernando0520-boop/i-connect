@@ -633,7 +633,7 @@ class _ReferralPageState extends State<ReferralPage> {
             const SizedBox(height: 6),
             Text(label,
                 style: TextStyle(
-                    fontSize: 10, fontWeight: FontWeight.w700, color: c)),
+                    fontSize: 11, fontWeight: FontWeight.w700, color: c)),
           ]),
         ),
       ),
@@ -697,7 +697,7 @@ class _ReferralPageState extends State<ReferralPage> {
           const SizedBox(height: 2),
           Text(label,
               style: TextStyle(
-                fontSize: 10,
+                fontSize: 11,
                 fontWeight: FontWeight.w600,
                 color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
               )),
@@ -918,7 +918,7 @@ class _ReferralPageState extends State<ReferralPage> {
                                 ),
                                 child: Text(_statusLabel(status),
                                     style: TextStyle(
-                                      fontSize: 9,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.w700,
                                       color: sc,
                                       letterSpacing: 0.3,
@@ -943,7 +943,7 @@ class _ReferralPageState extends State<ReferralPage> {
                         TimeUtils.getTimeAgo(
                             DateTime.tryParse(createdAt) ?? DateTime.now()),
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 11,
                           color:
                               isDark ? Brand.darkTextTertiary : Colors.black38,
                         ),

@@ -234,9 +234,9 @@ class AdminStyles {
     color: AdminColors.textSecondaryLight,
   );
 
-  // 11 / 600 / uppercase / +0.5 — section labels
+  // 12 / 600 / uppercase / +0.5 — section labels (raised from 11 for legibility)
   static const TextStyle label = TextStyle(
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: FontWeight.w600,
     color: AdminColors.textSecondaryLight,
     letterSpacing: 0.5,
@@ -258,16 +258,16 @@ class AdminStyles {
     letterSpacing: -0.3,
   );
 
-  // 9 / 800 / uppercase / +0.5 — status badges / tags
+  // 11 / 800 / uppercase / +0.5 — status badges / tags (raised from 9)
   static const TextStyle tag = TextStyle(
-    fontSize: 9,
+    fontSize: 11,
     fontWeight: FontWeight.w700,
     letterSpacing: 0.5,
   );
 
-  // 10 / 600 — small tag / specialty chip
+  // 11 / 600 — small tag / specialty chip (raised from 10)
   static const TextStyle tagSmall = TextStyle(
-    fontSize: 10,
+    fontSize: 11,
     fontWeight: FontWeight.w600,
     letterSpacing: 0.3,
   );

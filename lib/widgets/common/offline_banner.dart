@@ -112,7 +112,7 @@ class OfflinePill extends StatelessWidget {
               SizedBox(width: 4),
               Text('Offline',
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 11,
                     fontWeight: FontWeight.w700,
                     color: Color(0xFFDC2626),
                   )),

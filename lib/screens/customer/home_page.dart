@@ -1382,7 +1382,7 @@ class _HomePageState extends State<HomePage>
                         child: Text(count > 99 ? '99+' : '$count',
                             style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 9,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w700))),
                   )),
           ]),
@@ -1906,7 +1906,7 @@ class _HomePageState extends State<HomePage>
                                             child: Text(
                                               'Current',
                                               style: TextStyle(
-                                                fontSize: 10,
+                                                fontSize: 11,
                                                 fontWeight: FontWeight.w700,
                                                 color: c,
                                               ),
@@ -2503,7 +2503,7 @@ class _HomePageState extends State<HomePage>
           style: TextStyle(
               color:
                   isDark ? Brand.darkTextTertiary : Brand.subtleLight,
-              fontSize: 10,
+              fontSize: 11,
               fontWeight: FontWeight.w500)),
     ]);
   }
@@ -2621,7 +2621,7 @@ class _HomePageState extends State<HomePage>
                             child: Text('$count',
                                 style: const TextStyle(
                                     color: Colors.white,
-                                    fontSize: 9,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w700))),
                       )),
               ]),
@@ -3092,7 +3092,7 @@ class _HomePageState extends State<HomePage>
         ],
         Text(text,
             style: TextStyle(
-                fontSize: 9,
+                fontSize: 11,
                 fontWeight: FontWeight.w700,
                 color: c,
                 letterSpacing: 0.3)),
@@ -3256,7 +3256,7 @@ class _HomePageState extends State<HomePage>
                             DateTime.tryParse(date) ?? DateTime.now())
                         : '',
                     style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         color: isDark ? Brand.darkTextTertiary : Colors.black38,
                         fontWeight: FontWeight.w500)),
                 const SizedBox(height: 6),
@@ -3270,7 +3270,7 @@ class _HomePageState extends State<HomePage>
                   ),
                   child: Text(status.toUpperCase().replaceAll('_', ' '),
                       style: TextStyle(
-                          fontSize: 9,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color: _ticketStatusColor(status, isDark),
                           letterSpacing: 0.3)),
@@ -3499,7 +3499,7 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'YOUR NEXT MACHINE',
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: Brand.royalBlue,
                             letterSpacing: 0.8,
@@ -3648,7 +3648,7 @@ class _HomePageState extends State<HomePage>
         Text(
           label,
           style: TextStyle(
-            fontSize: 10,
+            fontSize: 11,
             color: reached
                 ? Brand.royalBlue
                 : (isDark ? Brand.darkTextSecondary : Brand.subtleLight),

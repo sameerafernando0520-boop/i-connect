@@ -119,7 +119,7 @@ class _DealValueCardState extends State<DealValueCard> {
                     child: const Text(
                       'Unsaved',
                       style: TextStyle(
-                        fontSize: 9,
+                        fontSize: 11,
                         fontWeight: FontWeight.bold,
                         color: AdminColors.warning,
                       ),

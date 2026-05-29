@@ -982,7 +982,7 @@ class _CatalogPageState extends State<CatalogPage> {
                     const SizedBox(height: 2),
                     Text('$count items',
                         style: TextStyle(
-                            fontSize: 9,
+                            fontSize: 11,
                             color: sel
                                 ? Colors.white.withAlpha(153)
                                 : (isDark
@@ -1448,7 +1448,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                                 : Brand.royalBlueDark)),
                                     Text(m['brand'] ?? '',
                                         style: TextStyle(
-                                            fontSize: 9,
+                                            fontSize: 11,
                                             color: isDark
                                                 ? Brand.darkTextSecondary
                                                 : Brand.subtleLight)),
@@ -1549,7 +1549,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                     Text('$imageCount',
                                         style: const TextStyle(
                                             color: Colors.white,
-                                            fontSize: 10,
+                                            fontSize: 11,
                                             fontWeight: FontWeight.w700))
                                   ]))),
                     Positioned(
@@ -1564,7 +1564,7 @@ class _CatalogPageState extends State<CatalogPage> {
                             child: Text(_shortCat(machine['category']),
                                 style: const TextStyle(
                                     color: Colors.white,
-                                    fontSize: 8,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w700,
                                     letterSpacing: 0.4)))),
                     Positioned(
@@ -1613,7 +1613,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                     Text('OWNED',
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 8,
+                                            fontSize: 11,
                                             fontWeight: FontWeight.w700))
                                   ]))),
                   ])),
@@ -1633,7 +1633,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                         color: accent.withAlpha(26))),
                                 child: Text(machine['brand'] ?? 'iFrontiers',
                                     style: TextStyle(
-                                        fontSize: 9,
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         color: accent,
                                         letterSpacing: 0.3))),
@@ -1654,7 +1654,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                    fontSize: 10,
+                                    fontSize: 11,
                                     color: isDark
                                         ? Brand.darkTextSecondary
                                         : Brand.subtleLight,
@@ -1673,7 +1673,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
-                                            fontSize: 10,
+                                            fontSize: 11,
                                             color: isDark
                                                 ? Brand.darkTextSecondary
                                                 : Brand.subtleLight,
@@ -1849,7 +1849,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                           color: accent.withAlpha(26))),
                                   child: Text(machine['brand'] ?? '',
                                       style: TextStyle(
-                                          fontSize: 9,
+                                          fontSize: 11,
                                           fontWeight: FontWeight.w700,
                                           color: accent))),
                               if (sub != null) ...[
@@ -1865,7 +1865,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                         borderRadius: BorderRadius.circular(5)),
                                     child: Text(sub,
                                         style: TextStyle(
-                                            fontSize: 9,
+                                            fontSize: 11,
                                             color: isDark
                                                 ? Brand.darkTextSecondary
                                                 : Brand.subtleLight)))
@@ -2359,7 +2359,7 @@ class _CatalogPageState extends State<CatalogPage> {
       const SizedBox(height: 6),
       Text('No image',
           style: TextStyle(
-              fontSize: 9,
+              fontSize: 11,
               color: isDark
                   ? Brand.darkTextTertiary
                   : Brand.subtleLight.withAlpha(128))),

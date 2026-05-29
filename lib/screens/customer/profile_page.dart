@@ -1380,7 +1380,7 @@ class _ProfilePageState extends State<ProfilePage>
                               Text('$tierLabel Member',
                                   style: TextStyle(
                                       color: tierColor,
-                                      fontSize: 10,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.w700)),
                             ]),
                           );
@@ -1389,7 +1389,7 @@ class _ProfilePageState extends State<ProfilePage>
                           const SizedBox(width: 8),
                           Text(_getMemberDuration(),
                               style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 11,
                                   color: isDark
                                       ? Brand.darkTextTertiary
                                       : Colors.white.withAlpha(89),
@@ -1661,7 +1661,7 @@ class _ProfilePageState extends State<ProfilePage>
                       const SizedBox(height: 2),
                       Text(s.label,
                           style: TextStyle(
-                              fontSize: 9,
+                              fontSize: 11,
                               color: isDark
                                   ? Brand.darkTextSecondary
                                   : Brand.subtleLight,
@@ -1724,7 +1724,7 @@ class _ProfilePageState extends State<ProfilePage>
                 const SizedBox(width: 4),
                 Text(_getMilestoneLabel(),
                     style: TextStyle(
-                        fontSize: 10, fontWeight: FontWeight.w700, color: mc)),
+                        fontSize: 11, fontWeight: FontWeight.w700, color: mc)),
               ])),
         ]),
         const SizedBox(height: 20),
@@ -1831,7 +1831,7 @@ class _ProfilePageState extends State<ProfilePage>
       const SizedBox(height: 4),
       Text(l,
           style: TextStyle(
-              fontSize: 9,
+              fontSize: 11,
               fontWeight: r ? FontWeight.w700 : FontWeight.w500,
               color: r
                   ? c
@@ -2050,7 +2050,7 @@ class _ProfilePageState extends State<ProfilePage>
                         child: Text(
                           'Current',
                           style: TextStyle(
-                            fontSize: 9,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: color,
                           ),
@@ -2503,7 +2503,7 @@ class _ProfilePageState extends State<ProfilePage>
                     children: [
                   Text(label,
                       style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color: isDark
                               ? Brand.darkTextSecondary
@@ -2601,7 +2601,7 @@ class _ProfilePageState extends State<ProfilePage>
                 children: [
                   Text(label,
                       style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color: isDark
                               ? Brand.darkTextSecondary
@@ -2780,7 +2780,7 @@ class _ProfilePageState extends State<ProfilePage>
                         const SizedBox(height: 3),
                         Text(count,
                             style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 11,
                                 color: isDark
                                     ? Brand.darkTextSecondary
                                     : Brand.subtleLight,
@@ -3046,7 +3046,7 @@ class _ProfilePageState extends State<ProfilePage>
                       const SizedBox(height: 4),
                       Text(label,
                           style: TextStyle(
-                              fontSize: 9,
+                              fontSize: 11,
                               color: c,
                               fontWeight: FontWeight.w700),
                           overflow: TextOverflow.ellipsis,
@@ -3082,7 +3082,7 @@ class _ProfilePageState extends State<ProfilePage>
                         : null),
                 child: Text(currentIsDark ? 'Dark' : 'Light',
                     style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         fontWeight: FontWeight.w700,
                         color:
                             isDark ? Brand.darkIconActive : Brand.royalBlue))),
@@ -3174,7 +3174,7 @@ class _ProfilePageState extends State<ProfilePage>
             const SizedBox(height: 4),
             Text(label,
                 style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 11,
                     fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
                     color: isSelected
                         ? (isDark ? Brand.darkIconActive : Brand.royalBlue)
@@ -3247,7 +3247,7 @@ class _ProfilePageState extends State<ProfilePage>
                         : null),
                 child: Text(localeProvider.locale.languageCode.toUpperCase(),
                     style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         fontWeight: FontWeight.w700,
                         color:
                             isDark ? Brand.darkIconActive : Brand.royalBlue))),
@@ -3313,7 +3313,7 @@ class _ProfilePageState extends State<ProfilePage>
                                   child: Text(badge,
                                       style: const TextStyle(
                                           color: Colors.white,
-                                          fontSize: 8,
+                                          fontSize: 11,
                                           fontWeight: FontWeight.w700)))),
                       ])),
                   const SizedBox(width: 14),
@@ -3443,7 +3443,7 @@ class _ProfilePageState extends State<ProfilePage>
           const SizedBox(height: 4),
           Text('© ${DateTime.now().year} iFrontiers (Pvt) Ltd',
               style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 11,
                   color: isDark
                       ? Brand.darkTextTertiary.withAlpha(153)
                       : Brand.subtleLight.withAlpha(102))),

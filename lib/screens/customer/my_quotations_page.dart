@@ -400,7 +400,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
         _qStatusLabel(status).toUpperCase(),
         style: TextStyle(
           color: c,
-          fontSize: 9,
+          fontSize: 11,
           fontWeight: FontWeight.w700,
           letterSpacing: 0.5,
         ),

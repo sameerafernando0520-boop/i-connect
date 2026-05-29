@@ -79,7 +79,7 @@ class InquiryChatButton extends StatelessWidget {
                             unreadCount > 9 ? '9+' : '$unreadCount',
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 10,
+                              fontSize: 11,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

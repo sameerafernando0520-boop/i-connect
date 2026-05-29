@@ -559,7 +559,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                             ? 'All'
                             : o.replaceAll('_', ' ').toUpperCase(),
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color: isSel
                               ? (o == 'all'
@@ -889,7 +889,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                           type.toUpperCase(),
                           style: TextStyle(
                             color: typeColor,
-                            fontSize: 9,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -957,7 +957,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
         child: Text(
           text,
           style: TextStyle(
-            fontSize: 9,
+            fontSize: 11,
             fontWeight: FontWeight.w700,
             color: c,
             letterSpacing: 0.3,

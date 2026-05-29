@@ -107,7 +107,7 @@ class _InternalNotesCardState extends State<InternalNotesCard> {
                       const Text(
                         'Saving...',
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 11,
                           color: AdminColors.accent,
                         ),
                       ),
@@ -126,7 +126,7 @@ class _InternalNotesCardState extends State<InternalNotesCard> {
                     child: const Text(
                       'Unsaved',
                       style: TextStyle(
-                        fontSize: 9,
+                        fontSize: 11,
                         fontWeight: FontWeight.bold,
                         color: AdminColors.warning,
                       ),

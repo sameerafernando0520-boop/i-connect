@@ -707,7 +707,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                             (item['item_type'] as String? ?? 'product')
                                 .toUpperCase(),
                             style: const TextStyle(
-                              fontSize: 9,
+                              fontSize: 11,
                               fontWeight: FontWeight.w700,
                               color: AdminColors.primary,
                             ),

@@ -299,7 +299,7 @@ class _MaReferralPageState extends State<MaReferralPage>
               borderRadius: BorderRadius.circular(6),
             ),
             child: Text(_cap(status),
-                style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: statusColor)),
+                style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: statusColor)),
           ),
           const Spacer(),
           if (commissionAmt != null)
@@ -388,7 +388,7 @@ class _MaReferralPageState extends State<MaReferralPage>
               borderRadius: BorderRadius.circular(6),
             ),
             child: Text(isActive ? 'Active' : 'Inactive',
-                style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700,
+                style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700,
                     color: isActive ? _refColor : AdminColors.textHint(context))),
           ),
         ]),
@@ -429,7 +429,7 @@ class _MaReferralPageState extends State<MaReferralPage>
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(label, style: TextStyle(fontSize: 9, fontWeight: FontWeight.w600,
+        Text(label, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600,
             color: AdminColors.textHint(context))),
         Text(value, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700,
             color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),

@@ -575,7 +575,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
           decoration: InputDecoration(
             hintText: 'Title',
             hintStyle: TextStyle(color: hintColor),
-            counterStyle: TextStyle(fontSize: 10, color: hintColor),
+            counterStyle: TextStyle(fontSize: 11, color: hintColor),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
             isDense: true,
           ),
@@ -589,7 +589,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
           decoration: InputDecoration(
             hintText: 'Write your message…',
             hintStyle: TextStyle(color: hintColor),
-            counterStyle: TextStyle(fontSize: 10, color: hintColor),
+            counterStyle: TextStyle(fontSize: 11, color: hintColor),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
           ),
         ),

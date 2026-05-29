@@ -466,7 +466,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
                                     child: Text(
                                       itemType.toUpperCase(),
                                       style: const TextStyle(
-                                        fontSize: 9,
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         color: AdminColors.primary,
                                       ),

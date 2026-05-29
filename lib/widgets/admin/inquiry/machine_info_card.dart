@@ -178,7 +178,7 @@ class MachineInfoCard extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontSize: 9,
+          fontSize: 11,
           fontWeight: FontWeight.w600,
           color: color,
         ),

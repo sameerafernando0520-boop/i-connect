@@ -23,6 +23,7 @@ import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/common/estimate_chat_card.dart';
+import '../../widgets/common/chat_message_attachments.dart';
 
 class TicketDetailPage extends StatefulWidget {
   final String ticketId;
@@ -1440,7 +1441,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                           Text(
                             typeLabel,
                             style: TextStyle(
-                              fontSize: 9,
+                              fontSize: 11,
                               fontWeight: FontWeight.w700,
                               color: statusColor,
                               letterSpacing: 0.3,
@@ -1470,7 +1471,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                             Text(
                               'ESCALATED',
                               style: TextStyle(
-                                fontSize: 8,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.orange[700],
                                 letterSpacing: 0.3,
@@ -1626,7 +1627,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                       Text(
                         'Online',
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w600,
                           color: isDark
                               ? const Color(0xFF4CAF50)
@@ -1640,7 +1641,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                   Text(
                     'First responded ${TimeUtils.getTimeAgo(DateTime.parse(_ticket!['first_response_at']))}',
                     style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         color: isDark
                             ? Brand.darkTextSecondary
                             : Brand.subtleLight,
@@ -2306,7 +2307,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                       Text(
                         '$actorName · ${TimeUtils.getTimeAgo(DateTime.parse(activity['created_at']))}',
                         style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             color: isDark
                                 ? Brand.darkTextSecondary
                                 : Brand.subtleLight,
@@ -2344,7 +2345,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
           Text(
             label,
             style: TextStyle(
-              fontSize: 9,
+              fontSize: 11,
               fontWeight: FontWeight.w700,
               color: color,
               letterSpacing: 0.3,
@@ -2555,7 +2556,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             Text(
               _formatTime(timestamp),
               style: TextStyle(
-                  fontSize: 9,
+                  fontSize: 11,
                   color: isDark ? Colors.white12 : Colors.black26,
                   fontWeight: FontWeight.w500),
             ),
@@ -2584,21 +2585,41 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Container(
-                        width: 20,
-                        height: 20,
-                        decoration: BoxDecoration(
-                          color: senderColor.withAlpha(((isDark ? 0.15 : 0.1) * 255).toInt()),
-                          borderRadius: BorderRadius.circular(7),
-                        ),
-                        child: Icon(
-                          senderType == 'admin'
-                              ? Icons.support_agent_rounded
-                              : Icons.engineering_rounded,
-                          size: 11,
-                          color: senderColor,
-                        ),
-                      ),
+                      Builder(builder: (_) {
+                        final senderPhoto = (message['sender']
+                                as Map<String, dynamic>?)?['profile_photo']
+                            as String?;
+                        final box = Container(
+                          width: 26,
+                          height: 26,
+                          decoration: BoxDecoration(
+                            color: senderColor.withAlpha(
+                                ((isDark ? 0.15 : 0.1) * 255).toInt()),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            senderType == 'admin'
+                                ? Icons.support_agent_rounded
+                                : Icons.engineering_rounded,
+                            size: 15,
+                            color: senderColor,
+                          ),
+                        );
+                        if (senderPhoto == null || senderPhoto.isEmpty) {
+                          return box;
+                        }
+                        return ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: CachedNetworkImage(
+                            imageUrl: senderPhoto,
+                            width: 26,
+                            height: 26,
+                            fit: BoxFit.cover,
+                            placeholder: (_, __) => box,
+                            errorWidget: (_, __, ___) => box,
+                          ),
+                        );
+                      }),
                       const SizedBox(width: 6),
                       Text(
                         _getSenderLabel(message),
@@ -2652,8 +2673,34 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Attachments
-                    if (attachments != null && attachments.isNotEmpty) ...[
+                    // Voice / document / location
+                    if (msgType == 'voice' ||
+                        msgType == 'document' ||
+                        msgType == 'location')
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 6),
+                        child: buildChatAttachment(
+                              messageType: msgType,
+                              attachments: attachments == null
+                                  ? const []
+                                  : List<String>.from(
+                                      attachments.map((e) => e.toString())),
+                              metadata: message['metadata'] is Map
+                                  ? Map<String, dynamic>.from(
+                                      message['metadata'] as Map)
+                                  : null,
+                              isMe: isMyMessage,
+                              accent:
+                                  isDark ? Brand.royalBlueGlow : Brand.royalBlue,
+                            ) ??
+                            const SizedBox.shrink(),
+                      ),
+                    // Attachments (images / files)
+                    if (msgType != 'voice' &&
+                        msgType != 'document' &&
+                        msgType != 'location' &&
+                        attachments != null &&
+                        attachments.isNotEmpty) ...[
                       ...attachments.map((url) {
                         final urlStr = url.toString();
                         if (_isImageUrl(urlStr)) {
@@ -2799,7 +2846,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                               SizedBox(width: 4),
                               Text('Failed · Tap to retry',
                                   style: TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 11,
                                       color: Colors.red,
                                       fontWeight: FontWeight.w600)),
                               SizedBox(width: 8),
@@ -2827,7 +2874,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                         Text(
                           _formatTime(timestamp),
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             color: isMyMessage
                                 ? Colors.white.withAlpha(115)
                                 : (isDark ? Colors.white24 : Colors.black26),

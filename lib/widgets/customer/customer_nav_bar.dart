@@ -160,7 +160,7 @@ class CustomerNavBar extends StatelessWidget {
                   openTickets > 9 ? '9+' : '$openTickets',
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 9,
+                    fontSize: 11,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -282,7 +282,7 @@ class _AnimatedNavItemState extends State<_AnimatedNavItem>
                 child: AnimatedDefaultTextStyle(
                   duration: const Duration(milliseconds: 220),
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 11,
                     fontWeight:
                         widget.selected ? FontWeight.w700 : FontWeight.w500,
                     color: widget.selected ? activeColor : idleColor,

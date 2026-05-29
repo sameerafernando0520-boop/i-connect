@@ -69,5 +69,11 @@
 		<key>FlutterDeepLinkingEnabled</key>
 		<true/>
 
+		<!-- Phase 2/3: chat voice notes, attach-location, live engineer route tracking -->
+		<key>NSMicrophoneUsageDescription</key>
+		<string>Microphone access is needed to record voice messages in ticket chats.</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>Location is used to share your location in chat and to show your engineer's live route to you.</string>
+
 	</dict>
 </plist>

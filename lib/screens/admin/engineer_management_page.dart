@@ -613,7 +613,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
             Text(
               label,
               style: TextStyle(
-                fontSize: 9,
+                fontSize: 11,
                 fontWeight: FontWeight.w600,
                 color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
               ),
@@ -789,7 +789,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                         avail.toUpperCase(),
                         style: TextStyle(
                           color: aColor,
-                          fontSize: 9,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           letterSpacing: 0.3,
                         ),
@@ -935,7 +935,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
           Text(
             label,
             style: TextStyle(
-              fontSize: 9,
+              fontSize: 11,
               fontWeight: FontWeight.w600,
               color: c,
             ),

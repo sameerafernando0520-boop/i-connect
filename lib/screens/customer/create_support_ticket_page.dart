@@ -1064,7 +1064,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                   Text(
                     'Draft',
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 11,
                       fontWeight: FontWeight.w700,
                       color: Brand.lightGreenBright,
                     ),
@@ -1573,7 +1573,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                                     child: const Text(
                                       'IN SERVICE',
                                       style: TextStyle(
-                                        fontSize: 8,
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         color: Colors.orange,
                                         letterSpacing: 0.3,
@@ -1714,7 +1714,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                             Text(
                               cat['desc'] as String,
                               style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 11,
                                 color: isDark
                                     ? Brand.darkTextSecondary
                                     : Brand.subtleLight,
@@ -1816,7 +1816,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                         Text(
                           priority['desc'] as String,
                           style: TextStyle(
-                            fontSize: 8,
+                            fontSize: 11,
                             color: (isDark
                                     ? Brand.darkTextSecondary
                                     : Brand.subtleLight)
@@ -2053,7 +2053,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                     child: Text(
                       '${_subjectController.text.length}/$_subjectMaxLength',
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         fontWeight: FontWeight.w600,
                         color: _subjectController.text.length >
                                 _subjectMaxLength * 0.9
@@ -2145,7 +2145,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                     child: Text(
                       '${_descriptionController.text.length}/$_descriptionMaxLength',
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         fontWeight: FontWeight.w600,
                         color: _descriptionController.text.length >
                                 _descriptionMaxLength * 0.9
@@ -2407,7 +2407,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
             Text(
               '${5 - _attachments.length} left',
               style: TextStyle(
-                fontSize: 9,
+                fontSize: 11,
                 color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                 fontWeight: FontWeight.w600,
               ),

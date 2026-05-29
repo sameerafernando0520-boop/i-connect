@@ -345,7 +345,7 @@ class _PromotionalCarouselState extends State<PromotionalCarousel> {
                         Text(
                           _getSeasonLabel(seasonTag),
                           style: const TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
                             letterSpacing: 0.3,

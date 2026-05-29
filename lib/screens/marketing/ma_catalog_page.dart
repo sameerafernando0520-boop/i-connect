@@ -350,7 +350,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
                           child: Text(
                             isAvailable ? 'Available' : 'Unavailable',
                             style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w700,
                                 color: isAvailable
                                     ? AdminColors.success
@@ -382,7 +382,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
                         ),
                         child: Text(_cap(category),
                             style: const TextStyle(
-                                fontSize: 10,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w600,
                                 color: _catColor)),
                       ),

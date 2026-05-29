@@ -213,7 +213,7 @@ class _ContactButton extends StatelessWidget {
             Text(
               label,
               style: TextStyle(
-                fontSize: 10,
+                fontSize: 11,
                 color: Colors.white.withAlpha(200),
               ),
             ),

@@ -547,7 +547,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 10.5,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           height: 1.15,
                           color: isDark
@@ -641,14 +641,14 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                     alignment: Alignment.centerLeft,
                     placeholder: (_, __) => Text('TRI Engineering',
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                           letterSpacing: 0.3,
                         )),
                     errorWidget: (_, __, ___) => Text('TRI Engineering',
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                           letterSpacing: 0.3,
@@ -688,7 +688,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                   Text(avail.toUpperCase(),
                       style: TextStyle(
                         color: _availColor(avail),
-                        fontSize: 9,
+                        fontSize: 11,
                         fontWeight: FontWeight.w700,
                         letterSpacing: 0.4,
                       )),
@@ -773,7 +773,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                                 _unreadMessages > 9 ? '9+' : '$_unreadMessages',
                                 style: const TextStyle(
                                     color: Colors.white,
-                                    fontSize: 8,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w700),
                               )),
                             )),
@@ -988,7 +988,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               color: isDark
                   ? Brand.darkTextTertiary
                   : Colors.white.withAlpha(102),
-              fontSize: 10,
+              fontSize: 11,
               fontWeight: FontWeight.w500,
             )),
       ]);
@@ -1200,7 +1200,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                             color: isDark
                                 ? Brand.darkTextSecondary
                                 : Brand.subtleLight,
-                            fontSize: 9,
+                            fontSize: 11,
                             fontWeight: FontWeight.w600,
                             letterSpacing: 0.4,
                           )),
@@ -1461,7 +1461,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
         ),
         child: Text(text,
             style: TextStyle(
-              fontSize: 9,
+              fontSize: 11,
               fontWeight: FontWeight.w700,
               color: c,
               letterSpacing: 0.5,
@@ -1765,7 +1765,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                     child: Text(active > 9 ? '9+' : '$active',
                         style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 9,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700))),
               )),
       ]),
@@ -1810,7 +1810,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
             const SizedBox(height: 3),
             Text(label,
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 11,
                   fontWeight: sel ? FontWeight.w700 : FontWeight.w500,
                   color: sel
                       ? (isDark ? _engAccent : Brand.royalBlue)

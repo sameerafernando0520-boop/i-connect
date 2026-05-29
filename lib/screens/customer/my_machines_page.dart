@@ -785,7 +785,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
           const SizedBox(height: 2),
           Text(label,
               style: TextStyle(
-                  fontSize: 9,
+                  fontSize: 11,
                   color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                   fontWeight: FontWeight.w600)),
         ]),
@@ -870,7 +870,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                     ),
                     child: Text('$count',
                         style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: isSelected ? Colors.white : color)),
                   ),
@@ -1208,7 +1208,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                                     nickname.toString().isNotEmpty)
                                   Text(nickname.toString(),
                                       style: TextStyle(
-                                          fontSize: 10,
+                                          fontSize: 11,
                                           color: isDark
                                               ? Brand.darkIconActive
                                               : Brand.royalBlue,
@@ -1246,7 +1246,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                             const SizedBox(width: 4),
                             Text(status.toUpperCase(),
                                 style: TextStyle(
-                                    fontSize: 9,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w700,
                                     color: statusColor,
                                     letterSpacing: 0.3)),
@@ -1266,7 +1266,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                                 borderRadius: BorderRadius.circular(5)),
                             child: Text(catalog!['brand'].toString(),
                                 style: TextStyle(
-                                    fontSize: 9,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w700,
                                     color: isDark
                                         ? Brand.darkIconActive
@@ -1294,7 +1294,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                         const SizedBox(width: 4),
                         Text(_formatDate(machine['purchase_date']?.toString()),
                             style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 11,
                                 color: isDark
                                     ? Brand.darkTextSecondary
                                     : Brand.subtleLight)),
@@ -1315,7 +1315,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                                   ? '${warrantyDays}d left'
                                   : 'Expired',
                               style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 11,
                                   fontWeight: FontWeight.w600,
                                   color: warrantyValid
                                       ? (isDark
@@ -1382,7 +1382,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                                     ? 'Service overdue!'
                                     : 'Service due soon',
                                 style: TextStyle(
-                                    fontSize: 9,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w700,
                                     color: isOverdue
                                         ? (isDark
@@ -1502,7 +1502,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                     const SizedBox(width: 4),
                     Text(status.toUpperCase(),
                         style: const TextStyle(
-                            fontSize: 8,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
                             letterSpacing: 0.3)),
@@ -1529,7 +1529,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                       const SizedBox(width: 3),
                       Text(warrantyValid ? 'WARRANTY' : 'EXPIRED',
                           style: const TextStyle(
-                              fontSize: 7,
+                              fontSize: 11,
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
                               letterSpacing: 0.3)),
@@ -1577,7 +1577,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                             borderRadius: BorderRadius.circular(5)),
                         child: Text(catalog!['brand'].toString(),
                             style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w700,
                                 color: isDark
                                     ? Brand.darkIconActive
@@ -1599,7 +1599,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                       Expanded(
                         child: Text('S/N: ${machine['serial_number'] ?? 'N/A'}',
                             style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 11,
                                 color: isDark
                                     ? Brand.darkTextSecondary
                                     : Brand.subtleLight),

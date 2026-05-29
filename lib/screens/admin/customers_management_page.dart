@@ -1003,7 +1003,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                                 '!',
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 8,
+                                  fontSize: 11,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -1268,7 +1268,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
       child: Text(
         label,
         style: TextStyle(
-          fontSize: 9,
+          fontSize: 11,
           fontWeight: FontWeight.w700,
           color: color,
           letterSpacing: 0.5,

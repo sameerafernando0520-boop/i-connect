@@ -380,7 +380,7 @@ class _MaPointsPageState extends State<MaPointsPage> {
                     ),
                     child: Text(_typeLabel(actType),
                         style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w600,
                             color: AdminColors.textSub(context))),
                   ),
@@ -396,7 +396,7 @@ class _MaPointsPageState extends State<MaPointsPage> {
                       child: Text(
                         '${multiplier}x tier bonus',
                         style: const TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w600,
                             color: AdminColors.warning),
                       ),
@@ -418,7 +418,7 @@ class _MaPointsPageState extends State<MaPointsPage> {
                     TimeUtils.formatDateTime(
                         DateTime.tryParse(createdAt) ?? DateTime.now()),
                     style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         color: AdminColors.textHint(context)),
                   ),
                 ],

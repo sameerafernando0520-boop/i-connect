@@ -439,7 +439,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
                     'LEAD',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 9.5,
+                      fontSize: 11,
                       fontWeight: FontWeight.w800,
                     ),
                   ),
@@ -526,7 +526,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
                         Icon(Icons.phone, size: 12, color: Color(0xFF22C55E)),
                         SizedBox(width: 3),
                         Text('Call', style: TextStyle(
-                          fontSize: 10, fontWeight: FontWeight.w700,
+                          fontSize: 11, fontWeight: FontWeight.w700,
                           color: Color(0xFF22C55E),
                         )),
                       ],

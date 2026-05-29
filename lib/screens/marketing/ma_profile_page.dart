@@ -574,7 +574,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                                         color: isDark
                                             ? Brand.royalBlueGlow
                                             : Colors.white,
-                                        fontSize: 10,
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
@@ -632,7 +632,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                     Text(
                       'Since ${_getMemberSince()}',
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         color: isDark
                             ? Brand.darkTextTertiary
                             : Colors.white.withAlpha(89),
@@ -741,7 +741,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                   Text(
                     s.label,
                     style: TextStyle(
-                      fontSize: 9,
+                      fontSize: 11,
                       color:
                           isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                       fontWeight: FontWeight.w600,

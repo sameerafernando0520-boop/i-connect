@@ -1097,7 +1097,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                     Text(
                       'Connector',
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         fontWeight: FontWeight.w700,
                         letterSpacing: 0.4,
                         color: isDark
@@ -1183,7 +1183,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
               Text(
                 label,
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 11,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 0.4,
                   color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
@@ -1812,7 +1812,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                                   Text(
                                     'WARRANTY',
                                     style: TextStyle(
-                                      fontSize: 8,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.bold,
                                       color: AdminColors.error,
                                     ),
@@ -1846,7 +1846,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                     child: Text(
                       catalog!['brand'].toString(),
                       style: TextStyle(
-                        fontSize: 9,
+                        fontSize: 11,
                         fontWeight: FontWeight.w600,
                         color:
                             isDark ? Brand.darkIconActive : AdminColors.primary,
@@ -2297,7 +2297,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                                     child: Text(
                                       brand,
                                       style: TextStyle(
-                                        fontSize: 9,
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w600,
                                         color: isDark
                                             ? Brand.darkIconActive
@@ -2464,7 +2464,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       child: Text(
         label,
         style: TextStyle(
-          fontSize: 9,
+          fontSize: 11,
           fontWeight: FontWeight.bold,
           color: color,
           letterSpacing: 0.5,
@@ -2939,7 +2939,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
         ),
         const SizedBox(height: 2),
         Text(label,
-            style: TextStyle(fontSize: 9, color: _textSub(isDark))),
+            style: TextStyle(fontSize: 11, color: _textSub(isDark))),
       ],
     );
   }
@@ -2954,7 +2954,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       child: Text(
         label,
         style: TextStyle(
-            fontSize: 10,
+            fontSize: 11,
             fontWeight: FontWeight.w600,
             color: color),
       ),

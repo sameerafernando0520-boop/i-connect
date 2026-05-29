@@ -876,7 +876,7 @@ class _InstallationCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(6)),
         child: Text(label,
             style: TextStyle(
-                fontSize: 10,
+                fontSize: 11,
                 fontWeight: FontWeight.w700,
                 color: color)),
       );

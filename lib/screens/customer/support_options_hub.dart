@@ -871,7 +871,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                   child: Text(
                     status.replaceAll('_', ' ').toUpperCase(),
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 11,
                       fontWeight: FontWeight.w700,
                       color: statusColor,
                       letterSpacing: 0.5,

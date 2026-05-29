@@ -474,7 +474,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
                   Text(label,
                       style: TextStyle(
                           color: AdminColors.textSub(context),
-                          fontSize: 10.5,
+                          fontSize: 11,
                           fontWeight: FontWeight.w600)),
                   Text(value,
                       style: TextStyle(
@@ -569,7 +569,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
                           child: const Text('LEAD',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 9.5,
+                                  fontSize: 11,
                                   fontWeight: FontWeight.w800)),
                         ),
                     ],
@@ -637,7 +637,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
         child: Text(
           label,
           style: TextStyle(
-              color: color, fontSize: 10.5, fontWeight: FontWeight.w700),
+              color: color, fontSize: 11, fontWeight: FontWeight.w700),
         ),
       );
 

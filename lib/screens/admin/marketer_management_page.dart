@@ -1007,7 +1007,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
             children: [
               Icon(icon, size: 16, color: color),
               const SizedBox(height: 2),
-              Text(label, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: color)),
+              Text(label, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: color)),
             ],
           ),
         ),

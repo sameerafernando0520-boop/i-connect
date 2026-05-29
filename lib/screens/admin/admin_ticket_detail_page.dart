@@ -292,6 +292,27 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
   }
 
   // ─── MESSAGING ───────────────────────────────────────────
+  Future<void> _sendAttachment({
+    required String messageType,
+    required List<String> attachments,
+    Map<String, dynamic>? metadata,
+  }) async {
+    if (_currentUserId == null) return;
+    try {
+      await _repository.sendMessage(
+        ticketId: widget.ticketId,
+        senderId: _currentUserId!,
+        senderType: 'admin',
+        message: '',
+        messageType: messageType,
+        attachments: attachments,
+        metadata: metadata,
+      );
+    } catch (e) {
+      if (mounted) _showSnackBar('Failed to send attachment: $e');
+    }
+  }
+
   Future<void> _sendMessage() async {
     final text = _messageController.text.trim();
     if (text.isEmpty || _currentUserId == null) return;
@@ -667,7 +688,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                                                 child: Text(
                                                   s.toString(),
                                                   style: const TextStyle(
-                                                    fontSize: 9,
+                                                    fontSize: 11,
                                                     color: AdminColors.primary,
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -828,9 +849,9 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                 controller: _messageController,
                 isSending: _isSendingMessage,
                 isInternal: _isInternalMode,
+                ticketId: widget.ticketId,
+                onSendAttachment: _sendAttachment,
                 onSend: _sendMessage,
-                onAttachment: () =>
-                    _showSnackBar('Attachment feature coming soon'),
                 onToggleInternal: () =>
                     setState(() => _isInternalMode = !_isInternalMode),
               ),
@@ -1083,7 +1104,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                           Text(
                             'Online',
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 11,
                               fontWeight: FontWeight.w600,
                               color: _isDark
                                   ? const Color(0xFF4CAF50)
@@ -1480,7 +1501,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                 child: Text(
                   machine.brand!,
                   style: const TextStyle(
-                    fontSize: 9,
+                    fontSize: 11,
                     fontWeight: FontWeight.w600,
                     color: AdminColors.primary,
                   ),
@@ -1576,7 +1597,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
               child: Text(
                 avail.toUpperCase(),
                 style: TextStyle(
-                  fontSize: 9,
+                  fontSize: 11,
                   fontWeight: FontWeight.bold,
                   color: availColor,
                 ),

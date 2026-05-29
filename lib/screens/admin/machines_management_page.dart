@@ -865,7 +865,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
             ),
             Text(
               label,
-              style: TextStyle(fontSize: 9, color: _textMuted),
+              style: TextStyle(fontSize: 11, color: _textMuted),
             ),
           ],
         ),
@@ -1490,7 +1490,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
                                   Text(
                                     isActive ? 'Active' : 'Inactive',
                                     style: TextStyle(
-                                      fontSize: 9,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.bold,
                                       color: isActive
                                           ? _accentColor
@@ -1579,7 +1579,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
                                   child: Text(
                                     'Revenue: ${_formatCurrency((totalRevenue).toDouble())}',
                                     style: TextStyle(
-                                      fontSize: 9,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.w600,
                                       color: _accentColor,
                                     ),
@@ -1590,7 +1590,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
                                 Text(
                                   'Last inquiry: ${TimeUtils.getTimeAgo(DateTime.parse(lastInquiry.toString()))}',
                                   style:
-                                      TextStyle(fontSize: 9, color: _textMuted),
+                                      TextStyle(fontSize: 11, color: _textMuted),
                                 ),
                             ],
                           ),
@@ -2478,7 +2478,7 @@ class _MachineDetailSheetState extends State<_MachineDetailSheet> {
                               child: Text(
                                 (i['sales_stage'] as String).toUpperCase(),
                                 style: const TextStyle(
-                                  fontSize: 9,
+                                  fontSize: 11,
                                   fontWeight: FontWeight.bold,
                                   color: AdminColors.info,
                                 ),
@@ -3251,7 +3251,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
             child: const Text('URL',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 8,
+                    fontSize: 11,
                     fontWeight: FontWeight.w700)),
           ),
         ),
@@ -3297,7 +3297,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
             child: const Text('NEW',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 8,
+                    fontSize: 11,
                     fontWeight: FontWeight.w700)),
           ),
         ),

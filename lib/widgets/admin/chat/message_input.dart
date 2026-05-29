@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../config/admin_theme.dart';
 import '../../../config/brand_colors.dart';
+import '../../common/chat_attach_bar.dart';
 
 class MessageInput extends StatelessWidget {
   final TextEditingController controller;
@@ -11,6 +12,13 @@ class MessageInput extends StatelessWidget {
   final VoidCallback onToggleInternal;
   final VoidCallback? onAttachment;
 
+  /// When [ticketId] + [onSendAttachment] are provided, the input shows a rich
+  /// "+" attachment menu (image/document/location) and a hold-to-record voice
+  /// button instead of the legacy single paperclip.
+  final String? ticketId;
+  final ChatSendAttachment? onSendAttachment;
+  final Color? accent;
+
   const MessageInput({
     super.key,
     required this.controller,
@@ -20,6 +28,9 @@ class MessageInput extends StatelessWidget {
     required this.onSend,
     required this.onToggleInternal,
     this.onAttachment,
+    this.ticketId,
+    this.onSendAttachment,
+    this.accent,
   });
 
   @override
@@ -103,15 +114,22 @@ class MessageInput extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              // Attachment button
-              _buildActionButton(
-                context,
-                icon: Icons.attach_file_rounded,
-                color: isUploading
-                    ? AdminColors.info
-                    : AdminColors.textHint(context),
-                onTap: isUploading ? null : onAttachment,
-              ),
+              // Attachment button — rich menu when wired, else legacy paperclip
+              if (ticketId != null && onSendAttachment != null)
+                ChatAttachMenuButton(
+                  ticketId: ticketId!,
+                  accent: accent ?? AdminColors.primary,
+                  onSend: onSendAttachment!,
+                )
+              else
+                _buildActionButton(
+                  context,
+                  icon: Icons.attach_file_rounded,
+                  color: isUploading
+                      ? AdminColors.info
+                      : AdminColors.textHint(context),
+                  onTap: isUploading ? null : onAttachment,
+                ),
               const SizedBox(width: 4),
 
               // Internal toggle
@@ -169,7 +187,15 @@ class MessageInput extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 4),
+
+              // Voice recorder (hold to record) — when wired
+              if (ticketId != null && onSendAttachment != null)
+                ChatVoiceRecorderButton(
+                  ticketId: ticketId!,
+                  accent: accent ?? AdminColors.primary,
+                  onSend: onSendAttachment!,
+                ),
 
               // Send button
               GestureDetector(

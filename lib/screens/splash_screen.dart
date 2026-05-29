@@ -225,7 +225,7 @@ class _SplashScreenState extends State<SplashScreen>
                               'STAY CONNECTED. STAY AHEAD.',
                               style: TextStyle(
                                 color: _muted,
-                                fontSize: 10,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w500,
                                 letterSpacing: 3.5,
                               ),
@@ -244,7 +244,7 @@ class _SplashScreenState extends State<SplashScreen>
                               child: Column(children: [
                                 const Text(
                                   'Powered by',
-                                  style: TextStyle(color: _faint, fontSize: 10),
+                                  style: TextStyle(color: _faint, fontSize: 11),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(

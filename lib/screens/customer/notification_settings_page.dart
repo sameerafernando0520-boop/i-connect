@@ -775,7 +775,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
         child: Text(
           '$enabledCount/6',
           style: TextStyle(
-            fontSize: 10,
+            fontSize: 11,
             fontWeight: FontWeight.bold,
             color: accent,
           ),

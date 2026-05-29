@@ -228,7 +228,7 @@ class _MaBroadcastPageState extends State<MaBroadcastPage> {
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text('To: $audience',
-                      style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600,
+                      style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600,
                           color: _bcColor)),
                 ),
                 const Spacer(),

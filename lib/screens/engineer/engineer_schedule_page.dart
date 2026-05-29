@@ -1569,7 +1569,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                                       children: [
                                         const Text('Customer Notes',
                                             style: TextStyle(
-                                              fontSize: 10,
+                                              fontSize: 11,
                                               fontWeight: FontWeight.w600,
                                               color: Color(0xFFF59E0B),
                                             )),
@@ -1615,7 +1615,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                                       children: [
                                         Text('Admin Notes',
                                             style: TextStyle(
-                                              fontSize: 10,
+                                              fontSize: 11,
                                               fontWeight: FontWeight.w600,
                                               color: isDark
                                                   ? Brand.royalBlueGlow
@@ -2024,7 +2024,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                             ),
                             child: Text(daysLabel,
                                 style: TextStyle(
-                                    fontSize: 10,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w600,
                                     color: _engAccent)),
                           ),
@@ -2193,7 +2193,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
       child: Text(
         label,
         style:
-            TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: color),
+            TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: color),
       ),
     );
   }

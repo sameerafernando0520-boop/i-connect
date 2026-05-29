@@ -92,6 +92,8 @@ class TicketDetailRepository {
     required String message,
     bool isInternal = false,
     List<String> attachments = const [],
+    String messageType = 'text',
+    Map<String, dynamic>? metadata,
   }) async {
     await SupabaseConfig.client.from('chat_messages').insert({
       'ticket_id': ticketId,
@@ -99,7 +101,9 @@ class TicketDetailRepository {
       'sender_type': senderType,
       'message': message,
       'is_internal': isInternal,
+      'message_type': messageType,
       if (attachments.isNotEmpty) 'attachments': attachments,
+      if (metadata != null) 'metadata': metadata,
     });
 
     // Set first_response_at once — non-critical, never fail the message send.

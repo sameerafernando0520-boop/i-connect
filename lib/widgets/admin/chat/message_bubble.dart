@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../config/admin_theme.dart';
 import '../../../models/chat_message.dart';
 import '../../../utils/time_utils.dart';
+import '../../common/chat_message_attachments.dart';
 
 class MessageBubble extends StatelessWidget {
   final ChatMessage message;
@@ -183,7 +184,7 @@ class MessageBubble extends StatelessWidget {
                               Text(
                                 'Internal Note',
                                 style: TextStyle(
-                                  fontSize: 9,
+                                  fontSize: 11,
                                   fontWeight: FontWeight.bold,
                                   color: AdminColors.internal,
                                   letterSpacing: 0.5,
@@ -206,23 +207,25 @@ class MessageBubble extends StatelessWidget {
                         ),
 
                       // Attachments
-                      if (message.attachments.isNotEmpty) ...[
+                      if (message.messageType == 'voice' ||
+                          message.messageType == 'document' ||
+                          message.messageType == 'location')
+                        buildChatAttachment(
+                              messageType: message.messageType,
+                              attachments: message.attachments,
+                              metadata: message.metadata,
+                              isMe: isSelf,
+                              accent: AdminColors.primary,
+                            ) ??
+                            const SizedBox.shrink()
+                      else if (message.attachments.isNotEmpty) ...[
                         if (message.message.isNotEmpty &&
                             message.message != '📎 Image attached')
                           const SizedBox(height: 8),
                         ...message.attachments.map(
                           (url) => _buildAttachmentImage(context, url),
                         ),
-                      ] else if (message.message.isEmpty ||
-                          message.message == '📎 Image attached')
-                        Text(
-                          message.message.isEmpty ? '' : '📎 Image attached',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: textColor,
-                            height: 1.4,
-                          ),
-                        ),
+                      ],
 
                       const SizedBox(height: 4),
 
@@ -233,7 +236,7 @@ class MessageBubble extends StatelessWidget {
                           Text(
                             TimeUtils.formatMessageTime(message.createdAt),
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 11,
                               color: isSelf
                                   ? Colors.white.withAlpha(180)
                                   : AdminColors.textHint(context),
@@ -263,7 +266,7 @@ class MessageBubble extends StatelessWidget {
                       Text(
                         'Tap to retry',
                         style:
-                            TextStyle(fontSize: 10, color: AdminColors.error),
+                            TextStyle(fontSize: 11, color: AdminColors.error),
                       ),
                     ],
                   ),
@@ -380,20 +383,36 @@ class MessageBubble extends StatelessWidget {
   Widget _buildAvatar(BuildContext context) {
     final color = _senderColor();
     final initials = _getInitials(message.senderName);
+    final photo = message.senderPhoto;
+    const double size = 26;
 
-    return Container(
-      width: 22,
-      height: 22,
-      decoration: BoxDecoration(
-        color: color.withAlpha(30),
-        borderRadius: BorderRadius.circular(7),
-      ),
-      child: Center(
-        child: Text(
-          initials,
-          style:
-              TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: color),
-        ),
+    Widget fallback() => Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            color: color.withAlpha(30),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Center(
+            child: Text(
+              initials,
+              style: TextStyle(
+                  fontSize: 11, fontWeight: FontWeight.bold, color: color),
+            ),
+          ),
+        );
+
+    if (photo == null || photo.isEmpty) return fallback();
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: CachedNetworkImage(
+        imageUrl: photo,
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+        placeholder: (_, __) => fallback(),
+        errorWidget: (_, __, ___) => fallback(),
       ),
     );
   }

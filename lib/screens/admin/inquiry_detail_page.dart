@@ -749,7 +749,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
                                 : '$_unreadMessages',
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 9,
+                              fontSize: 11,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

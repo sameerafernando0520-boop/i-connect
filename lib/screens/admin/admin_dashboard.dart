@@ -707,7 +707,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                     badgeCount > 9 ? '9+' : '$badgeCount',
                     style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 9,
+                        fontSize: 11,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -1113,14 +1113,14 @@ class _AdminDashboardState extends State<AdminDashboard>
     final cards = [
       _OverviewKpi(
         iconWidget: (c) =>
-            Icon(Icons.precision_manufacturing_rounded, color: c, size: 20),
+            Icon(Icons.precision_manufacturing_rounded, color: c, size: 24),
         color: isDark ? Brand.lightGreenBright : AdminColors.accent,
         label: 'Machines',
         value: '${_stats.totalMachines}',
         onTap: () => _navigateTo(const MachinesManagementPage()),
       ),
       _OverviewKpi(
-        iconWidget: (c) => Icon(Icons.people_rounded, color: c, size: 20),
+        iconWidget: (c) => Icon(Icons.people_rounded, color: c, size: 24),
         color: isDark ? Brand.royalBlueGlow : AdminColors.primary,
         label: 'Customers',
         value: '${_stats.totalCustomers}',
@@ -1130,14 +1130,14 @@ class _AdminDashboardState extends State<AdminDashboard>
         onTap: () => _navigateTo(const CustomersManagementPage()),
       ),
       _OverviewKpi(
-        iconWidget: (c) => IcChatGearIcon(color: c, size: 20),
+        iconWidget: (c) => IcChatGearIcon(color: c, size: 24),
         color: AdminColors.warning,
         label: 'Open Tickets',
         value: '${_stats.openTickets}',
         onTap: () => _navigateTo(const TicketsManagementPage()),
       ),
       _OverviewKpi(
-        iconWidget: (c) => Icon(Icons.mail_rounded, color: c, size: 20),
+        iconWidget: (c) => Icon(Icons.mail_rounded, color: c, size: 24),
         color: AdminColors.info,
         label: 'Inquiries',
         value: '${_stats.totalInquiries}',
@@ -1148,7 +1148,7 @@ class _AdminDashboardState extends State<AdminDashboard>
       ),
       if (_pendingReferralCount > 0)
         _OverviewKpi(
-          iconWidget: (c) => Icon(Icons.people_alt_rounded, color: c, size: 20),
+          iconWidget: (c) => Icon(Icons.people_alt_rounded, color: c, size: 24),
           color: const Color(0xFF06B6D4),
           label: 'Pending Referrals',
           value: '$_pendingReferralCount',
@@ -1157,7 +1157,7 @@ class _AdminDashboardState extends State<AdminDashboard>
         ),
       if (_overdueInstallments > 0)
         _OverviewKpi(
-          iconWidget: (c) => Icon(Icons.payments_rounded, color: c, size: 20),
+          iconWidget: (c) => Icon(Icons.payments_rounded, color: c, size: 24),
           color: AdminColors.error,
           label: 'Overdue Payments',
           value: '$_overdueInstallments',
@@ -1249,7 +1249,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                   Text(
                     k.label,
                     style: TextStyle(
-                      fontSize: 10.5,
+                      fontSize: 12,
                       fontWeight: FontWeight.w600,
                       color:
                           isDark ? Brand.darkTextSecondary : Brand.subtleLight,
@@ -1261,7 +1261,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                     Text(
                       k.badge!,
                       style: TextStyle(
-                        fontSize: 9,
+                        fontSize: 11,
                         fontWeight: FontWeight.w700,
                         color: k.color,
                       ),
@@ -1362,7 +1362,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                           ),
                         ],
                 ),
-                child: Icon(action.icon, color: action.color, size: 24),
+                child: Icon(action.icon, color: action.color, size: 28),
               ),
             ],
           ),
@@ -1550,7 +1550,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                           Text(
                             k.label,
                             style: TextStyle(
-                              fontSize: 10.5,
+                              fontSize: 11,
                               fontWeight: FontWeight.w600,
                               color: isDark
                                   ? Brand.darkTextSecondary
@@ -1972,7 +1972,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                           badgeCount > 9 ? '9+' : '$badgeCount',
                           style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 8,
+                              fontSize: 11,
                               fontWeight: FontWeight.bold),
                         ),
                       ),

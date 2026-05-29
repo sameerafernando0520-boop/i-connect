@@ -2498,7 +2498,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
             Text(
               label,
               style: TextStyle(
-                fontSize: 9,
+                fontSize: 11,
                 fontWeight: FontWeight.w600,
                 color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
               ),
@@ -2613,7 +2613,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                       child: Text(
                         status.toUpperCase(),
                         style: TextStyle(
-                          fontSize: 9,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color: statusColor,
                           letterSpacing: 0.5,

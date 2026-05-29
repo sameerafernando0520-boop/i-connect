@@ -389,7 +389,7 @@ class _MaKnowledgeBasePageState extends State<MaKnowledgeBasePage> {
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Text(isPublished ? 'Published' : 'Draft',
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700,
+                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700,
                         color: isPublished ? AdminColors.success : AdminColors.warning)),
               ),
             ],
@@ -445,7 +445,7 @@ class _MaKnowledgeBasePageState extends State<MaKnowledgeBasePage> {
           child: Column(children: [
             Icon(icon, size: 15, color: color),
             const SizedBox(height: 2),
-            Text(label, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: color)),
+            Text(label, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: color)),
           ]),
         ),
       ),

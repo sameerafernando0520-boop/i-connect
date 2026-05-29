@@ -11,6 +11,12 @@
     <!-- Required on Android 13+ so FCM can show notifications. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <!-- Voice messages (record pkg) -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Location: attach-location in chat + live engineer route tracking (geolocator) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <!-- URL Launcher queries -->
     <queries>
         <intent>

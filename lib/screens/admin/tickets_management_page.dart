@@ -1324,7 +1324,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
               textAlign: TextAlign.center),
           const SizedBox(height: 2),
           Text(label,
-              style: TextStyle(fontSize: 9, color: _textMuted),
+              style: TextStyle(fontSize: 11, color: _textMuted),
               textAlign: TextAlign.center),
         ],
       ),
@@ -1896,7 +1896,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                                   SizedBox(width: 3),
                                   Text('ESC',
                                       style: TextStyle(
-                                          fontSize: 9,
+                                          fontSize: 11,
                                           fontWeight: FontWeight.w700,
                                           color: AdminColors.error,
                                           letterSpacing: 0.5)),
@@ -1915,7 +1915,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                                   borderRadius: BorderRadius.circular(10)),
                               child: Text('${daysOpen}d',
                                   style: TextStyle(
-                                      fontSize: 9,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.w700,
                                       letterSpacing: 0.5,
                                       color: Colors.orange.shade700)),
@@ -2110,7 +2110,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
           const SizedBox(width: 3),
           Text(status.toUpperCase().replaceAll('_', ' '),
               style: TextStyle(
-                  fontSize: 9,
+                  fontSize: 11,
                   fontWeight: FontWeight.w700,
                   color: color,
                   letterSpacing: 0.5)),
@@ -2132,7 +2132,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
           const SizedBox(width: 3),
           Text(priority.toUpperCase(),
               style: TextStyle(
-                  fontSize: 9,
+                  fontSize: 11,
                   fontWeight: FontWeight.w700,
                   color: color,
                   letterSpacing: 0.5)),
@@ -2446,7 +2446,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                                   borderRadius: BorderRadius.circular(4)),
                               child: Text('Busy',
                                   style: TextStyle(
-                                      fontSize: 9,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.orange.shade700)),
                             ),

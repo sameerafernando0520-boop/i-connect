@@ -651,7 +651,7 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(label,
-                    style: TextStyle(color: textSecondary, fontSize: 10)),
+                    style: TextStyle(color: textSecondary, fontSize: 11)),
                 Text(
                   time != null
                       ? '${time.hour % 12 == 0 ? 12 : time.hour % 12}:${time.minute.toString().padLeft(2, '0')} ${time.hour >= 12 ? 'PM' : 'AM'}'

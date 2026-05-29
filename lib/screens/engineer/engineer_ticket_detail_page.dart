@@ -15,6 +15,8 @@ import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
 import '../../utils/time_utils.dart';
 import '../../utils/string_utils.dart';
+import '../../widgets/common/chat_attach_bar.dart';
+import '../../widgets/common/chat_message_attachments.dart';
 
 // ── Engineer accent (per handoff §26) ──
 const Color _engAccent = Color(0xFF00B4D8);
@@ -352,6 +354,32 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
   // ═══════════════════════════════════════════════════════════
   //  ACTIONS
   // ═══════════════════════════════════════════════════════════
+
+  Future<void> _sendAttachment({
+    required String messageType,
+    required List<String> attachments,
+    Map<String, dynamic>? metadata,
+  }) async {
+    final uid = _currentUserId;
+    if (uid == null) return;
+    try {
+      await SupabaseConfig.client.from('chat_messages').insert({
+        'ticket_id': widget.ticketId,
+        'sender_id': uid,
+        'sender_type': 'engineer',
+        'message': '',
+        'message_type': messageType,
+        'attachments': attachments,
+        'metadata': metadata ?? {},
+        'is_read': false,
+        'is_internal': false,
+      });
+    } catch (e) {
+      if (mounted) {
+        _showSnackBar('Failed to send attachment: $e', isError: true);
+      }
+    }
+  }
 
   Future<void> _sendMessage() async {
     final text = _msgCtrl.text.trim();
@@ -1184,7 +1212,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                                 Text(
                                   'Description',
                                   style: TextStyle(
-                                    fontSize: 10,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.w700,
                                     color: isDark
                                         ? Brand.darkTextTertiary
@@ -1341,7 +1369,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
               Text(
                 'ORDER DETAILS',
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 11,
                   fontWeight: FontWeight.w700,
                   color: isDark ? Brand.lightGreenBright : Brand.lightGreenDark,
                   letterSpacing: 0.5,
@@ -1478,7 +1506,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                   Text(
                     '$internalCount internal',
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 11,
                       fontWeight: FontWeight.w700,
                       color: Colors.orange[700],
                     ),
@@ -1839,7 +1867,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                             child: Text(
                               'ADMIN',
                               style: TextStyle(
-                                fontSize: 8,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w700,
                                 color: isDark
                                     ? Brand.royalBlueGlow
@@ -1864,7 +1892,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                         Text(
                           'Internal Note',
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: Colors.orange[700],
                           ),
@@ -1931,7 +1959,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                               Text(
                                 'INTERNAL NOTE',
                                 style: TextStyle(
-                                  fontSize: 9,
+                                  fontSize: 11,
                                   fontWeight: FontWeight.w700,
                                   color: Colors.orange[700],
                                   letterSpacing: 0.3,
@@ -1940,22 +1968,62 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                             ],
                           ),
                         ),
-                      Text(
-                        text,
-                        style: TextStyle(
-                          color: (isMe && !isInternal)
-                              ? Colors.white
-                              : isInternal
-                                  ? (isDark
-                                      ? Brand.darkTextPrimary
-                                      : Colors.black87)
-                                  : (isDark
-                                      ? Brand.darkTextPrimary
-                                      : Brand.royalBlueDark),
-                          fontSize: 14,
-                          height: 1.4,
+                      // Attachments: image / voice / document / location
+                      Builder(builder: (_) {
+                        final msgType =
+                            msg['message_type'] as String? ?? 'text';
+                        final atts = msg['attachments'] is List
+                            ? List<String>.from(
+                                (msg['attachments'] as List)
+                                    .map((e) => e.toString()))
+                            : const <String>[];
+                        final meta = msg['metadata'] is Map
+                            ? Map<String, dynamic>.from(
+                                msg['metadata'] as Map)
+                            : null;
+                        final pad = EdgeInsets.only(
+                            bottom: text.isNotEmpty ? 8 : 0);
+                        if (msgType == 'image' && atts.isNotEmpty) {
+                          return Padding(
+                            padding: pad,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: CachedNetworkImage(
+                                imageUrl: atts.first,
+                                width: 200,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          );
+                        }
+                        final w = buildChatAttachment(
+                          messageType: msgType,
+                          attachments: atts,
+                          metadata: meta,
+                          isMe: isMe && !isInternal,
+                          accent: _engAccent,
+                        );
+                        return w == null
+                            ? const SizedBox.shrink()
+                            : Padding(padding: pad, child: w);
+                      }),
+                      if (text.isNotEmpty)
+                        Text(
+                          text,
+                          style: TextStyle(
+                            color: (isMe && !isInternal)
+                                ? Colors.white
+                                : isInternal
+                                    ? (isDark
+                                        ? Brand.darkTextPrimary
+                                        : Colors.black87)
+                                    : (isDark
+                                        ? Brand.darkTextPrimary
+                                        : Brand.royalBlueDark),
+                            fontSize: 14,
+                            height: 1.4,
+                          ),
                         ),
-                      ),
                     ],
                   ),
                 ),
@@ -1966,7 +2034,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                     Text(
                       time,
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         color: isDark ? Brand.darkTextTertiary : Colors.black38,
                       ),
                     ),
@@ -2106,7 +2174,21 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                   ),
                 ),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 2),
+              ChatAttachMenuButton(
+                ticketId: widget.ticketId,
+                accent: _engAccent,
+                onSend: ({
+                  required String messageType,
+                  required List<String> attachments,
+                  Map<String, dynamic>? metadata,
+                }) =>
+                    _sendAttachment(
+                  messageType: messageType,
+                  attachments: attachments,
+                  metadata: metadata,
+                ),
+              ),
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
@@ -2160,7 +2242,22 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                   ),
                 ),
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 4),
+              ChatVoiceRecorderButton(
+                ticketId: widget.ticketId,
+                accent: _engAccent,
+                onSend: ({
+                  required String messageType,
+                  required List<String> attachments,
+                  Map<String, dynamic>? metadata,
+                }) =>
+                    _sendAttachment(
+                  messageType: messageType,
+                  attachments: attachments,
+                  metadata: metadata,
+                ),
+              ),
+              const SizedBox(width: 4),
               Material(
                 color: Colors.transparent,
                 child: InkWell(
@@ -2309,7 +2406,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                           Text(
                             'Customer rating',
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 11,
                               color: isDark
                                   ? Brand.darkTextTertiary
                                   : Brand.subtleLight,
@@ -2382,7 +2479,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
         child: Text(
           text,
           style: TextStyle(
-            fontSize: 9,
+            fontSize: 11,
             fontWeight: FontWeight.w700,
             color: c,
             letterSpacing: 0.3,

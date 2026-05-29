@@ -1,4 +1,4 @@
-﻿// lib/screens/engineering_admin/ea_engineer_list_page.dart
+// lib/screens/engineering_admin/ea_engineer_list_page.dart
 // Engineering Admin Portal â€” Screen 5: Engineer List
 // v20 â€” Phase 1
 
@@ -459,7 +459,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
                         child: Text(
                           '$activeJobs',
                           style: const TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w800,
                             color: Colors.white,
                           ),
@@ -570,7 +570,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
                         Text(
                           'Â· in ${TimeUtils.formatTime(DateTime.tryParse(checkInTime) ?? DateTime.now())}',
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             color: AdminColors.textHint(context),
                           ),
                         ),
@@ -624,7 +624,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
       child: Text(
         label,
         style: TextStyle(
-          fontSize: 10,
+          fontSize: 11,
           fontWeight: FontWeight.w600,
           color: textColor,
         ),

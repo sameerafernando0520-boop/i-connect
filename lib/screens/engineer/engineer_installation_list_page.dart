@@ -551,7 +551,7 @@ class _EngInstallCard extends StatelessWidget {
                                 const SizedBox(width: 5),
                                 Text(myStatusLabel,
                                     style: TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.w600,
                                       color: myStatusColor,
                                     )),
@@ -616,7 +616,7 @@ class _EngInstallCard extends StatelessWidget {
       ),
       child: Text(label,
           style: TextStyle(
-              fontSize: 10, fontWeight: FontWeight.w600, color: color)),
+              fontSize: 11, fontWeight: FontWeight.w600, color: color)),
     );
   }
 }

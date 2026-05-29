@@ -1032,7 +1032,7 @@ class _MiniAvatar extends StatelessWidget {
           child: Text(i,
               style: const TextStyle(
                   color: _eaAccent,
-                  fontSize: 10,
+                  fontSize: 11,
                   fontWeight: FontWeight.w700)),
         ),
       );

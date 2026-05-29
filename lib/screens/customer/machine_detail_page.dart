@@ -1443,7 +1443,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                           const SizedBox(height: 8),
                           Text(e.key,
                               style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 11,
                                   color: isDark
                                       ? Brand.darkTextSecondary
                                       : Brand.subtleLight,
@@ -2074,7 +2074,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                           children: [
                                             Text(r['brand'] ?? '',
                                                 style: TextStyle(
-                                                    fontSize: 9,
+                                                    fontSize: 11,
                                                     fontWeight: FontWeight.w700,
                                                     color: _catAccent(
                                                         r['category']))),

@@ -330,7 +330,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
                     padding: const EdgeInsets.only(top: 4),
                     child: Text(label,
                         style: TextStyle(
-                            fontSize: 9,
+                            fontSize: 11,
                             color: AdminColors.textHint(context))),
                   );
                 },
@@ -344,7 +344,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
                 getTitlesWidget: (value, meta) => Text(
                   value.toInt().toString(),
                   style: TextStyle(
-                      fontSize: 9, color: AdminColors.textHint(context)),
+                      fontSize: 11, color: AdminColors.textHint(context)),
                 ),
               ),
             ),
@@ -461,7 +461,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
             child: Text(
               isPublished ? 'Published' : 'Draft',
               style: TextStyle(
-                  fontSize: 9,
+                  fontSize: 11,
                   fontWeight: FontWeight.w700,
                   color: isPublished
                       ? AdminColors.success
@@ -582,7 +582,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
                   value: e.value['count'].toDouble(),
                   title: '${pct.toStringAsFixed(0)}%',
                   titleStyle: const TextStyle(
-                      fontSize: 10,
+                      fontSize: 11,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
                   radius: 50,
@@ -612,7 +612,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
                 const SizedBox(width: 6),
                 Text(label,
                     style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         color: AdminColors.textSub(context))),
               ]),
             );

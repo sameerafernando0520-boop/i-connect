@@ -1099,7 +1099,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
         Text(
           label,
           // FIX: .withOpacity() → .withAlpha()
-          style: TextStyle(fontSize: 9, color: Colors.white.withAlpha(128)),
+          style: TextStyle(fontSize: 11, color: Colors.white.withAlpha(128)),
         ),
       ],
     );
@@ -1509,7 +1509,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                             Text(
                               salesStage.toUpperCase(),
                               style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w700,
                                 color: stageColor,
                                 letterSpacing: 0.5,
@@ -1538,7 +1538,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                                 SizedBox(width: 2),
                                 Text('HOT',
                                     style: TextStyle(
-                                        fontSize: 9,
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         letterSpacing: 0.5,
                                         color: Colors.orange)),
@@ -1570,7 +1570,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                           child: Text(
                             '${daysOpen}d',
                             style: TextStyle(
-                              fontSize: 9,
+                              fontSize: 11,
                               fontWeight: FontWeight.w700,
                               letterSpacing: 0.5,
                               color: daysOpen > 14
@@ -1597,7 +1597,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                               const SizedBox(width: 3),
                               Text('$unreadCount',
                                   style: const TextStyle(
-                                      fontSize: 9,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white)),
                             ],
@@ -1729,7 +1729,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                             const SizedBox(height: 4),
                             Text(assignedName,
                                 style: TextStyle(
-                                    fontSize: 9, color: _textMuted(isDark))),
+                                    fontSize: 11, color: _textMuted(isDark))),
                           ],
                         ],
                       ),
@@ -1803,7 +1803,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                                         child: Text(
                                           machineBrand,
                                           style: TextStyle(
-                                              fontSize: 9,
+                                              fontSize: 11,
                                               fontWeight: FontWeight.w600,
                                               color: _primaryColor(isDark)),
                                         ),

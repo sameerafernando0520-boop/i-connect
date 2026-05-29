@@ -1083,7 +1083,7 @@ class _BubbleItem extends StatelessWidget {
                         senderLabel!,
                         style: TextStyle(
                           color: AdminColors.textHint(context),
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -1093,7 +1093,7 @@ class _BubbleItem extends StatelessWidget {
                       _formatTime(createdAt),
                       style: TextStyle(
                         color: AdminColors.textHint(context),
-                        fontSize: 10,
+                        fontSize: 11,
                       ),
                     ),
                     if (isMe) ...[
@@ -1918,7 +1918,7 @@ class _EngineerDispatchTile extends StatelessWidget {
                             color: isDark
                                 ? Brand.darkIconActive
                                 : Brand.royalBlue,
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w600,
                           ),
                         ),

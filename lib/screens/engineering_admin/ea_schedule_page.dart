@@ -550,7 +550,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
         Text(
           label,
           style: TextStyle(
-            fontSize: 10,
+            fontSize: 11,
             color: AdminColors.textHint(context),
           ),
         ),
@@ -647,7 +647,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
                           child: Text(
                             _typeLabel(type),
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 11,
                               fontWeight: FontWeight.w600,
                               color: _typeColor(type),
                             ),
@@ -718,7 +718,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
       child: Text(
         _statusLabel(status),
         style: TextStyle(
-          fontSize: 10,
+          fontSize: 11,
           fontWeight: FontWeight.w700,
           color: color,
         ),

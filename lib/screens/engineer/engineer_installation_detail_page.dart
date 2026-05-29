@@ -689,7 +689,7 @@ class _EngineerInstallationDetailPageState
                       Text(
                         step.label,
                         style: TextStyle(
-                          fontSize: 9,
+                          fontSize: 11,
                           fontWeight: active
                               ? FontWeight.w700
                               : FontWeight.w400,
@@ -842,7 +842,7 @@ class _EngineerInstallationDetailPageState
                     ),
                     child: const Text('You',
                         style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: _engAccent)),
                   ),
