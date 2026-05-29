@@ -1278,6 +1278,31 @@ class STa extends S {
   String get machineCall => 'அழை';
 
   @override
+  String get registerSearchHint =>
+      'பெயர், பிராண்ட், மாடல் மூலம் இயந்திரங்களைத் தேடு...';
+
+  @override
+  String get registerSelectMachine => 'ஒரு இயந்திரத்தைத் தேர்ந்தெடுக்கவும்';
+
+  @override
+  String get registerSelectPurchaseDate =>
+      'கொள்முதல் தேதியைத் தேர்ந்தெடுக்கவும்';
+
+  @override
+  String get registerSelectWarrantyDate =>
+      'உத்தரவாத முடிவு தேதியைத் தேர்ந்தெடுக்கவும்';
+
+  @override
+  String get registerChooseConnector => 'உங்கள் இணைப்பாளரைத் தேர்ந்தெடுக்கவும்';
+
+  @override
+  String get registerConnectorDesc =>
+      'உங்களைத் தொடர்பு கொள்ளக்கூடிய சந்தைப்படுத்துநர்கள் மற்றும் நிர்வாகிகள்';
+
+  @override
+  String get registerDiscard => 'நிராகரி';
+
+  @override
   String get supportTitle => 'ஆதரவு';
 
   @override

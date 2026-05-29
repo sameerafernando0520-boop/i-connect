@@ -2577,6 +2577,48 @@ abstract class S {
   /// **'Call'**
   String get machineCall;
 
+  /// No description provided for @registerSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search machines by name, brand, model...'**
+  String get registerSearchHint;
+
+  /// No description provided for @registerSelectMachine.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a Machine'**
+  String get registerSelectMachine;
+
+  /// No description provided for @registerSelectPurchaseDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Select purchase date'**
+  String get registerSelectPurchaseDate;
+
+  /// No description provided for @registerSelectWarrantyDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Select warranty end date'**
+  String get registerSelectWarrantyDate;
+
+  /// No description provided for @registerChooseConnector.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your connector'**
+  String get registerChooseConnector;
+
+  /// No description provided for @registerConnectorDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Marketers and admins who can contact you'**
+  String get registerConnectorDesc;
+
+  /// No description provided for @registerDiscard.
+  ///
+  /// In en, this message translates to:
+  /// **'Discard'**
+  String get registerDiscard;
+
   /// No description provided for @supportTitle.
   ///
   /// In en, this message translates to:

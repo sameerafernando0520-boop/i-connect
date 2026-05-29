@@ -434,6 +434,13 @@
   "machineNeedHelp": "தேர்வு செய்ய உதவி வேண்டுமா?",
   "machineExpertsGuide": "எங்கள் நிபுணர்கள் உங்களுக்கு வழிகாட்டுவார்கள்",
   "machineCall": "அழை",
+  "registerSearchHint": "பெயர், பிராண்ட், மாடல் மூலம் இயந்திரங்களைத் தேடு...",
+  "registerSelectMachine": "ஒரு இயந்திரத்தைத் தேர்ந்தெடுக்கவும்",
+  "registerSelectPurchaseDate": "கொள்முதல் தேதியைத் தேர்ந்தெடுக்கவும்",
+  "registerSelectWarrantyDate": "உத்தரவாத முடிவு தேதியைத் தேர்ந்தெடுக்கவும்",
+  "registerChooseConnector": "உங்கள் இணைப்பாளரைத் தேர்ந்தெடுக்கவும்",
+  "registerConnectorDesc": "உங்களைத் தொடர்பு கொள்ளக்கூடிய சந்தைப்படுத்துநர்கள் மற்றும் நிர்வாகிகள்",
+  "registerDiscard": "நிராகரி",
 
 
   "supportTitle": "ஆதரவு",

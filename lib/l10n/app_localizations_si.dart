@@ -1272,6 +1272,29 @@ class SSi extends S {
   String get machineCall => 'අමතන්න';
 
   @override
+  String get registerSearchHint =>
+      'නම, වෙළඳ නාමය, ආකෘතිය අනුව යන්ත්‍ර සොයන්න...';
+
+  @override
+  String get registerSelectMachine => 'යන්ත්‍රයක් තෝරන්න';
+
+  @override
+  String get registerSelectPurchaseDate => 'මිලදී ගත් දිනය තෝරන්න';
+
+  @override
+  String get registerSelectWarrantyDate => 'වගකීම් අවසන් දිනය තෝරන්න';
+
+  @override
+  String get registerChooseConnector => 'ඔබගේ සම්බන්ධකය තෝරන්න';
+
+  @override
+  String get registerConnectorDesc =>
+      'ඔබව සම්බන්ධ කරගත හැකි අලෙවිකරුවන් සහ පරිපාලකයින්';
+
+  @override
+  String get registerDiscard => 'ඉවත දමන්න';
+
+  @override
   String get supportTitle => 'සහාය';
 
   @override

@@ -1271,6 +1271,28 @@ class SEn extends S {
   String get machineCall => 'Call';
 
   @override
+  String get registerSearchHint => 'Search machines by name, brand, model...';
+
+  @override
+  String get registerSelectMachine => 'Select a Machine';
+
+  @override
+  String get registerSelectPurchaseDate => 'Select purchase date';
+
+  @override
+  String get registerSelectWarrantyDate => 'Select warranty end date';
+
+  @override
+  String get registerChooseConnector => 'Choose your connector';
+
+  @override
+  String get registerConnectorDesc =>
+      'Marketers and admins who can contact you';
+
+  @override
+  String get registerDiscard => 'Discard';
+
+  @override
   String get supportTitle => 'Support';
 
   @override

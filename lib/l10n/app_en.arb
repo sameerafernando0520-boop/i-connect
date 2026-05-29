@@ -464,6 +464,13 @@
   "machineNeedHelp": "Need Help Choosing?",
   "machineExpertsGuide": "Our experts can guide you",
   "machineCall": "Call",
+  "registerSearchHint": "Search machines by name, brand, model...",
+  "registerSelectMachine": "Select a Machine",
+  "registerSelectPurchaseDate": "Select purchase date",
+  "registerSelectWarrantyDate": "Select warranty end date",
+  "registerChooseConnector": "Choose your connector",
+  "registerConnectorDesc": "Marketers and admins who can contact you",
+  "registerDiscard": "Discard",
 
 
   "supportTitle": "Support",

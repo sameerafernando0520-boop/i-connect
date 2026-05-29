@@ -9,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../l10n/s.dart';
 
 class RegisterMachinePage extends StatefulWidget {
   final Map<String, dynamic>? preselectedMachine;
@@ -372,7 +373,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                 Expanded(
                   child: _buildImageSourceOption(
                     icon: Icons.camera_alt_rounded,
-                    label: 'Camera',
+                    label: S.of(context)!.ticketCamera,
                     color: const Color(0xFF2196F3),
                     onTap: () => Navigator.pop(sheetCtx, ImageSource.camera),
                   ),
@@ -381,7 +382,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                 Expanded(
                   child: _buildImageSourceOption(
                     icon: Icons.photo_library_rounded,
-                    label: 'Gallery',
+                    label: S.of(context)!.ticketGallery,
                     color: const Color(0xFF4CAF50),
                     onTap: () => Navigator.pop(sheetCtx, ImageSource.gallery),
                   ),
@@ -868,9 +869,9 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                           color: Colors.red,
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: const Center(
-                          child: Text('Discard',
-                              style: TextStyle(
+                        child: Center(
+                          child: Text(S.of(context)!.registerDiscard,
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white)),
                         ),
@@ -1370,7 +1371,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
             ),
             cursorColor: accent,
             decoration: InputDecoration(
-              hintText: 'Search machines by name, brand, model...',
+              hintText: S.of(context)!.registerSearchHint,
               hintStyle: TextStyle(
                 color: (isDark ? Brand.darkTextSecondary : Brand.subtleLight)
                     .withAlpha(((0.6) * 255).toInt()),
@@ -1838,7 +1839,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
           const SizedBox(height: 8),
           _buildDatePicker(
             date: _purchaseDate,
-            placeholder: 'Select purchase date',
+            placeholder: S.of(context)!.registerSelectPurchaseDate,
             icon: Icons.event_rounded,
             onTap: () => _selectDate(context, isPurchase: true),
             isRequired: true,
@@ -1856,7 +1857,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
             const SizedBox(height: 8),
             _buildDatePicker(
               date: _warrantyEndDate,
-              placeholder: 'Select warranty end date',
+              placeholder: S.of(context)!.registerSelectWarrantyDate,
               icon: Icons.event_available_rounded,
               onTap: () => _selectDate(context, isPurchase: false),
               isDark: isDark,
@@ -2042,7 +2043,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
             textCapitalization: TextCapitalization.characters,
             cursorColor: accent,
             decoration: InputDecoration(
-              hintText: 'Enter serial number',
+              hintText: S.of(context)!.machineSerialHint,
               hintStyle: TextStyle(
                 color: (isDark ? Brand.darkTextSecondary : Brand.subtleLight)
                     .withAlpha(((0.6) * 255).toInt()),
@@ -2258,7 +2259,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                   Text(
                     hasSelection
                         ? (selected['full_name'] as String? ?? 'Connector')
-                        : 'Choose your connector',
+                        : S.of(context)!.registerChooseConnector,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
@@ -2276,7 +2277,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                     hasSelection
                         ? _formatConnectorRole(
                             selected['role'] as String? ?? '')
-                        : 'Marketers and admins who can contact you',
+                        : S.of(context)!.registerConnectorDesc,
                     style: TextStyle(
                       fontSize: 11,
                       color:
@@ -2367,7 +2368,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                             });
                             Navigator.pop(sheetCtx);
                           },
-                          child: const Text('Clear'),
+                          child: Text(S.of(context)!.commonClear),
                         ),
                     ],
                   ),
@@ -3188,7 +3189,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
       case 0:
         buttonLabel = _selectedMachineId != null
             ? 'Continue with ${_selectedMachineData?['machine_name']?.toString().split(' ').take(3).join(' ') ?? 'Machine'}'
-            : 'Select a Machine';
+            : S.of(context)!.registerSelectMachine;
         canProceed = _canProceedStep1;
         onTap = canProceed ? () => setState(() => _currentStep = 1) : null;
         break;
