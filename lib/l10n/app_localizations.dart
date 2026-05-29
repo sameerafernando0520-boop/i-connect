@@ -4179,6 +4179,36 @@ abstract class S {
   /// **'How It Works'**
   String get referralHowItWorks;
 
+  /// No description provided for @referralReferEarn.
+  ///
+  /// In en, this message translates to:
+  /// **'Refer & Earn'**
+  String get referralReferEarn;
+
+  /// No description provided for @referralTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite friends, earn commissions'**
+  String get referralTagline;
+
+  /// No description provided for @referralHeroTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite Friends,\nEarn Commissions!'**
+  String get referralHeroTitle;
+
+  /// No description provided for @referralCommissionRates.
+  ///
+  /// In en, this message translates to:
+  /// **'Commission Rates'**
+  String get referralCommissionRates;
+
+  /// No description provided for @referralMinPurchase.
+  ///
+  /// In en, this message translates to:
+  /// **'Min purchase: {amount}'**
+  String referralMinPurchase(String amount);
+
   /// No description provided for @referralStep1.
   ///
   /// In en, this message translates to:

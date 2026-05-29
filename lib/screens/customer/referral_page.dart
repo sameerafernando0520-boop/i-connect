@@ -9,6 +9,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:intl/intl.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../l10n/s.dart';
 import '../../utils/time_utils.dart';
 
 class ReferralPage extends StatefulWidget {
@@ -150,7 +151,7 @@ class _ReferralPageState extends State<ReferralPage> {
               ),
             ),
             const SizedBox(height: 24),
-            Text('Your Referral Code',
+            Text(S.of(context)!.referralMyCode,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
@@ -217,9 +218,9 @@ class _ReferralPageState extends State<ReferralPage> {
                       ),
                       borderRadius: BorderRadius.circular(14),
                     ),
-                    child: const Center(
-                        child: Text('Copy Code',
-                            style: TextStyle(
+                    child: Center(
+                        child: Text(S.of(context)!.referralCopyCode,
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700))),
                   ),
@@ -243,9 +244,9 @@ class _ReferralPageState extends State<ReferralPage> {
                       ),
                       borderRadius: BorderRadius.circular(14),
                     ),
-                    child: const Center(
-                        child: Text('Share',
-                            style: TextStyle(
+                    child: Center(
+                        child: Text(S.of(context)!.commonShare,
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700))),
                   ),
@@ -425,14 +426,14 @@ class _ReferralPageState extends State<ReferralPage> {
         Expanded(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('Refer & Earn',
+            Text(S.of(context)!.referralReferEarn,
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w600,
                   color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
                   letterSpacing: -0.5,
                 )),
-            Text('Invite friends, earn commissions',
+            Text(S.of(context)!.referralTagline,
                 style: TextStyle(
                   fontSize: 12,
                   color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
@@ -479,7 +480,7 @@ class _ReferralPageState extends State<ReferralPage> {
               color: Colors.amber, size: 32),
         ),
         const SizedBox(height: 16),
-        Text('Invite Friends,\nEarn Commissions!',
+        Text(S.of(context)!.referralHeroTitle,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 22,
@@ -523,7 +524,7 @@ class _ReferralPageState extends State<ReferralPage> {
               ],
       ),
       child: Column(children: [
-        Text('YOUR REFERRAL CODE',
+        Text(S.of(context)!.referralMyCode.toUpperCase(),
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w700,
@@ -730,7 +731,7 @@ class _ReferralPageState extends State<ReferralPage> {
               ),
             ),
             const SizedBox(width: 10),
-            Text('Commission Rates',
+            Text(S.of(context)!.referralCommissionRates,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
@@ -793,7 +794,7 @@ class _ReferralPageState extends State<ReferralPage> {
                                       : Brand.royalBlueDark,
                                 )),
                             if ((minPurchase as num) > 0)
-                              Text('Min purchase: ${_formatLKR(minPurchase)}',
+                              Text(S.of(context)!.referralMinPurchase(_formatLKR(minPurchase)),
                                   style: TextStyle(
                                     fontSize: 11,
                                     color: isDark
@@ -848,7 +849,7 @@ class _ReferralPageState extends State<ReferralPage> {
               ),
             ),
             const SizedBox(width: 10),
-            Text('Your Referrals',
+            Text(S.of(context)!.referralHistory,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
@@ -982,14 +983,14 @@ class _ReferralPageState extends State<ReferralPage> {
               size: 36, color: isDark ? Brand.darkIconActive : Brand.royalBlue),
         ),
         const SizedBox(height: 18),
-        Text('No referrals yet',
+        Text(S.of(context)!.referralNoReferrals,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
               color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
             )),
         const SizedBox(height: 6),
-        Text('Share your code and start earning!',
+        Text(S.of(context)!.referralNoReferralsDesc,
             style: TextStyle(
               fontSize: 13,
               color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,

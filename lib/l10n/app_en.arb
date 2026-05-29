@@ -836,6 +836,14 @@
   "referralCopyCode": "Copy Code",
   "referralCodeCopied": "Referral code copied!",
   "referralHowItWorks": "How It Works",
+  "referralReferEarn": "Refer & Earn",
+  "referralTagline": "Invite friends, earn commissions",
+  "referralHeroTitle": "Invite Friends,\nEarn Commissions!",
+  "referralCommissionRates": "Commission Rates",
+  "referralMinPurchase": "Min purchase: {amount}",
+  "@referralMinPurchase": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
   "referralStep1": "Share Your Code",
   "referralStep1Desc": "Share your unique referral code with friends and colleagues",
   "referralStep2": "They Sign Up",

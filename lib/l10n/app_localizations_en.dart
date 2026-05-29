@@ -2130,6 +2130,23 @@ class SEn extends S {
   String get referralHowItWorks => 'How It Works';
 
   @override
+  String get referralReferEarn => 'Refer & Earn';
+
+  @override
+  String get referralTagline => 'Invite friends, earn commissions';
+
+  @override
+  String get referralHeroTitle => 'Invite Friends,\nEarn Commissions!';
+
+  @override
+  String get referralCommissionRates => 'Commission Rates';
+
+  @override
+  String referralMinPurchase(String amount) {
+    return 'Min purchase: $amount';
+  }
+
+  @override
   String get referralStep1 => 'Share Your Code';
 
   @override

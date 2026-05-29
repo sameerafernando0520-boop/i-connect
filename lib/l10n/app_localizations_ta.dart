@@ -2141,6 +2141,24 @@ class STa extends S {
   String get referralHowItWorks => 'இது எப்படி வேலை செய்கிறது';
 
   @override
+  String get referralReferEarn => 'பரிந்துரைத்து சம்பாதி';
+
+  @override
+  String get referralTagline => 'நண்பர்களை அழைத்து கமிஷன் சம்பாதி';
+
+  @override
+  String get referralHeroTitle =>
+      'நண்பர்களை அழைக்கவும்,\nகமிஷன் சம்பாதிக்கவும்!';
+
+  @override
+  String get referralCommissionRates => 'கமிஷன் விகிதங்கள்';
+
+  @override
+  String referralMinPurchase(String amount) {
+    return 'குறைந்தபட்ச கொள்முதல்: $amount';
+  }
+
+  @override
   String get referralStep1 => 'உங்கள் குறியீட்டைப் பகிருங்கள்';
 
   @override

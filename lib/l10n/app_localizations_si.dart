@@ -2130,6 +2130,23 @@ class SSi extends S {
   String get referralHowItWorks => 'ක්‍රියා කරන ආකාරය';
 
   @override
+  String get referralReferEarn => 'යොමු කර උපයන්න';
+
+  @override
+  String get referralTagline => 'මිතුරන්ට ආරාධනා කර කොමිස් උපයන්න';
+
+  @override
+  String get referralHeroTitle => 'මිතුරන්ට ආරාධනා කරන්න,\nකොමිස් උපයන්න!';
+
+  @override
+  String get referralCommissionRates => 'කොමිස් අනුපාත';
+
+  @override
+  String referralMinPurchase(String amount) {
+    return 'අවම මිලදී ගැනීම: $amount';
+  }
+
+  @override
   String get referralStep1 => 'ඔබගේ කේතය බෙදාගන්න';
 
   @override
