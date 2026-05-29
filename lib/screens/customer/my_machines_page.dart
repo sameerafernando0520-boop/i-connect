@@ -20,6 +20,7 @@ import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../l10n/s.dart';
 import '../../widgets/common/ic_icons.dart';
 import '../../widgets/customer/customer_nav_bar.dart';
 import '../../widgets/customer/customer_nav_controller.dart';
@@ -320,22 +321,22 @@ class _MyMachinesPageState extends State<MyMachinesPage>
 
   Map<String, Map<String, dynamic>> _getStatusConfig(bool isDark) => {
         'all': {
-          'label': 'All',
+          'label': S.of(context)!.commonAll,
           'icon': Icons.list_alt_rounded,
           'color': _getStatusFilterColor('all', isDark),
         },
         'active': {
-          'label': 'Active',
+          'label': S.of(context)!.machineActive,
           'icon': Icons.check_circle_rounded,
           'color': _getStatusFilterColor('active', isDark),
         },
         'service': {
-          'label': 'In Service',
+          'label': S.of(context)!.machineInService,
           'icon': Icons.build_rounded,
           'color': _getStatusFilterColor('service', isDark),
         },
         'inactive': {
-          'label': 'Inactive',
+          'label': S.of(context)!.machineInactive,
           'icon': Icons.cancel_rounded,
           'color': _getStatusFilterColor('inactive', isDark),
         },
@@ -474,7 +475,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('My Machines',
+                Text(S.of(context)!.machineTitle,
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w600,
@@ -950,7 +951,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                     color:
                         isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400),
                 const SizedBox(width: 4),
-                Text('Clear',
+                Text(S.of(context)!.commonClear,
                     style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w700,
@@ -1039,7 +1040,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
           Icon(isFav ? Icons.star_border_rounded : Icons.star_rounded,
               color: Colors.white, size: 24),
           const SizedBox(width: 8),
-          Text(isFav ? 'Unfavorite' : 'Favorite',
+          Text(isFav ? S.of(context)!.machineUnfavorite : S.of(context)!.machineFavorite,
               style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
@@ -1054,14 +1055,14 @@ class _MyMachinesPageState extends State<MyMachinesPage>
         ),
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.only(right: 24),
-        child: const Row(mainAxisSize: MainAxisSize.min, children: [
-          Text('View Details',
-              style: TextStyle(
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          Text(S.of(context)!.machineViewDetails,
+              style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
                   fontSize: 14)),
-          SizedBox(width: 8),
-          Icon(Icons.arrow_forward_rounded, color: Colors.white, size: 24),
+          const SizedBox(width: 8),
+          const Icon(Icons.arrow_forward_rounded, color: Colors.white, size: 24),
         ]),
       ),
       child: _buildMachineListCard(machine, isDark),
@@ -1670,7 +1671,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                   borderRadius: BorderRadius.circular(2)),
             )),
             const SizedBox(height: 20),
-            Text('Sort By',
+            Text(S.of(context)!.machineSortBy,
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -1790,7 +1791,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
         const SizedBox(height: 20),
         _buildActionItem(
           icon: Icons.info_outline_rounded,
-          label: 'View Details',
+          label: S.of(context)!.machineViewDetails,
           color: isDark ? Brand.darkIconActive : Brand.royalBlue,
           isDark: isDark,
           onTap: () {
@@ -1800,7 +1801,9 @@ class _MyMachinesPageState extends State<MyMachinesPage>
         ),
         _buildActionItem(
           icon: isFav ? Icons.star_border_rounded : Icons.star_rounded,
-          label: isFav ? 'Remove from Favorites' : 'Add to Favorites',
+          label: isFav
+              ? S.of(context)!.machineRemoveFavorite
+              : S.of(context)!.machineAddFavorite,
           color: const Color(0xFFFF9800),
           isDark: isDark,
           onTap: () {
@@ -1812,7 +1815,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
           iconWidget: IcChatGearIcon(
               color: isDark ? Brand.lightGreenBright : Brand.lightGreen,
               size: 20),
-          label: 'Get Support',
+          label: S.of(context)!.machineGetSupport,
           color: isDark ? Brand.lightGreenBright : Brand.lightGreen,
           isDark: isDark,
           onTap: () {
@@ -1821,7 +1824,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
         ),
         _buildActionItem(
           icon: Icons.description_rounded,
-          label: 'View Manual',
+          label: S.of(context)!.machineViewManual,
           color: isDark ? const Color(0xFF64B5F6) : const Color(0xFF2196F3),
           isDark: isDark,
           onTap: () {
@@ -1951,7 +1954,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                       isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400),
             ),
             const SizedBox(height: 20),
-            Text('Something Went Wrong',
+            Text(S.of(context)!.commonSomethingWentWrong,
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -1959,7 +1962,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                         isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),
             const SizedBox(height: 10),
             Text(
-                'Could not load your machines.\nPlease check your connection and try again.',
+                S.of(context)!.machineLoadError,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 13,
@@ -1971,8 +1974,8 @@ class _MyMachinesPageState extends State<MyMachinesPage>
               child: ElevatedButton.icon(
                 onPressed: _loadMachines,
                 icon: const Icon(Icons.refresh_rounded, size: 22),
-                label: const Text('Retry',
-                    style: TextStyle(fontWeight: FontWeight.w700)),
+                label: Text(S.of(context)!.commonRetry,
+                    style: const TextStyle(fontWeight: FontWeight.w700)),
                 style: ElevatedButton.styleFrom(
                     backgroundColor:
                         isDark ? Brand.darkIconActive : Brand.royalBlue,
@@ -2030,7 +2033,10 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                   color: isDark ? Brand.darkIconActive : Brand.royalBlue),
             ),
             const SizedBox(height: 20),
-            Text(isFiltered ? 'No Machines Found' : 'No Machines Registered',
+            Text(
+                isFiltered
+                    ? S.of(context)!.machineNoMachinesFound
+                    : S.of(context)!.machineNoMachines,
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -2039,8 +2045,8 @@ class _MyMachinesPageState extends State<MyMachinesPage>
             const SizedBox(height: 10),
             Text(
                 isFiltered
-                    ? 'No machines match your search or filter.\nTry adjusting your criteria.'
-                    : 'Register your iFrontiers machines\nto track service and get support.',
+                    ? S.of(context)!.machineNoMatchDesc
+                    : S.of(context)!.machineRegisterDesc,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 13,
@@ -2071,7 +2077,9 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                     isFiltered ? Icons.clear_all_rounded : Icons.add_rounded,
                     size: 22),
                 label: Text(
-                    isFiltered ? 'Clear Filters' : 'Register First Machine',
+                    isFiltered
+                        ? S.of(context)!.machineClearFilters
+                        : S.of(context)!.machineRegisterFirst,
                     style: const TextStyle(fontWeight: FontWeight.w700)),
                 style: ElevatedButton.styleFrom(
                     backgroundColor: isFiltered
@@ -2123,8 +2131,8 @@ class _MyMachinesPageState extends State<MyMachinesPage>
         backgroundColor: Colors.transparent,
         elevation: 0,
         icon: const Icon(Icons.add_rounded, color: Colors.white, size: 24),
-        label: const Text('Register Machine',
-            style: TextStyle(
+        label: Text(S.of(context)!.machineRegister,
+            style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
                 fontSize: 14)),

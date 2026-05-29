@@ -2151,6 +2151,96 @@ abstract class S {
   /// **'Warranty Expired'**
   String get machineWarrantyExpired;
 
+  /// No description provided for @machineInService.
+  ///
+  /// In en, this message translates to:
+  /// **'In Service'**
+  String get machineInService;
+
+  /// No description provided for @machineViewDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View Details'**
+  String get machineViewDetails;
+
+  /// No description provided for @machineGetSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Support'**
+  String get machineGetSupport;
+
+  /// No description provided for @machineViewManual.
+  ///
+  /// In en, this message translates to:
+  /// **'View Manual'**
+  String get machineViewManual;
+
+  /// No description provided for @machineFavorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite'**
+  String get machineFavorite;
+
+  /// No description provided for @machineUnfavorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Unfavorite'**
+  String get machineUnfavorite;
+
+  /// No description provided for @machineAddFavorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Favorites'**
+  String get machineAddFavorite;
+
+  /// No description provided for @machineRemoveFavorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from Favorites'**
+  String get machineRemoveFavorite;
+
+  /// No description provided for @machineSortBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort By'**
+  String get machineSortBy;
+
+  /// No description provided for @machineNoMachinesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No Machines Found'**
+  String get machineNoMachinesFound;
+
+  /// No description provided for @machineClearFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Filters'**
+  String get machineClearFilters;
+
+  /// No description provided for @machineRegisterFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Register First Machine'**
+  String get machineRegisterFirst;
+
+  /// No description provided for @machineLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load your machines.\nPlease check your connection and try again.'**
+  String get machineLoadError;
+
+  /// No description provided for @machineNoMatchDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'No machines match your search or filter.\nTry adjusting your criteria.'**
+  String get machineNoMatchDesc;
+
+  /// No description provided for @machineRegisterDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Register your iFrontiers machines\nto track service and get support.'**
+  String get machineRegisterDesc;
+
   /// No description provided for @supportTitle.
   ///
   /// In en, this message translates to:

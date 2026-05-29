@@ -1055,6 +1055,54 @@ class STa extends S {
   String get machineWarrantyExpired => 'உத்தரவாதம் முடிவடைந்தது';
 
   @override
+  String get machineInService => 'சேவையில்';
+
+  @override
+  String get machineViewDetails => 'விவரங்களைப் பார்';
+
+  @override
+  String get machineGetSupport => 'ஆதரவு பெறு';
+
+  @override
+  String get machineViewManual => 'கையேட்டைப் பார்';
+
+  @override
+  String get machineFavorite => 'பிடித்தது';
+
+  @override
+  String get machineUnfavorite => 'பிடித்ததிலிருந்து நீக்கு';
+
+  @override
+  String get machineAddFavorite => 'பிடித்தவைகளில் சேர்';
+
+  @override
+  String get machineRemoveFavorite => 'பிடித்தவைகளிலிருந்து நீக்கு';
+
+  @override
+  String get machineSortBy => 'வரிசைப்படுத்து';
+
+  @override
+  String get machineNoMachinesFound => 'இயந்திரங்கள் இல்லை';
+
+  @override
+  String get machineClearFilters => 'வடிப்பான்களை அழி';
+
+  @override
+  String get machineRegisterFirst => 'முதல் இயந்திரத்தைப் பதிவு செய்';
+
+  @override
+  String get machineLoadError =>
+      'உங்கள் இயந்திரங்களை ஏற்ற முடியவில்லை.\nஇணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.';
+
+  @override
+  String get machineNoMatchDesc =>
+      'உங்கள் தேடல் அல்லது வடிப்பானுக்கு இயந்திரங்கள் பொருந்தவில்லை.\nஅளவுகோல்களை சரிசெய்யவும்.';
+
+  @override
+  String get machineRegisterDesc =>
+      'சேவையைக் கண்காணிக்கவும் ஆதரவைப் பெறவும்\nஉங்கள் iFrontiers இயந்திரங்களைப் பதிவு செய்யவும்.';
+
+  @override
   String get supportTitle => 'ஆதரவு';
 
   @override

@@ -1052,6 +1052,54 @@ class SEn extends S {
   String get machineWarrantyExpired => 'Warranty Expired';
 
   @override
+  String get machineInService => 'In Service';
+
+  @override
+  String get machineViewDetails => 'View Details';
+
+  @override
+  String get machineGetSupport => 'Get Support';
+
+  @override
+  String get machineViewManual => 'View Manual';
+
+  @override
+  String get machineFavorite => 'Favorite';
+
+  @override
+  String get machineUnfavorite => 'Unfavorite';
+
+  @override
+  String get machineAddFavorite => 'Add to Favorites';
+
+  @override
+  String get machineRemoveFavorite => 'Remove from Favorites';
+
+  @override
+  String get machineSortBy => 'Sort By';
+
+  @override
+  String get machineNoMachinesFound => 'No Machines Found';
+
+  @override
+  String get machineClearFilters => 'Clear Filters';
+
+  @override
+  String get machineRegisterFirst => 'Register First Machine';
+
+  @override
+  String get machineLoadError =>
+      'Could not load your machines.\nPlease check your connection and try again.';
+
+  @override
+  String get machineNoMatchDesc =>
+      'No machines match your search or filter.\nTry adjusting your criteria.';
+
+  @override
+  String get machineRegisterDesc =>
+      'Register your iFrontiers machines\nto track service and get support.';
+
+  @override
   String get supportTitle => 'Support';
 
   @override

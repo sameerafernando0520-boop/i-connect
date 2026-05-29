@@ -1052,6 +1052,54 @@ class SSi extends S {
   String get machineWarrantyExpired => 'වගකීම අවසන් වී ඇත';
 
   @override
+  String get machineInService => 'සේවයේ';
+
+  @override
+  String get machineViewDetails => 'විස්තර බලන්න';
+
+  @override
+  String get machineGetSupport => 'සහාය ලබාගන්න';
+
+  @override
+  String get machineViewManual => 'අත්පොත බලන්න';
+
+  @override
+  String get machineFavorite => 'ප්‍රියතම';
+
+  @override
+  String get machineUnfavorite => 'ප්‍රියතමයෙන් ඉවත් කරන්න';
+
+  @override
+  String get machineAddFavorite => 'ප්‍රියතමයන්ට එක් කරන්න';
+
+  @override
+  String get machineRemoveFavorite => 'ප්‍රියතමයන්ගෙන් ඉවත් කරන්න';
+
+  @override
+  String get machineSortBy => 'අනුපිළිවෙළ';
+
+  @override
+  String get machineNoMachinesFound => 'යන්ත්‍ර හමු නොවීය';
+
+  @override
+  String get machineClearFilters => 'පෙරහන් ඉවත් කරන්න';
+
+  @override
+  String get machineRegisterFirst => 'පළමු යන්ත්‍රය ලියාපදිංචි කරන්න';
+
+  @override
+  String get machineLoadError =>
+      'ඔබගේ යන්ත්‍ර පූරණය කළ නොහැකි විය.\nසම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න.';
+
+  @override
+  String get machineNoMatchDesc =>
+      'ඔබගේ සෙවීමට හෝ පෙරහනට යන්ත්‍ර ගැලපෙන්නේ නැත.\nනිර්ණායක සකසන්න.';
+
+  @override
+  String get machineRegisterDesc =>
+      'සේවාව නිරීක්ෂණය කිරීමට සහ සහාය ලබා ගැනීමට\nඔබගේ iFrontiers යන්ත්‍ර ලියාපදිංචි කරන්න.';
+
+  @override
   String get supportTitle => 'සහාය';
 
   @override
