@@ -781,6 +781,32 @@ class SEn extends S {
   String get ticketStatusOnHold => 'On Hold';
 
   @override
+  String get ticketFilterAssigned => 'Assigned';
+
+  @override
+  String get ticketFilterWorking => 'Working';
+
+  @override
+  String get ticketFilterWaiting => 'Waiting';
+
+  @override
+  String get ticketNoSupport => 'No Support Tickets';
+
+  @override
+  String get ticketNoInquiries => 'No Inquiries Yet';
+
+  @override
+  String get ticketNewTicket => 'New Ticket';
+
+  @override
+  String get ticketNoSupportDesc =>
+      'Need help with your machine?\nCreate a support ticket.';
+
+  @override
+  String get ticketNoInquiriesDesc =>
+      'Interested in a new machine?\nBrowse our catalog.';
+
+  @override
   String get ticketPriorityLow => 'Low';
 
   @override

@@ -1623,6 +1623,54 @@ abstract class S {
   /// **'On Hold'**
   String get ticketStatusOnHold;
 
+  /// No description provided for @ticketFilterAssigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Assigned'**
+  String get ticketFilterAssigned;
+
+  /// No description provided for @ticketFilterWorking.
+  ///
+  /// In en, this message translates to:
+  /// **'Working'**
+  String get ticketFilterWorking;
+
+  /// No description provided for @ticketFilterWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting'**
+  String get ticketFilterWaiting;
+
+  /// No description provided for @ticketNoSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'No Support Tickets'**
+  String get ticketNoSupport;
+
+  /// No description provided for @ticketNoInquiries.
+  ///
+  /// In en, this message translates to:
+  /// **'No Inquiries Yet'**
+  String get ticketNoInquiries;
+
+  /// No description provided for @ticketNewTicket.
+  ///
+  /// In en, this message translates to:
+  /// **'New Ticket'**
+  String get ticketNewTicket;
+
+  /// No description provided for @ticketNoSupportDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Need help with your machine?\nCreate a support ticket.'**
+  String get ticketNoSupportDesc;
+
+  /// No description provided for @ticketNoInquiriesDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Interested in a new machine?\nBrowse our catalog.'**
+  String get ticketNoInquiriesDesc;
+
   /// No description provided for @ticketPriorityLow.
   ///
   /// In en, this message translates to:

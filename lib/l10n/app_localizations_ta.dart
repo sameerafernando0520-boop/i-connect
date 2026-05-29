@@ -782,6 +782,32 @@ class STa extends S {
   String get ticketStatusOnHold => 'நிறுத்தி வைக்கப்பட்டது';
 
   @override
+  String get ticketFilterAssigned => 'ஒதுக்கப்பட்டது';
+
+  @override
+  String get ticketFilterWorking => 'செயலில்';
+
+  @override
+  String get ticketFilterWaiting => 'காத்திருக்கிறது';
+
+  @override
+  String get ticketNoSupport => 'ஆதரவு டிக்கெட்டுகள் இல்லை';
+
+  @override
+  String get ticketNoInquiries => 'இன்னும் விசாரணைகள் இல்லை';
+
+  @override
+  String get ticketNewTicket => 'புதிய டிக்கெட்';
+
+  @override
+  String get ticketNoSupportDesc =>
+      'உங்கள் இயந்திரத்திற்கு உதவி தேவையா?\nஆதரவு டிக்கெட்டை உருவாக்கவும்.';
+
+  @override
+  String get ticketNoInquiriesDesc =>
+      'புதிய இயந்திரத்தில் ஆர்வமா?\nஎங்கள் பட்டியலைப் பார்க்கவும்.';
+
+  @override
   String get ticketPriorityLow => 'குறைவு';
 
   @override

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../l10n/s.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/common/ic_icons.dart';
 import '../../widgets/customer/customer_nav_bar.dart';
@@ -309,7 +310,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
       child: Row(
         children: [
           _buildSummaryItem(
-            'Open',
+            S.of(context)!.ticketStatusOpen,
             '$open',
             Icons.radio_button_checked_rounded,
             const Color(0xFF2196F3),
@@ -317,7 +318,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
           ),
           const SizedBox(width: 8),
           _buildSummaryItem(
-            'In Progress',
+            S.of(context)!.ticketStatusInProgress,
             '$inProgress',
             Icons.engineering_rounded,
             const Color(0xFFFF9800),
@@ -325,7 +326,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
           ),
           const SizedBox(width: 8),
           _buildSummaryItem(
-            'Resolved',
+            S.of(context)!.ticketStatusResolved,
             '$resolved',
             Icons.check_circle_rounded,
             Brand.lightGreen,
@@ -453,7 +454,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
               children: [
                 const Icon(Icons.build_rounded, size: 16),
                 const SizedBox(width: 6),
-                const Text('Support'),
+                Text(S.of(context)!.supportTitle),
                 const SizedBox(width: 6),
                 Container(
                   padding:
@@ -476,7 +477,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
               children: [
                 const Icon(Icons.shopping_bag_rounded, size: 16),
                 const SizedBox(width: 6),
-                const Text('Inquiries'),
+                Text(S.of(context)!.inquiryTitle),
                 const SizedBox(width: 6),
                 Container(
                   padding:
@@ -564,7 +565,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                   ),
                   const SizedBox(width: 6),
                   Text(
-                    config['label'] as String,
+                    _statusLabel(context, status),
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight:
@@ -779,7 +780,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                             ),
                             const SizedBox(width: 5),
                             Text(
-                              _formatStatus(status).toUpperCase(),
+                              _formatStatus(context, status).toUpperCase(),
                               style: TextStyle(
                                 fontSize: 11,
                                 fontWeight: FontWeight.w700,
@@ -1090,7 +1091,9 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
               ),
               const SizedBox(height: 20),
               Text(
-                isSupport ? 'No Support Tickets' : 'No Inquiries Yet',
+                isSupport
+                    ? S.of(context)!.ticketNoSupport
+                    : S.of(context)!.ticketNoInquiries,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -1100,8 +1103,8 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
               const SizedBox(height: 10),
               Text(
                 isSupport
-                    ? 'Need help with your machine?\nCreate a support ticket.'
-                    : 'Interested in a new machine?\nBrowse our catalog.',
+                    ? S.of(context)!.ticketNoSupportDesc
+                    : S.of(context)!.ticketNoInquiriesDesc,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 13,
@@ -1160,7 +1163,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                                   : Colors.white),
                           const SizedBox(width: 6),
                           Text(
-                            'Create Ticket',
+                            S.of(context)!.ticketCreate,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: isDark
@@ -1253,7 +1256,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
         icon: Icon(Icons.add_rounded,
             color: isDark ? const Color(0xFF1A1F36) : Colors.white, size: 22),
         label: Text(
-          'New Ticket',
+          S.of(context)!.ticketNewTicket,
           style: TextStyle(
             color: isDark ? const Color(0xFF1A1F36) : Colors.white,
             fontWeight: FontWeight.bold,
@@ -1321,10 +1324,31 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
     }
   }
 
-  String _formatStatus(String status) {
-    return (_statusConfig[status]?['label'] as String?) ??
-        status.replaceAll('_', ' ').toUpperCase();
+  String _statusLabel(BuildContext context, String status) {
+    final t = S.of(context)!;
+    switch (status) {
+      case 'all':
+        return t.commonAll;
+      case 'open':
+        return t.ticketStatusOpen;
+      case 'assigned':
+        return t.ticketFilterAssigned;
+      case 'in_progress':
+        return t.ticketFilterWorking;
+      case 'waiting_customer':
+        return t.ticketFilterWaiting;
+      case 'resolved':
+        return t.ticketStatusResolved;
+      case 'closed':
+        return t.ticketStatusClosed;
+      default:
+        return (_statusConfig[status]?['label'] as String?) ??
+            status.replaceAll('_', ' ').toUpperCase();
+    }
   }
+
+  String _formatStatus(BuildContext context, String status) =>
+      _statusLabel(context, status);
 
   String _formatDate(DateTime date) {
     const months = [

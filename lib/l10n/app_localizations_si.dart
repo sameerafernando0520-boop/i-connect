@@ -782,6 +782,32 @@ class SSi extends S {
   String get ticketStatusOnHold => 'රඳවා ඇත';
 
   @override
+  String get ticketFilterAssigned => 'පවරා ඇත';
+
+  @override
+  String get ticketFilterWorking => 'ක්‍රියාත්මක';
+
+  @override
+  String get ticketFilterWaiting => 'පොරොත්තුවෙන්';
+
+  @override
+  String get ticketNoSupport => 'සහාය ටිකට්පත් නැත';
+
+  @override
+  String get ticketNoInquiries => 'තවම විමසීම් නැත';
+
+  @override
+  String get ticketNewTicket => 'නව ටිකට්පත';
+
+  @override
+  String get ticketNoSupportDesc =>
+      'ඔබගේ යන්ත්‍රයට උදව් අවශ්‍යද?\nසහාය ටිකට්පතක් සාදන්න.';
+
+  @override
+  String get ticketNoInquiriesDesc =>
+      'නව යන්ත්‍රයක් ගැන උනන්දුද?\nඅපගේ ලේඛනය බලන්න.';
+
+  @override
   String get ticketPriorityLow => 'අඩු';
 
   @override
