@@ -17,6 +17,7 @@ import '../../utils/time_utils.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../widgets/engineering_admin/engineer_assigned_card.dart';
 import '../../widgets/common/estimate_chat_card.dart';
+import '../../widgets/common/chat_message_attachments.dart';
 import '../admin/create_quotation_page.dart';
 import '../admin/admin_quotation_detail_page.dart';
 import 'ea_assign_engineers_sheet.dart';
@@ -805,15 +806,15 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
       final bytes = await file.readAsBytes();
       final ext = file.name.split('.').last;
       final path =
-          'ticket-attachments/${widget.ticketId}/${DateTime.now().millisecondsSinceEpoch}.$ext';
+          '${widget.ticketId}/${DateTime.now().millisecondsSinceEpoch}.$ext';
 
       await SupabaseConfig.client.storage
-          .from('ticket-attachments')
+          .from('chat-attachments')
           .uploadBinary(path, bytes,
               fileOptions: FileOptions(contentType: 'image/$ext'));
 
       final url = SupabaseConfig.client.storage
-          .from('ticket-attachments')
+          .from('chat-attachments')
           .getPublicUrl(path);
 
       await SupabaseConfig.client.from('chat_messages').insert({
@@ -1060,17 +1061,39 @@ class _BubbleItem extends StatelessWidget {
                       : Border.all(
                           color: AdminColors.border(context)),
                 ),
-                child: msgType == 'image'
-                    ? _ImageContent(url: content)
-                    : Text(
-                        content,
-                        style: TextStyle(
-                          color: isMe
-                              ? Colors.white
-                              : AdminColors.text(context),
-                          fontSize: 14,
-                        ),
-                      ),
+                child: (msgType == 'voice' ||
+                        msgType == 'document' ||
+                        msgType == 'location')
+                    ? Builder(builder: (_) {
+                        final atts = message['attachments'] is List
+                            ? List<String>.from(
+                                (message['attachments'] as List)
+                                    .map((e) => e.toString()))
+                            : const <String>[];
+                        final meta = message['metadata'] is Map
+                            ? Map<String, dynamic>.from(
+                                message['metadata'] as Map)
+                            : null;
+                        return buildChatAttachment(
+                              messageType: msgType,
+                              attachments: atts,
+                              metadata: meta,
+                              isMe: isMe,
+                              accent: _eaAccent,
+                            ) ??
+                            const SizedBox.shrink();
+                      })
+                    : msgType == 'image'
+                        ? _ImageContent(url: content)
+                        : Text(
+                            content,
+                            style: TextStyle(
+                              color: isMe
+                                  ? Colors.white
+                                  : AdminColors.text(context),
+                              fontSize: 14,
+                            ),
+                          ),
               ),
               // Label + time
               Padding(

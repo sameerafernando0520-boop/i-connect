@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import '../../widgets/common/chat_message_attachments.dart';
 // FIX: type-only imports acceptable per rules
 import 'package:supabase_flutter/supabase_flutter.dart'
     show
@@ -1129,6 +1130,37 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Builder(builder: (_) {
+                          final mt =
+                              message['message_type'] as String? ?? 'text';
+                          if (mt != 'voice' &&
+                              mt != 'document' &&
+                              mt != 'location') {
+                            return const SizedBox.shrink();
+                          }
+                          final atts = message['attachments'] is List
+                              ? List<String>.from(
+                                  (message['attachments'] as List)
+                                      .map((e) => e.toString()))
+                              : const <String>[];
+                          final meta = message['metadata'] is Map
+                              ? Map<String, dynamic>.from(
+                                  message['metadata'] as Map)
+                              : null;
+                          final w = buildChatAttachment(
+                            messageType: mt,
+                            attachments: atts,
+                            metadata: meta,
+                            isMe: isAdmin,
+                            accent:
+                                isAdmin ? Colors.white : AdminColors.primary,
+                          );
+                          return w == null
+                              ? const SizedBox.shrink()
+                              : Padding(
+                                  padding: const EdgeInsets.only(bottom: 4),
+                                  child: w);
+                        }),
                         Text(
                           message['message'] ?? '',
                           style: TextStyle(
