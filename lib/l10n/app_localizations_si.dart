@@ -1116,6 +1116,30 @@ class SSi extends S {
   String get profileAppearance => 'පෙනුම';
 
   @override
+  String get profileSaveChanges => 'වෙනස්කම් සුරකින්න';
+
+  @override
+  String get profileDark => 'අඳුරු';
+
+  @override
+  String get profileLight => 'ආලෝක';
+
+  @override
+  String get profileProvince => 'පළාත';
+
+  @override
+  String get profileDistrict => 'දිස්ත්‍රික්කය';
+
+  @override
+  String get profileSelectDistrict => 'දිස්ත්‍රික්කය තෝරන්න';
+
+  @override
+  String get profileDiscardChanges => 'වෙනස්කම් ඉවත දමන්නද?';
+
+  @override
+  String get profileKeepEditing => 'සංස්කරණය දිගටම කරන්න';
+
+  @override
   String get machineTitle => 'මගේ යන්ත්‍ර';
 
   @override

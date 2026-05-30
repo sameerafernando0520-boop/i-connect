@@ -1122,6 +1122,30 @@ class STa extends S {
   String get profileAppearance => 'தோற்றம்';
 
   @override
+  String get profileSaveChanges => 'மாற்றங்களைச் சேமி';
+
+  @override
+  String get profileDark => 'இருள்';
+
+  @override
+  String get profileLight => 'ஒளி';
+
+  @override
+  String get profileProvince => 'மாகாணம்';
+
+  @override
+  String get profileDistrict => 'மாவட்டம்';
+
+  @override
+  String get profileSelectDistrict => 'மாவட்டத்தைத் தேர்ந்தெடுக்கவும்';
+
+  @override
+  String get profileDiscardChanges => 'மாற்றங்களை நிராகரிக்கவா?';
+
+  @override
+  String get profileKeepEditing => 'தொகுப்பதைத் தொடரவும்';
+
+  @override
   String get machineTitle => 'எனது இயந்திரங்கள்';
 
   @override

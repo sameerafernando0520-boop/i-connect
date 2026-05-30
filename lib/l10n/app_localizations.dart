@@ -2277,6 +2277,54 @@ abstract class S {
   /// **'Appearance'**
   String get profileAppearance;
 
+  /// No description provided for @profileSaveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get profileSaveChanges;
+
+  /// No description provided for @profileDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get profileDark;
+
+  /// No description provided for @profileLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get profileLight;
+
+  /// No description provided for @profileProvince.
+  ///
+  /// In en, this message translates to:
+  /// **'Province'**
+  String get profileProvince;
+
+  /// No description provided for @profileDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get profileDistrict;
+
+  /// No description provided for @profileSelectDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'Select district'**
+  String get profileSelectDistrict;
+
+  /// No description provided for @profileDiscardChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Discard Changes?'**
+  String get profileDiscardChanges;
+
+  /// No description provided for @profileKeepEditing.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep Editing'**
+  String get profileKeepEditing;
+
   /// No description provided for @machineTitle.
   ///
   /// In en, this message translates to:

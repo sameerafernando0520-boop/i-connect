@@ -412,6 +412,14 @@
   "profileMyInstallmentsDesc": "Track payments and upload receipts",
   "profileContactSupport": "Contact & Support",
   "profileAppearance": "Appearance",
+  "profileSaveChanges": "Save Changes",
+  "profileDark": "Dark",
+  "profileLight": "Light",
+  "profileProvince": "Province",
+  "profileDistrict": "District",
+  "profileSelectDistrict": "Select district",
+  "profileDiscardChanges": "Discard Changes?",
+  "profileKeepEditing": "Keep Editing",
 
 
   "machineTitle": "My Machines",

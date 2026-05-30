@@ -382,6 +382,14 @@
   "profileMyInstallmentsDesc": "ගෙවීම් නිරීක්ෂණය කර රිසිට්පත් උඩුගත කරන්න",
   "profileContactSupport": "සම්බන්ධතා සහ සහාය",
   "profileAppearance": "පෙනුම",
+  "profileSaveChanges": "වෙනස්කම් සුරකින්න",
+  "profileDark": "අඳුරු",
+  "profileLight": "ආලෝක",
+  "profileProvince": "පළාත",
+  "profileDistrict": "දිස්ත්‍රික්කය",
+  "profileSelectDistrict": "දිස්ත්‍රික්කය තෝරන්න",
+  "profileDiscardChanges": "වෙනස්කම් ඉවත දමන්නද?",
+  "profileKeepEditing": "සංස්කරණය දිගටම කරන්න",
 
 
   "machineTitle": "මගේ යන්ත්‍ර",

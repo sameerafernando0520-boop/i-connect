@@ -382,6 +382,14 @@
   "profileMyInstallmentsDesc": "கட்டணங்களைக் கண்காணித்து ரசீதுகளைப் பதிவேற்று",
   "profileContactSupport": "தொடர்பு & ஆதரவு",
   "profileAppearance": "தோற்றம்",
+  "profileSaveChanges": "மாற்றங்களைச் சேமி",
+  "profileDark": "இருள்",
+  "profileLight": "ஒளி",
+  "profileProvince": "மாகாணம்",
+  "profileDistrict": "மாவட்டம்",
+  "profileSelectDistrict": "மாவட்டத்தைத் தேர்ந்தெடுக்கவும்",
+  "profileDiscardChanges": "மாற்றங்களை நிராகரிக்கவா?",
+  "profileKeepEditing": "தொகுப்பதைத் தொடரவும்",
 
 
   "machineTitle": "எனது இயந்திரங்கள்",

@@ -1116,6 +1116,30 @@ class SEn extends S {
   String get profileAppearance => 'Appearance';
 
   @override
+  String get profileSaveChanges => 'Save Changes';
+
+  @override
+  String get profileDark => 'Dark';
+
+  @override
+  String get profileLight => 'Light';
+
+  @override
+  String get profileProvince => 'Province';
+
+  @override
+  String get profileDistrict => 'District';
+
+  @override
+  String get profileSelectDistrict => 'Select district';
+
+  @override
+  String get profileDiscardChanges => 'Discard Changes?';
+
+  @override
+  String get profileKeepEditing => 'Keep Editing';
+
+  @override
   String get machineTitle => 'My Machines';
 
   @override

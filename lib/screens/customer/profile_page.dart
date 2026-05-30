@@ -1205,11 +1205,11 @@ class _ProfilePageState extends State<ProfilePage>
         builder: (context) => _confirmDialog(
               icon: Icons.warning_rounded,
               iconColor: _isDark ? const Color(0xFFFFB74D) : Colors.orange,
-              title: 'Discard Changes?',
+              title: S.of(context)!.profileDiscardChanges,
               message: 'Your unsaved changes will be lost.',
-              confirmText: 'Discard',
+              confirmText: S.of(context)!.registerDiscard,
               confirmColor: Colors.red,
-              cancelText: 'Keep Editing',
+              cancelText: S.of(context)!.profileKeepEditing,
             )).then((v) {
       if (v == true) {
         _restoreOriginalValues();
@@ -2277,7 +2277,7 @@ class _ProfilePageState extends State<ProfilePage>
                                               ? Brand.darkIconActive
                                               : Brand.royalBlue),
                                       const SizedBox(width: 3),
-                                      Text('Edit',
+                                      Text(S.of(context)!.commonEdit,
                                           style: TextStyle(
                                               fontSize: 11,
                                               fontWeight: FontWeight.w700,
@@ -2324,7 +2324,7 @@ class _ProfilePageState extends State<ProfilePage>
                                             ? const Color(0xFFFF6B6B)
                                             : Colors.red.shade400),
                                     const SizedBox(width: 3),
-                                    Text('Cancel',
+                                    Text(S.of(context)!.commonCancel,
                                         style: TextStyle(
                                             fontSize: 11,
                                             fontWeight: FontWeight.w700,
@@ -2366,7 +2366,7 @@ class _ProfilePageState extends State<ProfilePage>
                     _infoField('City', _cityController,
                         Icons.location_city_rounded, _isEditing, isDark),
                     _dropdownField(
-                      label: 'Province',
+                      label: S.of(context)!.profileProvince,
                       icon: Icons.map_rounded,
                       value: _province,
                       enabled: _isEditing,
@@ -2384,7 +2384,7 @@ class _ProfilePageState extends State<ProfilePage>
                       }),
                     ),
                     _dropdownField(
-                      label: 'District',
+                      label: S.of(context)!.profileDistrict,
                       icon: Icons.location_on_outlined,
                       value: _district,
                       enabled:
@@ -2395,7 +2395,7 @@ class _ProfilePageState extends State<ProfilePage>
                       onChanged: (v) => setState(() => _district = v),
                       placeholder: _province == null
                           ? 'Select province first'
-                          : 'Select district',
+                          : S.of(context)!.profileSelectDistrict,
                       isLast: true,
                     ),
                     if (_isEditing) ...[
@@ -2438,16 +2438,16 @@ class _ProfilePageState extends State<ProfilePage>
                                               child: CircularProgressIndicator(
                                                   strokeWidth: 2.5,
                                                   color: Colors.white))
-                                          : const Row(
+                                          : Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                  Icon(Icons.save_rounded,
+                                                  const Icon(Icons.save_rounded,
                                                       color: Colors.white,
                                                       size: 20),
-                                                  SizedBox(width: 8),
-                                                  Text('Save Changes',
-                                                      style: TextStyle(
+                                                  const SizedBox(width: 8),
+                                                  Text(S.of(context)!.profileSaveChanges,
+                                                      style: const TextStyle(
                                                           color: Colors.white,
                                                           fontWeight:
                                                               FontWeight.w700,
@@ -3080,7 +3080,7 @@ class _ProfilePageState extends State<ProfilePage>
                     border: isDark
                         ? Border.all(color: Brand.darkBorderLight)
                         : null),
-                child: Text(currentIsDark ? 'Dark' : 'Light',
+                child: Text(currentIsDark ? S.of(context)!.profileDark : S.of(context)!.profileLight,
                     style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w700,
