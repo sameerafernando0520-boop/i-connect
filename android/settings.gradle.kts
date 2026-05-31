@@ -11,6 +11,9 @@ pluginManagement {
     includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
 
     repositories {
+        // Offline/slow-network: resolve the app's AGP (8.11.1) from manually
+        // downloaded jars in ~/.m2 first; harmless elsewhere (falls through).
+        mavenLocal()
         google()
         mavenCentral()
         gradlePluginPortal()

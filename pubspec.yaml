@@ -64,11 +64,18 @@ dependencies:
   connectivity_plus: ^6.1.0
   record: ^6.2.1
   just_audio: ^0.10.5
-  file_picker: ^3.0.4
+  file_picker: ^8.0.0
   geolocator: ^14.0.1
   permission_handler: ^12.0.1
   flutter_map: ^8.3.0
   latlong2: ^0.9.1
+
+# file_picker (8.x) and share_plus (13.x) demand conflicting versions of win32
+# (^5.x vs ^6.x). win32 is a Windows-desktop-only transitive and is never
+# compiled for this Android/iOS app, so we pin one version to let resolution
+# succeed. No effect on mobile builds.
+dependency_overrides:
+  win32: ^5.9.0
 
 dev_dependencies:
   flutter_test:
