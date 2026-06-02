@@ -13,6 +13,7 @@ import '../../utils/time_utils.dart';
 import '../../utils/string_utils.dart';
 import '../../widgets/common/nav_badge_indicator.dart';
 import '../../widgets/common/ic_icons.dart';
+import '../../widgets/common/app_logo.dart';
 import '../../widgets/admin/shimmer_loading.dart';
 import '../../widgets/admin/inquiry_card.dart';
 import '../../widgets/admin/customer_card.dart';
@@ -391,6 +392,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                         if (_isRefreshing)
                           SliverToBoxAdapter(
                               child: _buildRefreshingIndicator(isDark)),
+                        SliverToBoxAdapter(child: _buildBrandStrip(isDark)),
                         SliverToBoxAdapter(child: _buildTopHeader(isDark)),
                         SliverToBoxAdapter(child: _buildDashboardCard(isDark)),
                         if (_escalatedCount > 0)
@@ -529,6 +531,14 @@ class _AdminDashboardState extends State<AdminDashboard>
   }
 
   // ─── TOP HEADER (matches customer dashboard style) ─────
+  Widget _buildBrandStrip(bool isDark) => Padding(
+        padding: const EdgeInsets.fromLTRB(20, 14, 20, 0),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: AppLogo.wordmark(height: 24, dark: isDark),
+        ),
+      );
+
   Widget _buildTopHeader(bool isDark) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),

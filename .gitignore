@@ -44,6 +44,9 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# Claude Code session / preview tooling (machine-specific)
+.claude/
+
 # Environment variables
 .env
 .env.local

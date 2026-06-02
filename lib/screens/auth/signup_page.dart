@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
 import '../../services/points_service.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'login_page.dart';
+import '../../widgets/common/app_logo.dart';
 
 class SignupPage extends StatefulWidget {
   final String? prefilledEmail;
@@ -429,13 +429,9 @@ class _SignupPageState extends State<SignupPage> {
                             ],
                           ),
                         ),
-                        CachedNetworkImage(
-                          imageUrl: 'https://res.cloudinary.com/dez4dicac/image/upload/v1770761782/Logo_Final-03_ymiycx.png',
-                          height: 36,
-                          color: isDark
-                              ? Brand.darkTextTertiary
-                              : Colors.white.withAlpha(((0.3) * 255).toInt()),
-                          errorWidget: (_, __, ___) => const SizedBox(),
+                        Opacity(
+                          opacity: isDark ? 0.45 : 0.55,
+                          child: const AppLogo.wordmark(height: 34, dark: true),
                         ),
                       ],
                     ),

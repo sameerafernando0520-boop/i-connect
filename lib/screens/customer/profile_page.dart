@@ -20,6 +20,7 @@ import '../../utils/string_utils.dart';
 import '../../utils/upload_validator.dart';
 import '../../utils/sri_lanka_locations.dart';
 import '../../widgets/common/ic_icons.dart';
+import '../../widgets/common/app_logo.dart';
 import '../../widgets/common/language_selector_sheet.dart';
 import '../../widgets/customer/customer_nav_bar.dart';
 import '../../widgets/customer/customer_nav_controller.dart';
@@ -39,10 +40,6 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage>
     with SingleTickerProviderStateMixin {
-  // ── Logo URL constant ───────────────────────────────────────
-  static const _logoUrl =
-      'https://res.cloudinary.com/dez4dicac/image/upload/v1770761781/Logo_Final-02_shnmml.png';
-
   bool _isLoading = true;
   bool _isEditing = false;
   bool _isUploadingImage = false;
@@ -1479,17 +1476,9 @@ class _ProfilePageState extends State<ProfilePage>
                             : Colors.white.withAlpha(102),
                         fontWeight: FontWeight.w500)),
                 const Spacer(),
-                CachedNetworkImage(
-                  imageUrl: _logoUrl,
-                  height: 20,
-                  imageBuilder: (_, imageProvider) => Image(
-                    image: imageProvider,
-                    height: 20,
-                    color: isDark
-                        ? Brand.darkTextTertiary.withAlpha(102)
-                        : Colors.white.withAlpha(38),
-                  ),
-                  errorWidget: (_, __, ___) => const SizedBox(),
+                Opacity(
+                  opacity: isDark ? 0.40 : 0.55,
+                  child: const AppLogo.wordmark(height: 20, dark: true),
                 ),
               ]),
             ])),
@@ -3701,14 +3690,7 @@ class _ProfilePageState extends State<ProfilePage>
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
                   ClipRRect(
                       borderRadius: BorderRadius.circular(16),
-                      child: CachedNetworkImage(
-                          imageUrl: _logoUrl,
-                          height: 50,
-                          errorWidget: (_, __, ___) => Icon(Icons.business,
-                              size: 50,
-                              color: isDark
-                                  ? Brand.darkIconActive
-                                  : Brand.royalBlue))),
+                      child: const AppLogo.mark(height: 56, width: 56)),
                   const SizedBox(height: 16),
                   Text('iFrontiers Connect',
                       style: TextStyle(

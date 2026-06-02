@@ -28,6 +28,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import '../../widgets/common/app_logo.dart';
 import 'package:intl/intl.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../config/supabase_config.dart';
@@ -1051,6 +1052,7 @@ class _HomePageState extends State<HomePage>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              _buildBrandStrip(isDark),
               _buildHeader(isDark),
               if (_hasError) _buildErrorBanner(isDark),
 
@@ -1160,6 +1162,14 @@ class _HomePageState extends State<HomePage>
   }
 
   // ─── HEADER ────────────────────────────────────────────────
+
+  Widget _buildBrandStrip(bool isDark) => Padding(
+        padding: const EdgeInsets.fromLTRB(20, 14, 20, 0),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: AppLogo.wordmark(height: 24, dark: isDark),
+        ),
+      );
 
   Widget _buildHeader(bool isDark) {
     return Padding(

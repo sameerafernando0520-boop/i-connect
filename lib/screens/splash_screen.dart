@@ -13,7 +13,6 @@ import 'admin/admin_dashboard.dart';
 import 'engineer/engineer_dashboard.dart';
 import 'marketing/marketing_admin_dashboard.dart';
 import 'engineering_admin/engineering_admin_dashboard.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -28,18 +27,11 @@ class _SplashScreenState extends State<SplashScreen>
 
   late AnimationController _main;
   late Animation<double> _bgFade;
-  late Animation<double> _glowScale;
-  late Animation<double> _glowOpacity;
-  late Animation<double> _logoFade;
-  late Animation<double> _logoScale;
-  late Animation<double> _logoSlideY;
   late Animation<double> _wordFade;
+  late Animation<double> _wordSlideY;
   late Animation<double> _tagFade;
   late Animation<double> _barFade;
   late Animation<double> _footerFade;
-
-  late AnimationController _pulse;
-  late Animation<double> _pulseScale;
 
   late AnimationController _orbs;
   late Animation<double> _orbAngle;
@@ -53,33 +45,22 @@ class _SplashScreenState extends State<SplashScreen>
       duration: const Duration(milliseconds: 2000),
     );
 
-    _bgFade      = _iv(0.00, 0.20);
-    _glowScale   = Tween<double>(begin: 0.5, end: 1.0)
-        .animate(CurvedAnimation(parent: _main, curve: const Interval(0.10, 0.55, curve: Curves.easeOutCubic)));
-    _glowOpacity = _iv(0.10, 0.55);
-    _logoFade    = _iv(0.20, 0.60);
-    _logoScale   = Tween<double>(begin: 0.8, end: 1.0)
-        .animate(CurvedAnimation(parent: _main, curve: const Interval(0.20, 0.60, curve: Curves.easeOutBack)));
-    _logoSlideY  = Tween<double>(begin: 20, end: 0)
-        .animate(CurvedAnimation(parent: _main, curve: const Interval(0.20, 0.60, curve: Curves.easeOutCubic)));
-    _wordFade    = _iv(0.50, 0.80);
-    _tagFade     = _iv(0.60, 0.85);
-    _barFade     = _iv(0.72, 1.00);
-    _footerFade  = _iv(0.78, 1.00);
+    _bgFade     = _iv(0.00, 0.18);
+    _wordFade   = _iv(0.16, 0.52);
+    _wordSlideY = Tween<double>(begin: 18, end: 0).animate(CurvedAnimation(
+        parent: _main, curve: const Interval(0.16, 0.56, curve: Curves.easeOutCubic)));
+    _tagFade    = _iv(0.40, 0.70);
+    _barFade    = _iv(0.60, 1.00);
+    _footerFade = _iv(0.72, 1.00);
 
     _main.forward();
-
-    _pulse = AnimationController(vsync: this, duration: const Duration(milliseconds: 2400))
-      ..repeat(reverse: true);
-    _pulseScale = Tween<double>(begin: 1.0, end: 1.12)
-        .animate(CurvedAnimation(parent: _pulse, curve: Curves.easeInOut));
 
     _orbs = AnimationController(vsync: this, duration: const Duration(seconds: 20))
       ..repeat();
     _orbAngle = Tween<double>(begin: 0, end: 2 * math.pi)
         .animate(CurvedAnimation(parent: _orbs, curve: Curves.linear));
 
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(milliseconds: 3000), () {
       if (mounted) _checkAuthAndNavigate();
     });
   }
@@ -151,18 +132,16 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void dispose() {
     _main.dispose();
-    _pulse.dispose();
     _orbs.dispose();
     super.dispose();
   }
 
-  // ── Premium corporate palette (hardcoded — splash is always dark) ──
+  // ── Premium corporate palette (splash is always dark) ──
   static const _bgTop    = Color(0xFF0F2557);
   static const _bgMid    = Color(0xFF0B1A3B);
   static const _bgBottom = Color(0xFF071228);
-  static const _blue     = Color(0xFF3B82F6);
   static const _blueGlow = Color(0xFF1A56DB);
-  static const _accent   = Color(0xFF60A5FA);
+  static const _green    = Color(0xFFA3C638);
   static const _muted    = Color(0xFF64748B);
   static const _faint    = Color(0xFF475569);
 
@@ -178,7 +157,7 @@ class _SplashScreenState extends State<SplashScreen>
       ),
       child: Scaffold(
         body: AnimatedBuilder(
-          animation: Listenable.merge([_main, _pulse, _orbs]),
+          animation: Listenable.merge([_main, _orbs]),
           builder: (context, _) {
             return Opacity(
               opacity: _bgFade.value,
@@ -201,24 +180,29 @@ class _SplashScreenState extends State<SplashScreen>
                       child: Column(
                         children: [
                           const Spacer(flex: 3),
-                          _buildLogo(),
-                          const SizedBox(height: 32),
-                          Opacity(
-                            opacity: _wordFade.value,
-                            child: CachedNetworkImage(
-                              imageUrl: 'https://res.cloudinary.com/dez4dicac/image/upload/q_auto/f_auto/v1769810412/IF_logo-01_kcln3e.png',
-                              width: 170,
-                              height: 65,
-                              fit: BoxFit.contain,
-                              errorWidget: (_, __, ___) => const SizedBox.shrink(),
+                          // White "iConnect" wordmark — the splash hero
+                          Transform.translate(
+                            offset: Offset(0, _wordSlideY.value),
+                            child: Opacity(
+                              opacity: _wordFade.value,
+                              child: Image.asset(
+                                'assets/branding/splash_wordmark.png',
+                                width: 230,
+                                fit: BoxFit.contain,
+                                filterQuality: FilterQuality.high,
+                                errorBuilder: (_, __, ___) => const Text(
+                                  'iConnect',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.w800,
+                                    letterSpacing: 1,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                          const SizedBox(height: 10),
-                          Opacity(
-                            opacity: _wordFade.value,
-                            child: _buildBrandLabel(),
-                          ),
-                          const SizedBox(height: 12),
+                          const SizedBox(height: 16),
                           Opacity(
                             opacity: _tagFade.value,
                             child: const Text(
@@ -226,8 +210,8 @@ class _SplashScreenState extends State<SplashScreen>
                               style: TextStyle(
                                 color: _muted,
                                 fontSize: 11,
-                                fontWeight: FontWeight.w500,
-                                letterSpacing: 3.5,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 3.2,
                               ),
                             ),
                           ),
@@ -242,10 +226,8 @@ class _SplashScreenState extends State<SplashScreen>
                             child: Padding(
                               padding: const EdgeInsets.only(bottom: 28),
                               child: Column(children: [
-                                const Text(
-                                  'Powered by',
-                                  style: TextStyle(color: _faint, fontSize: 11),
-                                ),
+                                const Text('Powered by',
+                                    style: TextStyle(color: _faint, fontSize: 11)),
                                 const SizedBox(height: 4),
                                 Text(
                                   t.companyName,
@@ -272,101 +254,6 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  Widget _buildLogo() {
-    return Transform.translate(
-      offset: Offset(0, _logoSlideY.value),
-      child: Opacity(
-        opacity: _logoFade.value,
-        child: Transform.scale(
-          scale: _logoScale.value,
-          child: SizedBox(
-            width: 160,
-            height: 160,
-            child: Stack(alignment: Alignment.center, children: [
-              // Outer breathing glow
-              Opacity(
-                opacity: _glowOpacity.value * 0.25,
-                child: Transform.scale(
-                  scale: _glowScale.value * _pulseScale.value,
-                  child: Container(
-                    width: 160,
-                    height: 160,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: RadialGradient(colors: [
-                        _blue.withAlpha(60),
-                        _blue.withAlpha(0),
-                      ]),
-                    ),
-                  ),
-                ),
-              ),
-              // Inner ring
-              Opacity(
-                opacity: _glowOpacity.value * 0.6,
-                child: Transform.scale(
-                  scale: _glowScale.value,
-                  child: Container(
-                    width: 120,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: _blue.withAlpha(40),
-                        width: 1.5,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              // Logo
-              ClipOval(
-                child: Image.asset(
-                  'assets/splash_logo.png',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.contain,
-                  errorBuilder: (_, __, ___) => const Icon(
-                    Icons.link,
-                    size: 52,
-                    color: _blue,
-                  ),
-                ),
-              ),
-            ]),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildBrandLabel() {
-    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      _dash(_accent),
-      const SizedBox(width: 10),
-      const Text(
-        'i CONNECT',
-        style: TextStyle(
-          color: _accent,
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-          letterSpacing: 6,
-        ),
-      ),
-      const SizedBox(width: 10),
-      _dash(_accent),
-    ]);
-  }
-
-  Widget _dash(Color color) => Container(
-        width: 24,
-        height: 1.5,
-        decoration: BoxDecoration(
-          color: color.withAlpha(128),
-          borderRadius: BorderRadius.circular(2),
-        ),
-      );
-
   Widget _buildProgress(S t) {
     return Column(children: [
       SizedBox(
@@ -376,7 +263,7 @@ class _SplashScreenState extends State<SplashScreen>
           child: const LinearProgressIndicator(
             minHeight: 2,
             backgroundColor: Color(0xFF1E293B),
-            valueColor: AlwaysStoppedAnimation<Color>(_blue),
+            valueColor: AlwaysStoppedAnimation<Color>(_green),
           ),
         ),
       ),
@@ -389,11 +276,11 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Widget _buildAmbientGlow(Size size) {
-    final t = (_orbAngle.value / (2 * math.pi));
-    final wobble = math.sin(t * 2 * math.pi) * 8;
+    final tt = (_orbAngle.value / (2 * math.pi));
+    final wobble = math.sin(tt * 2 * math.pi) * 8;
     return Positioned(
       left: (size.width / 2) - 140 + wobble,
-      top: (size.height / 2) - 200,
+      top: (size.height / 2) - 220,
       child: IgnorePointer(
         child: Container(
           width: 280,

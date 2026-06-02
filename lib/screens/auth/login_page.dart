@@ -18,6 +18,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import 'signup_page.dart';
 import '../customer/home_page.dart';
+import '../../widgets/common/app_logo.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -736,17 +737,8 @@ class _LoginPageState extends State<LoginPage>
                         children: [
                           const SizedBox(height: 30),
 
-                          // Logo
-                          CachedNetworkImage(
-                            imageUrl: 'https://res.cloudinary.com/dez4dicac/image/upload/v1770761782/Logo_Final-03_ymiycx.png',
-                            height: 72,
-                            fit: BoxFit.contain,
-                            color: Colors.white,
-                            errorWidget: (_, __, ___) => const Icon(
-                                Icons.link,
-                                size: 40,
-                                color: Colors.white),
-                          ),
+                          // Logo — white iConnect lockup on the dark login bg
+                          const AppLogo.full(height: 92, dark: true),
 
                           const SizedBox(height: 20),
 
