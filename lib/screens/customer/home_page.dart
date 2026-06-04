@@ -425,7 +425,43 @@ class _HomePageState extends State<HomePage>
     }
   }
 
+  // Consolidated home load: ONE RPC round-trip (get_customer_dashboard_summary)
+  // instead of ~7 separate queries. Falls back to the per-query path on any
+  // failure so the home screen never breaks.
   Future<Map<String, dynamic>> _fetchDashboard(String userId) async {
+    try {
+      final res = await SupabaseConfig.client
+          .rpc('get_customer_dashboard_summary', params: {'p_user_id': userId});
+      if (res is Map) {
+        final data = Map<String, dynamic>.from(res);
+        final ns = data['next_service'];
+        return _assembleDashboard(
+          userData: data['profile'] is Map
+              ? Map<String, dynamic>.from(data['profile'] as Map)
+              : <String, dynamic>{},
+          machineList: ((data['machines'] as List?) ?? const [])
+              .map((m) => Map<String, dynamic>.from(m as Map))
+              .toList(),
+          ticketList: ((data['tickets'] as List?) ?? const [])
+              .map((t) => Map<String, dynamic>.from(t as Map))
+              .toList(),
+          planList: ((data['plans'] as List?) ?? const [])
+              .map((p) => Map<String, dynamic>.from(p as Map))
+              .toList(),
+          unreadCount: (data['unread_notifications'] as num?)?.toInt() ?? 0,
+          nextServiceDate: ns is Map ? ns['next_service_due'] as String? : null,
+          nextServiceMachineName: ns is Map ? ns['machine_name'] as String? : null,
+          expiringWarrantyCount:
+              (data['expiring_warranty_count'] as num?)?.toInt() ?? 0,
+        );
+      }
+    } catch (e) {
+      debugPrint('⚠️ get_customer_dashboard_summary failed, using fallback: $e');
+    }
+    return _fetchDashboardLegacy(userId);
+  }
+
+  Future<Map<String, dynamic>> _fetchDashboardLegacy(String userId) async {
     final results = await Future.wait<dynamic>([
       SupabaseConfig.client
           .from('users')
@@ -461,16 +497,6 @@ class _HomePageState extends State<HomePage>
         .map((p) => Map<String, dynamic>.from(p as Map))
         .toList();
 
-    // ✅ FIX-4: compute category counts from ALL machines
-    final categoryCounts = <String, int>{};
-    for (final m in machineList) {
-      final catalog = m['machine_catalog'] as Map<String, dynamic>?;
-      final cat = catalog?['category'] as String?;
-      if (cat != null && cat.isNotEmpty) {
-        categoryCounts[cat] = (categoryCounts[cat] ?? 0) + 1;
-      }
-    }
-
     int unreadCount = 0;
     try {
       final unreadResult = await SupabaseConfig.client
@@ -480,24 +506,6 @@ class _HomePageState extends State<HomePage>
           .eq('is_read', false);
       unreadCount = (unreadResult as List?)?.length ?? 0;
     } catch (_) {}
-
-    int progress = 0;
-    if (userData['full_name'] != null && userData['company_name'] != null) {
-      progress += 10;
-    }
-    if (machineList.isNotEmpty) {
-      progress += 15 + ((machineList.length - 1) * 10).clamp(0, 30);
-    }
-    if (ticketList.any((t) => t['ticket_type'] == 'support')) {
-      progress += 10;
-    }
-    if (ticketList.any((t) => t['ticket_type'] == 'inquiry')) {
-      progress += 10;
-    }
-    if (ticketList.any((t) => t['ticket_type'] == 'order')) {
-      progress += 15;
-    }
-    progress = progress.clamp(0, 100);
 
     String? nextServiceDate;
     String? nextServiceMachineName;
@@ -530,6 +538,57 @@ class _HomePageState extends State<HomePage>
 
       expiringWarrantyCount = (expiringWarranties as List?)?.length ?? 0;
     } catch (_) {}
+
+    return _assembleDashboard(
+      userData: userData,
+      machineList: machineList,
+      ticketList: ticketList,
+      planList: planList,
+      unreadCount: unreadCount,
+      nextServiceDate: nextServiceDate,
+      nextServiceMachineName: nextServiceMachineName,
+      expiringWarrantyCount: expiringWarrantyCount,
+    );
+  }
+
+  /// Pure assembly of the home dashboard map from raw inputs — shared by the
+  /// consolidated RPC fast-path and the legacy per-query fallback.
+  Map<String, dynamic> _assembleDashboard({
+    required Map<String, dynamic> userData,
+    required List<Map<String, dynamic>> machineList,
+    required List<Map<String, dynamic>> ticketList,
+    required List<Map<String, dynamic>> planList,
+    required int unreadCount,
+    required String? nextServiceDate,
+    required String? nextServiceMachineName,
+    required int expiringWarrantyCount,
+  }) {
+    final categoryCounts = <String, int>{};
+    for (final m in machineList) {
+      final catalog = m['machine_catalog'] as Map<String, dynamic>?;
+      final cat = catalog?['category'] as String?;
+      if (cat != null && cat.isNotEmpty) {
+        categoryCounts[cat] = (categoryCounts[cat] ?? 0) + 1;
+      }
+    }
+
+    int progress = 0;
+    if (userData['full_name'] != null && userData['company_name'] != null) {
+      progress += 10;
+    }
+    if (machineList.isNotEmpty) {
+      progress += 15 + ((machineList.length - 1) * 10).clamp(0, 30);
+    }
+    if (ticketList.any((t) => t['ticket_type'] == 'support')) {
+      progress += 10;
+    }
+    if (ticketList.any((t) => t['ticket_type'] == 'inquiry')) {
+      progress += 10;
+    }
+    if (ticketList.any((t) => t['ticket_type'] == 'order')) {
+      progress += 15;
+    }
+    progress = progress.clamp(0, 100);
 
     return {
       'full_name': userData['full_name'] ?? '',
