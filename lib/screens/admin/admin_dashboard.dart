@@ -377,6 +377,7 @@ class _AdminDashboardState extends State<AdminDashboard>
   Widget _buildDashboardTab(bool isDark) {
     return OfflineBanner(
       child: SafeArea(
+        top: false,
         bottom: false,
         child: _isLoading
             ? const DashboardSkeleton()
@@ -392,7 +393,6 @@ class _AdminDashboardState extends State<AdminDashboard>
                         if (_isRefreshing)
                           SliverToBoxAdapter(
                               child: _buildRefreshingIndicator(isDark)),
-                        SliverToBoxAdapter(child: _buildBrandStrip(isDark)),
                         SliverToBoxAdapter(child: _buildTopHeader(isDark)),
                         SliverToBoxAdapter(child: _buildDashboardCard(isDark)),
                         if (_escalatedCount > 0)
@@ -531,20 +531,28 @@ class _AdminDashboardState extends State<AdminDashboard>
   }
 
   // ─── TOP HEADER (matches customer dashboard style) ─────
-  Widget _buildBrandStrip(bool isDark) => Padding(
-        padding: const EdgeInsets.fromLTRB(20, 14, 20, 0),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: AppLogo.wordmark(height: 24, dark: isDark),
-        ),
-      );
-
   Widget _buildTopHeader(bool isDark) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-      child: Row(
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFF1E3A5F), Color(0xFF12294A)],
+        ),
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(28)),
+      ),
+      padding: EdgeInsets.fromLTRB(
+          20, MediaQuery.of(context).padding.top + 16, 20, 22),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Admin avatar — gradient container with glow shadow
+          const Padding(
+            padding: EdgeInsets.only(bottom: 14),
+            child: AppLogo.wordmark(height: 24, dark: true),
+          ),
+          Row(
+            children: [
+              // Admin avatar — gradient container with glow shadow
           Container(
             width: 52,
             height: 52,
@@ -588,9 +596,9 @@ class _AdminDashboardState extends State<AdminDashboard>
               children: [
                 Text(
                   TimeUtils.getGreeting(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 13,
-                    color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
+                    color: Colors.white70,
                     fontWeight: FontWeight.w500,
                     letterSpacing: 0.1,
                   ),
@@ -598,10 +606,10 @@ class _AdminDashboardState extends State<AdminDashboard>
                 const SizedBox(height: 2),
                 Text(
                   _adminName,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    color: isDark ? Brand.darkTextPrimary : AdminColors.primaryDark,
+                    color: Colors.white,
                     letterSpacing: -0.3,
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -626,6 +634,8 @@ class _AdminDashboardState extends State<AdminDashboard>
             Icons.settings_outlined,
             isDark: isDark,
             onTap: () => _navigateTo(const AdminSettingsPage()),
+          ),
+            ],
           ),
         ],
       ),

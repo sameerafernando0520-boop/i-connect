@@ -129,10 +129,16 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
     final type = rule['commission_type']?.toString() ?? 'percentage';
     final value = _d(rule['commission_value']);
     final priority = _i(rule['priority']);
+    final rewardKind = rule['reward_kind']?.toString() ?? 'cash';
+    final rewardLabel = rule['reward_label']?.toString();
 
-    final valueDisplay = type == 'percentage'
+    final cashDisplay = type == 'percentage'
         ? '${value.toStringAsFixed(1)}%'
         : 'Rs. ${_fmt.format(value)}';
+    final valueDisplay =
+        (rewardKind != 'cash' && (rewardLabel?.isNotEmpty ?? false))
+            ? rewardLabel!
+            : cashDisplay;
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -231,7 +237,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
             child: Row(
               children: [
                 _ruleDetail(
-                  'Commission',
+                  rewardKind == 'cash' ? 'Commission' : 'Reward',
                   valueDisplay,
                   AdminColors.primary,
                 ),
@@ -398,8 +404,11 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
         TextEditingController(text: '${_i(existing?['expiry_days'] ?? 180)}');
     final priorityCtrl =
         TextEditingController(text: '${_i(existing?['priority'] ?? 0)}');
+    final rewardLabelCtrl = TextEditingController(
+        text: existing?['reward_label']?.toString() ?? '');
 
     String commType = existing?['commission_type']?.toString() ?? 'percentage';
+    String rewardKind = existing?['reward_kind']?.toString() ?? 'cash';
     bool saving = false;
 
     showModalBottomSheet<void>(
@@ -454,6 +463,40 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                         sheetCtx,
                         categoryCtrl,
                         'Category (e.g. Heavy Machinery)',
+                      ),
+                      const SizedBox(height: 14),
+                      // Reward kind — what the referrer actually receives.
+                      Text(
+                        'Reward Type',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: AdminColors.textSub(sheetCtx),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: [
+                          for (final k in const [
+                            ['cash', 'Cash'],
+                            ['discount', 'Discount'],
+                            ['gift', 'Gift'],
+                            ['points', 'Points'],
+                            ['custom', 'Custom'],
+                          ])
+                            _kindChip(sheetCtx, k[1], rewardKind == k[0],
+                                () => setSheet(() => rewardKind = k[0])),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      _editorField(
+                        sheetCtx,
+                        rewardLabelCtrl,
+                        rewardKind == 'cash'
+                            ? 'Reward note (optional)'
+                            : 'Reward description shown to customer *',
                       ),
                       const SizedBox(height: 14),
                       // Commission type toggle
@@ -573,7 +616,31 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                                   }
                                   final commValue =
                                       double.tryParse(valueCtrl.text) ?? 0;
-                                  if (commValue <= 0) {
+                                  final needsLabel = rewardKind == 'discount' ||
+                                      rewardKind == 'gift' ||
+                                      rewardKind == 'custom';
+                                  final needsValue = rewardKind == 'cash' ||
+                                      rewardKind == 'discount' ||
+                                      rewardKind == 'points';
+                                  if (needsLabel &&
+                                      rewardLabelCtrl.text.trim().isEmpty) {
+                                    ScaffoldMessenger.of(sheetCtx).showSnackBar(
+                                      SnackBar(
+                                        content: const Text(
+                                            'Add a reward description for this reward type'),
+                                        backgroundColor: AdminColors.error,
+                                        behavior: SnackBarBehavior.floating,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
+                                        margin: const EdgeInsets.fromLTRB(
+                                            16, 0, 16, 16),
+                                      ),
+                                    );
+                                    return;
+                                  }
+                                  if (needsValue && commValue <= 0) {
                                     ScaffoldMessenger.of(sheetCtx).showSnackBar(
                                       SnackBar(
                                         content: const Text(
@@ -640,6 +707,11 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                                         'p_priority':
                                             int.tryParse(priorityCtrl.text) ??
                                                 0,
+                                        'p_reward_kind': rewardKind,
+                                        'p_reward_label':
+                                            rewardLabelCtrl.text.trim().isEmpty
+                                                ? null
+                                                : rewardLabelCtrl.text.trim(),
                                       },
                                     );
                                     // FIX: Check sheetCtx mounted
@@ -746,6 +818,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
       cooldownCtrl.dispose();
       expiryCtrl.dispose();
       priorityCtrl.dispose();
+      rewardLabelCtrl.dispose();
     });
   }
 
@@ -806,6 +879,40 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
               fontWeight: active ? FontWeight.w700 : FontWeight.w500,
               color: active ? AdminColors.primary : AdminColors.textSub(ctx),
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  // A compact (non-expanding) selectable chip for the reward-kind picker.
+  Widget _kindChip(
+    BuildContext ctx,
+    String label,
+    bool active,
+    VoidCallback onTap,
+  ) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
+        decoration: BoxDecoration(
+          color:
+              active ? AdminColors.primary.withAlpha(25) : AdminColors.bg(ctx),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: active
+                ? AdminColors.primary.withAlpha(80)
+                : AdminColors.border(ctx),
+          ),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: active ? FontWeight.w700 : FontWeight.w500,
+            color: active ? AdminColors.primary : AdminColors.textSub(ctx),
           ),
         ),
       ),

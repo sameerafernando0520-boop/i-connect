@@ -335,7 +335,7 @@ class _SignupPageState extends State<SignupPage> {
                 gradient: LinearGradient(
                   colors: isDark
                       ? [Brand.darkCard, Brand.darkCardElevated]
-                      : [Brand.royalBlueDark, Brand.royalBlue],
+                      : [const Color(0xFF14294C), Brand.royalBlueDark],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -804,7 +804,7 @@ class _SignupPageState extends State<SignupPage> {
                               : Brand.lightGreenDark),
                       const SizedBox(width: 6),
                       Text(
-                        'Referred by $_referrerName',
+                        'Referred by $_referrerName · +250 welcome pts',
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,

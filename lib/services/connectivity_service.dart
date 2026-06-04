@@ -36,28 +36,31 @@ class ConnectivityService {
   Future<void> initialize() async {
     if (_initialized) return;
     _initialized = true;
-    // Step 1: initial probe.  If this throws (e.g. missing
-    // ACCESS_NETWORK_STATE permission or restricted platform), keep the
-    // app online-by-default and skip subscribing — the explicit
-    // markOffline/markOnline calls from SafeNetwork still keep state useful.
-    try {
-      final initial = await Connectivity().checkConnectivity();
-      _update(initial);
-    } catch (e) {
-      isOnline.value = true;
-      // ignore: avoid_print
-      print('[ConnectivityService] initial probe failed: $e');
-      return;
-    }
-    // Step 2: subscribe.  Wrapped separately so a SecurityException raised
-    // when the BroadcastReceiver registers (Android 12+ exported flag) does
-    // not undo a successful initial probe.
+
+    // ── Step 1: Subscribe to connectivity stream (non-blocking) ──
+    // Start listening to stream immediately without waiting for initial probe.
+    // This prevents blocking on startup while still getting real-time updates.
     try {
       _sub = Connectivity().onConnectivityChanged.listen(_update);
     } catch (e) {
       // ignore: avoid_print
       print('[ConnectivityService] stream subscribe failed: $e');
+      return;
     }
+
+    // ── Step 2: Initial probe (deferred, non-blocking) ──
+    // Perform initial check in background to avoid startup blocking.
+    // If probe fails, we keep the default "online=true" which is safe.
+    Future(() async {
+      try {
+        final initial = await Connectivity().checkConnectivity();
+        _update(initial);
+      } catch (e) {
+        // ignore: avoid_print
+        print('[ConnectivityService] initial probe failed: $e');
+        // Keep online=true by default
+      }
+    });
   }
 
   void _update(List<ConnectivityResult> results) {

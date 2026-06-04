@@ -70,12 +70,17 @@ dependencies:
   flutter_map: ^8.3.0
   latlong2: ^0.9.1
 
-# file_picker (8.x) and share_plus (13.x) demand conflicting versions of win32
-# (^5.x vs ^6.x). win32 is a Windows-desktop-only transitive and is never
-# compiled for this Android/iOS app, so we pin one version to let resolution
-# succeed. No effect on mobile builds.
+# win32 is a Windows-desktop-only transitive, but several plugins export their
+# win32 FFI code via `if (dart.library.ffi)` — which is TRUE on Android — so it
+# is type-checked during the Android build. file_picker (8/11) is written for
+# win32 ^5.x; package_info_plus 10 + share_plus 13 moved to win32 ^6. There is
+# no file_picker release on win32 6, so we pin win32 to 5.x and pin
+# package_info_plus back to 9.0.1 — the newest release still on win32 ^5.5.3
+# (it is only pulled by geolocator_linux). share_plus 13's win32 code still
+# compiles against 5.x. No effect on the actual Android/iOS runtime.
 dependency_overrides:
   win32: ^5.9.0
+  package_info_plus: 9.0.1
 
 dev_dependencies:
   flutter_test:
@@ -100,11 +105,14 @@ flutter_launcher_icons:
 # lockup, handing off seamlessly to the animated Dart SplashScreen.
 # Regenerate with: dart run flutter_native_splash:create
 flutter_native_splash:
-  color: "#0B1A3B"
-  image: assets/branding/splash_center.png
+  # Plain navy native splash (no logo). The OS pre-Flutter splash can't be
+  # removed on Android 12+, but a transparent icon + navy background makes it
+  # blend seamlessly into the animated Dart SplashScreen — no circle-cropped
+  # logo flash on launch.
+  color: "#0D2049"
   android_12:
-    color: "#0B1A3B"
-    image: assets/branding/app_icon.png
+    color: "#0D2049"
+    image: assets/branding/transparent.png
   android: true
   ios: true
   web: false

@@ -262,7 +262,8 @@ class _ReferralPageState extends State<ReferralPage> {
 
   String _buildShareMessage() {
     return '🏭 I use iFrontiers Connect for all my industrial machinery needs. '
-        'Join using my referral code ${_referralCode ?? ''} and we both win!\n\n'
+        'Join using my referral code ${_referralCode ?? ''} and we both win — '
+        'you get 250 welcome points to start, and I earn a reward when you buy!\n\n'
         'My referral code: ${_referralCode ?? ''}\n'
         'Download: https://play.google.com/store/apps/details?id=com.ifrontiers.iconnect';
   }
@@ -491,7 +492,7 @@ class _ReferralPageState extends State<ReferralPage> {
             )),
         const SizedBox(height: 8),
         Text(
-          'Share your code. When friends purchase, you earn.',
+          'Your friend gets 250 welcome points — and you earn a reward when they buy.',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 13,
@@ -756,9 +757,15 @@ class _ReferralPageState extends State<ReferralPage> {
               final type = rule['commission_type'] ?? 'percentage';
               final value = rule['commission_value'] ?? 0;
               final minPurchase = rule['min_purchase'] ?? 0;
+              final rewardKind = rule['reward_kind']?.toString() ?? 'cash';
+              final rewardLabel = rule['reward_label']?.toString();
 
               String rateText;
-              if (type == 'percentage') {
+              if (rewardKind != 'cash' &&
+                  rewardLabel != null &&
+                  rewardLabel.isNotEmpty) {
+                rateText = rewardLabel;
+              } else if (type == 'percentage') {
                 rateText =
                     '${(value as num).toStringAsFixed(value == (value).toInt() ? 0 : 1)}% of price';
               } else {

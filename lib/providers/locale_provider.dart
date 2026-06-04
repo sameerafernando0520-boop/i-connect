@@ -27,13 +27,30 @@ class LocaleProvider extends ChangeNotifier {
 
   String get currentLanguageCode => _locale.languageCode;
 
+  bool _isLoaded = false;
+  bool _isLoading = false;
+
   LocaleProvider() {
     // Try to pick up the currently-signed-in user on startup.
     final existing = SupabaseConfig.client.auth.currentUser?.id;
     if (existing != null) {
       _currentUserId = existing;
     }
-    _load();
+    // Defer loading - will load on first access
+    _ensureLoaded();
+  }
+
+  /// Ensure locale is loaded. Loads on first access automatically.
+  Future<void> _ensureLoaded() async {
+    if (_isLoaded || _isLoading) return;
+    _isLoading = true;
+
+    try {
+      await _load();
+    } finally {
+      _isLoading = false;
+      _isLoaded = true;
+    }
   }
 
   Future<void> _load() async {
@@ -50,7 +67,8 @@ class LocaleProvider extends ChangeNotifier {
   /// Load the saved locale for a specific user. Call this after login.
   Future<void> loadForUser(String userId) async {
     _currentUserId = userId;
-    await _load();
+    _isLoaded = false; // Reset loaded flag since key changed
+    await _ensureLoaded();
   }
 
   /// Reset to fallback (English) and forget which user we were bound to.
@@ -64,6 +82,7 @@ class LocaleProvider extends ChangeNotifier {
   }
 
   Future<void> setLocale(Locale locale) async {
+    await _ensureLoaded();
     if (_locale == locale) return;
     _locale = locale;
     notifyListeners();

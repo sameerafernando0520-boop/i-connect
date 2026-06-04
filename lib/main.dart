@@ -21,6 +21,7 @@ import 'services/notification_service.dart';
 import 'services/connectivity_service.dart';
 import 'services/offline_cache_service.dart';
 import 'screens/splash_screen.dart';
+import 'widgets/init_error_widget.dart';
 
 import 'screens/auth/signup_page.dart';
 
@@ -41,9 +42,12 @@ bool _firebaseInitFailed = false;
 String? _firebaseInitError;
 bool _supabaseInitFailed = false;
 String? _supabaseInitError;
+late ValueNotifier<bool> _isRetrying;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  _isRetrying = ValueNotifier(false);
 
   // ── Load environment variables ──
   try {
@@ -54,44 +58,68 @@ void main() async {
     debugPrint('   → Copy .env.example to .env and fill in values');
   }
 
+  await _initializeServices();
+
+  runApp(const MyApp());
+}
+
+/// Initialize Firebase and Supabase with timeouts.
+Future<void> _initializeServices() async {
+  // ── Firebase initialization with timeout (10s) ──
+  // If Firebase fails, notifications won't work but the app can still function.
   try {
-    await Firebase.initializeApp();
+    await Firebase.initializeApp().timeout(
+      const Duration(seconds: 10),
+      onTimeout: () {
+        throw TimeoutException('Firebase init timeout after 10s', null);
+      },
+    );
     debugPrint('✅ Firebase initialized');
   } catch (e) {
-    // M7: Firebase failure makes push notifications unusable. Track it so the
-    // first screen can warn the user instead of silently dropping messages.
     _firebaseInitFailed = true;
     _firebaseInitError = e.toString();
     debugPrint('❌ Firebase init failed: $e');
   }
 
+  // ── Supabase initialization with timeout (8s) ──
+  // If Supabase fails, the app shows an error UI and user can retry.
   try {
-    await SupabaseConfig.initialize();
+    await SupabaseConfig.initialize().timeout(
+      const Duration(seconds: 8),
+      onTimeout: () {
+        throw TimeoutException('Supabase init timeout after 8s', null);
+      },
+    );
     debugPrint('✅ Supabase initialized');
   } catch (e) {
-    // M7: Without Supabase nothing works — but crashing main() would leave the
-    // user staring at a Flutter error. Set the flag and let `MyApp` show a
-    // recoverable error screen.
     _supabaseInitFailed = true;
     _supabaseInitError = e.toString();
     debugPrint('❌ Supabase init failed: $e');
   }
 
-  // ── v24: Offline cache + connectivity (non-blocking) ──
-  unawaited(OfflineCacheService.instance.initialize());
-  unawaited(ConnectivityService.instance.initialize());
+  // ── Background services (non-blocking) ──
+  // These will not block the UI. If they fail, the app continues with reduced features.
+  unawaited(
+    OfflineCacheService.instance.initialize().catchError((e) {
+      debugPrint('⚠️ Offline cache init failed: $e');
+    }),
+  );
+  unawaited(
+    ConnectivityService.instance.initialize().catchError((e) {
+      debugPrint('⚠️ Connectivity service init failed: $e');
+    }),
+  );
 
-  // ── FCM: Initialize notification service (fire-and-forget — must not block runApp) ──
-  // Awaiting FCM token fetches before runApp() causes a blank screen if the
-  // device has no network or FCM isn't ready. Run in background instead.
-  // Retries transient timeouts up to 3× with backoff (see notification_service.dart).
-  unawaited(NotificationService().initialize().then((_) {
-    debugPrint('✅ Notifications initialized');
-  }).catchError((e) {
-    debugPrint('⚠️ Notification init failed (non-fatal): $e');
-  }));
-
-  runApp(const MyApp());
+  // ── FCM: Initialize notification service (fire-and-forget) ──
+  // Notifications are non-critical; they initialize in background after app shows.
+  // This prevents blank screens on poor networks.
+  unawaited(
+    NotificationService().initialize().then((_) {
+      debugPrint('✅ Notifications initialized');
+    }).catchError((e) {
+      debugPrint('⚠️ Notification init failed (non-fatal): $e');
+    }),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -107,11 +135,16 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _setupAuthListener();
+
+    // Only set up auth listener if Supabase succeeded
+    if (!_supabaseInitFailed) {
+      _setupAuthListener();
+    }
+
     // M7: Defer the warning SnackBar until after the first frame — before that
     // point `navigatorKey.currentContext` is null and ScaffoldMessenger can't
     // locate a host.
-    if (_firebaseInitFailed || _supabaseInitFailed) {
+    if (_firebaseInitFailed && !_supabaseInitFailed) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _showInitFailureBanner();
       });
@@ -371,6 +404,50 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    // ── If Supabase failed, show error UI with retry ──
+    if (_supabaseInitFailed) {
+      return ValueListenableBuilder<bool>(
+        valueListenable: _isRetrying,
+        builder: (context, isRetrying, _) {
+          return InitErrorWidget(
+            firebaseError: _firebaseInitFailed ? _firebaseInitError : null,
+            supabaseError: _supabaseInitError,
+            isRetrying: isRetrying,
+            onRetry: () async {
+              _isRetrying.value = true;
+              try {
+                // Reset the flags before retrying
+                _firebaseInitFailed = false;
+                _firebaseInitError = null;
+                _supabaseInitFailed = false;
+                _supabaseInitError = null;
+
+                // Re-initialize services
+                await _initializeServices();
+
+                if (!mounted) return;
+
+                // If still failed after retry, keep showing error
+                if (_supabaseInitFailed) {
+                  _isRetrying.value = false;
+                  return;
+                }
+
+                // Success! Rebuild the app
+                setState(() {});
+                _setupAuthListener();
+              } catch (e) {
+                debugPrint('Retry failed: $e');
+                _supabaseInitFailed = true;
+                _supabaseInitError = e.toString();
+                _isRetrying.value = false;
+              }
+            },
+          );
+        },
+      );
+    }
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
