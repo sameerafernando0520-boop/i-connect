@@ -12,6 +12,7 @@ import '../../utils/time_utils.dart';
 import '../../widgets/common/ic_icons.dart';
 import 'order_form_page.dart';
 import 'my_schedule_page.dart';
+import 'ticket_detail_page.dart';
 
 class SupportOptionsHub extends StatefulWidget {
   const SupportOptionsHub({super.key});
@@ -814,7 +815,14 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
         child: InkWell(
           borderRadius: BorderRadius.circular(16),
           onTap: () {
-            // TODO: Navigate to ticket detail
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => TicketDetailPage(ticketId: ticket['id']),
+              ),
+            ).then((_) {
+              if (mounted) _loadData();
+            });
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),

@@ -13,15 +13,15 @@
 // surface. In debug, everything falls through to `debugPrint` with a tag
 // prefix so we can grep. In release:
 //   - `debug` and `info` are suppressed (no perf cost)
-//   - `error` is forwarded to `_Sink.report` which today just does a
-//     gated debugPrint, but is the single insertion point for Sentry /
-//     Crashlytics once a sink is chosen.
+//   - `warn` and `error` are forwarded to `_Sink.report` which routes to
+//     Firebase Crashlytics for production crash-reporting.
 //
 // Usage:
 //   AppLogger.info('TicketRepo', 'Fetched 42 tickets');
 //   AppLogger.error('TicketRepo', 'Fetch failed', error: e, stack: st);
 
 import 'package:flutter/foundation.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 class AppLogger {
   AppLogger._();
@@ -87,9 +87,9 @@ class AppLogger {
   }
 }
 
-/// Thin abstraction over the eventual crash-reporter. Today this is a
-/// `debugPrint`; when Sentry/Crashlytics is wired up, replace the body of
-/// `report` with the SDK call and nothing at the call sites needs to change.
+/// Thin abstraction over Firebase Crashlytics. In release builds, warnings
+/// and errors are forwarded to the Crashlytics dashboard. In debug builds,
+/// everything falls through to `debugPrint` for local visibility.
 class _Sink {
   static void report(
     String tag,
@@ -98,13 +98,33 @@ class _Sink {
     Object? error,
     StackTrace? stack,
   }) {
-    // TODO(crash-reporter): route to Sentry/Crashlytics here.
-    //   Sentry:      Sentry.captureException(error, stackTrace: stack, ...)
-    //   Crashlytics: FirebaseCrashlytics.instance.recordError(error, stack,
-    //                  reason: '[$tag] $message', fatal: severity=='error');
-    //
-    // For now, use debugPrint which survives in `flutter logs` during staged
-    // release builds and is a no-op in a fully stripped release.
+    // Always write to debug console (no-op in stripped release).
     debugPrint('🛰️  [$severity][$tag] $message');
+
+    // Only forward to Crashlytics in release — avoids polluting the
+    // dashboard during development.
+    if (!kReleaseMode) return;
+
+    try {
+      final crashlytics = FirebaseCrashlytics.instance;
+
+      // Breadcrumb log for context in the Crashlytics timeline.
+      crashlytics.log('[$severity][$tag] $message');
+
+      // Record the actual error if one was provided.
+      if (error != null) {
+        crashlytics.recordError(
+          error,
+          stack,
+          reason: '[$tag] $message',
+          fatal: severity == 'error',
+        );
+      }
+    } catch (e) {
+      // Crashlytics may not be initialised yet (e.g. very early startup
+      // errors before Firebase.initializeApp completes). Swallow silently —
+      // the debugPrint above already captured the message locally.
+      debugPrint('🛰️  Crashlytics unavailable: $e');
+    }
   }
 }

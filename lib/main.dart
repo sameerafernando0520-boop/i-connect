@@ -4,9 +4,12 @@
 // ═══════════════════════════════════════════════════════════════
 
 import 'dart:async';
+import 'dart:ui';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:i_connect/l10n/s.dart';
@@ -75,6 +78,23 @@ Future<void> _initializeServices() async {
       },
     );
     debugPrint('✅ Firebase initialized');
+
+    // ── Crashlytics: global error handlers ──
+    // Suppress collection in debug to keep the dashboard clean.
+    await FirebaseCrashlytics.instance
+        .setCrashlyticsCollectionEnabled(!kDebugMode);
+
+    // Framework errors (build / layout / rendering).
+    FlutterError.onError =
+        FirebaseCrashlytics.instance.recordFlutterFatalError;
+
+    // Uncaught async errors outside the Flutter framework.
+    PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      return true;
+    };
+
+    debugPrint('✅ Crashlytics wired');
   } catch (e) {
     _firebaseInitFailed = true;
     _firebaseInitError = e.toString();
