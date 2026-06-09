@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:i_connect/l10n/s.dart';
 import 'dart:async';
 import '../config/supabase_config.dart';
 import '../services/notification_service.dart';
@@ -12,6 +11,7 @@ import 'admin/admin_dashboard.dart';
 import 'engineer/engineer_dashboard.dart';
 import 'marketing/marketing_admin_dashboard.dart';
 import 'engineering_admin/engineering_admin_dashboard.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -21,70 +21,105 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   bool _navigated = false;
 
-  late final AnimationController _c;
+  // ── Entrance choreography (one pass, 2200ms) ──
+  late final AnimationController _main;
+  late final Animation<double> _bgFade;
+  late final Animation<double> _glowIn;
   late final Animation<double> _logoFade;
   late final Animation<double> _logoScale;
-  late final Animation<double> _logoRise;
+  late final Animation<double> _logoSlide;
   late final Animation<double> _tagFade;
-  late final Animation<double> _bottomFade;
+  late final Animation<double> _tagSpacing;
+  late final Animation<double> _lineGrow;
+  late final Animation<double> _footerFade;
+
+  // ── Looping ambience ──
+  late final AnimationController _glowPulse;
+  late final Animation<double> _glowScale;
+  late final AnimationController _shimmer;
 
   @override
   void initState() {
     super.initState();
 
-    _c = AnimationController(
+    // ── Main entrance timeline (2200ms) ──
+    _main = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1600),
+      duration: const Duration(milliseconds: 2200),
     )..forward();
 
-    // Simple, corporate reveal: logo fades + eases up and gently scales in,
-    // tagline follows, then the footer/loader settle.
-    _logoFade = CurvedAnimation(
-        parent: _c, curve: const Interval(0.00, 0.55, curve: Curves.easeOut));
-    _logoScale = Tween<double>(begin: 0.94, end: 1.0).animate(CurvedAnimation(
-        parent: _c,
-        curve: const Interval(0.00, 0.65, curve: Curves.easeOutCubic)));
-    _logoRise = Tween<double>(begin: 12, end: 0).animate(CurvedAnimation(
-        parent: _c,
-        curve: const Interval(0.00, 0.60, curve: Curves.easeOutCubic)));
-    _tagFade = CurvedAnimation(
-        parent: _c, curve: const Interval(0.35, 0.75, curve: Curves.easeOut));
-    _bottomFade = CurvedAnimation(
-        parent: _c, curve: const Interval(0.55, 1.00, curve: Curves.easeOut));
+    _bgFade     = _iv(0.00, 0.18, Curves.easeOut);
+    _glowIn     = _iv(0.05, 0.45, Curves.easeOutCubic);
+    _logoFade   = _iv(0.18, 0.52, Curves.easeOut);
+    _logoScale  = Tween<double>(begin: 0.90, end: 1.0).animate(
+      CurvedAnimation(parent: _main, curve: const Interval(0.18, 0.58, curve: Curves.easeOutCubic)),
+    );
+    _logoSlide  = Tween<double>(begin: 18, end: 0).animate(
+      CurvedAnimation(parent: _main, curve: const Interval(0.18, 0.58, curve: Curves.easeOutCubic)),
+    );
+    _tagFade    = _iv(0.42, 0.70, Curves.easeOut);
+    _tagSpacing = Tween<double>(begin: 1.0, end: 3.7).animate(
+      CurvedAnimation(parent: _main, curve: const Interval(0.42, 0.85, curve: Curves.easeOutCubic)),
+    );
+    _lineGrow   = _iv(0.60, 0.90, Curves.easeInOut);
+    _footerFade = _iv(0.72, 1.00, Curves.easeOut);
 
-    // Start auth check immediately, but wait for min animation time (0.8s for polish and readability)
+    // ── Breathing glow (looping) ──
+    _glowPulse = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2600),
+    )..repeat(reverse: true);
+    _glowScale = Tween<double>(begin: 0.94, end: 1.12).animate(
+      CurvedAnimation(parent: _glowPulse, curve: Curves.easeInOut),
+    );
+
+    // ── Shimmer sweep (one pass) ──
+    _shimmer = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2600),
+    )..forward();
+
+    // Start auth check — waits minimum 0.8s for animation polish.
     _checkAuthAndNavigate();
   }
 
+  Animation<double> _iv(double start, double end, Curve curve) =>
+      Tween<double>(begin: 0.0, end: 1.0).animate(
+        CurvedAnimation(parent: _main, curve: Interval(start, end, curve: curve)),
+      );
+
+  @override
+  void dispose() {
+    _main.dispose();
+    _glowPulse.dispose();
+    _shimmer.dispose();
+    super.dispose();
+  }
+
+  // ════════════════════════════════════════════════════════════
+  //  AUTH + NAVIGATION  (preserved from existing implementation)
+  // ════════════════════════════════════════════════════════════
   Future<void> _checkAuthAndNavigate() async {
-    // ── Minimum 0.8s animation for visual polish, auth check runs in parallel ──
     final minAnimationTime = Future.delayed(const Duration(milliseconds: 800));
-    
+
     try {
-      // Run auth check in parallel with animation
       final page = await _performAuthCheck();
-      
-      // Wait for minimum animation time to complete
       await minAnimationTime;
-      
       if (!mounted) return;
       _navigateTo(page);
     } catch (e) {
       debugPrint('Auth check failed: $e');
-      await minAnimationTime; // Still wait for animation polish
+      await minAnimationTime;
       if (mounted) _navigateTo(const LoginPage());
     }
   }
 
-  /// Perform the actual authentication check and return the page to navigate to.
   Future<Widget> _performAuthCheck() async {
     final user = SupabaseConfig.client.auth.currentUser;
-    if (user == null) {
-      return const LoginPage();
-    }
+    if (user == null) return const LoginPage();
 
     try {
       final userData = await SupabaseConfig.client
@@ -93,25 +128,20 @@ class _SplashScreenState extends State<SplashScreen>
           .eq('id', user.id)
           .maybeSingle();
 
-      if (userData == null) {
-        return const LoginPage();
-      }
+      if (userData == null) return const LoginPage();
 
       final role = userData['role'] as String? ?? 'customer';
-      
-      // Setup notifications
+
       final ns = NotificationService();
       unawaited(ns.onLogin().catchError((_) {}));
       unawaited(ns.subscribeToRoleTopics(role).catchError((_) {}));
 
-      // Determine destination
       switch (role) {
         case 'admin':
           return const AdminDashboard();
         case 'engineer':
           return const EngineerDashboard();
         case 'marketing_admin':
-          // Pre-load permissions for marketing admin
           if (mounted) {
             try {
               await context.read<PermissionsProvider>().load();
@@ -137,154 +167,291 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  @override
-  void dispose() {
-    _c.dispose();
-    super.dispose();
-  }
+  // ════════════════════════════════════════════════════════════
+  //  PALETTE
+  // ════════════════════════════════════════════════════════════
+  static const _navyEdge = Color(0xFF081A40);
+  static const _navyCore = Color(0xFF102A63);
+  static const _navyGlow = Color(0xFF15397A);
+  static const _lime     = Color(0xFFABBD37);
+  static const _tagColor = Color(0xFFE8EDF7);
+  static const _footerCap = Color(0xFFB8C2D6);
+  static const _footerSub = Color(0xFF8C9ABB);
 
-  // Corporate navy palette (splash is always dark).
-  static const _bgTop = Color(0xFF12306B);
-  static const _bgBottom = Color(0xFF081229);
-  static const _green = Color(0xFFA3C638);
-  static const _muted = Color(0xFF8595B4);
-  static const _faint = Color(0xFF5A6B8C);
+  static const _ifrontiersUrl =
+      'https://res.cloudinary.com/dez4dicac/image/upload/q_auto/f_auto/v1769810412/IF_logo-01_kcln3e.png';
 
   @override
   Widget build(BuildContext context) {
-    final t = S.of(context)!;
-
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light.copyWith(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: _bgBottom,
+        systemNavigationBarColor: _navyEdge,
       ),
       child: Scaffold(
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [_bgTop, _bgBottom],
-            ),
-          ),
-          child: Stack(
-            children: [
-              // Subtle centered glow for depth.
-              Center(
-                child: Container(
-                  width: 320,
-                  height: 320,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: RadialGradient(colors: [
-                      const Color(0xFF1A56DB).withAlpha(46),
-                      const Color(0xFF1A56DB).withAlpha(0),
-                    ]),
+        body: AnimatedBuilder(
+          animation: Listenable.merge([_main, _glowPulse, _shimmer]),
+          builder: (context, _) {
+            return Opacity(
+              opacity: _bgFade.value,
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: const BoxDecoration(
+                  gradient: RadialGradient(
+                    center: Alignment(0, -0.06),
+                    radius: 1.05,
+                    colors: [_navyGlow, _navyCore, _navyEdge],
+                    stops: [0.0, 0.45, 1.0],
                   ),
                 ),
-              ),
-
-              // Centered logo + tagline (the hero).
-              Center(
-                child: AnimatedBuilder(
-                  animation: _c,
-                  builder: (context, _) {
-                    return Opacity(
-                      opacity: _logoFade.value,
-                      child: Transform.translate(
-                        offset: Offset(0, _logoRise.value),
-                        child: Transform.scale(
-                          scale: _logoScale.value,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Image.asset(
-                                'assets/branding/splash_wordmark.png',
-                                width: 236,
-                                fit: BoxFit.contain,
-                                filterQuality: FilterQuality.high,
-                                errorBuilder: (_, __, ___) => const Text(
-                                  'iConnect',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 32,
-                                    fontWeight: FontWeight.w800,
-                                    letterSpacing: 1,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 18),
-                              Opacity(
-                                opacity: _tagFade.value,
-                                child: const Text(
-                                  'STAY CONNECTED. STAY AHEAD.',
-                                  style: TextStyle(
-                                    color: _muted,
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w600,
-                                    letterSpacing: 3,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                child: Stack(
+                  children: [
+                    // ── Dot grid pattern ──
+                    Opacity(
+                      opacity: _bgFade.value * 0.6,
+                      child: CustomPaint(
+                        size: Size.infinite,
+                        painter: _DotGridPainter(),
                       ),
-                    );
-                  },
-                ),
-              ),
+                    ),
 
-              // Loader + footer pinned to the bottom.
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 44),
-                  child: AnimatedBuilder(
-                    animation: _bottomFade,
-                    builder: (context, _) => Opacity(
-                      opacity: _bottomFade.value,
+                    // ── Breathing ambient glow ──
+                    _buildAmbientGlow(),
+
+                    SafeArea(
                       child: Column(
-                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          SizedBox(
-                            width: 38,
-                            height: 38,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2.4,
-                              valueColor:
-                                  const AlwaysStoppedAnimation<Color>(_green),
-                              backgroundColor: Colors.white.withAlpha(20),
+                          const Spacer(flex: 5),
+
+                          // ── Logo with shimmer ──
+                          Transform.translate(
+                            offset: Offset(0, _logoSlide.value),
+                            child: Opacity(
+                              opacity: _logoFade.value,
+                              child: Transform.scale(
+                                scale: _logoScale.value,
+                                child: _buildWordmark(),
+                              ),
                             ),
                           ),
-                          const SizedBox(height: 22),
-                          const Text('Powered by',
-                              style: TextStyle(color: _faint, fontSize: 11)),
-                          const SizedBox(height: 4),
-                          Text(
-                            t.companyName,
-                            style: const TextStyle(
-                              color: _muted,
-                              fontSize: 12.5,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: 0.5,
+
+                          const SizedBox(height: 20),
+
+                          // ── Tagline ──
+                          Opacity(
+                            opacity: _tagFade.value,
+                            child: Text(
+                              'STAY CONNECTED. STAY AHEAD.',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: _tagColor,
+                                fontSize: 8,
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: _tagSpacing.value,
+                              ),
+                            ),
+                          ),
+
+                          const Spacer(flex: 2),
+
+                          // ── Lime accent line ──
+                          _buildLine(),
+
+                          const Spacer(flex: 2),
+
+                          // ── Footer ──
+                          Opacity(
+                            opacity: _footerFade.value,
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 28),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Text(
+                                    'POWERED BY:',
+                                    style: TextStyle(
+                                      color: _footerCap,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 2.5,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  CachedNetworkImage(
+                                    imageUrl: _ifrontiersUrl,
+                                    height: 36,
+                                    fit: BoxFit.contain,
+                                    errorWidget: (_, __, ___) => _ifrontiersFallback(),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  const Text(
+                                    'Pioneering the Future',
+                                    style: TextStyle(
+                                      color: _footerSub,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w400,
+                                      letterSpacing: 0.3,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
-            ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  // ── Wordmark with shimmer sweep ──
+  Widget _buildWordmark() {
+    final logo = Image.asset(
+      'assets/branding/splash_wordmark.png',
+      width: 230,
+      fit: BoxFit.contain,
+      filterQuality: FilterQuality.high,
+      errorBuilder: (_, __, ___) => const Text(
+        'iCONNECT',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 36,
+          fontWeight: FontWeight.w800,
+          letterSpacing: 2,
+        ),
+      ),
+    );
+
+    final t = _shimmer.value;
+    final sweep = (t * 1.6) - 0.3;
+
+    return ShaderMask(
+      blendMode: BlendMode.srcATop,
+      shaderCallback: (bounds) {
+        return LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: const [
+            Colors.transparent,
+            Colors.white,
+            Colors.transparent,
+          ],
+          stops: [
+            (sweep - 0.15).clamp(0.0, 1.0),
+            sweep.clamp(0.0, 1.0),
+            (sweep + 0.15).clamp(0.0, 1.0),
+          ],
+        ).createShader(bounds);
+      },
+      child: logo,
+    );
+  }
+
+  Widget _buildAmbientGlow() {
+    return Align(
+      alignment: const Alignment(0, -0.18),
+      child: IgnorePointer(
+        child: Opacity(
+          opacity: _glowIn.value * 0.6,
+          child: Transform.scale(
+            scale: _glowScale.value,
+            child: Container(
+              width: 320,
+              height: 320,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    _navyGlow.withAlpha(150),
+                    _navyGlow.withAlpha(0),
+                  ],
+                  stops: const [0.0, 1.0],
+                ),
+              ),
+            ),
           ),
         ),
       ),
     );
   }
+
+  Widget _buildLine() {
+    return SizedBox(
+      width: 140,
+      height: 2,
+      child: Align(
+        alignment: Alignment.center,
+        child: FractionallySizedBox(
+          widthFactor: _lineGrow.value,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(2),
+              gradient: LinearGradient(
+                colors: [
+                  _lime.withAlpha(0),
+                  _lime.withAlpha(180),
+                  _lime.withAlpha(0),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _ifrontiersFallback() {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 22,
+          height: 22,
+          decoration: BoxDecoration(
+            color: _lime,
+            borderRadius: BorderRadius.circular(5),
+          ),
+        ),
+        const SizedBox(width: 8),
+        const Text(
+          'iFRONTIERS',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 1,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ── Dot grid background painter ──
+class _DotGridPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white.withAlpha(8)
+      ..style = PaintingStyle.fill;
+    const spacing = 24.0;
+    const radius = 0.8;
+    for (double x = 0; x < size.width; x += spacing) {
+      for (double y = 0; y < size.height; y += spacing) {
+        canvas.drawCircle(Offset(x, y), radius, paint);
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 class _FadePageRoute<T> extends MaterialPageRoute<T> {

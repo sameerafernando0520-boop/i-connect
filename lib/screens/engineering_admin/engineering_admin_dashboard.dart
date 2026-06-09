@@ -58,8 +58,8 @@ class _EngineeringAdminDashboardState
     (label: 'Dashboard', icon: Icons.dashboard_outlined,           activeIcon: Icons.dashboard_rounded),
     (label: 'Engineers', icon: Icons.engineering_outlined,         activeIcon: Icons.engineering_rounded),
     (label: 'Tickets',   icon: Icons.confirmation_number_outlined, activeIcon: Icons.confirmation_number_rounded),
-    (label: 'Schedules', icon: Icons.calendar_month_outlined,      activeIcon: Icons.calendar_month_rounded),
-    (label: 'More',      icon: Icons.grid_view_outlined,           activeIcon: Icons.grid_view_rounded),
+    (label: 'HR',        icon: Icons.badge_outlined,               activeIcon: Icons.badge_rounded),
+    (label: 'Installs',  icon: Icons.build_circle_outlined,        activeIcon: Icons.build_circle_rounded),
   ];
 
   // Root widget shown when a tab is first opened
@@ -68,8 +68,8 @@ class _EngineeringAdminDashboardState
       case 0: return const _EaDashboardTab();
       case 1: return const EaEngineerListPage();
       case 2: return const EaTicketListPage();
-      case 3: return const EaSchedulePage();
-      case 4: return const _EaMoreHubPage();
+      case 3: return const _EaHrHubPage();
+      case 4: return const EaInstallationPage();
       default: return const SizedBox.shrink();
     }
   }
@@ -240,7 +240,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                             crossAxisCount: 2,
                             mainAxisSpacing: 10,
                             crossAxisSpacing: 10,
-                            mainAxisExtent: 92,
+                            mainAxisExtent: 110,
                           ),
                           delegate: SliverChildListDelegate(
                               _buildKpiTiles(isDark)),
@@ -482,13 +482,121 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.refresh_rounded,
-              size: 20,
-              color: isDark
-                  ? Brand.darkTextPrimary
-                  : Brand.royalBlueDark),
+          icon: Icon(
+            Icons.notifications_outlined,
+            size: 22,
+            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+          ),
+          tooltip: 'Notifications',
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (_) => const EaNotificationsPage()),
+          ),
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.refresh_rounded,
+            size: 20,
+            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+          ),
           onPressed: _load,
           tooltip: 'Refresh',
+        ),
+        PopupMenuButton<String>(
+          icon: Icon(
+            Icons.more_vert_rounded,
+            size: 20,
+            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+          onSelected: (val) {
+            switch (val) {
+              case 'profile':
+                Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (_) => const EaProfilePage()));
+                break;
+              case 'schedules':
+                Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (_) => const EaSchedulePage()));
+                break;
+              case 'broadcast':
+                Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (_) => const EaBroadcastPage()));
+                break;
+              case 'approvals':
+                Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (_) =>
+                            const EaPendingApprovalsPage()));
+                break;
+              case 'reports':
+                Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (_) => const EaReportsPage()));
+                break;
+              case 'settings':
+                Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (_) => const EaSettingsPage()));
+                break;
+            }
+          },
+          itemBuilder: (ctx) => const [
+            PopupMenuItem(
+              value: 'profile',
+              child: Row(children: [
+                Icon(Icons.person_rounded, size: 18),
+                SizedBox(width: 10),
+                Text('Profile'),
+              ]),
+            ),
+            PopupMenuItem(
+              value: 'schedules',
+              child: Row(children: [
+                Icon(Icons.calendar_month_rounded, size: 18),
+                SizedBox(width: 10),
+                Text('Schedules'),
+              ]),
+            ),
+            PopupMenuItem(
+              value: 'broadcast',
+              child: Row(children: [
+                Icon(Icons.campaign_rounded, size: 18),
+                SizedBox(width: 10),
+                Text('Broadcast'),
+              ]),
+            ),
+            PopupMenuItem(
+              value: 'approvals',
+              child: Row(children: [
+                Icon(Icons.rule_rounded, size: 18),
+                SizedBox(width: 10),
+                Text('Pending Approvals'),
+              ]),
+            ),
+            PopupMenuItem(
+              value: 'reports',
+              child: Row(children: [
+                Icon(Icons.bar_chart_rounded, size: 18),
+                SizedBox(width: 10),
+                Text('Reports'),
+              ]),
+            ),
+            PopupMenuItem(
+              value: 'settings',
+              child: Row(children: [
+                Icon(Icons.settings_rounded, size: 18),
+                SizedBox(width: 10),
+                Text('Settings'),
+              ]),
+            ),
+          ],
         ),
         const SizedBox(width: 4),
       ],
@@ -718,7 +826,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
           ),
@@ -726,61 +834,66 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
               ? null
               : [
                   BoxShadow(
-                    color: Colors.black.withAlpha(6),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
+                    color: Colors.black.withAlpha(5),
+                    blurRadius: 6,
+                    offset: const Offset(0, 1),
                   ),
                 ],
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: color.withAlpha(isDark ? 45 : 25),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Icon(icon, size: 24, color: color),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '$value',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                      color: isDark
-                          ? Brand.darkTextPrimary
-                          : const Color(0xFF0F172A),
-                      height: 1,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+            // ── Icon + chevron row ──────────────────────────────
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: color.withAlpha(isDark ? 45 : 38),
+                    borderRadius: BorderRadius.circular(11),
                   ),
-                  const SizedBox(height: 3),
-                  Text(
-                    label,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.2,
-                      color: AdminColors.textHint(context),
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              ),
+                  child: Icon(icon, size: 22, color: color),
+                ),
+                Icon(
+                  Icons.chevron_right_rounded,
+                  size: 15,
+                  color: AdminColors.textHint(context).withAlpha(128),
+                ),
+              ],
             ),
-            Icon(Icons.chevron_right_rounded,
-                size: 18,
-                color: AdminColors.textHint(context).withAlpha(150)),
+            // ── Value + label ───────────────────────────────────
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '$value',
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.w700,
+                    height: 1,
+                    color: isDark
+                        ? Brand.darkTextPrimary
+                        : const Color(0xFF0F172A),
+                  ),
+                ),
+                const SizedBox(height: 3),
+                Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.2,
+                    color: AdminColors.textHint(context),
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -1442,179 +1555,7 @@ class _QuickAction {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-//  TAB 4 — MORE HUB  (six navigation cards)
-// ═══════════════════════════════════════════════════════════════════════════
-
-class _EaMoreHubPage extends StatelessWidget {
-  const _EaMoreHubPage();
-
-  @override
-  Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
-    return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        elevation: 0,
-        scrolledUnderElevation: 0.5,
-        surfaceTintColor: Colors.transparent,
-        title: Text(
-          'More',
-          style: TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.w700,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(0.5),
-          child: Container(
-            height: 0.5,
-            color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
-          ),
-        ),
-      ),
-      body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 24, 16, 80),
-        children: [
-          // ── Section: People & Work ──────────────────────────────────────
-          Padding(
-            padding: const EdgeInsets.only(left: 4, bottom: 10),
-            child: Text(
-              'PEOPLE & WORK',
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.8,
-                color: AdminColors.textHint(context),
-              ),
-            ),
-          ),
-          _MoreModuleCard(
-            icon:      Icons.badge_rounded,
-            iconColor: _eaAccent,
-            title:     'HR Management',
-            subtitle:  'Attendance, job records, leaves, and performance',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const _EaHrHubPage()),
-            ),
-          ),
-          const SizedBox(height: 12),
-          _MoreModuleCard(
-            icon:      Icons.build_circle_rounded,
-            iconColor: const Color(0xFF0EA5E9),
-            title:     'Installations',
-            subtitle:  'Machine installations and site visit tracking',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const EaInstallationPage()),
-            ),
-          ),
-          const SizedBox(height: 24),
-
-          // ── Section: Account ────────────────────────────────────────────
-          Padding(
-            padding: const EdgeInsets.only(left: 4, bottom: 10),
-            child: Text(
-              'ACCOUNT',
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.8,
-                color: AdminColors.textHint(context),
-              ),
-            ),
-          ),
-          _MoreModuleCard(
-            icon:      Icons.person_rounded,
-            iconColor: _eaAccent,
-            title:     'Profile',
-            subtitle:  'Edit your profile, photo, and account details',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const EaProfilePage()),
-            ),
-          ),
-          const SizedBox(height: 12),
-          _MoreModuleCard(
-            icon:      Icons.notifications_rounded,
-            iconColor: _eaAmber,
-            title:     'Notifications',
-            subtitle:  'View alerts, ticket updates, and schedule changes',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const EaNotificationsPage()),
-            ),
-          ),
-          const SizedBox(height: 12),
-          _MoreModuleCard(
-            icon:      Icons.campaign_rounded,
-            iconColor: const Color(0xFFF59E0B),
-            title:     'Broadcast Notification',
-            subtitle:  'Send push notifications to engineers or customers',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const EaBroadcastPage()),
-            ),
-          ),
-          const SizedBox(height: 12),
-          _MoreModuleCard(
-            icon:      Icons.rule_rounded,
-            iconColor: const Color(0xFF8B5CF6),
-            title:     'Pending Approvals',
-            subtitle:  'Engineer-proposed schedules waiting for your review',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const EaPendingApprovalsPage()),
-            ),
-          ),
-          const SizedBox(height: 24),
-
-          // ── Section: System ─────────────────────────────────────────────
-          Padding(
-            padding: const EdgeInsets.only(left: 4, bottom: 10),
-            child: Text(
-              'SYSTEM',
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.8,
-                color: AdminColors.textHint(context),
-              ),
-            ),
-          ),
-          _MoreModuleCard(
-            icon:      Icons.bar_chart_rounded,
-            iconColor: const Color(0xFF8B5CF6),
-            title:     'Reports',
-            subtitle:  'Export team data, attendance and performance reports',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const EaReportsPage()),
-            ),
-          ),
-          const SizedBox(height: 12),
-          _MoreModuleCard(
-            icon:      Icons.settings_rounded,
-            iconColor: AdminColors.textSub(context),
-            title:     'Settings',
-            subtitle:  'App preferences, notifications, and display options',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const EaSettingsPage()),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  HR HUB  (four navigation cards — accessed via More hub)
+//  TAB 3 — HR HUB  (four navigation cards)
 // ═══════════════════════════════════════════════════════════════════════════
 
 class _EaHrHubPage extends StatelessWidget {
@@ -1633,7 +1574,7 @@ class _EaHrHubPage extends StatelessWidget {
         scrolledUnderElevation: 0.5,
         surfaceTintColor: Colors.transparent,
         title: Text(
-          'HR Management',
+          'HR',
           style: TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w700,

@@ -334,8 +334,8 @@ class _SignupPageState extends State<SignupPage> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: isDark
-                      ? [Brand.darkCard, Brand.darkCardElevated]
-                      : [const Color(0xFF14294C), Brand.royalBlueDark],
+                      ? [const Color(0xFF081A40), const Color(0xFF102A63)]
+                      : [const Color(0xFF081A40), const Color(0xFF102A63)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
