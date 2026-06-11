@@ -104,7 +104,7 @@ class _MarketingAdminDashboardState extends State<MarketingAdminDashboard> {
           topRight: Radius.circular(24),
         ),
         border: isDark
-            ? const Border(
+            ? Border(
                 top: BorderSide(color: Brand.darkBorder, width: 1))
             : null,
         boxShadow: [

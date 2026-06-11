@@ -1001,7 +1001,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
               builder: (ctx, child) => Theme(
                 data: Theme.of(ctx).copyWith(
                   colorScheme: isDark
-                      ? const ColorScheme.dark(
+                      ? ColorScheme.dark(
                           primary: Brand.darkIconActive,
                           surface: Brand.darkCard,
                           onSurface: Brand.darkTextPrimary,

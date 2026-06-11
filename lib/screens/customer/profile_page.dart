@@ -30,6 +30,7 @@ import 'notification_list_page.dart';
 import 'my_invoices_page.dart';
 import 'my_quotations_page.dart';
 import 'customer_installments_page.dart';
+import '../../widgets/common/theme_style_sheet.dart';
 
 class ProfilePage extends StatefulWidget {
   final bool showNavBar;
@@ -3102,6 +3103,54 @@ class _ProfilePageState extends State<ProfilePage>
               },
             ),
           ]),
+          const SizedBox(height: 12),
+          InkWell(
+            onTap: () {
+              HapticFeedback.selectionClick();
+              ThemeStyleSheet.show(context);
+            },
+            borderRadius: BorderRadius.circular(12),
+            child: Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
+              decoration: BoxDecoration(
+                color: isDark
+                    ? Brand.darkCardElevated
+                    : Brand.royalBlueSurface,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                    color: isDark ? Brand.darkBorderLight : Brand.borderLight),
+              ),
+              child: Row(children: [
+                Icon(Icons.style_rounded,
+                    size: 18,
+                    color: isDark ? Brand.darkIconActive : Brand.royalBlue),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text('Dark style',
+                      style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: isDark
+                              ? Brand.darkTextPrimary
+                              : Brand.textPrimaryLight)),
+                ),
+                Text(ThemeProvider.styleName(themeProvider.darkStyle),
+                    style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: isDark
+                            ? Brand.darkTextSecondary
+                            : Brand.textSecondaryLight)),
+                const SizedBox(width: 4),
+                Icon(Icons.chevron_right_rounded,
+                    size: 18,
+                    color: isDark
+                        ? Brand.darkTextTertiary
+                        : Brand.subtleLight),
+              ]),
+            ),
+          ),
         ]));
   }
 

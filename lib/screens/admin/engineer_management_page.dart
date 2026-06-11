@@ -486,7 +486,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
       const _FilterChip('all', 'All', null),
       const _FilterChip('available', 'Available', Brand.lightGreenBright),
       const _FilterChip('busy', 'Busy', AdminColors.warning),
-      const _FilterChip('offline', 'Offline', Brand.darkTextSecondary),
+      _FilterChip('offline', 'Offline', Brand.darkTextSecondary),
     ];
 
     return Padding(

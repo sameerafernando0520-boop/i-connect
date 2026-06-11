@@ -26,6 +26,7 @@ import '../../services/notification_service.dart';
 import '../../utils/string_utils.dart';
 import '../../utils/upload_validator.dart';
 import '../../widgets/common/language_selector_sheet.dart';
+import '../../widgets/common/theme_style_sheet.dart';
 import '../auth/login_page.dart';
 
 class AdminSettingsPage extends StatefulWidget {
@@ -1354,27 +1355,53 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
         border: isDark ? Border.all(color: _borderColor(isDark)) : null,
         boxShadow: _cardShadow(isDark),
       ),
-      child: Row(
+      child: Column(
         children: [
-          _buildThemeOption(
-            icon: Icons.light_mode_rounded,
-            label: 'Light',
-            isSelected: !currentIsDark,
-            isDark: isDark,
-            onTap: () {
-              HapticFeedback.selectionClick();
-              themeProvider.setDarkMode(false);
-            },
+          Row(
+            children: [
+              _buildThemeOption(
+                icon: Icons.light_mode_rounded,
+                label: 'Light',
+                isSelected: !currentIsDark,
+                isDark: isDark,
+                onTap: () {
+                  HapticFeedback.selectionClick();
+                  themeProvider.setDarkMode(false);
+                },
+              ),
+              _buildThemeOption(
+                icon: Icons.dark_mode_rounded,
+                label: 'Dark',
+                isSelected: currentIsDark,
+                isDark: isDark,
+                onTap: () {
+                  HapticFeedback.selectionClick();
+                  themeProvider.setDarkMode(true);
+                },
+              ),
+            ],
           ),
-          _buildThemeOption(
-            icon: Icons.dark_mode_rounded,
-            label: 'Dark',
-            isSelected: currentIsDark,
-            isDark: isDark,
-            onTap: () {
-              HapticFeedback.selectionClick();
-              themeProvider.setDarkMode(true);
-            },
+          ListTile(
+            dense: true,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+            leading: Icon(Icons.style_rounded,
+                size: 20,
+                color: isDark ? Brand.darkIconActive : AdminColors.primary),
+            title: Text('Dark style',
+                style: TextStyle(
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w600,
+                    color: AdminColors.text(context))),
+            trailing: Row(mainAxisSize: MainAxisSize.min, children: [
+              Text(ThemeProvider.styleName(themeProvider.darkStyle),
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: AdminColors.textSub(context))),
+              Icon(Icons.chevron_right_rounded,
+                  size: 18, color: AdminColors.textHint(context)),
+            ]),
+            onTap: () => ThemeStyleSheet.show(context),
           ),
         ],
       ),

@@ -39,7 +39,7 @@ class CustomerNavBar extends StatelessWidget {
           topRight: Radius.circular(28),
         ),
         border: isDark
-            ? const Border(
+            ? Border(
                 top: BorderSide(color: Brand.darkBorder, width: 1),
               )
             : null,

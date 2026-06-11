@@ -1662,7 +1662,7 @@ class _AdminDashboardState extends State<AdminDashboard>
           topRight: Radius.circular(24),
         ),
         border: isDark
-            ? const Border(top: BorderSide(color: Brand.darkBorder, width: 1))
+            ? Border(top: BorderSide(color: Brand.darkBorder, width: 1))
             : null,
         boxShadow: [
           BoxShadow(

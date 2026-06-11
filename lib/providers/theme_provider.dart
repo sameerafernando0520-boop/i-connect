@@ -8,6 +8,7 @@ import '../config/brand_colors.dart';
 
 class ThemeProvider extends ChangeNotifier {
   static const String _themeKey = 'isDarkMode';
+  static const String _styleKey = 'dark_style';
 
   bool _isDarkMode = false;
   bool _isLoaded = false;
@@ -15,6 +16,31 @@ class ThemeProvider extends ChangeNotifier {
 
   bool get isDarkMode => _isDarkMode;
   bool get isLoaded => _isLoaded;
+
+  /// Which of the three dark looks is active (Navy Glow / Workshop / Fusion).
+  DarkStyle get darkStyle => Brand.darkStyle;
+
+  static String styleName(DarkStyle s) => switch (s) {
+        DarkStyle.navy => 'Navy Glow',
+        DarkStyle.workshop => 'Workshop',
+        DarkStyle.fusion => 'Fusion',
+      };
+
+  /// Pick a dark look. Also switches the app into dark mode so the choice
+  /// is visible immediately.
+  Future<void> setDarkStyle(DarkStyle style) async {
+    await _ensureLoaded();
+    Brand.setDarkStyle(style);
+    _isDarkMode = true;
+    notifyListeners();
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(_styleKey, style.name);
+      await prefs.setBool(_themeKey, true);
+    } catch (e) {
+      debugPrint('⚠️ Dark style save failed: $e');
+    }
+  }
 
   ThemeProvider() {
     // Don't load immediately - defer until first access or explicit call
@@ -38,6 +64,11 @@ class ThemeProvider extends ChangeNotifier {
     try {
       final prefs = await SharedPreferences.getInstance();
       _isDarkMode = prefs.getBool(_themeKey) ?? false;
+      final styleName = prefs.getString(_styleKey);
+      final style = DarkStyle.values
+          .where((s) => s.name == styleName)
+          .firstOrNull;
+      if (style != null) Brand.setDarkStyle(style);
     } catch (e) {
       _isDarkMode = false;
       debugPrint('⚠️ Theme preference load failed: $e');
@@ -98,14 +129,14 @@ class ThemeProvider extends ChangeNotifier {
     ),
   );
 
-  static const BottomSheetThemeData _bottomSheetDark = BottomSheetThemeData(
-    backgroundColor: Brand.darkCard,
-    surfaceTintColor: Colors.transparent,
-    modalBackgroundColor: Brand.darkCard,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
-    ),
-  );
+  static BottomSheetThemeData get _bottomSheetDark => BottomSheetThemeData(
+        backgroundColor: Brand.darkCard,
+        surfaceTintColor: Colors.transparent,
+        modalBackgroundColor: Brand.darkCard,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+        ),
+      );
 
   // ─── LIGHT THEME ──────────────────────────────────────────
   ThemeData get lightTheme => ThemeData(
@@ -297,18 +328,21 @@ class ThemeProvider extends ChangeNotifier {
         ),
       );
 
-  // ─── DARK THEME ───────────────────────────────────────────
-  ThemeData get darkTheme => ThemeData(
+  // ─── DARK THEME (variant-aware: Navy Glow / Workshop / Fusion) ──
+  ThemeData get darkTheme {
+    final p = Brand.darkPalette;
+    return ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
-        primaryColor: Brand.royalBlueLight,
-        scaffoldBackgroundColor: Brand.darkBg,
+        primaryColor: p.primary,
+        scaffoldBackgroundColor: p.bg,
         fontFamily: GoogleFonts.montserrat().fontFamily,
         colorScheme: ColorScheme.fromSeed(
           seedColor: Brand.royalBlue,
-          primary: Brand.royalBlueLight,
-          secondary: Brand.lightGreenBright,
-          surface: Brand.darkCard,
+          primary: p.primary,
+          onPrimary: p.onPrimary,
+          secondary: p.secondary,
+          surface: p.card,
           brightness: Brightness.dark,
         ),
         textTheme: _montserratDark(),
@@ -331,16 +365,16 @@ class ThemeProvider extends ChangeNotifier {
         ),
         // ── FAB ──
         floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: Brand.royalBlueLight,
-          foregroundColor: Colors.white,
+          backgroundColor: p.primary,
+          foregroundColor: p.onPrimary,
           elevation: 2,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
         ),
         // ── Progress indicators ──
-        progressIndicatorTheme: const ProgressIndicatorThemeData(
-          color: Brand.royalBlueLight,
+        progressIndicatorTheme: ProgressIndicatorThemeData(
+          color: p.iconActive,
           linearTrackColor: Brand.darkBorder,
           circularTrackColor: Colors.transparent,
         ),
@@ -364,7 +398,7 @@ class ThemeProvider extends ChangeNotifier {
             color: Brand.darkTextPrimary,
             letterSpacing: -0.3,
           ),
-          iconTheme: const IconThemeData(color: Brand.darkTextPrimary),
+          iconTheme: IconThemeData(color: Brand.darkTextPrimary),
         ),
         // ── Cards ──
         cardTheme: CardThemeData(
@@ -372,14 +406,14 @@ class ThemeProvider extends ChangeNotifier {
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),
-            side: const BorderSide(color: Brand.darkBorder, width: 1),
+            side: BorderSide(color: Brand.darkBorder, width: 1),
           ),
         ),
         // ── Elevated Button ──
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Brand.royalBlueLight,
-            foregroundColor: Colors.white,
+            backgroundColor: p.primary,
+            foregroundColor: p.onPrimary,
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(14),
@@ -396,7 +430,7 @@ class ThemeProvider extends ChangeNotifier {
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             foregroundColor: Brand.darkIconActive,
-            side: const BorderSide(color: Brand.darkBorderLight, width: 1.5),
+            side: BorderSide(color: Brand.darkBorderLight, width: 1.5),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(14),
             ),
@@ -425,16 +459,16 @@ class ThemeProvider extends ChangeNotifier {
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
-            borderSide: const BorderSide(color: Brand.darkBorder, width: 1),
+            borderSide: BorderSide(color: Brand.darkBorder, width: 1),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
-            borderSide: const BorderSide(color: Brand.darkBorder, width: 1),
+            borderSide: BorderSide(color: Brand.darkBorder, width: 1),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
             borderSide:
-                const BorderSide(color: Brand.darkIconActive, width: 1.5),
+                BorderSide(color: Brand.darkIconActive, width: 1.5),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
@@ -468,7 +502,7 @@ class ThemeProvider extends ChangeNotifier {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
         ),
         // ── Divider ──
-        dividerTheme: const DividerThemeData(
+        dividerTheme: DividerThemeData(
           color: Brand.darkBorder,
           thickness: 1,
           space: 1,
@@ -487,4 +521,5 @@ class ThemeProvider extends ChangeNotifier {
           ),
         ),
       );
+  }
 }

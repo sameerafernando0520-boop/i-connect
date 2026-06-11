@@ -336,7 +336,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
         return Theme(
           data: Theme.of(context).copyWith(
             colorScheme: isDark
-                ? const ColorScheme.dark(
+                ? ColorScheme.dark(
                     primary: Brand.darkIconActive,
                     onPrimary: Color(0xFF1A1F36),
                     surface: Brand.darkCard,

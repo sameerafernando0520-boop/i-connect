@@ -750,7 +750,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
       decoration: BoxDecoration(
         color: _cardBg(isDark),
         border: isDark
-            ? const Border(bottom: BorderSide(color: Brand.darkBorder))
+            ? Border(bottom: BorderSide(color: Brand.darkBorder))
             : null,
         boxShadow: isDark
             ? null
@@ -1397,7 +1397,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
       decoration: BoxDecoration(
         color: _cardBg(isDark),
         border: isDark
-            ? const Border(top: BorderSide(color: Brand.darkBorder))
+            ? Border(top: BorderSide(color: Brand.darkBorder))
             : null,
         boxShadow: isDark
             ? null

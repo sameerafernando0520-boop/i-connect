@@ -16,6 +16,7 @@ import '../../providers/permissions_provider.dart';
 import '../../utils/string_utils.dart';
 import '../../widgets/common/language_selector_sheet.dart';
 import '../../screens/auth/login_page.dart';
+import '../../widgets/common/theme_style_sheet.dart';
 
 class MaProfilePage extends StatefulWidget {
   const MaProfilePage({super.key});
@@ -908,6 +909,43 @@ class _MaProfilePageState extends State<MaProfilePage> {
                 activeTrackColor: const Color(0xFF6366F1).withAlpha(77),
               ),
             ],
+          ),
+          const SizedBox(height: 6),
+          ListTile(
+            dense: true,
+            contentPadding: EdgeInsets.zero,
+            leading: const SizedBox(
+              width: 44,
+              child: Icon(Icons.style_rounded,
+                  size: 22, color: Color(0xFF6366F1)),
+            ),
+            title: Text(
+              'Dark style',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color:
+                    isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+              ),
+            ),
+            trailing: Row(mainAxisSize: MainAxisSize.min, children: [
+              Text(
+                ThemeProvider.styleName(themeProvider.darkStyle),
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: isDark
+                      ? Brand.darkTextSecondary
+                      : Brand.subtleLight,
+                ),
+              ),
+              Icon(Icons.chevron_right_rounded,
+                  size: 18,
+                  color: isDark
+                      ? Brand.darkTextTertiary
+                      : Brand.subtleLight),
+            ]),
+            onTap: () => ThemeStyleSheet.show(context),
           ),
         ],
       ),

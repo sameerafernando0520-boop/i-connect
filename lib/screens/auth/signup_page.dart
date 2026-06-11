@@ -246,7 +246,7 @@ class _SignupPageState extends State<SignupPage> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
           side: isDark
-              ? const BorderSide(color: Brand.darkBorder, width: 1)
+              ? BorderSide(color: Brand.darkBorder, width: 1)
               : BorderSide.none,
         ),
         child: Padding(

@@ -1,5 +1,42 @@
 import 'package:flutter/material.dart';
 
+/// The three selectable dark looks.
+///  - navy:     "Navy Glow" — deep radial-navy family from the splash screen
+///  - workshop: "Workshop" — warm ink canvas, paper-white text, lime active
+///  - fusion:   "Fusion" — navy depth with Workshop's outlined structure
+enum DarkStyle { navy, workshop, fusion }
+
+/// One dark palette. All `Brand.dark*` getters resolve through the active one.
+class DarkPalette {
+  final Color bg;
+  final Color card;
+  final Color cardElevated;
+  final Color border;
+  final Color borderLight;
+  final Color textPrimary;
+  final Color textSecondary;
+  final Color textTertiary;
+  final Color iconActive;
+  final Color primary;
+  final Color onPrimary;
+  final Color secondary;
+
+  const DarkPalette({
+    required this.bg,
+    required this.card,
+    required this.cardElevated,
+    required this.border,
+    required this.borderLight,
+    required this.textPrimary,
+    required this.textSecondary,
+    required this.textTertiary,
+    required this.iconActive,
+    required this.primary,
+    required this.onPrimary,
+    required this.secondary,
+  });
+}
+
 class Brand {
   Brand._(); // prevent instantiation
 
@@ -16,12 +53,85 @@ class Brand {
   static const Color lightGreenBright = Color(0xFF4ADE80);
   static const Color lightGreenSurface = Color(0xFFF0FDF4);
 
-  // ─── Dark Theme ─────────────────────────────────
-  static const Color darkBg = Color(0xFF0F172A);
-  static const Color darkCard = Color(0xFF1E293B);
-  static const Color darkCardElevated = Color(0xFF273548);
-  static const Color darkBorder = Color(0xFF334155);
-  static const Color darkBorderLight = Color(0xFF475569);
+  // ─── Brand spark (lime from the splash / iFrontiers logo) ──
+  static const Color lime = Color(0xFFABBD37);
+
+  // ─── Splash navy family ─────────────────────────
+  static const Color splashNavyEdge = Color(0xFF081A40);
+  static const Color splashNavyCore = Color(0xFF102A63);
+  static const Color splashNavyGlow = Color(0xFF15397A);
+
+  // ─── Dark palettes (selectable) ─────────────────
+  static const DarkPalette navyGlowPalette = DarkPalette(
+    bg: Color(0xFF0A1834),
+    card: Color(0xFF122754),
+    cardElevated: Color(0xFF18305F),
+    border: Color(0xFF27407A),
+    borderLight: Color(0xFF33518F),
+    textPrimary: Color(0xFFECF1FB),
+    textSecondary: Color(0xFF93A7CC),
+    textTertiary: Color(0xFF62759E),
+    iconActive: Color(0xFF6C9BFF),
+    primary: Color(0xFF3B82F6),
+    onPrimary: Colors.white,
+    secondary: lime,
+  );
+
+  static const DarkPalette workshopPalette = DarkPalette(
+    bg: Color(0xFF14161F),
+    card: Color(0xFF1C1F2B),
+    cardElevated: Color(0xFF232737),
+    border: Color(0xFF3A3E4F),
+    borderLight: Color(0xFF4A4F63),
+    textPrimary: Color(0xFFF2EFE6),
+    textSecondary: Color(0xFFA4A7B5),
+    textTertiary: Color(0xFF6E7180),
+    iconActive: lime,
+    primary: lime,
+    onPrimary: Color(0xFF14161F),
+    secondary: Color(0xFF6C9BFF),
+  );
+
+  static const DarkPalette fusionPalette = DarkPalette(
+    bg: Color(0xFF0C1222),
+    card: Color(0xFF151D33),
+    cardElevated: Color(0xFF1B2440),
+    border: Color(0xFF2C3552),
+    borderLight: Color(0xFF3A4566),
+    textPrimary: Color(0xFFEDF1F9),
+    textSecondary: Color(0xFF98A4C0),
+    textTertiary: Color(0xFF66708C),
+    iconActive: Color(0xFF7FA8F5),
+    primary: Color(0xFF5B8DEF),
+    onPrimary: Colors.white,
+    secondary: lime,
+  );
+
+  static DarkPalette _dark = navyGlowPalette;
+  static DarkStyle _style = DarkStyle.navy;
+
+  static DarkStyle get darkStyle => _style;
+  static DarkPalette get darkPalette => _dark;
+
+  static DarkPalette paletteFor(DarkStyle s) => switch (s) {
+        DarkStyle.navy => navyGlowPalette,
+        DarkStyle.workshop => workshopPalette,
+        DarkStyle.fusion => fusionPalette,
+      };
+
+  /// Swap the active dark palette. Called by ThemeProvider; every widget
+  /// reading `Brand.dark*` picks the new colors up on its next rebuild.
+  static void setDarkStyle(DarkStyle s) {
+    _style = s;
+    _dark = paletteFor(s);
+  }
+
+  // ─── Dark Theme (resolved through the active palette) ───
+  static Color get darkBg => _dark.bg;
+  static Color get darkCard => _dark.card;
+  static Color get darkCardElevated => _dark.cardElevated;
+  static Color get darkBorder => _dark.border;
+  static Color get darkBorderLight => _dark.borderLight;
 
   // ─── Light Theme (premium clean whites) ─────────
   static const Color scaffoldLight = Color(0xFFF8FAFC);
@@ -32,10 +142,10 @@ class Brand {
   static const Color subtleLight = Color(0xFF94A3B8);
   static const Color textPrimaryLight = Color(0xFF0F172A);
   static const Color textSecondaryLight = Color(0xFF64748B);
-  static const Color darkTextPrimary = Color(0xFFF1F5F9);
-  static const Color darkTextSecondary = Color(0xFF94A3B8);
-  static const Color darkTextTertiary = Color(0xFF64748B);
-  static const Color darkIconActive = Color(0xFF60A5FA);
+  static Color get darkTextPrimary => _dark.textPrimary;
+  static Color get darkTextSecondary => _dark.textSecondary;
+  static Color get darkTextTertiary => _dark.textTertiary;
+  static Color get darkIconActive => _dark.iconActive;
 }
 
 /// L2: Canonical semantic/status palette.

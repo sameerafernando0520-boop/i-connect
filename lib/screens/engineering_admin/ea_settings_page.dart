@@ -8,6 +8,7 @@ import '../../config/admin_theme.dart';
 import '../../providers/theme_provider.dart';
 import '../../providers/locale_provider.dart';
 import '../../widgets/common/language_selector_sheet.dart';
+import '../../widgets/common/theme_style_sheet.dart';
 
 const Color _eaAccent = Color(0xFF16A34A);
 
@@ -67,6 +68,35 @@ class EaSettingsPage extends StatelessWidget {
                 isDark: isDark,
                 value: themeProvider.isDarkMode,
                 onChanged: (_) => themeProvider.toggleTheme(),
+              ),
+              Divider(
+                  height: 1,
+                  indent: 52,
+                  color: isDark ? Brand.darkBorder : Brand.borderLight),
+              ListTile(
+                dense: true,
+                leading:
+                    const Icon(Icons.style_rounded, color: _eaAccent, size: 20),
+                title: Text('Dark style',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: isDark
+                            ? Brand.darkTextPrimary
+                            : const Color(0xFF0F172A))),
+                subtitle: Text(
+                    ThemeProvider.styleName(themeProvider.darkStyle),
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: isDark
+                            ? Brand.darkTextSecondary
+                            : Brand.textSecondaryLight)),
+                trailing: Icon(Icons.chevron_right_rounded,
+                    size: 18,
+                    color: isDark
+                        ? Brand.darkTextTertiary
+                        : Brand.subtleLight),
+                onTap: () => ThemeStyleSheet.show(context),
               ),
             ],
           ),

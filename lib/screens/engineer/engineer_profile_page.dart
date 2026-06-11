@@ -18,6 +18,8 @@ import '../auth/login_page.dart';
 
 import '../../widgets/common/language_selector_sheet.dart';
 import '../../providers/locale_provider.dart';
+import '../../providers/theme_provider.dart';
+import '../../widgets/common/theme_style_sheet.dart';
 
 // ── Engineer accent (per handoff §26 — NOT in Brand class) ──
 const Color _engAccent = Color(0xFF00B4D8);
@@ -1554,6 +1556,102 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                 ),
               ),
             ),
+          ),
+          const SizedBox(height: 4),
+          // ── Dark mode toggle + style picker ─────────────────
+          Consumer<ThemeProvider>(
+            builder: (ctx, tp, _) => Column(children: [
+              Row(children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: _engAccent.withAlpha(26),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Icon(
+                    tp.isDarkMode
+                        ? Icons.dark_mode_rounded
+                        : Icons.light_mode_rounded,
+                    color: _engAccent,
+                    size: 20,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    'Dark Mode',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: isDark
+                          ? Brand.darkTextPrimary
+                          : const Color(0xFF1E293B),
+                    ),
+                  ),
+                ),
+                Switch.adaptive(
+                  value: tp.isDarkMode,
+                  onChanged: (_) => tp.toggleTheme(),
+                  activeThumbColor: _engAccent,
+                ),
+              ]),
+              Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () => ThemeStyleSheet.show(context),
+                  borderRadius: BorderRadius.circular(14),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 6),
+                    child: Row(children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: _engAccent.withAlpha(26),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Icon(
+                          Icons.style_rounded,
+                          color: _engAccent,
+                          size: 20,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          'Dark style',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: isDark
+                                ? Brand.darkTextPrimary
+                                : const Color(0xFF1E293B),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        ThemeProvider.styleName(tp.darkStyle),
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: isDark
+                              ? Brand.darkTextSecondary
+                              : Brand.subtleLight,
+                        ),
+                      ),
+                      Icon(
+                        Icons.chevron_right_rounded,
+                        color: isDark
+                            ? Brand.darkTextTertiary
+                            : Brand.subtleLight,
+                      ),
+                    ]),
+                  ),
+                ),
+              ),
+            ]),
           ),
         ],
       ),

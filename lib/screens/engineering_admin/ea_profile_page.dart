@@ -11,6 +11,7 @@ import '../../providers/theme_provider.dart';
 import '../../providers/locale_provider.dart';
 import '../../widgets/common/language_selector_sheet.dart';
 import '../auth/login_page.dart';
+import '../../widgets/common/theme_style_sheet.dart';
 
 const Color _eaAccent = Color(0xFF16A34A);
 
@@ -229,6 +230,10 @@ class _EaProfilePageState extends State<EaProfilePage> {
                     title: 'Preferences',
                     children: [
                       _buildThemeToggle(isDark),
+                      Divider(
+                          height: 1,
+                          color: isDark ? Brand.darkBorder : Brand.borderLight),
+                      _buildDarkStyleTile(isDark),
                       Divider(
                           height: 1,
                           color: isDark ? Brand.darkBorder : Brand.borderLight),
@@ -521,6 +526,41 @@ class _EaProfilePageState extends State<EaProfilePage> {
               activeThumbColor: _eaAccent,
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDarkStyleTile(bool isDark) {
+    return Consumer<ThemeProvider>(
+      builder: (ctx, tp, _) => InkWell(
+        onTap: () => ThemeStyleSheet.show(context),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Row(
+            children: [
+              const Icon(Icons.style_rounded, size: 18, color: _eaAccent),
+              const SizedBox(width: 12),
+              Text(
+                'Dark style',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: AdminColors.textSub(ctx),
+                ),
+              ),
+              const Spacer(),
+              Text(
+                ThemeProvider.styleName(tp.darkStyle),
+                style: TextStyle(
+                  fontSize: 12.5,
+                  fontWeight: FontWeight.w600,
+                  color: AdminColors.text(ctx),
+                ),
+              ),
+              Icon(Icons.chevron_right_rounded,
+                  size: 18, color: AdminColors.textHint(ctx)),
+            ],
+          ),
         ),
       ),
     );
