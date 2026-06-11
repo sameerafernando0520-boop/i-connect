@@ -60,3 +60,5 @@ app.*.map.json
 # Local junk that must never be committed
 *.hprof
 supabase.exe
+firebase-sa.json
+*-sa.json
