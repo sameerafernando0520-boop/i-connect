@@ -57,3 +57,6 @@ app.*.map.json
 
 # Backup of the previously-corrupted git repo (see git recovery)
 .git.corrupt-backup/
+# Local junk that must never be committed
+*.hprof
+supabase.exe
