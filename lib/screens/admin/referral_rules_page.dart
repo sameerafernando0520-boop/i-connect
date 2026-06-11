@@ -941,7 +941,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
     try {
       await _supabase.from('referral_commission_rules').update({
         'is_active': isActive,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', id);
       if (!mounted) return;
       _snack(isActive ? 'Rule activated' : 'Rule deactivated');

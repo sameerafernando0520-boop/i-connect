@@ -185,7 +185,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         'city': _cityCtrl.text.trim(),
         'address': _addressCtrl.text.trim(),
         'specializations': _selectedSpecs,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', uid);
 
       if (!mounted) return;
@@ -405,7 +405,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
 
       await SupabaseConfig.client.from('users').update({
         'profile_photo': publicUrl,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', userId);
 
       if (!mounted) return;
@@ -438,7 +438,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
 
       await SupabaseConfig.client.from('users').update({
         'profile_photo': null,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', userId);
 
       if (!mounted) return;

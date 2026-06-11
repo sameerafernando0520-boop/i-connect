@@ -153,7 +153,7 @@ class _AssignEngineerSheetState extends State<AssignEngineerSheet> {
     try {
       await _supabase.from('service_tickets').update({
         'assigned_to': eng['id'],
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', widget.ticketId);
 
       if (!mounted) return;
@@ -211,7 +211,7 @@ class _AssignEngineerSheetState extends State<AssignEngineerSheet> {
       await _supabase.from('service_tickets').update({
         'assigned_to': null,
         'status': 'open',
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', widget.ticketId);
 
       if (!mounted) return;

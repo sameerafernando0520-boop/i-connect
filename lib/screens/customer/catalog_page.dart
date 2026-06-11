@@ -528,7 +528,7 @@ class _CatalogPageState extends State<CatalogPage> {
         {
           'user_id': userId,
           'catalog_machine_id': machineId,
-          'viewed_at': DateTime.now().toIso8601String(),
+          'viewed_at': DateTime.now().toUtc().toIso8601String(),
         },
         onConflict: 'user_id,catalog_machine_id',
       );

@@ -1827,7 +1827,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
           // Fallback if RPC not available
           await _supabase.from('quotations').update({
             'status': 'sent',
-            'sent_at': DateTime.now().toIso8601String(),
+            'sent_at': DateTime.now().toUtc().toIso8601String(),
           }).eq('id', qId);
         }
         if (!mounted) return;

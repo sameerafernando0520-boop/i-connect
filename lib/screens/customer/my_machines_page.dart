@@ -358,7 +358,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
     try {
       await SupabaseConfig.client.from('customer_machines').update({
         'is_favorite': !currentFav,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', machineId);
     } catch (e) {
       if (mounted) {

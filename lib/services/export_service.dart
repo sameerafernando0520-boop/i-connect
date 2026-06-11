@@ -22,7 +22,6 @@
 
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -58,10 +57,10 @@ class ExportService {
       final file = File('${dir.path}/${fileBaseName}_$stamp.csv');
       await file.writeAsString(buf.toString(), flush: true);
 
-      await Share.shareXFiles(
-        [XFile(file.path, mimeType: 'text/csv')],
+      await SharePlus.instance.share(ShareParams(
+        files: [XFile(file.path, mimeType: 'text/csv')],
         subject: shareText ?? '${fileBaseName.replaceAll('_', ' ')} export',
-      );
+      ));
       return file.path;
     } catch (e, st) {
       debugPrint('[ExportService] export failed: $e\n$st');

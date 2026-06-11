@@ -467,7 +467,7 @@ class EstimateChatActions {
     required String ticketId,
     required String currentUserId,
   }) async {
-    final now = DateTime.now().toIso8601String();
+    final now = DateTime.now().toUtc().toIso8601String();
     await SupabaseConfig.client.from('quotations').update({
       'status': 'accepted',
       'accepted_at': now,
@@ -522,7 +522,7 @@ class EstimateChatActions {
     required String ticketId,
     required String currentUserId,
   }) async {
-    final now = DateTime.now().toIso8601String();
+    final now = DateTime.now().toUtc().toIso8601String();
     await SupabaseConfig.client.from('quotations').update({
       'status': 'rejected',
       'rejected_at': now,

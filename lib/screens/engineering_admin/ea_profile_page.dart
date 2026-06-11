@@ -518,7 +518,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
             Switch.adaptive(
               value: tp.isDarkMode,
               onChanged: (_) => tp.toggleTheme(),
-              activeColor: _eaAccent,
+              activeThumbColor: _eaAccent,
             ),
           ],
         ),

@@ -102,23 +102,15 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
       await SupabaseConfig.client.from('article_views').insert({
         'user_id': userId,
         'article_id': widget.articleId,
-        'viewed_at': DateTime.now().toIso8601String(),
+        'viewed_at': DateTime.now().toUtc().toIso8601String(),
       });
 
-      // Bump the aggregate counter on knowledge_base so list views can sort
-      // without aggregating. Read-then-write keeps it simple and avoids RPCs.
-      final kb = await SupabaseConfig.client
-          .from('knowledge_base')
-          .select('views_count')
-          .eq('id', widget.articleId)
-          .maybeSingle();
-      if (kb != null) {
-        final current = (kb['views_count'] as int?) ?? 0;
-        await SupabaseConfig.client
-            .from('knowledge_base')
-            .update({'views_count': current + 1})
-            .eq('id', widget.articleId);
-      }
+      // Bump the aggregate counter atomically server-side. RLS no longer
+      // allows customers to UPDATE knowledge_base rows directly.
+      await SupabaseConfig.client.rpc(
+        'increment_article_view_count',
+        params: {'p_article_id': widget.articleId},
+      );
     } catch (_) {}
   }
 
@@ -163,7 +155,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
           {
             'user_id': userId,
             'article_id': widget.articleId,
-            'created_at': DateTime.now().toIso8601String(),
+            'created_at': DateTime.now().toUtc().toIso8601String(),
           },
           onConflict: 'user_id,article_id',
         );

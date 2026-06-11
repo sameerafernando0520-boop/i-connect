@@ -564,7 +564,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
                     value: published,
                     onChanged: (_) => _togglePublished(m),
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    activeColor: AdminColors.success,
+                    activeThumbColor: AdminColors.success,
                   ),
                   Text(
                     published ? 'Live' : 'Draft',

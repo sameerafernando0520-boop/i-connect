@@ -398,7 +398,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       }
 
       // ── Step 2: Insert notification rows ──
-      final now = DateTime.now().toIso8601String();
+      final now = DateTime.now().toUtc().toIso8601String();
       final allRows = userIds
           .map((uid) => {
                 'user_id': uid,
@@ -733,7 +733,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
     try {
       await SupabaseConfig.client.from('promotional_banners').update({
         'is_active': active,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', id);
 
       if (!mounted) return;
@@ -1074,7 +1074,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                     ? '${endDate!.year}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}'
                     : null,
                 'season_tag': seasonTag,
-                'updated_at': DateTime.now().toIso8601String(),
+                'updated_at': DateTime.now().toUtc().toIso8601String(),
               };
 
               if (isEditing) {

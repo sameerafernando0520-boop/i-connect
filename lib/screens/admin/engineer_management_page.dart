@@ -217,7 +217,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
         'Failed to create engineer (status ${response.status})';
 
     if (response.status == 403) throw Exception('Only admins can create engineers');
-    if (response.status == 409) throw Exception('Username "${username}" is already taken');
+    if (response.status == 409) throw Exception('Username "$username" is already taken');
     throw Exception(errMsg);
   }
 
@@ -1945,7 +1945,7 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
         'phone_number': _phoneCtrl.text.trim(),
         'engineer_bio': _bioCtrl.text.trim(),
         'specializations': _selectedSpecs,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', widget.engineer['id'] as String);
 
       if (!mounted) return;

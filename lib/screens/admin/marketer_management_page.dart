@@ -283,7 +283,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                                 Switch(
                                   value: enabled,
                                   onChanged: (v) => setSheetState(() => localPerms[s.key] = v),
-                                  activeColor: s.color,
+                                  activeThumbColor: s.color,
                                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                 ),
                               ],
@@ -310,7 +310,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                                       .update(localPerms)
                                       .eq('user_id', marketer['id']);
 
-                                  if (!mounted) return;
+                                  if (!mounted || !sheetCtx.mounted) return;
                                   Navigator.pop(sheetCtx);
                                   _load();
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -465,7 +465,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                                   'update-marketer-password',
                                   body: {'marketer_id': marketer['id'], 'new_password': pwCtrl.text},
                                 );
-                                if (!mounted) return;
+                                if (!mounted || !sheetCtx.mounted) return;
                                 if (res.status != 200) {
                                   final err = res.data?['error'] ?? 'Failed';
                                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(

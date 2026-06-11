@@ -354,7 +354,7 @@ class _AdminKnowledgeBaseFormPageState
               SwitchListTile.adaptive(
                 value: _isPublished,
                 onChanged: (v) => setState(() => _isPublished = v),
-                activeColor: AdminColors.success,
+                activeThumbColor: AdminColors.success,
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                 title: Text(

@@ -228,7 +228,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
     try {
       await SupabaseConfig.client.from('machine_catalog').update({
         'is_active': newStatus,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', machine['id'] as String);
 
       if (!mounted) return;
@@ -2679,7 +2679,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
   // Existing images already saved on the catalog row (loaded in initState
   // for edit mode). New images the admin picks/uploads in this session.
   // Final saved list = _galleryUrls (existing) + uploaded(_galleryFiles).
-  List<String> _galleryUrls = [];
+  final List<String> _galleryUrls = [];
   final List<File> _galleryFiles = [];
   final _galleryUrlInputController = TextEditingController();
   bool _galleryUploading = false;
@@ -3408,7 +3408,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
         'display_order': _displayOrderController.text.trim().isEmpty
             ? 0
             : int.tryParse(_displayOrderController.text.trim()) ?? 0,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       };
 
       if (_isEditMode) {

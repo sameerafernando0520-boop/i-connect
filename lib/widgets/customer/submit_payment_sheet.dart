@@ -218,30 +218,9 @@ class _SubmitPaymentSheetState extends State<SubmitPaymentSheet> {
         });
       }
 
-      // Notify admins (best-effort)
-      try {
-        final admins = await SupabaseConfig.client
-            .from('users')
-            .select('id')
-            .inFilter('role', ['admin', 'super_admin']);
-        final rows = (admins as List)
-            .map((u) => {
-                  'user_id': u['id'],
-                  'title': 'Payment receipt submitted',
-                  'body':
-                      'A customer submitted an installment payment for review.',
-                  'type': 'payment_receipt_submitted',
-                  'related_id': paymentId,
-                  'related_type': 'installment_payment',
-                  'is_read': false,
-                })
-            .toList();
-        if (rows.isNotEmpty) {
-          await SupabaseConfig.client.from('notifications').insert(rows);
-        }
-      } catch (e) {
-        debugPrint('notify admins failed (non-fatal): $e');
-      }
+      // Admin notification is handled by the trg_notify_payment_submission
+      // triggers on installment_payments — RLS blocks customers from
+      // inserting notifications for other users.
 
       if (!mounted) return;
       final messenger = ScaffoldMessenger.of(context);

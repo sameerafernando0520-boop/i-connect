@@ -126,7 +126,7 @@ class InquiryDetailRepository {
 
   /// Update admin notes.
   Future<void> updateNotes(String inquiryId, String notes) async {
-    final now = DateTime.now().toIso8601String();
+    final now = DateTime.now().toUtc().toIso8601String();
     await _client.from('service_tickets').update({
       'admin_notes': notes,
       'last_activity_at': now,
@@ -137,7 +137,7 @@ class InquiryDetailRepository {
 
   /// Update deal value. Pass `null` to clear.
   Future<void> updateDealValue(String inquiryId, double? value) async {
-    final now = DateTime.now().toIso8601String();
+    final now = DateTime.now().toUtc().toIso8601String();
     await _client.from('service_tickets').update({
       'deal_value': value,
       'last_activity_at': now,
@@ -152,7 +152,7 @@ class InquiryDetailRepository {
     final userId = _client.auth.currentUser?.id;
     if (userId == null) throw Exception('Not authenticated');
 
-    final now = DateTime.now().toIso8601String();
+    final now = DateTime.now().toUtc().toIso8601String();
 
     // Primary operation — must succeed
     await _client.from('service_tickets').update({

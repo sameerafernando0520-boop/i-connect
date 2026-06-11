@@ -403,7 +403,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
       final userId = SupabaseConfig.client.auth.currentUser?.id;
       await SupabaseConfig.client.from('installment_payments').update({
         'status': 'paid',
-        'verified_at': DateTime.now().toIso8601String(),
+        'verified_at': DateTime.now().toUtc().toIso8601String(),
         'verified_by': userId,
       }).eq('id', payment['id']);
 

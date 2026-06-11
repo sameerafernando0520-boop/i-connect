@@ -110,8 +110,8 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
           final bName = ((b['engineer'] as Map?)?['full_name'] ?? '').toString();
           return aName.compareTo(bName);
         case 'duration':
-          final aDays = (a['duration_days'] as num?)?.toDouble() ?? 0;
-          final bDays = (b['duration_days'] as num?)?.toDouble() ?? 0;
+          final aDays = (a['total_days'] as num?)?.toDouble() ?? 0;
+          final bDays = (b['total_days'] as num?)?.toDouble() ?? 0;
           return bDays.compareTo(aDays);
         default: // date_desc
           return (b['start_date'] ?? '').toString().compareTo((a['start_date'] ?? '').toString());
@@ -146,7 +146,11 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
     try {
       await SupabaseConfig.client
           .from('engineer_leaves')
-          .update({'status': 'approved', 'reviewed_at': DateTime.now().toIso8601String()})
+          .update({
+            'status': 'approved',
+            'reviewed_by': SupabaseConfig.client.auth.currentUser?.id,
+            'reviewed_at': DateTime.now().toUtc().toIso8601String(),
+          })
           .eq('id', leave['id']);
       if (!mounted) return;
       _load();
@@ -193,6 +197,7 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
         ],
       ),
     );
+    final note = noteCtrl.text.trim();
     noteCtrl.dispose();
     if (confirm != true || !mounted) return;
     try {
@@ -200,8 +205,9 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
           .from('engineer_leaves')
           .update({
             'status': 'rejected',
-            'reviewed_at': DateTime.now().toIso8601String(),
-            if (noteCtrl.text.trim().isNotEmpty) 'review_note': noteCtrl.text.trim(),
+            'reviewed_by': SupabaseConfig.client.auth.currentUser?.id,
+            'reviewed_at': DateTime.now().toUtc().toIso8601String(),
+            if (note.isNotEmpty) 'review_note': note,
           })
           .eq('id', leave['id']);
       if (!mounted) return;
@@ -245,17 +251,25 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
                     color: AdminColors.text(context),
                   )),
               const SizedBox(height: 16),
-              ...opts.map((opt) => RadioListTile<String>(
-                    value: opt.$1,
-                    groupValue: _sortBy,
-                    title: Text(opt.$2),
-                    activeColor: _eaAccent,
-                    onChanged: (v) {
-                      setState(() => _sortBy = v!);
-                      _applyFilter();
-                      Navigator.pop(context);
-                    },
-                  )),
+              RadioGroup<String>(
+                groupValue: _sortBy,
+                onChanged: (v) {
+                  if (v == null) return;
+                  setState(() => _sortBy = v);
+                  _applyFilter();
+                  Navigator.pop(context);
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: opts
+                      .map((opt) => RadioListTile<String>(
+                            value: opt.$1,
+                            title: Text(opt.$2),
+                            activeColor: _eaAccent,
+                          ))
+                      .toList(),
+                ),
+              ),
             ],
           ),
         );
@@ -546,7 +560,7 @@ class _LeaveCard extends StatelessWidget {
     final leaveType = leave['leave_type'] as String?;
     final startDate = leave['start_date'] as String?;
     final endDate = leave['end_date'] as String?;
-    final durationDays = (leave['duration_days'] as num?)?.toDouble() ?? 1.0;
+    final durationDays = (leave['total_days'] as num?)?.toDouble() ?? 1.0;
     final reason = leave['reason'] as String?;
     final typeColor = _leaveTypeColor(leaveType);
     final statusColor = _statusColor(status);

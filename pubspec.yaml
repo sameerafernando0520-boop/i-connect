@@ -62,10 +62,10 @@ dependencies:
   path_provider: ^2.1.5
 
   # Offline mode (v24)
-  connectivity_plus: ^6.1.0
-  record: ^6.2.1
+  connectivity_plus: ^7.1.1
+  record: ^7.0.0
   just_audio: ^0.10.5
-  file_picker: ^8.0.0
+  file_picker: ^11.0.2
   geolocator: ^14.0.1
   permission_handler: ^12.0.1
   flutter_map: ^8.3.0

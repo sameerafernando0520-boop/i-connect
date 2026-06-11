@@ -274,7 +274,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
   }
 
   Future<void> _markMessagesAsRead() async {
-    final now = DateTime.now().toIso8601String();
+    final now = DateTime.now().toUtc().toIso8601String();
     try {
       await SupabaseConfig.client
           .from('chat_messages')
@@ -419,7 +419,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
       if (!wasInternal && ['open', 'assigned'].contains(_ticket['status'])) {
         await SupabaseConfig.client.from('service_tickets').update({
           'status': 'in_progress',
-          'updated_at': DateTime.now().toIso8601String(),
+          'updated_at': DateTime.now().toUtc().toIso8601String(),
         }).eq('id', widget.ticketId);
         if (!mounted) return;
         setState(() => _ticket = {..._ticket, 'status': 'in_progress'});
@@ -443,11 +443,11 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
     try {
       final update = <String, dynamic>{
         'status': newStatus,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       };
 
       if (['resolved', 'closed'].contains(newStatus)) {
-        update['closed_at'] = DateTime.now().toIso8601String();
+        update['closed_at'] = DateTime.now().toUtc().toIso8601String();
       } else {
         // Clear closed_at when reopening
         update['closed_at'] = null;
@@ -529,7 +529,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
         'lat': p.latitude,
         'lng': p.longitude,
         'heading': p.heading,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       });
     } catch (_) {}
   }
@@ -731,9 +731,9 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
     try {
       await SupabaseConfig.client.from('service_tickets').update({
         'escalated': true,
-        'escalated_at': DateTime.now().toIso8601String(),
+        'escalated_at': DateTime.now().toUtc().toIso8601String(),
         'escalation_reason': reason,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', widget.ticketId);
       if (!mounted) return;
 
@@ -794,7 +794,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
         'escalated': false,
         'escalated_at': null,
         'escalation_reason': null,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', widget.ticketId);
       if (!mounted) return;
 

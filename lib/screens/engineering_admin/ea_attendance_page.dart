@@ -325,7 +325,7 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
                                 checkOut: checkOut,
                                 notes: notesCtrl.text.trim(),
                               );
-                              if (!mounted) return;
+                              if (!mounted || !sheetCtx.mounted) return;
                               Navigator.pop(sheetCtx);
                               _load();
                             },

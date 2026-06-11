@@ -5,7 +5,11 @@
 
 import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import '../config/supabase_config.dart'; // ① replaced supabase_flutter import
+import '../main.dart' show navigatorKey;
+import '../screens/customer/notification_list_page.dart';
+import '../screens/engineering_admin/ea_notifications_page.dart';
 import '../utils/app_logger.dart';
 
 class NotificationService {
@@ -147,7 +151,7 @@ class NotificationService {
           'device_info':
               '${Platform.operatingSystem} ${Platform.operatingSystemVersion}',
           'is_active': true,
-          'updated_at': DateTime.now().toIso8601String(),
+          'updated_at': DateTime.now().toUtc().toIso8601String(),
         },
         onConflict: 'user_id,token',
       );
@@ -214,7 +218,7 @@ class NotificationService {
           .update({
             // ③
             'is_active': false,
-            'updated_at': DateTime.now().toIso8601String(),
+            'updated_at': DateTime.now().toUtc().toIso8601String(),
           })
           .eq('user_id', userId)
           .eq('token', _currentToken!);
@@ -237,6 +241,38 @@ class NotificationService {
 
   void _handleMessageTap(RemoteMessage message) {
     AppLogger.info('FCM', 'Message tapped: ${message.data}');
+    _openNotifications();
+  }
+
+  /// Route a tapped push into the role-appropriate notifications screen.
+  /// Admin/engineer/marketing dashboards surface alerts inline, so only
+  /// customer and engineering-admin get a dedicated list pushed.
+  Future<void> _openNotifications() async {
+    try {
+      final userId = SupabaseConfig.client.auth.currentUser?.id;
+      final nav = navigatorKey.currentState;
+      if (userId == null || nav == null) return;
+
+      final row = await SupabaseConfig.client
+          .from('users')
+          .select('role')
+          .eq('id', userId)
+          .maybeSingle();
+      final role = row?['role'] as String? ?? 'customer';
+
+      Widget? page;
+      if (role == 'customer') {
+        page = const NotificationListPage();
+      } else if (role == 'engineering_admin') {
+        page = const EaNotificationsPage();
+      }
+      if (page != null) {
+        final target = page;
+        nav.push(MaterialPageRoute(builder: (_) => target));
+      }
+    } catch (e) {
+      AppLogger.warn('FCM', 'Notification tap routing failed', error: e);
+    }
   }
 
   Future<void> _storeNotification(RemoteMessage message) async {

@@ -286,7 +286,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
     try {
       await SupabaseConfig.client.from('users').update({
         'connector_id': newId,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', widget.customerId);
       if (!mounted) return;
       // Update local cache so UI reflects immediately.

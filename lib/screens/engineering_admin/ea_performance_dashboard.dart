@@ -124,8 +124,8 @@ class _EaPerformanceDashboardState extends State<EaPerformanceDashboard>
 
     for (final s in snapshots) {
       totalAtt += (s['on_time_rate'] as num?)?.toDouble() ?? 0;
-      final _sTotal = (s['total_jobs'] as num?)?.toInt() ?? 0;
-      totalComp += _sTotal > 0 ? ((s['completed_jobs'] as num?)?.toDouble() ?? 0) / _sTotal * 100.0 : 0.0;
+      final sTotal = (s['total_jobs'] as num?)?.toInt() ?? 0;
+      totalComp += sTotal > 0 ? ((s['completed_jobs'] as num?)?.toDouble() ?? 0) / sTotal * 100.0 : 0.0;
       final r = (s['avg_rating'] as num?)?.toDouble();
       if (r != null && r > 0) {
         totalRating += r;
@@ -190,17 +190,25 @@ class _EaPerformanceDashboardState extends State<EaPerformanceDashboard>
                   color: AdminColors.text(context),
                 )),
             const SizedBox(height: 16),
-            ..._periodOptions.map((opt) => RadioListTile<int>(
-                  value: opt.$1,
-                  groupValue: _periodMonths,
-                  title: Text(opt.$2),
-                  activeColor: _eaAccent,
-                  onChanged: (v) {
-                    setState(() => _periodMonths = v!);
-                    Navigator.pop(context);
-                    _load();
-                  },
-                )),
+            RadioGroup<int>(
+              groupValue: _periodMonths,
+              onChanged: (v) {
+                if (v == null) return;
+                setState(() => _periodMonths = v);
+                Navigator.pop(context);
+                _load();
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: _periodOptions
+                    .map((opt) => RadioListTile<int>(
+                          value: opt.$1,
+                          title: Text(opt.$2),
+                          activeColor: _eaAccent,
+                        ))
+                    .toList(),
+              ),
+            ),
           ],
         ),
       ),
@@ -602,8 +610,8 @@ class _TopPerformers extends StatelessWidget {
 
   double _score(Map<String, dynamic> kpi) {
     final att = (kpi['on_time_rate'] as num?)?.toDouble() ?? 0;
-    final _compTotal = (kpi['total_jobs'] as num?)?.toInt() ?? 0;
-    final comp = _compTotal > 0 ? ((kpi['completed_jobs'] as num?)?.toDouble() ?? 0) / _compTotal * 100.0 : 0.0;
+    final compTotal = (kpi['total_jobs'] as num?)?.toInt() ?? 0;
+    final comp = compTotal > 0 ? ((kpi['completed_jobs'] as num?)?.toDouble() ?? 0) / compTotal * 100.0 : 0.0;
     final rating = (kpi['avg_rating'] as num?)?.toDouble() ?? 0;
     return att * 0.4 + comp * 0.4 + (rating / 5 * 100) * 0.2;
   }
@@ -621,8 +629,8 @@ class _PerformerRow extends StatelessWidget {
     final url = engineer['profile_photo'] as String?;
     final name = engineer['full_name'] as String? ?? 'Engineer';
     final att = (kpi['on_time_rate'] as num?)?.toDouble() ?? 0;
-    final _compTotal = (kpi['total_jobs'] as num?)?.toInt() ?? 0;
-    final comp = _compTotal > 0 ? ((kpi['completed_jobs'] as num?)?.toDouble() ?? 0) / _compTotal * 100.0 : 0.0;
+    final compTotal = (kpi['total_jobs'] as num?)?.toInt() ?? 0;
+    final comp = compTotal > 0 ? ((kpi['completed_jobs'] as num?)?.toDouble() ?? 0) / compTotal * 100.0 : 0.0;
     final rating = (kpi['avg_rating'] as num?)?.toDouble();
 
     Color rankColor = AdminColors.textHint(context);
@@ -728,9 +736,13 @@ class _AttendancePieCard extends StatelessWidget {
         continue;
       }
       final att = (kpi['on_time_rate'] as num?)?.toDouble() ?? 0;
-      if (att >= 80) high++;
-      else if (att >= 60) medium++;
-      else low++;
+      if (att >= 80) {
+        high++;
+      } else if (att >= 60) {
+        medium++;
+      } else {
+        low++;
+      }
     }
 
     final total = engineers.length;
@@ -1099,8 +1111,8 @@ class _SingleEngineerTrends extends StatelessWidget {
     for (var i = 0; i < history.length; i++) {
       final k = history[i];
       final att = (k['on_time_rate'] as num?)?.toDouble() ?? 0;
-      final _kTotal = (k['total_jobs'] as num?)?.toInt() ?? 0;
-      final comp = _kTotal > 0 ? ((k['completed_jobs'] as num?)?.toDouble() ?? 0) / _kTotal * 100.0 : 0.0;
+      final kTotal = (k['total_jobs'] as num?)?.toInt() ?? 0;
+      final comp = kTotal > 0 ? ((k['completed_jobs'] as num?)?.toDouble() ?? 0) / kTotal * 100.0 : 0.0;
       attSpots.add(FlSpot(i.toDouble(), att));
       compSpots.add(FlSpot(i.toDouble(), comp));
     }
@@ -1235,8 +1247,8 @@ class _TeamTrends extends StatelessWidget {
       double totalAtt = 0, totalComp = 0;
       for (final s in snapshots) {
         totalAtt += (s['on_time_rate'] as num?)?.toDouble() ?? 0;
-        final _sTotal = (s['total_jobs'] as num?)?.toInt() ?? 0;
-      totalComp += _sTotal > 0 ? ((s['completed_jobs'] as num?)?.toDouble() ?? 0) / _sTotal * 100.0 : 0.0;
+        final sTotal = (s['total_jobs'] as num?)?.toInt() ?? 0;
+      totalComp += sTotal > 0 ? ((s['completed_jobs'] as num?)?.toDouble() ?? 0) / sTotal * 100.0 : 0.0;
       }
       final n = snapshots.length;
       attSpots.add(FlSpot(i.toDouble(), totalAtt / n));

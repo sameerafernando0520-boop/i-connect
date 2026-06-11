@@ -47,7 +47,7 @@ class SupabaseConfig {
 
     await Supabase.initialize(
       url: url,
-      anonKey: anonKey,
+      publishableKey: anonKey,
       authOptions: const FlutterAuthClientOptions(
         authFlowType: AuthFlowType.pkce,
       ),

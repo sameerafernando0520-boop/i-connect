@@ -116,7 +116,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
   ) async {
     final scheduleId = assignment['schedule_id'] as String;
     final assignmentId = assignment['id'] as String;
-    final now = DateTime.now().toIso8601String();
+    final now = DateTime.now().toUtc().toIso8601String();
 
     final updates = <String, dynamic>{};
     String? sseStatus;

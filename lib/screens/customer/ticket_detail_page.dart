@@ -217,7 +217,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
   }
 
   Future<void> _markMessagesAsRead() async {
-    final now = DateTime.now().toIso8601String();
+    final now = DateTime.now().toUtc().toIso8601String();
     try {
       await SupabaseConfig.client
           .from('chat_messages')
@@ -282,7 +282,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                   await SupabaseConfig.client
                       .from('chat_messages')
                       .update(
-                          {'delivered_at': DateTime.now().toIso8601String()})
+                          {'delivered_at': DateTime.now().toUtc().toIso8601String()})
                       .eq('id', msgId)
                       .filter('delivered_at', 'is', null);
                 } catch (e) {
@@ -483,7 +483,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       'attachments': attachments ?? [],
       'is_read': false,
       'is_internal': false,
-      'created_at': DateTime.now().toIso8601String(),
+      'created_at': DateTime.now().toUtc().toIso8601String(),
       '_sending': true,
     };
 
@@ -709,7 +709,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
         'status': 'open',
         'reopened_count': (_ticket!['reopened_count'] ?? 0) + 1,
         'closed_at': null,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', widget.ticketId);
 
       await SupabaseConfig.client.from('chat_messages').insert({
@@ -741,8 +741,8 @@ class _TicketDetailPageState extends State<TicketDetailPage>
     try {
       await SupabaseConfig.client.from('service_tickets').update({
         'status': 'closed',
-        'closed_at': DateTime.now().toIso8601String(),
-        'updated_at': DateTime.now().toIso8601String(),
+        'closed_at': DateTime.now().toUtc().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', widget.ticketId);
 
       // Best-effort system message — RLS may forbid sender_type='system'
@@ -775,7 +775,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       await SupabaseConfig.client.from('service_tickets').update({
         'customer_rating': rating,
         'customer_feedback': feedback,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', widget.ticketId);
 
       await SupabaseConfig.client.from('ticket_activities').insert({

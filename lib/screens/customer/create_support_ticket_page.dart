@@ -299,7 +299,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
             'contact_preference': _contactPreference,
             'current_step': _currentStep,
           },
-          'updated_at': DateTime.now().toIso8601String(),
+          'updated_at': DateTime.now().toUtc().toIso8601String(),
         },
         onConflict: 'user_id,ticket_type',
       );

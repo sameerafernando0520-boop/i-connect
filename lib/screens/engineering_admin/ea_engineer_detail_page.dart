@@ -1573,7 +1573,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                   const SizedBox(height: 12),
                   // Proficiency level
                   DropdownButtonFormField<String>(
-                    value: _skillLevel,
+                    initialValue: _skillLevel,
                     items: ['basic', 'intermediate', 'advanced', 'expert']
                         .map((l) => DropdownMenuItem(
                             value: l,
@@ -1606,7 +1606,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                               ? Brand.darkTextPrimary
                               : Brand.royalBlueDark),
                     ),
-                    activeColor: _eaAccent,
+                    activeThumbColor: _eaAccent,
                     contentPadding: EdgeInsets.zero,
                   ),
                   if (_skillCertified) ...[
@@ -1688,7 +1688,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
           'cert_expiry_date':
               _certExpiry!.toIso8601String().substring(0, 10),
       });
-      if (!mounted) return;
+      if (!mounted || !sheetCtx.mounted) return;
       Navigator.pop(sheetCtx);
       final skills = await _fetchSkills();
       if (!mounted) return;
@@ -1871,9 +1871,9 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
       await SupabaseConfig.client.from('engineer_leaves').update({
         'status': approve ? 'approved' : 'rejected',
         'reviewed_by': reviewer?.id,
-        'reviewed_at': DateTime.now().toIso8601String(),
+        'reviewed_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', leaveId);
-      if (!mounted) return;
+      if (!mounted || !sheetCtx.mounted) return;
       Navigator.pop(sheetCtx);
       final leaves = await _fetchLeaves();
       if (!mounted) return;

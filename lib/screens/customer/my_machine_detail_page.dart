@@ -203,7 +203,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
     try {
       await SupabaseConfig.client.from('customer_machines').update({
         'is_favorite': newVal,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', _machine['id']);
       if (mounted) {
         _showSnack(
@@ -223,7 +223,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
     try {
       await SupabaseConfig.client.from('customer_machines').update({
         'machine_nickname': val.isEmpty ? null : val,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', _machine['id']);
       setState(() {
         _machine['machine_nickname'] = val.isEmpty ? null : val;
@@ -241,7 +241,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
     try {
       await SupabaseConfig.client.from('customer_machines').update({
         'status': newStatus,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', _machine['id']);
       setState(() => _machine['status'] = newStatus);
       if (mounted) {

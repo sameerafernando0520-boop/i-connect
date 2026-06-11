@@ -377,7 +377,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
 
       await SupabaseConfig.client.from('users').update({
         'profile_photo': publicUrl,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', userId);
 
       if (!mounted) return;
@@ -402,7 +402,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
 
       await SupabaseConfig.client.from('users').update({
         'profile_photo': null,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', userId);
 
       if (!mounted) return;
@@ -505,7 +505,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                     await SupabaseConfig.client.from('users').update({
                       'full_name': name,
                       'phone_number': phoneCtrl.text.trim(),
-                      'updated_at': DateTime.now().toIso8601String(),
+                      'updated_at': DateTime.now().toUtc().toIso8601String(),
                     }).eq('id', userId);
 
                     // FIX-6: check sheetCtx.mounted before pop

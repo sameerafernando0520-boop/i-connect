@@ -229,7 +229,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
       await SupabaseConfig.client.from('service_tickets').update({
         'status': 'in_progress',
         'assigned_to': _leadId,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', widget.ticketId);
 
       if (!mounted) return;

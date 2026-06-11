@@ -442,7 +442,7 @@ class _MySchedulePageState extends State<MySchedulePage>
         'customer_rating': rating,
         'customer_feedback':
             feedbackCtrl.text.trim().isEmpty ? null : feedbackCtrl.text.trim(),
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', schedule['id']);
 
       // ── Award rating points ──

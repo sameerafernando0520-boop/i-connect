@@ -513,7 +513,7 @@ class _ProfilePageState extends State<ProfilePage>
 
       await SupabaseConfig.client.from('users').update({
         'profile_photo': imageUrl,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', _userId);
 
       if (!mounted) return;
@@ -538,7 +538,7 @@ class _ProfilePageState extends State<ProfilePage>
 
       await SupabaseConfig.client.from('users').update({
         'profile_photo': null,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', _userId);
 
       if (!mounted) return;
@@ -566,7 +566,7 @@ class _ProfilePageState extends State<ProfilePage>
         'city': _cityController.text.trim(),
         'province': _province,
         'district': _district,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', _userId);
 
       // ── Check profile completion for bonus points ──
@@ -670,7 +670,7 @@ class _ProfilePageState extends State<ProfilePage>
         'tickets': ((results[2] as List?) ?? [])
             .map((t) => Map<String, dynamic>.from(t as Map))
             .toList(),
-        'exported_at': DateTime.now().toIso8601String(),
+        'exported_at': DateTime.now().toUtc().toIso8601String(),
         'app': 'iFrontiers Connect v1.0.0',
       };
 
@@ -2159,7 +2159,7 @@ class _ProfilePageState extends State<ProfilePage>
                 ),
               ),
             );
-          }).toList(),
+          }),
 
           const SizedBox(height: 8),
         ],

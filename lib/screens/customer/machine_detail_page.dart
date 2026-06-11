@@ -304,7 +304,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
       await SupabaseConfig.client.from('recently_viewed_machines').upsert({
         'user_id': userId,
         'catalog_machine_id': widget.machine['id'],
-        'viewed_at': DateTime.now().toIso8601String()
+        'viewed_at': DateTime.now().toUtc().toIso8601String()
       }, onConflict: 'user_id,catalog_machine_id');
     } catch (_) {}
   }

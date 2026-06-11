@@ -193,9 +193,9 @@ class _EaTicketDetailPageState extends State<EaTicketDetailPage> {
       final uid = SupabaseConfig.client.auth.currentUser?.id;
       await SupabaseConfig.client.from('service_tickets').update({
         'is_deleted': true,
-        'deleted_at': DateTime.now().toIso8601String(),
+        'deleted_at': DateTime.now().toUtc().toIso8601String(),
         'deleted_by': uid,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', widget.ticketId);
 
       if (!mounted) return;

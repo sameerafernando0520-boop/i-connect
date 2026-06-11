@@ -87,7 +87,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
           .update({
             'status': 'scheduled',
             'approved_by': approverId,
-            'approved_at': DateTime.now().toIso8601String(),
+            'approved_at': DateTime.now().toUtc().toIso8601String(),
           })
           .eq('id', id);
 
@@ -95,7 +95,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
       // word "approved" or know it was approval-gated).
       final customer = item['customer'] as Map<String, dynamic>?;
       final engineer = item['engineer'] as Map<String, dynamic>?;
-      final now = DateTime.now().toIso8601String();
+      final now = DateTime.now().toUtc().toIso8601String();
       final notifications = <Map<String, dynamic>>[];
       if (customer != null) {
         notifications.add({
@@ -170,7 +170,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
           .update({
             'status': 'cancelled',
             'approved_by': approverId,
-            'approved_at': DateTime.now().toIso8601String(),
+            'approved_at': DateTime.now().toUtc().toIso8601String(),
             'admin_notes': reason.isEmpty ? null : reason,
           })
           .eq('id', id);
@@ -185,7 +185,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
               : 'Schedule "${item['title']}" rejected: $reason',
           'type': 'system',
           'is_read': false,
-          'created_at': DateTime.now().toIso8601String(),
+          'created_at': DateTime.now().toUtc().toIso8601String(),
           'metadata': {
             'type': 'schedule_rejected',
             'schedule_id': id,

@@ -1034,7 +1034,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
         try {
           await _supabase.from('invoices').update({
             'status': 'sent',
-            'sent_at': DateTime.now().toIso8601String(),
+            'sent_at': DateTime.now().toUtc().toIso8601String(),
           }).eq('id', widget.invoiceId);
           if (!mounted) return;
           _snack('Invoice sent!');
@@ -1152,7 +1152,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
         try {
           await _supabase.from('invoices').update({
             'status': 'cancelled',
-            'cancelled_at': DateTime.now().toIso8601String(),
+            'cancelled_at': DateTime.now().toUtc().toIso8601String(),
             if (reason != null) 'cancellation_reason': reason,
           }).eq('id', widget.invoiceId);
           if (!mounted) return;

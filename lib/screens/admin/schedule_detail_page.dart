@@ -216,7 +216,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
   Future<void> _updateStatus(String newStatus, {String? reason}) async {
     setState(() => _acting = true);
     try {
-      final now = DateTime.now().toIso8601String();
+      final now = DateTime.now().toUtc().toIso8601String();
       final updates = <String, dynamic>{
         'status': newStatus,
         'updated_at': now,
@@ -304,7 +304,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
       // Mark current as rescheduled
       await SupabaseConfig.client.from('service_schedules').update({
         'status': 'rescheduled',
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', widget.scheduleId);
 
       if (!mounted) return;

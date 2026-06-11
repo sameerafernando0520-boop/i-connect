@@ -1,5 +1,6 @@
 // lib/providers/theme_provider.dart
 
+import 'package:flutter/cupertino.dart' show CupertinoPageTransitionsBuilder;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -77,6 +78,35 @@ class ThemeProvider extends ChangeNotifier {
   static TextTheme _montserratDark() =>
       GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme);
 
+  // ─── SHARED MODERN POLISH (both themes) ───────────────────
+  // Fade-through page transitions + sparkle ink make navigation and taps
+  // feel current on every screen without touching individual pages.
+  static final PageTransitionsTheme _pageTransitions = PageTransitionsTheme(
+    builders: {
+      TargetPlatform.android: const FadeForwardsPageTransitionsBuilder(),
+      TargetPlatform.iOS: const CupertinoPageTransitionsBuilder(),
+    },
+  );
+
+  // Note: no global showDragHandle — most sheets already draw their own.
+  static const BottomSheetThemeData _bottomSheetLight = BottomSheetThemeData(
+    backgroundColor: Brand.cardLight,
+    surfaceTintColor: Colors.transparent,
+    modalBackgroundColor: Brand.cardLight,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+    ),
+  );
+
+  static const BottomSheetThemeData _bottomSheetDark = BottomSheetThemeData(
+    backgroundColor: Brand.darkCard,
+    surfaceTintColor: Colors.transparent,
+    modalBackgroundColor: Brand.darkCard,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+    ),
+  );
+
   // ─── LIGHT THEME ──────────────────────────────────────────
   ThemeData get lightTheme => ThemeData(
         useMaterial3: true,
@@ -93,6 +123,44 @@ class ThemeProvider extends ChangeNotifier {
         ),
         textTheme: _montserratLight(),
         primaryTextTheme: _montserratLight(),
+        pageTransitionsTheme: _pageTransitions,
+        splashFactory: InkSparkle.splashFactory,
+        bottomSheetTheme: _bottomSheetLight,
+        // ── Dialogs — rounded, no M3 surface tint ──
+        dialogTheme: DialogThemeData(
+          backgroundColor: Brand.cardLight,
+          surfaceTintColor: Colors.transparent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          titleTextStyle: GoogleFonts.montserrat(
+            fontSize: 17,
+            fontWeight: FontWeight.w700,
+            color: Brand.textPrimaryLight,
+          ),
+        ),
+        // ── FAB ──
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Brand.royalBlue,
+          foregroundColor: Colors.white,
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        // ── Progress indicators ──
+        progressIndicatorTheme: const ProgressIndicatorThemeData(
+          color: Brand.royalBlue,
+          linearTrackColor: Brand.royalBlueSurface,
+          circularTrackColor: Colors.transparent,
+        ),
+        // ── ListTile ──
+        listTileTheme: ListTileThemeData(
+          iconColor: Brand.textSecondaryLight,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
         // ── AppBar — clean white, no border ──
         appBarTheme: AppBarTheme(
           backgroundColor: Brand.cardLight,
@@ -245,6 +313,44 @@ class ThemeProvider extends ChangeNotifier {
         ),
         textTheme: _montserratDark(),
         primaryTextTheme: _montserratDark(),
+        pageTransitionsTheme: _pageTransitions,
+        splashFactory: InkSparkle.splashFactory,
+        bottomSheetTheme: _bottomSheetDark,
+        // ── Dialogs — rounded, no M3 surface tint ──
+        dialogTheme: DialogThemeData(
+          backgroundColor: Brand.darkCard,
+          surfaceTintColor: Colors.transparent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          titleTextStyle: GoogleFonts.montserrat(
+            fontSize: 17,
+            fontWeight: FontWeight.w700,
+            color: Brand.darkTextPrimary,
+          ),
+        ),
+        // ── FAB ──
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Brand.royalBlueLight,
+          foregroundColor: Colors.white,
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        // ── Progress indicators ──
+        progressIndicatorTheme: const ProgressIndicatorThemeData(
+          color: Brand.royalBlueLight,
+          linearTrackColor: Brand.darkBorder,
+          circularTrackColor: Colors.transparent,
+        ),
+        // ── ListTile ──
+        listTileTheme: ListTileThemeData(
+          iconColor: Brand.darkTextSecondary,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
         // ── AppBar ──
         appBarTheme: AppBarTheme(
           backgroundColor: Brand.darkCard,

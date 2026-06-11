@@ -50,8 +50,10 @@ class AttendanceService {
       throw StateError('Not signed in');
     }
     final today = _today();
-    final now = DateTime.now().toIso8601String();
-    // Decide status: if current time after 09:30, mark as 'late'; otherwise 'present'.
+    // Stored as timestamptz — must be UTC with offset, otherwise Postgres
+    // misreads Sri Lanka local time as UTC and shifts it by +5:30.
+    final now = DateTime.now().toUtc().toIso8601String();
+    // Decide status: if current LOCAL time after 09:30, mark as 'late'.
     final t = DateTime.now();
     final isLate = t.hour > 9 || (t.hour == 9 && t.minute >= 30);
 
@@ -95,17 +97,33 @@ class AttendanceService {
       throw StateError('Not signed in');
     }
     final today = _today();
-    final now = DateTime.now().toIso8601String();
+    final nowUtc = DateTime.now().toUtc();
     final existing = await SupabaseConfig.client
         .from('engineer_attendance')
-        .select('id')
+        .select('id, check_in_time')
         .eq('engineer_id', uid)
         .eq('date', today)
         .maybeSingle();
     if (existing == null) return null;
+
+    // total_hours feeds the monthly KPI snapshots — compute it here since
+    // nothing else does.
+    double? totalHours;
+    final checkInRaw = existing['check_in_time'] as String?;
+    if (checkInRaw != null) {
+      final checkIn = DateTime.tryParse(checkInRaw)?.toUtc();
+      if (checkIn != null && nowUtc.isAfter(checkIn)) {
+        totalHours = double.parse(
+            (nowUtc.difference(checkIn).inMinutes / 60).toStringAsFixed(2));
+      }
+    }
+
     final updated = await SupabaseConfig.client
         .from('engineer_attendance')
-        .update({'check_out_time': now})
+        .update({
+          'check_out_time': nowUtc.toIso8601String(),
+          if (totalHours != null) 'total_hours': totalHours,
+        })
         .eq('id', existing['id'])
         .select()
         .single();

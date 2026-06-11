@@ -242,7 +242,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                   await SupabaseConfig.client
                       .from('chat_messages')
                       .update(
-                          {'delivered_at': DateTime.now().toIso8601String()})
+                          {'delivered_at': DateTime.now().toUtc().toIso8601String()})
                       .eq('id', msgId)
                       .filter('delivered_at', 'is', null);
                 } catch (e) {
@@ -344,7 +344,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
 
   Future<void> _markMessagesAsRead() async {
     if (_currentUserId == null) return;
-    final now = DateTime.now().toIso8601String();
+    final now = DateTime.now().toUtc().toIso8601String();
     try {
       await SupabaseConfig.client
           .from('chat_messages')
@@ -438,7 +438,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
       'sender_type': 'admin',
       'message': messageText,
       'is_internal': isInternal,
-      'created_at': DateTime.now().toIso8601String(),
+      'created_at': DateTime.now().toUtc().toIso8601String(),
       '_optimistic': true,
       '_status': 'sending',
     };

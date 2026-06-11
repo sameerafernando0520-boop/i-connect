@@ -423,11 +423,11 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
       final oldStatus = ticket['status'] ?? 'open';
       final updateData = <String, dynamic>{
         'status': newStatus,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       };
 
       if (newStatus == 'resolved' || newStatus == 'closed') {
-        updateData['closed_at'] = DateTime.now().toIso8601String();
+        updateData['closed_at'] = DateTime.now().toUtc().toIso8601String();
       }
 
       await SupabaseConfig.client
@@ -469,7 +469,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
     try {
       await SupabaseConfig.client.from('service_tickets').update({
         'assigned_to': engineer['id'],
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', ticket['id']);
 
       if (!mounted) return;
@@ -518,10 +518,10 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
     try {
       final updateData = <String, dynamic>{
         'status': newStatus,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       };
       if (newStatus == 'resolved' || newStatus == 'closed') {
-        updateData['closed_at'] = DateTime.now().toIso8601String();
+        updateData['closed_at'] = DateTime.now().toUtc().toIso8601String();
       }
 
       final ids = List<String>.from(_selectedIds);
@@ -577,9 +577,9 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
     try {
       await SupabaseConfig.client.from('service_tickets').update({
         'is_deleted': true,
-        'deleted_at': DateTime.now().toIso8601String(),
+        'deleted_at': DateTime.now().toUtc().toIso8601String(),
         'deleted_by': currentUserId,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', ticket['id']);
 
       if (!mounted) return;
@@ -627,9 +627,9 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
       final ids = List<String>.from(_selectedIds);
       await SupabaseConfig.client.from('service_tickets').update({
         'is_deleted': true,
-        'deleted_at': DateTime.now().toIso8601String(),
+        'deleted_at': DateTime.now().toUtc().toIso8601String(),
         'deleted_by': currentUserId,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).inFilter('id', ids);
 
       if (!mounted) return;
@@ -661,7 +661,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
         'is_deleted': false,
         'deleted_at': null,
         'deleted_by': null,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).inFilter('id', ids);
       if (!mounted) return;
       _showSnackBar(ids.length == 1 ? 'Ticket restored' : 'Tickets restored',

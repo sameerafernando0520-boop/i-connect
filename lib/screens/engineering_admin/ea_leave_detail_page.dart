@@ -124,7 +124,8 @@ class _EaLeaveDetailPageState extends State<EaLeaveDetailPage> {
     try {
       final payload = <String, dynamic>{
         'status': newStatus,
-        'reviewed_at': DateTime.now().toIso8601String(),
+        'reviewed_by': SupabaseConfig.client.auth.currentUser?.id,
+        'reviewed_at': DateTime.now().toUtc().toIso8601String(),
       };
       if (reviewNote != null) payload['review_note'] = reviewNote;
 
@@ -136,6 +137,7 @@ class _EaLeaveDetailPageState extends State<EaLeaveDetailPage> {
       if (!mounted) return;
       _changed = true;
       await _load();
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(newStatus == 'approved' ? 'Leave approved' : 'Leave rejected'),
@@ -571,7 +573,7 @@ String _fmtDateTime(dynamic d) {
 }
 
 String _durationLabel(Map<String, dynamic> leave) {
-  final days = (leave['duration_days'] as num?)?.toDouble() ?? 1.0;
+  final days = (leave['total_days'] as num?)?.toDouble() ?? 1.0;
   final start = leave['start_date'] as String?;
   final end = leave['end_date'] as String?;
   String dateStr = '';

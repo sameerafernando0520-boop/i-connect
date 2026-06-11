@@ -279,12 +279,12 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
 
   Future<void> _confirmSchedule(String id) async {
     await _updateStatus(
-        id, 'confirmed', {'confirmed_at': DateTime.now().toIso8601String()});
+        id, 'confirmed', {'confirmed_at': DateTime.now().toUtc().toIso8601String()});
   }
 
   Future<void> _startService(String id) async {
     await _updateStatus(
-        id, 'in_progress', {'started_at': DateTime.now().toIso8601String()});
+        id, 'in_progress', {'started_at': DateTime.now().toUtc().toIso8601String()});
   }
 
   Future<void> _completeService(Map<String, dynamic> schedule) async {
@@ -486,7 +486,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
     }
 
     await _updateStatus(schedule['id'] as String, 'completed', {
-      'completed_at': DateTime.now().toIso8601String(),
+      'completed_at': DateTime.now().toUtc().toIso8601String(),
       'service_report': reportCtrl.text.trim(),
       'engineer_notes':
           notesCtrl.text.trim().isEmpty ? null : notesCtrl.text.trim(),
@@ -653,7 +653,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
     }
 
     await _updateStatus(schedule['id'] as String, 'cancelled', {
-      'cancelled_at': DateTime.now().toIso8601String(),
+      'cancelled_at': DateTime.now().toUtc().toIso8601String(),
       'cancellation_reason': reasonCtrl.text.trim(),
     });
     reasonCtrl.dispose();
@@ -943,7 +943,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
     try {
       final updates = <String, dynamic>{
         'status': newStatus,
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
         ...extraFields,
       };
 
@@ -1074,7 +1074,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
     try {
       await SupabaseConfig.client.from('service_schedules').update({
         'engineer_notes': ctrl.text.trim().isEmpty ? null : ctrl.text.trim(),
-        'updated_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       }).eq('id', schedule['id']);
 
       if (!mounted) return;

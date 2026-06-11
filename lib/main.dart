@@ -235,6 +235,7 @@ class _MyAppState extends State<MyApp> {
           } catch (e) {
             debugPrint('⚠️ clearLocale on signOut failed: $e');
           }
+          if (!ctx.mounted) return;
           try {
             ctx.read<PermissionsProvider>().clear();
           } catch (e) {

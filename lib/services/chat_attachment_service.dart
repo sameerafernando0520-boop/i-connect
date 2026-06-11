@@ -78,7 +78,7 @@ class ChatAttachmentService {
   }
 
   static Future<PickedDoc?> pickDocument() async {
-    final res = await FilePicker.platform.pickFiles(type: FileType.any);
+    final res = await FilePicker.pickFiles(type: FileType.any);
     if (res == null || res.files.isEmpty) return null;
     final f = res.files.first;
     if (f.path == null) return null;

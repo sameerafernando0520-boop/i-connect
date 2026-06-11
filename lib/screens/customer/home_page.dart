@@ -517,7 +517,7 @@ class _HomePageState extends State<HomePage>
           .select('next_service_due, machine_catalog!inner(machine_name)')
           .eq('user_id', userId)
           .not('next_service_due', 'is', null)
-          .gte('next_service_due', DateTime.now().toIso8601String())
+          .gte('next_service_due', DateTime.now().toUtc().toIso8601String())
           .order('next_service_due', ascending: true)
           .limit(1);
 
@@ -533,7 +533,7 @@ class _HomePageState extends State<HomePage>
           .from('customer_machines')
           .select('id')
           .eq('user_id', userId)
-          .gte('warranty_end_date', DateTime.now().toIso8601String())
+          .gte('warranty_end_date', DateTime.now().toUtc().toIso8601String())
           .lte('warranty_end_date', thirtyDaysFromNow.toIso8601String());
 
       expiringWarrantyCount = (expiringWarranties as List?)?.length ?? 0;
@@ -3439,7 +3439,7 @@ class _HomePageState extends State<HomePage>
         try {
           await SupabaseConfig.client
               .from('machine_suggestions')
-              .update({'viewed_at': DateTime.now().toIso8601String()})
+              .update({'viewed_at': DateTime.now().toUtc().toIso8601String()})
               .eq('id', data['id'] as String);
         } catch (_) {}
       }

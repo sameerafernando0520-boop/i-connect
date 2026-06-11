@@ -513,7 +513,7 @@ class _CreateMarketerPageState extends State<CreateMarketerPage> {
             Switch(
               value: enabled,
               onChanged: (v) => setState(() => _perms[s.key] = v),
-              activeColor: s.color,
+              activeThumbColor: s.color,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
           ],

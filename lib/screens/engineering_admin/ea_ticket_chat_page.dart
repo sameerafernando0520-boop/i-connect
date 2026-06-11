@@ -332,7 +332,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
     } catch (_) {
       // Fallback: fetch present engineers manually
       try {
-        final today = DateTime.now().toIso8601String().split('T')[0];
+        final today = DateTime.now().toUtc().toIso8601String().split('T')[0];
         final rows = await SupabaseConfig.client
             .from('engineer_attendance')
             .select('''
@@ -353,7 +353,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
       }
     }
 
-    if (!mounted) return;
+    if (!mounted || !context.mounted) return;
     _showDispatchSheet(context, isDark);
   }
 
@@ -825,7 +825,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
         'sender_type': 'admin',
       });
     } catch (e) {
-      if (!mounted) return;
+      if (!mounted || !context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Failed to upload image: $e'),
@@ -1600,7 +1600,7 @@ class _DispatchPanelState extends State<_DispatchPanel> {
       if (!mounted) return;
       widget.onAssigned();
     } catch (e) {
-      if (!mounted) return;
+      if (!mounted || !context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Row(
@@ -1638,7 +1638,7 @@ class _DispatchPanelState extends State<_DispatchPanel> {
       'assigned_to': engineerId,
       'status': 'assigned',
       'dispatched_by': widget.currentUserId,
-      'dispatched_at': DateTime.now().toIso8601String(),
+      'dispatched_at': DateTime.now().toUtc().toIso8601String(),
     }).eq('id', widget.ticketId);
 
     // Insert engineer_assigned chat message
@@ -1657,7 +1657,7 @@ class _DispatchPanelState extends State<_DispatchPanel> {
         'avg_rating': 0.0,
         'total_jobs': 0,
         'assigned_by_name': 'Engineering Admin',
-        'assigned_at': DateTime.now().toIso8601String(),
+        'assigned_at': DateTime.now().toUtc().toIso8601String(),
         'zone': profile?['assigned_zone'] ?? '',
       },
     });

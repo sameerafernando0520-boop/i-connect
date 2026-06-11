@@ -52,7 +52,7 @@ class TicketDetailRepository {
   // ── Messages ──
 
   Future<void> markMessagesAsRead(String ticketId, String userId) async {
-    final now = DateTime.now().toIso8601String();
+    final now = DateTime.now().toUtc().toIso8601String();
     try {
       await SupabaseConfig.client
           .from('chat_messages')
@@ -145,10 +145,10 @@ class TicketDetailRepository {
   Future<void> updateStatus(String ticketId, String status) async {
     final upd = <String, dynamic>{
       'status': status,
-      'updated_at': DateTime.now().toIso8601String(),
+      'updated_at': DateTime.now().toUtc().toIso8601String(),
     };
     if (status == 'resolved' || status == 'closed') {
-      upd['closed_at'] = DateTime.now().toIso8601String();
+      upd['closed_at'] = DateTime.now().toUtc().toIso8601String();
     }
     await SupabaseConfig.client
         .from('service_tickets')
@@ -159,14 +159,14 @@ class TicketDetailRepository {
   Future<void> updatePriority(String ticketId, String priority) async {
     await SupabaseConfig.client.from('service_tickets').update({
       'priority': priority,
-      'updated_at': DateTime.now().toIso8601String(),
+      'updated_at': DateTime.now().toUtc().toIso8601String(),
     }).eq('id', ticketId);
   }
 
   Future<void> updateAdminNotes(String ticketId, String notes) async {
     await SupabaseConfig.client.from('service_tickets').update({
       'admin_notes': notes,
-      'updated_at': DateTime.now().toIso8601String(),
+      'updated_at': DateTime.now().toUtc().toIso8601String(),
     }).eq('id', ticketId);
   }
 
@@ -174,7 +174,7 @@ class TicketDetailRepository {
     await SupabaseConfig.client.from('service_tickets').update({
       'assigned_to': engineerId,
       'status': 'assigned',
-      'updated_at': DateTime.now().toIso8601String(),
+      'updated_at': DateTime.now().toUtc().toIso8601String(),
     }).eq('id', ticketId);
   }
 
@@ -186,9 +186,9 @@ class TicketDetailRepository {
     final uid = SupabaseConfig.client.auth.currentUser?.id;
     await SupabaseConfig.client.from('service_tickets').update({
       'is_deleted': true,
-      'deleted_at': DateTime.now().toIso8601String(),
+      'deleted_at': DateTime.now().toUtc().toIso8601String(),
       'deleted_by': uid,
-      'updated_at': DateTime.now().toIso8601String(),
+      'updated_at': DateTime.now().toUtc().toIso8601String(),
     }).eq('id', ticketId);
   }
 
@@ -197,9 +197,9 @@ class TicketDetailRepository {
     final uid = SupabaseConfig.client.auth.currentUser?.id;
     await SupabaseConfig.client.from('service_tickets').update({
       'is_deleted': true,
-      'deleted_at': DateTime.now().toIso8601String(),
+      'deleted_at': DateTime.now().toUtc().toIso8601String(),
       'deleted_by': uid,
-      'updated_at': DateTime.now().toIso8601String(),
+      'updated_at': DateTime.now().toUtc().toIso8601String(),
     }).inFilter('id', ticketIds);
   }
 

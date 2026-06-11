@@ -945,9 +945,9 @@ class _NotificationListPageState extends State<NotificationListPage>
     // hasRelated: show the chevron when there is a navigable target — either a
     // direct related_id (installments, invoices) or a ticket_id in metadata
     // (ticket_update notifications where related_id is NULL).
-    final _cardData = (n['data'] as Map<String, dynamic>?) ?? {};
+    final cardData = (n['data'] as Map<String, dynamic>?) ?? {};
     final hasRelated = ((n['related_id'] as String?)?.isNotEmpty ?? false) ||
-        _cardData.containsKey('ticket_id');
+        cardData.containsKey('ticket_id');
     final isMarking = _markingIds.contains(id);
 
     final ntype = _NType.of(type, isDark);

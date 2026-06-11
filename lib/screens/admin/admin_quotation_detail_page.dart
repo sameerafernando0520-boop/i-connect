@@ -900,7 +900,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
         try {
           await _supabase.from('quotations').update({
             'status': 'sent',
-            'sent_at': DateTime.now().toIso8601String(),
+            'sent_at': DateTime.now().toUtc().toIso8601String(),
           }).eq('id', widget.quotationId);
           if (!mounted) return;
           _snack('Quotation sent!');

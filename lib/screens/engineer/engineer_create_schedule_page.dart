@@ -117,7 +117,7 @@ class _EngineerCreateSchedulePageState
             .from('users')
             .select('id')
             .inFilter('role', ['admin', 'super_admin', 'engineering_admin']);
-        final now = DateTime.now().toIso8601String();
+        final now = DateTime.now().toUtc().toIso8601String();
         final rows = (reviewers as List).map((r) => {
               'user_id': r['id'],
               'title': 'Schedule needs approval',

@@ -125,11 +125,11 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
       });
       // v24 fix: keep the shell badge in sync when the user enters via the
       // tickets tab directly (without going through the home tab).
-      const _active = {
+      const active = {
         'new', 'open', 'assigned', 'in_progress', 'waiting_customer',
       };
       final openCount =
-          _tickets.where((t) => _active.contains(t['status'])).length;
+          _tickets.where((t) => active.contains(t['status'])).length;
       CustomerNavController.setOpenTickets(openCount);
     } catch (e) {
       if (!mounted) return;

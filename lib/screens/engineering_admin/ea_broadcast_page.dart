@@ -178,7 +178,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
 
     setState(() => _sending = true);
     try {
-      final now = DateTime.now().toIso8601String();
+      final now = DateTime.now().toUtc().toIso8601String();
       final rows = ids
           .map((uid) => {
                 'user_id': uid,
@@ -309,8 +309,15 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
       isDark: isDark,
       title: 'Audience',
       icon: Icons.groups_rounded,
-      child: Column(
-        children: [
+      child: RadioGroup<_BroadcastAudience>(
+        groupValue: _audience,
+        onChanged: (v) {
+          if (v == null) return;
+          setState(() => _audience = v);
+          _refreshCount();
+        },
+        child: Column(
+          children: [
           _audienceTile(
             isDark: isDark,
             value: _BroadcastAudience.allEngineers,
@@ -398,7 +405,8 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
                   )),
             ),
           ],
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -467,12 +475,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
           ),
           Radio<_BroadcastAudience>(
             value: value,
-            groupValue: _audience,
             activeColor: _eaAccent,
-            onChanged: (v) {
-              setState(() => _audience = v!);
-              _refreshCount();
-            },
           ),
         ]),
       ),

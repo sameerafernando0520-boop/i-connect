@@ -207,6 +207,7 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
                         _Label('Select Machine *', sheetCtx),
                         const SizedBox(height: 8),
                         _Field(
+                          context: sheetCtx,
                           child: TextField(
                             controller: machSearchCtrl,
                             decoration: InputDecoration(
@@ -219,7 +220,6 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
                             onChanged: (v) =>
                                 setSt(() => machSearch = v),
                           ),
-                          context: sheetCtx,
                         ),
                         const SizedBox(height: 6),
                         ...filtered.map((m) {
@@ -294,6 +294,7 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
                         _Label('Title *', sheetCtx),
                         const SizedBox(height: 6),
                         _Field(
+                          context: sheetCtx,
                           child: TextField(
                             controller: titleCtrl,
                             decoration: const InputDecoration(
@@ -301,13 +302,13 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
                                 border: InputBorder.none,
                                 isDense: true),
                           ),
-                          context: sheetCtx,
                         ),
                         const SizedBox(height: 16),
                         // Type
                         _Label('Installation Type', sheetCtx),
                         const SizedBox(height: 6),
                         _Field(
+                          context: sheetCtx,
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton<String>(
                               value: typeVal,
@@ -322,7 +323,6 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
                                   setSt(() => typeVal = v!),
                             ),
                           ),
-                          context: sheetCtx,
                         ),
                         const SizedBox(height: 16),
                         // Scheduled date
@@ -338,10 +338,12 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
                               lastDate: DateTime.now()
                                   .add(const Duration(days: 730)),
                             );
-                            if (d != null)
+                            if (d != null) {
                               setSt(() => scheduledDate = d);
+                            }
                           },
                           child: _Field(
+                            context: sheetCtx,
                             child: Row(
                               children: [
                                 Icon(Icons.calendar_today,
@@ -363,7 +365,6 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
                                 ),
                               ],
                             ),
-                            context: sheetCtx,
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -371,6 +372,7 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
                         _Label('Location', sheetCtx),
                         const SizedBox(height: 6),
                         _Field(
+                          context: sheetCtx,
                           child: TextField(
                             controller: locCtrl,
                             decoration: const InputDecoration(
@@ -378,13 +380,13 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
                                 border: InputBorder.none,
                                 isDense: true),
                           ),
-                          context: sheetCtx,
                         ),
                         const SizedBox(height: 16),
                         // Notes
                         _Label('Admin Notes', sheetCtx),
                         const SizedBox(height: 6),
                         _Field(
+                          context: sheetCtx,
                           child: TextField(
                             controller: notesCtrl,
                             maxLines: 3,
@@ -393,7 +395,6 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
                                 border: InputBorder.none,
                                 isDense: true),
                           ),
-                          context: sheetCtx,
                         ),
                         const SizedBox(height: 28),
                         ElevatedButton(

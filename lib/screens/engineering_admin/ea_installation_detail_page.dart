@@ -390,7 +390,7 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
         'p_installation_id': widget.installationId,
         'p_engineers': payload,
       });
-      if (!mounted) return;
+      if (!mounted || !sheetCtx.mounted) return;
       Navigator.pop(sheetCtx);
       _changed = true;
       _load();

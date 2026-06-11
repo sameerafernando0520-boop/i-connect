@@ -426,7 +426,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             {
               'user_id': _currentUserId,
               'article_id': article['id'],
-              'viewed_at': DateTime.now().toIso8601String(),
+              'viewed_at': DateTime.now().toUtc().toIso8601String(),
             },
             onConflict: 'user_id,article_id',
           )
