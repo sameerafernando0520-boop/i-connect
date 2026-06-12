@@ -8,6 +8,7 @@ import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../repositories/engineering_admin_repository.dart';
 import '../../utils/time_utils.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'ea_engineer_list_page.dart';
 import 'ea_ticket_list_page.dart';
 import 'ea_ticket_chat_page.dart';
@@ -645,106 +646,26 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
             ? 'Good afternoon'
             : 'Good evening';
 
-    return Container(
-      margin: const EdgeInsets.fromLTRB(16, 20, 16, 16),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: isDark
-              ? [const Color(0xFF052E16), const Color(0xFF14532D)]
-              : [const Color(0xFF14532D), const Color(0xFF16A34A)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+    return DsHero(
+      greeting: '$greeting,',
+      title: firstName,
+      trailing: Container(
+        width: 38,
+        height: 38,
+        decoration: BoxDecoration(
+          color: _eaGreen,
+          shape: BoxShape.circle,
+          border: Border.all(color: Colors.white.withAlpha(64), width: 2),
         ),
-        borderRadius: BorderRadius.circular(22),
-        boxShadow: isDark
-            ? null
-            : [
-                BoxShadow(
-                  color: const Color(0xFF16A34A).withAlpha(89),
-                  blurRadius: 24,
-                  offset: const Offset(0, 8),
-                ),
-              ],
+        child: const Icon(Icons.engineering_rounded,
+            color: Colors.white, size: 19),
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(22),
-        child: Stack(
-          children: [
-            Positioned(
-              right: -30,
-              top: -30,
-              child: Container(
-                width: 120,
-                height: 120,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white.withAlpha(8),
-                ),
-              ),
-            ),
-            Positioned(
-              right: 20,
-              bottom: -15,
-              child: Container(
-                width: 70,
-                height: 70,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white.withAlpha(6),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '$greeting,',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white.withAlpha(180),
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  firstName,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  'Engineering Admin Portal',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white.withAlpha(160),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            width: 52,
-            height: 52,
-            decoration: BoxDecoration(
-              color: Colors.white.withAlpha(30),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: const Icon(Icons.engineering_rounded,
-                color: Colors.white, size: 28),
-          ),
-        ],
-      ),
-            ),
-          ],
-        ),
+      actionCard: DsHeroCard(
+        icon: Icons.engineering_rounded,
+        iconColor: const Color(0xFF5ED38A),
+        label: 'Engineering admin portal',
+        title: 'Team, dispatch & schedules',
+        onTap: () {},
       ),
     );
   }

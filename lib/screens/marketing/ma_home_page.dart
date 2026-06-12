@@ -6,7 +6,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
@@ -14,6 +13,7 @@ import '../../config/supabase_config.dart';
 import '../../providers/permissions_provider.dart';
 import '../../utils/time_utils.dart';
 import '../../utils/string_utils.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'ma_banners_page.dart';
 import 'ma_knowledge_base_page.dart';
 import 'ma_broadcast_page.dart';
@@ -282,14 +282,13 @@ class _MaHomePageState extends State<MaHomePage> {
         _allTiles.where((t) => perms.check(t.permKey)).toList();
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: isDark
-          ? SystemUiOverlayStyle.light
-              .copyWith(statusBarColor: Colors.transparent)
-          : SystemUiOverlayStyle.dark
-              .copyWith(statusBarColor: Colors.transparent),
+      // The navy hero sits behind the status bar in both modes.
+      value: SystemUiOverlayStyle.light
+          .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
         backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
         body: SafeArea(
+          top: false,
           bottom: false,
           child: _isLoading
               ? _buildSkeleton(isDark)
@@ -493,143 +492,27 @@ class _MaHomePageState extends State<MaHomePage> {
 
   // ─── TOP HEADER ──────────────────────────────────────────────
   Widget _buildHeader(bool isDark) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-      child: Row(
-        children: [
-          // Avatar with gradient border
-          Container(
-            width: 52,
-            height: 52,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              gradient: LinearGradient(
-                colors: isDark
-                    ? [Brand.darkIconActive, Brand.royalBlueGlow]
-                    : [AdminColors.primary, Brand.royalBlueLight],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: isDark
-                      ? Brand.darkIconActive.withAlpha(64)
-                      : AdminColors.primary.withAlpha(89),
-                  blurRadius: 14,
-                  offset: const Offset(0, 5),
-                ),
-              ],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: _photoUrl != null && _photoUrl!.isNotEmpty
-                  ? CachedNetworkImage(
-                      imageUrl: _photoUrl!,
-                      width: 52,
-                      height: 52,
-                      fit: BoxFit.cover,
-                      placeholder: (_, __) => _avatarFallback(isDark),
-                      errorWidget: (_, __, ___) => _avatarFallback(isDark),
-                    )
-                  : _avatarFallback(isDark),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  TimeUtils.getGreeting(),
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 0.1,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  _name,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color:
-                        isDark ? Brand.darkTextPrimary : AdminColors.primaryDark,
-                    letterSpacing: -0.3,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-          ),
-          // Refresh button
-          _buildHeaderIcon(
-            Icons.refresh_rounded,
-            isDark: isDark,
-            onTap: _loadDashboard,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _avatarFallback(bool isDark) => Container(
-        width: 52,
-        height: 52,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: isDark
-                ? [Brand.darkIconActive, Brand.royalBlueGlow]
-                : [AdminColors.primary, Brand.royalBlueLight],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+    return DsHero(
+      greeting: TimeUtils.getGreeting(),
+      title: _name,
+      trailing: Row(mainAxisSize: MainAxisSize.min, children: [
+        IconButton(
+          onPressed: _loadDashboard,
+          icon: const Icon(Icons.refresh_rounded,
+              size: 20, color: Color(0xFF8FA3C8)),
         ),
-        child: Center(
-          child: Text(
-            StringUtils.getInitials(_name),
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w600,
-              fontSize: 20,
-            ),
-          ),
+        DsHeroAvatar(
+          initials: StringUtils.getInitials(_name),
+          color: const Color(0xFF8B5CF6),
+          photoUrl: _photoUrl,
         ),
-      );
-
-  Widget _buildHeaderIcon(
-    IconData icon, {
-    required bool isDark,
-    VoidCallback? onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 44,
-        height: 44,
-        decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(14),
-          border: isDark ? Border.all(color: Brand.darkBorder) : null,
-          boxShadow: isDark
-              ? null
-              : [
-                  BoxShadow(
-                    color: Brand.royalBlue.withAlpha(12),
-                    blurRadius: 12,
-                    offset: const Offset(0, 3),
-                  ),
-                  BoxShadow(
-                    color: Colors.black.withAlpha(6),
-                    blurRadius: 4,
-                    offset: const Offset(0, 1),
-                  ),
-                ],
-        ),
-        child: Icon(icon,
-            color: isDark ? Brand.darkTextSecondary : AdminColors.primary,
-            size: 22),
+      ]),
+      actionCard: DsHeroCard(
+        icon: Icons.campaign_rounded,
+        iconColor: const Color(0xFFB79DF8),
+        label: 'Marketing studio',
+        title: 'Banners, broadcasts & loyalty',
+        onTap: () {},
       ),
     );
   }

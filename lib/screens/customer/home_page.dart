@@ -29,6 +29,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../widgets/common/app_logo.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../config/supabase_config.dart';
@@ -1225,10 +1226,16 @@ class _HomePageState extends State<HomePage>
   Widget _buildHeader(bool isDark) {
     return Container(
       decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFF1E3A5F), Color(0xFF12294A)],
+        // Splash-navy radial — the brand signature shared by every role home.
+        gradient: RadialGradient(
+          center: Alignment(0, -1.2),
+          radius: 1.6,
+          colors: [
+            Brand.splashNavyGlow,
+            Brand.splashNavyCore,
+            Brand.splashNavyEdge,
+          ],
+          stops: [0.0, 0.45, 1.0],
         ),
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(28)),
       ),
@@ -1310,11 +1317,13 @@ class _HomePageState extends State<HomePage>
               Text(_userName,
                   style: const TextStyle(
                     fontSize: 21,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w700,
                     color: Colors.white,
                     letterSpacing: -0.5,
                   ),
                   overflow: TextOverflow.ellipsis),
+              const SizedBox(height: 7),
+              const DsLimeLine(),
             ]),
           ),
           _headerBtn(

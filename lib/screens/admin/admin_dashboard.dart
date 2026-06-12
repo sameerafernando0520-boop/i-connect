@@ -13,6 +13,7 @@ import '../../utils/time_utils.dart';
 import '../../utils/string_utils.dart';
 import '../../widgets/common/nav_badge_indicator.dart';
 import '../../widgets/common/ic_icons.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../widgets/common/app_logo.dart';
 import '../../widgets/admin/shimmer_loading.dart';
 import '../../widgets/admin/inquiry_card.dart';
@@ -534,10 +535,16 @@ class _AdminDashboardState extends State<AdminDashboard>
   Widget _buildTopHeader(bool isDark) {
     return Container(
       decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFF1E3A5F), Color(0xFF12294A)],
+        // Splash-navy radial — the brand signature shared by every role home.
+        gradient: RadialGradient(
+          center: Alignment(0, -1.2),
+          radius: 1.6,
+          colors: [
+            Brand.splashNavyGlow,
+            Brand.splashNavyCore,
+            Brand.splashNavyEdge,
+          ],
+          stops: [0.0, 0.45, 1.0],
         ),
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(28)),
       ),
@@ -608,12 +615,14 @@ class _AdminDashboardState extends State<AdminDashboard>
                   _adminName,
                   style: const TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w700,
                     color: Colors.white,
                     letterSpacing: -0.3,
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
+                const SizedBox(height: 7),
+                const DsLimeLine(),
               ],
             ),
           ),

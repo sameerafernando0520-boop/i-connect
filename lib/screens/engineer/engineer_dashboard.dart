@@ -23,6 +23,7 @@ import 'engineer_my_schedules_page.dart';
 import '../customer/notification_list_page.dart';
 import '../../widgets/common/offline_banner.dart';
 import '../../widgets/engineer/engineer_checkin_card.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 // ── Engineer-specific colors not in Brand class ──────────────
 const Color _engAccent = Color(0xFF22C55E); // Green (was cyan)
@@ -577,13 +578,24 @@ class _EngineerDashboardState extends State<EngineerDashboard>
       floating: true,
       snap: true,
       pinned: false,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.splashNavyEdge,
       elevation: 0,
       automaticallyImplyLeading: false,
-      toolbarHeight: 76,
+      toolbarHeight: 80,
       flexibleSpace: FlexibleSpaceBar(
         background: Container(
-          color: isDark ? Brand.darkCard : Colors.white,
+          decoration: const BoxDecoration(
+            gradient: RadialGradient(
+              center: Alignment(0, -1.4),
+              radius: 1.8,
+              colors: [
+                Brand.splashNavyGlow,
+                Brand.splashNavyCore,
+                Brand.splashNavyEdge,
+              ],
+              stops: [0.0, 0.5, 1.0],
+            ),
+          ),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           child: Row(children: [
             GestureDetector(
@@ -632,39 +644,39 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                   // TRI Engineering logo
+                  // Navy hero — always use the dark-background logo variant.
                   CachedNetworkImage(
-                    imageUrl: isDark
-                        ? 'https://res.cloudinary.com/dlqzqponw/image/upload/q_auto/f_auto/v1775711293/Logo-04_gwnmsr.png'
-                        : 'https://res.cloudinary.com/dlqzqponw/image/upload/q_auto/f_auto/v1775711293/Logo-03_cswnru.png',
+                    imageUrl:
+                        'https://res.cloudinary.com/dlqzqponw/image/upload/q_auto/f_auto/v1775711293/Logo-04_gwnmsr.png',
                     height: 18,
                     fit: BoxFit.contain,
                     alignment: Alignment.centerLeft,
-                    placeholder: (_, __) => Text('TRI Engineering',
+                    placeholder: (_, __) => const Text('TRI Engineering',
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w700,
-                          color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
+                          color: Color(0xFF8FA3C8),
                           letterSpacing: 0.3,
                         )),
-                    errorWidget: (_, __, ___) => Text('TRI Engineering',
+                    errorWidget: (_, __, ___) => const Text('TRI Engineering',
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w700,
-                          color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
+                          color: Color(0xFF8FA3C8),
                           letterSpacing: 0.3,
                         )),
                   ),
                   const SizedBox(height: 2),
                   Text(name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w700,
                         letterSpacing: -0.3,
-                        color: isDark
-                            ? Brand.darkTextPrimary
-                            : Brand.royalBlueDark,
+                        color: Colors.white,
                       ),
                       overflow: TextOverflow.ellipsis),
+                  const SizedBox(height: 5),
+                  const DsLimeLine(width: 36),
                 ])),
             // Availability chip
             GestureDetector(
@@ -711,13 +723,13 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                     width: 44,
                     height: 44,
                     decoration: BoxDecoration(
-                      color: isDark ? Brand.darkCard : Brand.cardLight,
+                      color: Colors.white.withAlpha(20),
                       borderRadius: BorderRadius.circular(14),
-                      border: isDark ? Border.all(color: Brand.darkBorder) : null,
+                      border: Border.all(color: Colors.white.withAlpha(38)),
                     ),
-                    child: Icon(
+                    child: const Icon(
                       Icons.calendar_month_rounded,
-                      color: isDark ? _engAccent : Brand.royalBlue,
+                      color: Colors.white,
                       size: 22,
                     ),
                   ),
@@ -738,17 +750,14 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                     width: 44,
                     height: 44,
                     decoration: BoxDecoration(
-                      color: isDark ? Brand.darkCard : Brand.cardLight,
+                      color: Colors.white.withAlpha(20),
                       borderRadius: BorderRadius.circular(14),
-                      border: isDark ? Border.all(color: Brand.darkBorder) : null,
+                      border: Border.all(color: Colors.white.withAlpha(38)),
                     ),
                     child: Stack(children: [
-                      Center(
+                      const Center(
                           child: Icon(Icons.notifications_outlined,
-                              color: isDark
-                                  ? Brand.darkTextSecondary
-                                  : Brand.royalBlue,
-                              size: 22)),
+                              color: Colors.white, size: 22)),
                       if (_unreadMessages > 0)
                         Positioned(
                             top: 6,
@@ -762,9 +771,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                                 ]),
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                    color:
-                                        isDark ? Brand.darkCard : Colors.white,
-                                    width: 2),
+                                    color: Brand.splashNavyCore, width: 2),
                               ),
                               constraints: const BoxConstraints(
                                   minWidth: 16, minHeight: 16),
