@@ -69,6 +69,12 @@ android {
             // release — the assets are already optimized, so the APK size delta
             // is negligible and the debug build (which never crunches) is fine.
             isCrunchPngs = false
+            // R8 minification needs more heap than this 8GB build machine can
+            // spare next to the emulator (the Gradle daemon crashed with a
+            // native OOM inside minifyReleaseWithR8). Testing builds skip it;
+            // re-enable for the Play Store build on CI or a bigger machine.
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 }
