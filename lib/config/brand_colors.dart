@@ -163,6 +163,7 @@ class StatusColors {
   static const Color inProgress = Color(0xFFF59E0B); // amber
   static const Color waiting = Color(0xFFF97316); // orange
   static const Color closed = Color(0xFF64748B); // slate
+  static const Color success = Color(0xFF22C55E); // green — resolved/paid/accepted
 
   // Severity / banners
   static const Color warning = Color(0xFFF59E0B); // amber

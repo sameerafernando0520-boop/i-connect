@@ -147,9 +147,8 @@ class CustomerNavBar extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(4),
               decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [Color(0xFFFF4757), Color(0xFFFF6B81)],
-                ),
+                // Lime = "the one live thing" on this bar.
+                color: Brand.lime,
                 shape: BoxShape.circle,
                 border: Border.all(
                   color: isDark ? Brand.darkCard : Colors.white,
@@ -161,9 +160,9 @@ class CustomerNavBar extends StatelessWidget {
                 child: Text(
                   openTickets > 9 ? '9+' : '$openTickets',
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Brand.splashNavyEdge,
                     fontSize: 11,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
               ),

@@ -11,6 +11,7 @@ import '../../services/points_service.dart';
 import '../../widgets/customer/customer_nav_bar.dart';
 import '../../widgets/customer/customer_nav_controller.dart';
 import 'article_detail_page.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 class KnowledgeBasePage extends StatefulWidget {
   final String? initialCategory;
@@ -459,30 +460,31 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: isDark
-          ? SystemUiOverlayStyle.light.copyWith(
-              statusBarColor: Colors.transparent,
-              systemNavigationBarColor: Brand.darkBg)
-          : SystemUiOverlayStyle.dark.copyWith(
-              statusBarColor: Colors.transparent,
-              systemNavigationBarColor: Brand.scaffoldLight),
+      // Navy Glow hero band sits behind the status bar in both modes.
+      value: SystemUiOverlayStyle.light.copyWith(
+          statusBarColor: Colors.transparent,
+          systemNavigationBarColor:
+              isDark ? Brand.darkBg : Brand.scaffoldLight),
       child: Scaffold(
         backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
         body: Stack(
           children: [
             Container(
               height: 200,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: isDark
-                      ? [Brand.darkCard, Brand.darkCardElevated]
-                      : [Brand.royalBlueDark, Brand.royalBlue],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+              decoration: const BoxDecoration(
+                gradient: RadialGradient(
+                  center: Alignment(0, -1.2),
+                  radius: 1.6,
+                  colors: [
+                    Brand.splashNavyGlow,
+                    Brand.splashNavyCore,
+                    Brand.splashNavyEdge,
+                  ],
+                  stops: [0.0, 0.45, 1.0],
                 ),
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(28),
+                  bottomRight: Radius.circular(28),
                 ),
               ),
             ),
@@ -565,18 +567,21 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Knowledge Base',
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                        letterSpacing: -0.5)),
-                const SizedBox(height: 2),
                 Text('Guides, manuals & troubleshooting',
                     style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.white.withAlpha(((0.6) * 255).toInt()),
+                        fontSize: 11,
+                        letterSpacing: 0.3,
+                        color: const Color(0xFF8FA3C8),
                         fontWeight: FontWeight.w500)),
+                const SizedBox(height: 2),
+                const Text('Knowledge Base',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                        letterSpacing: -0.2)),
+                const SizedBox(height: 6),
+                const DsLimeLine(),
               ],
             ),
           ),

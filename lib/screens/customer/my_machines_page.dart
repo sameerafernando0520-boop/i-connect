@@ -26,6 +26,7 @@ import '../../widgets/customer/customer_nav_bar.dart';
 import '../../widgets/customer/customer_nav_controller.dart';
 import 'register_machine_page.dart';
 import 'my_machine_detail_page.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 class MyMachinesPage extends StatefulWidget {
   final bool showNavBar;
@@ -410,20 +411,18 @@ class _MyMachinesPageState extends State<MyMachinesPage>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: isDark
-          ? SystemUiOverlayStyle.light.copyWith(
-              statusBarColor: Colors.transparent,
-              systemNavigationBarColor: Brand.darkBg)
-          : SystemUiOverlayStyle.dark.copyWith(
-              statusBarColor: Colors.transparent,
-              systemNavigationBarColor: Brand.scaffoldLight),
+      // Navy hero sits behind the status bar in both modes.
+      value: SystemUiOverlayStyle.light.copyWith(
+          statusBarColor: Colors.transparent,
+          systemNavigationBarColor:
+              isDark ? Brand.darkBg : Brand.scaffoldLight),
       child: Scaffold(
         backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
         body: SafeArea(
+          top: false,
           child: Column(
             children: [
               _buildTopBar(isDark),
-              if (_isSearchVisible) _buildSearchBar(isDark),
               if (!_isLoading && !_hasError && _machines.isNotEmpty) ...[
                 _buildSummaryCards(isDark),
                 _buildAlertBanner(isDark),
@@ -458,177 +457,115 @@ class _MyMachinesPageState extends State<MyMachinesPage>
     );
   }
 
-  // ─── TOP BAR ───────────────────────────────────────────────
+  // ─── TOP BAR — Navy Glow hero ──────────────────────────────
 
   Widget _buildTopBar(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(6, 8, 12, 0),
-      child: Row(
-        children: [
-          _buildTopBarButton(
-            Icons.arrow_back_ios_new_rounded,
-            isDark,
-            () => Navigator.pop(context),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(S.of(context)!.machineTitle,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600,
-                      color:
-                          isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                      letterSpacing: -0.5,
-                    )),
-                if (!_isLoading)
-                  Text(
-                    '${_machines.length} registered machine${_machines.length != 1 ? 's' : ''}',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color:
-                          isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                    ),
-                  ),
-              ],
-            ),
-          ),
-          _buildTopBarButton(
-            Icons.search_rounded,
-            isDark,
-            () {
-              HapticFeedback.lightImpact();
-              setState(() {
-                _isSearchVisible = !_isSearchVisible;
-                if (!_isSearchVisible) {
-                  _searchController.clear();
-                  _searchQuery = '';
-                } else {
-                  Future.delayed(const Duration(milliseconds: 300), () {
-                    if (mounted) _searchFocusNode.requestFocus();
-                  });
-                }
-              });
-            },
-            isActive: _isSearchVisible,
-          ),
-          const SizedBox(width: 8),
-          _buildTopBarButton(
-            _isGridView ? Icons.view_list_rounded : Icons.grid_view_rounded,
-            isDark,
-            () {
-              HapticFeedback.lightImpact();
-              setState(() => _isGridView = !_isGridView);
-            },
-          ),
-          const SizedBox(width: 8),
-          _buildTopBarButton(
-              Icons.sort_rounded, isDark, () => _showSortOptions(isDark)),
-        ],
-      ),
+    return DsPageHeader(
+      title: S.of(context)!.machineTitle,
+      subtitle: _isLoading
+          ? null
+          : '${_machines.length} registered machine${_machines.length != 1 ? 's' : ''}',
+      showBack: !widget.showNavBar,
+      actions: [
+        _heroButton(
+          Icons.search_rounded,
+          active: _isSearchVisible,
+          onTap: () {
+            HapticFeedback.lightImpact();
+            setState(() {
+              _isSearchVisible = !_isSearchVisible;
+              if (!_isSearchVisible) {
+                _searchController.clear();
+                _searchQuery = '';
+              } else {
+                Future.delayed(const Duration(milliseconds: 300), () {
+                  if (mounted) _searchFocusNode.requestFocus();
+                });
+              }
+            });
+          },
+        ),
+        const SizedBox(width: 6),
+        _heroButton(
+          _isGridView ? Icons.view_list_rounded : Icons.grid_view_rounded,
+          onTap: () {
+            HapticFeedback.lightImpact();
+            setState(() => _isGridView = !_isGridView);
+          },
+        ),
+        const SizedBox(width: 6),
+        _heroButton(Icons.sort_rounded, onTap: () => _showSortOptions(isDark)),
+      ],
+      bottom: _isSearchVisible ? _buildSearchBar(isDark) : null,
     );
   }
 
-  Widget _buildTopBarButton(IconData icon, bool isDark, VoidCallback onTap,
-      {bool isActive = false}) {
+  /// Frosted action button that sits on the navy hero.
+  Widget _heroButton(IconData icon,
+      {required VoidCallback onTap, bool active = false}) {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        width: 44,
-        height: 44,
-        margin: const EdgeInsets.only(left: 4),
+        width: 38,
+        height: 38,
         decoration: BoxDecoration(
-          color: isActive
-              ? (isDark
-                  ? Brand.darkIconActive.withAlpha(31)
-                  : Brand.royalBlue.withAlpha(26))
-              : (isDark ? Brand.darkCard : Brand.cardLight),
-          borderRadius: BorderRadius.circular(14),
+          color: active
+              ? Brand.lime.withAlpha(46)
+              : Colors.white.withAlpha(18),
+          borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: isActive
-                ? (isDark
-                    ? Brand.darkIconActive.withAlpha(77)
-                    : Brand.royalBlue.withAlpha(77))
-                : (isDark ? Brand.darkBorder : Brand.borderLight),
+            color: active ? Brand.lime : const Color(0xFF2A3F6E),
           ),
-          boxShadow: isDark
-              ? null
-              : [
-                  BoxShadow(
-                    color: Brand.royalBlue.withAlpha(13),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
         ),
-        child: Icon(
-          icon,
-          color: isActive
-              ? (isDark ? Brand.darkIconActive : Brand.royalBlue)
-              : (isDark ? Brand.darkTextSecondary : Brand.royalBlueDark),
-          size: 22,
-        ),
+        child: Icon(icon,
+            color: active ? Brand.lime : Colors.white, size: 19),
       ),
     );
   }
 
   // ─── SEARCH BAR ────────────────────────────────────────────
 
+  /// Search field styled for the navy hero `bottom` slot.
   Widget _buildSearchBar(bool isDark) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-      child: TextField(
-        controller: _searchController,
-        focusNode: _searchFocusNode,
-        onChanged: (value) => setState(() => _searchQuery = value),
-        style: TextStyle(
-          color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          fontSize: 14,
+    return TextField(
+      controller: _searchController,
+      focusNode: _searchFocusNode,
+      onChanged: (value) => setState(() => _searchQuery = value),
+      style: const TextStyle(color: Colors.white, fontSize: 12.5),
+      cursorColor: Brand.lime,
+      decoration: InputDecoration(
+        hintText: 'Search by name, brand, serial number...',
+        hintStyle:
+            const TextStyle(color: Color(0xFF8FA3C8), fontSize: 12.5),
+        prefixIcon: const Icon(Icons.search_rounded,
+            color: Color(0xFF8FA3C8), size: 20),
+        suffixIcon: _searchQuery.isNotEmpty
+            ? GestureDetector(
+                onTap: () {
+                  _searchController.clear();
+                  setState(() => _searchQuery = '');
+                },
+                child: const Icon(Icons.close_rounded,
+                    color: Color(0xFF8FA3C8), size: 18),
+              )
+            : null,
+        filled: true,
+        fillColor: const Color(0xD916294F),
+        isDense: true,
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Color(0xFF2A3F6E)),
         ),
-        decoration: InputDecoration(
-          hintText: 'Search by name, brand, serial number...',
-          hintStyle: TextStyle(
-            color: isDark ? Brand.darkTextTertiary : Brand.subtleLight,
-            fontSize: 13,
-          ),
-          prefixIcon: Icon(Icons.search_rounded,
-              color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-              size: 22),
-          suffixIcon: _searchQuery.isNotEmpty
-              ? GestureDetector(
-                  onTap: () {
-                    _searchController.clear();
-                    setState(() => _searchQuery = '');
-                  },
-                  child: Icon(Icons.close_rounded,
-                      color:
-                          isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                      size: 20),
-                )
-              : null,
-          filled: true,
-          fillColor: isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9),
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
-            borderSide: BorderSide(
-                color: isDark ? Brand.darkBorder : Brand.borderLight),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
-            borderSide: BorderSide(
-                color: isDark ? Brand.darkBorder : Brand.borderLight),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
-            borderSide: BorderSide(
-                color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-                width: 1.5),
-          ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Color(0xFF2A3F6E)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Brand.lime, width: 1.5),
         ),
       ),
     );
@@ -719,78 +656,36 @@ class _MyMachinesPageState extends State<MyMachinesPage>
       return days > 0 && days <= 30;
     }).length;
 
-    return Container(
-      margin: const EdgeInsets.fromLTRB(16, 14, 16, 0),
-      child: Row(children: [
-        _buildSummaryItem(
-            'Total',
-            '${_machines.length}',
-            Icons.precision_manufacturing_rounded,
-            isDark ? Brand.darkIconActive : Brand.royalBlue,
-            isDark),
-        const SizedBox(width: 8),
-        _buildSummaryItem('Active', '$active', Icons.check_circle_rounded,
-            isDark ? Brand.lightGreenBright : Brand.lightGreen, isDark),
-        const SizedBox(width: 8),
-        _buildSummaryItem('Service', '$service', Icons.build_rounded,
-            isDark ? const Color(0xFFFFB74D) : const Color(0xFFFF9800), isDark),
-        const SizedBox(width: 8),
-        _buildSummaryItem(
-            'Expiring',
-            '$warrantyExpiring',
-            Icons.warning_rounded,
-            warrantyExpiring > 0
-                ? (isDark ? const Color(0xFFFF6B6B) : const Color(0xFFE53935))
-                : (isDark ? Brand.darkTextSecondary : const Color(0xFF607D8B)),
-            isDark),
-      ]),
-    );
-  }
-
-  Widget _buildSummaryItem(
-      String label, String value, IconData icon, Color color, bool isDark) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 14),
-        decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(
-              color: isDark ? Brand.darkBorder : color.withAlpha(26)),
-          boxShadow: isDark
-              ? null
-              : [
-                  BoxShadow(
-                      color: color.withAlpha(13),
-                      blurRadius: 10,
-                      offset: const Offset(0, 3)),
-                ],
+    // Stat tiles overlap the hero's curved bottom edge (Navy Glow signature).
+    return DsStatRow(
+      tiles: [
+        DsStatTile(
+          icon: Icons.precision_manufacturing_rounded,
+          color: isDark ? Brand.darkIconActive : Brand.royalBlue,
+          value: '${_machines.length}',
+          label: 'Total',
         ),
-        child: Column(children: [
-          Container(
-            width: 38,
-            height: 38,
-            decoration: BoxDecoration(
-              color: color.withAlpha(isDark ? 31 : 20),
-              borderRadius: BorderRadius.circular(11),
-              border: isDark ? Border.all(color: color.withAlpha(38)) : null,
-            ),
-            child: Icon(icon, color: color, size: 19),
-          ),
-          const SizedBox(height: 8),
-          Text(value,
-              style: TextStyle(
-                  fontSize: 19,
-                  fontWeight: FontWeight.w600,
-                  color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),
-          const SizedBox(height: 2),
-          Text(label,
-              style: TextStyle(
-                  fontSize: 11,
-                  color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                  fontWeight: FontWeight.w600)),
-        ]),
-      ),
+        DsStatTile(
+          icon: Icons.check_circle_rounded,
+          color: StatusColors.success,
+          value: '$active',
+          label: 'Active',
+        ),
+        DsStatTile(
+          icon: Icons.build_rounded,
+          color: StatusColors.inProgress,
+          value: '$service',
+          label: 'Service',
+        ),
+        DsStatTile(
+          icon: Icons.warning_rounded,
+          color: warrantyExpiring > 0
+              ? StatusColors.danger
+              : StatusColors.closed,
+          value: '$warrantyExpiring',
+          label: 'Expiring',
+        ),
+      ],
     );
   }
 
@@ -1996,103 +1891,40 @@ class _MyMachinesPageState extends State<MyMachinesPage>
 
   Widget _buildEmptyState(bool isDark) {
     final isFiltered = _filterStatus != 'all' || _searchQuery.isNotEmpty;
+    final t = S.of(context)!;
 
-    return Center(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(32),
-        child: Container(
-          padding: const EdgeInsets.all(32),
-          decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
-            borderRadius: BorderRadius.circular(22),
-            border: isDark ? Border.all(color: Brand.darkBorder) : null,
-            boxShadow: isDark
-                ? null
-                : [
-                    BoxShadow(
-                        color: Brand.royalBlue.withAlpha(10),
-                        blurRadius: 12,
-                        offset: const Offset(0, 4)),
-                  ],
-          ),
-          child: Column(mainAxisSize: MainAxisSize.min, children: [
-            Container(
-              width: 84,
-              height: 84,
-              decoration: BoxDecoration(
-                  color:
-                      isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-                  borderRadius: BorderRadius.circular(24),
-                  border:
-                      isDark ? Border.all(color: Brand.darkBorderLight) : null),
-              child: Icon(
-                  isFiltered
-                      ? Icons.search_off_rounded
-                      : Icons.precision_manufacturing_rounded,
-                  size: 42,
-                  color: isDark ? Brand.darkIconActive : Brand.royalBlue),
-            ),
-            const SizedBox(height: 20),
-            Text(
-                isFiltered
-                    ? S.of(context)!.machineNoMachinesFound
-                    : S.of(context)!.machineNoMachines,
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color:
-                        isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),
-            const SizedBox(height: 10),
-            Text(
-                isFiltered
-                    ? S.of(context)!.machineNoMatchDesc
-                    : S.of(context)!.machineRegisterDesc,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 13,
-                    color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                    height: 1.5)),
-            const SizedBox(height: 24),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton.icon(
-                onPressed: isFiltered
-                    ? () {
-                        setState(() {
-                          _filterStatus = 'all';
-                          _searchQuery = '';
-                          _searchController.clear();
-                        });
-                      }
-                    : () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const RegisterMachinePage()),
-                        ).then((_) {
-                          if (mounted) _loadMachines();
-                        });
-                      },
-                icon: Icon(
-                    isFiltered ? Icons.clear_all_rounded : Icons.add_rounded,
-                    size: 22),
-                label: Text(
-                    isFiltered
-                        ? S.of(context)!.machineClearFilters
-                        : S.of(context)!.machineRegisterFirst,
-                    style: const TextStyle(fontWeight: FontWeight.w700)),
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: isFiltered
-                        ? (isDark ? Brand.darkIconActive : Brand.royalBlue)
-                        : (isDark ? Brand.lightGreenBright : Brand.lightGreen),
-                    foregroundColor: Colors.white,
-                    elevation: 0,
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14))),
-              ),
-            ),
-          ]),
+    return SingleChildScrollView(
+      child: DsEmptyState(
+        icon: isFiltered
+            ? Icons.search_off_rounded
+            : Icons.precision_manufacturing_rounded,
+        title: isFiltered ? t.machineNoMachinesFound : t.machineNoMachines,
+        subtitle: isFiltered ? t.machineNoMatchDesc : t.machineRegisterDesc,
+        action: ElevatedButton.icon(
+          onPressed: isFiltered
+              ? () {
+                  setState(() {
+                    _filterStatus = 'all';
+                    _searchQuery = '';
+                    _searchController.clear();
+                  });
+                }
+              : () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const RegisterMachinePage()),
+                  ).then((_) {
+                    if (mounted) _loadMachines();
+                  });
+                },
+          icon: Icon(
+              isFiltered ? Icons.clear_all_rounded : Icons.add_rounded,
+              size: 20),
+          label: Text(
+              isFiltered ? t.machineClearFilters : t.machineRegisterFirst,
+              style:
+                  const TextStyle(fontSize: 13, fontWeight: FontWeight.w700)),
         ),
       ),
     );

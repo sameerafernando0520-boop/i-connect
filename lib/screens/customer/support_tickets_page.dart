@@ -13,6 +13,7 @@ import '../../widgets/customer/customer_nav_bar.dart';
 import '../../widgets/customer/customer_nav_controller.dart';
 import 'create_support_ticket_page.dart';
 import 'ticket_detail_page.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 class SupportTicketsPage extends StatefulWidget {
   final bool showNavBar;
@@ -173,6 +174,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
     return Scaffold(
       backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
       body: SafeArea(
+        top: false,
         child: Column(
           children: [
             _buildTopBar(isDark),
@@ -203,88 +205,28 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
     );
   }
 
-  // ─── TOP BAR ───────────────────────────────────────────────
+  // ─── TOP BAR — Navy Glow hero ──────────────────────────────
   Widget _buildTopBar(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(6, 10, 16, 0),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 44,
-              height: 44,
-              margin: const EdgeInsets.only(left: 8),
-              decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
-                borderRadius: BorderRadius.circular(12),
-                border: isDark ? Border.all(color: Brand.darkBorder) : null,
-                boxShadow: isDark
-                    ? []
-                    : [
-                        BoxShadow(
-                          color: Brand.royalBlue.withAlpha(15),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-              ),
-              child: Icon(Icons.arrow_back_ios_new_rounded,
-                  color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                  size: 18),
+    return DsPageHeader(
+      title: 'Support & Inquiries',
+      subtitle: '${_tickets.length} total tickets',
+      showBack: !widget.showNavBar,
+      actions: [
+        GestureDetector(
+          onTap: _loadTickets,
+          child: Container(
+            width: 38,
+            height: 38,
+            decoration: BoxDecoration(
+              color: Colors.white.withAlpha(18),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: const Color(0xFF2A3F6E)),
             ),
+            child: const Icon(Icons.refresh_rounded,
+                color: Colors.white, size: 19),
           ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Support & Inquiries',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.5,
-                    color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                  ),
-                ),
-                const SizedBox(height: 1),
-                Text(
-                  '${_tickets.length} total tickets',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: _loadTickets,
-            child: Container(
-              width: 44,
-              height: 44,
-              decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
-                borderRadius: BorderRadius.circular(12),
-                border: isDark ? Border.all(color: Brand.darkBorder) : null,
-                boxShadow: isDark
-                    ? []
-                    : [
-                        BoxShadow(
-                          color: Brand.royalBlue.withAlpha(15),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-              ),
-              child: Icon(Icons.refresh_rounded,
-                  color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                  size: 22),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -305,86 +247,28 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
             t['status'] == 'completed')
         .length;
 
-    return Container(
-      margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-      child: Row(
-        children: [
-          _buildSummaryItem(
-            S.of(context)!.ticketStatusOpen,
-            '$open',
-            Icons.radio_button_checked_rounded,
-            const Color(0xFF2196F3),
-            isDark,
-          ),
-          const SizedBox(width: 8),
-          _buildSummaryItem(
-            S.of(context)!.ticketStatusInProgress,
-            '$inProgress',
-            Icons.engineering_rounded,
-            const Color(0xFFFF9800),
-            isDark,
-          ),
-          const SizedBox(width: 8),
-          _buildSummaryItem(
-            S.of(context)!.ticketStatusResolved,
-            '$resolved',
-            Icons.check_circle_rounded,
-            Brand.lightGreen,
-            isDark,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSummaryItem(
-      String label, String value, IconData icon, Color color, bool isDark) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
-        decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(
-            color: isDark
-                ? color.withAlpha(60)
-                : color.withAlpha(77), // tinted border matching value color
-          ),
-          boxShadow: isDark
-              ? []
-              : [
-                  BoxShadow(
-                    color: color.withAlpha(20),
-                    blurRadius: 10,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
+    // Stat tiles overlap the hero's curved bottom edge (Navy Glow signature).
+    return DsStatRow(
+      tiles: [
+        DsStatTile(
+          icon: Icons.radio_button_checked_rounded,
+          color: StatusColors.open,
+          value: '$open',
+          label: S.of(context)!.ticketStatusOpen,
         ),
-        child: Column(
-          children: [
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w600,
-                color: isDark ? color.withAlpha(220) : color,
-                letterSpacing: -0.3,
-                height: 1,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              label.toUpperCase(),
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
-                color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                letterSpacing: 0.4,
-              ),
-            ),
-          ],
+        DsStatTile(
+          icon: Icons.engineering_rounded,
+          color: StatusColors.inProgress,
+          value: '$inProgress',
+          label: S.of(context)!.ticketStatusInProgress,
         ),
-      ),
+        DsStatTile(
+          icon: Icons.check_circle_rounded,
+          color: StatusColors.success,
+          value: '$resolved',
+          label: S.of(context)!.ticketStatusResolved,
+        ),
+      ],
     );
   }
 
