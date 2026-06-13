@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 class RequestServicePage extends StatefulWidget {
   const RequestServicePage({super.key});
@@ -160,17 +161,14 @@ class _RequestServicePageState extends State<RequestServicePage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: const Text('Request Service'),
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        foregroundColor: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        elevation: 0,
-        scrolledUnderElevation: 1,
-      ),
-      body: Form(
-        key: _formKey,
-        child: ListView(
-          padding: const EdgeInsets.all(16),
+      body: Column(
+        children: [
+          const DsPageHeader(title: 'Request Service'),
+          Expanded(
+            child: Form(
+              key: _formKey,
+              child: ListView(
+                padding: const EdgeInsets.all(16),
           children: [
             // ── Info Banner ──
             Container(
@@ -360,8 +358,11 @@ class _RequestServicePageState extends State<RequestServicePage> {
               ),
             ),
             const SizedBox(height: 40),
-          ],
-        ),
+              ],
+            ),
+          ),
+          ),
+        ],
       ),
     );
   }
