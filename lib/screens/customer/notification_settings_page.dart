@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../services/notification_service.dart';
 
 class NotificationSettingsPage extends StatefulWidget {
@@ -490,77 +491,36 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
     );
   }
 
-  // ── Top Bar ──────────────────────────────────────────────
+  // ── Top Bar — Navy Glow hero ─────────────────────────────
   Widget _buildTopBar(bool isDark) {
-    return SafeArea(
-      bottom: false,
-      child: Container(
-        padding: const EdgeInsets.fromLTRB(6, 8, 16, 0),
-        child: Row(
-          children: [
-            GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: Container(
-                width: 46,
-                height: 46,
-                margin: const EdgeInsets.only(left: 8),
-                decoration: BoxDecoration(
-                  color: Brand.surface(isDark),
-                  borderRadius: BorderRadius.circular(12),
-                  border: isDark ? Border.all(color: Brand.darkBorder) : null,
-                  boxShadow: isDark ? null : [
-                    BoxShadow(
-                      color: Brand.royalBlue.withAlpha(15),
-                      blurRadius: 8,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: Icon(Icons.arrow_back_ios_new_rounded,
-                    color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                    size: 22),
-              ),
+    return DsPageHeader(
+      title: 'Notification Settings',
+      actions: [
+        if (_unreadCount > 0)
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            decoration: BoxDecoration(
+              color: Colors.white.withAlpha(20),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: const Color(0xFF2A3F6E)),
             ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Text(
-                'Notification Settings',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: -0.5,
-                  color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(Icons.circle, color: Brand.lime, size: 8),
+                const SizedBox(width: 5),
+                Text(
+                  '$_unreadCount',
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
+              ],
             ),
-            if (_unreadCount > 0)
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                  color: Colors.red.withAlpha(((0.1) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.red.withAlpha(((0.2) * 255).toInt())),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.circle, color: Colors.red, size: 8),
-                    const SizedBox(width: 5),
-                    Text(
-                      '$_unreadCount',
-                      style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-          ],
-        ),
-      ),
+          ),
+      ],
     );
   }
 
