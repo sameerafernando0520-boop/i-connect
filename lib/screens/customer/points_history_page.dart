@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:i_connect/config/brand_colors.dart';
 import 'package:i_connect/config/supabase_config.dart';
 import 'package:intl/intl.dart';
+import 'package:i_connect/widgets/ds/ds_widgets.dart';
 
 class PointsHistoryPage extends StatefulWidget {
   const PointsHistoryPage({super.key});
@@ -62,26 +63,10 @@ class _PointsHistoryPageState extends State<PointsHistoryPage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_rounded,
-              size: 20,
-              color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Points History',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-      ),
-      body: _isLoading
+      body: Column(children: [
+        const DsPageHeader(title: 'Points History', subtitle: 'Loyalty rewards'),
+        Expanded(
+          child: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _errorMessage.isNotEmpty
               ? Center(
@@ -239,6 +224,8 @@ class _PointsHistoryPageState extends State<PointsHistoryPage> {
                         );
                       },
                     ),
+        ),
+      ]),
     );
   }
 }
