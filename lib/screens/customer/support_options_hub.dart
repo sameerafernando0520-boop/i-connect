@@ -10,6 +10,7 @@ import '../../config/brand_colors.dart';
 import '../../l10n/s.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/common/ic_icons.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'order_form_page.dart';
 import 'my_schedule_page.dart';
 import 'ticket_detail_page.dart';
@@ -517,24 +518,10 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
               .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
         backgroundColor: Brand.canvas(isDark),
-        appBar: AppBar(
-          title: Text(
-            t.supportCenter,
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w600,
-              letterSpacing: -0.5,
-              color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-            ),
-          ),
-          backgroundColor: Brand.surface(isDark),
-          elevation: 0,
-          scrolledUnderElevation: 1,
-          iconTheme: IconThemeData(
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        body: RefreshIndicator(
+        body: Column(children: [
+          DsPageHeader(title: t.supportCenter),
+          Expanded(
+            child: RefreshIndicator(
           color: Brand.royalBlue,
           backgroundColor: Brand.surface(isDark),
           onRefresh: _loadData,
@@ -597,6 +584,8 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                   ),
                 ),
         ),
+          ),
+        ]),
       ),
     );
   }
