@@ -16,6 +16,7 @@ import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
 import '../../l10n/s.dart';
 import '../../utils/time_utils.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'notification_settings_page.dart';
 import 'ticket_detail_page.dart';
 import 'my_invoices_page.dart';
@@ -708,102 +709,55 @@ class _NotificationListPageState extends State<NotificationListPage>
     );
   }
 
-  // ─── TOP BAR ───────────────────────────────────────────────
+  // ─── TOP BAR — Navy Glow hero ──────────────────────────────
   Widget _buildTopBar(bool isDark, int unreadCount) {
-    return SafeArea(
-      bottom: false,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(14, 10, 14, 0),
-        child: Row(children: [
-          _iconBtn(Icons.arrow_back_ios_new_rounded, isDark,
-              () => Navigator.pop(context)),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(_pageTitle,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600,
-                      color:
-                          isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                      letterSpacing: -0.5,
-                    )),
-                if (unreadCount > 0)
-                  Text('$unreadCount unread',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-                        fontWeight: FontWeight.w600,
-                      )),
-              ],
-            ),
-          ),
-          if (unreadCount > 0)
-            _isMarkingAll
-                ? Container(
-                    width: 44,
-                    height: 44,
-                    padding: const EdgeInsets.all(12),
+    return DsPageHeader(
+      title: _pageTitle,
+      subtitle: unreadCount > 0 ? '$unreadCount unread' : null,
+      actions: [
+        if (unreadCount > 0)
+          _isMarkingAll
+              ? const SizedBox(
+                  width: 38,
+                  height: 38,
+                  child: Padding(
+                    padding: EdgeInsets.all(11),
                     child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: isDark ? Brand.darkIconActive : Brand.royalBlue),
-                  )
-                : _iconBtn(
-                    Icons.done_all_rounded,
-                    isDark,
-                    _markAllRead,
-                    tooltip: S.of(context)!.notificationMarkAllRead,
-                    activeColor:
-                        isDark ? Brand.lightGreenBright : Brand.lightGreen,
+                        strokeWidth: 2, color: Brand.lime),
                   ),
+                )
+              : _heroBtn(Icons.done_all_rounded, _markAllRead,
+                  tooltip: S.of(context)!.notificationMarkAllRead),
+        if (widget.userRole == 'customer') ...[
           const SizedBox(width: 6),
-          if (widget.userRole == 'customer')
-            _iconBtn(
-              Icons.settings_outlined,
-              isDark,
-              () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => const NotificationSettingsPage())),
-              tooltip: S.of(context)!.notificationSettings,
-            ),
-        ]),
-      ),
+          _heroBtn(
+            Icons.settings_outlined,
+            () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => const NotificationSettingsPage())),
+            tooltip: S.of(context)!.notificationSettings,
+          ),
+        ],
+      ],
     );
   }
 
-  Widget _iconBtn(IconData icon, bool isDark, VoidCallback onTap,
-      {String? tooltip, Color? activeColor}) {
+  /// Frosted action button that sits on the navy hero.
+  Widget _heroBtn(IconData icon, VoidCallback onTap, {String? tooltip}) {
     return Tooltip(
       message: tooltip ?? '',
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(14),
-          child: Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              color: Brand.surface(isDark),
-              borderRadius: BorderRadius.circular(14),
-              border: isDark ? Border.all(color: Brand.darkBorder) : null,
-              boxShadow: isDark
-                  ? null
-                  : [
-                      BoxShadow(
-                          color: Brand.royalBlue.withAlpha(((0.05) * 255).toInt()),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2))
-                    ],
-            ),
-            child: Icon(icon,
-                size: 20,
-                color: activeColor ??
-                    (isDark ? Brand.darkTextSecondary : Brand.royalBlue)),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: 38,
+          height: 38,
+          decoration: BoxDecoration(
+            color: Colors.white.withAlpha(18),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: const Color(0xFF2A3F6E)),
           ),
+          child: Icon(icon, color: Colors.white, size: 19),
         ),
       ),
     );
