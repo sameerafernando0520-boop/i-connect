@@ -10,6 +10,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
 import '../../services/points_service.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 class OrderFormPage extends StatefulWidget {
   final Map<String, dynamic>? preselectedMachine;
@@ -506,24 +507,10 @@ class _OrderFormPageState extends State<OrderFormPage> {
               .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
         backgroundColor: Brand.canvas(isDark),
-        appBar: AppBar(
-          title: Text(
-            'Place Order',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w600,
-              letterSpacing: -0.5,
-              color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-            ),
-          ),
-          backgroundColor: Brand.surface(isDark),
-          elevation: 0,
-          scrolledUnderElevation: 1,
-          iconTheme: IconThemeData(
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        body: _isLoading
+        body: Column(children: [
+          const DsPageHeader(title: 'Place Order'),
+          Expanded(
+            child: _isLoading
             ? _buildShimmer(isDark)
             : RefreshIndicator(
                 color: Brand.royalBlue,
@@ -675,6 +662,8 @@ class _OrderFormPageState extends State<OrderFormPage> {
                   ),
                 ),
               ),
+          ),
+        ]),
       ),
     );
   }
