@@ -384,7 +384,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
     HapticFeedback.mediumImpact();
     showModalBottomSheet(
       context: context,
-      backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+      backgroundColor: Brand.surface(isDark),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
@@ -397,7 +397,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
     final catalog = machine['machine_catalog'] as Map<String, dynamic>?;
     showModalBottomSheet(
       context: context,
-      backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+      backgroundColor: Brand.surface(isDark),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
@@ -415,9 +415,9 @@ class _MyMachinesPageState extends State<MyMachinesPage>
       value: SystemUiOverlayStyle.light.copyWith(
           statusBarColor: Colors.transparent,
           systemNavigationBarColor:
-              isDark ? Brand.darkBg : Brand.scaffoldLight),
+              Brand.canvas(isDark)),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: SafeArea(
           top: false,
           child: Column(
@@ -721,7 +721,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
               decoration: BoxDecoration(
                 color: isSelected
                     ? color
-                    : (isDark ? Brand.darkCard : Brand.cardLight),
+                    : (Brand.surface(isDark)),
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(
                   color: isSelected
@@ -866,7 +866,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
     final machines = _filteredAndSortedMachines;
     return RefreshIndicator(
       color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-      backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+      backgroundColor: Brand.surface(isDark),
       onRefresh: _loadMachines,
       child: _isGridView
           ? GridView.builder(
@@ -1000,7 +1000,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: isOverdue
@@ -1082,7 +1082,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                         color: const Color(0xFFFF9800),
                         shape: BoxShape.circle,
                         border: Border.all(
-                            color: isDark ? Brand.darkCard : Brand.cardLight,
+                            color: Brand.surface(isDark),
                             width: 2),
                       ),
                       child: const Icon(Icons.star_rounded,
@@ -1332,7 +1332,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
       onLongPress: () => _showMachineActions(machine, isDark),
       child: Container(
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: isOverdue
@@ -1779,7 +1779,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                       height: 90,
                       margin: const EdgeInsets.symmetric(horizontal: 4),
                       decoration: BoxDecoration(
-                          color: isDark ? Brand.darkCard : Brand.cardLight,
+                          color: Brand.surface(isDark),
                           borderRadius: BorderRadius.circular(18),
                           border: Border.all(
                               color: isDark
@@ -1796,7 +1796,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                   height: 100,
                   margin: const EdgeInsets.only(bottom: 12),
                   decoration: BoxDecoration(
-                      color: isDark ? Brand.darkCard : Brand.cardLight,
+                      color: Brand.surface(isDark),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
                           color:
@@ -1821,7 +1821,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
         child: Container(
           padding: const EdgeInsets.all(32),
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(22),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: isDark

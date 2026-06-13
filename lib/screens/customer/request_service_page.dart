@@ -159,7 +159,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: const Text('Request Service'),
         backgroundColor: isDark ? Brand.darkCard : Colors.white,

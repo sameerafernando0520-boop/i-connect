@@ -785,7 +785,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
             // Footer strip
             Container(
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkBg : Brand.scaffoldLight,
+                color: Brand.canvas(isDark),
                 borderRadius: const BorderRadius.vertical(
                   bottom: Radius.circular(18),
                 ),

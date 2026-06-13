@@ -505,7 +505,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
           : SystemUiOverlayStyle.dark
               .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         appBar: AppBar(
           title: Text(
             'Place Order',
@@ -516,7 +516,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
               color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
             ),
           ),
-          backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+          backgroundColor: Brand.surface(isDark),
           elevation: 0,
           scrolledUnderElevation: 1,
           iconTheme: IconThemeData(
@@ -527,7 +527,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
             ? _buildShimmer(isDark)
             : RefreshIndicator(
                 color: Brand.royalBlue,
-                backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+                backgroundColor: Brand.surface(isDark),
                 onRefresh: _loadData,
                 child: Form(
                   key: _formKey,
@@ -697,7 +697,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
 
       return Container(
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(18),
           border: Border.all(
             color: Brand.royalBlueLight.withAlpha(((0.5) * 255).toInt()),
@@ -804,7 +804,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
     // Not selected
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
         border: Border.all(
           color: isDark ? Brand.darkBorder : Colors.grey.shade300,
@@ -845,7 +845,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: isDark ? Brand.darkBorder : Colors.grey.shade300,
@@ -940,7 +940,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
           fontSize: 14,
         ),
         filled: true,
-        fillColor: isDark ? Brand.darkCard : Brand.cardLight,
+        fillColor: Brand.surface(isDark),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         border: OutlineInputBorder(
@@ -980,7 +980,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: isDark ? Brand.darkBorder : Brand.lightGreenSurface,

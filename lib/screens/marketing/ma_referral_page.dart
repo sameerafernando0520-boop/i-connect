@@ -134,12 +134,12 @@ class _MaReferralPageState extends State<MaReferralPage>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text('Referral Program',
             style: TextStyle(fontWeight: FontWeight.w700,
                 color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0, scrolledUnderElevation: 1,
         iconTheme: IconThemeData(color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
         bottom: TabBar(
@@ -170,7 +170,7 @@ class _MaReferralPageState extends State<MaReferralPage>
       children: [
         // Status filter
         Container(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           padding: const EdgeInsets.fromLTRB(16, 10, 16, 12),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -257,7 +257,7 @@ class _MaReferralPageState extends State<MaReferralPage>
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(14),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
@@ -360,7 +360,7 @@ class _MaReferralPageState extends State<MaReferralPage>
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
             color: isActive

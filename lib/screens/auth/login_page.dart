@@ -237,7 +237,7 @@ class _LoginPageState extends State<LoginPage>
         return StatefulBuilder(
           builder: (dialogCtx, setDialogState) {
             return Dialog(
-              backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+              backgroundColor: Brand.surface(isDark),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24),
                 side: isDark
@@ -667,10 +667,10 @@ class _LoginPageState extends State<LoginPage>
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light.copyWith(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        systemNavigationBarColor: Brand.canvas(isDark),
       ),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: Stack(
           children: [
             // Top gradient header

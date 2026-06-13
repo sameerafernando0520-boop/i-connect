@@ -553,7 +553,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
         child: Container(
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
           ),
           child: Column(
@@ -906,7 +906,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
   Widget build(BuildContext context) {
     final isDark = _isDark;
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: _buildAppBar(isDark),
       body: _isLoading ? _buildSkeleton(isDark) : _buildBody(isDark),
     );
@@ -923,7 +923,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
     final ticketType = _ticket['ticket_type'] as String? ?? 'support';
 
     return AppBar(
-      backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+      backgroundColor: Brand.surface(isDark),
       elevation: 0,
       surfaceTintColor: Colors.transparent,
       leading: IconButton(
@@ -1028,7 +1028,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
         PopupMenuButton<String>(
           icon: Icon(Icons.more_vert_rounded,
               color: isDark ? Brand.darkTextSecondary : Brand.subtleLight),
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           itemBuilder: (_) => [
@@ -1156,7 +1156,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
     final ticketType = _ticket['ticket_type'] as String? ?? 'support';
 
     return Container(
-      color: isDark ? Brand.darkCard : Brand.cardLight,
+      color: Brand.surface(isDark),
       child: Column(
         children: [
           GestureDetector(
@@ -1850,7 +1850,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
       bubbleColor =
           isDark ? Brand.royalBlue.withAlpha(38) : Brand.royalBlueSurface;
     } else {
-      bubbleColor = isDark ? Brand.darkCard : Brand.cardLight;
+      bubbleColor = Brand.surface(isDark);
     }
 
     // Avatar for non-self messages
@@ -2184,7 +2184,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
     return Container(
       padding: EdgeInsets.fromLTRB(16, 8, 16, bottomSafe + 12),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         border: Border(
           top: BorderSide(
             color: _internalMode
@@ -2421,7 +2421,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         border: Border(
           top: BorderSide(color: isDark ? Brand.darkBorder : Brand.borderLight),
         ),
@@ -2623,7 +2623,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
         // Info panel skeleton
         Container(
           padding: const EdgeInsets.all(16),
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -2685,7 +2685,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             border: Border(
               top: BorderSide(
                 color: isDark ? Brand.darkBorder : Brand.borderLight,

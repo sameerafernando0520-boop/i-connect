@@ -196,7 +196,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogCtx) => Dialog(
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         child: Padding(
           padding: const EdgeInsets.all(28),
@@ -348,7 +348,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
                     onSurface: Brand.royalBlueDark,
                   ),
             timePickerTheme: TimePickerThemeData(
-              backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+              backgroundColor: Brand.surface(isDark),
               hourMinuteShape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(14)),
               dayPeriodShape: RoundedRectangleBorder(
@@ -422,7 +422,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
 
     if (_isLoading) {
       return Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -461,12 +461,12 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
     }
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       body: FadeTransition(
         opacity: _fadeAnimation,
         child: RefreshIndicator(
           color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-          backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+          backgroundColor: Brand.surface(isDark),
           onRefresh: _loadSettings,
           child: CustomScrollView(
             physics: const AlwaysScrollableScrollPhysics(
@@ -505,7 +505,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
                 height: 46,
                 margin: const EdgeInsets.only(left: 8),
                 decoration: BoxDecoration(
-                  color: isDark ? Brand.darkCard : Brand.cardLight,
+                  color: Brand.surface(isDark),
                   borderRadius: BorderRadius.circular(12),
                   border: isDark ? Border.all(color: Brand.darkBorder) : null,
                   boxShadow: isDark ? null : [
@@ -669,7 +669,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
       margin: const EdgeInsets.fromLTRB(20, 14, 20, 0),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: _notificationsEnabled
@@ -907,7 +907,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
       margin: const EdgeInsets.fromLTRB(20, 14, 20, 0),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: _quietHoursEnabled
@@ -1138,7 +1138,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
       margin: const EdgeInsets.fromLTRB(20, 14, 20, 0),
       padding: const EdgeInsets.symmetric(vertical: 6),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(20),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
@@ -1197,7 +1197,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
       margin: const EdgeInsets.fromLTRB(20, 14, 20, 0),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(20),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,

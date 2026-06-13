@@ -307,7 +307,7 @@ class _EaJobRecordsPageState extends State<EaJobRecordsPage> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bg = isDark ? Brand.darkBg : Brand.scaffoldLight;
+    final bg = Brand.canvas(isDark);
     final cardBg = isDark ? Brand.darkCard : Colors.white;
     final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
     final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);

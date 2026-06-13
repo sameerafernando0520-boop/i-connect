@@ -141,7 +141,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text(
           'My Quotations',
@@ -683,7 +683,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
     final canRespond = ['sent', 'viewed'].contains(status);
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(

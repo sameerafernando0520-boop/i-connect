@@ -151,7 +151,7 @@ class _EngineerInstallationListPageState
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         backgroundColor: isDark ? Brand.darkCard : Colors.white,
         elevation: 0,

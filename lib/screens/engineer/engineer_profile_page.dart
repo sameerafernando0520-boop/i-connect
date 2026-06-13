@@ -1723,7 +1723,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: isDark ? Brand.darkCard : Brand.cardLight,
+                      color: Brand.surface(isDark),
                       borderRadius: BorderRadius.circular(12),
                       border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -2032,7 +2032,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         margin: const EdgeInsets.fromLTRB(20, 16, 20, 0),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(22),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -2060,7 +2060,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
       margin: const EdgeInsets.fromLTRB(20, 0, 20, 16),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(22),
         border: isDark
               ? Border.all(color: Brand.darkBorder)

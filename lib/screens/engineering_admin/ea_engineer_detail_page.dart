@@ -229,7 +229,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -251,7 +251,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
             ),
           ],
         ),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0,
         scrolledUnderElevation: 1,
         iconTheme: IconThemeData(
@@ -468,7 +468,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
         children: [
           // Month navigation header
           Container(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             padding:
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             child: Row(
@@ -605,7 +605,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(12),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -719,7 +719,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(14),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
@@ -1095,7 +1095,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
           color: isExpired
@@ -1230,7 +1230,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
           color: status == 'pending'
@@ -1406,7 +1406,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(14),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
@@ -1521,7 +1521,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                 bottom: MediaQuery.of(sheetCtx).viewInsets.bottom),
             child: Container(
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius:
                     const BorderRadius.vertical(top: Radius.circular(28)),
               ),
@@ -1720,7 +1720,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
         builder: (sheetCtx, setSheetState) {
           return Container(
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Brand.cardLight,
+              color: Brand.surface(isDark),
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(28)),
             ),
@@ -1897,7 +1897,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(16),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),

@@ -254,7 +254,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
           : SystemUiOverlayStyle.dark
               .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: _isLoading
             ? _buildLoading(isDark)
             : _hasError
@@ -315,7 +315,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
         child: Container(
           padding: const EdgeInsets.all(32),
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(22),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
           ),
@@ -399,7 +399,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
         // ── App Bar ──
         SliverAppBar(
           pinned: true,
-          backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+          backgroundColor: Brand.surface(isDark),
           foregroundColor: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
           elevation: 0,
           leading: _buildBackButton(isDark),
@@ -604,7 +604,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(14),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
@@ -727,7 +727,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
@@ -854,7 +854,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
         margin: const EdgeInsets.only(bottom: 10),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(16),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,

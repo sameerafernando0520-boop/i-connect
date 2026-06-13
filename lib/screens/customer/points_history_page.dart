@@ -61,7 +61,7 @@ class _PointsHistoryPageState extends State<PointsHistoryPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,

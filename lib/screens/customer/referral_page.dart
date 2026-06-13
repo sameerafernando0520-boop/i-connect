@@ -136,7 +136,7 @@ class _ReferralPageState extends State<ReferralPage> {
       builder: (sheetCtx) => Container(
         padding: const EdgeInsets.all(28),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
         ),
         child: Column(
@@ -365,7 +365,7 @@ class _ReferralPageState extends State<ReferralPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       body: _isLoading ? _buildSkeleton(isDark) : _buildBody(isDark),
     );
   }
@@ -413,7 +413,7 @@ class _ReferralPageState extends State<ReferralPage> {
               width: 44,
               height: 44,
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius: BorderRadius.circular(14),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
               ),
@@ -511,7 +511,7 @@ class _ReferralPageState extends State<ReferralPage> {
       margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(22),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
@@ -674,7 +674,7 @@ class _ReferralPageState extends State<ReferralPage> {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(18),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
@@ -744,7 +744,7 @@ class _ReferralPageState extends State<ReferralPage> {
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(18),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
           ),
@@ -888,7 +888,7 @@ class _ReferralPageState extends State<ReferralPage> {
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: isDark ? Brand.darkCard : Brand.cardLight,
+                    color: Brand.surface(isDark),
                     borderRadius: BorderRadius.circular(18),
                     border: isDark ? Border.all(color: Brand.darkBorder) : null,
                   ),
@@ -973,7 +973,7 @@ class _ReferralPageState extends State<ReferralPage> {
       margin: const EdgeInsets.fromLTRB(20, 28, 20, 0),
       padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(22),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,

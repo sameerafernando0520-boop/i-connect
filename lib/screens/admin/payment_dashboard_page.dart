@@ -81,7 +81,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text(
           'Payment Dashboard',
@@ -93,7 +93,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
           ),
         ),
         // FIX: use Brand.darkCard / Colors.white → Brand.cardLight
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         foregroundColor: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
         elevation: 0,
         // FIX: added surfaceTintColor
@@ -213,7 +213,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         // FIX: replaced Colors.white with Brand.cardLight
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -275,7 +275,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         // FIX: replaced Colors.white with Brand.cardLight
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -500,7 +500,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         // FIX: replaced Colors.white with Brand.cardLight
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -673,7 +673,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
       padding: const EdgeInsets.only(bottom: 10),
       child: Material(
         // FIX: replaced Colors.white with Brand.cardLight
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(16),
         child: InkWell(
           borderRadius: BorderRadius.circular(16),
@@ -842,7 +842,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           // FIX: replaced Colors.white with Brand.cardLight
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(16),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -1057,7 +1057,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
       padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
         // FIX: replaced Colors.white with Brand.cardLight
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -1094,7 +1094,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
               height: h,
               decoration: BoxDecoration(
                 // FIX: replaced Colors.white with Brand.cardLight
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius: BorderRadius.circular(18),
               ),
             ),

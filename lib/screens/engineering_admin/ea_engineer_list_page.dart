@@ -138,7 +138,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
     final filtered = _filtered;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text(
           'Engineer Team',
@@ -147,7 +147,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
             color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
           ),
         ),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0,
         scrolledUnderElevation: 1,
         iconTheme: IconThemeData(
@@ -169,7 +169,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
         children: [
           // â”€â”€ Search + Filters â”€â”€
           Container(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -409,7 +409,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
       child: Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(16),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -451,7 +451,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
                         color: _eaAccent,
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: isDark ? Brand.darkCard : Brand.cardLight,
+                          color: Brand.surface(isDark),
                           width: 2,
                         ),
                       ),
@@ -686,7 +686,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
       builder: (sheetCtx) {
         return Container(
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius:
                 const BorderRadius.vertical(top: Radius.circular(28)),
           ),
@@ -802,7 +802,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
       builder: (sheetCtx) {
         return Container(
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius:
                 const BorderRadius.vertical(top: Radius.circular(28)),
           ),

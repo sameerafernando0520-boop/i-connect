@@ -91,7 +91,7 @@ class _EngineeringAdminDashboardState
         }
       },
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: IndexedStack(
           index: _currentIndex,
           children: List.generate(
@@ -209,7 +209,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
         .first;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: _buildAppBar(isDark),
       body: OfflineBanner(
         child: _loading
@@ -1487,7 +1487,7 @@ class _EaHrHubPage extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: isDark ? Brand.darkCard : Colors.white,

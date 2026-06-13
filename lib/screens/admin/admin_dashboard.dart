@@ -349,7 +349,7 @@ class _AdminDashboardState extends State<AdminDashboard>
             : SystemUiOverlayStyle.dark
                 .copyWith(statusBarColor: Colors.transparent),
         child: Scaffold(
-          backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+          backgroundColor: Brand.canvas(isDark),
           body: Column(
             children: [
               Expanded(child: _buildTabBody(isDark)),
@@ -726,7 +726,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                   shape: BoxShape.circle,
                   border: Border.all(
                     // FIX: AdminColors.background → Brand.scaffoldLight
-                    color: isDark ? Brand.darkBg : Brand.scaffoldLight,
+                    color: Brand.canvas(isDark),
                     width: 2,
                   ),
                 ),
@@ -1794,7 +1794,7 @@ class _AdminDashboardState extends State<AdminDashboard>
             child: Container(
               padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius:
                     const BorderRadius.vertical(top: Radius.circular(28)),
               ),
@@ -1887,7 +1887,7 @@ class _AdminDashboardState extends State<AdminDashboard>
         margin: const EdgeInsets.only(bottom: 10),
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkBg : Brand.scaffoldLight,
+          color: Brand.canvas(isDark),
           borderRadius: BorderRadius.circular(14),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -1990,7 +1990,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                         shape: BoxShape.circle,
                         border: Border.all(
                           // FIX: AdminColors.surface → Brand.cardLight
-                          color: isDark ? Brand.darkCard : Brand.cardLight,
+                          color: Brand.surface(isDark),
                           width: 1.5,
                         ),
                       ),

@@ -143,7 +143,7 @@ class _EaCreateEngineerPageState extends State<EaCreateEngineerPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text(
           'Add Engineer',
@@ -152,7 +152,7 @@ class _EaCreateEngineerPageState extends State<EaCreateEngineerPage> {
             color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
           ),
         ),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0,
         scrolledUnderElevation: 1,
         iconTheme: IconThemeData(
@@ -325,7 +325,7 @@ class _EaCreateEngineerPageState extends State<EaCreateEngineerPage> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius: BorderRadius.circular(18),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
               ),
@@ -409,7 +409,7 @@ class _EaCreateEngineerPageState extends State<EaCreateEngineerPage> {
             _sectionLabel('Bio (Optional)', isDark),
             Container(
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius: BorderRadius.circular(18),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
               ),
@@ -514,7 +514,7 @@ class _EaCreateEngineerPageState extends State<EaCreateEngineerPage> {
   Widget _card(bool isDark, {required List<Widget> children}) {
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,

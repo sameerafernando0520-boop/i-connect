@@ -176,12 +176,12 @@ class _MaBannersPageState extends State<MaBannersPage> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text('Promotional Banners',
             style: TextStyle(fontWeight: FontWeight.w700,
                 color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0, scrolledUnderElevation: 1,
         iconTheme: IconThemeData(color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
         actions: [
@@ -280,7 +280,7 @@ class _MaBannersPageState extends State<MaBannersPage> {
     final imgUrl = b['image_url'] as String?;
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [

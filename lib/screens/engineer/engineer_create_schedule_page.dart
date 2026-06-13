@@ -177,7 +177,7 @@ class _EngineerCreateSchedulePageState
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         appBar: AppBar(
           title: const Text('Create Schedule'),
           backgroundColor: isDark ? Brand.darkCard : Colors.white,

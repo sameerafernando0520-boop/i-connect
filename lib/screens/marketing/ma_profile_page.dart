@@ -179,10 +179,10 @@ class _MaProfilePageState extends State<MaProfilePage> {
           : SystemUiOverlayStyle.dark
               .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: RefreshIndicator(
           color: isDark ? Brand.royalBlueGlow : AdminColors.primary,
-          backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+          backgroundColor: Brand.surface(isDark),
           onRefresh: _load,
           child: CustomScrollView(
             physics: const AlwaysScrollableScrollPhysics(
@@ -207,7 +207,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
   // ─── LOADING STATE ───────────────────────────────────────────
   Widget _buildLoadingState(bool isDark) {
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -248,14 +248,14 @@ class _MaProfilePageState extends State<MaProfilePage> {
   // ─── ERROR STATE ─────────────────────────────────────────────
   Widget _buildErrorState(bool isDark) {
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       body: SafeArea(
         child: Center(
           child: Container(
             margin: const EdgeInsets.all(32),
             padding: const EdgeInsets.all(32),
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Brand.cardLight,
+              color: Brand.surface(isDark),
               borderRadius: BorderRadius.circular(24),
               border: isDark ? Border.all(color: Brand.darkBorder) : null,
               boxShadow: isDark
@@ -699,7 +699,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
               margin: EdgeInsets.only(right: isLast ? 0 : 10),
               padding: const EdgeInsets.symmetric(vertical: 16),
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius: BorderRadius.circular(18),
                 border: Border.all(
                   color: isDark ? Brand.darkBorder : s.color.withAlpha(26),
@@ -1031,7 +1031,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
         margin: const EdgeInsets.fromLTRB(20, 16, 20, 0),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(22),
           border: isDark
               ? Border.all(color: Colors.red.withAlpha(38))
@@ -1197,7 +1197,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
     required bool isDark,
   }) {
     return Dialog(
-      backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+      backgroundColor: Brand.surface(isDark),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       child: Padding(
         padding: const EdgeInsets.all(28),

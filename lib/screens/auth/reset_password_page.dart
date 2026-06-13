@@ -93,9 +93,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0,
         scrolledUnderElevation: 1,
         title: Text(
@@ -163,7 +163,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   decoration: InputDecoration(
                     labelText: 'New password',
                     filled: true,
-                    fillColor: isDark ? Brand.darkCard : Brand.cardLight,
+                    fillColor: Brand.surface(isDark),
                     prefixIcon: const Icon(Icons.lock_outline_rounded),
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -200,7 +200,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   decoration: InputDecoration(
                     labelText: 'Confirm password',
                     filled: true,
-                    fillColor: isDark ? Brand.darkCard : Brand.cardLight,
+                    fillColor: Brand.surface(isDark),
                     prefixIcon: const Icon(Icons.lock_outline_rounded),
                     suffixIcon: IconButton(
                       icon: Icon(

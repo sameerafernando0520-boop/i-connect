@@ -286,7 +286,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
           : SystemUiOverlayStyle.dark
               .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             _buildSliverAppBar(isDark, statusColor),
@@ -315,7 +315,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
     return SliverAppBar(
       expandedHeight: _images.isEmpty ? 200 : 280,
       pinned: true,
-      backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+      backgroundColor: Brand.surface(isDark),
       surfaceTintColor: Colors.transparent,
       leading: Material(
         color: Colors.transparent,
@@ -460,7 +460,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                 end: Alignment.bottomCenter,
                 colors: [
                   Colors.transparent,
-                  (isDark ? Brand.darkBg : Brand.scaffoldLight)
+                  (Brand.canvas(isDark))
                       .withAlpha(242),
                 ],
               ),
@@ -616,7 +616,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
       margin: const EdgeInsets.fromLTRB(20, 12, 20, 0),
       height: 44,
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(14),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
@@ -752,7 +752,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
               color: isDark ? Brand.darkBorder : color.withAlpha(26)),
@@ -800,7 +800,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
@@ -962,7 +962,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
         border:
             Border.all(color: warrantyColor.withAlpha(((isDark ? 0.2 : 0.15) * 255).toInt())),
@@ -1056,7 +1056,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
@@ -1088,7 +1088,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
@@ -1212,7 +1212,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
       children: [
         Container(
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(18),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
           ),
@@ -1293,7 +1293,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(18),
             border: Border.all(
               color: isOverdue
@@ -1397,7 +1397,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(18),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
           ),
@@ -1544,7 +1544,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
   void _showOptions(bool isDark) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+      backgroundColor: Brand.surface(isDark),
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
       builder: (ctx) => Padding(

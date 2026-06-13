@@ -502,7 +502,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
     final result = await showDialog<bool>(
       context: context,
       builder: (dialogCtx) => Dialog(
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
@@ -759,7 +759,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogCtx) => Dialog(
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -1144,7 +1144,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                 maxHeight: MediaQuery.of(sheetCtx).size.height * 0.9,
               ),
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(28),
                 ),
@@ -1680,7 +1680,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         backgroundColor: isDark ? Brand.darkCard : Brand.royalBlue,
         foregroundColor: Colors.white,
@@ -1814,7 +1814,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(22),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -1925,7 +1925,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                   // 0.15 ≈ 38, 0.1 ≈ 26
                   color: selected
                       ? a.$4.withAlpha(isDark ? 38 : 26)
-                      : (isDark ? Brand.darkCard : Brand.cardLight),
+                      : (Brand.surface(isDark)),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
                     // 128 ≈ 50%
@@ -1991,7 +1991,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
               horizontal: 16,
             ),
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Brand.cardLight,
+              color: Brand.surface(isDark),
               borderRadius: BorderRadius.circular(14),
               border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -2014,7 +2014,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                   Icons.keyboard_arrow_down_rounded,
                   color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                 ),
-                dropdownColor: isDark ? Brand.darkCard : Brand.cardLight,
+                dropdownColor: Brand.surface(isDark),
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -2209,7 +2209,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       return Container(
         padding: const EdgeInsets.all(32),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(22),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -2254,7 +2254,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -2371,7 +2371,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       children: [
         RefreshIndicator(
           color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-          backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+          backgroundColor: Brand.surface(isDark),
           onRefresh: _loadBanners,
           child: _banners.isEmpty
               ? ListView(
@@ -2478,7 +2478,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(14),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -2525,7 +2525,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -2764,7 +2764,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         margin: const EdgeInsets.symmetric(horizontal: 32),
         padding: const EdgeInsets.all(32),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(22),
           border: isDark
               ? Border.all(color: Brand.darkBorder)

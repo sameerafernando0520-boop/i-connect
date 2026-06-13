@@ -65,7 +65,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
     final t = S.of(context)!;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text(
           t.installmentMyInstallments,
@@ -76,7 +76,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
             color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
           ),
         ),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         foregroundColor: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
         elevation: 0,
         scrolledUnderElevation: 1,
@@ -87,7 +87,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
       body: RefreshIndicator(
         onRefresh: _load,
         color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         child: _isLoading
             ? Center(
                 child: CircularProgressIndicator(
@@ -112,7 +112,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
         child: Container(
           padding: const EdgeInsets.all(32),
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(22),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: isDark
@@ -191,7 +191,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
         margin: const EdgeInsets.only(bottom: 16),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(20),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,

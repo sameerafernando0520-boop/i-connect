@@ -698,7 +698,7 @@ class _CatalogPageState extends State<CatalogPage> {
           : SystemUiOverlayStyle.dark
               .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: SafeArea(
           child: Column(children: [
             _buildTopBar(isDark),
@@ -781,7 +781,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 decoration: BoxDecoration(
                     color: isActive
                         ? Brand.royalBlue
-                        : (isDark ? Brand.darkCard : Brand.cardLight),
+                        : (Brand.surface(isDark)),
                     borderRadius: BorderRadius.circular(14),
                     border: isActive
                         ? null
@@ -815,7 +815,7 @@ class _CatalogPageState extends State<CatalogPage> {
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 14, 20, 0),
       decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
               color: isDark
@@ -917,7 +917,7 @@ class _CatalogPageState extends State<CatalogPage> {
                       ? (isDark
                           ? Brand.royalBlue.withAlpha(38)
                           : Brand.royalBlue)
-                      : (isDark ? Brand.darkCard : Brand.cardLight),
+                      : (Brand.surface(isDark)),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
                       color: sel
@@ -1030,7 +1030,7 @@ class _CatalogPageState extends State<CatalogPage> {
                   decoration: BoxDecoration(
                       color: sel
                           ? Brand.royalBlue.withAlpha(isDark ? 51 : 26)
-                          : (isDark ? Brand.darkCard : Brand.cardLight),
+                          : (Brand.surface(isDark)),
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
                           color: sel
@@ -1137,7 +1137,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 decoration: BoxDecoration(
                     color: isActive
                         ? Brand.royalBlue.withAlpha(isDark ? 38 : 20)
-                        : (isDark ? Brand.darkCard : Brand.cardLight),
+                        : (Brand.surface(isDark)),
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
                         color: isActive
@@ -1177,7 +1177,7 @@ class _CatalogPageState extends State<CatalogPage> {
   void _showBrandFilter(bool isDark) {
     showModalBottomSheet(
         context: context,
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         // ✅ FIX-7: radius 24 → 28
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
@@ -1247,7 +1247,7 @@ class _CatalogPageState extends State<CatalogPage> {
   void _showSortOptions(bool isDark) {
     showModalBottomSheet(
         context: context,
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         // ✅ FIX-7: radius 24 → 28
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
@@ -1322,7 +1322,7 @@ class _CatalogPageState extends State<CatalogPage> {
     return RefreshIndicator(
       onRefresh: _loadAllData,
       color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-      backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+      backgroundColor: Brand.surface(isDark),
       child: CustomScrollView(
           controller: _scrollController,
           physics: const AlwaysScrollableScrollPhysics(
@@ -1395,7 +1395,7 @@ class _CatalogPageState extends State<CatalogPage> {
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                                 color:
-                                    isDark ? Brand.darkCard : Brand.cardLight,
+                                    Brand.surface(isDark),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
                                     color: isDark
@@ -1487,7 +1487,7 @@ class _CatalogPageState extends State<CatalogPage> {
           borderRadius: BorderRadius.circular(22),
           child: Container(
             decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius: BorderRadius.circular(22),
                 border: Border.all(
                     color: owned
@@ -1780,7 +1780,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 child: Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                        color: isDark ? Brand.darkCard : Brand.cardLight,
+                        color: Brand.surface(isDark),
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
                             color: owned
@@ -1963,7 +1963,7 @@ class _CatalogPageState extends State<CatalogPage> {
   void _quickInquire(Map<String, dynamic> machine, bool isDark) {
     showModalBottomSheet(
         context: context,
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         // ✅ FIX-7: radius 24 → 28
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
@@ -2124,7 +2124,7 @@ class _CatalogPageState extends State<CatalogPage> {
         itemCount: 6,
         itemBuilder: (_, __) => Container(
             decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius: BorderRadius.circular(22),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null),
             child:
@@ -2169,7 +2169,7 @@ class _CatalogPageState extends State<CatalogPage> {
             margin: const EdgeInsets.all(32),
             padding: const EdgeInsets.all(32),
             decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius: BorderRadius.circular(24),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null),
             child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -2221,7 +2221,7 @@ class _CatalogPageState extends State<CatalogPage> {
             margin: const EdgeInsets.all(32),
             padding: const EdgeInsets.all(32),
             decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius: BorderRadius.circular(24),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
                 boxShadow: isDark

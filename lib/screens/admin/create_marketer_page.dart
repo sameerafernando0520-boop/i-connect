@@ -197,7 +197,7 @@ class _CreateMarketerPageState extends State<CreateMarketerPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text(
           'Add Marketer',
@@ -206,7 +206,7 @@ class _CreateMarketerPageState extends State<CreateMarketerPage> {
             color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
           ),
         ),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0,
         scrolledUnderElevation: 1,
         iconTheme: IconThemeData(
@@ -408,7 +408,7 @@ class _CreateMarketerPageState extends State<CreateMarketerPage> {
   Widget _card(bool isDark, {required List<Widget> children}) {
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),

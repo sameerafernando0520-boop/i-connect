@@ -314,7 +314,7 @@ class _EngineerInstallationDetailPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: _Brand.canvas(isDark),
       appBar: AppBar(
         backgroundColor: _cardColor,
         elevation: 0,

@@ -217,7 +217,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       body: _loading
           ? _buildShimmer(isDark)
           : _error != null

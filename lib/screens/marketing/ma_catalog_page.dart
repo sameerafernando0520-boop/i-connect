@@ -93,12 +93,12 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
     final allCats = ['all', ..._categories.toList()..sort()];
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text('Machine Catalog',
             style: TextStyle(fontWeight: FontWeight.w700,
                 color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0, scrolledUnderElevation: 1,
         iconTheme: IconThemeData(color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
         actions: [
@@ -109,7 +109,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
         children: [
           // ── Search + Filter ──
           Container(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
             child: Column(
               children: [
@@ -286,7 +286,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(16),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [

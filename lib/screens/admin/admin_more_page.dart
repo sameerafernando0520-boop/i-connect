@@ -31,7 +31,7 @@ class AdminMorePage extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
@@ -42,7 +42,7 @@ class AdminMorePage extends StatelessWidget {
             color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
           ),
         ),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0,
         scrolledUnderElevation: 1,
       ),
@@ -259,7 +259,7 @@ class AdminMorePage extends StatelessWidget {
         ),
         Container(
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(18),
             border: isDark
               ? Border.all(color: Brand.darkBorder)

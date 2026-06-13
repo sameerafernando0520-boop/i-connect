@@ -219,7 +219,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: const Text('My Schedules',
             style: TextStyle(fontWeight: FontWeight.w800)),

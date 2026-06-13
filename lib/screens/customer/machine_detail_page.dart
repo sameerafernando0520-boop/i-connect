@@ -345,7 +345,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
     return showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Row(
           children: [
@@ -452,7 +452,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         backgroundColor: Colors.transparent,
         builder: (sheetCtx) => Container(
             decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius:
                     const BorderRadius.vertical(top: Radius.circular(28))),
             padding: EdgeInsets.only(
@@ -661,7 +661,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         builder: (dialogCtx) => PopScope(
             canPop: false,
             child: Dialog(
-                backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+                backgroundColor: Brand.surface(isDark),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(28)),
                 child: Padding(
@@ -1034,7 +1034,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
       value: SystemUiOverlayStyle.light
           .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body:
             CustomScrollView(physics: const BouncingScrollPhysics(), slivers: [
           // ── IMAGE HEADER ───────────────────────────────
@@ -1312,7 +1312,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
         padding: const EdgeInsets.all(22),
         decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(24),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: isDark
@@ -1412,7 +1412,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                             right: e.key != qs.keys.last ? 10 : 0),
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                            color: isDark ? Brand.darkCard : Brand.cardLight,
+                            color: Brand.surface(isDark),
                             borderRadius: BorderRadius.circular(18),
                             border: Border.all(
                                 color: isDark
@@ -1757,7 +1757,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
     return Container(
         margin: const EdgeInsets.fromLTRB(16, 14, 16, 0),
         decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(22),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: isDark
@@ -1901,7 +1901,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         margin: const EdgeInsets.fromLTRB(16, 14, 16, 0),
         padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(22),
             border: isDark ? Border.all(color: Brand.darkBorder) : null),
         child: Row(children: [
@@ -2020,7 +2020,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                             margin: const EdgeInsets.only(right: 12),
                             decoration: BoxDecoration(
                                 color:
-                                    isDark ? Brand.darkCard : Brand.cardLight,
+                                    Brand.surface(isDark),
                                 borderRadius: BorderRadius.circular(18),
                                 border: Border.all(
                                     color: isDark

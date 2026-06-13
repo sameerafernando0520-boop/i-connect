@@ -68,7 +68,7 @@ class _EngineeringAdminManagementPageState
       builder: (ctx) {
         final isDark = Theme.of(ctx).brightness == Brightness.dark;
         return AlertDialog(
-          backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+          backgroundColor: Brand.surface(isDark),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           title: Text(
@@ -156,7 +156,7 @@ class _EngineeringAdminManagementPageState
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text(
           'Engineering Admins',
@@ -165,7 +165,7 @@ class _EngineeringAdminManagementPageState
             color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
           ),
         ),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0,
         scrolledUnderElevation: 1,
         iconTheme: IconThemeData(
@@ -325,7 +325,7 @@ class _EngineeringAdminManagementPageState
           ),
           Container(
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Brand.cardLight,
+              color: Brand.surface(isDark),
               borderRadius: BorderRadius.circular(18),
               border: isDark ? Border.all(color: Brand.darkBorder) : null,
             ),

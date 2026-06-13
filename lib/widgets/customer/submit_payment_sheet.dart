@@ -265,7 +265,7 @@ class _SubmitPaymentSheetState extends State<SubmitPaymentSheet> {
         minChildSize: 0.6,
         builder: (_, controller) => Container(
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
           ),
           child: Column(

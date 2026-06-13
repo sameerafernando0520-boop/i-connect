@@ -205,7 +205,7 @@ class AdminNavBar extends StatelessWidget {
                       color: AdminColors.error,
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: isDark ? Brand.darkCard : Brand.cardLight,
+                        color: Brand.surface(isDark),
                         width: 1.5,
                       ),
                     ),

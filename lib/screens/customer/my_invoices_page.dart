@@ -146,7 +146,7 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
     final t = S.of(context)!;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text(
           t.invoiceMyInvoices,

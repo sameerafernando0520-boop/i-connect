@@ -143,12 +143,12 @@ class _MaTiersPageState extends State<MaTiersPage>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text('Loyalty Tiers',
             style: TextStyle(fontWeight: FontWeight.w700,
                 color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0, scrolledUnderElevation: 1,
         iconTheme: IconThemeData(color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
         bottom: TabBar(
@@ -221,7 +221,7 @@ class _MaTiersPageState extends State<MaTiersPage>
             margin: EdgeInsets.only(right: i < 3 ? 8 : 0),
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Brand.cardLight,
+              color: Brand.surface(isDark),
               borderRadius: BorderRadius.circular(14),
               border: Border.all(color: colors[i].withAlpha(isDark ? 80 : 60)),
               boxShadow: isDark ? null : [
@@ -254,7 +254,7 @@ class _MaTiersPageState extends State<MaTiersPage>
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(14),
         border: Border.all(color: color.withAlpha(isDark ? 60 : 40)),
         boxShadow: isDark ? null : [
@@ -352,7 +352,7 @@ class _MaTiersPageState extends State<MaTiersPage>
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(12),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [

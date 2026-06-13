@@ -269,7 +269,7 @@ class _ServiceCalendarPageState extends State<ServiceCalendarPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       body: SafeArea(
         child: Column(
           children: [

@@ -307,7 +307,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
           : SystemUiOverlayStyle.dark
               .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: SafeArea(
           child: Column(
             children: [
@@ -357,7 +357,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
               color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
             ),
             style: IconButton.styleFrom(
-              backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+              backgroundColor: Brand.surface(isDark),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12)),
             ),
@@ -414,7 +414,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
       padding: const EdgeInsets.fromLTRB(16, 14, 16, 0),
       child: Container(
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(16),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -513,7 +513,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                     // ✅ .withAlpha() — was .withOpacity()
                     color: isSel
                         ? c.withAlpha(isDark ? 38 : 31)
-                        : (isDark ? Brand.darkCard : Brand.cardLight),
+                        : (Brand.surface(isDark)),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
                       color: isSel
@@ -593,7 +593,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: isDark ? Brand.darkBorder : c.withAlpha(31),
@@ -640,7 +640,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(20),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -1257,7 +1257,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(20),
           border: isDark
               ? Border.all(color: Brand.darkBorder)

@@ -189,7 +189,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
     final status = _inv['status'] as String? ?? 'sent';
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       body: CustomScrollView(
         slivers: [
           // ── app bar ──

@@ -464,9 +464,9 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
       value: SystemUiOverlayStyle.light.copyWith(
           statusBarColor: Colors.transparent,
           systemNavigationBarColor:
-              isDark ? Brand.darkBg : Brand.scaffoldLight),
+              Brand.canvas(isDark)),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: Stack(
           children: [
             Container(
@@ -497,7 +497,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                     child: Container(
                       margin: const EdgeInsets.only(top: 12),
                       decoration: BoxDecoration(
-                        color: isDark ? Brand.darkBg : Brand.scaffoldLight,
+                        color: Brand.canvas(isDark),
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30),
@@ -678,7 +678,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
       padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 8),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(22),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
@@ -772,7 +772,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
               decoration: BoxDecoration(
                 color: isSelected
                     ? color
-                    : (isDark ? Brand.darkCard : Brand.cardLight),
+                    : (Brand.surface(isDark)),
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(
                     color: isSelected
@@ -903,7 +903,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             padding: const EdgeInsets.fromLTRB(20, 14, 20, 0),
             child: Container(
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius: BorderRadius.circular(16),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
                 boxShadow: isDark
@@ -1036,7 +1036,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(10),
             border: isDark ? Border.all(color: Brand.darkBorder) : null),
         child: Row(mainAxisSize: MainAxisSize.min, children: [
@@ -1066,7 +1066,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
       builder: (ctx) => Container(
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius:
                 const BorderRadius.vertical(top: Radius.circular(24))),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -1275,7 +1275,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
         margin: const EdgeInsets.only(right: 12),
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(18),
             border: isDark ? Border.all(color: Brand.darkBorder) : null),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -1371,7 +1371,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 12, vertical: 8),
                         decoration: BoxDecoration(
-                            color: isDark ? Brand.darkCard : Brand.cardLight,
+                            color: Brand.surface(isDark),
                             borderRadius: BorderRadius.circular(14),
                             border: Border.all(
                                 color: isDark
@@ -1607,7 +1607,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(20),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: isDark
@@ -1825,7 +1825,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             minChildSize: 0.3,
             builder: (_, sc) => Container(
                 decoration: BoxDecoration(
-                    color: isDark ? Brand.darkCard : Brand.cardLight,
+                    color: Brand.surface(isDark),
                     borderRadius:
                         const BorderRadius.vertical(top: Radius.circular(24))),
                 child: Column(children: [
@@ -1977,7 +1977,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
     return Container(
         height: 200,
         decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(24),
             border: isDark ? Border.all(color: Brand.darkBorder) : null),
         padding: const EdgeInsets.all(22),
@@ -2007,7 +2007,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(20),
             border: isDark ? Border.all(color: Brand.darkBorder) : null),
         child: Row(children: [

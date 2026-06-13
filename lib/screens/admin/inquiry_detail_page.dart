@@ -45,10 +45,10 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
 
   Color _scaffoldBg(bool isDark) =>
       // FIX: AdminColors.background doesn't exist → Brand.scaffoldLight
-      isDark ? Brand.darkBg : Brand.scaffoldLight;
+      Brand.canvas(isDark);
 
   Color _cardBg(bool isDark) =>
-      isDark ? Brand.darkCard : Brand.cardLight;
+      Brand.surface(isDark);
 
   Color _textPrimary(bool isDark) =>
       // FIX: AdminColors.textPrimary doesn't exist

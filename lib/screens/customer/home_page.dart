@@ -1004,7 +1004,7 @@ class _HomePageState extends State<HomePage>
               statusBarColor: Colors.transparent,
               systemNavigationBarColor: Colors.white),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         // Home tab body only — never embed sibling tab pages here, because
         // each of those pages is itself a Scaffold with its own
         // CustomerNavBar. Embedding them stacked two nav bars on top of each
@@ -1388,7 +1388,7 @@ class _HomePageState extends State<HomePage>
             width: 44,
             height: 44,
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Brand.cardLight,
+              color: Brand.surface(isDark),
               borderRadius: BorderRadius.circular(14),
               border: isDark ? Border.all(color: Brand.darkBorder) : null,
               boxShadow: isDark
@@ -1434,7 +1434,7 @@ class _HomePageState extends State<HomePage>
           width: 44,
           height: 44,
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(14),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: isDark
@@ -2696,7 +2696,7 @@ class _HomePageState extends State<HomePage>
                           shape: BoxShape.circle,
                           border: Border.all(
                               color:
-                                  isDark ? Brand.darkBg : Brand.scaffoldLight,
+                                  Brand.canvas(isDark),
                               width: 2.5),
                           boxShadow: [
                             BoxShadow(
@@ -2810,7 +2810,7 @@ class _HomePageState extends State<HomePage>
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(22),
             border: Border.all(
                 color: isDark ? Brand.darkBorder : q.accent.withAlpha(20)),
@@ -2964,7 +2964,7 @@ class _HomePageState extends State<HomePage>
       margin: const EdgeInsets.symmetric(horizontal: 20),
       padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(22),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
@@ -3048,7 +3048,7 @@ class _HomePageState extends State<HomePage>
               child: Container(
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
-                  color: isDark ? Brand.darkCard : Brand.cardLight,
+                  color: Brand.surface(isDark),
                   borderRadius: BorderRadius.circular(20),
                   border: isDark ? Border.all(color: Brand.darkBorder) : null,
                   boxShadow: isDark
@@ -3293,7 +3293,7 @@ class _HomePageState extends State<HomePage>
           child: Container(
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Brand.cardLight,
+              color: Brand.surface(isDark),
               borderRadius: BorderRadius.circular(18),
               border: isDark ? Border.all(color: Brand.darkBorder) : null,
               boxShadow: isDark
@@ -3485,7 +3485,7 @@ class _HomePageState extends State<HomePage>
         child: Container(
           height: 130,
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(20),
             border: isDark
               ? Border.all(color: Brand.darkBorder)

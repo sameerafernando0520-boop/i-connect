@@ -286,7 +286,7 @@ class _MaHomePageState extends State<MaHomePage> {
       value: SystemUiOverlayStyle.light
           .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: SafeArea(
           top: false,
           bottom: false,

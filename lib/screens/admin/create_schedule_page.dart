@@ -227,7 +227,7 @@ class _CreateSchedulePageState extends State<CreateSchedulePage> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         appBar: AppBar(
           title: Text(
             'Create Schedule',

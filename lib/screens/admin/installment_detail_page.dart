@@ -1511,7 +1511,7 @@ class _PaymentReceiptsStripState extends State<_PaymentReceiptsStrip> {
           final url = r['_signed']?.toString();
           final mime = r['mime_type']?.toString() ?? '';
           final isImage = mime.startsWith('image/');
-          final fallbackBg = widget.isDark ? Brand.darkBg : Brand.scaffoldLight;
+          final fallbackBg = widget.Brand.canvas(isDark);
           final error = r['_error']?.toString();
 
           if (url == null) {

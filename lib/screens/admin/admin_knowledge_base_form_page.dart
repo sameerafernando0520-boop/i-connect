@@ -240,7 +240,7 @@ class _AdminKnowledgeBaseFormPageState
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final accent = _types.firstWhere((t) => t.key == _type).color;
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text(
           _isEdit ? 'Edit Entry' : 'New Knowledge Entry',
@@ -249,7 +249,7 @@ class _AdminKnowledgeBaseFormPageState
             color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
           ),
         ),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0,
         scrolledUnderElevation: 1,
         iconTheme: IconThemeData(
@@ -426,7 +426,7 @@ class _AdminKnowledgeBaseFormPageState
                   decoration: BoxDecoration(
                     color: sel
                         ? t.color.withAlpha(isDark ? 60 : 30)
-                        : (isDark ? Brand.darkCard : Brand.cardLight),
+                        : (Brand.surface(isDark)),
                     borderRadius: BorderRadius.circular(14),
                     border: Border.all(
                       color: sel
@@ -681,7 +681,7 @@ class _AdminKnowledgeBaseFormPageState
     final result = await showModalBottomSheet<Map<String, dynamic>>(
       context: context,
       isScrollControlled: true,
-      backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+      backgroundColor: Brand.surface(isDark),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
@@ -784,7 +784,7 @@ class _AdminKnowledgeBaseFormPageState
   Widget _card(bool isDark, List<Widget> children) {
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),

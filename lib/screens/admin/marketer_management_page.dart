@@ -168,7 +168,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
             maxChildSize: 0.95,
             builder: (_, scrollCtrl) => Container(
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
               ),
               child: Column(
@@ -374,7 +374,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
           padding: EdgeInsets.only(bottom: MediaQuery.of(sheetCtx).viewInsets.bottom),
           child: Container(
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Brand.cardLight,
+              color: Brand.surface(isDark),
               borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
             ),
             padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
@@ -632,7 +632,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text(
           'Marketers',
@@ -641,7 +641,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
             color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
           ),
         ),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0,
         scrolledUnderElevation: 1,
         iconTheme: IconThemeData(color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
@@ -682,7 +682,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                   hintText: 'Search by name or username…',
                   prefixIcon: Icon(Icons.search_rounded, color: AdminColors.textHint(context)),
                   filled: true,
-                  fillColor: isDark ? Brand.darkCard : Brand.cardLight,
+                  fillColor: Brand.surface(isDark),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(14),
                     borderSide: BorderSide(color: isDark ? Brand.darkBorder : Brand.borderLight),
@@ -803,7 +803,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
@@ -848,7 +848,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                           color: isActive ? AdminColors.success : AdminColors.textHint(context),
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: isDark ? Brand.darkCard : Brand.cardLight,
+                            color: Brand.surface(isDark),
                             width: 2,
                           ),
                         ),

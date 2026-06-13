@@ -610,7 +610,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       builder: (sheetCtx) => Container(
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
         ),
         child: Column(
@@ -803,7 +803,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
     final result = await showDialog<bool>(
       context: context,
       builder: (dialogCtx) => Dialog(
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         child: Padding(
           padding: const EdgeInsets.all(28),
@@ -1190,7 +1190,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             : SystemUiOverlayStyle.dark
                 .copyWith(statusBarColor: Colors.transparent),
         child: Scaffold(
-          backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+          backgroundColor: Brand.canvas(isDark),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -1237,7 +1237,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             : SystemUiOverlayStyle.dark
                 .copyWith(statusBarColor: Colors.transparent),
         child: Scaffold(
-          backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+          backgroundColor: Brand.canvas(isDark),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -1319,7 +1319,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
               statusBarColor: Colors.transparent,
               systemNavigationBarColor: Colors.white),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: SafeArea(
           child: Column(
             children: [
@@ -1400,7 +1400,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
     return Container(
       padding: const EdgeInsets.fromLTRB(14, 10, 16, 10),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         border: Border(
             bottom: BorderSide(
                 color: isDark ? Brand.darkBorder : Brand.borderLight,
@@ -1774,7 +1774,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       firstChild: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           border: Border(
               bottom: BorderSide(
                   color: isDark ? Brand.darkBorder : Brand.borderLight,
@@ -2674,7 +2674,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                       ? Colors.red.withAlpha(((isDark ? 0.1 : 0.06) * 255).toInt())
                       : isMyMessage
                           ? (isDark ? Brand.royalBlueDark : Brand.royalBlueDark)
-                          : (isDark ? Brand.darkCard : Brand.cardLight),
+                          : (Brand.surface(isDark)),
                   borderRadius: BorderRadius.only(
                     topLeft: const Radius.circular(20),
                     topRight: const Radius.circular(20),
@@ -2950,7 +2950,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       builder: (context) => Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
         ),
         child: Column(
@@ -3309,7 +3309,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
           child: Container(
             padding: const EdgeInsets.all(28),
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Brand.cardLight,
+              color: Brand.surface(isDark),
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(28)),
             ),
@@ -3623,7 +3623,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       builder: (context) => Container(
         margin: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(24),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,

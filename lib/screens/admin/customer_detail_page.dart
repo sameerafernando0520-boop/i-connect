@@ -377,7 +377,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
   }
 
   // ─── Theme helpers — replaces non-existent AdminColors statics ──
-  Color _scaffoldBg(bool isDark) => isDark ? Brand.darkBg : Brand.scaffoldLight;
+  Color _scaffoldBg(bool isDark) => Brand.canvas(isDark);
 
   Color _cardBg(bool isDark) => isDark ? Brand.darkCard : Colors.white;
 
@@ -1226,7 +1226,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
           expand: false,
           builder: (_, scrollCtrl) => Container(
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Brand.cardLight,
+              color: Brand.surface(isDark),
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(28)),
             ),

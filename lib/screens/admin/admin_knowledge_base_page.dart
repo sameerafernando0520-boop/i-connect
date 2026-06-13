@@ -186,7 +186,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         title: Text(
           'Knowledge Base',
@@ -195,7 +195,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
             color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
           ),
         ),
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         elevation: 0,
         scrolledUnderElevation: 1,
         iconTheme: IconThemeData(
@@ -255,7 +255,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
                   },
                 ),
           filled: true,
-          fillColor: isDark ? Brand.darkCard : Brand.cardLight,
+          fillColor: Brand.surface(isDark),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
             borderSide:
@@ -297,7 +297,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
               decoration: BoxDecoration(
                 color: sel
                     ? t.color.withAlpha(isDark ? 50 : 30)
-                    : (isDark ? Brand.darkCard : Brand.cardLight),
+                    : (Brand.surface(isDark)),
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(
                   color: sel
@@ -421,7 +421,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
       borderRadius: BorderRadius.circular(16),
       child: Container(
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(16),
           border: isDark ? Border.all(color: Brand.darkBorder) : null,
         ),

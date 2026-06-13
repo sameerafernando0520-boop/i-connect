@@ -139,7 +139,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                 maxHeight: MediaQuery.of(sheetCtx).size.height * 0.88,
               ),
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Brand.cardLight,
+                color: Brand.surface(isDark),
                 borderRadius:
                     const BorderRadius.vertical(top: Radius.circular(28)),
               ),
@@ -516,7 +516,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
           : SystemUiOverlayStyle.dark
               .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         appBar: AppBar(
           title: Text(
             t.supportCenter,
@@ -527,7 +527,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
               color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
             ),
           ),
-          backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+          backgroundColor: Brand.surface(isDark),
           elevation: 0,
           scrolledUnderElevation: 1,
           iconTheme: IconThemeData(
@@ -536,7 +536,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
         ),
         body: RefreshIndicator(
           color: Brand.royalBlue,
-          backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+          backgroundColor: Brand.surface(isDark),
           onRefresh: _loadData,
           child: _isLoading
               ? _buildShimmer(isDark)
@@ -676,7 +676,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
     return Container(
       margin: const EdgeInsets.only(bottom: 14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: isDark ? Brand.darkBorder : Colors.grey.shade200,
@@ -803,7 +803,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: isDark ? Brand.darkBorder : Colors.grey.shade200,

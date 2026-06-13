@@ -671,7 +671,7 @@ class _NotificationListPageState extends State<NotificationListPage>
           : SystemUiOverlayStyle.dark
               .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: Column(
           children: [
             _buildTopBar(isDark, unreadCount),
@@ -787,7 +787,7 @@ class _NotificationListPageState extends State<NotificationListPage>
             width: 44,
             height: 44,
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Brand.cardLight,
+              color: Brand.surface(isDark),
               borderRadius: BorderRadius.circular(14),
               border: isDark ? Border.all(color: Brand.darkBorder) : null,
               boxShadow: isDark
@@ -816,7 +816,7 @@ class _NotificationListPageState extends State<NotificationListPage>
       child: Container(
         height: 44,
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(14),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
@@ -962,7 +962,7 @@ class _NotificationListPageState extends State<NotificationListPage>
           return await showDialog<bool>(
                 context: context,
                 builder: (dialogCtx) => AlertDialog(
-                  backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+                  backgroundColor: Brand.surface(isDark),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
                   title: Text(S.of(context)!.notificationDeleteConfirm,
@@ -1011,7 +1011,7 @@ class _NotificationListPageState extends State<NotificationListPage>
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
                 color: isRead
-                    ? (isDark ? Brand.darkCard : Brand.cardLight)
+                    ? (Brand.surface(isDark))
                     : (isDark
                         ? Brand.darkCardElevated
                         : ntype.color.withAlpha(((0.03) * 255).toInt())),

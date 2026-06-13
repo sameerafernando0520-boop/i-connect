@@ -22,7 +22,7 @@ class EaSettingsPage extends StatelessWidget {
     final localeProvider = context.watch<LocaleProvider>();
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: AppBar(
         backgroundColor: isDark ? Brand.darkCard : Colors.white,
         elevation: 0,

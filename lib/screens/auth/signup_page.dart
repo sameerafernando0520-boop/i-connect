@@ -242,7 +242,7 @@ class _SignupPageState extends State<SignupPage> {
       context: context,
       barrierDismissible: false,
       builder: (dialogCtx) => Dialog(
-        backgroundColor: isDark ? Brand.darkCard : Brand.cardLight,
+        backgroundColor: Brand.surface(isDark),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
           side: isDark
@@ -322,10 +322,10 @@ class _SignupPageState extends State<SignupPage> {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light.copyWith(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: isDark ? Brand.darkCard : Brand.cardLight,
+        systemNavigationBarColor: Brand.surface(isDark),
       ),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: Stack(
           children: [
             // Top gradient
@@ -449,7 +449,7 @@ class _SignupPageState extends State<SignupPage> {
                         child: Container(
                           padding: const EdgeInsets.all(24),
                           decoration: BoxDecoration(
-                            color: isDark ? Brand.darkCard : Brand.cardLight,
+                            color: Brand.surface(isDark),
                             borderRadius: BorderRadius.circular(24),
                             border: Border.all(
                               color:
@@ -1097,7 +1097,7 @@ class _SignupPageState extends State<SignupPage> {
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
+        color: Brand.surface(isDark),
         borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
         border: Border(
           top: BorderSide(

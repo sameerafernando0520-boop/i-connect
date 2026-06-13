@@ -369,7 +369,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
           : SystemUiOverlayStyle.dark
               .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
-        backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+        backgroundColor: Brand.canvas(isDark),
         body: _buildBody(isDark),
         bottomNavigationBar: _buildBottomNav(isDark),
       ),
@@ -1166,7 +1166,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                     padding:
                         const EdgeInsets.symmetric(vertical: 14, horizontal: 6),
                     decoration: BoxDecoration(
-                      color: isDark ? Brand.darkCard : Brand.cardLight,
+                      color: Brand.surface(isDark),
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(
                           color: isDark
@@ -1322,7 +1322,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
       child: Container(
         margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(18),
           border: Border.all(
             color: isUrgent
@@ -1479,7 +1479,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
         margin: const EdgeInsets.symmetric(horizontal: 20),
         padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 24),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Brand.cardLight,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(22),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,

@@ -218,7 +218,7 @@ class _EaReportsPageState extends State<EaReportsPage>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Brand.darkBg : Brand.scaffoldLight,
+      backgroundColor: Brand.canvas(isDark),
       appBar: _buildAppBar(isDark),
       body: _loading
           ? const Center(child: CircularProgressIndicator(color: _eaAccent))

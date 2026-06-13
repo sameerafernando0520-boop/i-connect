@@ -189,7 +189,7 @@ class _StatCardState extends State<StatCard> with SingleTickerProviderStateMixin
                         Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: isDark ? Brand.darkBg : Brand.scaffoldLight,
+                            color: Brand.canvas(isDark),
                             shape: BoxShape.circle,
                             border: Border.all(
                               color: isDark ? Brand.darkBorder : Colors.transparent,
