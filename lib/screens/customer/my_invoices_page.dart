@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
 import 'customer_invoice_detail_page.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 // ── file-level helpers ──────────────────────────────────────────
 final _cur = NumberFormat('#,##0.00', 'en_US');
@@ -22,26 +23,8 @@ String _fmtDate(dynamic v) {
   return dt == null ? '—' : _dateFmt.format(dt);
 }
 
-Color _statusColor(String s) {
-  switch (s) {
-    case 'sent':
-      return Brand.royalBlue;
-    case 'viewed':
-      return const Color(0xFF06B6D4);
-    case 'partially_paid':
-      return const Color(0xFFF59E0B);
-    case 'paid':
-      return Brand.lightGreen;
-    case 'overdue':
-      return const Color(0xFFEF4444);
-    case 'cancelled':
-      return const Color(0xFF6B7280);
-    case 'refunded':
-      return const Color(0xFF8B5CF6);
-    default:
-      return const Color(0xFF6B7280);
-  }
-}
+// Unified through the DS status palette (single source of truth).
+Color _statusColor(String s) => DsStatusPill.colorFor(s);
 
 String _statusLabel(S t, String s) {
   switch (s) {
@@ -147,36 +130,31 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text(
-          t.invoiceMyInvoices,
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            letterSpacing: -0.3,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+      body: Column(
+        children: [
+          DsPageHeader(
+            title: t.invoiceMyInvoices,
+            subtitle: '${_invoices.length} invoices',
           ),
-        ),
-        backgroundColor: isDark ? Brand.darkBg : Colors.white,
-        foregroundColor: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        elevation: 0,
-        scrolledUnderElevation: 1,
-      ),
-      body: RefreshIndicator(
-        onRefresh: _load,
-        color: Brand.royalBlue,
-        child: _isLoading
-            ? _buildShimmer(isDark)
-            : Column(
-                children: [
-                  _buildFilters(isDark, t),
-                  Expanded(
-                    child: _filtered.isEmpty
-                        ? _buildEmpty(isDark, t)
-                        : _buildList(isDark, t),
-                  ),
-                ],
-              ),
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: _load,
+              color: Brand.royalBlue,
+              child: _isLoading
+                  ? _buildShimmer(isDark)
+                  : Column(
+                      children: [
+                        _buildFilters(isDark, t),
+                        Expanded(
+                          child: _filtered.isEmpty
+                              ? _buildEmpty(isDark, t)
+                              : _buildList(isDark, t),
+                        ),
+                      ],
+                    ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -263,11 +241,9 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(18),
-          border: isDark
-              ? Border.all(color: Brand.darkBorder)
-              : null,
+          color: Brand.surface(isDark),
+          borderRadius: BorderRadius.circular(Brand.cardRadius),
+          border: Border.all(color: Brand.cardBorder(isDark), width: Brand.cardBorderWidth),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -412,11 +388,9 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(18),
-          border: isDark
-              ? Border.all(color: Brand.darkBorder)
-              : null,
+          color: Brand.surface(isDark),
+          borderRadius: BorderRadius.circular(Brand.cardRadius),
+          border: Border.all(color: Brand.cardBorder(isDark), width: Brand.cardBorderWidth),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

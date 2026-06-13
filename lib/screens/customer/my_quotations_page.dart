@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
 import '../../l10n/s.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 // ── file-level helpers ──────────────────────────────────────────
 final _cur = NumberFormat('#,##0.00', 'en_US');
@@ -21,24 +22,8 @@ String _fmtDate(dynamic v) {
   return dt == null ? '—' : _dateFmt.format(dt);
 }
 
-Color _qStatusColor(String s) {
-  switch (s) {
-    case 'sent':
-      return Brand.royalBlue;
-    case 'viewed':
-      return const Color(0xFF06B6D4);
-    case 'accepted':
-      return Brand.lightGreen;
-    case 'rejected':
-      return const Color(0xFFEF4444);
-    case 'expired':
-      return const Color(0xFFF59E0B);
-    case 'converted':
-      return const Color(0xFF06B6D4);
-    default:
-      return const Color(0xFF6B7280);
-  }
-}
+// Unified through the DS status palette (single source of truth).
+Color _qStatusColor(String s) => DsStatusPill.colorFor(s);
 
 String _qStatusLabel(String s) {
   switch (s) {
@@ -142,36 +127,28 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text(
-          'My Quotations',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w600,
-            letterSpacing: -0.5,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+      body: Column(
+        children: [
+          const DsPageHeader(title: 'My Quotations'),
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: _load,
+              color: Brand.royalBlue,
+              child: _isLoading
+                  ? _buildShimmer(isDark)
+                  : Column(
+                      children: [
+                        _buildFilters(isDark),
+                        Expanded(
+                          child: _filtered.isEmpty
+                              ? _buildEmpty(isDark)
+                              : _buildList(isDark),
+                        ),
+                      ],
+                    ),
+            ),
           ),
-        ),
-        backgroundColor: isDark ? Brand.darkBg : Colors.white,
-        foregroundColor: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        elevation: 0,
-        scrolledUnderElevation: 1,
-      ),
-      body: RefreshIndicator(
-        onRefresh: _load,
-        color: Brand.royalBlue,
-        child: _isLoading
-            ? _buildShimmer(isDark)
-            : Column(
-                children: [
-                  _buildFilters(isDark),
-                  Expanded(
-                    child: _filtered.isEmpty
-                        ? _buildEmpty(isDark)
-                        : _buildList(isDark),
-                  ),
-                ],
-              ),
+        ],
       ),
     );
   }

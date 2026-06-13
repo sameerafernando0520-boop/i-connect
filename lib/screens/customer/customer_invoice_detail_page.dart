@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 // ── file-level helpers ──────────────────────────────────────────
 final _cur = NumberFormat('#,##0.00', 'en_US');
@@ -20,26 +21,8 @@ String _fmtDate(dynamic v) {
   return dt == null ? '—' : _dateFmt.format(dt);
 }
 
-Color _statusColor(String s) {
-  switch (s) {
-    case 'sent':
-      return Brand.royalBlue;
-    case 'viewed':
-      return const Color(0xFF06B6D4);
-    case 'partially_paid':
-      return const Color(0xFFF59E0B);
-    case 'paid':
-      return Brand.lightGreen;
-    case 'overdue':
-      return const Color(0xFFEF4444);
-    case 'cancelled':
-      return const Color(0xFF6B7280);
-    case 'refunded':
-      return const Color(0xFF8B5CF6);
-    default:
-      return const Color(0xFF6B7280);
-  }
-}
+// Unified through the DS status palette (single source of truth).
+Color _statusColor(String s) => DsStatusPill.colorFor(s);
 
 String _statusLabel(String s) {
   switch (s) {

@@ -9,6 +9,7 @@ import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/customer/submit_payment_sheet.dart';
 import '../admin/installment_detail_page.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 class CustomerInstallmentsPage extends StatefulWidget {
   const CustomerInstallmentsPage({super.key});
@@ -66,42 +67,29 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text(
-          t.installmentMyInstallments,
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w600,
-            letterSpacing: -0.5,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        backgroundColor: Brand.surface(isDark),
-        foregroundColor: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        elevation: 0,
-        scrolledUnderElevation: 1,
-        iconTheme: IconThemeData(
-          color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        ),
-      ),
-      body: RefreshIndicator(
-        onRefresh: _load,
-        color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-        backgroundColor: Brand.surface(isDark),
-        child: _isLoading
-            ? Center(
-                child: CircularProgressIndicator(
-                  color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-                ),
-              )
-            : _plans.isEmpty
-                ? _buildEmptyState(isDark, t)
-                : ListView.builder(
+      body: Column(children: [
+        DsPageHeader(title: t.installmentMyInstallments),
+        Expanded(
+          child: RefreshIndicator(
+            onRefresh: _load,
+            color: isDark ? Brand.darkIconActive : Brand.royalBlue,
+            backgroundColor: Brand.surface(isDark),
+            child: _isLoading
+                ? Center(
+                    child: CircularProgressIndicator(
+                      color: isDark ? Brand.darkIconActive : Brand.royalBlue,
+                    ),
+                  )
+                : _plans.isEmpty
+                    ? _buildEmptyState(isDark, t)
+                    : ListView.builder(
                     padding: const EdgeInsets.all(16),
                     itemCount: _plans.length,
                     itemBuilder: (_, i) => _buildCard(isDark, t, _plans[i]),
                   ),
-      ),
+          ),
+        ),
+      ]),
     );
   }
 
