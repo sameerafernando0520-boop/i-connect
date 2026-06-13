@@ -9,6 +9,7 @@ import '../config/brand_colors.dart';
 class ThemeProvider extends ChangeNotifier {
   static const String _themeKey = 'isDarkMode';
   static const String _styleKey = 'dark_style';
+  static const String _designKey = 'app_design';
 
   bool _isDarkMode = false;
   bool _isLoaded = false;
@@ -19,6 +20,28 @@ class ThemeProvider extends ChangeNotifier {
 
   /// Which of the three dark looks is active (Navy Glow / Workshop / Fusion).
   DarkStyle get darkStyle => Brand.darkStyle;
+
+  /// The active STRUCTURAL design (Navy Glow vs Workshop) — flips every
+  /// DS-based screen between the two looks.
+  AppDesign get design => Brand.design;
+
+  static String designName(AppDesign d) => switch (d) {
+        AppDesign.navyGlow => 'Navy Glow',
+        AppDesign.workshop => 'Workshop',
+      };
+
+  /// Pick the structural design. Persists and rebuilds the whole tree.
+  Future<void> setDesign(AppDesign d) async {
+    await _ensureLoaded();
+    Brand.setDesign(d);
+    notifyListeners();
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(_designKey, d.name);
+    } catch (e) {
+      debugPrint('⚠️ App design save failed: $e');
+    }
+  }
 
   static String styleName(DarkStyle s) => switch (s) {
         DarkStyle.navy => 'Navy Glow',
@@ -69,6 +92,11 @@ class ThemeProvider extends ChangeNotifier {
           .where((s) => s.name == styleName)
           .firstOrNull;
       if (style != null) Brand.setDarkStyle(style);
+      final designName = prefs.getString(_designKey);
+      final dsn = AppDesign.values
+          .where((d) => d.name == designName)
+          .firstOrNull;
+      if (dsn != null) Brand.setDesign(dsn);
     } catch (e) {
       _isDarkMode = false;
       debugPrint('⚠️ Theme preference load failed: $e');

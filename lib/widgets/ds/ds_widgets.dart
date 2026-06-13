@@ -31,7 +31,73 @@ class DsHero extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) =>
+      Brand.isWorkshop ? _buildWorkshop(context) : _buildNavy(context);
+
+  // ── Workshop: bold ink title on paper, role-accent label, lime spark ──
+  Widget _buildWorkshop(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Brand.canvas(isDark),
+        border: Border(
+          bottom: BorderSide(color: Brand.cardBorder(isDark), width: 1.5),
+        ),
+      ),
+      child: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: padding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          greeting.toUpperCase(),
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 1.2,
+                            color: Brand.inkSoft(isDark),
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: -0.5,
+                            height: 1.05,
+                            color: Brand.ink(isDark),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  if (trailing != null) trailing!,
+                ],
+              ),
+              if (actionCard != null) ...[
+                const SizedBox(height: 14),
+                actionCard!,
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNavy(BuildContext context) {
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
@@ -149,6 +215,17 @@ class DsHeroCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final workshop = Brand.isWorkshop;
+    // Navy: frosted navy on the radial hero. Workshop: ink-outlined paper card.
+    final bg = workshop ? Brand.surface(isDark) : const Color(0xD916294F);
+    final borderColor =
+        workshop ? Brand.cardBorder(isDark) : const Color(0xFF2A3F6E);
+    final labelColor =
+        workshop ? Brand.inkSoft(isDark) : const Color(0xFF8FA3C8);
+    final titleColor = workshop ? Brand.ink(isDark) : Colors.white;
+    final chevronColor =
+        workshop ? Brand.inkSoft(isDark) : const Color(0xFF5B6F99);
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -157,8 +234,9 @@ class DsHeroCard extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: const Color(0xD916294F),
-            border: Border.all(color: const Color(0xFF2A3F6E)),
+            color: bg,
+            border: Border.all(
+                color: borderColor, width: workshop ? 1.5 : 1.0),
             borderRadius: BorderRadius.circular(14),
           ),
           child: Row(
@@ -167,7 +245,7 @@ class DsHeroCard extends StatelessWidget {
                 width: 34,
                 height: 34,
                 decoration: BoxDecoration(
-                  color: iconColor.withAlpha(36),
+                  color: iconColor.withAlpha(workshop ? 30 : 36),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Icon(icon, size: 17, color: iconColor),
@@ -179,10 +257,10 @@ class DsHeroCard extends StatelessWidget {
                   children: [
                     Text(
                       label,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF8FA3C8),
+                        color: labelColor,
                       ),
                     ),
                     const SizedBox(height: 1),
@@ -190,18 +268,18 @@ class DsHeroCard extends StatelessWidget {
                       title,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 12.5,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: titleColor,
                       ),
                     ),
                   ],
                 ),
               ),
               trailing ??
-                  const Icon(Icons.chevron_right_rounded,
-                      size: 18, color: Color(0xFF5B6F99)),
+                  Icon(Icons.chevron_right_rounded,
+                      size: 18, color: chevronColor),
             ],
           ),
         ),
@@ -263,10 +341,11 @@ class DsStatTile extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.fromLTRB(11, 12, 11, 12),
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Brand.cardLight,
-            borderRadius: BorderRadius.circular(16),
+            color: Brand.surface(isDark),
+            borderRadius: BorderRadius.circular(Brand.cardRadius),
             border: Border.all(
-                color: isDark ? Brand.darkBorder : const Color(0xFFE4E9F2)),
+                color: Brand.cardBorder(isDark),
+                width: Brand.cardBorderWidth),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -290,7 +369,7 @@ class DsStatTile extends StatelessWidget {
                   fontWeight: FontWeight.w800,
                   letterSpacing: -0.3,
                   height: 1.15,
-                  color: isDark ? Brand.darkTextPrimary : const Color(0xFF0F2557),
+                  color: Brand.ink(isDark),
                 ),
               ),
               const SizedBox(height: 1),
@@ -301,9 +380,7 @@ class DsStatTile extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.w500,
-                  color: isDark
-                      ? Brand.darkTextSecondary
-                      : const Color(0xFF64748B),
+                  color: Brand.inkSoft(isDark),
                 ),
               ),
             ],
@@ -433,14 +510,16 @@ class DsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    // Workshop overrides the soft 16-radius hairline with a tighter ink panel.
+    final r = Brand.isWorkshop ? Brand.cardRadius : radius;
     final card = Container(
       padding: padding,
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Brand.cardLight,
-        borderRadius: BorderRadius.circular(radius),
+        color: Brand.surface(isDark),
+        borderRadius: BorderRadius.circular(r),
         border: Border.all(
-          color: borderColor ??
-              (isDark ? Brand.darkBorder : const Color(0xFFE4E9F2)),
+          color: borderColor ?? Brand.cardBorder(isDark),
+          width: Brand.cardBorderWidth,
         ),
       ),
       child: child,
@@ -452,7 +531,7 @@ class DsCard extends StatelessWidget {
             child: InkWell(
               onTap: onTap,
               onLongPress: onLongPress,
-              borderRadius: BorderRadius.circular(radius),
+              borderRadius: BorderRadius.circular(r),
               child: card,
             ),
           );
@@ -511,9 +590,7 @@ class DsActionCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w700,
-                        color: isDark
-                            ? Brand.darkTextPrimary
-                            : const Color(0xFF0F2557),
+                        color: Brand.ink(isDark),
                       ),
                     ),
                     if (subtitle != null) ...[
@@ -526,9 +603,7 @@ class DsActionCard extends StatelessWidget {
                           fontSize: 11.5,
                           fontWeight: FontWeight.w500,
                           height: 1.45,
-                          color: isDark
-                              ? Brand.darkTextSecondary
-                              : const Color(0xFF64748B),
+                          color: Brand.inkSoft(isDark),
                         ),
                       ),
                     ],
@@ -538,8 +613,7 @@ class DsActionCard extends StatelessWidget {
               if (trailing != null) ...[const SizedBox(width: 8), trailing!]
               else if (onTap != null)
                 Icon(Icons.chevron_right_rounded,
-                    size: 18,
-                    color: isDark ? Brand.darkTextTertiary : const Color(0xFFB6C0D4)),
+                    size: 18, color: Brand.inkSoft(isDark)),
             ],
           ),
           if (footer != null) ...[const SizedBox(height: 11), footer!],
@@ -617,6 +691,31 @@ class DsStatusPill extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final color = colorOverride ?? colorFor(status);
+    final textColor =
+        isDark ? color : Color.lerp(color, Colors.black, 0.25)!;
+    // Workshop: tilted "sticker" with an ink-ish outline. Navy: rounded pill.
+    if (Brand.isWorkshop) {
+      return Transform.rotate(
+        angle: -0.03,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
+          decoration: BoxDecoration(
+            color: color.withAlpha(isDark ? 46 : 30),
+            borderRadius: BorderRadius.circular(7),
+            border: Border.all(color: textColor.withAlpha(120), width: 1.2),
+          ),
+          child: Text(
+            label.toUpperCase(),
+            style: TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 0.4,
+              color: textColor,
+            ),
+          ),
+        ),
+      );
+    }
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
@@ -629,7 +728,7 @@ class DsStatusPill extends StatelessWidget {
           fontSize: 10,
           fontWeight: FontWeight.w700,
           letterSpacing: 0.4,
-          color: isDark ? color : Color.lerp(color, Colors.black, 0.25)!,
+          color: textColor,
         ),
       ),
     );
@@ -656,7 +755,82 @@ class DsPageHeader extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) =>
+      Brand.isWorkshop ? _buildWorkshop(context) : _buildNavy(context);
+
+  Widget _buildWorkshop(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Brand.canvas(isDark),
+        border: Border(
+          bottom: BorderSide(color: Brand.cardBorder(isDark), width: 1.5),
+        ),
+      ),
+      child: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(8, 6, 16, 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  if (showBack)
+                    IconButton(
+                      onPressed: () => Navigator.maybePop(context),
+                      icon: Icon(Icons.arrow_back_ios_new_rounded,
+                          size: 18, color: Brand.ink(isDark)),
+                    )
+                  else
+                    const SizedBox(width: 8),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (subtitle != null)
+                          Text(
+                            subtitle!.toUpperCase(),
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 1.0,
+                              color: Brand.inkSoft(isDark),
+                            ),
+                          ),
+                        Text(
+                          title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: -0.5,
+                            color: Brand.ink(isDark),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  ...actions,
+                ],
+              ),
+              if (bottom != null) ...[
+                const SizedBox(height: 12),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: bottom!,
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNavy(BuildContext context) {
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
@@ -772,8 +946,7 @@ class DsSectionHeader extends StatelessWidget {
                 fontSize: 13,
                 fontWeight: FontWeight.w700,
                 letterSpacing: 0.1,
-                color:
-                    isDark ? Brand.darkTextPrimary : const Color(0xFF0F2557),
+                color: Brand.ink(isDark),
               ),
             ),
           ),
@@ -832,8 +1005,7 @@ class DsEmptyState extends StatelessWidget {
               style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w700,
-                color:
-                    isDark ? Brand.darkTextPrimary : const Color(0xFF0F2557),
+                color: Brand.ink(isDark),
               ),
             ),
             if (subtitle != null) ...[
@@ -844,9 +1016,7 @@ class DsEmptyState extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12.5,
                   height: 1.5,
-                  color: isDark
-                      ? Brand.darkTextSecondary
-                      : const Color(0xFF64748B),
+                  color: Brand.inkSoft(isDark),
                 ),
               ),
             ],
@@ -870,7 +1040,7 @@ class DsInputs {
     Widget? suffix,
   }) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final border = isDark ? Brand.darkBorder : const Color(0xFFE4E9F2);
+    final border = Brand.cardBorder(isDark);
     return InputDecoration(
       labelText: label,
       hintText: hint,
@@ -881,7 +1051,7 @@ class DsInputs {
               color: isDark ? Brand.darkIconActive : Brand.royalBlue),
       suffixIcon: suffix,
       filled: true,
-      fillColor: isDark ? Brand.darkCardElevated : Brand.cardLight,
+      fillColor: Brand.surface(isDark),
       isDense: true,
       labelStyle: TextStyle(
         fontSize: 12.5,

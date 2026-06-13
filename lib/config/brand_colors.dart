@@ -6,6 +6,15 @@ import 'package:flutter/material.dart';
 ///  - fusion:   "Fusion" — navy depth with Workshop's outlined structure
 enum DarkStyle { navy, workshop, fusion }
 
+/// The two selectable STRUCTURAL designs (independent of light/dark).
+///  - navyGlow: radial splash-navy heroes, soft-bordered cards, rounded pills
+///  - workshop: paper canvas, ink-outlined bento cards, perforated tickets,
+///              tilted "sticker" status chips, lime spark accents
+///
+/// DS components branch on [Brand.design] so a single setting flips the entire
+/// app between the two looks without duplicating any screen code.
+enum AppDesign { navyGlow, workshop }
+
 /// One dark palette. All `Brand.dark*` getters resolve through the active one.
 class DarkPalette {
   final Color bg;
@@ -124,6 +133,68 @@ class Brand {
   static void setDarkStyle(DarkStyle s) {
     _style = s;
     _dark = paletteFor(s);
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // STRUCTURAL DESIGN (Navy Glow vs Workshop) — the master look switch
+  // ═══════════════════════════════════════════════════════════════
+
+  static AppDesign _design = AppDesign.navyGlow;
+  static AppDesign get design => _design;
+  static bool get isWorkshop => _design == AppDesign.workshop;
+
+  /// Swap the structural design. DS components read [design] on rebuild.
+  static void setDesign(AppDesign d) => _design = d;
+
+  // ── Workshop palette ──────────────────────────────────────────
+  // Light: warm paper canvas + confident ink outlines (readable outdoors).
+  static const Color workshopPaper = Color(0xFFF7F5F0);
+  static const Color workshopInk = Color(0xFF1A1D29);
+  static const Color workshopInkSoft = Color(0xFF6B6E7B);
+  static const Color workshopHairline = Color(0xFFC9C5BA);
+  // Dark: ink canvas, paper-white text — lime spark pops harder.
+  static const Color workshopCanvasDark = Color(0xFF14161F);
+  static const Color workshopCardDark = Color(0xFF1C1F2B);
+  static const Color workshopInkDark = Color(0xFFF2EFE6);
+
+  /// Page/scaffold background for the active design + brightness.
+  static Color canvas(bool isDark) {
+    if (isWorkshop) return isDark ? workshopCanvasDark : workshopPaper;
+    return isDark ? darkBg : scaffoldLight;
+  }
+
+  /// Card surface for the active design + brightness.
+  static Color surface(bool isDark) {
+    if (isWorkshop) return isDark ? workshopCardDark : Colors.white;
+    return isDark ? darkCard : cardLight;
+  }
+
+  /// Card border. Workshop = strong ink outline; Navy Glow = soft hairline.
+  static Color cardBorder(bool isDark) {
+    if (isWorkshop) {
+      return isDark ? const Color(0xFF3A3E4F) : workshopInk;
+    }
+    return isDark ? darkBorder : const Color(0xFFE4E9F2);
+  }
+
+  /// Card border width — Workshop draws a bold 1.5px ink outline.
+  static double get cardBorderWidth => isWorkshop ? 1.5 : 1.0;
+
+  /// Card corner radius — Workshop is slightly tighter / more "panel".
+  static double get cardRadius => isWorkshop ? 14 : 16;
+
+  /// Primary text for the active design + brightness.
+  static Color ink(bool isDark) {
+    if (isWorkshop) return isDark ? workshopInkDark : workshopInk;
+    return isDark ? darkTextPrimary : const Color(0xFF0F2557);
+  }
+
+  /// Secondary/muted text.
+  static Color inkSoft(bool isDark) {
+    if (isWorkshop) {
+      return isDark ? const Color(0xFFA4A7B5) : workshopInkSoft;
+    }
+    return isDark ? darkTextSecondary : const Color(0xFF64748B);
   }
 
   // ─── Dark Theme (resolved through the active palette) ───

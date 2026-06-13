@@ -57,7 +57,7 @@ class _ThemeStyleBody extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              'Pick a light or dark look. Dark has three styles.',
+              'Choose a design, then a light or dark look.',
               style: TextStyle(
                 fontSize: 12.5,
                 color: isDark
@@ -66,6 +66,53 @@ class _ThemeStyleBody extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
+            // ── Structural design switch (Navy Glow vs Workshop) ──
+            Text(
+              'DESIGN',
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.8,
+                color: isDark
+                    ? Brand.darkTextTertiary
+                    : Brand.textSecondaryLight,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                Expanded(
+                  child: _DesignTile(
+                    name: 'Navy Glow',
+                    caption: 'Radial navy heroes',
+                    selected: tp.design == AppDesign.navyGlow,
+                    onTap: () => tp.setDesign(AppDesign.navyGlow),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: _DesignTile(
+                    name: 'Workshop',
+                    caption: 'Ink-outlined panels',
+                    selected: tp.design == AppDesign.workshop,
+                    onTap: () => tp.setDesign(AppDesign.workshop),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 18),
+            Text(
+              'THEME',
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.8,
+                color: isDark
+                    ? Brand.darkTextTertiary
+                    : Brand.textSecondaryLight,
+              ),
+            ),
+            const SizedBox(height: 8),
             _LightTile(
               selected: !tp.isDarkMode,
               onTap: () => tp.setDarkMode(false),
@@ -92,6 +139,87 @@ class _ThemeStyleBody extends StatelessWidget {
                 ),
               );
             }),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Compact selector for the structural design (Navy Glow vs Workshop).
+class _DesignTile extends StatelessWidget {
+  final String name;
+  final String caption;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _DesignTile({
+    required this.name,
+    required this.caption,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final accent = isDark ? Brand.darkIconActive : Brand.royalBlue;
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(14),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        decoration: BoxDecoration(
+          color: isDark ? Brand.darkCard : Brand.cardLight,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(
+            color: selected
+                ? accent
+                : (isDark ? Brand.darkBorder : Brand.borderLight),
+            width: selected ? 1.6 : 1,
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  selected
+                      ? Icons.check_circle_rounded
+                      : Icons.circle_outlined,
+                  size: 18,
+                  color: selected
+                      ? accent
+                      : (isDark ? Brand.darkBorderLight : Brand.borderLight),
+                ),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      color: isDark
+                          ? Brand.darkTextPrimary
+                          : Brand.textPrimaryLight,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 4),
+            Text(
+              caption,
+              style: TextStyle(
+                fontSize: 11,
+                color: isDark
+                    ? Brand.darkTextSecondary
+                    : Brand.textSecondaryLight,
+              ),
+            ),
           ],
         ),
       ),
