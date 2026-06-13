@@ -85,8 +85,8 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
   // ─── Dark Mode ─────────────────────────────────────────────
   bool _isDark = false;
 
-  Color get _scaffoldBg => _Brand.canvas(isDark);
-  Color get _cardBg => _Brand.surface(isDark);
+  Color get _scaffoldBg => Brand.canvas(_isDark);
+  Color get _cardBg => Brand.surface(_isDark);
   Color get _textPrimary =>
       _isDark ? Brand.darkTextPrimary : const Color(0xFF1A1A2E);
   Color get _textSecondary =>

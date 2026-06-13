@@ -59,7 +59,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
   // ─── Dark Mode ─────────────────────────────────────────────
   bool _isDark = false;
 
-  Color get _scaffoldBg => _Brand.canvas(isDark);
+  Color get _scaffoldBg => Brand.canvas(_isDark);
   Color get _cardBg => _isDark ? Brand.darkCard : Colors.white;
   Color get _textPrimary =>
       _isDark ? Brand.darkTextPrimary : AdminColors.textPrimary;

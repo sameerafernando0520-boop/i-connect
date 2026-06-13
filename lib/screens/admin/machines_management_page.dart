@@ -45,7 +45,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
   // ⚠️ NOT stored as fields — computed per access in build tree
   bool get _isDark => Theme.of(context).brightness == Brightness.dark;
 
-  Color get _scaffoldBg => _Brand.canvas(isDark);
+  Color get _scaffoldBg => Brand.canvas(_isDark);
   Color get _cardBg => _isDark ? Brand.darkCard : Colors.white;
   Color get _textPrimary =>
       _isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
@@ -2067,7 +2067,7 @@ class _MachineDetailSheetState extends State<_MachineDetailSheet> {
 
   // ── Theme helpers for detail sheet ──
   bool get _isDark => Theme.of(context).brightness == Brightness.dark;
-  Color get _scaffoldBg => _Brand.canvas(isDark);
+  Color get _scaffoldBg => Brand.canvas(_isDark);
   Color get _cardBg => _isDark ? Brand.darkCard : Colors.white;
   // ✅ AdminColors.textPrimary does NOT exist → use explicit color
   Color get _textPrimary =>
@@ -2631,7 +2631,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
 
   // ── Theme getters (not stored fields) ──
   bool get _isDark => Theme.of(context).brightness == Brightness.dark;
-  Color get _scaffoldBg => _Brand.canvas(isDark);
+  Color get _scaffoldBg => Brand.canvas(_isDark);
   Color get _cardBg => _isDark ? Brand.darkCard : Colors.white;
   // ✅ AdminColors.textPrimary does NOT exist
   Color get _textPrimary =>
