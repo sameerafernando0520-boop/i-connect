@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import 'ea_installation_detail_page.dart';
@@ -142,45 +143,50 @@ class _EaInstallationPageState extends State<EaInstallationPage> {
 
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
-      appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        elevation: 0,
-        title: _searchOpen
-            ? TextField(
-                controller: _searchCtrl,
-                autofocus: true,
-                decoration: const InputDecoration(
-                  hintText: 'Search installations…',
-                  border: InputBorder.none,
-                ),
-                onChanged: _onSearch,
-              )
-            : const Text(
-                'Machine Installations',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-              ),
-        actions: [
-          IconButton(
-            icon: Icon(_searchOpen ? Icons.close : Icons.search),
-            onPressed: () {
-              setState(() {
-                _searchOpen = !_searchOpen;
-                if (!_searchOpen) {
-                  _searchCtrl.clear();
-                  _search = '';
-                  _applyFilters();
-                }
-              });
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: _load,
-          ),
-        ],
-      ),
       body: Column(
         children: [
+          DsPageHeader(
+            accent: HeroAccent.emerald,
+            title: "Machine Installations",
+            actions: [
+              DsHeroAction(
+                _searchOpen ? Icons.close : Icons.search,
+                () {
+                  setState(() {
+                    _searchOpen = !_searchOpen;
+                    if (!_searchOpen) {
+                      _searchCtrl.clear();
+                      _search = "";
+                      _applyFilters();
+                    }
+                  });
+                },
+                active: _searchOpen,
+              ),
+              const SizedBox(width: 6),
+              DsHeroAction(Icons.refresh_rounded, _load),
+            ],
+            bottom: _searchOpen
+                ? TextField(
+                    controller: _searchCtrl,
+                    autofocus: true,
+                    style: const TextStyle(color: Colors.white, fontSize: 13),
+                    cursorColor: Brand.emeraldBright,
+                    decoration: const InputDecoration(
+                      hintText: "Search installations…",
+                      hintStyle: TextStyle(color: Color(0xFF8FC8B0), fontSize: 13),
+                      isDense: true,
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF1E5C44)),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Brand.emeraldBright),
+                      ),
+                    ),
+                    onChanged: _onSearch,
+                  )
+                : null,
+          ),
           // Status filter chips
           _buildStatusChips(isDark),
           // Content
