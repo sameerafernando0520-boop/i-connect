@@ -82,7 +82,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
   // FIX: replaced AdminColors.background/surface/textPrimary (non-existent
   // static consts) with Brand equivalents + AdminColors context methods
   Color get _bg => Brand.canvas(_isDark);
-  Color get _cardBg => _isDark ? Brand.darkCard : Colors.white;
+  Color get _cardBg => Brand.surface(_isDark);
   Color get _inputBg => Brand.canvas(_isDark);
   Color get _primary => _isDark ? Brand.royalBlueGlow : AdminColors.primary;
   Color get _accent => _isDark ? Brand.lightGreenBright : AdminColors.accent;

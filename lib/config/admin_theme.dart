@@ -50,31 +50,32 @@ class AdminColors {
   static bool _isDark(BuildContext ctx) =>
       Theme.of(ctx).brightness == Brightness.dark;
 
+  // These route through the design-aware Brand helpers so the entire staff UI
+  // (admin / marketing / engineering-admin, which all consume AdminColors)
+  // flips between Navy Glow and Workshop with the design switch. In Navy Glow
+  // mode the helpers return the previous values — zero visual change.
+
   /// Card / panel surface background
-  static Color card(BuildContext ctx) =>
-      _isDark(ctx) ? Brand.darkCard : surfaceLight;
+  static Color card(BuildContext ctx) => Brand.surface(_isDark(ctx));
 
   /// Elevated card (slightly lighter in dark)
   static Color cardElevated(BuildContext ctx) =>
       _isDark(ctx) ? Brand.darkCardElevated : surfaceLight;
 
   /// Scaffold / page background
-  static Color bg(BuildContext ctx) => _isDark(ctx) ? Brand.darkBg : background;
+  static Color bg(BuildContext ctx) => Brand.canvas(_isDark(ctx));
 
   /// Border / divider line
-  static Color border(BuildContext ctx) =>
-      _isDark(ctx) ? Brand.darkBorder : borderLightColor;
+  static Color border(BuildContext ctx) => Brand.cardBorder(_isDark(ctx));
 
   /// Divider (alias for border)
   static Color divider(BuildContext ctx) => border(ctx);
 
   /// Primary text color
-  static Color text(BuildContext ctx) =>
-      _isDark(ctx) ? Brand.darkTextPrimary : textPrimary;
+  static Color text(BuildContext ctx) => Brand.ink(_isDark(ctx));
 
   /// Secondary text color (theme-aware)
-  static Color textSub(BuildContext ctx) =>
-      _isDark(ctx) ? Brand.darkTextSecondary : textSecondaryLight;
+  static Color textSub(BuildContext ctx) => Brand.inkSoft(_isDark(ctx));
 
   /// Tertiary / hint text color (theme-aware)
   static Color textHint(BuildContext ctx) =>

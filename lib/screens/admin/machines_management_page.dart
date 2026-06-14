@@ -46,14 +46,14 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
   bool get _isDark => Theme.of(context).brightness == Brightness.dark;
 
   Color get _scaffoldBg => Brand.canvas(_isDark);
-  Color get _cardBg => _isDark ? Brand.darkCard : Colors.white;
+  Color get _cardBg => Brand.surface(_isDark);
   Color get _textPrimary =>
       _isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
   Color get _textSecondary =>
       _isDark ? Brand.darkTextSecondary : Colors.grey.shade600;
   Color get _textMuted =>
       _isDark ? Brand.darkTextTertiary : Colors.grey.shade400;
-  Color get _borderColor => _isDark ? Brand.darkBorder : Colors.grey.shade200;
+  Color get _borderColor => Brand.cardBorder(_isDark);
   Color get _dividerColor =>
       _isDark ? Brand.darkBorderLight : Colors.grey.shade200;
   Color get _chipBg => _isDark ? Brand.darkCardElevated : Colors.white;
@@ -2068,13 +2068,13 @@ class _MachineDetailSheetState extends State<_MachineDetailSheet> {
   // ── Theme helpers for detail sheet ──
   bool get _isDark => Theme.of(context).brightness == Brightness.dark;
   Color get _scaffoldBg => Brand.canvas(_isDark);
-  Color get _cardBg => _isDark ? Brand.darkCard : Colors.white;
+  Color get _cardBg => Brand.surface(_isDark);
   // ✅ AdminColors.textPrimary does NOT exist → use explicit color
   Color get _textPrimary =>
       _isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
   Color get _textMuted =>
       _isDark ? Brand.darkTextTertiary : Colors.grey.shade400;
-  Color get _borderColor => _isDark ? Brand.darkBorder : Colors.grey.shade200;
+  Color get _borderColor => Brand.cardBorder(_isDark);
   Color get _primaryColor =>
       _isDark ? Brand.royalBlueGlow : AdminColors.primary;
   Color get _accentColor =>
@@ -2632,7 +2632,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
   // ── Theme getters (not stored fields) ──
   bool get _isDark => Theme.of(context).brightness == Brightness.dark;
   Color get _scaffoldBg => Brand.canvas(_isDark);
-  Color get _cardBg => _isDark ? Brand.darkCard : Colors.white;
+  Color get _cardBg => Brand.surface(_isDark);
   // ✅ AdminColors.textPrimary does NOT exist
   Color get _textPrimary =>
       _isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
@@ -2640,7 +2640,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
       _isDark ? Brand.darkTextSecondary : Colors.grey.shade600;
   Color get _textMuted =>
       _isDark ? Brand.darkTextTertiary : Colors.grey.shade400;
-  Color get _borderColor => _isDark ? Brand.darkBorder : Colors.grey.shade200;
+  Color get _borderColor => Brand.cardBorder(_isDark);
   Color get _elevatedFill =>
       _isDark ? const Color(0xFF22272E) : Colors.grey.shade100;
   Color get _primaryColor =>

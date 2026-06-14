@@ -60,14 +60,14 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
   bool _isDark = false;
 
   Color get _scaffoldBg => Brand.canvas(_isDark);
-  Color get _cardBg => _isDark ? Brand.darkCard : Colors.white;
+  Color get _cardBg => Brand.surface(_isDark);
   Color get _textPrimary =>
       _isDark ? Brand.darkTextPrimary : AdminColors.textPrimary;
   Color get _textSecondary =>
       _isDark ? Brand.darkTextSecondary : Colors.grey.shade600;
   Color get _textMuted =>
       _isDark ? Brand.darkTextTertiary : Colors.grey.shade400;
-  Color get _borderColor => _isDark ? Brand.darkBorder : Colors.grey.shade200;
+  Color get _borderColor => Brand.cardBorder(_isDark);
   Color get _dividerColor =>
       _isDark ? Brand.darkBorderLight : Colors.grey.shade200;
   Color get _chipBg => _isDark ? Brand.darkCardElevated : Colors.white;
