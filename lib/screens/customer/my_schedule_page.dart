@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../services/points_service.dart';
 import '../../utils/time_utils.dart';
@@ -492,37 +493,6 @@ class _MySchedulePageState extends State<MySchedulePage>
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text(
-          'My Schedules',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w600,
-            letterSpacing: -0.5,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        foregroundColor: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        elevation: 0,
-        scrolledUnderElevation: 1,
-        bottom: TabBar(
-          controller: _tabController,
-          labelColor: isDark ? Brand.royalBlueGlow : Brand.royalBlue,
-          unselectedLabelColor:
-              isDark ? Brand.darkTextTertiary : Brand.subtleLight,
-          indicatorColor: isDark ? Brand.royalBlueGlow : Brand.royalBlue,
-          indicatorSize: TabBarIndicatorSize.label,
-          labelStyle:
-              const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
-          unselectedLabelStyle:
-              const TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
-          tabs: [
-            Tab(text: 'Upcoming (${_upcoming.length})'),
-            Tab(text: 'Past (${_past.length})'),
-          ],
-        ),
-      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(
@@ -537,15 +507,39 @@ class _MySchedulePageState extends State<MySchedulePage>
         icon: const Icon(Icons.add),
         label: const Text('Request Service'),
       ),
-      body: _loading
-          ? _buildShimmer(isDark)
-          : TabBarView(
-              controller: _tabController,
-              children: [
-                _buildList(_upcoming, isDark, isUpcoming: true),
-                _buildList(_past, isDark, isUpcoming: false),
-              ],
-            ),
+      body: Column(children: [
+        const DsPageHeader(title: 'My Schedules'),
+        Container(
+          color: Brand.surface(isDark),
+          child: TabBar(
+            controller: _tabController,
+            labelColor: isDark ? Brand.royalBlueGlow : Brand.royalBlue,
+            unselectedLabelColor:
+                isDark ? Brand.darkTextTertiary : Brand.subtleLight,
+            indicatorColor: isDark ? Brand.royalBlueGlow : Brand.royalBlue,
+            indicatorSize: TabBarIndicatorSize.label,
+            labelStyle:
+                const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+            unselectedLabelStyle:
+                const TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+            tabs: [
+              Tab(text: 'Upcoming (${_upcoming.length})'),
+              Tab(text: 'Past (${_past.length})'),
+            ],
+          ),
+        ),
+        Expanded(
+          child: _loading
+              ? _buildShimmer(isDark)
+              : TabBarView(
+                  controller: _tabController,
+                  children: [
+                    _buildList(_upcoming, isDark, isUpcoming: true),
+                    _buildList(_past, isDark, isUpcoming: false),
+                  ],
+                ),
+        ),
+      ]),
     );
   }
 
