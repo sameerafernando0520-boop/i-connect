@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 
 import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import 'ea_leave_detail_page.dart';
 
@@ -284,33 +285,18 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
 
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
-      appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          widget.engineerName != null
+      body: Column(children: [
+        DsPageHeader(
+          accent: HeroAccent.emerald,
+          title: widget.engineerName != null
               ? '${widget.engineerName}\'s Leaves'
               : 'Leave Management',
-          style: TextStyle(
-            color: AdminColors.text(context),
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
+          actions: [
+            DsHeroAction(Icons.sort_rounded, _showSortSheet, tooltip: 'Sort'),
+          ],
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.sort_rounded),
-            color: AdminColors.textSub(context),
-            tooltip: 'Sort',
-            onPressed: _showSortSheet,
-          ),
-        ],
-      ),
-      body: RefreshIndicator(
+        Expanded(
+          child: RefreshIndicator(
         onRefresh: _load,
         color: _eaAccent,
         child: CustomScrollView(
@@ -426,6 +412,8 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
           ],
         ),
       ),
+        ),
+      ]),
     );
   }
 }

@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 
 const Color _eaAccent = Color(0xFF16A34A);
@@ -543,33 +544,28 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
 
     return Scaffold(
       backgroundColor: bg,
-      appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        foregroundColor: textPrimary,
-        elevation: 0,
-        title: const Text(
-          'Attendance',
-          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
-        ),
-        actions: [
-          if (_notMarkedCount > 0)
-            TextButton.icon(
-              onPressed: _bulkMarkAbsent,
-              icon: const Icon(Icons.check_box_outlined, size: 18),
-              label: Text('Mark $_notMarkedCount Absent'),
-              style: TextButton.styleFrom(
-                foregroundColor: const Color(0xFFEF4444),
-                textStyle: const TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          const SizedBox(width: 8),
-        ],
-      ),
       body: Column(
         children: [
+          DsPageHeader(
+            accent: HeroAccent.emerald,
+            title: 'Attendance',
+            actions: [
+              if (_notMarkedCount > 0)
+                TextButton.icon(
+                  onPressed: _bulkMarkAbsent,
+                  icon: const Icon(Icons.check_box_outlined, size: 18),
+                  label: Text('Mark $_notMarkedCount Absent'),
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: const Color(0x33FF6B6B),
+                    textStyle: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+            ],
+          ),
           // ── Date picker bar ────────────────────────────────────
           _DateBar(
             label: _dateLabel(),
