@@ -21,6 +21,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/common/estimate_chat_card.dart';
 import '../../widgets/common/chat_message_attachments.dart';
@@ -1035,24 +1036,8 @@ class _TicketDetailPageState extends State<TicketDetailPage>
     }
   }
 
-  Color _getStatusColor(String status) {
-    switch (status.toLowerCase()) {
-      case 'open':
-        return Brand.royalBlueLight;
-      case 'assigned':
-        return const Color(0xFF6A1B9A);
-      case 'in_progress':
-        return Colors.orange;
-      case 'waiting_customer':
-        return const Color(0xFFFF5722);
-      case 'resolved':
-        return Brand.lightGreen;
-      case 'closed':
-        return const Color(0xFF607D8B);
-      default:
-        return Colors.grey;
-    }
-  }
+  // Unified through the DS status palette (single source of truth).
+  Color _getStatusColor(String status) => DsStatusPill.colorFor(status);
 
   IconData _getStatusIcon(String status) {
     switch (status.toLowerCase()) {
@@ -1403,9 +1388,9 @@ class _TicketDetailPageState extends State<TicketDetailPage>
         color: Brand.surface(isDark),
         border: Border(
             bottom: BorderSide(
-                color: isDark ? Brand.darkBorder : Brand.borderLight,
-                width: 1)),
-        boxShadow: isDark
+                color: Brand.cardBorder(isDark),
+                width: Brand.cardBorderWidth)),
+        boxShadow: (isDark || Brand.isWorkshop)
             ? null
             : [
                 BoxShadow(
@@ -1449,9 +1434,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                       style: TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.w600,
-                        color: isDark
-                            ? Brand.darkTextPrimary
-                            : Brand.royalBlueDark,
+                        color: Brand.ink(isDark),
                         letterSpacing: -0.3,
                       ),
                     ),
@@ -1777,8 +1760,8 @@ class _TicketDetailPageState extends State<TicketDetailPage>
           color: Brand.surface(isDark),
           border: Border(
               bottom: BorderSide(
-                  color: isDark ? Brand.darkBorder : Brand.borderLight,
-                  width: 1)),
+                  color: Brand.cardBorder(isDark),
+                  width: Brand.cardBorderWidth)),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1790,7 +1773,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                 style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w700,
-                  color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+                  color: Brand.ink(isDark),
                   height: 1.3,
                   letterSpacing: -0.3,
                 ),
@@ -2673,26 +2656,26 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                   color: isFailed
                       ? Colors.red.withAlpha(((isDark ? 0.1 : 0.06) * 255).toInt())
                       : isMyMessage
-                          ? (isDark ? Brand.royalBlueDark : Brand.royalBlueDark)
+                          // Customer bubble: vibrant royal-blue (Navy Glow)
+                          // or ink (Workshop). White text in both.
+                          ? (Brand.isWorkshop
+                              ? Brand.workshopInk
+                              : Brand.royalBlue)
                           : (Brand.surface(isDark)),
                   borderRadius: BorderRadius.only(
-                    topLeft: const Radius.circular(20),
-                    topRight: const Radius.circular(20),
-                    bottomLeft: Radius.circular(isMyMessage ? 20 : 4),
-                    bottomRight: Radius.circular(isMyMessage ? 4 : 20),
+                    topLeft: const Radius.circular(18),
+                    topRight: const Radius.circular(18),
+                    bottomLeft: Radius.circular(isMyMessage ? 18 : 4),
+                    bottomRight: Radius.circular(isMyMessage ? 4 : 18),
                   ),
                   border: isFailed
                       ? Border.all(color: Colors.red.withAlpha(64))
                       : isMyMessage
-                          ? (isDark
-                              ? Border.all(
-                                  color: Brand.royalBlue.withAlpha(51))
-                              : null)
+                          ? null
                           : Border.all(
-                              color: isDark
-                                  ? Brand.darkBorder
-                                  : Brand.borderLight),
-                  boxShadow: isDark ? null : [
+                              color: Brand.cardBorder(isDark),
+                              width: Brand.cardBorderWidth),
+                  boxShadow: (isDark || Brand.isWorkshop) ? null : [
                     BoxShadow(
                       color: isMyMessage
                           ? Brand.royalBlue.withAlpha(51)
@@ -2855,9 +2838,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                           fontSize: 14,
                           color: isMyMessage
                               ? Colors.white
-                              : (isDark
-                                  ? Brand.darkTextPrimary
-                                  : Brand.royalBlueDark),
+                              : Brand.ink(isDark),
                           height: 1.45,
                           fontWeight: FontWeight.w500,
                         ),
@@ -3041,16 +3022,16 @@ class _TicketDetailPageState extends State<TicketDetailPage>
     return Container(
       padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(28),
           topRight: Radius.circular(28),
         ),
         border: Border(
             top: BorderSide(
-                color: isDark ? Brand.darkBorder : Brand.borderLight,
-                width: 1)),
-        boxShadow: isDark ? null : [
+                color: Brand.cardBorder(isDark),
+                width: Brand.cardBorderWidth)),
+        boxShadow: (isDark || Brand.isWorkshop) ? null : [
           BoxShadow(
             color: Brand.royalBlue.withAlpha(15),
             blurRadius: 24,
@@ -3141,9 +3122,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                       textCapitalization: TextCapitalization.sentences,
                       style: TextStyle(
                           fontSize: 14,
-                          color: isDark
-                              ? Brand.darkTextPrimary
-                              : Brand.royalBlueDark,
+                          color: Brand.ink(isDark),
                           fontWeight: FontWeight.w500),
                       cursorColor:
                           isDark ? Brand.royalBlueGlow : Brand.royalBlue,
