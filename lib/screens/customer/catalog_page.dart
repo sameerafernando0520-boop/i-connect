@@ -19,6 +19,7 @@ import 'package:flutter/services.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
 import '../../l10n/s.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'machine_detail_page.dart';
 
 // ── Custom Icons (private to this file) ──────────────────────
@@ -700,6 +701,7 @@ class _CatalogPageState extends State<CatalogPage> {
       child: Scaffold(
         backgroundColor: Brand.canvas(isDark),
         body: SafeArea(
+          top: false,
           child: Column(children: [
             _buildTopBar(isDark),
             if (_isSearching) _buildSearchBar(isDark),
@@ -721,40 +723,21 @@ class _CatalogPageState extends State<CatalogPage> {
     );
   }
 
-  // ── TOP BAR ────────────────────────────────────────────────
+  // ── TOP BAR — Navy Glow hero ───────────────────────────────
   Widget _buildTopBar(bool isDark) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(14, 10, 16, 0),
-      child: Row(children: [
-        _hBtn(Icons.arrow_back_ios_new_rounded, isDark,
-            () => Navigator.pop(context)),
-        const SizedBox(width: 14),
-        Expanded(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(S.of(context)!.catalogTitle,
-              style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w600,
-                  color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                  letterSpacing: -0.5)),
-          Text(
-              _selectedCategory == 'All'
-                  ? '${_allMachines.length} machines available'
-                  : '$_selectedCategory${_selectedSubCategory != null ? ' · $_selectedSubCategory' : ''}',
-              style: TextStyle(
-                  fontSize: 12,
-                  color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                  fontWeight: FontWeight.w500)),
-        ])),
+    return DsPageHeader(
+      title: S.of(context)!.catalogTitle,
+      subtitle: _selectedCategory == 'All'
+          ? '${_allMachines.length} machines available'
+          : '$_selectedCategory${_selectedSubCategory != null ? ' · $_selectedSubCategory' : ''}',
+      actions: [
         _hBtn(_isGridView ? Icons.view_list_rounded : Icons.grid_view_rounded,
-            isDark, () {
+            () {
           HapticFeedback.selectionClick();
           setState(() => _isGridView = !_isGridView);
         }),
-        const SizedBox(width: 8),
-        _hBtn(_isSearching ? Icons.close_rounded : Icons.search_rounded, isDark,
-            () {
+        const SizedBox(width: 6),
+        _hBtn(_isSearching ? Icons.close_rounded : Icons.search_rounded, () {
           setState(() {
             _isSearching = !_isSearching;
             if (!_isSearching) {
@@ -764,50 +747,27 @@ class _CatalogPageState extends State<CatalogPage> {
             }
           });
         }, isActive: _isSearching),
-      ]),
+      ],
     );
   }
 
-  Widget _hBtn(IconData icon, bool isDark, VoidCallback onTap,
-      {bool isActive = false}) {
-    return Material(
-        color: Colors.transparent,
-        child: InkWell(
-            onTap: onTap,
-            borderRadius: BorderRadius.circular(14),
-            child: Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                    color: isActive
-                        ? Brand.royalBlue
-                        : (Brand.surface(isDark)),
-                    borderRadius: BorderRadius.circular(14),
-                    border: isActive
-                        ? null
-                        : Border.all(
-                            color:
-                                isDark ? Brand.darkBorder : Brand.borderLight),
-                    boxShadow: isActive
-                        ? [
-                            BoxShadow(
-                                color: Brand.royalBlue.withAlpha(77),
-                                blurRadius: 10,
-                                offset: const Offset(0, 3))
-                          ]
-                        : (isDark
-                            ? null
-                            : [
-                                BoxShadow(
-                                    color: Brand.royalBlue.withAlpha(10),
-                                    blurRadius: 8,
-                                    offset: const Offset(0, 2))
-                              ])),
-                child: Icon(icon,
-                    color: isActive
-                        ? Colors.white
-                        : (isDark ? Brand.darkTextSecondary : Brand.royalBlue),
-                    size: 20))));
+  /// Frosted hero action button (sits on the navy header).
+  Widget _hBtn(IconData icon, VoidCallback onTap, {bool isActive = false}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 38,
+        height: 38,
+        decoration: BoxDecoration(
+          color: isActive ? Brand.lime.withAlpha(46) : Colors.white.withAlpha(18),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+              color: isActive ? Brand.lime : const Color(0xFF2A3F6E)),
+        ),
+        child: Icon(icon,
+            color: isActive ? Brand.lime : Colors.white, size: 19),
+      ),
+    );
   }
 
   // ── SEARCH BAR ─────────────────────────────────────────────
