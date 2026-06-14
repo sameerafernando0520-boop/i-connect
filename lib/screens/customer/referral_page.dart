@@ -11,6 +11,7 @@ import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
 import '../../l10n/s.dart';
 import '../../utils/time_utils.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 class ReferralPage extends StatefulWidget {
   const ReferralPage({super.key});
@@ -371,8 +372,13 @@ class _ReferralPageState extends State<ReferralPage> {
   }
 
   Widget _buildBody(bool isDark) {
-    return SafeArea(
-      child: RefreshIndicator(
+    return Column(children: [
+      DsPageHeader(
+        title: S.of(context)!.referralReferEarn,
+        subtitle: S.of(context)!.referralTagline,
+      ),
+      Expanded(
+        child: RefreshIndicator(
         onRefresh: _loadAll,
         color: isDark ? Brand.darkIconActive : Brand.royalBlue,
         backgroundColor: isDark ? Brand.darkCard : Colors.white,
@@ -380,7 +386,6 @@ class _ReferralPageState extends State<ReferralPage> {
           physics: const AlwaysScrollableScrollPhysics(
               parent: BouncingScrollPhysics()),
           slivers: [
-            SliverToBoxAdapter(child: _buildHeader(isDark)),
             SliverToBoxAdapter(child: _buildHeroBanner(isDark)),
             SliverToBoxAdapter(child: _buildCodeCard(isDark)),
             SliverToBoxAdapter(child: _buildShareButtons(isDark)),
@@ -395,54 +400,8 @@ class _ReferralPageState extends State<ReferralPage> {
           ],
         ),
       ),
-    );
-  }
-
-  // ─── HEADER ──────────────────────────────────────────────
-
-  Widget _buildHeader(bool isDark) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 12, 20, 0),
-      child: Row(children: [
-        Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: () => Navigator.pop(context),
-            borderRadius: BorderRadius.circular(14),
-            child: Container(
-              width: 44,
-              height: 44,
-              decoration: BoxDecoration(
-                color: Brand.surface(isDark),
-                borderRadius: BorderRadius.circular(14),
-                border: isDark ? Border.all(color: Brand.darkBorder) : null,
-              ),
-              child: Icon(Icons.arrow_back_ios_new_rounded,
-                  color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                  size: 18),
-            ),
-          ),
-        ),
-        const SizedBox(width: 14),
-        Expanded(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(S.of(context)!.referralReferEarn,
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w600,
-                  color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                  letterSpacing: -0.5,
-                )),
-            Text(S.of(context)!.referralTagline,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                )),
-          ]),
-        ),
-      ]),
-    );
+      ),
+    ]);
   }
 
   // ─── HERO BANNER ─────────────────────────────────────────
