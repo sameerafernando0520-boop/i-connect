@@ -1042,7 +1042,9 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
             expandedHeight: 360,
             pinned: true,
             stretch: true,
-            backgroundColor: isDark ? _dNavy : Brand.royalBlueDark,
+            backgroundColor: Brand.isWorkshop
+                ? Brand.workshopInk
+                : (isDark ? _dNavy : Brand.royalBlueDark),
             elevation: 0,
             leading: Padding(
                 padding: const EdgeInsets.all(8),

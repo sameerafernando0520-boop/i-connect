@@ -429,9 +429,11 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: isDark
-                    ? [Brand.darkCardElevated, Brand.darkCard]
-                    : [Brand.royalBlueSurface, Brand.cardLight],
+                colors: Brand.isWorkshop
+                    ? [Brand.surface(isDark), Brand.canvas(isDark)]
+                    : (isDark
+                        ? [Brand.darkCardElevated, Brand.darkCard]
+                        : [Brand.royalBlueSurface, Brand.cardLight]),
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
