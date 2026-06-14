@@ -8,6 +8,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import 'ea_ticket_detail_page.dart';
@@ -319,65 +320,22 @@ class _EaNotificationsPageState extends State<EaNotificationsPage> {
 
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
-      appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        elevation: 0,
-        title: Row(
-          children: [
-            const Text(
-              'Notifications',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-            ),
-            if (unread > 0) ...[
-              const SizedBox(width: 8),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                decoration: BoxDecoration(
-                  color: _eaAccent,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text(
-                  '$unread',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-            ],
-          ],
-        ),
-        actions: [
-          if (unread > 0)
-            _markingAll
-                ? const Padding(
-                    padding: EdgeInsets.all(12),
-                    child: SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    ),
-                  )
-                : TextButton(
-                    onPressed: _markAllRead,
-                    child: Text(
-                      'Mark all read',
-                      style: TextStyle(
-                        color: _eaAccent,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: _load,
-          ),
-        ],
-      ),
       body: Column(
         children: [
+          DsPageHeader(
+            accent: HeroAccent.emerald,
+            title: "Notifications",
+            subtitle: unread > 0 ? "$unread unread" : null,
+            actions: [
+              if (unread > 0 && !_markingAll)
+                TextButton(
+                  onPressed: _markAllRead,
+                  child: const Text("Mark all read",
+                      style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w600)),
+                ),
+              DsHeroAction(Icons.refresh_rounded, _load),
+            ],
+          ),
           _buildFilterTabs(isDark),
           Expanded(child: _buildBody(isDark)),
         ],

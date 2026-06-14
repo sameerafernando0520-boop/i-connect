@@ -15,6 +15,7 @@
 
 import 'package:flutter/material.dart';
 import '../../config/admin_theme.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
 
@@ -251,26 +252,16 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
-      appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        elevation: 0,
-        scrolledUnderElevation: 0.5,
-        surfaceTintColor: Colors.transparent,
-        title: Text('Pending Approvals',
-            style: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.w700,
-              color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-            )),
-        iconTheme: IconThemeData(
-          color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+      body: Column(children: [
+        DsPageHeader(
+          accent: HeroAccent.emerald,
+          title: 'Pending Approvals',
+          actions: [
+            DsHeroAction(Icons.refresh_rounded, _load),
+          ],
         ),
-        actions: [
-          IconButton(
-              icon: const Icon(Icons.refresh_rounded), onPressed: _load),
-        ],
-      ),
-      body: _loading
+        Expanded(
+          child: _loading
           ? const Center(child: CircularProgressIndicator(color: _eaAccent))
           : _error != null
               ? _errorView()
@@ -287,6 +278,8 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
                         itemBuilder: (_, i) => _card(_items[i], isDark),
                       ),
                     ),
+        ),
+      ]),
     );
   }
 
