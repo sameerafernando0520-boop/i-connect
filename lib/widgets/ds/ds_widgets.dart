@@ -20,6 +20,7 @@ class DsHero extends StatelessWidget {
   final Widget? trailing;
   final Widget? actionCard;
   final EdgeInsets padding;
+  final HeroAccent accent;
 
   const DsHero({
     super.key,
@@ -28,6 +29,7 @@ class DsHero extends StatelessWidget {
     this.trailing,
     this.actionCard,
     this.padding = const EdgeInsets.fromLTRB(16, 14, 16, 40),
+    this.accent = HeroAccent.navy,
   });
 
   @override
@@ -98,20 +100,17 @@ class DsHero extends StatelessWidget {
   }
 
   Widget _buildNavy(BuildContext context) {
+    final pal = Brand.heroFor(accent);
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: RadialGradient(
-          center: Alignment(0, -1.2),
+          center: const Alignment(0, -1.2),
           radius: 1.6,
-          colors: [
-            Brand.splashNavyGlow,
-            Brand.splashNavyCore,
-            Brand.splashNavyEdge,
-          ],
-          stops: [0.0, 0.45, 1.0],
+          colors: pal.gradient,
+          stops: const [0.0, 0.45, 1.0],
         ),
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(28),
           bottomRight: Radius.circular(28),
         ),
@@ -134,11 +133,11 @@ class DsHero extends StatelessWidget {
                         children: [
                           Text(
                             greeting,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 11,
                               fontWeight: FontWeight.w500,
                               letterSpacing: 0.3,
-                              color: Color(0xFF8FA3C8),
+                              color: pal.label,
                             ),
                           ),
                           const SizedBox(height: 2),
@@ -174,6 +173,42 @@ class DsHero extends StatelessWidget {
   }
 }
 
+/// Frosted icon button that sits on any hero header (navy or emerald).
+/// White-on-glass; lime when [active]. Use in DsHero/DsPageHeader actions.
+class DsHeroAction extends StatelessWidget {
+  final IconData icon;
+  final VoidCallback onTap;
+  final bool active;
+  final String? tooltip;
+
+  const DsHeroAction(
+    this.icon,
+    this.onTap, {
+    super.key,
+    this.active = false,
+    this.tooltip,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final btn = GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 38,
+        height: 38,
+        decoration: BoxDecoration(
+          color: active ? Brand.lime.withAlpha(46) : Colors.white.withAlpha(20),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+              color: active ? Brand.lime : Colors.white.withAlpha(46)),
+        ),
+        child: Icon(icon, color: active ? Brand.lime : Colors.white, size: 19),
+      ),
+    );
+    return tooltip == null ? btn : Tooltip(message: tooltip!, child: btn);
+  }
+}
+
 /// The lime hairline from the splash — the brand signature.
 class DsLimeLine extends StatelessWidget {
   final double width;
@@ -194,7 +229,7 @@ class DsLimeLine extends StatelessWidget {
   }
 }
 
-/// Frosted navy card inside the hero ("act now" slot).
+/// Frosted card inside the hero ("act now" slot). Matches the hero accent.
 class DsHeroCard extends StatelessWidget {
   final IconData icon;
   final Color iconColor;
@@ -202,6 +237,7 @@ class DsHeroCard extends StatelessWidget {
   final String title;
   final Widget? trailing;
   final VoidCallback? onTap;
+  final HeroAccent accent;
 
   const DsHeroCard({
     super.key,
@@ -211,21 +247,21 @@ class DsHeroCard extends StatelessWidget {
     this.iconColor = Brand.lime,
     this.trailing,
     this.onTap,
+    this.accent = HeroAccent.navy,
   });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final workshop = Brand.isWorkshop;
-    // Navy: frosted navy on the radial hero. Workshop: ink-outlined paper card.
-    final bg = workshop ? Brand.surface(isDark) : const Color(0xD916294F);
+    final pal = Brand.heroFor(accent);
+    // Navy: frosted card on the radial hero. Workshop: ink-outlined paper card.
+    final bg = workshop ? Brand.surface(isDark) : pal.frostedCard;
     final borderColor =
-        workshop ? Brand.cardBorder(isDark) : const Color(0xFF2A3F6E);
-    final labelColor =
-        workshop ? Brand.inkSoft(isDark) : const Color(0xFF8FA3C8);
+        workshop ? Brand.cardBorder(isDark) : pal.frostedBorder;
+    final labelColor = workshop ? Brand.inkSoft(isDark) : pal.label;
     final titleColor = workshop ? Brand.ink(isDark) : Colors.white;
-    final chevronColor =
-        workshop ? Brand.inkSoft(isDark) : const Color(0xFF5B6F99);
+    final chevronColor = workshop ? Brand.inkSoft(isDark) : pal.label;
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -749,6 +785,9 @@ class DsPageHeader extends StatelessWidget {
   /// Navigator.maybePop back button (e.g. discard-changes confirmation).
   final VoidCallback? onBack;
 
+  /// Hero color family — navy (default) or emerald (EA / engineer).
+  final HeroAccent accent;
+
   const DsPageHeader({
     super.key,
     required this.title,
@@ -757,6 +796,7 @@ class DsPageHeader extends StatelessWidget {
     this.bottom,
     this.showBack = true,
     this.onBack,
+    this.accent = HeroAccent.navy,
   });
 
   @override
@@ -836,20 +876,17 @@ class DsPageHeader extends StatelessWidget {
   }
 
   Widget _buildNavy(BuildContext context) {
+    final pal = Brand.heroFor(accent);
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: RadialGradient(
-          center: Alignment(0, -1.2),
+          center: const Alignment(0, -1.2),
           radius: 1.6,
-          colors: [
-            Brand.splashNavyGlow,
-            Brand.splashNavyCore,
-            Brand.splashNavyEdge,
-          ],
-          stops: [0.0, 0.45, 1.0],
+          colors: pal.gradient,
+          stops: const [0.0, 0.45, 1.0],
         ),
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(28),
           bottomRight: Radius.circular(28),
         ),
@@ -880,11 +917,11 @@ class DsPageHeader extends StatelessWidget {
                           if (subtitle != null)
                             Text(
                               subtitle!,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 11,
                                 fontWeight: FontWeight.w500,
                                 letterSpacing: 0.3,
-                                color: Color(0xFF8FA3C8),
+                                color: pal.label,
                               ),
                             ),
                           Text(

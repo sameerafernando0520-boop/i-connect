@@ -647,6 +647,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
             : 'Good evening';
 
     return DsHero(
+      accent: HeroAccent.emerald,
       greeting: '$greeting,',
       title: firstName,
       trailing: Container(
@@ -661,8 +662,9 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
             color: Colors.white, size: 19),
       ),
       actionCard: DsHeroCard(
+        accent: HeroAccent.emerald,
         icon: Icons.engineering_rounded,
-        iconColor: const Color(0xFF5ED38A),
+        iconColor: Brand.emeraldBright,
         label: 'Engineering admin portal',
         title: 'Team, dispatch & schedules',
         onTap: () {},

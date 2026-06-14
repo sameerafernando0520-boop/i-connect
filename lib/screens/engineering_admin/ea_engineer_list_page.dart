@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../repositories/engineering_admin_repository.dart';
 import '../../utils/time_utils.dart';
 import 'ea_engineer_detail_page.dart';
@@ -139,34 +140,18 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text(
-          'Engineer Team',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0,
-        scrolledUnderElevation: 1,
-        iconTheme: IconThemeData(
-          color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.sort_rounded),
-            tooltip: 'Sort',
-            onPressed: () => _showSortSheet(isDark),
-          ),
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: _load,
-          ),
-        ],
-      ),
       body: Column(
         children: [
+          DsPageHeader(
+            accent: HeroAccent.emerald,
+            title: 'Engineer Team',
+            showBack: false,
+            actions: [
+              DsHeroAction(Icons.sort_rounded, () => _showSortSheet(isDark)),
+              const SizedBox(width: 6),
+              DsHeroAction(Icons.refresh_rounded, _load),
+            ],
+          ),
           // â”€â”€ Search + Filters â”€â”€
           Container(
             color: Brand.surface(isDark),
