@@ -31,6 +31,7 @@ import 'my_invoices_page.dart';
 import 'my_quotations_page.dart';
 import 'customer_installments_page.dart';
 import '../../widgets/common/theme_style_sheet.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 class ProfilePage extends StatefulWidget {
   final bool showNavBar;
@@ -1118,83 +1119,18 @@ class _ProfilePageState extends State<ProfilePage>
     )));
   }
 
-  // ── TOP BAR ─────────────────────────────────────────────────
+  // ── TOP BAR — Navy Glow hero ────────────────────────────────
   Widget _buildTopBar(bool isDark) {
-    return SafeArea(
-        bottom: false,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(14, 8, 16, 0),
-          child: Row(children: [
-            _headerBtn(Icons.arrow_back_ios_new_rounded, isDark, () {
-              if (_isEditing && _hasUnsavedChanges) {
-                _showDiscardEditsDialog();
-              } else {
-                Navigator.pop(context);
-              }
-            }),
-            const SizedBox(width: 14),
-            Expanded(
-                child: Text(S.of(context)!.profileTitle,
-                    style: TextStyle(
-                        fontSize: 21,
-                        fontWeight: FontWeight.w600,
-                        color: isDark
-                            ? Brand.darkTextPrimary
-                            : Brand.royalBlueDark,
-                        letterSpacing: -0.5))),
-          ]),
-        ));
-  }
-
-  Widget _headerBtn(IconData icon, bool isDark, VoidCallback onTap,
-      {bool isActive = false, bool isLoading = false}) {
-    return Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(14),
-          child: Container(
-            width: 46,
-            height: 46,
-            decoration: BoxDecoration(
-              color: isActive
-                  ? (isDark ? Brand.darkIconActive : Brand.royalBlue)
-                  : (Brand.surface(isDark)),
-              borderRadius: BorderRadius.circular(14),
-              border: isActive
-                  ? null
-                  : Border.all(
-                      color: isDark ? Brand.darkBorder : Brand.borderLight),
-              boxShadow: isActive
-                  ? [
-                      BoxShadow(
-                          color: isDark
-                              ? Brand.darkIconActive.withAlpha(77)
-                              : Brand.royalBlue.withAlpha(89),
-                          blurRadius: 12,
-                          offset: const Offset(0, 4))
-                    ]
-                  : (isDark
-                      ? null
-                      : [
-                          BoxShadow(
-                              color: Brand.royalBlue.withAlpha(13),
-                              blurRadius: 8,
-                              offset: const Offset(0, 2))
-                        ]),
-            ),
-            child: isLoading
-                ? const Padding(
-                    padding: EdgeInsets.all(11),
-                    child: CircularProgressIndicator(
-                        strokeWidth: 2, color: Colors.white))
-                : Icon(icon,
-                    color: isActive
-                        ? Colors.white
-                        : (isDark ? Brand.darkTextSecondary : Brand.royalBlue),
-                    size: 22),
-          ),
-        ));
+    return DsPageHeader(
+      title: S.of(context)!.profileTitle,
+      onBack: () {
+        if (_isEditing && _hasUnsavedChanges) {
+          _showDiscardEditsDialog();
+        } else {
+          Navigator.pop(context);
+        }
+      },
+    );
   }
 
   void _showDiscardEditsDialog() {

@@ -745,6 +745,10 @@ class DsPageHeader extends StatelessWidget {
   final Widget? bottom;
   final bool showBack;
 
+  /// Custom back-button behavior. When set, replaces the default
+  /// Navigator.maybePop back button (e.g. discard-changes confirmation).
+  final VoidCallback? onBack;
+
   const DsPageHeader({
     super.key,
     required this.title,
@@ -752,6 +756,7 @@ class DsPageHeader extends StatelessWidget {
     this.actions = const [],
     this.bottom,
     this.showBack = true,
+    this.onBack,
   });
 
   @override
@@ -779,7 +784,7 @@ class DsPageHeader extends StatelessWidget {
                 children: [
                   if (showBack)
                     IconButton(
-                      onPressed: () => Navigator.maybePop(context),
+                      onPressed: onBack ?? () => Navigator.maybePop(context),
                       icon: Icon(Icons.arrow_back_ios_new_rounded,
                           size: 18, color: Brand.ink(isDark)),
                     )
@@ -862,7 +867,7 @@ class DsPageHeader extends StatelessWidget {
                   children: [
                     if (showBack)
                       IconButton(
-                        onPressed: () => Navigator.maybePop(context),
+                        onPressed: onBack ?? () => Navigator.maybePop(context),
                         icon: const Icon(Icons.arrow_back_ios_new_rounded,
                             size: 18, color: Colors.white),
                       )
