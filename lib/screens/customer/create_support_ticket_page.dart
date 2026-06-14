@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../services/points_service.dart';
 import 'ticket_detail_page.dart';
 
@@ -977,103 +978,46 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
 
   // ─── TOP BAR ───────────────────────────────────────────────
   Widget _buildTopBar(bool isDark) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(14, 12, 20, 8),
-      child: Row(
-        children: [
-          Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: () {
-                if (_hasUnsavedData) {
-                  _showExitConfirmation(isDark);
-                } else {
-                  Navigator.pop(context);
-                }
-              },
-              borderRadius: BorderRadius.circular(14),
-              child: Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  color: Brand.surface(isDark),
-                  borderRadius: BorderRadius.circular(14),
-                  border: isDark ? Border.all(color: Brand.darkBorder) : null,
-                  boxShadow: isDark
-                      ? null
-                      : [
-                          BoxShadow(
-                              color: Brand.royalBlue.withAlpha(((0.05) * 255).toInt()),
-                              blurRadius: 10,
-                              offset: const Offset(0, 3))
-                        ],
-                ),
-                child: Icon(Icons.close_rounded,
-                    color:
-                        isDark ? Brand.darkTextSecondary : Brand.royalBlueDark,
-                    size: 20),
-              ),
+    return DsPageHeader(
+      title: 'New Support Ticket',
+      subtitle: _currentStep == 0
+          ? 'Select machine & issue type'
+          : _currentStep == 1
+              ? 'Describe your issue'
+              : 'Review & submit',
+      onBack: () {
+        if (_hasUnsavedData) {
+          _showExitConfirmation(isDark);
+        } else {
+          Navigator.pop(context);
+        }
+      },
+      actions: [
+        if (_hasDraft)
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            decoration: BoxDecoration(
+              color: Brand.lime.withAlpha(36),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: Brand.lime.withAlpha(120)),
             ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: const Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
+                Icon(Icons.save_outlined, color: Brand.lime, size: 12),
+                SizedBox(width: 4),
                 Text(
-                  'New Support Ticket',
+                  'Draft',
                   style: TextStyle(
-                    fontSize: 21,
-                    fontWeight: FontWeight.w600,
-                    color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                    letterSpacing: -0.5,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  _currentStep == 0
-                      ? 'Select machine & issue type'
-                      : _currentStep == 1
-                          ? 'Describe your issue'
-                          : 'Review & submit',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                    color: Brand.lime,
                   ),
                 ),
               ],
             ),
           ),
-          if (_hasDraft)
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              decoration: BoxDecoration(
-                color: isDark
-                    ? Brand.lightGreen.withAlpha(((0.12) * 255).toInt())
-                    : Brand.lightGreenSurface,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Brand.lightGreen.withAlpha(((0.2) * 255).toInt())),
-              ),
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.save_outlined,
-                      color: Brand.lightGreenBright, size: 12),
-                  SizedBox(width: 4),
-                  Text(
-                    'Draft',
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                      color: Brand.lightGreenBright,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-        ],
-      ),
+      ],
     );
   }
 

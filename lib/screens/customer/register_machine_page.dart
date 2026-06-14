@@ -9,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../l10n/s.dart';
 
 class RegisterMachinePage extends StatefulWidget {
@@ -1066,102 +1067,48 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
   // ─── TOP BAR ───────────────────────────────────────────────
 
   Widget _buildTopBar(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(6, 8, 16, 8),
-      child: Row(
-        children: [
+    return DsPageHeader(
+      title: 'Register Machine',
+      subtitle: _currentStep == 0
+          ? 'Step 1: Choose your machine'
+          : _currentStep == 1
+              ? 'Step 2: Machine details'
+              : 'Step 3: Review & confirm',
+      onBack: _showExitConfirmation,
+      actions: [
+        if (_currentStep > 0)
           GestureDetector(
-            onTap: _showExitConfirmation,
+            onTap: () {
+              HapticFeedback.lightImpact();
+              setState(() => _currentStep--);
+            },
             child: Container(
-              width: 44,
-              height: 44,
-              margin: const EdgeInsets.only(left: 8),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               decoration: BoxDecoration(
-                color: Brand.surface(isDark),
-                borderRadius: BorderRadius.circular(12),
-                border: isDark ? Border.all(color: Brand.darkBorder) : null,
-                boxShadow: isDark
-                    ? null
-                    : [
-                        BoxShadow(
-                          color: Brand.royalBlue.withAlpha(15),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
+                color: Colors.white.withAlpha(18),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: const Color(0xFF2A3F6E)),
               ),
-              child: Icon(Icons.close_rounded,
-                  color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                  size: 22),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Register Machine',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                  ),
-                ),
-                Text(
-                  _currentStep == 0
-                      ? 'Step 1: Choose your machine'
-                      : _currentStep == 1
-                          ? 'Step 2: Machine details'
-                          : 'Step 3: Review & confirm',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          if (_currentStep > 0)
-            GestureDetector(
-              onTap: () {
-                HapticFeedback.lightImpact();
-                setState(() => _currentStep--);
-              },
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                decoration: BoxDecoration(
-                  color:
-                      isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9),
-                  borderRadius: BorderRadius.circular(10),
-                  border: isDark ? Border.all(color: Brand.darkBorder) : null,
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.arrow_back_rounded,
-                        size: 16,
-                        color: isDark
-                            ? Brand.darkTextSecondary
-                            : Brand.subtleLight),
-                    const SizedBox(width: 4),
-                    Text(
-                      'Back',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: isDark
-                            ? Brand.darkTextSecondary
-                            : Brand.subtleLight,
-                      ),
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.arrow_back_rounded,
+                      size: 16, color: Colors.white),
+                  SizedBox(width: 4),
+                  Text(
+                    'Back',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-        ],
-      ),
+          ),
+      ],
     );
   }
 
