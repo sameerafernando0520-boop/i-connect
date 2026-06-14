@@ -8,6 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import 'ea_job_record_detail_page.dart';
 import 'ea_job_record_form_page.dart';
@@ -315,24 +316,6 @@ class _EaJobRecordsPageState extends State<EaJobRecordsPage> {
 
     return Scaffold(
       backgroundColor: bg,
-      appBar: AppBar(
-        backgroundColor: cardBg,
-        foregroundColor: textPrimary,
-        elevation: 0,
-        title: Text(
-          widget.engineerName != null
-              ? '${widget.engineerName}\'s Jobs'
-              : 'Job Records',
-          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
-        ),
-        actions: [
-          IconButton(
-            onPressed: _showSortSheet,
-            icon: const Icon(Icons.sort_rounded),
-            tooltip: 'Sort',
-          ),
-        ],
-      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
           final created = await Navigator.push<bool>(
@@ -354,6 +337,15 @@ class _EaJobRecordsPageState extends State<EaJobRecordsPage> {
       ),
       body: Column(
         children: [
+          DsPageHeader(
+            accent: HeroAccent.emerald,
+            title: widget.engineerName != null
+                ? "${widget.engineerName}'s Jobs"
+                : "Job Records",
+            actions: [
+              DsHeroAction(Icons.sort_rounded, _showSortSheet, tooltip: "Sort"),
+            ],
+          ),
           // ── Search + status filter ─────────────────────────────
           Container(
             color: cardBg,
