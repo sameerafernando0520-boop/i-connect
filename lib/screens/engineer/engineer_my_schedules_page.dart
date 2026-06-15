@@ -16,6 +16,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 const Color _engAccent = Color(0xFF00B4D8);
 
@@ -220,15 +221,12 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: const Text('My Schedules',
-            style: TextStyle(fontWeight: FontWeight.w800)),
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        foregroundColor: isDark ? Brand.darkTextPrimary : Brand.royalBlue,
-        elevation: 0,
+      appBar: DsPageHeader(
+        title: 'My Schedules',
+        accent: HeroAccent.cyan,
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh_rounded),
+            icon: const Icon(Icons.refresh_rounded, color: Colors.white),
             onPressed: _load,
           ),
         ],

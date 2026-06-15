@@ -7,6 +7,7 @@ import 'package:supabase_flutter/supabase_flutter.dart'
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'engineer_create_schedule_page.dart';
 
 const Color _engAccent = Color(0xFF00B4D8);
@@ -1111,25 +1112,21 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: const Text('My Schedule'),
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        foregroundColor: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        elevation: 0,
-        scrolledUnderElevation: 1,
+      appBar: DsPageHeader(
+        title: 'My Schedule',
+        accent: HeroAccent.cyan,
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh),
+            icon: const Icon(Icons.refresh, color: Colors.white),
             tooltip: 'Refresh',
             onPressed: _load,
           ),
         ],
         bottom: TabBar(
           controller: _tabController,
-          labelColor: isDark ? _engAccent : _engAccentDark,
-          unselectedLabelColor:
-              isDark ? Brand.darkTextTertiary : Brand.subtleLight,
-          indicatorColor: isDark ? _engAccent : _engAccentDark,
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.white60,
+          indicatorColor: Colors.white,
           indicatorSize: TabBarIndicatorSize.label,
           labelStyle:
               const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),

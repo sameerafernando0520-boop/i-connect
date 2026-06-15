@@ -4,6 +4,7 @@ import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/string_utils.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 class CreateSchedulePage extends StatefulWidget {
   final String? prefilledCustomerId;
@@ -228,21 +229,9 @@ class _CreateSchedulePageState extends State<CreateSchedulePage> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         backgroundColor: Brand.canvas(isDark),
-        appBar: AppBar(
-          title: Text(
-            'Create Schedule',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-              letterSpacing: -0.3,
-              color: isDark ? Brand.darkTextPrimary : AdminColors.text(context),
-            ),
-          ),
-          backgroundColor: isDark ? Brand.darkCard : Colors.white,
-          foregroundColor:
-              isDark ? Brand.darkTextPrimary : AdminColors.text(context),
-          elevation: 0,
-          scrolledUnderElevation: 1,
+        appBar: DsPageHeader(
+          title: 'Create Schedule',
+          accent: HeroAccent.navy,
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 12),

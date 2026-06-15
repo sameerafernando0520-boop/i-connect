@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 const Color _engAccent = Color(0xFF00B4D8);
 
@@ -315,19 +316,13 @@ class _EngineerInstallationDetailPageState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Brand.canvas(_isDark),
-      appBar: AppBar(
-        backgroundColor: _cardColor,
-        elevation: 0,
-        leading: BackButton(
-          onPressed: () => Navigator.pop(context, _changed),
-        ),
-        title: const Text(
-          'Installation Detail',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-        ),
+      appBar: DsPageHeader(
+        title: 'Installation Detail',
+        accent: HeroAccent.cyan,
+        onBack: () => Navigator.pop(context, _changed),
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh_rounded),
+            icon: const Icon(Icons.refresh_rounded, color: Colors.white),
             onPressed: _load,
           ),
         ],

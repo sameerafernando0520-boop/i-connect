@@ -16,9 +16,11 @@ enum DarkStyle { navy, workshop, fusion }
 enum AppDesign { navyGlow, workshop }
 
 /// Which hero color family a screen uses (the Navy Glow header gradient).
-///  - navy:    splash-navy (customer / admin / marketing / auth)
-///  - emerald: emerald → black (engineering-admin / engineer — logo colors)
-enum HeroAccent { navy, emerald }
+///  - navy:    splash-navy (customer / admin / auth)
+///  - emerald: emerald → black (engineering-admin)
+///  - cyan:    cyan → dark (field engineer)
+///  - violet:  violet → dark (marketing admin)
+enum HeroAccent { navy, emerald, cyan, violet }
 
 /// One hero color family: the radial gradient + the frosted "act now" card
 /// colors that sit on top of it.
@@ -90,12 +92,23 @@ class Brand {
   static const Color splashNavyCore = Color(0xFF102A63);
   static const Color splashNavyGlow = Color(0xFF15397A);
 
-  // ─── Emerald → black hero family (Engineer logo: emerald + black) ──
-  // Used for the Engineering-Admin and Engineer hero headers.
+  // ─── Emerald → black hero family (Engineering-Admin) ──────────────
   static const Color emeraldHeroEdge = Color(0xFF04140E); // near-black
   static const Color emeraldHeroCore = Color(0xFF0A4030);
   static const Color emeraldHeroGlow = Color(0xFF0F7B54);
   static const Color emeraldBright = Color(0xFF34D399); // mint spark
+
+  // ─── Cyan → dark hero family (Field Engineer) ───────────────────
+  static const Color cyanHeroEdge = Color(0xFF062A3A);
+  static const Color cyanHeroCore = Color(0xFF0E5A72);
+  static const Color cyanHeroGlow = Color(0xFF0891B2);
+  static const Color cyanBright = Color(0xFF22D3EE); // sky spark
+
+  // ─── Violet → dark hero family (Marketing Admin) ────────────────
+  static const Color violetHeroEdge = Color(0xFF1E0650);
+  static const Color violetHeroCore = Color(0xFF3B0F8C);
+  static const Color violetHeroGlow = Color(0xFF6D28D9);
+  static const Color violetBright = Color(0xFFA78BFA); // lavender spark
 
   // ─── Dark palettes (selectable) ─────────────────
   static const DarkPalette navyGlowPalette = DarkPalette(
@@ -186,9 +199,25 @@ class Brand {
     Color(0xFF1E5C44),
     Color(0xFF8FC8B0),
   );
+  static const HeroPalette cyanHero = HeroPalette(
+    [cyanHeroGlow, cyanHeroCore, cyanHeroEdge],
+    Color(0xD90B3A4D),
+    Color(0xFF0E5A72),
+    Color(0xFF7FD4E8),
+  );
+  static const HeroPalette violetHero = HeroPalette(
+    [violetHeroGlow, violetHeroCore, violetHeroEdge],
+    Color(0xD92A0A6B),
+    Color(0xFF4A1A9E),
+    Color(0xFFBBA4F0),
+  );
 
-  static HeroPalette heroFor(HeroAccent a) =>
-      a == HeroAccent.emerald ? emeraldHero : navyHero;
+  static HeroPalette heroFor(HeroAccent a) => switch (a) {
+        HeroAccent.emerald => emeraldHero,
+        HeroAccent.cyan => cyanHero,
+        HeroAccent.violet => violetHero,
+        HeroAccent.navy => navyHero,
+      };
 
   // ── Workshop palette ──────────────────────────────────────────
   // Light: warm paper canvas + confident ink outlines (readable outdoors).

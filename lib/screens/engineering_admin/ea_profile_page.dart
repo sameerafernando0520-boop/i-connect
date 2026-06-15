@@ -8,6 +8,7 @@ import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../providers/theme_provider.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../providers/locale_provider.dart';
 import '../../widgets/common/language_selector_sheet.dart';
 import '../auth/login_page.dart';
@@ -106,26 +107,10 @@ class _EaProfilePageState extends State<EaProfilePage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        elevation: 0,
-        surfaceTintColor: Colors.transparent,
-        title: Text(
-          'My Profile',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-            color: isDark ? Brand.darkTextPrimary : const Color(0xFF0F172A),
-          ),
-        ),
-        centerTitle: false,
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Divider(
-            height: 1,
-            color: isDark ? Brand.darkBorder : Brand.borderLight,
-          ),
-        ),
+      appBar: DsPageHeader(
+        title: 'My Profile',
+        accent: HeroAccent.emerald,
+        showBack: false,
       ),
       body: _loading
           ? const Center(child: CircularProgressIndicator(color: _eaAccent))

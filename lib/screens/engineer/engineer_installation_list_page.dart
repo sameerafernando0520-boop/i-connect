@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'engineer_installation_detail_page.dart';
 
 const Color _engAccent = Color(0xFF00B4D8);
@@ -152,16 +153,12 @@ class _EngineerInstallationListPageState
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        elevation: 0,
-        title: const Text(
-          'My Installations',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-        ),
+      appBar: DsPageHeader(
+        title: 'My Installations',
+        accent: HeroAccent.cyan,
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh_rounded),
+            icon: const Icon(Icons.refresh_rounded, color: Colors.white),
             onPressed: _load,
           ),
         ],

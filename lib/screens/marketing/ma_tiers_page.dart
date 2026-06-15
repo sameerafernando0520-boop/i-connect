@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 const Color _tierColor = Color(0xFFF59E0B);
 
@@ -144,18 +145,14 @@ class _MaTiersPageState extends State<MaTiersPage>
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text('Loyalty Tiers',
-            style: TextStyle(fontWeight: FontWeight.w700,
-                color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0, scrolledUnderElevation: 1,
-        iconTheme: IconThemeData(color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
+      appBar: DsPageHeader(
+        title: 'Loyalty Tiers',
+        accent: HeroAccent.violet,
         bottom: TabBar(
           controller: _tabCtrl,
-          indicatorColor: _tierColor,
-          labelColor: _tierColor,
-          unselectedLabelColor: AdminColors.textHint(context),
+          indicatorColor: Colors.white,
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.white.withAlpha(153),
           labelStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
           tabs: const [
             Tab(text: 'Thresholds'),

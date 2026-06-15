@@ -8,6 +8,7 @@ import '../../config/admin_theme.dart';
 import '../../providers/theme_provider.dart';
 import '../../providers/locale_provider.dart';
 import '../../widgets/common/language_selector_sheet.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../widgets/common/theme_style_sheet.dart';
 
 const Color _eaAccent = Color(0xFF16A34A);
@@ -23,25 +24,9 @@ class EaSettingsPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        elevation: 0,
-        scrolledUnderElevation: 0.5,
-        surfaceTintColor: Colors.transparent,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_rounded,
-              size: 18,
-              color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Settings',
-          style: TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.w700,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
+      appBar: DsPageHeader(
+        title: 'Settings',
+        accent: HeroAccent.emerald,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(0.5),
           child: Container(

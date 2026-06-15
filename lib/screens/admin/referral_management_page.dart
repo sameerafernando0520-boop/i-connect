@@ -2,9 +2,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
+import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/admin/shimmer_loading.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'referral_rules_page.dart';
 
 class ReferralManagementPage extends StatefulWidget {
@@ -138,33 +140,9 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
 
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
-      appBar: AppBar(
-        title: _showSearch
-            ? TextField(
-                controller: _searchCtrl,
-                autofocus: true,
-                style: TextStyle(color: AdminColors.text(context)),
-                decoration: InputDecoration(
-                  hintText: 'Search referrals…',
-                  hintStyle: TextStyle(color: AdminColors.textHint(context)),
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                ),
-                onChanged: _onSearchChanged,
-              )
-            : Text(
-                'Referral Program',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: -0.3,
-                  color: AdminColors.text(context),
-                ),
-              ),
-        backgroundColor: AdminColors.card(context),
-        foregroundColor: AdminColors.text(context),
-        elevation: 0,
-        scrolledUnderElevation: 1,
+      appBar: DsPageHeader(
+        title: 'Referral Program',
+        accent: HeroAccent.navy,
         actions: [
           IconButton(
             icon: Icon(
@@ -191,6 +169,21 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
             }),
           ),
         ],
+        bottom: _showSearch
+            ? TextField(
+                controller: _searchCtrl,
+                autofocus: true,
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  hintText: 'Search referrals…',
+                  hintStyle: TextStyle(color: Colors.white.withAlpha(179)),
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  contentPadding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+                ),
+                onChanged: _onSearchChanged,
+              )
+            : null,
       ),
       body: RefreshIndicator(
         onRefresh: _loadAll,

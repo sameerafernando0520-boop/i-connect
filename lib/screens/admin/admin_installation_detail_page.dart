@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 const _typeLabels = {
   'new_install':   'New Install',
@@ -525,14 +526,10 @@ class _AdminInstallationDetailPageState
       },
       child: Scaffold(
         backgroundColor: AdminColors.bg(context),
-        appBar: AppBar(
-          backgroundColor: isDark ? Brand.darkCard : Brand.royalBlue,
-          foregroundColor: Colors.white,
-          title: const Text('Installation Detail',
-              style: TextStyle(fontWeight: FontWeight.w700)),
-          leading: BackButton(
-            onPressed: () => Navigator.pop(context, _changed),
-          ),
+        appBar: DsPageHeader(
+          title: 'Installation Detail',
+          accent: HeroAccent.navy,
+          onBack: () => Navigator.pop(context, _changed),
         ),
         body: _isLoading
             ? const Center(child: CircularProgressIndicator())

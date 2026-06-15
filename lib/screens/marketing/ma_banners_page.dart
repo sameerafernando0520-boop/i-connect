@@ -8,6 +8,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:uuid/uuid.dart';
 import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../config/supabase_config.dart';
 
@@ -177,13 +178,9 @@ class _MaBannersPageState extends State<MaBannersPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text('Promotional Banners',
-            style: TextStyle(fontWeight: FontWeight.w700,
-                color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0, scrolledUnderElevation: 1,
-        iconTheme: IconThemeData(color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
+      appBar: DsPageHeader(
+        title: 'Promotional Banners',
+        accent: HeroAccent.violet,
         actions: [
           IconButton(icon: const Icon(Icons.refresh_rounded), onPressed: _load),
         ],

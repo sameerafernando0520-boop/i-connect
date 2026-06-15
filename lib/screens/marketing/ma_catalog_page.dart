@@ -6,6 +6,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 const Color _catColor = Color(0xFF14B8A6);
 
@@ -94,13 +95,9 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text('Machine Catalog',
-            style: TextStyle(fontWeight: FontWeight.w700,
-                color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0, scrolledUnderElevation: 1,
-        iconTheme: IconThemeData(color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
+      appBar: DsPageHeader(
+        title: 'Machine Catalog',
+        accent: HeroAccent.violet,
         actions: [
           IconButton(icon: const Icon(Icons.refresh_rounded), onPressed: _load),
         ],

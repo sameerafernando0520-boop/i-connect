@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'login_page.dart';
 
 class ResetPasswordPage extends StatefulWidget {
@@ -94,21 +95,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0,
-        scrolledUnderElevation: 1,
-        title: Text(
-          'Reset Password',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        iconTheme: IconThemeData(
-          color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        ),
+      appBar: DsPageHeader(
+        title: 'Reset Password',
+        accent: HeroAccent.navy,
       ),
       body: SafeArea(
         child: SingleChildScrollView(

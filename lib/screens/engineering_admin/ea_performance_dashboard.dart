@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 const Color _eaAccent = Color(0xFF16A34A);
 
@@ -293,47 +294,32 @@ class _EaPerformanceDashboardState extends State<EaPerformanceDashboard>
 
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
-      appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text('Performance',
-            style: TextStyle(
-              color: AdminColors.text(context),
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            )),
+      appBar: DsPageHeader(
+        title: 'Performance',
+        accent: HeroAccent.emerald,
         actions: [
           TextButton.icon(
             onPressed: _showEngineerPicker,
-            icon: Icon(Icons.person_search_rounded, size: 18,
-                color: _selectedEngineerId != null ? _eaAccent : AdminColors.textSub(context)),
+            icon: const Icon(Icons.person_search_rounded, size: 18, color: Colors.white),
             label: Text(
               _selectedEngineerId != null
                   ? (_engineers.firstWhere((e) => e['id'] == _selectedEngineerId,
                       orElse: () => {})['full_name'] as String? ?? 'Engineer')
                   : 'All',
-              style: TextStyle(
-                fontSize: 13,
-                color: _selectedEngineerId != null ? _eaAccent : AdminColors.textSub(context),
-              ),
+              style: const TextStyle(color: Colors.white, fontSize: 13),
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.calendar_month_rounded, size: 20),
-            color: AdminColors.textSub(context),
+            icon: const Icon(Icons.calendar_month_rounded, size: 20, color: Colors.white),
             tooltip: periodLabel,
             onPressed: _showPeriodSheet,
           ),
         ],
         bottom: TabBar(
           controller: _tabCtrl,
-          labelColor: _eaAccent,
-          unselectedLabelColor: AdminColors.textSub(context),
-          indicatorColor: _eaAccent,
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.white60,
+          indicatorColor: Colors.white,
           tabs: const [
             Tab(text: 'Overview'),
             Tab(text: 'Engineers'),

@@ -10,6 +10,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../services/export_service.dart';
 import 'ea_ticket_detail_page.dart';
 import 'ea_ticket_chat_page.dart';
@@ -197,32 +198,23 @@ class _EaTicketListPageState extends State<EaTicketListPage>
 
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
-      appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        elevation: 0,
-        title: Text(
-          'Ticket Queue',
-          style: TextStyle(
-            color: AdminColors.text(context),
-            fontWeight: FontWeight.w700,
-            fontSize: 18,
-          ),
-        ),
-        iconTheme: IconThemeData(color: AdminColors.text(context)),
+      appBar: DsPageHeader(
+        title: 'Ticket Queue',
+        accent: HeroAccent.emerald,
+        showBack: false,
         actions: [
           IconButton(
-            icon: Icon(Icons.file_download_outlined,
-                color: AdminColors.text(context)),
+            icon: const Icon(Icons.file_download_outlined),
             tooltip: 'Export to Excel',
             onPressed: _exportToExcel,
           ),
           IconButton(
-            icon: Icon(Icons.sort_rounded, color: AdminColors.text(context)),
+            icon: const Icon(Icons.sort_rounded),
             tooltip: 'Sort',
             onPressed: () => _showSortSheet(context, isDark),
           ),
           IconButton(
-            icon: Icon(Icons.refresh_rounded, color: _eaAccent),
+            icon: const Icon(Icons.refresh_rounded),
             onPressed: _load,
           ),
         ],

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 
@@ -115,20 +116,9 @@ class _CreateEngineeringAdminPageState
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text(
-          'Add Engineering Admin',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0,
-        scrolledUnderElevation: 1,
-        iconTheme: IconThemeData(
-          color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        ),
+      appBar: DsPageHeader(
+        title: 'Add Engineering Admin',
+        accent: HeroAccent.navy,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 12),
@@ -136,17 +126,17 @@ class _CreateEngineeringAdminPageState
                 ? const SizedBox(
                     width: 20,
                     height: 20,
-                    child: CircularProgressIndicator(strokeWidth: 2),
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: Colors.white,
+                    ),
                   )
                 : TextButton.icon(
                     onPressed: _create,
-                    icon: const Icon(Icons.check_rounded, size: 18),
-                    label: const Text('Create'),
-                    style: TextButton.styleFrom(
-                      foregroundColor: _eaAccent,
-                      textStyle:
-                          const TextStyle(fontWeight: FontWeight.w700),
-                    ),
+                    icon: const Icon(Icons.check_rounded, size: 18, color: Colors.white),
+                    label: const Text('Create',
+                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
+                    style: TextButton.styleFrom(foregroundColor: Colors.white),
                   ),
           ),
         ],

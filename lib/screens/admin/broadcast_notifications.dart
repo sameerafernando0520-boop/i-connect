@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../utils/time_utils.dart';
 
 class BroadcastNotificationsPage extends StatefulWidget {
@@ -1681,21 +1682,12 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Brand.royalBlue,
-        foregroundColor: Colors.white,
-        elevation: 0,
-        surfaceTintColor: Colors.transparent,
-        title: const Text(
-          'Broadcast & Promotions',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 18,
-          ),
-        ),
+      appBar: DsPageHeader(
+        title: 'Broadcast & Promotions',
+        accent: HeroAccent.navy,
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh_rounded),
+            icon: const Icon(Icons.refresh_rounded, color: Colors.white),
             onPressed: () {
               _loadHistory();
               _updateRecipientCount();

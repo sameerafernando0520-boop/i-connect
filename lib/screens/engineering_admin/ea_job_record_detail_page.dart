@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'ea_job_record_form_page.dart';
 
 const Color _eaAccent = Color(0xFF16A34A);
@@ -239,18 +240,10 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
       },
       child: Scaffold(
         backgroundColor: bg,
-        appBar: AppBar(
-          backgroundColor: cardBg,
-          foregroundColor: textPrimary,
-          elevation: 0,
-          title: const Text(
-            'Job Record',
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
-          ),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_rounded),
-            onPressed: () => Navigator.pop(context, _changed),
-          ),
+        appBar: DsPageHeader(
+          title: 'Job Record',
+          accent: HeroAccent.emerald,
+          onBack: () => Navigator.pop(context, _changed),
           actions: [
             if (_record != null) ...[
               IconButton(

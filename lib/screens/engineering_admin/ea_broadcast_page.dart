@@ -17,6 +17,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 const Color _eaAccent = Color(0xFF16A34A);
 
@@ -273,19 +274,9 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        elevation: 0,
-        scrolledUnderElevation: 0.5,
-        surfaceTintColor: Colors.transparent,
-        title: Text('New Broadcast',
-            style: TextStyle(
-              fontSize: 17, fontWeight: FontWeight.w700,
-              color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-            )),
-        iconTheme: IconThemeData(
-          color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        ),
+      appBar: DsPageHeader(
+        title: 'New Broadcast',
+        accent: HeroAccent.emerald,
       ),
       body: _loadingMeta
           ? const Center(child: CircularProgressIndicator(color: _eaAccent))

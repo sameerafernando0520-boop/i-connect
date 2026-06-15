@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../services/points_service.dart';
 
@@ -521,27 +522,9 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
 
     return Scaffold(
       backgroundColor: dk ? Brand.darkBg : Brand.scaffoldLight,
-      appBar: AppBar(
-        title: Text(
-          'Installment Plan',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            letterSpacing: -0.3,
-            color: dk ? Brand.darkTextPrimary : Brand.royalBlue,
-          ),
-        ),
-        backgroundColor: dk ? Brand.darkCard : Colors.white,
-        foregroundColor: dk ? Brand.darkTextPrimary : Brand.royalBlue,
-        elevation: 0,
-        surfaceTintColor: Colors.transparent,
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Container(
-            height: 1,
-            color: dk ? Brand.darkBorder : Brand.borderLight,
-          ),
-        ),
+      appBar: DsPageHeader(
+        title: 'Installment Plan',
+        accent: HeroAccent.navy,
       ),
       body: _isLoading
           ? _buildLoadingSkeleton(dk)

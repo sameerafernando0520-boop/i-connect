@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/admin/shimmer_loading.dart';
 import '../../widgets/admin/sheets/record_payment_sheet.dart';
@@ -110,20 +111,9 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
 
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
-      appBar: AppBar(
-        title: Text(
-          _inv['invoice_number']?.toString() ?? 'Invoice',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            letterSpacing: -0.3,
-            color: isDark ? Brand.darkTextPrimary : AdminColors.text(context),
-          ),
-        ),
-        backgroundColor: AdminColors.card(context),
-        foregroundColor: AdminColors.text(context),
-        elevation: 0,
-        scrolledUnderElevation: 1,
+      appBar: DsPageHeader(
+        title: _inv['invoice_number']?.toString() ?? 'Invoice',
+        accent: HeroAccent.navy,
         actions: [
           if (!_loading && _error == null)
             Padding(

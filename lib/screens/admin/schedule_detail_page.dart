@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../utils/string_utils.dart';
@@ -487,30 +488,13 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text(
-          'Schedule Details',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            letterSpacing: -0.3,
-            color: isDark ? Brand.darkTextPrimary : AdminColors.text(context),
-          ),
-        ),
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        foregroundColor:
-            isDark ? Brand.darkTextPrimary : AdminColors.text(context),
-        elevation: 0,
-        scrolledUnderElevation: 1,
+      appBar: DsPageHeader(
+        title: 'Schedule Details',
+        accent: HeroAccent.navy,
         actions: [
           if (_schedule != null)
             PopupMenuButton<String>(
-              icon: Icon(
-                Icons.more_vert,
-                color: isDark
-                    ? Brand.darkTextSecondary
-                    : AdminColors.textSub(context),
-              ),
+              icon: const Icon(Icons.more_vert, color: Colors.white),
               color: isDark ? Brand.darkCardElevated : Colors.white,
               onSelected: (v) {
                 if (v == 'delete') _delete();

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'customers_management_page.dart';
 import 'engineer_management_page.dart';
 import 'machines_management_page.dart';
@@ -32,19 +33,10 @@ class AdminMorePage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(
-          'More',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0,
-        scrolledUnderElevation: 1,
+      appBar: DsPageHeader(
+        title: 'More',
+        accent: HeroAccent.navy,
+        showBack: false,
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 40),

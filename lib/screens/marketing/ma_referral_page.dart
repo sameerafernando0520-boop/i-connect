@@ -6,6 +6,7 @@ import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 const Color _refColor = Color(0xFF10B981);
 
@@ -135,18 +136,14 @@ class _MaReferralPageState extends State<MaReferralPage>
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text('Referral Program',
-            style: TextStyle(fontWeight: FontWeight.w700,
-                color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0, scrolledUnderElevation: 1,
-        iconTheme: IconThemeData(color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
+      appBar: DsPageHeader(
+        title: 'Referral Program',
+        accent: HeroAccent.violet,
         bottom: TabBar(
           controller: _tabCtrl,
-          indicatorColor: _refColor,
-          labelColor: _refColor,
-          unselectedLabelColor: AdminColors.textHint(context),
+          indicatorColor: Colors.white,
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.white.withAlpha(153),
           labelStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
           tabs: const [
             Tab(text: 'Referrals'),

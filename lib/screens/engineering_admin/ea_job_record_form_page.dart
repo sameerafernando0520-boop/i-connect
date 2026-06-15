@@ -9,6 +9,7 @@
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 const Color _eaAccent = Color(0xFF16A34A);
 
@@ -515,14 +516,9 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
 
     return Scaffold(
       backgroundColor: bg,
-      appBar: AppBar(
-        backgroundColor: cardBg,
-        foregroundColor: textPrimary,
-        elevation: 0,
-        title: Text(
-          _isEdit ? 'Edit Job Record' : 'New Job Record',
-          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
-        ),
+      appBar: DsPageHeader(
+        title: _isEdit ? 'Edit Job Record' : 'New Job Record',
+        accent: HeroAccent.emerald,
       ),
       body: Form(
         key: _formKey,

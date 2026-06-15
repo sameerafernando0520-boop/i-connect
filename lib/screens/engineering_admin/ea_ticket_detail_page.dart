@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import 'ea_ticket_chat_page.dart';
@@ -220,23 +221,12 @@ class _EaTicketDetailPageState extends State<EaTicketDetailPage> {
 
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
-      appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        elevation: 0,
-        title: Text(
-          t != null
-              ? '${t['ticket_number'] ?? ''}'
-              : 'Ticket Detail',
-          style: TextStyle(
-            color: AdminColors.text(context),
-            fontWeight: FontWeight.w700,
-            fontSize: 17,
-          ),
-        ),
-        iconTheme: IconThemeData(color: AdminColors.text(context)),
+      appBar: DsPageHeader(
+        title: t != null ? '${t['ticket_number'] ?? ''}' : 'Ticket Detail',
+        accent: HeroAccent.emerald,
         actions: [
           IconButton(
-            icon: Icon(Icons.refresh_rounded, color: _eaAccent),
+            icon: const Icon(Icons.refresh_rounded),
             onPressed: _load,
           ),
           IconButton(

@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../widgets/admin/shimmer_loading.dart';
 
 class ReferralRulesPage extends StatefulWidget {
@@ -75,20 +76,9 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
 
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
-      appBar: AppBar(
-        title: Text(
-          'Commission Rules',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            letterSpacing: -0.3,
-            color: isDark ? Brand.darkTextPrimary : AdminColors.text(context),
-          ),
-        ),
-        backgroundColor: AdminColors.card(context),
-        foregroundColor: AdminColors.text(context),
-        elevation: 0,
-        scrolledUnderElevation: 1,
+      appBar: DsPageHeader(
+        title: 'Commission Rules',
+        accent: HeroAccent.navy,
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _showRuleEditor(null),

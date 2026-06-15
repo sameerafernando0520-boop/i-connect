@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import 'admin_installation_detail_page.dart';
 
@@ -501,31 +502,15 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
 
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
-      appBar: AppBar(
-        backgroundColor:
-            isDark ? Brand.darkCard : Brand.royalBlue,
-        foregroundColor: Colors.white,
-        title: _showSearch
-            ? TextField(
-                controller: _searchCtrl,
-                autofocus: true,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  hintText: 'Search installations...',
-                  hintStyle:
-                      TextStyle(color: Colors.white.withAlpha(153)),
-                  border: InputBorder.none,
-                ),
-                onChanged: (v) {
-                  _searchQuery = v;
-                  _applyFilter();
-                },
-              )
-            : const Text('Installations',
-                style: TextStyle(fontWeight: FontWeight.w700)),
+      appBar: DsPageHeader(
+        title: 'Installations',
+        accent: HeroAccent.navy,
         actions: [
           IconButton(
-            icon: Icon(_showSearch ? Icons.close : Icons.search),
+            icon: Icon(
+              _showSearch ? Icons.close : Icons.search,
+              color: Colors.white,
+            ),
             onPressed: () {
               setState(() {
                 _showSearch = !_showSearch;
@@ -538,6 +523,23 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
             },
           ),
         ],
+        bottom: _showSearch
+            ? TextField(
+                controller: _searchCtrl,
+                autofocus: true,
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  hintText: 'Search installations...',
+                  hintStyle: TextStyle(color: Colors.white.withAlpha(153)),
+                  border: InputBorder.none,
+                  prefixIcon: const Icon(Icons.search, color: Colors.white54),
+                ),
+                onChanged: (v) {
+                  _searchQuery = v;
+                  _applyFilter();
+                },
+              )
+            : null,
       ),
       body: Column(
         children: [

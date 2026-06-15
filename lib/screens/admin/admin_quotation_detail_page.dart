@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../widgets/admin/shimmer_loading.dart';
 import 'admin_invoice_detail_page.dart';
 
@@ -93,20 +94,9 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
 
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
-      appBar: AppBar(
-        title: Text(
-          _quo['quotation_number']?.toString() ?? 'Quotation',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            letterSpacing: -0.3,
-            color: isDark ? Brand.darkTextPrimary : AdminColors.text(context),
-          ),
-        ),
-        backgroundColor: AdminColors.card(context),
-        foregroundColor: AdminColors.text(context),
-        elevation: 0,
-        scrolledUnderElevation: 1,
+      appBar: DsPageHeader(
+        title: _quo['quotation_number']?.toString() ?? 'Quotation',
+        accent: HeroAccent.navy,
         actions: [
           if (!_loading && _error == null)
             Padding(

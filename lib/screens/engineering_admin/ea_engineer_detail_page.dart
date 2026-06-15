@@ -10,6 +10,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../utils/time_utils.dart';
 
 const Color _eaAccent = Color(0xFF16A34A);
@@ -230,33 +231,10 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.engineerName,
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 16,
-                color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-              ),
-            ),
-            Text(
-              'Engineer Profile',
-              style: TextStyle(
-                fontSize: 11,
-                color: AdminColors.textHint(context),
-              ),
-            ),
-          ],
-        ),
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0,
-        scrolledUnderElevation: 1,
-        iconTheme: IconThemeData(
-          color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        ),
+      appBar: DsPageHeader(
+        title: widget.engineerName,
+        subtitle: 'Engineer Profile',
+        accent: HeroAccent.emerald,
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh_rounded),
@@ -267,13 +245,11 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
           controller: _tabs,
           isScrollable: true,
           tabAlignment: TabAlignment.start,
-          labelColor: _eaAccent,
-          unselectedLabelColor: AdminColors.textHint(context),
-          indicatorColor: _eaAccent,
-          labelStyle:
-              const TextStyle(fontWeight: FontWeight.w700, fontSize: 12),
-          unselectedLabelStyle:
-              const TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.white60,
+          indicatorColor: Colors.white,
+          labelStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12),
+          unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
           tabs: _tabLabels.map((l) => Tab(text: l)).toList(),
         ),
       ),

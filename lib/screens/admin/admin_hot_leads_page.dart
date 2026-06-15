@@ -13,6 +13,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import 'customer_detail_page.dart';
 
 class AdminHotLeadsPage extends StatefulWidget {
@@ -102,23 +103,12 @@ class _AdminHotLeadsPageState extends State<AdminHotLeadsPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text(
-          'Hot Leads',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0,
-        scrolledUnderElevation: 1,
-        iconTheme: IconThemeData(
-          color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        ),
+      appBar: DsPageHeader(
+        title: 'Hot Leads',
+        accent: HeroAccent.navy,
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh_rounded),
+            icon: const Icon(Icons.refresh_rounded, color: Colors.white),
             tooltip: 'Reload',
             onPressed: _isLoading ? null : _load,
           ),

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import 'create_marketer_page.dart';
@@ -633,30 +634,20 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text(
-          'Marketers',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0,
-        scrolledUnderElevation: 1,
-        iconTheme: IconThemeData(color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
+      appBar: DsPageHeader(
+        title: 'Marketers',
+        accent: HeroAccent.navy,
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh_rounded),
+            icon: const Icon(Icons.refresh_rounded, color: Colors.white),
             tooltip: 'Refresh',
             onPressed: _load,
           ),
           Padding(
             padding: const EdgeInsets.only(right: 8),
             child: IconButton(
-              icon: const Icon(Icons.person_add_rounded),
+              icon: const Icon(Icons.person_add_rounded, color: Colors.white),
               tooltip: 'Add Marketer',
-              color: _maAccent,
               onPressed: () async {
                 final result = await Navigator.push(
                   context,

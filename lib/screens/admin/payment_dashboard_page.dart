@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/admin/shimmer_loading.dart';
 import 'admin_invoice_detail_page.dart';
@@ -82,30 +83,9 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text(
-          'Payment Dashboard',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            letterSpacing: -0.3,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        // FIX: use Brand.darkCard / Colors.white → Brand.cardLight
-        backgroundColor: Brand.surface(isDark),
-        foregroundColor: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        elevation: 0,
-        // FIX: added surfaceTintColor
-        surfaceTintColor: Colors.transparent,
-        scrolledUnderElevation: 1,
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Container(
-            height: 1,
-            color: isDark ? Brand.darkBorder : Brand.borderLight,
-          ),
-        ),
+      appBar: DsPageHeader(
+        title: 'Payment Dashboard',
+        accent: HeroAccent.navy,
       ),
       body: _loading
           ? _buildShimmer(isDark)

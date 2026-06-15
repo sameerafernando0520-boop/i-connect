@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/string_utils.dart';
 
@@ -178,33 +179,31 @@ class _EngineerCreateSchedulePageState
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         backgroundColor: Brand.canvas(isDark),
-        appBar: AppBar(
-          title: const Text('Create Schedule'),
-          backgroundColor: isDark ? Brand.darkCard : Colors.white,
-          foregroundColor: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          elevation: 0,
-          scrolledUnderElevation: 1,
+        appBar: DsPageHeader(
+          title: 'Create Schedule',
+          accent: HeroAccent.cyan,
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 12),
-              child: FilledButton(
-                onPressed: _saving ? null : _save,
-                style: FilledButton.styleFrom(
-                  backgroundColor: _engAccent,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                ),
-                child: _saving
-                    ? const SizedBox(
-                        width: 18,
-                        height: 18,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
+              child: _saving
+                  ? const SizedBox(
+                      width: 18,
+                      height: 18,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: Colors.white,
+                      ),
+                    )
+                  : TextButton(
+                      onPressed: _save,
+                      child: const Text(
+                        'Save',
+                        style: TextStyle(
                           color: Colors.white,
+                          fontWeight: FontWeight.w700,
                         ),
-                      )
-                    : const Text('Save'),
-              ),
+                      ),
+                    ),
             ),
           ],
         ),

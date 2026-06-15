@@ -6,6 +6,7 @@ import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 const Color _ptColor = Color(0xFFF97316);
 
@@ -110,13 +111,9 @@ class _MaPointsPageState extends State<MaPointsPage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text('Points Activity',
-            style: TextStyle(fontWeight: FontWeight.w700,
-                color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)),
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0, scrolledUnderElevation: 1,
-        iconTheme: IconThemeData(color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
+      appBar: DsPageHeader(
+        title: 'Points Activity',
+        accent: HeroAccent.violet,
         actions: [
           IconButton(icon: const Icon(Icons.refresh_rounded), onPressed: _load),
         ],

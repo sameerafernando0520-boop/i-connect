@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 const Color _eaAccent = Color(0xFF16A34A);
 
@@ -163,21 +164,10 @@ class _EaLeaveDetailPageState extends State<EaLeaveDetailPage> {
       },
       child: Scaffold(
         backgroundColor: AdminColors.bg(context),
-        appBar: AppBar(
-          backgroundColor: isDark ? Brand.darkCard : Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-            onPressed: () => Navigator.pop(context, _changed ? true : null),
-          ),
-          title: Text(
-            'Leave Application',
-            style: TextStyle(
-              color: AdminColors.text(context),
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-          ),
+        appBar: DsPageHeader(
+          title: 'Leave Application',
+          accent: HeroAccent.emerald,
+          onBack: () => Navigator.pop(context, _changed ? true : null),
         ),
         body: _loading
             ? const Center(child: CircularProgressIndicator())

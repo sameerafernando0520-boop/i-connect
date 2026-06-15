@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
+import '../../widgets/ds/ds_widgets.dart';
 
 const Color _eaAccent = Color(0xFF16A34A);
 
@@ -468,14 +469,10 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
       },
       child: Scaffold(
         backgroundColor: AdminColors.bg(context),
-        appBar: AppBar(
-          backgroundColor: isDark ? Brand.darkCard : Colors.white,
-          elevation: 0,
-          leading: BackButton(
-            onPressed: () => Navigator.pop(context, _changed),
-          ),
-          title: const Text('Installation Detail',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+        appBar: DsPageHeader(
+          title: 'Installation Detail',
+          accent: HeroAccent.emerald,
+          onBack: () => Navigator.pop(context, _changed),
           actions: [
             IconButton(
               icon: const Icon(Icons.refresh_rounded),

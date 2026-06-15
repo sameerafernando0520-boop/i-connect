@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 
 class AdminKnowledgeBaseFormPage extends StatefulWidget {
@@ -241,20 +242,9 @@ class _AdminKnowledgeBaseFormPageState
     final accent = _types.firstWhere((t) => t.key == _type).color;
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text(
-          _isEdit ? 'Edit Entry' : 'New Knowledge Entry',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0,
-        scrolledUnderElevation: 1,
-        iconTheme: IconThemeData(
-          color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        ),
+      appBar: DsPageHeader(
+        title: _isEdit ? 'Edit Entry' : 'New Knowledge Entry',
+        accent: HeroAccent.navy,
         actions: [
           if (_saving)
             const Padding(
@@ -263,19 +253,20 @@ class _AdminKnowledgeBaseFormPageState
                 child: SizedBox(
                   width: 18,
                   height: 18,
-                  child: CircularProgressIndicator(strokeWidth: 2),
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             )
           else
             TextButton.icon(
               onPressed: _save,
-              icon: const Icon(Icons.check_rounded, size: 18),
-              label: const Text('Save'),
-              style: TextButton.styleFrom(
-                foregroundColor: accent,
-                textStyle: const TextStyle(fontWeight: FontWeight.w700),
-              ),
+              icon: const Icon(Icons.check_rounded, size: 18, color: Colors.white),
+              label: const Text('Save',
+                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
+              style: TextButton.styleFrom(foregroundColor: Colors.white),
             ),
         ],
       ),

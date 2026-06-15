@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import 'create_engineering_admin_page.dart';
@@ -157,23 +158,12 @@ class _EngineeringAdminManagementPageState
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        title: Text(
-          'Engineering Admins',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        backgroundColor: Brand.surface(isDark),
-        elevation: 0,
-        scrolledUnderElevation: 1,
-        iconTheme: IconThemeData(
-          color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        ),
+      appBar: DsPageHeader(
+        title: 'Engineering Admins',
+        accent: HeroAccent.navy,
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh_rounded),
+            icon: const Icon(Icons.refresh_rounded, color: Colors.white),
             onPressed: _load,
             tooltip: 'Refresh',
           ),
@@ -189,12 +179,10 @@ class _EngineeringAdminManagementPageState
                 );
                 if (refreshed == true) _load();
               },
-              icon: const Icon(Icons.add_rounded, size: 18),
-              label: const Text('Add'),
-              style: TextButton.styleFrom(
-                foregroundColor: _eaAccent,
-                textStyle: const TextStyle(fontWeight: FontWeight.w700),
-              ),
+              icon: const Icon(Icons.add_rounded, size: 18, color: Colors.white),
+              label: const Text('Add',
+                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
+              style: TextButton.styleFrom(foregroundColor: Colors.white),
             ),
           ),
         ],
