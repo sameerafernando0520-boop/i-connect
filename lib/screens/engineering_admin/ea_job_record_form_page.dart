@@ -503,7 +503,6 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = Brand.canvas(isDark);
-    final cardBg = isDark ? Brand.darkCard : Colors.white;
     final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
     final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;

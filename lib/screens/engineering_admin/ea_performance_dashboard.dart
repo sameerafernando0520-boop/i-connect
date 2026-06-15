@@ -289,7 +289,6 @@ class _EaPerformanceDashboardState extends State<EaPerformanceDashboard>
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     final periodLabel = _periodOptions.firstWhere((p) => p.$1 == _periodMonths).$2;
 
     return Scaffold(

@@ -774,7 +774,7 @@ class DsStatusPill extends StatelessWidget {
 /// Compact navy hero for sub-pages: back button + title + lime hairline.
 /// Like DsHero, deliberately splash-navy in BOTH light and dark mode.
 /// [bottom] hosts search fields / filter chips that should sit on navy.
-class DsPageHeader extends StatelessWidget {
+class DsPageHeader extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final String? subtitle;
   final List<Widget> actions;
@@ -798,6 +798,14 @@ class DsPageHeader extends StatelessWidget {
     this.onBack,
     this.accent = HeroAccent.navy,
   });
+
+  @override
+  Size get preferredSize {
+    double h = kToolbarHeight + 24;
+    if (subtitle != null) h += 16;
+    if (bottom != null) h += 52;
+    return Size.fromHeight(h);
+  }
 
   @override
   Widget build(BuildContext context) =>

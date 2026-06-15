@@ -498,8 +498,6 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
   // ── Build ─────────────────────────────────────────────────────
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
       appBar: DsPageHeader(
