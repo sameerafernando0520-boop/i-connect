@@ -421,7 +421,7 @@ class _AdminHotLeadsPageState extends State<AdminHotLeadsPage> {
             // Machine row
             Row(children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
                 child: SizedBox(
                   width: 38,
                   height: 38,

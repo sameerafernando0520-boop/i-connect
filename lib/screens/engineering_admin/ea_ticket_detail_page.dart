@@ -626,7 +626,7 @@ class _InfoChip extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         color: color.withAlpha(20),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(Brand.r(8)),
         border: Border.all(color: color.withAlpha(60)),
       ),
       child: Text(
@@ -1059,7 +1059,7 @@ class _DispatchHistoryItem extends StatelessWidget {
             padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
               color: statusColor.withAlpha(20),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(Brand.r(8)),
             ),
             child: Icon(_modeIcon(mode), color: statusColor, size: 16),
           ),
@@ -1085,7 +1085,7 @@ class _DispatchHistoryItem extends StatelessWidget {
                           horizontal: 6, vertical: 2),
                       decoration: BoxDecoration(
                         color: statusColor.withAlpha(20),
-                        borderRadius: BorderRadius.circular(6),
+                        borderRadius: BorderRadius.circular(Brand.r(6)),
                       ),
                       child: Text(
                         _statusLabel(status),

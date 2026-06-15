@@ -458,7 +458,7 @@ class _SignupPageState extends State<SignupPage> {
                           decoration: BoxDecoration(
                             color: Brand.surface(isDark),
                             borderRadius: Brand.isWorkshop
-                                ? BorderRadius.circular(8)
+                                ? BorderRadius.circular(Brand.r(8))
                                 : BorderRadius.circular(Brand.r(24)),
                             border: Brand.isWorkshop
                                 ? Border.all(
@@ -804,7 +804,7 @@ class _SignupPageState extends State<SignupPage> {
                     color: isDark
                         ? Brand.lightGreen.withAlpha(20)
                         : Brand.lightGreenSurface,
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                     border: Border.all(
                         color: Brand.lightGreen.withAlpha(isDark ? 38 : 51)),
                   ),

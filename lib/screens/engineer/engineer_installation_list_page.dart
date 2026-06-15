@@ -531,7 +531,7 @@ class _EngInstallCard extends StatelessWidget {
                                 horizontal: 8, vertical: 3),
                             decoration: BoxDecoration(
                               color: myStatusColor.withAlpha(isDark ? 30 : 18),
-                              borderRadius: BorderRadius.circular(6),
+                              borderRadius: BorderRadius.circular(Brand.r(6)),
                               border: Border.all(
                                   color: myStatusColor.withAlpha(60)),
                             ),
@@ -609,7 +609,7 @@ class _EngInstallCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 30 : 20),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(Brand.r(8)),
       ),
       child: Text(label,
           style: TextStyle(

@@ -774,7 +774,7 @@ class _LoginPageState extends State<LoginPage>
                             decoration: BoxDecoration(
                               color: Brand.surface(isDark),
                               borderRadius: Brand.isWorkshop
-                                  ? BorderRadius.circular(8)
+                                  ? BorderRadius.circular(Brand.r(8))
                                   : BorderRadius.circular(Brand.r(24)),
                               border: Brand.isWorkshop
                                   ? Border.all(

@@ -144,7 +144,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                     decoration: BoxDecoration(
                       color:
                           isDark ? Brand.darkBorderLight : Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
                   // Title

@@ -299,7 +299,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                       decoration: BoxDecoration(
                         color:
                             isDark ? Brand.darkBorderLight : Brand.borderLight,
-                        borderRadius: BorderRadius.circular(2),
+                        borderRadius: BorderRadius.circular(Brand.r(2)),
                       ),
                     ),
                     const SizedBox(height: 20),

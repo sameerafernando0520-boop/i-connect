@@ -1170,7 +1170,7 @@ class _HomePageState extends State<HomePage>
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(Brand.r(2)),
             ),
           ),
           const SizedBox(width: 10),
@@ -1822,7 +1822,7 @@ class _HomePageState extends State<HomePage>
               height: 4,
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
             Expanded(
@@ -1890,7 +1890,7 @@ class _HomePageState extends State<HomePage>
                             const SizedBox(height: 14),
                             // Progress bar
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(6),
+                              borderRadius: BorderRadius.circular(Brand.r(6)),
                               child: LinearProgressIndicator(
                                 value: (_tierData['tier'] as Map?)?[
                                             'progress_percent'] !=
@@ -1990,7 +1990,7 @@ class _HomePageState extends State<HomePage>
                                             decoration: BoxDecoration(
                                               color: c.withAlpha(40),
                                               borderRadius:
-                                                  BorderRadius.circular(8),
+                                                  BorderRadius.circular(Brand.r(8)),
                                             ),
                                             child: Text(
                                               'Current',
@@ -2271,7 +2271,7 @@ class _HomePageState extends State<HomePage>
                                           : const Color(0xFFEF4444))
                                       .withAlpha(isDark ? 30 : 20),
                                   borderRadius:
-                                      BorderRadius.circular(8),
+                                      BorderRadius.circular(Brand.r(8)),
                                 ),
                                 child: Icon(
                                   isPositive
@@ -2933,7 +2933,7 @@ class _HomePageState extends State<HomePage>
                         : [Brand.royalBlue, Brand.royalBlueGlow],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter),
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               )),
           const SizedBox(width: 10),
           Text(S.of(context)!.homeMyMachines,
@@ -3172,7 +3172,7 @@ class _HomePageState extends State<HomePage>
       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
       decoration: BoxDecoration(
         color: c.withAlpha(isDark ? 31 : 20),
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(Brand.r(6)),
         border: Border.all(color: c.withAlpha(isDark ? 51 : 38)),
       ),
       child: Row(mainAxisSize: MainAxisSize.min, children: [
@@ -3207,7 +3207,7 @@ class _HomePageState extends State<HomePage>
                         : [Brand.royalBlue, Brand.royalBlueGlow],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter),
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               )),
           const SizedBox(width: 10),
           Text(S.of(context)!.homeRecentActivity,
@@ -3356,7 +3356,7 @@ class _HomePageState extends State<HomePage>
                   decoration: BoxDecoration(
                     color: _ticketStatusColor(status, isDark)
                         .withAlpha(isDark ? 31 : 20),
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(Brand.r(6)),
                   ),
                   child: Text(status.toUpperCase().replaceAll('_', ' '),
                       style: TextStyle(
@@ -3641,7 +3641,7 @@ class _HomePageState extends State<HomePage>
                 duration: const Duration(milliseconds: 900),
                 curve: Curves.easeOutCubic,
                 builder: (_, value, __) => ClipRRect(
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(Brand.r(6)),
                   child: LinearProgressIndicator(
                     value: value,
                     minHeight: 8,

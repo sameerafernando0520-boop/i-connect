@@ -321,7 +321,7 @@ class _MaBannersPageState extends State<MaBannersPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
                     color: (isActive ? AdminColors.success : AdminColors.textHint(context)).withAlpha(20),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: Text(isActive ? 'Active' : 'Hidden',
                       style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600,

@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
@@ -376,7 +376,7 @@ class _TierManagementPageState extends State<TierManagementPage>
             padding: const EdgeInsets.all(7),
             decoration: BoxDecoration(
               color: color.withAlpha(26),
-              borderRadius: BorderRadius.circular(9),
+              borderRadius: BorderRadius.circular(Brand.r(9)),
             ),
             child: Icon(icon, size: 18, color: color),
           ),
@@ -444,7 +444,7 @@ class _TierManagementPageState extends State<TierManagementPage>
           // Stacked bar
           if (total > 0) ...[
             ClipRRect(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(Brand.r(8)),
               child: SizedBox(
                 height: 28,
                 child: Row(
@@ -483,7 +483,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                     height: 14,
                     decoration: BoxDecoration(
                       color: color,
-                      borderRadius: BorderRadius.circular(4),
+                      borderRadius: BorderRadius.circular(Brand.r(4)),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -574,7 +574,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                       color: idx < 3
                           ? _rankColor(idx).withAlpha(26)
                           : AdminColors.bg(context),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Center(
                       child: idx < 3
@@ -889,7 +889,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                         height: 4,
                         decoration: BoxDecoration(
                           color: AdminColors.border(sheetCtx),
-                          borderRadius: BorderRadius.circular(2),
+                          borderRadius: BorderRadius.circular(Brand.r(2)),
                         ),
                       ),
                     ),
@@ -1140,7 +1140,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                           height: 28,
                           decoration: BoxDecoration(
                             color: color.withAlpha(26),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(Brand.r(8)),
                           ),
                           child: Icon(
                             _tierIcon(tier),
@@ -1165,7 +1165,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                             padding: const EdgeInsets.all(6),
                             decoration: BoxDecoration(
                               color: AdminColors.primary.withAlpha(15),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(Brand.r(8)),
                             ),
                             child: const Icon(
                               Icons.add_rounded,
@@ -1268,7 +1268,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                                               color: AdminColors.error
                                                   .withAlpha(15),
                                               borderRadius:
-                                                  BorderRadius.circular(4),
+                                                  BorderRadius.circular(Brand.r(4)),
                                             ),
                                             child: const Text(
                                               'Inactive',
@@ -1389,7 +1389,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                           height: 4,
                           decoration: BoxDecoration(
                             color: AdminColors.border(sheetCtx),
-                            borderRadius: BorderRadius.circular(2),
+                            borderRadius: BorderRadius.circular(Brand.r(2)),
                           ),
                         ),
                       ),
@@ -1437,7 +1437,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                                 color: sel
                                     ? AdminColors.primary.withAlpha(25)
                                     : AdminColors.bg(sheetCtx),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(Brand.r(8)),
                                 border: Border.all(
                                   color: sel
                                       ? AdminColors.primary.withAlpha(80)

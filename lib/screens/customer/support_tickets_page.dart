@@ -345,7 +345,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                       const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                   decoration: BoxDecoration(
                     color: Colors.white.withAlpha(51),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: Text(
                     '$supportCount',
@@ -368,7 +368,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                       const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                   decoration: BoxDecoration(
                     color: Colors.white.withAlpha(51),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: Text(
                     '$inquiryCount',
@@ -472,7 +472,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                                 ((isDark ? 0.3 : 0.25) * 255).toInt())
                             : color.withAlpha(
                                 ((isDark ? 0.15 : 0.1) * 255).toInt()),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(Brand.r(8)),
                       ),
                       child: Text(
                         '$count',
@@ -809,7 +809,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                             height: 28,
                             decoration: BoxDecoration(
                               color: Brand.surface(isDark),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(Brand.r(8)),
                               border: Border.all(
                                   color: isDark
                                       ? Brand.darkBorder
@@ -838,7 +838,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                         decoration: BoxDecoration(
                           color: _getPriorityColor(priority).withAlpha(
                               ((isDark ? 0.15 : 0.1) * 255).toInt()),
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(Brand.r(8)),
                           border: Border.all(
                             color: _getPriorityColor(priority).withAlpha(
                                 ((isDark ? 0.35 : 0.3) * 255).toInt()),
@@ -875,7 +875,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                         decoration: BoxDecoration(
                           color: _getTypeColor(ticketType).withAlpha(
                               ((isDark ? 0.15 : 0.1) * 255).toInt()),
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(Brand.r(8)),
                           border: Border.all(
                             color: _getTypeColor(ticketType).withAlpha(
                                 ((isDark ? 0.35 : 0.3) * 255).toInt()),

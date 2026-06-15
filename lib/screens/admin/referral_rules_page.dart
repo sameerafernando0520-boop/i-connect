@@ -275,7 +275,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: AdminColors.primary.withAlpha(15),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: const Icon(
                     Icons.edit_rounded,
@@ -292,7 +292,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: AdminColors.error.withAlpha(15),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: const Icon(
                     Icons.delete_outline_rounded,
@@ -433,7 +433,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                           height: 4,
                           decoration: BoxDecoration(
                             color: AdminColors.border(sheetCtx),
-                            borderRadius: BorderRadius.circular(2),
+                            borderRadius: BorderRadius.circular(Brand.r(2)),
                           ),
                         ),
                       ),

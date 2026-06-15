@@ -821,7 +821,7 @@ class _CatalogPageState extends State<CatalogPage> {
                           decoration: BoxDecoration(
                               color: (isDark ? Colors.white : Brand.royalBlue)
                                   .withAlpha(20),
-                              borderRadius: BorderRadius.circular(8)),
+                              borderRadius: BorderRadius.circular(Brand.r(8))),
                           child: Icon(Icons.clear_rounded,
                               color: isDark
                                   ? Brand.darkTextSecondary
@@ -1026,7 +1026,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 color: isDark
                     ? Brand.darkCardElevated
                     : Brand.royalBlueSurface.withAlpha(128),
-                borderRadius: BorderRadius.circular(8)),
+                borderRadius: BorderRadius.circular(Brand.r(8))),
             child: RichText(
                 text: TextSpan(children: [
               TextSpan(
@@ -1155,7 +1155,7 @@ class _CatalogPageState extends State<CatalogPage> {
                               color: isDark
                                   ? Brand.darkTextTertiary
                                   : Brand.subtleLight.withAlpha(77),
-                              borderRadius: BorderRadius.circular(2)))),
+                              borderRadius: BorderRadius.circular(Brand.r(2))))),
                   const SizedBox(height: 20),
                   Text(S.of(context)!.catalogFilterBrand,
                       style: TextStyle(
@@ -1225,7 +1225,7 @@ class _CatalogPageState extends State<CatalogPage> {
                               color: isDark
                                   ? Brand.darkTextTertiary
                                   : Brand.subtleLight.withAlpha(77),
-                              borderRadius: BorderRadius.circular(2)))),
+                              borderRadius: BorderRadius.circular(Brand.r(2))))),
                   const SizedBox(height: 20),
                   Text(S.of(context)!.catalogSort,
                       style: TextStyle(
@@ -1326,7 +1326,7 @@ class _CatalogPageState extends State<CatalogPage> {
                     height: 14,
                     decoration: BoxDecoration(
                         color: Brand.royalBlue,
-                        borderRadius: BorderRadius.circular(2))),
+                        borderRadius: BorderRadius.circular(Brand.r(2)))),
                 const SizedBox(width: 8),
                 Text(S.of(context)!.catalogRecentlyViewed,
                     style: TextStyle(
@@ -1523,7 +1523,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                 horizontal: 8, vertical: 4),
                             decoration: BoxDecoration(
                                 color: accent.withAlpha(224),
-                                borderRadius: BorderRadius.circular(8)),
+                                borderRadius: BorderRadius.circular(Brand.r(8))),
                             child: Text(_shortCat(machine['category']),
                                 style: const TextStyle(
                                     color: Colors.white,
@@ -1566,7 +1566,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                     Brand.lightGreen,
                                     Brand.lightGreenBright
                                   ]),
-                                  borderRadius: BorderRadius.circular(8)),
+                                  borderRadius: BorderRadius.circular(Brand.r(8))),
                               child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -1807,7 +1807,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                       horizontal: 6, vertical: 2),
                                   decoration: BoxDecoration(
                                       color: accent.withAlpha(isDark ? 31 : 15),
-                                      borderRadius: BorderRadius.circular(5),
+                                      borderRadius: BorderRadius.circular(Brand.r(5)),
                                       border: Border.all(
                                           color: accent.withAlpha(26))),
                                   child: Text(machine['brand'] ?? '',
@@ -1825,7 +1825,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                             ? Colors.white.withAlpha(10)
                                             : Brand.royalBlueSurface
                                                 .withAlpha(128),
-                                        borderRadius: BorderRadius.circular(5)),
+                                        borderRadius: BorderRadius.circular(Brand.r(5))),
                                     child: Text(sub,
                                         style: TextStyle(
                                             fontSize: 11,
@@ -1938,7 +1938,7 @@ class _CatalogPageState extends State<CatalogPage> {
                           color: isDark
                               ? Brand.darkTextTertiary
                               : Brand.subtleLight.withAlpha(77),
-                          borderRadius: BorderRadius.circular(2)))),
+                          borderRadius: BorderRadius.circular(Brand.r(2))))),
               const SizedBox(height: 20),
               Row(children: [
                 Container(

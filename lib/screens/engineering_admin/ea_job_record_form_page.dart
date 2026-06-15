@@ -214,7 +214,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
                 height: 4,
                 decoration: BoxDecoration(
                   color: borderColor,
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(Brand.r(2)),
                 ),
               ),
               const SizedBox(height: 16),
@@ -325,7 +325,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
                   height: 4,
                   decoration: BoxDecoration(
                     color: borderColor,
-                    borderRadius: BorderRadius.circular(2),
+                    borderRadius: BorderRadius.circular(Brand.r(2)),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -379,7 +379,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
                                       color: Brand.royalBlue.withAlpha(20),
-                                      borderRadius: BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.circular(Brand.r(8)),
                                     ),
                                     child: const Icon(
                                       Icons.confirmation_number_outlined,

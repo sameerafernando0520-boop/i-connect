@@ -345,7 +345,7 @@ class _MaPointsPageState extends State<MaPointsPage> {
                         horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
                       color: _ptColor.withAlpha(isDark ? 30 : 20),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Text('+$finalPts pts',
                         style: const TextStyle(
@@ -369,7 +369,7 @@ class _MaPointsPageState extends State<MaPointsPage> {
                       color: isDark
                           ? Brand.darkCardElevated
                           : Brand.scaffoldLight,
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(Brand.r(6)),
                       border: Border.all(
                           color: isDark
                               ? Brand.darkBorder
@@ -388,7 +388,7 @@ class _MaPointsPageState extends State<MaPointsPage> {
                           horizontal: 7, vertical: 2),
                       decoration: BoxDecoration(
                         color: AdminColors.warning.withAlpha(25),
-                        borderRadius: BorderRadius.circular(6),
+                        borderRadius: BorderRadius.circular(Brand.r(6)),
                       ),
                       child: Text(
                         '${multiplier}x tier bonus',

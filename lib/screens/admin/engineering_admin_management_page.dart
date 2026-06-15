@@ -430,7 +430,7 @@ class _EngineeringAdminManagementPageState
                         horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: _eaAccent.withAlpha(isDark ? 30 : 18),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Text(
                       'EA',

@@ -1,4 +1,4 @@
-﻿import 'dart:async';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
@@ -492,7 +492,7 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         color: color.withAlpha(26),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(Brand.r(8)),
       ),
       child: Text(
         label,

@@ -278,7 +278,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
             margin: const EdgeInsets.symmetric(vertical: 10),
             decoration: BoxDecoration(
               color: AdminColors.border(context),
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(Brand.r(2)),
             ),
           ),
           Padding(
@@ -564,7 +564,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
                               horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(
                             color: const Color(0xFF8B5CF6),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(Brand.r(8)),
                           ),
                           child: const Text('LEAD',
                               style: TextStyle(
@@ -632,7 +632,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
         decoration: BoxDecoration(
           color: color.withAlpha(38),
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(Brand.r(6)),
         ),
         child: Text(
           label,

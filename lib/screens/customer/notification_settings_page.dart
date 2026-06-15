@@ -730,7 +730,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
           color: accent.withAlpha(((0.1) * 255).toInt()),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(Brand.r(8)),
         ),
         child: Text(
           '$enabledCount/6',

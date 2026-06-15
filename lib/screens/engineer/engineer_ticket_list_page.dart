@@ -327,7 +327,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(Brand.r(2)),
             ),
           ),
           const SizedBox(width: 10),
@@ -642,7 +642,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(Brand.r(2)),
             ),
           ),
           const SizedBox(width: 8),
@@ -672,7 +672,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
               decoration: BoxDecoration(
                 color: (isDark ? Brand.darkIconActive : _engAccent)
                     .withAlpha(20),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,

@@ -1,4 +1,4 @@
-﻿// lib/screens/admin/engineer_management_page.dart
+// lib/screens/admin/engineer_management_page.dart
 // Fixed: .withOpacity() → .withAlpha() throughout,
 //   MediaQuery sheetCtx, mounted guards, AlwaysScrollableScrollPhysics,
 //   AdminColors.warning, error feedback on outer catch
@@ -865,7 +865,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
       decoration: BoxDecoration(
         // ✅ .withAlpha() — was .withOpacity()
         color: c.withAlpha(isDark ? 26 : 18),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(Brand.r(8)),
       ),
       child: Column(
         children: [
@@ -1253,7 +1253,7 @@ Widget _sectionTitle(String title, IconData icon, bool isDark) {
         height: 32,
         decoration: BoxDecoration(
           color: _engAccent.withAlpha(isDark ? 31 : 26),
-          borderRadius: BorderRadius.circular(9),
+          borderRadius: BorderRadius.circular(Brand.r(9)),
         ),
         child: Icon(icon, color: _engAccent, size: 16),
       ),
@@ -1453,7 +1453,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
             height: 4,
             decoration: BoxDecoration(
               color: isDark ? Brand.darkBorderLight : Colors.grey.shade300,
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(Brand.r(2)),
             ),
           ),
           Padding(
@@ -1934,7 +1934,7 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
             height: 4,
             decoration: BoxDecoration(
               color: isDark ? Brand.darkBorderLight : Colors.grey.shade300,
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(Brand.r(2)),
             ),
           ),
           Padding(

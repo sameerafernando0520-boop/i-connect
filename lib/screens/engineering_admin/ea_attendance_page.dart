@@ -203,7 +203,7 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
                       height: 4,
                       decoration: BoxDecoration(
                         color: isDark ? Brand.darkBorder : Brand.borderLight,
-                        borderRadius: BorderRadius.circular(2),
+                        borderRadius: BorderRadius.circular(Brand.r(2)),
                       ),
                     ),
                   ),
@@ -1019,7 +1019,7 @@ class _AttendanceCard extends StatelessWidget {
                                 horizontal: 8, vertical: 3),
                             decoration: BoxDecoration(
                               color: attColor.withAlpha(25),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(Brand.r(8)),
                               border: Border.all(
                                   color: attColor.withAlpha(60)),
                             ),

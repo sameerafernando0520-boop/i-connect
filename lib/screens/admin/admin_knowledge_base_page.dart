@@ -312,7 +312,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
                   padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                   decoration: BoxDecoration(
                     color: sel ? t.color : AdminColors.textHint(context).withAlpha(40),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: Text(
                     '$count',
@@ -452,7 +452,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
                             horizontal: 8, vertical: 3),
                         decoration: BoxDecoration(
                           color: t.color.withAlpha(40),
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius: BorderRadius.circular(Brand.r(6)),
                         ),
                         child: Text(
                           t.label.toUpperCase(),
@@ -470,7 +470,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
                               horizontal: 8, vertical: 3),
                           decoration: BoxDecoration(
                             color: AdminColors.warning.withAlpha(35),
-                            borderRadius: BorderRadius.circular(6),
+                            borderRadius: BorderRadius.circular(Brand.r(6)),
                           ),
                           child: Text(
                             'DRAFT',

@@ -526,7 +526,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
                     color: statusColor,
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                     boxShadow: [
                       BoxShadow(
                           color: statusColor.withAlpha(102),
@@ -605,7 +605,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                     color: i == _currentImageIndex
                         ? Colors.white
                         : Colors.white.withAlpha(102),
-                    borderRadius: BorderRadius.circular(3),
+                    borderRadius: BorderRadius.circular(Brand.r(3)),
                   ),
                 ),
               ),
@@ -848,7 +848,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                   color: isDark
                       ? Brand.darkIconActive.withAlpha(26)
                       : Brand.royalBlue.withAlpha(20),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                 ),
                 child: Text(
                   _isEditingNickname ? 'Cancel' : 'Edit',
@@ -1564,7 +1564,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                 color: isDark
                     ? Brand.darkTextTertiary
                     : Brand.subtleLight.withAlpha(77),
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
           ),

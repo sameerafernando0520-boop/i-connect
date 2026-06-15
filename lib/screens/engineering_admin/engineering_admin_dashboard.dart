@@ -619,7 +619,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
             height: 28,
             decoration: BoxDecoration(
               color: _eaAccent.withAlpha(isDark ? 40 : 20),
-              borderRadius: BorderRadius.circular(7),
+              borderRadius: BorderRadius.circular(Brand.r(7)),
             ),
             child: const Icon(Icons.engineering_rounded,
                 color: _eaAccent, size: 16),
@@ -1138,7 +1138,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
               margin: const EdgeInsets.only(right: 12),
               decoration: BoxDecoration(
                 color: statusColor,
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(Brand.r(4)),
               ),
             ),
             Expanded(
@@ -1167,7 +1167,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                             horizontal: 7, vertical: 2),
                         decoration: BoxDecoration(
                           color: statusColor.withAlpha(isDark ? 35 : 20),
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius: BorderRadius.circular(Brand.r(6)),
                         ),
                         child: Text(
                           ticketNum,
@@ -1199,7 +1199,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                     horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
                   color: _eaRed.withAlpha(isDark ? 30 : 15),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                 ),
                 child: const Text(
                   'Unassigned',

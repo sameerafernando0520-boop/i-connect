@@ -1,4 +1,4 @@
-﻿// lib/screens/engineer/engineer_ticket_detail_page.dart
+// lib/screens/engineer/engineer_ticket_detail_page.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -979,7 +979,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
             height: 28,
             decoration: BoxDecoration(
               color: Colors.orange.withAlpha(38),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(Brand.r(8)),
             ),
             child: Icon(Icons.warning_rounded,
                 size: 15, color: Colors.orange[700]),
@@ -1017,7 +1017,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.orange.withAlpha(77)),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
               ),
               child: Text(
                 'Remove',
@@ -1153,7 +1153,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                 height: 26,
                 decoration: BoxDecoration(
                   color: color.withAlpha(((0.15) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(7),
+                  borderRadius: BorderRadius.circular(Brand.r(7)),
                 ),
                 child: Icon(icon, size: 14, color: color),
               ),
@@ -1441,7 +1441,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                                 horizontal: 5, vertical: 1),
                             decoration: BoxDecoration(
                               color: Brand.royalBlue.withAlpha(26),
-                              borderRadius: BorderRadius.circular(4),
+                              borderRadius: BorderRadius.circular(Brand.r(4)),
                             ),
                             child: Text(
                               'ADMIN',

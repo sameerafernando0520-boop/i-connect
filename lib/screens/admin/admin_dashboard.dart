@@ -1810,7 +1810,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                         color: isDark
                             ? Brand.darkBorder
                             : Colors.grey.withAlpha(77),
-                        borderRadius: BorderRadius.circular(2),
+                        borderRadius: BorderRadius.circular(Brand.r(2)),
                       ),
                     ),
                   ),

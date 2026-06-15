@@ -438,7 +438,7 @@ class _EaTicketListPageState extends State<EaTicketListPage>
               height: 4,
               decoration: BoxDecoration(
                 color: AdminColors.border(context),
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
             Padding(
@@ -516,7 +516,7 @@ class _EaTicketListPageState extends State<EaTicketListPage>
               height: 4,
               decoration: BoxDecoration(
                 color: AdminColors.border(context),
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
             Padding(
@@ -539,7 +539,7 @@ class _EaTicketListPageState extends State<EaTicketListPage>
                         horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
                       color: const Color(0xFFEF4444).withAlpha(20),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Text(
                       '${unassigned.length} unassigned',
@@ -915,7 +915,7 @@ class _TicketCard extends StatelessWidget {
                               horizontal: 8, vertical: 3),
                           decoration: BoxDecoration(
                             color: const Color(0xFFEF4444).withAlpha(15),
-                            borderRadius: BorderRadius.circular(6),
+                            borderRadius: BorderRadius.circular(Brand.r(6)),
                             border: Border.all(
                                 color: const Color(0xFFEF4444).withAlpha(40)),
                           ),
@@ -952,7 +952,7 @@ class _TicketCard extends StatelessWidget {
                       padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
                         color: _eaAccent.withAlpha(20),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(Brand.r(8)),
                       ),
                       child: const Icon(Icons.chat_bubble_rounded,
                           size: 16, color: _eaAccent),
@@ -1045,7 +1045,7 @@ class _StatusBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
       decoration: BoxDecoration(
         color: color.withAlpha(20),
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(Brand.r(6)),
       ),
       child: Text(
         label,

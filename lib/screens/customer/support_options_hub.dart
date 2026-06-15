@@ -162,7 +162,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                             color: isDark
                                 ? Brand.darkBorderLight
                                 : Colors.grey.shade300,
-                            borderRadius: BorderRadius.circular(2),
+                            borderRadius: BorderRadius.circular(Brand.r(2)),
                           ),
                         ),
                       ),
@@ -862,7 +862,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
                     color: statusColor.withAlpha(((0.12) * 255).toInt()),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: Text(
                     status.replaceAll('_', ' ').toUpperCase(),

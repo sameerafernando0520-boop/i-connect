@@ -1175,7 +1175,7 @@ class _MaHomePageState extends State<MaHomePage> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
-            borderRadius: BorderRadius.circular(2),
+            borderRadius: BorderRadius.circular(Brand.r(2)),
           ),
         ),
         const SizedBox(width: 10),

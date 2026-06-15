@@ -222,7 +222,7 @@ class _MaBroadcastPageState extends State<MaBroadcastPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
                   decoration: BoxDecoration(
                     color: _bcColor.withAlpha(15),
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(Brand.r(6)),
                   ),
                   child: Text('To: $audience',
                       style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600,
@@ -336,7 +336,7 @@ class _ComposeSheetState extends State<_ComposeSheet> {
           width: 40, height: 4,
           decoration: BoxDecoration(
             color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-            borderRadius: BorderRadius.circular(2),
+            borderRadius: BorderRadius.circular(Brand.r(2)),
           ),
         )),
         const SizedBox(height: 16),

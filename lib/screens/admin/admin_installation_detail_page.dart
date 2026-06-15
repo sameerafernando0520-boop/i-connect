@@ -237,7 +237,7 @@ class _AdminInstallationDetailPageState
                     height: 4,
                     decoration: BoxDecoration(
                         color: AdminColors.border(sheetCtx),
-                        borderRadius: BorderRadius.circular(2))),
+                        borderRadius: BorderRadius.circular(Brand.r(2)))),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 0, 8, 12),
                   child: Row(
@@ -782,7 +782,7 @@ class _AdminInstallationDetailPageState
                               decoration: BoxDecoration(
                                   color: roleColor.withAlpha(26),
                                   borderRadius:
-                                      BorderRadius.circular(5)),
+                                      BorderRadius.circular(Brand.r(5))),
                               child: Text(_capitalize(roleStr),
                                   style: TextStyle(
                                       fontSize: 11,
@@ -934,7 +934,7 @@ class _AdminInstallationDetailPageState
             const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
         decoration: BoxDecoration(
             color: color.withAlpha(26),
-            borderRadius: BorderRadius.circular(6)),
+            borderRadius: BorderRadius.circular(Brand.r(6))),
         child: Text(label,
             style: TextStyle(
                 fontSize: 11,

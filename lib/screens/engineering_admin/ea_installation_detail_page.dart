@@ -250,7 +250,7 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
                         color: isDark
                             ? Brand.darkBorderLight
                             : Brand.borderLight,
-                        borderRadius: BorderRadius.circular(2),
+                        borderRadius: BorderRadius.circular(Brand.r(2)),
                       ),
                     ),
                   ),
@@ -534,7 +534,7 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
                           horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
                         color: typeColor.withAlpha(26),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(Brand.r(8)),
                       ),
                       child: Text(_typeLabels[type] ?? type,
                           style: TextStyle(
@@ -548,7 +548,7 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
                           horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
                         color: statusColor.withAlpha(26),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(Brand.r(8)),
                       ),
                       child: Text(_statusLabels[status] ?? status,
                           style: TextStyle(

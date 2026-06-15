@@ -293,7 +293,7 @@ class _MaReferralPageState extends State<MaReferralPage>
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
             decoration: BoxDecoration(
               color: statusColor.withAlpha(20),
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(Brand.r(6)),
             ),
             child: Text(_cap(status),
                 style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: statusColor)),
@@ -382,7 +382,7 @@ class _MaReferralPageState extends State<MaReferralPage>
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
             decoration: BoxDecoration(
               color: (isActive ? _refColor : AdminColors.textHint(context)).withAlpha(20),
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(Brand.r(6)),
             ),
             child: Text(isActive ? 'Active' : 'Inactive',
                 style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700,
@@ -422,7 +422,7 @@ class _MaReferralPageState extends State<MaReferralPage>
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(Brand.r(8)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

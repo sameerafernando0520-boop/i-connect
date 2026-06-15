@@ -1,4 +1,4 @@
-﻿// lib/screens/admin/inquiry_chat_page.dart
+// lib/screens/admin/inquiry_chat_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -918,7 +918,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                             decoration: BoxDecoration(
                               // FIX: .withOpacity() → .withAlpha()
                               color: _warningColor.withAlpha(isDark ? 38 : 26),
-                              borderRadius: BorderRadius.circular(4),
+                              borderRadius: BorderRadius.circular(Brand.r(4)),
                             ),
                             child: Text(
                               'INTERNAL',

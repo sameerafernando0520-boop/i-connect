@@ -370,7 +370,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
             padding: const EdgeInsets.all(7),
             decoration: BoxDecoration(
               color: color.withAlpha(26),
-              borderRadius: BorderRadius.circular(9),
+              borderRadius: BorderRadius.circular(Brand.r(9)),
             ),
             child: Icon(icon, size: 18, color: color),
           ),
@@ -750,7 +750,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                         height: 4,
                         decoration: BoxDecoration(
                           color: AdminColors.border(sheetCtx),
-                          borderRadius: BorderRadius.circular(2),
+                          borderRadius: BorderRadius.circular(Brand.r(2)),
                         ),
                       ),
                     ),
@@ -1092,7 +1092,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         color: color.withAlpha(26),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(Brand.r(8)),
       ),
       child: Text(
         _statusLabel(status),

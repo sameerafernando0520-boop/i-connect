@@ -504,7 +504,7 @@ class _EaNotificationsPageState extends State<EaNotificationsPage> {
                       color: isDark
                           ? Brand.darkBorderLight
                           : Brand.borderLight,
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(Brand.r(6)),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -515,7 +515,7 @@ class _EaNotificationsPageState extends State<EaNotificationsPage> {
                       color: isDark
                           ? Brand.darkBorderLight
                           : Brand.borderLight,
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(Brand.r(5)),
                     ),
                   ),
                 ],

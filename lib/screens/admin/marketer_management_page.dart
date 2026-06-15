@@ -184,7 +184,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                           height: 4,
                           decoration: BoxDecoration(
                             color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                            borderRadius: BorderRadius.circular(2),
+                            borderRadius: BorderRadius.circular(Brand.r(2)),
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -391,7 +391,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                       height: 4,
                       decoration: BoxDecoration(
                         color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                        borderRadius: BorderRadius.circular(2),
+                        borderRadius: BorderRadius.circular(Brand.r(2)),
                       ),
                     ),
                   ),
@@ -876,7 +876,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
                     color: (isActive ? AdminColors.success : AdminColors.textHint(context)).withAlpha(isDark ? 30 : 20),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: Text(
                     isActive ? 'Active' : 'Inactive',
@@ -901,7 +901,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
                     color: s.color.withAlpha(isDark ? 30 : 15),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,

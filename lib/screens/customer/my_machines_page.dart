@@ -762,7 +762,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                       color: isSelected
                           ? Colors.white.withAlpha(64)
                           : color.withAlpha(isDark ? 31 : 26),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Text('$count',
                         style: TextStyle(
@@ -837,7 +837,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
                 color: Colors.red.withAlpha(isDark ? 31 : 15),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
                 border: Border.all(color: Colors.red.withAlpha(38)),
               ),
               child: Row(mainAxisSize: MainAxisSize.min, children: [
@@ -1159,7 +1159,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                                 color: isDark
                                     ? Brand.darkIconActive.withAlpha(26)
                                     : Brand.royalBlue.withAlpha(20),
-                                borderRadius: BorderRadius.circular(5)),
+                                borderRadius: BorderRadius.circular(Brand.r(5))),
                             child: Text(catalog!['brand'].toString(),
                                 style: TextStyle(
                                     fontSize: 11,
@@ -1225,7 +1225,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                       if (hasWarranty && warrantyValid) ...[
                         const SizedBox(height: 8),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(4),
+                          borderRadius: BorderRadius.circular(Brand.r(4)),
                           child: LinearProgressIndicator(
                             value: warrantyProgress,
                             minHeight: 3,
@@ -1388,7 +1388,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                       const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
                   decoration: BoxDecoration(
                       color: statusColor,
-                      borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(Brand.r(8))),
                   child: Row(mainAxisSize: MainAxisSize.min, children: [
                     Container(
                         width: 5,
@@ -1470,7 +1470,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                             color: isDark
                                 ? Brand.darkIconActive.withAlpha(26)
                                 : Brand.royalBlue.withAlpha(20),
-                            borderRadius: BorderRadius.circular(5)),
+                            borderRadius: BorderRadius.circular(Brand.r(5))),
                         child: Text(catalog!['brand'].toString(),
                             style: TextStyle(
                                 fontSize: 11,
@@ -1563,7 +1563,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                   color: isDark
                       ? Brand.darkTextTertiary
                       : Brand.subtleLight.withAlpha(77),
-                  borderRadius: BorderRadius.circular(2)),
+                  borderRadius: BorderRadius.circular(Brand.r(2))),
             )),
             const SizedBox(height: 20),
             Text(S.of(context)!.machineSortBy,
@@ -1646,7 +1646,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
               color: isDark
                   ? Brand.darkTextTertiary
                   : Brand.subtleLight.withAlpha(77),
-              borderRadius: BorderRadius.circular(2)),
+              borderRadius: BorderRadius.circular(Brand.r(2))),
         )),
         const SizedBox(height: 20),
         Row(children: [

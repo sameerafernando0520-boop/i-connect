@@ -144,7 +144,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                     height: 4,
                     decoration: BoxDecoration(
                       color: dk ? Brand.darkBorderLight : Brand.borderLight,
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -1090,7 +1090,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                             vertical: 8),
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(8)),
+                                                BorderRadius.circular(Brand.r(8))),
                                       ),
                                     ),
                                   ),
@@ -1110,7 +1110,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                             vertical: 8),
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(8)),
+                                                BorderRadius.circular(Brand.r(8))),
                                       ),
                                     ),
                                   ),
@@ -1139,7 +1139,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                     vertical: 8,
                                   ),
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.circular(Brand.r(8)),
                                   ),
                                   textStyle: const TextStyle(
                                     fontSize: 13,

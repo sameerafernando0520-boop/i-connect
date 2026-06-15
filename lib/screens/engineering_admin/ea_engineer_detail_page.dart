@@ -594,7 +594,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
             height: 48,
             decoration: BoxDecoration(
               color: statusColor,
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(Brand.r(2)),
             ),
           ),
           const SizedBox(width: 12),
@@ -1432,7 +1432,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
                   color: _eaAccent.withAlpha(20),
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(Brand.r(4)),
                 ),
                 child: Text(
                   myRole,
@@ -1515,7 +1515,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                         color: isDark
                             ? Brand.darkBorderLight
                             : Brand.borderLight,
-                        borderRadius: BorderRadius.circular(2),
+                        borderRadius: BorderRadius.circular(Brand.r(2)),
                       ),
                     ),
                   ),
@@ -1713,7 +1713,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                       color: isDark
                           ? Brand.darkBorderLight
                           : Brand.borderLight,
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
                 ),
@@ -1978,7 +1978,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 35 : 22),
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(Brand.r(6)),
         border: Border.all(color: color.withAlpha(isDark ? 70 : 50)),
       ),
       child: Text(
@@ -1997,7 +1997,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: _eaAccent.withAlpha(isDark ? 35 : 20),
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(Brand.r(6)),
       ),
       child: Text(
         _empTypeLabel(empType),

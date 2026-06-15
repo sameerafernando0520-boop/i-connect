@@ -451,7 +451,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
                                     ),
                                     decoration: BoxDecoration(
                                       color: AdminColors.primary.withAlpha(12),
-                                      borderRadius: BorderRadius.circular(4),
+                                      borderRadius: BorderRadius.circular(Brand.r(4)),
                                     ),
                                     child: Text(
                                       itemType.toUpperCase(),
@@ -741,7 +741,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
               color: isInternal
                   ? AdminColors.warning.withAlpha(10)
                   : AdminColors.bg(context),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(Brand.r(8)),
               border: isInternal
                   ? Border.all(color: AdminColors.warning.withAlpha(40))
                   : null,
@@ -1144,7 +1144,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
         color: c.withAlpha(26),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(Brand.r(8)),
       ),
       child: Text(
         _statusLabel(status),

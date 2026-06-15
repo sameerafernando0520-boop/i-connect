@@ -285,7 +285,7 @@ class _AssignEngineerSheetState extends State<AssignEngineerSheet> {
             height: 4,
             decoration: BoxDecoration(
               color: dark ? Brand.darkBorderLight : Colors.grey[300],
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(Brand.r(2)),
             ),
           ),
           // Title row
@@ -486,7 +486,7 @@ class _AssignEngineerSheetState extends State<AssignEngineerSheet> {
                                 horizontal: 8, vertical: 3),
                             decoration: BoxDecoration(
                               color: Brand.lightGreen.withAlpha(38),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(Brand.r(8)),
                             ),
                             child: const Text('Current',
                                 style: TextStyle(

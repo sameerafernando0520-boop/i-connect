@@ -1,4 +1,4 @@
-﻿import 'dart:async';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -304,7 +304,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                     height: 4,
                     decoration: BoxDecoration(
                       color: AdminColors.border(sheetCtx),
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
                   Padding(
@@ -572,7 +572,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                   height: 28,
                   decoration: BoxDecoration(
                     color: AdminColors.primary.withAlpha(15),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: Center(
                     child: Text(
@@ -679,7 +679,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                         height: 4,
                         decoration: BoxDecoration(
                           color: AdminColors.border(sheetCtx),
-                          borderRadius: BorderRadius.circular(2),
+                          borderRadius: BorderRadius.circular(Brand.r(2)),
                         ),
                       ),
                     ),
@@ -925,7 +925,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                     height: 4,
                     decoration: BoxDecoration(
                       color: AdminColors.border(sheetCtx),
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
                   Padding(
@@ -1226,7 +1226,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
         decoration: BoxDecoration(
           color:
               active ? AdminColors.primary.withAlpha(25) : Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(Brand.r(8)),
         ),
         child: Text(
           label,

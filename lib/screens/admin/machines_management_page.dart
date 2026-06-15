@@ -1,4 +1,4 @@
-﻿// lib/screens/admin/machines_management_page.dart
+// lib/screens/admin/machines_management_page.dart
 // Fixed: AdminColors.textPrimary removed, Colors.red/orange/blue → AdminColors,
 //   _isDark anti-pattern fixed, mounted guards, sheetCtx, border radius 28,
 //   _isRefreshing setState, duplicate mounted check removed
@@ -497,7 +497,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
               height: 4,
               decoration: BoxDecoration(
                 color: _handleColor,
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
             const SizedBox(height: 20),
@@ -678,7 +678,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
                 color: Colors.white.withAlpha(38),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
               ),
               child: Text(
                 _selectedIds.length == _filteredMachines.length
@@ -699,7 +699,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: _accentColor.withAlpha(51),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
               ),
               child:
                   Icon(Icons.visibility_rounded, color: _accentColor, size: 20),
@@ -712,7 +712,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: AdminColors.error.withAlpha(51),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
               ),
               child: const Icon(Icons.visibility_off_rounded,
                   color: AdminColors.error, size: 20),
@@ -835,7 +835,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
                     margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: _elevatedFill,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child:
                         Icon(Icons.close_rounded, color: _textMuted, size: 18),
@@ -1023,7 +1023,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
                 color: _cardBg,
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
                 border: Border.all(color: _borderColor),
               ),
               child: Row(
@@ -1058,7 +1058,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
                 color: _isSelectionMode ? _primaryColor.withAlpha(26) : _cardBg,
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
                 border: Border.all(color: _borderColor),
               ),
               child: Icon(
@@ -1087,7 +1087,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
                   color: AdminColors.error.withAlpha(20),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                 ),
                 child: const Row(
                   mainAxisSize: MainAxisSize.min,
@@ -1149,7 +1149,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
                 height: 4,
                 decoration: BoxDecoration(
                   color: _handleColor,
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(Brand.r(2)),
                 ),
               ),
               const SizedBox(height: 20),
@@ -1306,7 +1306,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
                       margin: const EdgeInsets.only(right: 12),
                       decoration: BoxDecoration(
                         color: isSelected ? _primaryColor : _elevatedFill,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(Brand.r(8)),
                         border:
                             isSelected ? null : Border.all(color: _borderColor),
                       ),
@@ -1490,7 +1490,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
                                       horizontal: 6, vertical: 2),
                                   decoration: BoxDecoration(
                                     color: _accentColor.withAlpha(20),
-                                    borderRadius: BorderRadius.circular(4),
+                                    borderRadius: BorderRadius.circular(Brand.r(4)),
                                   ),
                                   child: Text(
                                     'Revenue: ${_formatCurrency((totalRevenue).toDouble())}',
@@ -1637,7 +1637,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
                 height: 4,
                 decoration: BoxDecoration(
                   color: _handleColor,
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(Brand.r(2)),
                 ),
               ),
               const SizedBox(height: 16),
@@ -2264,7 +2264,7 @@ class _MachineDetailSheetState extends State<_MachineDetailSheet> {
                                   horizontal: 10, vertical: 6),
                               decoration: BoxDecoration(
                                 color: _accentColor.withAlpha(20),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(Brand.r(8)),
                               ),
                               child: Text(
                                 '• ${f.toString()}',
@@ -2313,7 +2313,7 @@ class _MachineDetailSheetState extends State<_MachineDetailSheet> {
                                   horizontal: 10, vertical: 6),
                               decoration: BoxDecoration(
                                 color: _primaryColor.withAlpha(15),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(Brand.r(8)),
                               ),
                               child: Text(
                                 a.toString(),
@@ -2742,7 +2742,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
               height: 4,
               decoration: BoxDecoration(
                 color: _borderColor,
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
             const SizedBox(height: 20),
@@ -3162,7 +3162,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
                 const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
             decoration: BoxDecoration(
               color: Colors.black.withAlpha(140),
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(Brand.r(4)),
             ),
             child: const Text('URL',
                 style: TextStyle(
@@ -3208,7 +3208,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
                 const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
             decoration: BoxDecoration(
               color: Colors.black.withAlpha(140),
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(Brand.r(4)),
             ),
             child: const Text('NEW',
                 style: TextStyle(
@@ -3474,7 +3474,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
                                           decoration: BoxDecoration(
                                             color: Colors.black.withAlpha(128),
                                             borderRadius:
-                                                BorderRadius.circular(8),
+                                                BorderRadius.circular(Brand.r(8)),
                                           ),
                                           child: const Icon(
                                             Icons.close_rounded,
@@ -3514,7 +3514,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
                                               color:
                                                   Colors.black.withAlpha(128),
                                               borderRadius:
-                                                  BorderRadius.circular(8),
+                                                  BorderRadius.circular(Brand.r(8)),
                                             ),
                                             child: const Row(
                                               mainAxisSize: MainAxisSize.min,
@@ -3798,7 +3798,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                 decoration: BoxDecoration(
                   color: _accentColor.withAlpha(26),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -3865,7 +3865,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
                       height: 32,
                       decoration: BoxDecoration(
                         color: AdminColors.error.withAlpha(26),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(Brand.r(8)),
                       ),
                       child: const Icon(
                         Icons.remove_rounded,
@@ -3922,7 +3922,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                 decoration: BoxDecoration(
                   color: _accentColor.withAlpha(26),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -3970,7 +3970,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
                     height: 32,
                     decoration: BoxDecoration(
                       color: AdminColors.error.withAlpha(26),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: const Icon(
                       Icons.remove_rounded,
@@ -4021,7 +4021,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                 decoration: BoxDecoration(
                   color: _accentColor.withAlpha(26),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -4081,7 +4081,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
                         height: 32,
                         decoration: BoxDecoration(
                           color: AdminColors.error.withAlpha(26),
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(Brand.r(8)),
                         ),
                         child: const Icon(
                           Icons.remove_rounded,

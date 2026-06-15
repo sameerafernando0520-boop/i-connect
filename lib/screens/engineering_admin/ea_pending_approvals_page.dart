@@ -354,7 +354,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
                   const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
                 color: _eaAccent.withAlpha(isDark ? 40 : 22),
-                borderRadius: BorderRadius.circular(6),
+                borderRadius: BorderRadius.circular(Brand.r(6)),
               ),
               child: Text(type.replaceAll('_', ' ').toUpperCase(),
                   style: const TextStyle(

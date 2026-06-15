@@ -511,12 +511,12 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
                 const Spacer(),
                 InkWell(
                   onTap: () => _callCustomer(customer['phone_number'] as String),
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(Brand.r(6)),
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
                       color: const Color(0xFF22C55E).withAlpha(isDark ? 25 : 15),
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(Brand.r(6)),
                     ),
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,

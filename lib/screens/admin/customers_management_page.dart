@@ -1,4 +1,4 @@
-﻿// ═══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/admin/customers_management_page.dart
 // REWRITTEN v18 — Full dark mode pass, CachedNetworkImage,
 //   AdminColors context-aware methods, .withAlpha() throughout
@@ -556,7 +556,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                       color: isDark
                           ? Brand.darkCardElevated
                           : const Color(0xFFF1F5F9),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Icon(
                       Icons.close_rounded,
@@ -726,7 +726,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
               decoration: BoxDecoration(
                 color:
                     isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -993,7 +993,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                         color: isDark
                             ? Brand.darkCardElevated
                             : const Color(0xFFF4F6FA),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(Brand.r(8)),
                       ),
                       child: Icon(
                         Icons.arrow_forward_ios_rounded,
@@ -1135,7 +1135,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                     height: 32,
                     decoration: BoxDecoration(
                       color: AdminColors.primary.withAlpha(isDark ? 38 : 20),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Icon(
                       Icons.visibility_rounded,
@@ -1179,7 +1179,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 31 : 20),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(Brand.r(8)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -1216,7 +1216,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: bg,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(Brand.r(8)),
         border: emphasised
             ? Border.all(color: AdminColors.accent.withAlpha(64))
             : null,
@@ -1399,7 +1399,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                   color: sheetDark
                       ? Colors.white.withAlpha(26)
                       : Colors.black.withAlpha(26),
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(Brand.r(2)),
                 ),
               ),
               const SizedBox(height: 20),
@@ -1706,7 +1706,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                 height: 24,
                 decoration: BoxDecoration(
                   color: AdminColors.accent,
-                  borderRadius: BorderRadius.circular(7),
+                  borderRadius: BorderRadius.circular(Brand.r(7)),
                 ),
                 child: const Icon(
                   Icons.check_rounded,

@@ -645,7 +645,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
                               horizontal: 8, vertical: 2),
                           decoration: BoxDecoration(
                             color: _typeColor(type).withAlpha(isDark ? 40 : 22),
-                            borderRadius: BorderRadius.circular(6),
+                            borderRadius: BorderRadius.circular(Brand.r(6)),
                           ),
                           child: Text(
                             _typeLabel(type),
@@ -715,7 +715,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 45 : 26),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(Brand.r(8)),
         border: Border.all(color: color.withAlpha(80), width: 0.5),
       ),
       child: Text(

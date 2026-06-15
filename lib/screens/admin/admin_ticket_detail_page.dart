@@ -1,4 +1,4 @@
-﻿// lib/screens/admin/admin_ticket_detail_page.dart
+// lib/screens/admin/admin_ticket_detail_page.dart
 // ═══════════════════════════════════════════════════════════
 
 import 'dart:async';
@@ -516,7 +516,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                 height: 4,
                 decoration: BoxDecoration(
                   color: AdminColors.border(sheetCtx),
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(Brand.r(2)),
                 ),
               ),
               const SizedBox(height: 20),
@@ -669,7 +669,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                                                   color: AdminColors.primary
                                                       .withAlpha(15),
                                                   borderRadius:
-                                                      BorderRadius.circular(4),
+                                                      BorderRadius.circular(Brand.r(4)),
                                                 ),
                                                 child: Text(
                                                   s.toString(),
@@ -693,7 +693,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                                     horizontal: 8, vertical: 4),
                                 decoration: BoxDecoration(
                                   color: AdminColors.accent,
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(Brand.r(8)),
                                 ),
                                 child: const Text(
                                   'Assigned',
@@ -1162,11 +1162,11 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
               height: 36,
               decoration: BoxDecoration(
                 color: AdminColors.card(context),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
               ),
               child: machine.imageUrl != null
                   ? ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                       child: CachedNetworkImage(
                         imageUrl: machine.imageUrl!,
                         fit: BoxFit.cover,
@@ -1224,7 +1224,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
                 decoration: BoxDecoration(
                   color: AdminColors.primary.withAlpha(15),
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(Brand.r(4)),
                 ),
                 child: Text(
                   machine.brand!,
@@ -1267,7 +1267,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                   height: 36,
                   decoration: BoxDecoration(
                     color: AdminColors.info.withAlpha(20),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: const Icon(
                     Icons.engineering_rounded,
@@ -1520,7 +1520,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                 ),
                 const SizedBox(height: 4),
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(Brand.r(4)),
                   child: LinearProgressIndicator(
                     value: progress,
                     minHeight: 4,

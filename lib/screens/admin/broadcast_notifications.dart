@@ -1172,7 +1172,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                               color: isDark
                                   ? Brand.darkBorderLight
                                   : const Color(0xFFCBD5E1),
-                              borderRadius: BorderRadius.circular(2),
+                              borderRadius: BorderRadius.circular(Brand.r(2)),
                             ),
                           ),
                         ),
@@ -2600,7 +2600,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                         color: statusColor.withAlpha(
                           isDark ? 38 : 26,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(Brand.r(8)),
                       ),
                       child: Text(
                         status.toUpperCase(),
@@ -2743,7 +2743,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         padding: const EdgeInsets.all(6),
         decoration: BoxDecoration(
           color: bg,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(Brand.r(8)),
         ),
         child: Icon(icon, size: 16, color: color),
       ),

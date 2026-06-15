@@ -419,7 +419,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
             decoration: BoxDecoration(
               color: (hintColor ?? Brand.royalBlue).withAlpha(20),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(Brand.r(8)),
             ),
             child: Text(
               hint,

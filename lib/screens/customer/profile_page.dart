@@ -1156,7 +1156,7 @@ class _ProfilePageState extends State<ProfilePage>
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(26),
+        borderRadius: BorderRadius.circular(Brand.r(26)),
         gradient: LinearGradient(
             colors: isDark
                 ? [Brand.darkCard, Brand.darkCardElevated]
@@ -1468,7 +1468,7 @@ class _ProfilePageState extends State<ProfilePage>
                   color: isDark
                       ? Brand.darkCardElevated
                       : Brand.royalBlue.withAlpha(26),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                   border:
                       isDark ? Border.all(color: Brand.darkBorderLight) : null),
               child: Text('$_profileCompletedFields/$_profileTotalFields',
@@ -1665,7 +1665,7 @@ class _ProfilePageState extends State<ProfilePage>
                           color: isDark
                               ? Brand.darkBorderLight.withAlpha(102)
                               : Brand.royalBlueSurface,
-                          borderRadius: BorderRadius.circular(5))),
+                          borderRadius: BorderRadius.circular(Brand.r(5)))),
                   FractionallySizedBox(
                       widthFactor: _progressAnimation.value,
                       child: Container(
@@ -1673,7 +1673,7 @@ class _ProfilePageState extends State<ProfilePage>
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
                                   colors: [mc, mc.withAlpha(179)]),
-                              borderRadius: BorderRadius.circular(5),
+                              borderRadius: BorderRadius.circular(Brand.r(5)),
                               boxShadow: [
                                 BoxShadow(
                                     color: mc.withAlpha(102), blurRadius: 8)
@@ -2040,7 +2040,7 @@ class _ProfilePageState extends State<ProfilePage>
                                           : (isDark
                                               ? Brand.darkCardElevated
                                               : const Color(0xFFF1F5F9)),
-                                      borderRadius: BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.circular(Brand.r(8)),
                                     ),
                                     child: Icon(
                                       icon,
@@ -2621,7 +2621,7 @@ class _ProfilePageState extends State<ProfilePage>
                                 : [Brand.royalBlue, Brand.royalBlueGlow],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter),
-                        borderRadius: BorderRadius.circular(2))),
+                        borderRadius: BorderRadius.circular(Brand.r(2)))),
                 const SizedBox(width: 10),
                 Text(S.of(context)!.profileQuickNav,
                     style: TextStyle(
@@ -2733,7 +2733,7 @@ class _ProfilePageState extends State<ProfilePage>
                             : [Brand.royalBlue, Brand.royalBlueGlow],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter),
-                    borderRadius: BorderRadius.circular(2))),
+                    borderRadius: BorderRadius.circular(Brand.r(2)))),
             const SizedBox(width: 10),
             Text(S.of(context)!.profileMyDocuments,
                 style: TextStyle(
@@ -3002,7 +3002,7 @@ class _ProfilePageState extends State<ProfilePage>
                     color: isDark
                         ? Brand.darkCardElevated
                         : Brand.royalBlue.withAlpha(26),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                     border: isDark
                         ? Border.all(color: Brand.darkBorderLight)
                         : null),
@@ -3545,7 +3545,7 @@ class _ProfilePageState extends State<ProfilePage>
                   color: isDark
                       ? Brand.darkTextTertiary
                       : Brand.subtleLight.withAlpha(77),
-                  borderRadius: BorderRadius.circular(2))),
+                  borderRadius: BorderRadius.circular(Brand.r(2)))),
           const SizedBox(height: 20),
           Text('Change Profile Photo',
               style: TextStyle(
@@ -3637,7 +3637,7 @@ class _ProfilePageState extends State<ProfilePage>
                           color: isDark
                               ? Brand.darkTextTertiary
                               : Brand.subtleLight.withAlpha(77),
-                          borderRadius: BorderRadius.circular(2))),
+                          borderRadius: BorderRadius.circular(Brand.r(2)))),
                   const SizedBox(height: 20),
                   Text(title,
                       style: TextStyle(

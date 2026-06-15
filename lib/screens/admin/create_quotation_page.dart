@@ -1,4 +1,4 @@
-﻿import 'dart:async';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
@@ -318,7 +318,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                     height: 4,
                     decoration: BoxDecoration(
                       color: AdminColors.border(sheetCtx),
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
                   Padding(
@@ -617,7 +617,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                 height: 28,
                 decoration: BoxDecoration(
                   color: AdminColors.primary.withAlpha(15),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                 ),
                 child: Center(
                   child: Text(
@@ -652,7 +652,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                               horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(
                             color: AdminColors.primary.withAlpha(12),
-                            borderRadius: BorderRadius.circular(4),
+                            borderRadius: BorderRadius.circular(Brand.r(4)),
                           ),
                           child: Text(
                             (item['item_type'] as String? ?? 'product')
@@ -772,7 +772,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                         height: 4,
                         decoration: BoxDecoration(
                           color: AdminColors.border(sheetCtx),
-                          borderRadius: BorderRadius.circular(2),
+                          borderRadius: BorderRadius.circular(Brand.r(2)),
                         ),
                       ),
                     ),
@@ -1002,7 +1002,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                     height: 4,
                     decoration: BoxDecoration(
                       color: AdminColors.border(sheetCtx),
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
                   Padding(
@@ -1338,7 +1338,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
         decoration: BoxDecoration(
           color:
               active ? AdminColors.primary.withAlpha(25) : Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(Brand.r(8)),
         ),
         child: Text(
           label,

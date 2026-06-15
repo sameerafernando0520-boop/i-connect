@@ -320,7 +320,7 @@ class _MaTiersPageState extends State<MaTiersPage>
                       Container(
                         width: 4, height: 16,
                         decoration: BoxDecoration(
-                            color: color, borderRadius: BorderRadius.circular(2)),
+                            color: color, borderRadius: BorderRadius.circular(Brand.r(2))),
                       ),
                       const SizedBox(width: 8),
                       Text(tier,

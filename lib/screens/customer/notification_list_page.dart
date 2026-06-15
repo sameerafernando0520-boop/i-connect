@@ -806,7 +806,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                         const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
                     decoration: BoxDecoration(
                       color: Colors.red,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Text('$unreadCount',
                         style: const TextStyle(
@@ -873,7 +873,7 @@ class _NotificationListPageState extends State<NotificationListPage>
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
-            borderRadius: BorderRadius.circular(2),
+            borderRadius: BorderRadius.circular(Brand.r(2)),
           ),
         ),
         const SizedBox(width: 8),

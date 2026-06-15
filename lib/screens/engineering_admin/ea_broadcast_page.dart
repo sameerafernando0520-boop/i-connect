@@ -344,7 +344,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
                         color: selected
                             ? _eaAccent
                             : (isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9)),
-                        borderRadius: BorderRadius.circular(999),
+                        borderRadius: BorderRadius.circular(Brand.r(999)),
                         border: Border.all(
                           color: selected
                               ? _eaAccent
@@ -494,7 +494,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
               width: 40, height: 4,
               decoration: BoxDecoration(
                 color: Colors.grey.withAlpha(80),
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
             const SizedBox(height: 12),

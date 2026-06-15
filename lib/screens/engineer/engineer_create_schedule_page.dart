@@ -807,7 +807,7 @@ class _CustomerPickerSheetState extends State<_CustomerPickerSheet> {
               height: 4,
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
           ),
@@ -978,7 +978,7 @@ class _CustomerPickerSheetState extends State<_CustomerPickerSheet> {
                     width: double.infinity, height: 16,
                     decoration: BoxDecoration(
                       color: isDark ? Brand.darkCardElevated : Brand.borderLight,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                   ),
                   const SizedBox(height: 6),
@@ -986,7 +986,7 @@ class _CustomerPickerSheetState extends State<_CustomerPickerSheet> {
                     width: 140, height: 12,
                     decoration: BoxDecoration(
                       color: isDark ? Brand.darkCardElevated : Brand.borderLight,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                   ),
                 ],
@@ -1119,7 +1119,7 @@ class _MachinePickerSheetState extends State<_MachinePickerSheet> {
               height: 4,
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
           ),
@@ -1243,7 +1243,7 @@ class _MachinePickerSheetState extends State<_MachinePickerSheet> {
                     width: double.infinity, height: 16,
                     decoration: BoxDecoration(
                       color: isDark ? Brand.darkCardElevated : Brand.borderLight,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                   ),
                   const SizedBox(height: 6),
@@ -1251,7 +1251,7 @@ class _MachinePickerSheetState extends State<_MachinePickerSheet> {
                     width: 140, height: 12,
                     decoration: BoxDecoration(
                       color: isDark ? Brand.darkCardElevated : Brand.borderLight,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                   ),
                 ],

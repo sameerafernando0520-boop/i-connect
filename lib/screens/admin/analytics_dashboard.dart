@@ -1,4 +1,4 @@
-﻿import 'dart:async';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -758,7 +758,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
               height: 32,
               decoration: BoxDecoration(
                 color: color.withAlpha(26),
-                borderRadius: BorderRadius.circular(9),
+                borderRadius: BorderRadius.circular(Brand.r(9)),
               ),
               child: Icon(icon, size: 16, color: color),
             ),
@@ -1298,7 +1298,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                     height: 28,
                     decoration: BoxDecoration(
                       color: _primaryColor.withAlpha(20),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Center(
                       child: Text(
@@ -1361,7 +1361,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
               ),
               const SizedBox(height: 8),
               ClipRRect(
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(Brand.r(4)),
                 child: LinearProgressIndicator(
                   value: progress,
                   minHeight: 6,
@@ -1610,7 +1610,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
             height: 10,
             decoration: BoxDecoration(
               color: color,
-              borderRadius: BorderRadius.circular(3),
+              borderRadius: BorderRadius.circular(Brand.r(3)),
             ),
           ),
           const SizedBox(width: 8),

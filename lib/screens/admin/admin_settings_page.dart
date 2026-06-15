@@ -1,4 +1,4 @@
-﻿// lib/screens/admin/admin_settings_page.dart
+// lib/screens/admin/admin_settings_page.dart
 //
 // ═══════════════════════════════════════════════════════════
 //  CHANGES (v14 i18n):
@@ -222,7 +222,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
               height: 4,
               decoration: BoxDecoration(
                 color: _handleColor(isDark),
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
             const SizedBox(height: 20),
@@ -436,7 +436,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                   height: 4,
                   decoration: BoxDecoration(
                     color: _handleColor(isDark),
-                    borderRadius: BorderRadius.circular(2),
+                    borderRadius: BorderRadius.circular(Brand.r(2)),
                   ),
                 ),
               ),
@@ -657,7 +657,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
               height: 4,
               decoration: BoxDecoration(
                 color: _handleColor(isDark),
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
             const SizedBox(height: 20),
@@ -781,7 +781,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
               height: 4,
               decoration: BoxDecoration(
                 color: _handleColor(isDark),
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
             const SizedBox(height: 24),
@@ -1086,7 +1086,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.grey.shade200,
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(Brand.r(4)),
         ),
       ),
     );
@@ -1915,7 +1915,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                       height: 4,
                       decoration: BoxDecoration(
                         color: _handleColor(isDark),
-                        borderRadius: BorderRadius.circular(2),
+                        borderRadius: BorderRadius.circular(Brand.r(2)),
                       ),
                     ),
                   ),

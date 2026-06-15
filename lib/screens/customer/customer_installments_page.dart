@@ -318,7 +318,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
 
             // Progress
             ClipRRect(
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(Brand.r(4)),
               child: LinearProgressIndicator(
                 value: progress.clamp(0.0, 1.0),
                 backgroundColor:

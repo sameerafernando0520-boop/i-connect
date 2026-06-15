@@ -707,7 +707,7 @@ class _SheetHandle extends StatelessWidget {
         height: 4,
         decoration: BoxDecoration(
             color: AdminColors.border(context),
-            borderRadius: BorderRadius.circular(2)),
+            borderRadius: BorderRadius.circular(Brand.r(2))),
       );
 }
 
@@ -874,7 +874,7 @@ class _InstallationCard extends StatelessWidget {
             const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
         decoration: BoxDecoration(
             color: color.withAlpha(26),
-            borderRadius: BorderRadius.circular(6)),
+            borderRadius: BorderRadius.circular(Brand.r(6))),
         child: Text(label,
             style: TextStyle(
                 fontSize: 11,

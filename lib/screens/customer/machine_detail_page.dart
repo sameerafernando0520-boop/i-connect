@@ -471,7 +471,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                   color: isDark
                                       ? Colors.white12
                                       : Brand.subtleLight.withAlpha(77),
-                                  borderRadius: BorderRadius.circular(2)))),
+                                  borderRadius: BorderRadius.circular(Brand.r(2))))),
                       const SizedBox(height: 24),
                       Row(children: [
                         Container(
@@ -663,7 +663,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
             child: Dialog(
                 backgroundColor: Brand.surface(isDark),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(28)),
+                    borderRadius: BorderRadius.circular(Brand.r(28))),
                 child: Padding(
                     padding: const EdgeInsets.all(28),
                     child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -1166,7 +1166,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                         width: _currentImageIndex == i ? 28 : 8,
                         height: 8,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
+                            borderRadius: BorderRadius.circular(Brand.r(4)),
                             color: _currentImageIndex == i
                                 ? Brand.lightGreenBright
                                 : Colors.white.withAlpha(102),
@@ -1269,13 +1269,13 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                       context,
                       MaterialPageRoute(
                           builder: (_) => const MyMachinesPage())),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                   child: Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 12, vertical: 6),
                       decoration: BoxDecoration(
                           color: Brand.lightGreen.withAlpha(26),
-                          borderRadius: BorderRadius.circular(8)),
+                          borderRadius: BorderRadius.circular(Brand.r(8))),
                       child: const Text('View',
                           style: TextStyle(
                               fontSize: 12,
@@ -1353,7 +1353,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                     color: isDark
                         ? Brand.royalBlue.withAlpha(26)
                         : Brand.royalBlueSurface,
-                    borderRadius: BorderRadius.circular(8)),
+                    borderRadius: BorderRadius.circular(Brand.r(8))),
                 child: Icon(Icons.tag_rounded,
                     size: 14,
                     color: isDark ? Brand.royalBlueGlow : Brand.royalBlue)),
@@ -1391,7 +1391,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         decoration: BoxDecoration(
             color:
                 c.withAlpha(filled ? (isDark ? 38 : 20) : (isDark ? 15 : 10)),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(Brand.r(8)),
             border: Border.all(color: c.withAlpha(31))),
         child: Text(text,
             style: TextStyle(
@@ -1536,7 +1536,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                     decoration: BoxDecoration(
                         gradient: const LinearGradient(
                             colors: [Brand.lightGreen, Brand.lightGreenBright]),
-                        borderRadius: BorderRadius.circular(3))),
+                        borderRadius: BorderRadius.circular(Brand.r(3)))),
                 Expanded(
                     flex: 2,
                     child: Text(_formatKey(e.value.key),
@@ -1572,7 +1572,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                     height: 28,
                     decoration: BoxDecoration(
                         color: accent.withAlpha(isDark ? 31 : 20),
-                        borderRadius: BorderRadius.circular(8)),
+                        borderRadius: BorderRadius.circular(Brand.r(8))),
                     child: Center(
                         child: Text('${e.key + 1}',
                             style: TextStyle(
@@ -1703,7 +1703,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                       color: active
                           ? accent
                           : Brand.subtleLight.withAlpha(128),
-                      borderRadius: BorderRadius.circular(3),
+                      borderRadius: BorderRadius.circular(Brand.r(3)),
                     ),
                   );
                 }),
@@ -1811,7 +1811,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                     color: isDark
                                         ? Colors.white.withAlpha(10)
                                         : Brand.royalBlueSurface.withAlpha(128),
-                                    borderRadius: BorderRadius.circular(8)),
+                                    borderRadius: BorderRadius.circular(Brand.r(8))),
                                 child: Icon(Icons.keyboard_arrow_down_rounded,
                                     color: isDark
                                         ? Colors.white54
@@ -1974,7 +1974,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                         colors: [Brand.royalBlue, Brand.royalBlueGlow],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter),
-                    borderRadius: BorderRadius.circular(2))),
+                    borderRadius: BorderRadius.circular(Brand.r(2)))),
             const SizedBox(width: 10),
             Text(S.of(context)!.catalogRelatedMachines,
                 style: TextStyle(

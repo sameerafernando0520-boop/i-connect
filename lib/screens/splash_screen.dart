@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
+import '../config/brand_colors.dart';
 import '../config/supabase_config.dart';
 import '../services/notification_service.dart';
 import 'package:provider/provider.dart';
@@ -392,7 +393,7 @@ class _SplashScreenState extends State<SplashScreen>
           widthFactor: _lineGrow.value,
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(Brand.r(2)),
               gradient: LinearGradient(
                 colors: [
                   _lime.withAlpha(0),
@@ -416,7 +417,7 @@ class _SplashScreenState extends State<SplashScreen>
           height: 22,
           decoration: BoxDecoration(
             color: _lime,
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(Brand.r(5)),
           ),
         ),
         const SizedBox(width: 8),

@@ -356,7 +356,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
               height: 4,
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkBorder : Brand.borderLight,
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
             const SizedBox(height: 20),
@@ -1118,7 +1118,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 4, 20, 0),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(Brand.r(4)),
         child: TweenAnimationBuilder<double>(
           tween: Tween(begin: 0, end: _progressValue),
           duration: const Duration(milliseconds: 400),
@@ -1615,7 +1615,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                             horizontal: 6, vertical: 2),
                         decoration: BoxDecoration(
                           color: accent.withAlpha(((isDark ? 0.15 : 0.1) * 255).toInt()),
-                          borderRadius: BorderRadius.circular(4),
+                          borderRadius: BorderRadius.circular(Brand.r(4)),
                         ),
                         child: Text(
                           machine['brand'] ?? '',
@@ -1923,7 +1923,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
               decoration: BoxDecoration(
                 color:
                     isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
               ),
               child: Text(
@@ -2282,7 +2282,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                     color: isDark
                         ? Brand.darkBorder
                         : Colors.grey.withAlpha(77),
-                    borderRadius: BorderRadius.circular(2),
+                    borderRadius: BorderRadius.circular(Brand.r(2)),
                   ),
                 ),
                 Padding(
@@ -2932,7 +2932,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
             color: isDark
                 ? Brand.darkIconActive.withAlpha(((0.12) * 255).toInt())
                 : Brand.royalBlueDark.withAlpha(((0.08) * 255).toInt()),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(Brand.r(8)),
           ),
           child: Icon(icon,
               color: isDark ? Brand.darkIconActive : Brand.royalBlueDark,

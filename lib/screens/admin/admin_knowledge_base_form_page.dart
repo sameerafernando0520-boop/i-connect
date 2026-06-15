@@ -699,7 +699,7 @@ class _AdminKnowledgeBaseFormPageState
                     height: 4,
                     decoration: BoxDecoration(
                       color: AdminColors.textHint(context).withAlpha(80),
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
                   const SizedBox(height: 12),

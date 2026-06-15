@@ -321,7 +321,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     height: 4,
                     decoration: BoxDecoration(
                       color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
                 ),
@@ -527,7 +527,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     width: 40, height: 4,
                     decoration: BoxDecoration(
                       color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
                 ),
@@ -714,7 +714,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                         width: 40, height: 4,
                         decoration: BoxDecoration(
                           color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                          borderRadius: BorderRadius.circular(2),
+                          borderRadius: BorderRadius.circular(Brand.r(2)),
                         ),
                       ),
                     ),
@@ -997,7 +997,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     height: 4,
                     decoration: BoxDecoration(
                       color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
                 ),
@@ -1312,7 +1312,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 30 : 20),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(Brand.r(8)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -1471,7 +1471,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                                 decoration: BoxDecoration(
                                   color: _typeColor(type)
                                       .withAlpha(isDark ? 38 : 26),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(Brand.r(8)),
                                 ),
                                 child: Icon(_typeIcon(type),
                                     size: 18, color: _typeColor(type)),
@@ -1551,7 +1551,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                               decoration: BoxDecoration(
                                 color: const Color(0xFFF59E0B)
                                     .withAlpha(isDark ? 20 : 12),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(Brand.r(8)),
                               ),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1594,7 +1594,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                               decoration: BoxDecoration(
                                 color:
                                     Brand.royalBlue.withAlpha(isDark ? 20 : 12),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(Brand.r(8)),
                               ),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1834,12 +1834,12 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
   }) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(Brand.r(8)),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
         decoration: BoxDecoration(
           color: color.withAlpha(isDark ? 25 : 15),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(Brand.r(8)),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -2017,7 +2017,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                                 horizontal: 6, vertical: 2),
                             decoration: BoxDecoration(
                               color: _engAccent.withAlpha(isDark ? 30 : 20),
-                              borderRadius: BorderRadius.circular(4),
+                              borderRadius: BorderRadius.circular(Brand.r(4)),
                             ),
                             child: Text(daysLabel,
                                 style: TextStyle(

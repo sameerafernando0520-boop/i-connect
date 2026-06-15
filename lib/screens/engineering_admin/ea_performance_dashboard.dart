@@ -1024,7 +1024,7 @@ class _ProgressBar extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         ClipRRect(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(Brand.r(4)),
           child: LinearProgressIndicator(
             value: value.clamp(0.0, 1.0),
             backgroundColor: AdminColors.border(context),
@@ -1387,7 +1387,7 @@ class _TrendLegendItem extends StatelessWidget {
         Container(
           width: 24,
           height: 3,
-          decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(2)),
+          decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(Brand.r(2))),
         ),
         const SizedBox(width: 4),
         Text(label, style: TextStyle(fontSize: 11, color: AdminColors.textSub(context))),

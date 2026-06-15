@@ -1,4 +1,4 @@
-﻿// lib/screens/marketing/ma_profile_page.dart
+// lib/screens/marketing/ma_profile_page.dart
 //
 // Premium marketing admin profile — matches customer profile_page.dart
 // design language with hero card, stats, and premium card styling.
@@ -363,7 +363,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(26),
+        borderRadius: BorderRadius.circular(Brand.r(26)),
         gradient: LinearGradient(
           colors: isDark
               ? [Brand.darkCard, Brand.darkCardElevated]
@@ -1097,7 +1097,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
-            borderRadius: BorderRadius.circular(2),
+            borderRadius: BorderRadius.circular(Brand.r(2)),
           ),
         ),
         const SizedBox(width: 10),

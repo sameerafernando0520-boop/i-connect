@@ -1,4 +1,4 @@
-﻿// lib/screens/admin/admin_installments_page.dart
+// lib/screens/admin/admin_installments_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -463,7 +463,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
                       color: isDark
                           ? Brand.darkBorderLight
                           : const Color(0xFFF1F5F9),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Icon(
                       Icons.close_rounded,
@@ -616,7 +616,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
                         decoration: BoxDecoration(
                           // FIX: replaced .withOpacity() with .withAlpha()
                           color: statusColor.withAlpha(isDark ? 31 : 20),
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(Brand.r(8)),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -676,7 +676,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
 
                   // Animated progress bar
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(Brand.r(6)),
                     child: TweenAnimationBuilder<double>(
                       tween: Tween(
                         begin: 0,

@@ -1,4 +1,4 @@
-﻿// lib/screens/admin/customer_detail_page.dart
+// lib/screens/admin/customer_detail_page.dart
 // Fixed: AdminColors.background/surface/textPrimary/primaryLight removed,
 //   Future.wait<dynamic>, mounted guards, spread-safe, AlwaysScrollable
 
@@ -1204,7 +1204,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                     color: isDark
                         ? Brand.darkBorder
                         : Colors.grey.withAlpha(77),
-                    borderRadius: BorderRadius.circular(2),
+                    borderRadius: BorderRadius.circular(Brand.r(2)),
                   ),
                 ),
                 Padding(
@@ -1762,7 +1762,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                                   horizontal: 5, vertical: 2),
                               decoration: BoxDecoration(
                                 color: AdminColors.error.withAlpha(25),
-                                borderRadius: BorderRadius.circular(4),
+                                borderRadius: BorderRadius.circular(Brand.r(4)),
                               ),
                               child: const Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -1945,7 +1945,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                       height: 28,
                       decoration: BoxDecoration(
                         color: _itemBg(isDark),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(Brand.r(8)),
                         border:
                             isDark ? Border.all(color: Brand.darkBorder) : null,
                       ),
@@ -2076,7 +2076,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                     height: 28,
                     decoration: BoxDecoration(
                       color: _itemBg(isDark),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                       border:
                           isDark ? Border.all(color: Brand.darkBorder) : null,
                     ),
@@ -2256,7 +2256,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                                     decoration: BoxDecoration(
                                       color: AdminColors.primary
                                           .withAlpha(isDark ? 30 : 15),
-                                      borderRadius: BorderRadius.circular(4),
+                                      borderRadius: BorderRadius.circular(Brand.r(4)),
                                     ),
                                     child: Text(
                                       brand,
@@ -2342,7 +2342,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                             color: overdueCount > 0
                                 ? AdminColors.error.withAlpha(20)
                                 : AdminColors.warning.withAlpha(20),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(Brand.r(8)),
                           ),
                           child: Text(
                             nextDueText,
@@ -2368,7 +2368,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(4),
+                              borderRadius: BorderRadius.circular(Brand.r(4)),
                               child: LinearProgressIndicator(
                                 value: progress,
                                 minHeight: 6,
@@ -2423,7 +2423,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 30 : 25),
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(Brand.r(4)),
       ),
       child: Text(
         label,
@@ -2683,11 +2683,11 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                     height: 40,
                     decoration: BoxDecoration(
                       color: AdminColors.primary.withAlpha(20),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: imageUrl != null
                         ? ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(Brand.r(8)),
                             child: CachedNetworkImage(
                               imageUrl: imageUrl,
                               fit: BoxFit.cover,
@@ -2737,7 +2737,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
               ),
               const SizedBox(height: 16),
               ClipRRect(
-                borderRadius: BorderRadius.circular(6),
+                borderRadius: BorderRadius.circular(Brand.r(6)),
                 child: LinearProgressIndicator(
                   value: progress,
                   minHeight: 8,
@@ -2818,7 +2818,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                       ? Brand.darkCardElevated
                       : Brand.scaffoldLight,
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                     borderSide: BorderSide.none,
                   ),
                   contentPadding: const EdgeInsets.symmetric(
@@ -2955,7 +2955,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                   color: isDark
                       ? Brand.darkBorder
                       : Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(Brand.r(2)),
                 ),
               ),
             ),
@@ -3197,7 +3197,7 @@ class _SuggestMachineSheetState extends State<_SuggestMachineSheet> {
                 color: widget.isDark
                     ? Brand.darkBorder
                     : Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
           ),
@@ -3246,7 +3246,7 @@ class _SuggestMachineSheetState extends State<_SuggestMachineSheet> {
                   if (_selectedMachine != null &&
                       _selectedMachine!['image_url'] != null)
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(Brand.r(6)),
                       child: CachedNetworkImage(
                         imageUrl:
                             _selectedMachine!['image_url'] as String,
@@ -3513,12 +3513,12 @@ class _MachinePickerDialogState extends State<_MachinePickerDialog> {
                                   color:
                                       AdminColors.primary.withAlpha(15),
                                   borderRadius:
-                                      BorderRadius.circular(8),
+                                      BorderRadius.circular(Brand.r(8)),
                                 ),
                                 child: imageUrl != null
                                     ? ClipRRect(
                                         borderRadius:
-                                            BorderRadius.circular(8),
+                                            BorderRadius.circular(Brand.r(8)),
                                         child: CachedNetworkImage(
                                           imageUrl: imageUrl,
                                           fit: BoxFit.cover,

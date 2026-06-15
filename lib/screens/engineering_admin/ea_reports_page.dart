@@ -1,4 +1,4 @@
-﻿// lib/screens/engineering_admin/ea_reports_page.dart
+// lib/screens/engineering_admin/ea_reports_page.dart
 // Engineering Admin Portal — Reports & Data Export
 
 import 'package:flutter/material.dart';
@@ -968,7 +968,7 @@ class _TableRow extends StatelessWidget {
                           horizontal: 8, vertical: 3),
                       decoration: BoxDecoration(
                         color: (statusColor ?? _eaAccent).withAlpha(26),
-                        borderRadius: BorderRadius.circular(6),
+                        borderRadius: BorderRadius.circular(Brand.r(6)),
                       ),
                       child: Text(
                         cells[i],

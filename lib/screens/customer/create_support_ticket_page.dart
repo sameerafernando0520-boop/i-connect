@@ -441,7 +441,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                   height: 4,
                   decoration: BoxDecoration(
                     color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                    borderRadius: BorderRadius.circular(2),
+                    borderRadius: BorderRadius.circular(Brand.r(2)),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -721,7 +721,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
         child: Dialog(
           backgroundColor: Brand.surface(isDark),
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(26)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(26))),
           child: Padding(
             padding: const EdgeInsets.all(28),
             child: Column(
@@ -1167,7 +1167,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                   color: _currentStep >= (index + 1) ~/ 2
                       ? Brand.royalBlue
                       : (isDark ? Brand.darkBorderLight : Brand.borderLight),
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(Brand.r(2)),
                 ),
               ),
             );

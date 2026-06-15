@@ -603,7 +603,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: bg,
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(Brand.r(6)),
         border: border != null ? Border.all(color: border) : null,
       ),
       child: Text(
@@ -686,7 +686,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
                   height: 4,
                   decoration: BoxDecoration(
                     color: isDark ? Brand.darkBorder : Brand.borderLight,
-                    borderRadius: BorderRadius.circular(2),
+                    borderRadius: BorderRadius.circular(Brand.r(2)),
                   ),
                 ),
               ),
@@ -802,7 +802,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
                   height: 4,
                   decoration: BoxDecoration(
                     color: isDark ? Brand.darkBorder : Brand.borderLight,
-                    borderRadius: BorderRadius.circular(2),
+                    borderRadius: BorderRadius.circular(Brand.r(2)),
                   ),
                 ),
               ),

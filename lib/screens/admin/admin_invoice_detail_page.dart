@@ -437,7 +437,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
                                     ),
                                     decoration: BoxDecoration(
                                       color: AdminColors.primary.withAlpha(12),
-                                      borderRadius: BorderRadius.circular(4),
+                                      borderRadius: BorderRadius.circular(Brand.r(4)),
                                     ),
                                     child: Text(
                                       itemType.toUpperCase(),
@@ -700,7 +700,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
                               color: verified
                                   ? AdminColors.success.withAlpha(20)
                                   : AdminColors.warning.withAlpha(20),
-                              borderRadius: BorderRadius.circular(4),
+                              borderRadius: BorderRadius.circular(Brand.r(4)),
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -851,7 +851,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
               color: isInternal
                   ? AdminColors.warning.withAlpha(10)
                   : AdminColors.bg(context),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(Brand.r(8)),
               border: isInternal
                   ? Border.all(color: AdminColors.warning.withAlpha(40))
                   : null,
@@ -1243,7 +1243,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
         color: c.withAlpha(26),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(Brand.r(8)),
       ),
       child: Text(
         _statusLabel(status),

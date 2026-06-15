@@ -407,7 +407,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
           width: 32, height: 32,
           decoration: BoxDecoration(
             color: _anColor.withAlpha(rank <= 3 ? 40 : 20),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(Brand.r(8)),
           ),
           child: Center(
             child: Text('#$rank',
@@ -453,7 +453,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
             decoration: BoxDecoration(
               color: (isPublished ? AdminColors.success : AdminColors.warning)
                   .withAlpha(20),
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(Brand.r(4)),
             ),
             child: Text(
               isPublished ? 'Published' : 'Draft',
@@ -603,7 +603,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
                   width: 10, height: 10,
                   decoration: BoxDecoration(
                     color: colors[e.key % colors.length],
-                    borderRadius: BorderRadius.circular(3),
+                    borderRadius: BorderRadius.circular(Brand.r(3)),
                   ),
                 ),
                 const SizedBox(width: 6),
@@ -645,7 +645,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
             width: 28, height: 28,
             decoration: BoxDecoration(
               color: _anColor.withAlpha(rank <= 3 ? 40 : 20),
-              borderRadius: BorderRadius.circular(7),
+              borderRadius: BorderRadius.circular(Brand.r(7)),
             ),
             child: Center(
               child: Text('#$rank',
@@ -690,7 +690,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
         const SizedBox(height: 8),
         // Progress bar
         ClipRRect(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(Brand.r(4)),
           child: LinearProgressIndicator(
             value: pct,
             minHeight: 4,

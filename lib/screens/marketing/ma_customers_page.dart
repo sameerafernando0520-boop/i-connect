@@ -290,7 +290,7 @@ class _MaCustomersPageState extends State<MaCustomersPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
                 decoration: BoxDecoration(
                   color: tierColor.withAlpha(20),
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(Brand.r(6)),
                 ),
                 child: Text(_cap(tier),
                     style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: tierColor)),
@@ -307,7 +307,7 @@ class _MaCustomersPageState extends State<MaCustomersPage> {
             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
             decoration: BoxDecoration(
               color: AdminColors.success.withAlpha(20),
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(Brand.r(6)),
             ),
             child: Text('Active',
                 style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w700,

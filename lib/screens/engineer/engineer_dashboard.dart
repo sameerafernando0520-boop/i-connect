@@ -825,7 +825,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(26),
+        borderRadius: BorderRadius.circular(Brand.r(26)),
         gradient: LinearGradient(
           colors: isDark
               ? [const Color(0xFF052E16), const Color(0xFF14532D)]
@@ -1236,7 +1236,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
-            borderRadius: BorderRadius.circular(2),
+            borderRadius: BorderRadius.circular(Brand.r(2)),
           ),
         ),
         const SizedBox(width: 10),
@@ -1634,7 +1634,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                 decoration: BoxDecoration(
                     color:
                         isDark ? Brand.darkBorderLight : Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(2))),
+                    borderRadius: BorderRadius.circular(Brand.r(2)))),
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),

@@ -383,7 +383,7 @@ class _MaKnowledgeBasePageState extends State<MaKnowledgeBasePage> {
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
                   color: (isPublished ? AdminColors.success : AdminColors.warning).withAlpha(20),
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(Brand.r(6)),
                 ),
                 child: Text(isPublished ? 'Published' : 'Draft',
                     style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700,

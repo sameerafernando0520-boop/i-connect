@@ -628,7 +628,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
                   color: Colors.white.withAlpha(38),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                 ),
                 child: Text(
                   _statusLabel(status),
@@ -674,7 +674,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
                 color: Colors.white.withAlpha(30),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -920,7 +920,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   minimumSize: const Size(0, 32),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                 ),
               ),
@@ -1073,7 +1073,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
                 color: Brand.royalBlue.withAlpha(20),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
               ),
               child: Text(
                 '#${t['ticket_number'] ?? ''}',

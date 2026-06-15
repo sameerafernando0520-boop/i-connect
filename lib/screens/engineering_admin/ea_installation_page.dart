@@ -267,7 +267,7 @@ class _EaInstallationPageState extends State<EaInstallationPage> {
                     width: 40, height: 4,
                     decoration: BoxDecoration(
                       color: Colors.grey.withAlpha(80),
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -739,7 +739,7 @@ class _InstallCard extends StatelessWidget {
                         horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
                       color: typeColor.withAlpha(26),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Text(
                       _typeLabels[type] ?? type,
@@ -755,7 +755,7 @@ class _InstallCard extends StatelessWidget {
                         horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
                       color: statusColor.withAlpha(26),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Text(
                       _statusLabels[status] ?? status,

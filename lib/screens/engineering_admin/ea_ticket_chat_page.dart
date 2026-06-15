@@ -460,7 +460,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
                 color: AdminColors.warning.withAlpha(20),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
                 border: Border.all(
                     color: AdminColors.warning.withAlpha(60)),
               ),
@@ -510,7 +510,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
               style: TextButton.styleFrom(
                 backgroundColor: _eaAccent.withAlpha(15),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
+                    borderRadius: BorderRadius.circular(Brand.r(8))),
               ),
             ),
           ),
@@ -714,7 +714,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
               margin: const EdgeInsets.only(bottom: 12),
               decoration: BoxDecoration(
                 color: AdminColors.border(ctx),
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
             _QuickActionRow(
@@ -1448,7 +1448,7 @@ class _ExpandedHeader extends StatelessWidget {
                     horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
                   color: AdminColors.statusColor(status).withAlpha(20),
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(Brand.r(6)),
                 ),
                 child: Text(
                   status,
@@ -1466,7 +1466,7 @@ class _ExpandedHeader extends StatelessWidget {
                 decoration: BoxDecoration(
                   color:
                       AdminColors.priorityColor(priority).withAlpha(20),
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(Brand.r(6)),
                 ),
                 child: Text(
                   priority,
@@ -1702,7 +1702,7 @@ class _DispatchPanelState extends State<_DispatchPanel> {
             height: 4,
             decoration: BoxDecoration(
               color: AdminColors.border(context),
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(Brand.r(2)),
             ),
           ),
           // Panel header
@@ -1726,7 +1726,7 @@ class _DispatchPanelState extends State<_DispatchPanel> {
                       horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
                     color: const Color(0xFF10B981).withAlpha(20),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: Text(
                     '${engineers.length} available',
@@ -1927,7 +1927,7 @@ class _EngineerDispatchTile extends StatelessWidget {
                       horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
                     color: _scoreColor(score.toDouble()).withAlpha(20),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: Text(
                     score.toInt().toString(),
@@ -1954,7 +1954,7 @@ class _EngineerDispatchTile extends StatelessWidget {
                             horizontal: 7, vertical: 2),
                         decoration: BoxDecoration(
                           color: Brand.royalBlue.withAlpha(15),
-                          borderRadius: BorderRadius.circular(5),
+                          borderRadius: BorderRadius.circular(Brand.r(5)),
                         ),
                         child: Text(
                           s,

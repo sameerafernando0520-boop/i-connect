@@ -414,7 +414,7 @@ class _EngineerInstallationDetailPageState
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
                       color: typeColor.withAlpha(26),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Text(_typeLabels[type] ?? type,
                         style: TextStyle(
@@ -428,7 +428,7 @@ class _EngineerInstallationDetailPageState
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
                       color: statusColor.withAlpha(26),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Text(_statusLabels[status] ?? status,
                         style: TextStyle(
@@ -476,12 +476,12 @@ class _EngineerInstallationDetailPageState
                       InkWell(
                         onTap: () => _launchContact('tel',
                             (inst['customer'] as Map?)!['phone_number'] as String),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(Brand.r(8)),
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                           decoration: BoxDecoration(
                             color: const Color(0xFF22C55E).withAlpha(_isDark ? 25 : 15),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(Brand.r(8)),
                           ),
                           child: const Row(
                             mainAxisSize: MainAxisSize.min,
@@ -833,7 +833,7 @@ class _EngineerInstallationDetailPageState
                         horizontal: 6, vertical: 2),
                     decoration: BoxDecoration(
                       color: _engAccent.withAlpha(26),
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(Brand.r(6)),
                     ),
                     child: const Text('You',
                         style: TextStyle(

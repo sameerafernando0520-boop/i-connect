@@ -1073,7 +1073,7 @@ class _PersonPickerSheetState extends State<_PersonPickerSheet> {
               height: 4,
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
           ),
@@ -1402,7 +1402,7 @@ class _MachinePickerSheetState extends State<_MachinePickerSheet> {
               height: 4,
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
           ),

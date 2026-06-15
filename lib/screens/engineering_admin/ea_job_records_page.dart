@@ -258,7 +258,7 @@ class _EaJobRecordsPageState extends State<EaJobRecordsPage> {
                 height: 4,
                 decoration: BoxDecoration(
                   color: borderColor,
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(Brand.r(2)),
                 ),
               ),
             ),
@@ -643,7 +643,7 @@ class _JobRecordCard extends StatelessWidget {
                           horizontal: 8, vertical: 3),
                       decoration: BoxDecoration(
                         color: statusColor.withAlpha(25),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(Brand.r(8)),
                         border: Border.all(color: statusColor.withAlpha(60)),
                       ),
                       child: Text(
@@ -721,7 +721,7 @@ class _JobRecordCard extends StatelessWidget {
                       color: isDark
                           ? Brand.darkCardElevated
                           : Brand.royalBlueSurface,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Row(
                       children: [

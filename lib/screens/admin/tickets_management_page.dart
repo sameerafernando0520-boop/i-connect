@@ -1,4 +1,4 @@
-﻿// lib/screens/admin/tickets_management_page.dart
+// lib/screens/admin/tickets_management_page.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -857,7 +857,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                 height: 4,
                 decoration: BoxDecoration(
                     color: _handleColor,
-                    borderRadius: BorderRadius.circular(2))),
+                    borderRadius: BorderRadius.circular(Brand.r(2)))),
             const SizedBox(height: 20),
             Container(
               width: 60,
@@ -1042,7 +1042,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: Colors.white.withAlpha(38),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(Brand.r(8)),
           ),
           child: Icon(icon, color: Colors.white, size: 20),
         ),
@@ -1167,7 +1167,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                     margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                         color: _elevatedFill,
-                        borderRadius: BorderRadius.circular(8)),
+                        borderRadius: BorderRadius.circular(Brand.r(8))),
                     child:
                         Icon(Icons.close_rounded, color: _textMuted, size: 18),
                   ),
@@ -1386,7 +1386,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
                   color: _chipBg,
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                   border: Border.all(color: _borderColor)),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -1412,7 +1412,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                     ? _getPriorityColor(_filterPriority)
                         .withAlpha(((_isDark ? 0.15 : 0.1) * 255).toInt())
                     : _chipBg,
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
                 border: Border.all(
                     color: _filterPriority != 'all'
                         ? _getPriorityColor(_filterPriority).withAlpha(77)
@@ -1457,7 +1457,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                   color: _isSelectionMode
                       ? _primaryColor.withAlpha(26)
                       : _chipBg,
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                   border: Border.all(color: _borderColor)),
               child: Icon(Icons.checklist_rounded,
                   size: 16,
@@ -1482,7 +1482,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
                     color: AdminColors.error.withAlpha(((_isDark ? 0.12 : 0.08) * 255).toInt()),
-                    borderRadius: BorderRadius.circular(8)),
+                    borderRadius: BorderRadius.circular(Brand.r(8))),
                 child: const Icon(Icons.close_rounded,
                     size: 14, color: AdminColors.error),
               ),
@@ -1524,7 +1524,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                 height: 4,
                 decoration: BoxDecoration(
                     color: _handleColor,
-                    borderRadius: BorderRadius.circular(2))),
+                    borderRadius: BorderRadius.circular(Brand.r(2)))),
             const SizedBox(height: 20),
             Text('Sort By',
                 style: TextStyle(
@@ -1602,7 +1602,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                 height: 4,
                 decoration: BoxDecoration(
                     color: _handleColor,
-                    borderRadius: BorderRadius.circular(2))),
+                    borderRadius: BorderRadius.circular(Brand.r(2)))),
             const SizedBox(height: 20),
             Text('Filter by Priority',
                 style: TextStyle(
@@ -1674,7 +1674,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                 height: 24,
                 decoration: BoxDecoration(
                     color: _accentColor,
-                    borderRadius: BorderRadius.circular(7)),
+                    borderRadius: BorderRadius.circular(Brand.r(7))),
                 child: const Icon(Icons.check_rounded,
                     size: 16, color: Colors.white),
               ),
@@ -1764,7 +1764,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                     height: 24,
                     decoration: BoxDecoration(
                       color: isSelected ? _primaryColor : _elevatedFill,
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(Brand.r(6)),
                       border:
                           isSelected ? null : Border.all(color: _borderColor),
                     ),
@@ -1869,7 +1869,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                                 AdminColors.accent
                                     .withAlpha(((_isDark ? 0.15 : 0.08) * 255).toInt()),
                               ]),
-                              borderRadius: BorderRadius.circular(9),
+                              borderRadius: BorderRadius.circular(Brand.r(9)),
                             ),
                             child: Center(
                                 child: Text(
@@ -1906,7 +1906,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                                   horizontal: 8, vertical: 4),
                               decoration: BoxDecoration(
                                   color: _elevatedFill,
-                                  borderRadius: BorderRadius.circular(8)),
+                                  borderRadius: BorderRadius.circular(Brand.r(8))),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
@@ -2082,7 +2082,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
               padding: const EdgeInsets.symmetric(vertical: 6),
               decoration: BoxDecoration(
                 color: color.withAlpha(((_isDark ? 0.1 : 0.06) * 255).toInt()),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
                 border:
                     Border.all(color: color.withAlpha(((_isDark ? 0.2 : 0.15) * 255).toInt())),
               ),
@@ -2128,7 +2128,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                 height: 4,
                 decoration: BoxDecoration(
                     color: _handleColor,
-                    borderRadius: BorderRadius.circular(2))),
+                    borderRadius: BorderRadius.circular(Brand.r(2)))),
             const SizedBox(height: 16),
             Text(ticket['ticket_number'] ?? '',
                 style: TextStyle(
@@ -2278,7 +2278,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                 height: 4,
                 decoration: BoxDecoration(
                     color: _handleColor,
-                    borderRadius: BorderRadius.circular(2))),
+                    borderRadius: BorderRadius.circular(Brand.r(2)))),
             const SizedBox(height: 20),
             Text('Assign Engineer',
                 style: TextStyle(
@@ -2352,7 +2352,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                               decoration: BoxDecoration(
                                   color: Colors.orange
                                       .withAlpha(((_isDark ? 0.15 : 0.1) * 255).toInt()),
-                                  borderRadius: BorderRadius.circular(4)),
+                                  borderRadius: BorderRadius.circular(Brand.r(4))),
                               child: Text('Busy',
                                   style: TextStyle(
                                       fontSize: 11,

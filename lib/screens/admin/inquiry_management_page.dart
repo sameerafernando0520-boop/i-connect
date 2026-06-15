@@ -1,4 +1,4 @@
-﻿// lib/screens/admin/inquiry_management_page.dart
+// lib/screens/admin/inquiry_management_page.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -828,7 +828,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                     margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: _cardElevated(isDark),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Icon(Icons.close_rounded,
                         color: _textSecondary(isDark), size: 18),
@@ -1147,7 +1147,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
                 color: _cardBg(isDark),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(Brand.r(8)),
                 border: Border.all(color: _borderColor(isDark)),
               ),
               child: Row(
@@ -1184,7 +1184,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                 decoration: BoxDecoration(
                   // FIX: .withOpacity() → .withAlpha()
                   color: AdminColors.error.withAlpha(isDark ? 31 : 20),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                 ),
                 child: const Row(
                   mainAxisSize: MainAxisSize.min,
@@ -1228,7 +1228,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                 height: 4,
                 decoration: BoxDecoration(
                   color: _handleColor(isDark),
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(Brand.r(2)),
                 ),
               ),
               const SizedBox(height: 20),
@@ -1589,7 +1589,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                                 // FIX: .withOpacity() → .withAlpha()
                                 color: _accentColor(isDark)
                                     .withAlpha(isDark ? 38 : 26),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(Brand.r(8)),
                               ),
                               child: Text(
                                 _formatCurrency(dealValue),
@@ -1607,7 +1607,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                                 // FIX: .withOpacity() → .withAlpha()
                                 color:
                                     Colors.orange.withAlpha(isDark ? 38 : 26),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(Brand.r(8)),
                               ),
                               child: Text(
                                 _formatCurrency(quoteAmount),
@@ -1690,7 +1690,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                                           color: _primaryColor(isDark)
                                               .withAlpha(isDark ? 31 : 15),
                                           borderRadius:
-                                              BorderRadius.circular(4),
+                                              BorderRadius.circular(Brand.r(4)),
                                         ),
                                         child: Text(
                                           machineBrand,
@@ -1922,7 +1922,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                 height: 4,
                 decoration: BoxDecoration(
                   color: _handleColor(isDark),
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(Brand.r(2)),
                 ),
               ),
               const SizedBox(height: 16),

@@ -1,4 +1,4 @@
-﻿// lib/screens/admin/admin_register_machine_page.dart
+// lib/screens/admin/admin_register_machine_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -1333,7 +1333,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
           height: 4,
           decoration: BoxDecoration(
             color: _handleColor,
-            borderRadius: BorderRadius.circular(2),
+            borderRadius: BorderRadius.circular(Brand.r(2)),
           ),
         ),
       );
@@ -1576,7 +1576,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
                     padding: const EdgeInsets.all(6),
                     decoration: BoxDecoration(
                       color: _inputBg,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(Brand.r(8)),
                       border: Border.all(color: _border),
                     ),
                     child: Icon(
@@ -1611,7 +1611,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
                           height: 32,
                           decoration: BoxDecoration(
                             color: _primary.withAlpha(20),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(Brand.r(8)),
                             border: Border.all(
                               color: _primary.withAlpha(38),
                             ),

@@ -342,7 +342,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
                                     ? AdminColors.success
                                     : AdminColors.error)
                                 .withAlpha(20),
-                            borderRadius: BorderRadius.circular(6),
+                            borderRadius: BorderRadius.circular(Brand.r(6)),
                           ),
                           child: Text(
                             isAvailable ? 'Available' : 'Unavailable',
@@ -375,7 +375,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
                             horizontal: 7, vertical: 2),
                         decoration: BoxDecoration(
                           color: _catColor.withAlpha(isDark ? 30 : 20),
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius: BorderRadius.circular(Brand.r(6)),
                         ),
                         child: Text(_cap(category),
                             style: const TextStyle(
@@ -464,7 +464,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
                       color: isDark
                           ? Brand.darkBorderLight
                           : Brand.borderLight,
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
                 ),
@@ -534,7 +534,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
                                 ? AdminColors.success
                                 : AdminColors.error)
                             .withAlpha(20),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(Brand.r(8)),
                       ),
                       child: Text(
                         isAvailable ? 'Available' : 'Unavailable',

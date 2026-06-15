@@ -739,7 +739,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
         width: 1,
         decoration: BoxDecoration(
             color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-            borderRadius: BorderRadius.circular(1)));
+            borderRadius: BorderRadius.circular(Brand.r(1))));
   }
 
   // ─── CONTENT TYPE FILTER ───────────────────────────────────
@@ -987,7 +987,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                     colors: [Brand.royalBlue, Brand.royalBlueGlow],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter),
-                borderRadius: BorderRadius.circular(2))),
+                borderRadius: BorderRadius.circular(Brand.r(2)))),
         const SizedBox(width: 10),
         Text(
             '${_filteredArticles.length} ${_filteredArticles.length == 1 ? 'Article' : 'Articles'}',
@@ -1011,7 +1011,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
                   color: Colors.red.withAlpha(((isDark ? 0.12 : 0.06) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Brand.r(8)),
                   border: Border.all(color: Colors.red.withAlpha(((0.15) * 255).toInt()))),
               child: Row(mainAxisSize: MainAxisSize.min, children: [
                 Icon(Icons.clear_rounded, size: 14, color: Colors.red.shade400),
@@ -1075,7 +1075,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
               height: 4,
               decoration: BoxDecoration(
                   color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                  borderRadius: BorderRadius.circular(2))),
+                  borderRadius: BorderRadius.circular(Brand.r(2)))),
           const SizedBox(height: 22),
           Text('Sort By',
               style: TextStyle(
@@ -1178,7 +1178,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                   decoration: BoxDecoration(
                       gradient: const LinearGradient(
                           colors: [Brand.royalBlue, Brand.royalBlueGlow]),
-                      borderRadius: BorderRadius.circular(2))),
+                      borderRadius: BorderRadius.circular(Brand.r(2)))),
               const SizedBox(width: 10),
               Text('All Articles',
                   style: TextStyle(
@@ -1488,7 +1488,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
                       color: Colors.white.withAlpha(((0.08) * 255).toInt()),
-                      borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(Brand.r(8))),
                   child: Row(mainAxisSize: MainAxisSize.min, children: [
                     Icon(_getIconForType(contentType),
                         color: Colors.white.withAlpha(((0.5) * 255).toInt()), size: 13),
@@ -1839,7 +1839,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                                 color: isDark
                                     ? Brand.darkBorderLight
                                     : Brand.borderLight,
-                                borderRadius: BorderRadius.circular(2))),
+                                borderRadius: BorderRadius.circular(Brand.r(2)))),
                         const SizedBox(height: 18),
                         Row(children: [
                           Container(
@@ -1900,7 +1900,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                       color: isDark
                           ? Brand.royalBlue.withAlpha(((0.1) * 255).toInt())
                           : Brand.royalBlueSurface,
-                      borderRadius: BorderRadius.circular(26)),
+                      borderRadius: BorderRadius.circular(Brand.r(26))),
                   child: Icon(
                       isFiltered
                           ? Icons.search_off_rounded

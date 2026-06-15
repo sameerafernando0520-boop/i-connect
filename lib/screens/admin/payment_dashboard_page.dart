@@ -538,7 +538,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
                       height: 10,
                       decoration: BoxDecoration(
                         color: s.$3,
-                        borderRadius: BorderRadius.circular(3),
+                        borderRadius: BorderRadius.circular(Brand.r(3)),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -556,7 +556,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
                     ),
                     Expanded(
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(4),
+                        borderRadius: BorderRadius.circular(Brand.r(4)),
                         child: LinearProgressIndicator(
                           value: pct,
                           minHeight: 8,
@@ -980,7 +980,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
       ),
       decoration: BoxDecoration(
         color: color.withAlpha(26),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(Brand.r(8)),
       ),
       child: Text(
         _statusLabel(status),
