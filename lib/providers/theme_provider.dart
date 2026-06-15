@@ -147,37 +147,62 @@ class ThemeProvider extends ChangeNotifier {
     },
   );
 
-  // Note: no global showDragHandle — most sheets already draw their own.
-  static const BottomSheetThemeData _bottomSheetLight = BottomSheetThemeData(
-    backgroundColor: Brand.cardLight,
-    surfaceTintColor: Colors.transparent,
-    modalBackgroundColor: Brand.cardLight,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
-    ),
-  );
+  static double get _r => Brand.isWorkshop ? 10.0 : 28.0;
 
-  static BottomSheetThemeData get _bottomSheetDark => BottomSheetThemeData(
-        backgroundColor: Brand.darkCard,
+  static BottomSheetThemeData get _bottomSheetLight => BottomSheetThemeData(
+        backgroundColor: Brand.surface(false),
         surfaceTintColor: Colors.transparent,
-        modalBackgroundColor: Brand.darkCard,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+        modalBackgroundColor: Brand.surface(false),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(_r)),
+          side: Brand.isWorkshop
+              ? BorderSide(color: Brand.cardBorder(false), width: Brand.cardBorderWidth)
+              : BorderSide.none,
         ),
       );
 
+  static BottomSheetThemeData get _bottomSheetDark => BottomSheetThemeData(
+        backgroundColor: Brand.surface(true),
+        surfaceTintColor: Colors.transparent,
+        modalBackgroundColor: Brand.surface(true),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(_r)),
+          side: Brand.isWorkshop
+              ? BorderSide(color: Brand.cardBorder(true), width: Brand.cardBorderWidth)
+              : BorderSide.none,
+        ),
+      );
+
+  // ─── Shared Workshop-aware radii ──────────────────────────
+  static double get _cardR => Brand.cardRadius;
+  static double get _btnR => Brand.isWorkshop ? 8.0 : 14.0;
+  static double get _inputR => Brand.isWorkshop ? 8.0 : 14.0;
+  static double get _dialogR => Brand.isWorkshop ? 10.0 : 20.0;
+  static double get _fabR => Brand.isWorkshop ? 10.0 : 16.0;
+  static double get _chipR => Brand.isWorkshop ? 6.0 : 10.0;
+  static double get _snackR => Brand.isWorkshop ? 6.0 : 12.0;
+
   // ─── LIGHT THEME ──────────────────────────────────────────
-  ThemeData get lightTheme => ThemeData(
+  ThemeData get lightTheme {
+    final bg = Brand.canvas(false);
+    final card = Brand.surface(false);
+    final border = Brand.cardBorder(false);
+    final bw = Brand.cardBorderWidth;
+    final textP = Brand.ink(false);
+    final textS = Brand.inkSoft(false);
+    final ws = Brand.isWorkshop;
+
+    return ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
         primaryColor: Brand.royalBlue,
-        scaffoldBackgroundColor: Brand.scaffoldLight,
+        scaffoldBackgroundColor: bg,
         fontFamily: GoogleFonts.montserrat().fontFamily,
         colorScheme: ColorScheme.fromSeed(
           seedColor: Brand.royalBlue,
           primary: Brand.royalBlue,
           secondary: Brand.lightGreen,
-          surface: Brand.cardLight,
+          surface: card,
           brightness: Brightness.light,
         ),
         textTheme: _montserratLight(),
@@ -185,73 +210,71 @@ class ThemeProvider extends ChangeNotifier {
         pageTransitionsTheme: _pageTransitions,
         splashFactory: InkSparkle.splashFactory,
         bottomSheetTheme: _bottomSheetLight,
-        // ── Dialogs — rounded, no M3 surface tint ──
         dialogTheme: DialogThemeData(
-          backgroundColor: Brand.cardLight,
+          backgroundColor: card,
           surfaceTintColor: Colors.transparent,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(_dialogR),
+            side: ws ? BorderSide(color: border, width: bw) : BorderSide.none,
           ),
           titleTextStyle: GoogleFonts.montserrat(
             fontSize: 17,
             fontWeight: FontWeight.w700,
-            color: Brand.textPrimaryLight,
+            color: textP,
           ),
         ),
-        // ── FAB ──
         floatingActionButtonTheme: FloatingActionButtonThemeData(
           backgroundColor: Brand.royalBlue,
           foregroundColor: Colors.white,
-          elevation: 2,
+          elevation: ws ? 0 : 2,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(_fabR),
+            side: ws ? BorderSide(color: border, width: bw) : BorderSide.none,
           ),
         ),
-        // ── Progress indicators ──
         progressIndicatorTheme: const ProgressIndicatorThemeData(
           color: Brand.royalBlue,
           linearTrackColor: Brand.royalBlueSurface,
           circularTrackColor: Colors.transparent,
         ),
-        // ── ListTile ──
         listTileTheme: ListTileThemeData(
-          iconColor: Brand.textSecondaryLight,
+          iconColor: textS,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(ws ? 8 : 12),
           ),
         ),
-        // ── AppBar — clean white, no border ──
         appBarTheme: AppBarTheme(
-          backgroundColor: Brand.cardLight,
-          foregroundColor: Brand.royalBlueDark,
+          backgroundColor: card,
+          foregroundColor: textP,
           elevation: 0,
           scrolledUnderElevation: 0.5,
-          centerTitle: true,
+          centerTitle: !ws,
           titleTextStyle: GoogleFonts.montserrat(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: Brand.royalBlueDark,
-            letterSpacing: -0.3,
+            fontSize: ws ? 20 : 18,
+            fontWeight: ws ? FontWeight.w800 : FontWeight.w600,
+            color: textP,
+            letterSpacing: ws ? -0.5 : -0.3,
           ),
-          iconTheme: const IconThemeData(color: Brand.royalBlueDark),
+          iconTheme: IconThemeData(color: textP),
         ),
-        // ── Cards — clean white, soft shadow, no border ──
         cardTheme: CardThemeData(
-          color: Brand.cardLight,
+          color: card,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(_cardR),
+            side: ws
+                ? BorderSide(color: border, width: bw)
+                : BorderSide.none,
           ),
-          shadowColor: Colors.black.withAlpha(20),
+          shadowColor: ws ? Colors.transparent : Colors.black.withAlpha(20),
         ),
-        // ── Elevated Button ──
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: Brand.royalBlue,
             foregroundColor: Colors.white,
             elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(_btnR),
             ),
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
             textStyle: GoogleFonts.montserrat(
@@ -261,13 +284,12 @@ class ThemeProvider extends ChangeNotifier {
             ),
           ),
         ),
-        // ── Outlined Button ──
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             foregroundColor: Brand.royalBlue,
-            side: const BorderSide(color: Brand.borderLight, width: 1.5),
+            side: BorderSide(color: border, width: bw),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(_btnR),
             ),
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
             textStyle: GoogleFonts.montserrat(
@@ -276,7 +298,6 @@ class ThemeProvider extends ChangeNotifier {
             ),
           ),
         ),
-        // ── Text Button ──
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             foregroundColor: Brand.royalBlue,
@@ -286,91 +307,97 @@ class ThemeProvider extends ChangeNotifier {
             ),
           ),
         ),
-        // ── Input ──
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor: Brand.cardLight,
+          fillColor: card,
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
-            borderSide: BorderSide(color: Brand.borderLight, width: 1),
+            borderRadius: BorderRadius.circular(_inputR),
+            borderSide: BorderSide(color: border, width: bw),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
-            borderSide: BorderSide(color: Brand.borderLight, width: 1),
+            borderRadius: BorderRadius.circular(_inputR),
+            borderSide: BorderSide(color: border, width: bw),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(_inputR),
             borderSide: const BorderSide(color: Brand.royalBlue, width: 1.5),
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(_inputR),
             borderSide: const BorderSide(color: Color(0xFFEF4444), width: 1.5),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(_inputR),
             borderSide: const BorderSide(color: Color(0xFFEF4444), width: 1.5),
           ),
           hintStyle: GoogleFonts.montserrat(
             fontSize: 14,
-            color: Brand.subtleLight,
+            color: textS,
           ),
           labelStyle: GoogleFonts.montserrat(
             fontSize: 14,
-            color: Brand.subtleLight,
+            color: textS,
           ),
         ),
-        // ── Chip ──
         chipTheme: ChipThemeData(
-          backgroundColor: Brand.royalBlueSurface,
+          backgroundColor:
+              ws ? Brand.workshopInk.withAlpha(15) : Brand.royalBlueSurface,
           labelStyle: GoogleFonts.montserrat(
             fontSize: 12,
             fontWeight: FontWeight.w600,
-            color: Brand.royalBlue,
+            color: ws ? Brand.workshopInk : Brand.royalBlue,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(_chipR),
+            side: ws ? BorderSide(color: border, width: 1) : BorderSide.none,
           ),
-          side: BorderSide.none,
+          side: ws ? BorderSide(color: border, width: 1) : BorderSide.none,
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
         ),
-        // ── Divider ──
-        dividerTheme: const DividerThemeData(
-          color: Brand.borderLight,
+        dividerTheme: DividerThemeData(
+          color: border,
           thickness: 1,
           space: 1,
         ),
-        // ── SnackBar ──
         snackBarTheme: SnackBarThemeData(
           behavior: SnackBarBehavior.floating,
-          backgroundColor: Brand.royalBlueDark,
+          backgroundColor: ws ? Brand.workshopInk : Brand.royalBlueDark,
           contentTextStyle: GoogleFonts.montserrat(
             fontSize: 13,
             fontWeight: FontWeight.w500,
             color: Colors.white,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(_snackR),
           ),
         ),
       );
+  }
 
   // ─── DARK THEME (variant-aware: Navy Glow / Workshop / Fusion) ──
   ThemeData get darkTheme {
     final p = Brand.darkPalette;
+    final card = Brand.surface(true);
+    final border = Brand.cardBorder(true);
+    final bw = Brand.cardBorderWidth;
+    final textP = Brand.ink(true);
+    final textS = Brand.inkSoft(true);
+    final ws = Brand.isWorkshop;
+
     return ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
         primaryColor: p.primary,
-        scaffoldBackgroundColor: p.bg,
+        scaffoldBackgroundColor: Brand.canvas(true),
         fontFamily: GoogleFonts.montserrat().fontFamily,
         colorScheme: ColorScheme.fromSeed(
           seedColor: Brand.royalBlue,
           primary: p.primary,
           onPrimary: p.onPrimary,
           secondary: p.secondary,
-          surface: p.card,
+          surface: card,
           brightness: Brightness.dark,
         ),
         textTheme: _montserratDark(),
@@ -378,73 +405,68 @@ class ThemeProvider extends ChangeNotifier {
         pageTransitionsTheme: _pageTransitions,
         splashFactory: InkSparkle.splashFactory,
         bottomSheetTheme: _bottomSheetDark,
-        // ── Dialogs — rounded, no M3 surface tint ──
         dialogTheme: DialogThemeData(
-          backgroundColor: Brand.darkCard,
+          backgroundColor: card,
           surfaceTintColor: Colors.transparent,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(_dialogR),
+            side: ws ? BorderSide(color: border, width: bw) : BorderSide.none,
           ),
           titleTextStyle: GoogleFonts.montserrat(
             fontSize: 17,
             fontWeight: FontWeight.w700,
-            color: Brand.darkTextPrimary,
+            color: textP,
           ),
         ),
-        // ── FAB ──
         floatingActionButtonTheme: FloatingActionButtonThemeData(
           backgroundColor: p.primary,
           foregroundColor: p.onPrimary,
-          elevation: 2,
+          elevation: ws ? 0 : 2,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(_fabR),
+            side: ws ? BorderSide(color: border, width: bw) : BorderSide.none,
           ),
         ),
-        // ── Progress indicators ──
         progressIndicatorTheme: ProgressIndicatorThemeData(
           color: p.iconActive,
           linearTrackColor: Brand.darkBorder,
           circularTrackColor: Colors.transparent,
         ),
-        // ── ListTile ──
         listTileTheme: ListTileThemeData(
-          iconColor: Brand.darkTextSecondary,
+          iconColor: textS,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(ws ? 8 : 12),
           ),
         ),
-        // ── AppBar ──
         appBarTheme: AppBarTheme(
-          backgroundColor: Brand.darkCard,
-          foregroundColor: Brand.darkTextPrimary,
+          backgroundColor: card,
+          foregroundColor: textP,
           elevation: 0,
           scrolledUnderElevation: 0.5,
-          centerTitle: true,
+          centerTitle: !ws,
           titleTextStyle: GoogleFonts.montserrat(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: Brand.darkTextPrimary,
-            letterSpacing: -0.3,
+            fontSize: ws ? 20 : 18,
+            fontWeight: ws ? FontWeight.w800 : FontWeight.w600,
+            color: textP,
+            letterSpacing: ws ? -0.5 : -0.3,
           ),
-          iconTheme: IconThemeData(color: Brand.darkTextPrimary),
+          iconTheme: IconThemeData(color: textP),
         ),
-        // ── Cards ──
         cardTheme: CardThemeData(
-          color: Brand.darkCard,
+          color: card,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
-            side: BorderSide(color: Brand.darkBorder, width: 1),
+            borderRadius: BorderRadius.circular(_cardR),
+            side: BorderSide(color: border, width: bw),
           ),
         ),
-        // ── Elevated Button ──
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: p.primary,
             foregroundColor: p.onPrimary,
             elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(_btnR),
             ),
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
             textStyle: GoogleFonts.montserrat(
@@ -454,13 +476,12 @@ class ThemeProvider extends ChangeNotifier {
             ),
           ),
         ),
-        // ── Outlined Button ──
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             foregroundColor: Brand.darkIconActive,
-            side: BorderSide(color: Brand.darkBorderLight, width: 1.5),
+            side: BorderSide(color: border, width: bw),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(_btnR),
             ),
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
             textStyle: GoogleFonts.montserrat(
@@ -469,7 +490,6 @@ class ThemeProvider extends ChangeNotifier {
             ),
           ),
         ),
-        // ── Text Button ──
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             foregroundColor: Brand.darkIconActive,
@@ -479,31 +499,30 @@ class ThemeProvider extends ChangeNotifier {
             ),
           ),
         ),
-        // ── Input ──
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: Brand.darkCardElevated,
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
-            borderSide: BorderSide(color: Brand.darkBorder, width: 1),
+            borderRadius: BorderRadius.circular(_inputR),
+            borderSide: BorderSide(color: border, width: bw),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
-            borderSide: BorderSide(color: Brand.darkBorder, width: 1),
+            borderRadius: BorderRadius.circular(_inputR),
+            borderSide: BorderSide(color: border, width: bw),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(_inputR),
             borderSide:
                 BorderSide(color: Brand.darkIconActive, width: 1.5),
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(_inputR),
             borderSide: const BorderSide(color: Color(0xFFCF6679), width: 1.5),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(_inputR),
             borderSide: const BorderSide(color: Color(0xFFCF6679), width: 1.5),
           ),
           hintStyle: GoogleFonts.montserrat(
@@ -515,7 +534,6 @@ class ThemeProvider extends ChangeNotifier {
             color: Brand.darkTextTertiary,
           ),
         ),
-        // ── Chip ──
         chipTheme: ChipThemeData(
           backgroundColor: Brand.royalBlue.withAlpha(40),
           labelStyle: GoogleFonts.montserrat(
@@ -524,28 +542,27 @@ class ThemeProvider extends ChangeNotifier {
             color: Brand.darkIconActive,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(_chipR),
+            side: ws ? BorderSide(color: border, width: 1) : BorderSide.none,
           ),
-          side: BorderSide.none,
+          side: ws ? BorderSide(color: border, width: 1) : BorderSide.none,
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
         ),
-        // ── Divider ──
         dividerTheme: DividerThemeData(
-          color: Brand.darkBorder,
+          color: border,
           thickness: 1,
           space: 1,
         ),
-        // ── SnackBar ──
         snackBarTheme: SnackBarThemeData(
           behavior: SnackBarBehavior.floating,
           backgroundColor: Brand.darkCardElevated,
           contentTextStyle: GoogleFonts.montserrat(
             fontSize: 13,
             fontWeight: FontWeight.w500,
-            color: Brand.darkTextPrimary,
+            color: textP,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(_snackR),
           ),
         ),
       );
