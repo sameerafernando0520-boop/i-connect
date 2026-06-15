@@ -395,12 +395,28 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
       appBar: AppBar(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
+        backgroundColor: Brand.isWorkshop
+            ? Brand.canvas(isDark)
+            : (isDark ? Brand.darkCard : Colors.white),
         elevation: 0,
+        scrolledUnderElevation: Brand.isWorkshop ? 0 : 0.5,
+        surfaceTintColor: Colors.transparent,
+        shape: Brand.isWorkshop
+            ? Border(
+                bottom: BorderSide(
+                    color: Brand.cardBorder(isDark), width: 1.5))
+            : null,
         titleSpacing: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_rounded,
-              color: AdminColors.text(context)),
+          icon: Icon(
+            Brand.isWorkshop
+                ? Icons.arrow_back_ios_new_rounded
+                : Icons.arrow_back_rounded,
+            color: Brand.isWorkshop
+                ? Brand.ink(isDark)
+                : AdminColors.text(context),
+            size: Brand.isWorkshop ? 18 : 24,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
         title: GestureDetector(
@@ -411,9 +427,12 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
               Text(
                 widget.ticketTitle,
                 style: TextStyle(
-                  color: AdminColors.text(context),
-                  fontWeight: FontWeight.w700,
+                  color: Brand.isWorkshop
+                      ? Brand.ink(isDark)
+                      : AdminColors.text(context),
+                  fontWeight: Brand.isWorkshop ? FontWeight.w800 : FontWeight.w700,
                   fontSize: 15,
+                  letterSpacing: Brand.isWorkshop ? -0.5 : 0,
                 ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -422,7 +441,9 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
                 Text(
                   _headerSubtitle(t),
                   style: TextStyle(
-                    color: AdminColors.textSub(context),
+                    color: Brand.isWorkshop
+                        ? Brand.inkSoft(isDark)
+                        : AdminColors.textSub(context),
                     fontSize: 11,
                   ),
                   maxLines: 1,

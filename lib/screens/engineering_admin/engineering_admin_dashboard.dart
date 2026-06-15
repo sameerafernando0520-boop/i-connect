@@ -1490,27 +1490,10 @@ class _EaHrHubPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        elevation: 0,
-        scrolledUnderElevation: 0.5,
-        surfaceTintColor: Colors.transparent,
-        title: Text(
-          'HR',
-          style: TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.w700,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-          ),
-        ),
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(0.5),
-          child: Container(
-            height: 0.5,
-            color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
-          ),
-        ),
+      appBar: const DsPageHeader(
+        title: 'HR',
+        showBack: false,
+        accent: HeroAccent.emerald,
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 80),
