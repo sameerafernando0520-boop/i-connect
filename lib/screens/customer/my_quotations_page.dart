@@ -665,12 +665,22 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
         slivers: [
           SliverAppBar(
             pinned: true,
-            backgroundColor: isDark ? Brand.darkBg : Colors.white,
-            foregroundColor:
-                isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+            backgroundColor: Brand.canvas(isDark),
+            foregroundColor: Brand.isWorkshop
+                ? Brand.ink(isDark)
+                : (isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
             elevation: 0,
-            scrolledUnderElevation: 1,
-            title: Text(_quo['quotation_number'] ?? 'Quotation'),
+            scrolledUnderElevation: Brand.isWorkshop ? 0 : 1,
+            shape: Brand.isWorkshop
+                ? Border(bottom: BorderSide(color: Brand.cardBorder(isDark), width: 1.5))
+                : null,
+            title: Text(
+              _quo['quotation_number'] ?? 'Quotation',
+              style: TextStyle(
+                fontWeight: Brand.isWorkshop ? FontWeight.w800 : FontWeight.w600,
+                letterSpacing: Brand.isWorkshop ? -0.5 : -0.3,
+              ),
+            ),
           ),
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),

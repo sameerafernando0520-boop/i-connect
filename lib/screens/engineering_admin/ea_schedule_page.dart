@@ -277,23 +277,26 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
       floating: true,
       snap: true,
       pinned: false,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.isWorkshop ? Brand.canvas(isDark) : (isDark ? Brand.darkCard : Colors.white),
       surfaceTintColor: Colors.transparent,
+      scrolledUnderElevation: Brand.isWorkshop ? 0 : null,
+      shape: Brand.isWorkshop
+          ? Border(bottom: BorderSide(color: Brand.cardBorder(isDark), width: 1.5))
+          : null,
       title: Text(
         'Service Schedule',
         style: TextStyle(
-          fontWeight: FontWeight.w700,
+          fontWeight: Brand.isWorkshop ? FontWeight.w800 : FontWeight.w700,
           fontSize: 18,
-          color: AdminColors.text(context),
+          letterSpacing: Brand.isWorkshop ? -0.5 : 0,
+          color: Brand.isWorkshop ? Brand.ink(isDark) : AdminColors.text(context),
         ),
       ),
       actions: [
-        // Status filter chip
         Padding(
           padding: const EdgeInsets.only(right: 8),
           child: _buildStatusFilterButton(isDark),
         ),
-        // Month total badge
         Padding(
           padding: const EdgeInsets.only(right: 16),
           child: _buildMonthBadge(isDark),
@@ -793,14 +796,19 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
         SliverAppBar(
           floating: true,
           snap: true,
-          backgroundColor: isDark ? Brand.darkCard : Colors.white,
+          backgroundColor: Brand.isWorkshop ? Brand.canvas(isDark) : (isDark ? Brand.darkCard : Colors.white),
           surfaceTintColor: Colors.transparent,
+          scrolledUnderElevation: Brand.isWorkshop ? 0 : null,
+          shape: Brand.isWorkshop
+              ? Border(bottom: BorderSide(color: Brand.cardBorder(isDark), width: 1.5))
+              : null,
           title: Text(
             'Service Schedule',
             style: TextStyle(
-              fontWeight: FontWeight.w700,
+              fontWeight: Brand.isWorkshop ? FontWeight.w800 : FontWeight.w700,
               fontSize: 18,
-              color: AdminColors.text(context),
+              letterSpacing: Brand.isWorkshop ? -0.5 : 0,
+              color: Brand.isWorkshop ? Brand.ink(isDark) : AdminColors.text(context),
             ),
           ),
         ),

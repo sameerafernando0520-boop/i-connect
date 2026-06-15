@@ -179,18 +179,24 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
           SliverAppBar(
             expandedHeight: 0,
             pinned: true,
-            backgroundColor: isDark ? Brand.darkBg : Colors.white,
-            foregroundColor:
-                isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+            backgroundColor: Brand.canvas(isDark),
+            foregroundColor: Brand.isWorkshop
+                ? Brand.ink(isDark)
+                : (isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
             elevation: 0,
-            scrolledUnderElevation: 1,
+            scrolledUnderElevation: Brand.isWorkshop ? 0 : 1,
+            shape: Brand.isWorkshop
+                ? Border(bottom: BorderSide(color: Brand.cardBorder(isDark), width: 1.5))
+                : null,
             title: Text(
               _inv['invoice_number'] ?? 'Invoice',
               style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                letterSpacing: -0.3,
-                color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+                fontSize: Brand.isWorkshop ? 20 : 20,
+                fontWeight: Brand.isWorkshop ? FontWeight.w800 : FontWeight.w600,
+                letterSpacing: Brand.isWorkshop ? -0.5 : -0.3,
+                color: Brand.isWorkshop
+                    ? Brand.ink(isDark)
+                    : (isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
               ),
             ),
           ),

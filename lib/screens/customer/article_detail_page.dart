@@ -399,9 +399,15 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
         // ── App Bar ──
         SliverAppBar(
           pinned: true,
-          backgroundColor: Brand.surface(isDark),
-          foregroundColor: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+          backgroundColor: Brand.isWorkshop ? Brand.canvas(isDark) : Brand.surface(isDark),
+          foregroundColor: Brand.isWorkshop
+              ? Brand.ink(isDark)
+              : (isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
           elevation: 0,
+          scrolledUnderElevation: Brand.isWorkshop ? 0 : null,
+          shape: Brand.isWorkshop
+              ? Border(bottom: BorderSide(color: Brand.cardBorder(isDark), width: 1.5))
+              : null,
           leading: _buildBackButton(isDark),
           actions: [
             _buildActionButton(

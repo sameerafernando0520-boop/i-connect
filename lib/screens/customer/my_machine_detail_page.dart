@@ -315,8 +315,12 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
     return SliverAppBar(
       expandedHeight: _images.isEmpty ? 200 : 280,
       pinned: true,
-      backgroundColor: Brand.surface(isDark),
+      backgroundColor: Brand.isWorkshop ? Brand.canvas(isDark) : Brand.surface(isDark),
       surfaceTintColor: Colors.transparent,
+      scrolledUnderElevation: Brand.isWorkshop ? 0 : null,
+      shape: Brand.isWorkshop
+          ? Border(bottom: BorderSide(color: Brand.cardBorder(isDark), width: 1.5))
+          : null,
       leading: Material(
         color: Colors.transparent,
         child: InkWell(
