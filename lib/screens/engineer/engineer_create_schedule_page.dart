@@ -377,27 +377,27 @@ class _EngineerCreateSchedulePageState
         filled: true,
         fillColor: isDark ? Brand.darkCardElevated : Colors.white,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkBorder : Brand.borderLight,
           ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkBorder : Brand.borderLight,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: const BorderSide(color: _engAccent, width: 1.5),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: const BorderSide(color: Color(0xFFEF4444)),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: const BorderSide(color: Color(0xFFEF4444), width: 1.5),
         ),
         contentPadding:
@@ -454,12 +454,12 @@ class _EngineerCreateSchedulePageState
   }) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(Brand.r(12)),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCardElevated : Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: Border.all(
             color: isSelected
                 ? _engAccent.withAlpha(128)
@@ -548,12 +548,12 @@ class _EngineerCreateSchedulePageState
         if (!mounted) return;
         if (picked != null) setState(() => _scheduledDate = picked);
       },
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(Brand.r(12)),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCardElevated : Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -603,12 +603,12 @@ class _EngineerCreateSchedulePageState
         if (!mounted) return;
         if (picked != null) setState(() => _scheduledTime = picked);
       },
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(Brand.r(12)),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCardElevated : Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -866,7 +866,7 @@ class _CustomerPickerSheetState extends State<_CustomerPickerSheet> {
                 fillColor:
                     isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                   borderSide: BorderSide.none,
                 ),
                 contentPadding:
@@ -1186,7 +1186,7 @@ class _MachinePickerSheetState extends State<_MachinePickerSheet> {
         height: 48,
         decoration: BoxDecoration(
           color: const Color(0xFF8B5CF6).withAlpha(26),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
         ),
         child: const Icon(
           Icons.precision_manufacturing,
@@ -1231,7 +1231,7 @@ class _MachinePickerSheetState extends State<_MachinePickerSheet> {
               width: 48, height: 48,
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkCardElevated : Brand.borderLight,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
             ),
             const SizedBox(width: 12),

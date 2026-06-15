@@ -304,7 +304,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
           backgroundColor: AdminColors.error,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(10))),
           margin: const EdgeInsets.all(12),
         ),
       );
@@ -629,7 +629,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
                 fillColor:
                     isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(24),
+                  borderRadius: BorderRadius.circular(Brand.r(24)),
                   borderSide: BorderSide.none,
                 ),
                 contentPadding: const EdgeInsets.symmetric(
@@ -832,7 +832,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
           backgroundColor: AdminColors.error,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)),
+              borderRadius: BorderRadius.circular(Brand.r(10))),
           margin: const EdgeInsets.all(12),
         ),
       );
@@ -1051,8 +1051,8 @@ class _BubbleItem extends StatelessWidget {
                           ? Brand.darkCardElevated
                           : Colors.white),
                   borderRadius: BorderRadius.only(
-                    topLeft: const Radius.circular(16),
-                    topRight: const Radius.circular(16),
+                    topLeft: Radius.circular(Brand.r(16)),
+                    topRight: Radius.circular(Brand.r(16)),
                     bottomLeft: Radius.circular(isMe ? 16 : 4),
                     bottomRight: Radius.circular(isMe ? 4 : 16),
                   ),
@@ -1162,7 +1162,7 @@ class _SystemCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
         ),
         child: Text(
           content,
@@ -1187,7 +1187,7 @@ class _ImageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(14),
+      borderRadius: BorderRadius.circular(Brand.r(14)),
       child: CachedNetworkImage(
         imageUrl: url,
         width: 200,
@@ -1246,7 +1246,7 @@ class _QuickActionRow extends StatelessWidget {
                 height: 42,
                 decoration: BoxDecoration(
                   color: iconColor.withAlpha(38),
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                 ),
                 child: Icon(icon, color: iconColor, size: 22),
               ),
@@ -1300,7 +1300,7 @@ class _DateSeparator extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
         ),
         child: Text(
           TimeUtils.formatDateSeparator(date),
@@ -1545,7 +1545,7 @@ class _DispatchPanelState extends State<_DispatchPanel> {
       context: context,
       builder: (dialogCtx) => AlertDialog(
         backgroundColor: widget.isDark ? Brand.darkCard : Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(18))),
         title: Text(
           'Assign Engineer',
           style: TextStyle(
@@ -1569,7 +1569,7 @@ class _DispatchPanelState extends State<_DispatchPanel> {
               backgroundColor: _eaAccent,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(Brand.r(10))),
             ),
             child: const Text('Confirm Assignment'),
           ),
@@ -1614,7 +1614,7 @@ class _DispatchPanelState extends State<_DispatchPanel> {
           backgroundColor: AdminColors.error,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)),
+              borderRadius: BorderRadius.circular(Brand.r(10))),
           margin: const EdgeInsets.all(12),
         ),
       );
@@ -1811,7 +1811,7 @@ class _EngineerDispatchTile extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: Border.all(
           color: skillMatch
               ? const Color(0xFF10B981).withAlpha(60)
@@ -1981,7 +1981,7 @@ class _EngineerDispatchTile extends StatelessWidget {
                     side: BorderSide(
                         color: _eaAccent.withAlpha(100)),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(Brand.r(10))),
                     padding:
                         const EdgeInsets.symmetric(vertical: 8),
                   ),
@@ -1999,7 +1999,7 @@ class _EngineerDispatchTile extends StatelessWidget {
                     backgroundColor: _eaAccent,
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(Brand.r(10))),
                     padding:
                         const EdgeInsets.symmetric(vertical: 8),
                   ),
@@ -2063,7 +2063,7 @@ class _BroadcastTile extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: _eaAccent.withAlpha(15),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border:
               Border.all(color: _eaAccent.withAlpha(60)),
         ),
@@ -2073,7 +2073,7 @@ class _BroadcastTile extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: _eaAccent.withAlpha(20),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: const Icon(Icons.broadcast_on_personal_rounded,
                   color: _eaAccent, size: 20),

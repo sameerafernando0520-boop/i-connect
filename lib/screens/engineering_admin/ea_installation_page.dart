@@ -339,7 +339,7 @@ class _EaInstallationPageState extends State<EaInstallationPage> {
                                 color: selected
                                     ? _eaAccent.withAlpha(26)
                                     : AdminColors.bg(sheetCtx),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(Brand.r(10)),
                                 border: Border.all(
                                   color: selected
                                       ? _eaAccent
@@ -472,7 +472,7 @@ class _EaInstallationPageState extends State<EaInstallationPage> {
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(vertical: 14),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12)),
+                                borderRadius: BorderRadius.circular(Brand.r(12))),
                           ),
                           onPressed: () async {
                             if (selMachineId == null) {
@@ -558,7 +558,7 @@ class _EaInstallationPageState extends State<EaInstallationPage> {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         decoration: BoxDecoration(
           color: AdminColors.bg(context),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
           border: Border.all(color: AdminColors.border(context)),
         ),
         child: child,
@@ -677,7 +677,7 @@ class _EaInstallationPageState extends State<EaInstallationPage> {
           height: 100,
           decoration: BoxDecoration(
             color: isDark ? Brand.darkCard : Colors.white,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
           ),
         );
       },
@@ -721,7 +721,7 @@ class _InstallCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,

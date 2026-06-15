@@ -1,8 +1,7 @@
-// lib/screens/engineer/engineer_ticket_detail_page.dart
+﻿// lib/screens/engineer/engineer_ticket_detail_page.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart'
@@ -15,6 +14,7 @@ import 'package:supabase_flutter/supabase_flutter.dart'
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../utils/time_utils.dart';
 import '../../utils/string_utils.dart';
 import '../../widgets/common/chat_attach_bar.dart';
@@ -52,8 +52,6 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
   // ── Live location sharing (en-route) ──
   StreamSubscription<Position>? _locSub;
 
-  // ── Presence ──
-  bool _isOtherOnline = false;
 
   // ── Pagination ──
   static const int _pageSize = 30;
@@ -203,15 +201,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
             });
           },
         )
-        // Presence — track who is currently viewing this chat.
-        .onPresenceSync((_) {
-          if (!mounted) return;
-          final state = _msgChannel!.presenceState();
-          final hasOthers = state.expand((s) => s.presences).any((p) {
-            return (p.payload['user_id'] as String?) != _currentUserId;
-          });
-          setState(() => _isOtherOnline = hasOthers);
-        })
+        .onPresenceSync((_) {})
         .subscribe((RealtimeSubscribeStatus status, [Object? error]) async {
           if (status == RealtimeSubscribeStatus.subscribed) {
             await _msgChannel!
@@ -481,31 +471,6 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
     }
   }
 
-  // ── En-route live location sharing ──────────────────────────
-  Future<void> _toggleEnRoute() async {
-    final status = _ticket['status'] as String? ?? '';
-    if (status == 'en_route') {
-      await _updateStatus('in_progress'); // also stops the stream
-      return;
-    }
-    if (!await Geolocator.isLocationServiceEnabled()) {
-      _showSnackBar('Please enable location services', isError: true);
-      return;
-    }
-    var perm = await Geolocator.checkPermission();
-    if (perm == LocationPermission.denied) {
-      perm = await Geolocator.requestPermission();
-    }
-    if (perm == LocationPermission.denied ||
-        perm == LocationPermission.deniedForever) {
-      _showSnackBar('Location permission is needed to share your route',
-          isError: true);
-      return;
-    }
-    await _updateStatus('en_route');
-    await _startLocationStream();
-  }
-
   Future<void> _startLocationStream() async {
     await _locSub?.cancel();
     final uid = _currentUserId;
@@ -537,255 +502,6 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
   Future<void> _stopLocationStream() async {
     await _locSub?.cancel();
     _locSub = null;
-  }
-
-  Future<void> _escalateTicket() async {
-    final isDark = _isDark;
-    final reasonCtrl = TextEditingController();
-
-    final confirmed = await showModalBottomSheet<bool>(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (sheetCtx) => Padding(
-        padding:
-            EdgeInsets.only(bottom: MediaQuery.of(sheetCtx).viewInsets.bottom),
-        child: Container(
-          padding: const EdgeInsets.all(24),
-          decoration: BoxDecoration(
-            color: Brand.surface(isDark),
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 40,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Container(
-                width: 64,
-                height: 64,
-                decoration: BoxDecoration(
-                  color: Colors.orange.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Icon(Icons.trending_up_rounded,
-                    color: Colors.orange[700], size: 30),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'Escalate to Admin',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                  letterSpacing: -0.4,
-                ),
-              ),
-              const SizedBox(height: 6),
-              Text(
-                'This will flag the ticket for admin attention and notify them immediately.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 13,
-                  color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                  height: 1.4,
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                controller: reasonCtrl,
-                maxLines: 3,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                ),
-                cursorColor: Colors.orange[700],
-                decoration: InputDecoration(
-                  hintText: 'Reason for escalation (required)...',
-                  hintStyle: TextStyle(
-                    color: isDark ? Brand.darkTextTertiary : Colors.black38,
-                    fontSize: 14,
-                  ),
-                  filled: true,
-                  fillColor:
-                      isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                    borderSide: BorderSide(
-                      color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                    borderSide: BorderSide(
-                      color: isDark ? Brand.darkBorderLight : Brand.borderLight,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                    borderSide:
-                        BorderSide(color: Colors.orange[700]!, width: 2),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Row(
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () => Navigator.pop(sheetCtx, false),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: isDark
-                                ? Brand.darkBorderLight
-                                : Brand.borderLight,
-                            width: 1.5,
-                          ),
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Cancel',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: isDark
-                                  ? Brand.darkTextSecondary
-                                  : Brand.subtleLight,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        if (reasonCtrl.text.trim().isEmpty) {
-                          ScaffoldMessenger.of(sheetCtx).showSnackBar(SnackBar(
-                            content: const Text('Please enter a reason'),
-                            backgroundColor: Colors.orange[700],
-                            behavior: SnackBarBehavior.floating,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            margin: const EdgeInsets.all(16),
-                          ));
-                          return;
-                        }
-                        Navigator.pop(sheetCtx, true);
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.orange[800]!,
-                              Colors.orange[600]!,
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(14),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.orange.withAlpha(89),
-                              blurRadius: 10,
-                              offset: const Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'Escalate',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: MediaQuery.of(sheetCtx).padding.bottom + 8),
-            ],
-          ),
-        ),
-      ),
-    );
-
-    if (confirmed != true || !mounted) return;
-
-    final reason = reasonCtrl.text.trim();
-    reasonCtrl.dispose();
-
-    try {
-      await SupabaseConfig.client.from('service_tickets').update({
-        'escalated': true,
-        'escalated_at': DateTime.now().toUtc().toIso8601String(),
-        'escalation_reason': reason,
-        'updated_at': DateTime.now().toUtc().toIso8601String(),
-      }).eq('id', widget.ticketId);
-      if (!mounted) return;
-
-      await SupabaseConfig.client.from('chat_messages').insert({
-        'ticket_id': widget.ticketId,
-        'sender_id': _currentUserId,
-        'sender_type': 'engineer',
-        'message': '⚠️ ESCALATED TO ADMIN\nReason: $reason',
-        'is_internal': true,
-      });
-      if (!mounted) return;
-
-      // Batch-notify all admins
-      final admins = await SupabaseConfig.client
-          .from('users')
-          .select('id')
-          .eq('role', 'admin');
-      if (!mounted) return;
-
-      if (admins.isNotEmpty) {
-        final truncated =
-            reason.length > 80 ? '${reason.substring(0, 80)}...' : reason;
-        final notifications = (admins as List)
-            .map((a) => {
-                  'user_id': a['id'],
-                  'title': 'Ticket Escalated',
-                  'body':
-                      'Ticket ${_ticket['ticket_number'] ?? ''} escalated: $truncated',
-                  'type': 'ticket_update',
-                  'related_id': widget.ticketId,
-                  'is_read': false,
-                })
-            .toList();
-        await SupabaseConfig.client.from('notifications').insert(notifications);
-        if (!mounted) return;
-      }
-
-      setState(() {
-        _ticket = {
-          ..._ticket,
-          'escalated': true,
-          'escalation_reason': reason,
-        };
-      });
-      _showSnackBar(
-        'Ticket escalated to admin',
-        icon: Icons.trending_up_rounded,
-      );
-    } catch (e) {
-      if (!mounted) return;
-      _showSnackBar('Escalation failed: $e', isError: true);
-    }
   }
 
   Future<void> _removeEscalation() async {
@@ -839,19 +555,6 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
 
   bool get _isDark => Theme.of(context).brightness == Brightness.dark;
 
-  Color _priorityColor(String p) {
-    switch (p) {
-      case 'urgent':
-        return const Color(0xFFFF4757);
-      case 'high':
-        return const Color(0xFFFFB74D);
-      case 'medium':
-        return Brand.lightGreenBright;
-      default:
-        return Brand.darkTextSecondary;
-    }
-  }
-
   Color _statusColor(String s) {
     switch (s) {
       case 'open':
@@ -892,7 +595,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
         ),
         backgroundColor: isError ? Colors.red.shade400 : _engAccent,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
         margin: const EdgeInsets.all(16),
       ),
     );
@@ -907,224 +610,12 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
     final isDark = _isDark;
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: _buildAppBar(isDark),
+      appBar: DsPageHeader(
+        title: 'Ticket #${_ticket['ticket_number'] ?? ''}',
+        subtitle: _ticket['subject'] as String?,
+        accent: HeroAccent.cyan,
+      ),
       body: _isLoading ? _buildSkeleton(isDark) : _buildBody(isDark),
-    );
-  }
-
-  // ═══════════════════════════════════════════════════════════
-  //  APP BAR
-  // ═══════════════════════════════════════════════════════════
-
-  PreferredSizeWidget _buildAppBar(bool isDark) {
-    final status = _ticket['status'] as String? ?? 'open';
-    final priority = _ticket['priority'] as String? ?? 'medium';
-    final escalated = _ticket['escalated'] == true;
-    final ticketType = _ticket['ticket_type'] as String? ?? 'support';
-
-    return AppBar(
-      backgroundColor: Brand.surface(isDark),
-      elevation: 0,
-      surfaceTintColor: Colors.transparent,
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back_rounded,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
-        onPressed: () => Navigator.pop(context),
-      ),
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Text(
-                'Ticket #${_ticket['ticket_number'] ?? ''}',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                ),
-              ),
-              if (_isOtherOnline) ...[
-                const SizedBox(width: 6),
-                Container(
-                  width: 8,
-                  height: 8,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFF4CAF50),
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                const SizedBox(width: 4),
-                Text(
-                  'Online',
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w500,
-                    color: const Color(0xFF4CAF50),
-                  ),
-                ),
-              ],
-            ],
-          ),
-          const SizedBox(height: 2),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                _bdg(
-                  status.replaceAll('_', ' ').toUpperCase(),
-                  _statusColor(status),
-                  isDark,
-                ),
-                const SizedBox(width: 6),
-                _bdg(
-                  priority.toUpperCase(),
-                  _priorityColor(priority),
-                  isDark,
-                ),
-                const SizedBox(width: 6),
-                _bdg(
-                  ticketType.toUpperCase(),
-                  isDark ? _engAccent : Brand.royalBlueLight,
-                  isDark,
-                ),
-                if (escalated) ...[
-                  const SizedBox(width: 6),
-                  _bdg('ESCALATED', Colors.orange[700]!, isDark),
-                ],
-              ],
-            ),
-          ),
-        ],
-      ),
-      actions: [
-        if (_ticket['assigned_to'] == _currentUserId)
-          IconButton(
-            icon: Icon(
-              status == 'en_route'
-                  ? Icons.navigation_rounded
-                  : Icons.navigation_outlined,
-              color: status == 'en_route'
-                  ? const Color(0xFF16A34A)
-                  : (isDark ? Brand.darkTextSecondary : Brand.subtleLight),
-              size: 22,
-            ),
-            onPressed: _toggleEnRoute,
-            tooltip: status == 'en_route'
-                ? 'Stop sharing live location'
-                : 'On my way — share live location',
-          ),
-        IconButton(
-          icon: Icon(
-            escalated ? Icons.flag_rounded : Icons.flag_outlined,
-            color: escalated
-                ? Colors.orange[700]
-                : (isDark ? Brand.darkTextSecondary : Brand.subtleLight),
-            size: 22,
-          ),
-          onPressed: escalated ? _removeEscalation : _escalateTicket,
-          tooltip: escalated ? 'Remove escalation' : 'Escalate to admin',
-        ),
-        PopupMenuButton<String>(
-          icon: Icon(Icons.more_vert_rounded,
-              color: isDark ? Brand.darkTextSecondary : Brand.subtleLight),
-          color: Brand.surface(isDark),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          itemBuilder: (_) => [
-            _menuItem(
-              'in_progress',
-              'Mark In Progress',
-              Icons.autorenew_rounded,
-              const Color(0xFFFFB74D),
-              isDark,
-            ),
-            _menuItem(
-              'waiting_customer',
-              'Waiting for Customer',
-              Icons.hourglass_top_rounded,
-              const Color(0xFFCE93D8),
-              isDark,
-            ),
-            _menuItem(
-              'resolved',
-              'Mark Resolved',
-              Icons.check_circle_rounded,
-              Brand.lightGreenBright,
-              isDark,
-            ),
-            _menuItem(
-              'closed',
-              'Close Ticket',
-              Icons.cancel_outlined,
-              Brand.darkTextSecondary,
-              isDark,
-            ),
-            const PopupMenuDivider(),
-            _menuItem(
-              '_copy_number',
-              'Copy Ticket #',
-              Icons.copy_rounded,
-              isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-              isDark,
-            ),
-            _menuItem(
-              '_refresh',
-              'Refresh',
-              Icons.refresh_rounded,
-              _engAccent,
-              isDark,
-            ),
-          ],
-          onSelected: (val) {
-            if (val == '_copy_number') {
-              Clipboard.setData(
-                  ClipboardData(text: _ticket['ticket_number'] ?? ''));
-              _showSnackBar(
-                'Copied: ${_ticket['ticket_number']}',
-                icon: Icons.copy_rounded,
-              );
-            } else if (val == '_refresh') {
-              _loadAll();
-            } else {
-              _updateStatus(val);
-            }
-          },
-        ),
-      ],
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(1),
-        child: Divider(
-          height: 1,
-          color: isDark ? Brand.darkBorder : Brand.borderLight,
-        ),
-      ),
-    );
-  }
-
-  PopupMenuItem<String> _menuItem(
-    String val,
-    String label,
-    IconData icon,
-    Color c,
-    bool isDark,
-  ) {
-    return PopupMenuItem(
-      value: val,
-      child: Row(
-        children: [
-          Icon(icon, color: c, size: 18),
-          const SizedBox(width: 10),
-          Text(
-            label,
-            style: TextStyle(
-              color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
-      ),
     );
   }
 
@@ -1287,7 +778,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                               color: isDark
                                   ? Brand.darkCardElevated
                                   : Brand.royalBlueSurface,
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(Brand.r(12)),
                               border: Border.all(
                                 color: isDark
                                     ? Brand.darkBorder
@@ -1440,7 +931,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Brand.lightGreenBright.withAlpha(((isDark ? 0.06 : 0.04) * 255).toInt()),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border: Border.all(color: Brand.lightGreenBright.withAlpha(38)),
       ),
       child: Column(
@@ -1584,7 +1075,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
               decoration: BoxDecoration(
                 color: Colors.orange.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -1650,7 +1141,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
           decoration: BoxDecoration(
             color: color.withAlpha(((isDark ? 0.1 : 0.06) * 255).toInt()),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Brand.r(10)),
             border: Border.all(
               color: color.withAlpha(((isDark ? 0.25 : 0.2) * 255).toInt()),
             ),
@@ -1690,7 +1181,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
           border: Border.all(
             color:
                 isDark ? Brand.darkBorder : Brand.royalBlue.withAlpha(20),
@@ -1732,7 +1223,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
               height: 64,
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkCard : Brand.royalBlueSurface,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Brand.r(20)),
               ),
               child: Icon(
                 Icons.chat_bubble_outline_rounded,
@@ -1800,7 +1291,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
             decoration: BoxDecoration(
               color: isDark ? Brand.darkCard : Brand.royalBlueSurface,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(Brand.r(20)),
               border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -2007,8 +1498,8 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                         : null,
                     color: (isMe && !isInternal) ? null : bubbleColor,
                     borderRadius: BorderRadius.only(
-                      topLeft: const Radius.circular(18),
-                      topRight: const Radius.circular(18),
+                      topLeft: Radius.circular(Brand.r(18)),
+                      topRight: Radius.circular(Brand.r(18)),
                       bottomLeft: Radius.circular(isMe ? 18 : 4),
                       bottomRight: Radius.circular(isMe ? 4 : 18),
                     ),
@@ -2075,7 +1566,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                           return Padding(
                             padding: pad,
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(Brand.r(12)),
                               child: CachedNetworkImage(
                                 imageUrl: atts.first,
                                 width: 200,
@@ -2228,7 +1719,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                 color: Colors.transparent,
                 child: InkWell(
                   onTap: () => setState(() => _internalMode = !_internalMode),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
                     width: 40,
@@ -2239,7 +1730,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                           : (isDark
                               ? Brand.darkCardElevated
                               : Brand.scaffoldLight),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       border: Border.all(
                         color: _internalMode
                             ? Colors.orange.withAlpha(102)
@@ -2283,7 +1774,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                     color: isDark
                         ? Brand.darkCardElevated
                         : Brand.royalBlueSurface,
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(Brand.r(24)),
                     border: Border.all(
                       color: _internalMode
                           ? Colors.orange.withAlpha(77)
@@ -2316,7 +1807,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                       ),
                       enabledBorder: InputBorder.none,
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(24),
+                        borderRadius: BorderRadius.circular(Brand.r(24)),
                         borderSide: BorderSide(
                           color: isDark ? Brand.darkIconActive : _engAccent,
                           width: 1.5,
@@ -2350,7 +1841,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                 color: Colors.transparent,
                 child: InkWell(
                   onTap: _isSending ? null : _sendMessage,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(Brand.r(16)),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
                     width: 48,
@@ -2373,7 +1864,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(Brand.r(16)),
                       boxShadow: [
                         BoxShadow(
                           color: (_internalMode ? Colors.orange : _engAccent)
@@ -2439,7 +1930,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             color: statusColor.withAlpha(((isDark ? 0.08 : 0.05) * 255).toInt()),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             border: Border.all(color: statusColor.withAlpha(38)),
           ),
           child: Row(
@@ -2449,7 +1940,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                 height: 40,
                 decoration: BoxDecoration(
                   color: statusColor.withAlpha(((isDark ? 0.15 : 0.1) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Icon(
                   status == 'resolved'
@@ -2527,7 +2018,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                         _engAccentDark,
                       ],
                     ),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                     boxShadow: [
                       BoxShadow(
                         color: _engAccent.withAlpha(89),
@@ -2553,27 +2044,6 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  //  SHARED WIDGETS
-  // ═══════════════════════════════════════════════════════════
-
-  Widget _bdg(String text, Color c, bool isDark) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
-        decoration: BoxDecoration(
-          color: c.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: c.withAlpha(((isDark ? 0.2 : 0.15) * 255).toInt())),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 11,
-            fontWeight: FontWeight.w700,
-            color: c,
-            letterSpacing: 0.3,
-          ),
-        ),
-      );
 
   // ═══════════════════════════════════════════════════════════
   //  SKELETON LOADER

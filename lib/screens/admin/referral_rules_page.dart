@@ -134,7 +134,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AdminColors.card(context),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
           color: active
               ? AdminColors.border(context)
@@ -154,7 +154,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                   color: active
                       ? AdminColors.primary.withAlpha(20)
                       : AdminColors.error.withAlpha(15),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Icon(
                   Icons.rule_rounded,
@@ -196,7 +196,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                   color: active
                       ? AdminColors.success.withAlpha(20)
                       : AdminColors.error.withAlpha(15),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                 ),
                 child: Text(
                   active ? 'Active' : 'Inactive',
@@ -221,7 +221,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: AdminColors.bg(context),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
               border: Border.all(color: AdminColors.border(context)),
             ),
             child: Row(
@@ -351,7 +351,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: AdminColors.bg(context),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
         // FIX: Add border so chips are visible in dark mode
         border: Border.all(color: AdminColors.border(context)),
       ),
@@ -596,7 +596,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                                         behavior: SnackBarBehavior.floating,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(12),
+                                              BorderRadius.circular(Brand.r(12)),
                                         ),
                                         margin: const EdgeInsets.fromLTRB(
                                             16, 0, 16, 16),
@@ -622,7 +622,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                                         behavior: SnackBarBehavior.floating,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(12),
+                                              BorderRadius.circular(Brand.r(12)),
                                         ),
                                         margin: const EdgeInsets.fromLTRB(
                                             16, 0, 16, 16),
@@ -639,7 +639,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                                         behavior: SnackBarBehavior.floating,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(12),
+                                              BorderRadius.circular(Brand.r(12)),
                                         ),
                                         margin: const EdgeInsets.fromLTRB(
                                             16, 0, 16, 16),
@@ -658,7 +658,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                                         behavior: SnackBarBehavior.floating,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(12),
+                                              BorderRadius.circular(Brand.r(12)),
                                         ),
                                         margin: const EdgeInsets.fromLTRB(
                                             16, 0, 16, 16),
@@ -735,7 +735,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                                           behavior: SnackBarBehavior.floating,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(12),
+                                                BorderRadius.circular(Brand.r(12)),
                                           ),
                                           margin: const EdgeInsets.fromLTRB(
                                               16, 0, 16, 16),
@@ -755,7 +755,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                                         behavior: SnackBarBehavior.floating,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(12),
+                                              BorderRadius.circular(Brand.r(12)),
                                         ),
                                         margin: const EdgeInsets.fromLTRB(
                                             16, 0, 16, 16),
@@ -768,7 +768,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(vertical: 14),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
+                              borderRadius: BorderRadius.circular(Brand.r(14)),
                             ),
                           ),
                           child: saving
@@ -828,7 +828,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
         filled: true,
         fillColor: AdminColors.bg(ctx),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide.none,
         ),
         isDense: true,
@@ -854,7 +854,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
             color: active
                 ? AdminColors.primary.withAlpha(25)
                 : AdminColors.bg(ctx),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Brand.r(10)),
             border: Border.all(
               color: active
                   ? AdminColors.primary.withAlpha(80)
@@ -890,7 +890,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
         decoration: BoxDecoration(
           color:
               active ? AdminColors.primary.withAlpha(25) : AdminColors.bg(ctx),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
           border: Border.all(
             color: active
                 ? AdminColors.primary.withAlpha(80)
@@ -948,7 +948,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AdminColors.card(ctx),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
         title: Text(
           'Delete Rule?',
           style: TextStyle(color: AdminColors.text(ctx)),
@@ -976,7 +976,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
               backgroundColor: AdminColors.error,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(Brand.r(10))),
             ),
             child: const Text('Delete'),
           ),
@@ -1040,7 +1040,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
         ),
         backgroundColor: isError ? AdminColors.error : AdminColors.success,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       ),
     );
@@ -1059,7 +1059,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                 height: 160,
                 decoration: BoxDecoration(
                   color: AdminColors.card(context),
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(Brand.r(16)),
                 ),
               ),
             ),
@@ -1109,7 +1109,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                 backgroundColor: AdminColors.primary,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
               ),
             ),
           ],

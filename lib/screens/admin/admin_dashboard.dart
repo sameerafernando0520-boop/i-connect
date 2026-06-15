@@ -207,7 +207,7 @@ class _AdminDashboardState extends State<AdminDashboard>
             backgroundColor: AdminColors.error,
             behavior: SnackBarBehavior.floating,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
             margin: const EdgeInsets.all(16),
             action: SnackBarAction(
               label: 'Retry',
@@ -427,7 +427,7 @@ class _AdminDashboardState extends State<AdminDashboard>
             // FIX: .withOpacity() → .withAlpha()
             color: AdminColors.accent
                 .withAlpha(isDark ? 31 : 20), // 0.12→31, 0.08→20
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(Brand.r(20)),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -470,7 +470,7 @@ class _AdminDashboardState extends State<AdminDashboard>
               decoration: BoxDecoration(
                 // FIX: .withOpacity() → .withAlpha()
                 color: AdminColors.error.withAlpha(isDark ? 31 : 20),
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(Brand.r(24)),
               ),
               child: const Icon(Icons.cloud_off_rounded,
                   size: 40, color: AdminColors.error),
@@ -501,7 +501,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                     const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
                 decoration: BoxDecoration(
                   color: AdminColors.primary,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   boxShadow: [
                     BoxShadow(
                       // Already using .withAlpha() ✅
@@ -564,7 +564,7 @@ class _AdminDashboardState extends State<AdminDashboard>
             width: 52,
             height: 52,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(Brand.r(16)),
               gradient: LinearGradient(
                 colors: isDark
                     ? [Brand.darkIconActive, Brand.royalBlueGlow]
@@ -583,7 +583,7 @@ class _AdminDashboardState extends State<AdminDashboard>
               ],
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(Brand.r(16)),
               child: _adminPhotoUrl != null
                   ? CachedNetworkImage(
                       imageUrl: _adminPhotoUrl!,
@@ -690,7 +690,7 @@ class _AdminDashboardState extends State<AdminDashboard>
             height: 44,
             decoration: BoxDecoration(
               color: isDark ? Brand.darkCard : Colors.white,
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               border: isDark
                   ? Border.all(color: Brand.darkBorder)
                   : null,
@@ -752,7 +752,7 @@ class _AdminDashboardState extends State<AdminDashboard>
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Brand.r(22)),
         gradient: LinearGradient(
           colors: isDark
               ? [Brand.darkCard, Brand.darkCardElevated]
@@ -771,7 +771,7 @@ class _AdminDashboardState extends State<AdminDashboard>
               ],
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Brand.r(22)),
         child: Stack(
           children: [
             Positioned(
@@ -810,7 +810,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                         horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
                       color: Colors.white.withAlpha(30),
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(Brand.r(20)),
                     ),
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                       Icon(Icons.admin_panel_settings_rounded,
@@ -834,7 +834,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                         horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
                       color: Brand.lightGreen.withAlpha(26),
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(Brand.r(20)),
                     ),
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                       Icon(Icons.circle,
@@ -939,7 +939,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                     color: isDark
                         ? Brand.darkBorderLight.withAlpha(77)
                         : Colors.white.withAlpha(25),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: Stack(children: [
                     TweenAnimationBuilder<double>(
@@ -962,7 +962,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                                         Brand.lightGreenBright
                                       ],
                               ),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(Brand.r(10)),
                             ),
                           ),
                         );
@@ -987,7 +987,7 @@ class _AdminDashboardState extends State<AdminDashboard>
         height: 46,
         decoration: BoxDecoration(
           color: color.withAlpha(isDark ? 30 : 18),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
         ),
         child: Icon(icon, color: color, size: 20),
       ),
@@ -1022,7 +1022,7 @@ class _AdminDashboardState extends State<AdminDashboard>
           decoration: BoxDecoration(
             // FIX: .withOpacity() → .withAlpha()
             color: Colors.orange.withAlpha(isDark ? 26 : 15),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             border: Border.all(color: Colors.orange.withAlpha(64)),
           ),
           child: Row(
@@ -1033,7 +1033,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                 decoration: BoxDecoration(
                   // FIX: .withOpacity() → .withAlpha()
                   color: Colors.orange.withAlpha(38),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Icon(Icons.warning_rounded,
                     color: Colors.orange[700], size: 22),
@@ -1085,7 +1085,7 @@ class _AdminDashboardState extends State<AdminDashboard>
           decoration: BoxDecoration(
             // FIX: .withOpacity() → .withAlpha()
             color: AdminColors.error.withAlpha(isDark ? 26 : 15),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             border: Border.all(color: AdminColors.error.withAlpha(64)),
           ),
           child: Row(
@@ -1096,7 +1096,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                 decoration: BoxDecoration(
                   // Already .withAlpha() ✅
                   color: AdminColors.error.withAlpha(38),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: const Icon(Icons.payments_rounded,
                     color: AdminColors.error, size: 22),
@@ -1226,7 +1226,7 @@ class _AdminDashboardState extends State<AdminDashboard>
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -1253,7 +1253,7 @@ class _AdminDashboardState extends State<AdminDashboard>
               height: 40,
               decoration: BoxDecoration(
                 color: k.color.withAlpha(28),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
               ),
               child: Center(child: k.iconWidget(k.color)),
             ),
@@ -1374,7 +1374,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                 height: 56,
                 decoration: BoxDecoration(
                   color: action.color.withAlpha(isDark ? 28 : 15),
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(Brand.r(16)),
                   border: isDark
                       ? Border.all(
                           color: action.color.withAlpha(51),
@@ -1430,7 +1430,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                   color: isDark
                       ? Brand.royalBlue.withAlpha(26)
                       : Brand.royalBlueSurface,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Icon(Icons.account_balance_wallet_rounded,
                     color: isDark
@@ -1526,7 +1526,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
                   color: isDark ? Brand.darkCard : Colors.white,
-                  borderRadius: BorderRadius.circular(18),
+                  borderRadius: BorderRadius.circular(Brand.r(18)),
                   border: isDark
                       ? Border.all(color: Brand.darkBorder)
                       : null,
@@ -1553,7 +1553,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                       height: 40,
                       decoration: BoxDecoration(
                         color: k.color.withAlpha(28),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                       ),
                       child: Icon(k.icon, color: k.color, size: 20),
                     ),
@@ -1666,9 +1666,9 @@ class _AdminDashboardState extends State<AdminDashboard>
     return Container(
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(24),
-          topRight: Radius.circular(24),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(Brand.r(24)),
+          topRight: Radius.circular(Brand.r(24)),
         ),
         border: isDark
             ? Border(top: BorderSide(color: Brand.darkBorder, width: 1))
@@ -1765,7 +1765,7 @@ class _AdminDashboardState extends State<AdminDashboard>
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           boxShadow: [
             BoxShadow(
               color: (isDark ? Brand.royalBlue : AdminColors.primary)
@@ -1888,7 +1888,7 @@ class _AdminDashboardState extends State<AdminDashboard>
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: Brand.canvas(isDark),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -1900,7 +1900,7 @@ class _AdminDashboardState extends State<AdminDashboard>
               height: 42,
               decoration: BoxDecoration(
                 color: color.withAlpha(isDark ? 30 : 15),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
               ),
               child: Icon(icon, size: 20, color: color),
             ),
@@ -1975,7 +1975,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                             ? Brand.royalBlue.withAlpha(38)
                             : AdminColors.primary.withAlpha(26))
                         : Colors.transparent,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                   ),
                   child: iconBuilder(iconColor),
                 ),

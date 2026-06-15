@@ -283,7 +283,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
       height: 200,
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 16, offset: const Offset(0, 2)),
@@ -394,7 +394,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
       margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(6), blurRadius: 10, offset: const Offset(0, 1)),
@@ -556,7 +556,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
       height: 200,
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 16, offset: const Offset(0, 2)),
@@ -632,7 +632,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
       margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(6), blurRadius: 10, offset: const Offset(0, 1)),
@@ -708,7 +708,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 16, offset: const Offset(0, 2)),
@@ -722,7 +722,7 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
             width: 36, height: 36,
             decoration: BoxDecoration(
               color: color.withAlpha(isDark ? 30 : 20),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: Icon(icon, size: 18, color: color),
           ),

@@ -248,7 +248,7 @@ class _EaPerformanceDashboardState extends State<EaPerformanceDashboard>
                   leading: const Icon(Icons.groups_rounded),
                   selected: _selectedEngineerId == null,
                   selectedColor: _eaAccent,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(10))),
                   onTap: () {
                     setState(() => _selectedEngineerId = null);
                     Navigator.pop(context);
@@ -269,7 +269,7 @@ class _EaPerformanceDashboardState extends State<EaPerformanceDashboard>
                         subtitle: Text(eng['assigned_zone'] as String? ?? ''),
                         selected: selected,
                         selectedColor: _eaAccent,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(10))),
                         onTap: () {
                           setState(() => _selectedEngineerId = eng['id'] as String);
                           Navigator.pop(context);
@@ -502,7 +502,7 @@ class _KpiCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
         boxShadow: isDark
             ? []
@@ -516,7 +516,7 @@ class _KpiCard extends StatelessWidget {
             height: 36,
             decoration: BoxDecoration(
               color: color.withAlpha(25),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: Icon(icon, color: color, size: 20),
           ),
@@ -561,7 +561,7 @@ class _TopPerformers extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
       ),
       child: Column(
@@ -772,7 +772,7 @@ class _AttendancePieCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
       ),
       child: Column(
@@ -871,7 +871,7 @@ class _EngineerKpiCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
         boxShadow: isDark
             ? []
@@ -908,7 +908,7 @@ class _EngineerKpiCard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
                     color: const Color(0xFFFEF3C7),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(Brand.r(20)),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -1349,7 +1349,7 @@ class _TrendCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
       ),
       child: Column(

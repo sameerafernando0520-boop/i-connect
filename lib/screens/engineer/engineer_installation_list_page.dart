@@ -309,7 +309,7 @@ class _EngineerInstallationListPageState
                 backgroundColor: _engAccent,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
                 padding: const EdgeInsets.symmetric(
                     horizontal: 24, vertical: 12),
               ),
@@ -368,7 +368,7 @@ class _EngineerInstallationListPageState
         height: 110,
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
         ),
       ),
     );
@@ -427,7 +427,7 @@ class _EngInstallCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark ? Border.all(color: Brand.darkBorder) : null,
           boxShadow: isDark
               ? null
@@ -447,9 +447,9 @@ class _EngInstallCard extends StatelessWidget {
                 width: 4,
                 decoration: BoxDecoration(
                   color: typeColor,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    bottomLeft: Radius.circular(16),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(Brand.r(16)),
+                    bottomLeft: Radius.circular(Brand.r(16)),
                   ),
                 ),
               ),

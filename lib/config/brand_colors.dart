@@ -256,6 +256,13 @@ class Brand {
   /// Card corner radius — Workshop is slightly tighter / more "panel".
   static double get cardRadius => isWorkshop ? 14 : 16;
 
+  /// Scale any radius for the active design. Workshop pulls radii ~35% tighter;
+  /// NavyGlow returns the value unchanged. Use for Container(BoxDecoration(...))
+  /// cards that don't inherit from ThemeData.
+  ///   `BorderRadius.circular(Brand.r(16))`
+  static double r(double navyGlow) =>
+      isWorkshop ? (navyGlow * 0.65).roundToDouble() : navyGlow;
+
   /// Primary text for the active design + brightness.
   static Color ink(bool isDark) {
     if (isWorkshop) return isDark ? workshopInkDark : workshopInk;

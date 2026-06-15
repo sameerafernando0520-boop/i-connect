@@ -252,7 +252,7 @@ class AdminMorePage extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(Brand.r(18)),
             border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -282,7 +282,7 @@ class AdminMorePage extends StatelessWidget {
         MaterialPageRoute(builder: (_) => item.page),
       ),
       borderRadius: isLast
-          ? const BorderRadius.vertical(bottom: Radius.circular(18))
+          ? BorderRadius.vertical(bottom: Radius.circular(Brand.r(18)))
           : BorderRadius.zero,
       child: Column(
         children: [
@@ -295,7 +295,7 @@ class AdminMorePage extends StatelessWidget {
                   height: 40,
                   decoration: BoxDecoration(
                     color: item.color.withAlpha(isDark ? 30 : 15),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                   ),
                   child: Icon(item.icon, size: 20, color: item.color),
                 ),

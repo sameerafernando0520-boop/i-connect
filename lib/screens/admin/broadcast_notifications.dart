@@ -505,7 +505,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       builder: (dialogCtx) => Dialog(
         backgroundColor: Brand.surface(isDark),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(Brand.r(24)),
         ),
         child: Padding(
           padding: const EdgeInsets.all(28),
@@ -521,7 +521,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                   color: Brand.royalBlue.withAlpha(
                     isDark ? 31 : 20,
                   ),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(Brand.r(20)),
                 ),
                 child: Icon(
                   Icons.campaign_rounded,
@@ -544,7 +544,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
                   color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -639,7 +639,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                                 : Brand.borderLight,
                             width: 1.5,
                           ),
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                         ),
                         child: Center(
                           child: Text(
@@ -670,7 +670,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                               Brand.royalBlue,
                             ],
                           ),
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                           boxShadow: [
                             BoxShadow(
                               color: Brand.royalBlue.withAlpha(89),
@@ -762,7 +762,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       builder: (dialogCtx) => Dialog(
         backgroundColor: Brand.surface(isDark),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
         ),
         child: Padding(
           padding: const EdgeInsets.all(24),
@@ -778,7 +778,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                   color: _redColor.withAlpha(
                     isDark ? 38 : 20,
                   ),
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(Brand.r(16)),
                 ),
                 child: const Icon(
                   Icons.delete_rounded,
@@ -819,7 +819,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                             color:
                                 isDark ? Brand.darkBorder : Brand.borderLight,
                           ),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                         ),
                         child: Center(
                           child: Text(
@@ -845,7 +845,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                         ),
                         decoration: BoxDecoration(
                           color: _redColor,
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                         ),
                         child: const Center(
                           child: Text(
@@ -1146,7 +1146,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
               ),
               decoration: BoxDecoration(
                 color: Brand.surface(isDark),
-                borderRadius: const BorderRadius.vertical(
+                borderRadius: BorderRadius.vertical(
                   top: Radius.circular(28),
                 ),
               ),
@@ -1186,7 +1186,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                                 color: Brand.royalBlue.withAlpha(
                                   isDark ? 31 : 20,
                                 ),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(Brand.r(12)),
                               ),
                               child: Icon(
                                 isEditing
@@ -1243,7 +1243,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                                 color: isDark
                                     ? Brand.darkCardElevated
                                     : Brand.scaffoldLight,
-                                borderRadius: BorderRadius.circular(16),
+                                borderRadius: BorderRadius.circular(Brand.r(16)),
                                 border: Border.all(
                                   color: isDark
                                       ? Brand.darkBorder
@@ -1252,7 +1252,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                               ),
                               child: imageFile != null
                                   ? ClipRRect(
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius: BorderRadius.circular(Brand.r(16)),
                                       child: Image.file(
                                         imageFile!,
                                         fit: BoxFit.cover,
@@ -1262,7 +1262,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                                   : existingImageUrl != null
                                       ? ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(16),
+                                              BorderRadius.circular(Brand.r(16)),
                                           child: CachedNetworkImage(
                                             imageUrl: existingImageUrl,
                                             fit: BoxFit.cover,
@@ -1389,7 +1389,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                                   ? Brand.darkCardElevated
                                   : Brand.scaffoldLight,
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(14),
+                                borderRadius: BorderRadius.circular(Brand.r(14)),
                                 borderSide: BorderSide.none,
                               ),
                               contentPadding: const EdgeInsets.symmetric(
@@ -1438,7 +1438,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                                     ? Brand.darkCardElevated
                                     : Brand.scaffoldLight,
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(14),
+                                  borderRadius: BorderRadius.circular(Brand.r(14)),
                                   borderSide: BorderSide.none,
                                 ),
                                 contentPadding: const EdgeInsets.symmetric(
@@ -1500,7 +1500,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                               color: isDark
                                   ? Brand.darkCardElevated
                                   : Brand.scaffoldLight,
-                              borderRadius: BorderRadius.circular(14),
+                              borderRadius: BorderRadius.circular(Brand.r(14)),
                             ),
                             child: Row(
                               children: [
@@ -1559,7 +1559,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                                         end: Alignment.bottomRight,
                                       ),
                                 color: isSaving ? Brand.royalBlue : null,
-                                borderRadius: BorderRadius.circular(14),
+                                borderRadius: BorderRadius.circular(Brand.r(14)),
                                 boxShadow: isDark || isSaving
                                     ? null
                                     : [
@@ -1642,7 +1642,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         backgroundColor: isError ? _redColor : Brand.lightGreen,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
         ),
         margin: const EdgeInsets.all(16),
       ),
@@ -1807,7 +1807,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Brand.r(22)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -1847,7 +1847,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
               filled: true,
               fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 borderSide: BorderSide.none,
               ),
               contentPadding: const EdgeInsets.symmetric(
@@ -1877,7 +1877,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
               filled: true,
               fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 borderSide: BorderSide.none,
               ),
               contentPadding: const EdgeInsets.all(16),
@@ -1918,7 +1918,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                   color: selected
                       ? a.$4.withAlpha(isDark ? 38 : 26)
                       : (Brand.surface(isDark)),
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(Brand.r(16)),
                   border: Border.all(
                     // 128 ≈ 50%
                     color: selected
@@ -1984,7 +1984,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
             ),
             decoration: BoxDecoration(
               color: Brand.surface(isDark),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -2043,7 +2043,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         // FIX: replaced .withOpacity() with .withAlpha()
         // 0.08 ≈ 20, 0.05 ≈ 13
         color: color.withAlpha(isDark ? 20 : 13),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
           color: color.withAlpha(51),
         ),
@@ -2055,7 +2055,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
             height: 42,
             decoration: BoxDecoration(
               color: color.withAlpha(38),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
             ),
             child: _recipientLoading
                 ? Center(
@@ -2132,7 +2132,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
             color: _isSending
                 ? (isDark ? Brand.darkCardElevated : Brand.borderLight)
                 : null,
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(Brand.r(18)),
             // FIX: replaced null with [] for dark mode
             boxShadow: _isSending
                 ? []
@@ -2190,7 +2190,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
             margin: const EdgeInsets.only(bottom: 10),
             decoration: BoxDecoration(
               color: isDark ? Brand.darkCardElevated : const Color(0xFFEEF0F5),
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(Brand.r(16)),
             ),
           ),
         ),
@@ -2202,7 +2202,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         padding: const EdgeInsets.all(32),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(Brand.r(22)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -2247,7 +2247,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -2263,7 +2263,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
               color: Brand.royalBlue.withAlpha(
                 isDark ? 31 : 20,
               ),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
             ),
             child: Icon(
               Icons.campaign_rounded,
@@ -2471,7 +2471,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -2518,7 +2518,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -2536,8 +2536,8 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       child: Column(
         children: [
           ClipRRect(
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(18),
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(Brand.r(18)),
             ),
             child: SizedBox(
               height: 120,
@@ -2757,7 +2757,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         padding: const EdgeInsets.all(32),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(Brand.r(22)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -2800,7 +2800,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   boxShadow: isDark
                       ? null
                       : [
@@ -2851,7 +2851,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                 margin: EdgeInsets.only(right: i < 3 ? 8 : 0),
                 decoration: BoxDecoration(
                   color: card,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   border: isDark ? Border.all(color: Brand.darkBorder) : null,
                 ),
               ),
@@ -2866,7 +2866,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
             margin: const EdgeInsets.only(bottom: 12),
             decoration: BoxDecoration(
               color: shimmer,
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(Brand.r(18)),
               border: isDark ? Border.all(color: Brand.darkBorder) : null,
             ),
           );
@@ -2915,7 +2915,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         filled: true,
         fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: BorderSide.none,
         ),
         contentPadding: const EdgeInsets.symmetric(
@@ -2939,7 +2939,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -3017,7 +3017,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
           color: selected
               ? color.withAlpha(isDark ? 38 : 26)
               : (isDark ? Brand.darkCardElevated : Brand.scaffoldLight),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
           border: Border.all(
             color: selected
                 ? color.withAlpha(128)

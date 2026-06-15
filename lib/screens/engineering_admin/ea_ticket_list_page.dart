@@ -252,7 +252,7 @@ class _EaTicketListPageState extends State<EaTicketListPage>
                         ? Brand.darkCardElevated
                         : Brand.scaffoldLight,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       borderSide: BorderSide.none,
                     ),
                     contentPadding:
@@ -285,7 +285,7 @@ class _EaTicketListPageState extends State<EaTicketListPage>
                                 : (isDark
                                     ? Brand.darkCardElevated
                                     : Brand.scaffoldLight),
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(Brand.r(20)),
                             border: Border.all(
                               color: selected
                                   ? _eaAccent
@@ -316,7 +316,7 @@ class _EaTicketListPageState extends State<EaTicketListPage>
                                     color: selected
                                         ? Colors.white.withAlpha(60)
                                         : _eaAccent.withAlpha(30),
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(Brand.r(10)),
                                   ),
                                   child: Text(
                                     '$count',
@@ -580,7 +580,7 @@ class _EaTicketListPageState extends State<EaTicketListPage>
                               : Brand.scaffoldLight,
                           margin: const EdgeInsets.only(bottom: 8),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(Brand.r(12)),
                           ),
                           child: ListTile(
                             leading: Container(
@@ -588,7 +588,7 @@ class _EaTicketListPageState extends State<EaTicketListPage>
                               height: 40,
                               decoration: BoxDecoration(
                                 color: const Color(0xFFEF4444).withAlpha(20),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(Brand.r(10)),
                               ),
                               child: const Icon(Icons.warning_amber_rounded,
                                   color: Color(0xFFEF4444), size: 20),
@@ -709,7 +709,7 @@ class _EaTicketListPageState extends State<EaTicketListPage>
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
           color: shimmer,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
         ),
       ),
     );
@@ -819,7 +819,7 @@ class _TicketCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: Border.all(
             color: isUnassigned
                 ? const Color(0xFFEF4444).withAlpha(80)
@@ -848,7 +848,7 @@ class _TicketCard extends StatelessWidget {
                     height: 38,
                     decoration: BoxDecoration(
                       color: _categoryColor(machineCategory).withAlpha(20),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Icon(
                       _categoryIcon(machineCategory),

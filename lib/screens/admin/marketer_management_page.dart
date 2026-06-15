@@ -195,7 +195,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                               height: 40,
                               decoration: BoxDecoration(
                                 color: _maAccent.withAlpha(isDark ? 30 : 15),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(Brand.r(12)),
                               ),
                               child: const Icon(Icons.tune_rounded, color: _maAccent, size: 20),
                             ),
@@ -253,7 +253,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                                   height: 40,
                                   decoration: BoxDecoration(
                                     color: enabled ? s.color.withAlpha(isDark ? 40 : 20) : (isDark ? Brand.darkCardElevated : Brand.scaffoldLight),
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(Brand.r(10)),
                                   ),
                                   child: Icon(s.icon, size: 18, color: enabled ? s.color : AdminColors.textHint(sheetCtx)),
                                 ),
@@ -319,7 +319,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                                       content: const Text('Permissions updated', style: TextStyle(color: Colors.white)),
                                       backgroundColor: AdminColors.success,
                                       behavior: SnackBarBehavior.floating,
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
                                     ),
                                   );
                                 } catch (e) {
@@ -330,7 +330,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                                       content: Text('Failed: $e', style: const TextStyle(color: Colors.white)),
                                       backgroundColor: AdminColors.error,
                                       behavior: SnackBarBehavior.floating,
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
                                     ),
                                   );
                                 }
@@ -338,7 +338,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: _maAccent,
                           foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
                           elevation: 0,
                         ),
                         child: saving
@@ -421,7 +421,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                         icon: Icon(obscurePw ? Icons.visibility_rounded : Icons.visibility_off_rounded, size: 20),
                         onPressed: () => setSheetState(() => obscurePw = !obscurePw),
                       ),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
                       filled: true,
                       fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                     ),
@@ -442,7 +442,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                         icon: Icon(obscureConfirm ? Icons.visibility_rounded : Icons.visibility_off_rounded, size: 20),
                         onPressed: () => setSheetState(() => obscureConfirm = !obscureConfirm),
                       ),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
                       filled: true,
                       fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                     ),
@@ -473,7 +473,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                                     content: Text(err.toString(), style: const TextStyle(color: Colors.white)),
                                     backgroundColor: AdminColors.error,
                                     behavior: SnackBarBehavior.floating,
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
                                   ));
                                   setSheetState(() => saving = false);
                                   return;
@@ -483,7 +483,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                                   content: const Text('Password updated', style: TextStyle(color: Colors.white)),
                                   backgroundColor: AdminColors.success,
                                   behavior: SnackBarBehavior.floating,
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
                                 ));
                               } catch (e) {
                                 if (!mounted) return;
@@ -492,14 +492,14 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                                   content: Text('Error: $e', style: const TextStyle(color: Colors.white)),
                                   backgroundColor: AdminColors.error,
                                   behavior: SnackBarBehavior.floating,
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
                                 ));
                               }
                             },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: _maAccent,
                         foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
                         elevation: 0,
                       ),
                       child: saving
@@ -559,7 +559,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
         content: Text('${isActive ? 'Deactivated' : 'Reactivated'} $name', style: const TextStyle(color: Colors.white)),
         backgroundColor: isActive ? AdminColors.warning : AdminColors.success,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       ));
     } catch (e) {
       if (!mounted) return;
@@ -605,7 +605,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
         content: Text('$name deleted', style: const TextStyle(color: Colors.white)),
         backgroundColor: AdminColors.error,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       ));
     } catch (e) {
       if (!mounted) return;
@@ -624,7 +624,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
       ),
       backgroundColor: AdminColors.error,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
     ));
   }
 
@@ -675,15 +675,15 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                   filled: true,
                   fillColor: Brand.surface(isDark),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                     borderSide: BorderSide(color: isDark ? Brand.darkBorder : Brand.borderLight),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                     borderSide: BorderSide(color: isDark ? Brand.darkBorder : Brand.borderLight),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                     borderSide: const BorderSide(color: _maAccent, width: 1.5),
                   ),
                   contentPadding: const EdgeInsets.symmetric(vertical: 12),
@@ -750,7 +750,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                 height: 72,
                 decoration: BoxDecoration(
                   color: _maAccent.withAlpha(isDark ? 30 : 15),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(Brand.r(20)),
                 ),
                 child: const Icon(Icons.campaign_rounded, size: 36, color: _maAccent),
               ),
@@ -795,7 +795,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
       child: Column(
@@ -986,12 +986,12 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
     return Expanded(
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
             color: color.withAlpha(isDark ? 25 : 12),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Brand.r(10)),
             border: Border.all(color: color.withAlpha(isDark ? 50 : 30)),
           ),
           child: Column(

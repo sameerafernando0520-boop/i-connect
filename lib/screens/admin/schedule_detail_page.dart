@@ -353,7 +353,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
       context: context,
       builder: (dialogCtx) => AlertDialog(
         backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(16))),
         title: Text(
           'Cancel Schedule',
           style: TextStyle(
@@ -388,7 +388,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
                       : AdminColors.textHint(context),
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                 ),
                 contentPadding: const EdgeInsets.all(12),
               ),
@@ -593,7 +593,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         boxShadow: [
           BoxShadow(
             color: typeClr.withAlpha(60),
@@ -816,7 +816,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -949,7 +949,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
           children: [
             // Machine thumbnail
             ClipRRect(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
               child: hasImage
                   ? CachedNetworkImage(
                       imageUrl: imageUrl,
@@ -1013,7 +1013,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
         height: 56,
         decoration: BoxDecoration(
           color: const Color(0xFF8B5CF6).withAlpha(26),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
         ),
         child: const Icon(
           Icons.precision_manufacturing,
@@ -1175,7 +1175,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 20 : 12),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
         border: Border.all(color: color.withAlpha(40)),
       ),
       child: Row(
@@ -1342,7 +1342,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
                       backgroundColor: a['color'] as Color,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                       ),
                     ),
                   )
@@ -1364,7 +1364,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
                         color: (a['color'] as Color).withAlpha(128),
                       ),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                       ),
                     ),
                   ),
@@ -1489,7 +1489,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,

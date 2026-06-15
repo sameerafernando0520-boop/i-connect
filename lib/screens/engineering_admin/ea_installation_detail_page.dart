@@ -354,7 +354,7 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: _eaAccent,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(14)),
+                                borderRadius: BorderRadius.circular(Brand.r(14))),
                           ),
                           onPressed: () => _saveAssignments(
                               sheetCtx, selected, roles),
@@ -452,7 +452,7 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
       ]),
       backgroundColor: error ? AdminColors.error : AdminColors.success,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
     ));
   }
 
@@ -582,7 +582,7 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
                       backgroundColor: _statusColors['in_progress'],
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                          borderRadius: BorderRadius.circular(Brand.r(12))),
                     ),
                     onPressed: () => _updateStatus('in_progress'),
                   ),
@@ -596,7 +596,7 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
                       backgroundColor: AdminColors.error,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                          borderRadius: BorderRadius.circular(Brand.r(12))),
                     ),
                     onPressed: () => _updateStatus('cancelled'),
                   ),
@@ -615,7 +615,7 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
                     backgroundColor: AdminColors.success,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
+                        borderRadius: BorderRadius.circular(Brand.r(12))),
                   ),
                   onPressed: () => _updateStatus('completed'),
                 ),
@@ -827,7 +827,7 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
       child: child,

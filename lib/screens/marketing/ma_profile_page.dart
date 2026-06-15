@@ -1,4 +1,4 @@
-// lib/screens/marketing/ma_profile_page.dart
+﻿// lib/screens/marketing/ma_profile_page.dart
 //
 // Premium marketing admin profile — matches customer profile_page.dart
 // design language with hero card, stats, and premium card styling.
@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../providers/theme_provider.dart';
@@ -146,7 +147,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
       ]),
       backgroundColor: Colors.red,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
     ));
   }
 
@@ -180,6 +181,11 @@ class _MaProfilePageState extends State<MaProfilePage> {
               .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
         backgroundColor: Brand.canvas(isDark),
+        appBar: DsPageHeader(
+          title: 'Profile',
+          showBack: false,
+          accent: HeroAccent.violet,
+        ),
         body: RefreshIndicator(
           color: isDark ? Brand.royalBlueGlow : AdminColors.primary,
           backgroundColor: Brand.surface(isDark),
@@ -188,7 +194,6 @@ class _MaProfilePageState extends State<MaProfilePage> {
             physics: const AlwaysScrollableScrollPhysics(
                 parent: BouncingScrollPhysics()),
             slivers: [
-              SliverToBoxAdapter(child: _buildTopBar(isDark)),
               SliverToBoxAdapter(child: _buildProfileHero(isDark)),
               SliverToBoxAdapter(child: _buildStatsGrid(isDark)),
               SliverToBoxAdapter(child: _buildAccountInfo(isDark)),
@@ -217,7 +222,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
               height: 72,
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkCard : Brand.royalBlueSurface,
-                borderRadius: BorderRadius.circular(22),
+                borderRadius: BorderRadius.circular(Brand.r(22)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
               ),
               child: Center(
@@ -256,7 +261,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
             padding: const EdgeInsets.all(32),
             decoration: BoxDecoration(
               color: Brand.surface(isDark),
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: BorderRadius.circular(Brand.r(24)),
               border: isDark ? Border.all(color: Brand.darkBorder) : null,
               boxShadow: isDark
                   ? null
@@ -276,7 +281,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                   height: 72,
                   decoration: BoxDecoration(
                     color: Colors.red.withAlpha(isDark ? 38 : 26),
-                    borderRadius: BorderRadius.circular(22),
+                    borderRadius: BorderRadius.circular(Brand.r(22)),
                   ),
                   child: Icon(Icons.error_outline,
                       size: 36,
@@ -316,7 +321,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                         horizontal: 32, vertical: 14),
                     decoration: BoxDecoration(
                       color: AdminColors.primary,
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                       boxShadow: [
                         BoxShadow(
                           color: AdminColors.primary.withAlpha(89),
@@ -342,60 +347,6 @@ class _MaProfilePageState extends State<MaProfilePage> {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  // ─── TOP BAR ─────────────────────────────────────────────────
-  Widget _buildTopBar(bool isDark) {
-    return SafeArea(
-      bottom: false,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
-        child: Row(
-          children: [
-            Text(
-              'My Profile',
-              style: TextStyle(
-                fontSize: 21,
-                fontWeight: FontWeight.w600,
-                color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                letterSpacing: -0.5,
-              ),
-            ),
-            const Spacer(),
-            GestureDetector(
-              onTap: _load,
-              child: Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  color: isDark ? Brand.darkCard : Colors.white,
-                  borderRadius: BorderRadius.circular(14),
-                  border: isDark ? Border.all(color: Brand.darkBorder) : null,
-                  boxShadow: isDark
-                      ? null
-                      : [
-                          BoxShadow(
-                            color: Brand.royalBlue.withAlpha(12),
-                            blurRadius: 12,
-                            offset: const Offset(0, 3),
-                          ),
-                          BoxShadow(
-                            color: Colors.black.withAlpha(6),
-                            blurRadius: 4,
-                            offset: const Offset(0, 1),
-                          ),
-                        ],
-                ),
-                child: Icon(Icons.refresh_rounded,
-                    color:
-                        isDark ? Brand.darkTextSecondary : AdminColors.primary,
-                    size: 22),
-              ),
-            ),
-          ],
         ),
       ),
     );
@@ -553,7 +504,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                                   color: isDark
                                       ? Brand.royalBlue.withAlpha(38)
                                       : Colors.white.withAlpha(31),
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(Brand.r(20)),
                                   border: Border.all(
                                     color: isDark
                                         ? Brand.royalBlueGlow.withAlpha(51)
@@ -600,7 +551,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                         color: isDark
                             ? Brand.lightGreen.withAlpha(26)
                             : Colors.white.withAlpha(20),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                         border: Border.all(
                           color: isDark
                               ? Brand.lightGreen.withAlpha(38)
@@ -700,7 +651,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
               padding: const EdgeInsets.symmetric(vertical: 16),
               decoration: BoxDecoration(
                 color: Brand.surface(isDark),
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(Brand.r(18)),
                 border: Border.all(
                   color: isDark ? Brand.darkBorder : s.color.withAlpha(26),
                 ),
@@ -721,7 +672,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                     height: 38,
                     decoration: BoxDecoration(
                       color: s.color.withAlpha(isDark ? 31 : 20),
-                      borderRadius: BorderRadius.circular(11),
+                      borderRadius: BorderRadius.circular(Brand.r(11)),
                       border: isDark
                           ? Border.all(color: s.color.withAlpha(38))
                           : null,
@@ -804,7 +755,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
             height: 38,
             decoration: BoxDecoration(
               color: c.withAlpha(isDark ? 30 : 15),
-              borderRadius: BorderRadius.circular(11),
+              borderRadius: BorderRadius.circular(Brand.r(11)),
               border: isDark ? Border.all(color: c.withAlpha(38)) : null,
             ),
             child: Icon(icon, size: 18, color: c),
@@ -862,7 +813,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                 height: 44,
                 decoration: BoxDecoration(
                   color: const Color(0xFF6366F1).withAlpha(isDark ? 30 : 15),
-                  borderRadius: BorderRadius.circular(13),
+                  borderRadius: BorderRadius.circular(Brand.r(13)),
                   border: isDark
                       ? Border.all(
                           color: const Color(0xFF6366F1).withAlpha(51))
@@ -974,7 +925,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                   height: 44,
                   decoration: BoxDecoration(
                     color: const Color(0xFF14B8A6).withAlpha(isDark ? 30 : 15),
-                    borderRadius: BorderRadius.circular(13),
+                    borderRadius: BorderRadius.circular(Brand.r(13)),
                     border: isDark
                         ? Border.all(
                             color: const Color(0xFF14B8A6).withAlpha(51))
@@ -1032,7 +983,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(Brand.r(22)),
           border: isDark
               ? Border.all(color: Colors.red.withAlpha(38))
               : Border.all(color: Colors.red.withAlpha(20)),
@@ -1053,7 +1004,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
               height: 44,
               decoration: BoxDecoration(
                 color: Colors.red.withAlpha(isDark ? 30 : 15),
-                borderRadius: BorderRadius.circular(13),
+                borderRadius: BorderRadius.circular(Brand.r(13)),
                 border: isDark
                     ? Border.all(color: Colors.red.withAlpha(51))
                     : null,
@@ -1167,7 +1118,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
   BoxDecoration _premiumCardDecoration(bool isDark) {
     return BoxDecoration(
       color: isDark ? Brand.darkCard : Colors.white,
-      borderRadius: BorderRadius.circular(22),
+      borderRadius: BorderRadius.circular(Brand.r(22)),
       border: isDark ? Border.all(color: Brand.darkBorder) : null,
       boxShadow: isDark
           ? null
@@ -1198,7 +1149,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
   }) {
     return Dialog(
       backgroundColor: Brand.surface(isDark),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(24))),
       child: Padding(
         padding: const EdgeInsets.all(28),
         child: Column(
@@ -1209,7 +1160,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
               height: 70,
               decoration: BoxDecoration(
                 color: iconColor.withAlpha(isDark ? 31 : 26),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Brand.r(20)),
                 border: isDark
                     ? Border.all(color: iconColor.withAlpha(38))
                     : null,
@@ -1278,7 +1229,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
           color: filled ? bg : Colors.transparent,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: filled ? null : Border.all(color: bg),
           boxShadow: filled
               ? [

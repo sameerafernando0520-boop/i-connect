@@ -143,7 +143,7 @@ class _MaPointsPageState extends State<MaPointsPage> {
                     filled: true,
                     fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         borderSide: BorderSide.none),
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
@@ -266,7 +266,7 @@ class _MaPointsPageState extends State<MaPointsPage> {
           color: isSelected
               ? _ptColor
               : (isDark ? Brand.darkCardElevated : Brand.scaffoldLight),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
               color: isSelected
                   ? _ptColor
@@ -300,7 +300,7 @@ class _MaPointsPageState extends State<MaPointsPage> {
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 16, offset: const Offset(0, 2)),
@@ -316,7 +316,7 @@ class _MaPointsPageState extends State<MaPointsPage> {
             width: 42, height: 42,
             decoration: BoxDecoration(
               color: _ptColor.withAlpha(isDark ? 30 : 20),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
             ),
             child: Icon(_iconFor(actType), size: 20, color: _ptColor),
           ),

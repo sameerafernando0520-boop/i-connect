@@ -476,7 +476,7 @@ class _EaNotificationsPageState extends State<EaNotificationsPage> {
         height: 76,
         decoration: BoxDecoration(
           color: base,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
         ),
         child: Row(
           children: [
@@ -622,7 +622,7 @@ class _NotificationTile extends StatelessWidget {
               : (isDark
                   ? color.withAlpha(20)
                   : color.withAlpha(12)),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: Border.all(
             color: isRead
                 ? (isDark ? Brand.darkBorder : Brand.borderLight)

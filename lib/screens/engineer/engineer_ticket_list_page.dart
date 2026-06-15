@@ -346,7 +346,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
             decoration: BoxDecoration(
               color:
                   (isDark ? Brand.darkIconActive : _engAccent).withAlpha(26),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
             ),
             child: Text(
               '${_filteredTickets.length}/${_allTickets.length}',
@@ -372,7 +372,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
       child: Container(
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -424,7 +424,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                 : null,
             enabledBorder: InputBorder.none,
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(Brand.r(16)),
               borderSide: BorderSide(
                 color: isDark ? Brand.darkIconActive : _engAccent,
                 width: 1.5,
@@ -526,7 +526,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                                 .withAlpha(38)
                             : c.withAlpha(38))
                         : (Brand.surface(isDark)),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(Brand.r(20)),
                     border: Border.all(
                       color: isSel
                           ? (o == 'all'
@@ -754,13 +754,13 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
       padding: const EdgeInsets.only(bottom: 10),
       child: Material(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         child: InkWell(
           onTap: () => _navigateToDetail(ticket['id']),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(Brand.r(18)),
               border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -787,7 +787,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                         height: 42,
                         decoration: BoxDecoration(
                           color: typeColor.withAlpha(((isDark ? 0.12 : 0.1) * 255).toInt()),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                           border: isDark
                               ? Border.all(
                                   color: typeColor.withAlpha(38),
@@ -883,7 +883,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                         ),
                         decoration: BoxDecoration(
                           color: typeColor.withAlpha(((isDark ? 0.08 : 0.06) * 255).toInt()),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child: Text(
                           type.toUpperCase(),
@@ -951,7 +951,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
         padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
         decoration: BoxDecoration(
           color: c.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
           border: Border.all(color: c.withAlpha(((isDark ? 0.2 : 0.15) * 255).toInt())),
         ),
         child: Text(
@@ -991,7 +991,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                     height: 80,
                     decoration: BoxDecoration(
                       color: isDark ? Brand.darkCard : Brand.royalBlueSurface,
-                      borderRadius: BorderRadius.circular(24),
+                      borderRadius: BorderRadius.circular(Brand.r(24)),
                     ),
                     child: Icon(
                       Icons.inbox_rounded,
@@ -1034,7 +1034,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                         decoration: BoxDecoration(
                           color: (isDark ? Brand.darkIconActive : _engAccent)
                               .withAlpha(26),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                           border: Border.all(
                             color: (isDark ? Brand.darkIconActive : _engAccent)
                                 .withAlpha(64),
@@ -1086,7 +1086,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(Brand.r(18)),
             border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,

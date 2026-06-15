@@ -147,7 +147,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
           backgroundColor: Colors.red,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         ),
       );
     }
@@ -219,7 +219,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
             height: 38,
             decoration: BoxDecoration(
               color: Colors.white.withAlpha(18),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
               border: Border.all(color: const Color(0xFF2A3F6E)),
             ),
             child: const Icon(Icons.refresh_rounded,
@@ -298,7 +298,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
       margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
@@ -321,7 +321,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                   ]
                 : [Brand.royalBlueDark, Brand.royalBlue],
           ),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
         ),
         labelColor: isDark ? const Color(0xFF1A1F36) : Colors.white,
         unselectedLabelColor:
@@ -420,7 +420,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                 color: isSelected
                     ? color
                     : (Brand.surface(isDark)),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                   color: isSelected
                       ? color
@@ -562,7 +562,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
           boxShadow: isDark
@@ -583,7 +583,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
               decoration: BoxDecoration(
                 color: _getPriorityColor(priority),
                 borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(18)),
+                    BorderRadius.vertical(top: Radius.circular(Brand.r(18))),
               ),
             ),
 
@@ -601,7 +601,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                         decoration: BoxDecoration(
                           color: _getTypeColor(ticketType)
                               .withAlpha(((isDark ? 0.15 : 0.1) * 255).toInt()),
-                          borderRadius: BorderRadius.circular(11),
+                          borderRadius: BorderRadius.circular(Brand.r(11)),
                         ),
                         child: Icon(
                           _getTypeIcon(ticketType),
@@ -645,7 +645,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                         decoration: BoxDecoration(
                           color: statusColor.withAlpha(
                               ((isDark ? 0.15 : 0.1) * 255).toInt()),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                           border: Border.all(
                             color: statusColor.withAlpha(
                                 ((isDark ? 0.35 : 0.3) * 255).toInt()),
@@ -721,7 +721,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                         color: isDark
                             ? Brand.darkCardElevated
                             : const Color(0xFFF1F5F9),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         border: Border.all(
                             color:
                                 isDark ? Brand.darkBorder : Brand.borderLight),
@@ -733,7 +733,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                             height: 42,
                             decoration: BoxDecoration(
                               color: Brand.surface(isDark),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(Brand.r(10)),
                               border: Border.all(
                                   color: isDark
                                       ? Brand.darkBorder
@@ -742,7 +742,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                             child: machineInfo['image_url'] != null &&
                                     machineInfo['image_url'] != ''
                                 ? ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(Brand.r(10)),
                                     child: CachedNetworkImage(
                                       imageUrl: machineInfo['image_url'],
                                       fit: BoxFit.cover,
@@ -937,7 +937,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
           padding: const EdgeInsets.all(32),
           decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(Brand.r(24)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: [
               BoxShadow(
@@ -958,7 +958,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                   color: isDark
                       ? Brand.darkIconActive.withAlpha(26)
                       : Brand.royalBlueDark.withAlpha(15),
-                  borderRadius: BorderRadius.circular(24),
+                  borderRadius: BorderRadius.circular(Brand.r(24)),
                 ),
                 child: isSupport
                     ? IcChatGearIcon(
@@ -1025,7 +1025,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                                   Brand.lightGreenDark,
                                 ],
                         ),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                         boxShadow: [
                           BoxShadow(
                             color: (isDark
@@ -1078,7 +1078,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
             height: 64,
             decoration: BoxDecoration(
               color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(Brand.r(20)),
             ),
             child: Center(
               child: SizedBox(
@@ -1116,7 +1116,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                 ]
               : [Brand.lightGreen, Brand.lightGreenDark],
         ),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         boxShadow: [
           BoxShadow(
             color: (isDark ? Brand.lightGreenBright : Brand.lightGreen)

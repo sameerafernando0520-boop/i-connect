@@ -150,7 +150,7 @@ class _PointsHistoryPageState extends State<PointsHistoryPage> {
                             color: isDark
                                 ? Brand.darkCardElevated
                                 : Brand.scaffoldLight,
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(Brand.r(16)),
                             border: Border.all(
                               color: isDark
                                   ? Brand.darkBorder
@@ -167,7 +167,7 @@ class _PointsHistoryPageState extends State<PointsHistoryPage> {
                                           ? const Color(0xFF22C55E)
                                           : const Color(0xFFEF4444))
                                       .withAlpha(isDark ? 30 : 20),
-                                  borderRadius: BorderRadius.circular(12),
+                                  borderRadius: BorderRadius.circular(Brand.r(12)),
                                 ),
                                 child: Icon(
                                   isPositive

@@ -582,7 +582,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -696,7 +696,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
       child: Column(
@@ -953,7 +953,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 30 : 18),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border:
             Border.all(color: color.withAlpha(isDark ? 60 : 40)),
       ),
@@ -988,7 +988,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 25 : 15),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1072,7 +1072,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: Border.all(
           color: isExpired
               ? AdminColors.error.withAlpha(100)
@@ -1207,7 +1207,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: Border.all(
           color: status == 'pending'
               ? AdminColors.warning.withAlpha(100)
@@ -1383,7 +1383,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
       child: Column(
@@ -1541,7 +1541,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                           ? Brand.darkCardElevated
                           : Brand.scaffoldLight,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         borderSide: BorderSide.none,
                       ),
                     ),
@@ -1564,7 +1564,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                           ? Brand.darkCardElevated
                           : Brand.scaffoldLight,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         borderSide: BorderSide.none,
                       ),
                     ),
@@ -1627,7 +1627,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                         ),
                       ),
                       child: const Text(
@@ -1750,7 +1750,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                                 : (isDark
                                     ? Brand.darkCardElevated
                                     : Brand.scaffoldLight),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(Brand.r(10)),
                             border: Border.all(
                               color: approving
                                   ? AdminColors.success.withAlpha(100)
@@ -1785,7 +1785,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                                 : (isDark
                                     ? Brand.darkCardElevated
                                     : Brand.scaffoldLight),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(Brand.r(10)),
                             border: Border.all(
                               color: !approving
                                   ? AdminColors.error.withAlpha(100)
@@ -1822,7 +1822,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                       ),
                     ),
                     child: Text(
@@ -1874,7 +1874,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
       child: child,

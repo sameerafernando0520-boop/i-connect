@@ -177,7 +177,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
             AdminColors.card(context),
           ],
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: Border.all(color: sColor.withAlpha(50)),
       ),
       child: Column(
@@ -200,7 +200,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
                     color: AdminColors.warning.withAlpha(26),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: const Row(
                     mainAxisSize: MainAxisSize.min,
@@ -414,7 +414,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
                         height: 24,
                         decoration: BoxDecoration(
                           color: AdminColors.primary.withAlpha(15),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child: Center(
                           child: Text(
@@ -601,7 +601,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         onTap: invId != null
             ? () => Navigator.push(
                   context,
@@ -614,7 +614,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             color: bannerColor.withAlpha(isDark ? 20 : 12),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             border: Border.all(color: bannerColor.withAlpha(50)),
           ),
           child: Row(
@@ -624,7 +624,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
                 height: 36,
                 decoration: BoxDecoration(
                   color: bannerColor.withAlpha(26),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                 ),
                 child: const Icon(
                   Icons.receipt_long_rounded,
@@ -790,7 +790,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14)),
+                    borderRadius: BorderRadius.circular(Brand.r(14))),
               ),
             ),
           ),
@@ -807,7 +807,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 boxShadow: isDark
                     ? null
                     : [
@@ -859,7 +859,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
                 side: BorderSide(color: AdminColors.error.withAlpha(80)),
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14)),
+                    borderRadius: BorderRadius.circular(Brand.r(14))),
               ),
             ),
           ),
@@ -916,7 +916,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AdminColors.card(ctx),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
         title: Text(
           'Withdraw Quotation?',
           style: TextStyle(color: AdminColors.text(ctx)),
@@ -942,7 +942,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
                 filled: true,
                 fillColor: AdminColors.bg(ctx),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                   borderSide: BorderSide.none,
                 ),
                 contentPadding:
@@ -965,7 +965,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
               backgroundColor: AdminColors.error,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(Brand.r(10))),
             ),
             child: const Text('Withdraw'),
           ),
@@ -1081,7 +1081,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
       width: double.infinity,
       decoration: BoxDecoration(
         color: AdminColors.card(context),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: Border.all(color: AdminColors.border(context)),
       ),
       child: child,
@@ -1226,7 +1226,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
         ),
         backgroundColor: isError ? AdminColors.error : AdminColors.success,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       ),
     );
@@ -1240,7 +1240,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
               height: h,
               decoration: BoxDecoration(
                 color: AdminColors.card(context),
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(Brand.r(18)),
               ),
             ),
           ),
@@ -1297,7 +1297,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
                 backgroundColor: AdminColors.primary,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
               ),
             ),
           ],

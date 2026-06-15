@@ -182,7 +182,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                         filled: true,
                         fillColor: isDark ? Brand.darkBg : Colors.grey.shade50,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                           borderSide: BorderSide.none,
                         ),
                         contentPadding: const EdgeInsets.symmetric(
@@ -229,7 +229,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                                       : (isDark
                                           ? Brand.darkCardElevated
                                           : Colors.grey.shade50),
-                                  borderRadius: BorderRadius.circular(16),
+                                  borderRadius: BorderRadius.circular(Brand.r(16)),
                                   border: Border.all(
                                     color: isSelected
                                         ? Brand.royalBlueLight
@@ -243,7 +243,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                                   contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 14, vertical: 6),
                                   leading: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(Brand.r(10)),
                                     child: SizedBox(
                                       width: 52,
                                       height: 52,
@@ -350,7 +350,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
           backgroundColor: Colors.red,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
           margin: const EdgeInsets.all(16),
         ),
       );
@@ -418,7 +418,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
           backgroundColor: Colors.red,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
           margin: const EdgeInsets.all(16),
         ),
       );
@@ -433,7 +433,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
       barrierDismissible: false,
       builder: (dialogCtx) => AlertDialog(
         backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(24))),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -480,7 +480,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                   foregroundColor: Colors.white,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                   ),
                 ),
                 child: const Text('Done',
@@ -616,7 +616,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                                     end: Alignment.bottomRight,
                                   ),
                             color: _isSubmitting ? Brand.royalBlue : null,
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(Brand.r(14)),
                             boxShadow: isDark || _isSubmitting
                                 ? null
                                 : [
@@ -687,7 +687,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
       return Container(
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: Border.all(
             color: Brand.royalBlueLight.withAlpha(((0.5) * 255).toInt()),
             width: 2,
@@ -704,16 +704,16 @@ class _OrderFormPageState extends State<OrderFormPage> {
         ),
         child: Material(
           color: Colors.transparent,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           child: InkWell(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(Brand.r(18)),
             onTap: _showMachineSelector,
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                     child: SizedBox(
                       width: 64,
                       height: 64,
@@ -765,7 +765,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                             decoration: BoxDecoration(
                               color: Brand.royalBlueSurface
                                   .withAlpha(((isDark ? 0.15 : 1) * 255).toInt()),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(Brand.r(10)),
                             ),
                             child: Text(
                               m['category'],
@@ -794,16 +794,16 @@ class _OrderFormPageState extends State<OrderFormPage> {
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : Colors.grey.shade300,
         ),
       ),
       child: Material(
         color: Colors.transparent,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         child: InkWell(
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           onTap: _showMachineSelector,
           child: const Padding(
             padding: EdgeInsets.symmetric(vertical: 28, horizontal: 20),
@@ -835,7 +835,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : Colors.grey.shade300,
         ),
@@ -891,9 +891,9 @@ class _OrderFormPageState extends State<OrderFormPage> {
   }) {
     return Material(
       color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(Brand.r(10)),
       child: InkWell(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
         onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.all(8),
@@ -933,27 +933,27 @@ class _OrderFormPageState extends State<OrderFormPage> {
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkBorder : Colors.grey.shade300,
           ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkBorder : Colors.grey.shade300,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: const BorderSide(color: Brand.royalBlueLight, width: 2),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: const BorderSide(color: Colors.red),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: const BorderSide(color: Colors.red, width: 2),
         ),
       ),
@@ -970,7 +970,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : Brand.lightGreenSurface,
           width: isDark ? 1 : 2,

@@ -1,4 +1,4 @@
-// lib/screens/admin/inquiry_management_page.dart
+﻿// lib/screens/admin/inquiry_management_page.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../services/export_service.dart';
 import '../../utils/time_utils.dart';
@@ -26,7 +27,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
   List<Map<String, dynamic>> _filteredInquiries = [];
   Map<String, dynamic> _pipeline = {};
   bool _isLoading = true;
-  bool _isRefreshing = false;
+
   String _filterStage = 'all';
   String _sortBy = 'newest';
   final _searchController = TextEditingController();
@@ -167,7 +168,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
   // ─── DATA LOADING ──────────────────────────────────────────
   Future<void> _loadInquiries({bool silent = false}) async {
     if (!silent && mounted) setState(() => _isLoading = true);
-    if (silent && mounted) setState(() => _isRefreshing = true);
+
 
     try {
       // FIX: explicit <dynamic> type on Future.wait
@@ -183,7 +184,6 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
         _inquiries = results[1] as List<Map<String, dynamic>>;
         _applyFilters();
         _isLoading = false;
-        _isRefreshing = false;
       });
 
       if (!_hasAnimatedPipeline) {
@@ -194,7 +194,6 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
       if (!mounted) return;
       setState(() {
         _isLoading = false;
-        _isRefreshing = false;
       });
       _showSnackBar('Error loading inquiries: $e', isError: true);
     }
@@ -600,7 +599,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
         backgroundColor:
             isError ? AdminColors.error : color ?? AdminColors.primary,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.all(16),
         duration: Duration(seconds: isError ? 4 : 2),
       ),
@@ -638,10 +637,19 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                   color: Colors.white),
             )
           : null,
+      appBar: DsPageHeader(
+        title: 'Inquiries',
+        subtitle: '${_inquiries.length} total',
+        showBack: false,
+        accent: HeroAccent.navy,
+        actions: [
+          IconButton(icon: const Icon(Icons.file_download_outlined, color: Colors.white), onPressed: _exportInquiriesToExcel),
+          IconButton(icon: const Icon(Icons.refresh_rounded, color: Colors.white), onPressed: _loadInquiries),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            _buildTopHeader(isDark),
             Expanded(
               child: _isLoading
                   ? _buildLoadingSkeleton(isDark)
@@ -680,122 +688,6 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  // ─── TOP HEADER ────────────────────────────────────────────
-  Widget _buildTopHeader(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'Inquiries',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: -0.3,
-                        color: isDark ? Brand.darkTextPrimary : AdminColors.primaryDark,
-                      ),
-                    ),
-                    if (_isRefreshing) ...[
-                      const SizedBox(width: 8),
-                      SizedBox(
-                        width: 14,
-                        height: 14,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: _accentColor(isDark),
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
-                Text(
-                  '${_inquiries.length} total • '
-                  '${_getStageCount('new')} new',
-                  style: TextStyle(fontSize: 13, color: _textSecondary(isDark)),
-                ),
-              ],
-            ),
-          ),
-          if (_getStageCount('hot') > 0)
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  _filterStage = 'hot';
-                  _applyFilters();
-                });
-              },
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                decoration: BoxDecoration(
-                  // FIX: .withOpacity() → .withAlpha()
-                  color: Colors.orange.withAlpha(isDark ? 31 : 26),
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                      color: Colors.orange.withAlpha(isDark ? 64 : 51)),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.local_fire_department_rounded,
-                        color: Colors.orange, size: 14),
-                    const SizedBox(width: 3),
-                    Text(
-                      '${_getStageCount('hot')}',
-                      style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.orange),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          const SizedBox(width: 8),
-          GestureDetector(
-            onTap: _exportInquiriesToExcel,
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: _cardBg(isDark),
-                borderRadius: BorderRadius.circular(12),
-                border: isDark ? Border.all(color: _borderColor(isDark)) : null,
-                boxShadow: _softShadow(isDark),
-              ),
-              child: Icon(Icons.file_download_outlined,
-                  color: isDark ? Brand.darkTextSecondary : AdminColors.primary,
-                  size: 22),
-            ),
-          ),
-          const SizedBox(width: 8),
-          GestureDetector(
-            onTap: _loadInquiries,
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: _cardBg(isDark),
-                borderRadius: BorderRadius.circular(12),
-                border: isDark ? Border.all(color: _borderColor(isDark)) : null,
-                boxShadow: _softShadow(isDark),
-              ),
-              child: Icon(Icons.refresh_rounded,
-                  color: isDark ? Brand.darkTextSecondary : AdminColors.primary,
-                  size: 22),
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -859,7 +751,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
       decoration: BoxDecoration(
         // FIX: .withOpacity() → .withAlpha()
         color: AdminColors.error.withAlpha(isDark ? 20 : 10),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border:
             Border.all(color: AdminColors.error.withAlpha(isDark ? 51 : 31)),
       ),
@@ -908,7 +800,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
       margin: const EdgeInsets.fromLTRB(20, 16, 20, 0),
       decoration: BoxDecoration(
         color: _cardBg(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: isDark ? Border.all(color: _borderColor(isDark)) : null,
         boxShadow: _cardShadow(isDark),
       ),
@@ -948,7 +840,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             borderSide: BorderSide.none,
           ),
         ),
@@ -986,7 +878,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           boxShadow: [
             BoxShadow(
               // FIX: .withOpacity() → .withAlpha()
@@ -1006,7 +898,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
                     color: _accentColor(isDark),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(Brand.r(20)),
                   ),
                   child: const Row(
                     mainAxisSize: MainAxisSize.min,
@@ -1059,7 +951,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                 decoration: BoxDecoration(
                   // FIX: .withOpacity() → .withAlpha()
                   color: Colors.white.withAlpha(20),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -1170,7 +1062,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
               decoration: BoxDecoration(
                 color: isSelected ? color : _cardBg(isDark),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                   color: isSelected ? color : _borderColor(isDark),
                   width: 1.5,
@@ -1209,7 +1101,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                           // FIX: .withOpacity() → .withAlpha()
                           ? Colors.white.withAlpha(64)
                           : color.withAlpha(isDark ? 38 : 26),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Text(
                       '$count',
@@ -1375,7 +1267,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                           // FIX: .withOpacity() → .withAlpha()
                           ? _primaryColor(isDark).withAlpha(26)
                           : _cardElevated(isDark),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Icon(
                       icons[sort],
@@ -1458,7 +1350,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
           color: _cardBg(isDark),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: isHotLead
               ? Border.all(
                   // FIX: .withOpacity() → .withAlpha()
@@ -1498,7 +1390,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                         decoration: BoxDecoration(
                           // FIX: .withOpacity() → .withAlpha()
                           color: stageColor.withAlpha(isDark ? 38 : 26),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -1528,7 +1420,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                             decoration: BoxDecoration(
                               // FIX: .withOpacity() → .withAlpha()
                               color: Colors.orange.withAlpha(isDark ? 38 : 26),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(Brand.r(10)),
                             ),
                             child: const Row(
                               mainAxisSize: MainAxisSize.min,
@@ -1565,7 +1457,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                                     ? AdminColors.error
                                     : Colors.orange)
                                 .withAlpha(isDark ? 38 : 26),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(Brand.r(10)),
                           ),
                           child: Text(
                             '${daysOpen}d',
@@ -1587,7 +1479,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                               horizontal: 6, vertical: 3),
                           decoration: BoxDecoration(
                             color: AdminColors.error,
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(Brand.r(10)),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -1627,7 +1519,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                                 .withAlpha(isDark ? 38 : 20),
                             _accentColor(isDark).withAlpha(isDark ? 38 : 20),
                           ]),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                         ),
                         child: Center(
                           child: Text(
@@ -1743,7 +1635,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color: _cardElevated(isDark),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         border: isDark
                             ? Border.all(color: _borderColor(isDark))
                             : null,
@@ -1755,7 +1647,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                             height: 42,
                             decoration: BoxDecoration(
                               color: _cardBg(isDark),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(Brand.r(10)),
                               border: isDark
                                   ? Border.all(color: _borderColor(isDark))
                                   : null,
@@ -1763,7 +1655,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                             child:
                                 machineImage != null && machineImage.isNotEmpty
                                     ? ClipRRect(
-                                        borderRadius: BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular(Brand.r(10)),
                                         child: CachedNetworkImage(
                                           imageUrl: machineImage,
                                           fit: BoxFit.cover,
@@ -1855,7 +1747,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                               // FIX: .withOpacity() → .withAlpha()
                               color:
                                   AdminColors.error.withAlpha(isDark ? 31 : 20),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(Brand.r(10)),
                             ),
                             child: const Row(
                               mainAxisSize: MainAxisSize.min,
@@ -1880,7 +1772,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                             decoration: BoxDecoration(
                               // FIX: .withOpacity() → .withAlpha()
                               color: _infoColor.withAlpha(isDark ? 31 : 20),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(Brand.r(10)),
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -1940,7 +1832,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                           // FIX: .withOpacity() → .withAlpha()
                           color: _getStageColor(nextStage)
                               .withAlpha(isDark ? 26 : 15),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                           border: Border.all(
                             color: _getStageColor(nextStage)
                                 .withAlpha(isDark ? 51 : 38),
@@ -1973,7 +1865,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
               height: 4,
               decoration: BoxDecoration(
                 borderRadius:
-                    const BorderRadius.vertical(bottom: Radius.circular(18)),
+                    BorderRadius.vertical(bottom: Radius.circular(Brand.r(18))),
                 color: isDark ? Brand.darkBorder : Colors.grey.shade100,
               ),
               child: LayoutBuilder(builder: (context, constraints) {
@@ -1988,8 +1880,8 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                         color: salesStage == 'lost'
                             ? AdminColors.error
                             : stageColor,
-                        borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(18),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(Brand.r(18)),
                           bottomRight: Radius.circular(4),
                         ),
                       ),
@@ -2075,7 +1967,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                               ? color
                               // FIX: .withOpacity() → .withAlpha()
                               : color.withAlpha(isDark ? 31 : 26),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                           border: Border.all(
                             color: color.withAlpha(isDark ? 77 : 64),
                           ),
@@ -2154,7 +2046,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
         decoration: BoxDecoration(
           // FIX: .withOpacity() → .withAlpha()
           color: color.withAlpha(isDark ? 38 : 26),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
         ),
         child: Icon(icon, size: 18, color: color),
       ),
@@ -2181,7 +2073,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
           height: 50,
           decoration: BoxDecoration(
             color: _cardBg(isDark),
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             border: isDark ? Border.all(color: _borderColor(isDark)) : null,
           ),
         ),
@@ -2194,7 +2086,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                   ? [Brand.darkCard, Brand.darkCardElevated]
                   : [Colors.grey.shade200, Colors.grey.shade100],
             ),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(Brand.r(18)),
           ),
         ),
         const SizedBox(height: 14),
@@ -2209,7 +2101,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                 margin: const EdgeInsets.only(right: 8),
                 decoration: BoxDecoration(
                   color: isDark ? Brand.darkCard : Colors.grey.shade100,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
               ),
             ),
@@ -2223,7 +2115,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
             margin: const EdgeInsets.only(bottom: 12),
             decoration: BoxDecoration(
               color: _cardBg(isDark),
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(Brand.r(18)),
               border: isDark ? Border.all(color: _borderColor(isDark)) : null,
             ),
           ),
@@ -2249,7 +2141,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
               decoration: BoxDecoration(
                 // FIX: .withOpacity() → .withAlpha()
                 color: _primaryColor(isDark).withAlpha(isDark ? 26 : 15),
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(Brand.r(24)),
               ),
               child: Icon(
                 hasFilters
@@ -2293,7 +2185,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                   decoration: BoxDecoration(
                     // FIX: .withOpacity() → .withAlpha()
                     color: _accentColor(isDark).withAlpha(isDark ? 38 : 26),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                   ),
                   child: Text(
                     'Clear All Filters',

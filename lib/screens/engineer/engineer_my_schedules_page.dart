@@ -284,14 +284,14 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
         setState(() => _filter = value);
         _load();
       },
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(Brand.r(20)),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
         decoration: BoxDecoration(
           color: selected
               ? _engAccent
               : (isDark ? Brand.darkCard : Colors.white),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: selected
                 ? _engAccent
@@ -370,7 +370,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
     return Container(
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: Border.all(
           color: isDone
               ? Brand.lightGreenBright.withAlpha(80)
@@ -431,7 +431,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
                       horizontal: 7, vertical: 3),
                   decoration: BoxDecoration(
                     color: const Color(0xFF8B5CF6),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: const Text(
                     'LEAD',
@@ -643,7 +643,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: c.withAlpha(38),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
       ),
       child: Text(
         label,
@@ -669,7 +669,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
         elevation: 0,
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12)),
+            borderRadius: BorderRadius.circular(Brand.r(12))),
       ),
     );
   }

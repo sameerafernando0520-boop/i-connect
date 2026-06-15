@@ -290,7 +290,7 @@ class _EaJobRecordsPageState extends State<EaJobRecordsPage> {
                     ? const Icon(Icons.check_rounded, color: _eaAccent)
                     : null,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
                 onTap: () {
                   setState(() => _sortBy = opt.$1);
                   _applyFilter();
@@ -376,7 +376,7 @@ class _EaJobRecordsPageState extends State<EaJobRecordsPage> {
                     contentPadding: const EdgeInsets.symmetric(
                         horizontal: 16, vertical: 10),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       borderSide: BorderSide.none,
                     ),
                   ),
@@ -403,7 +403,7 @@ class _EaJobRecordsPageState extends State<EaJobRecordsPage> {
                                 horizontal: 14, vertical: 6),
                             decoration: BoxDecoration(
                               color: sel ? col.withAlpha(25) : Colors.transparent,
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(Brand.r(20)),
                               border: Border.all(
                                 color: sel ? col : borderColor,
                                 width: sel ? 1.5 : 1,
@@ -584,7 +584,7 @@ class _JobRecordCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         color: cardBg,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
@@ -596,10 +596,10 @@ class _JobRecordCard extends StatelessWidget {
       ),
       child: Material(
         color: Colors.transparent,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         child: InkWell(
           onTap: onTap,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           child: Padding(
             padding: const EdgeInsets.all(14),
             child: Column(
@@ -612,7 +612,7 @@ class _JobRecordCard extends StatelessWidget {
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: _eaAccent.withAlpha(isDark ? 30 : 20),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                       ),
                       child: Icon(jobTypeIcon, size: 18, color: _eaAccent),
                     ),
@@ -832,7 +832,7 @@ class _ErrorView extends StatelessWidget {
                 backgroundColor: _eaAccent,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
               ),
             ),
           ],

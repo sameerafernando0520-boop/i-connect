@@ -174,7 +174,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: accent.withAlpha(((isDark ? 0.15 : 0.1) * 255).toInt()),
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(Brand.r(12)),
                             ),
                             child: Icon(icon, color: accent, size: 22),
                           ),
@@ -280,7 +280,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                                     color: selected
                                         ? color.withAlpha(((0.15) * 255).toInt())
                                         : Colors.transparent,
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(Brand.r(10)),
                                     border: Border.all(
                                       color: selected
                                           ? color
@@ -364,7 +364,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                                         behavior: SnackBarBehavior.floating,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(12),
+                                              BorderRadius.circular(Brand.r(12)),
                                         ),
                                       ),
                                     );
@@ -375,7 +375,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                             foregroundColor: Colors.white,
                             elevation: 0,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
+                              borderRadius: BorderRadius.circular(Brand.r(14)),
                             ),
                           ),
                           child: isSubmitting
@@ -422,7 +422,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
         ),
         backgroundColor: Brand.lightGreen,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.all(16),
       ),
     );
@@ -449,23 +449,23 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkBorder : Colors.grey.shade300,
           ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkBorder : Colors.grey.shade300,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: const BorderSide(color: Brand.royalBlueLight, width: 2),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: BorderSide(color: Colors.red.shade400),
         ),
       );
@@ -605,7 +605,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Brand.r(22)),
         boxShadow: [
           BoxShadow(
             color: Brand.royalBlue.withAlpha(((isDark ? 0.2 : 0.3) * 255).toInt()),
@@ -620,7 +620,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
               color: Colors.white.withAlpha(((0.15) * 255).toInt()),
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(Brand.r(16)),
             ),
             child: const IcChatGearIcon(color: Colors.white, size: 30),
           ),
@@ -666,7 +666,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
       margin: const EdgeInsets.only(bottom: 14),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : Colors.grey.shade200,
         ),
@@ -680,9 +680,9 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
       ),
       child: Material(
         color: Colors.transparent,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         child: InkWell(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.all(20),
@@ -692,7 +692,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                   padding: const EdgeInsets.all(14),
                   decoration: BoxDecoration(
                     color: accentColor.withAlpha(((isDark ? 0.15 : 0.1) * 255).toInt()),
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(Brand.r(16)),
                   ),
                   child: Icon(icon, color: accentColor, size: 26),
                 ),
@@ -730,7 +730,7 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: accentColor.withAlpha(((isDark ? 0.1 : 0.06) * 255).toInt()),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: Icon(
                     Icons.arrow_forward_rounded,
@@ -793,16 +793,16 @@ class _SupportOptionsHubState extends State<SupportOptionsHub>
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : Colors.grey.shade200,
         ),
       ),
       child: Material(
         color: Colors.transparent,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         child: InkWell(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           onTap: () {
             Navigator.push(
               context,

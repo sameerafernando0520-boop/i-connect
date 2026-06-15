@@ -1,4 +1,4 @@
-// lib/screens/admin/inquiry_chat_page.dart
+﻿// lib/screens/admin/inquiry_chat_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +14,7 @@ import 'package:supabase_flutter/supabase_flutter.dart'
         RealtimeSubscribeStatus;
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 
@@ -43,7 +44,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
   bool _showScrollToBottom = false;
   bool _hasText = false;
   bool _isInternalMode = false;
-  bool _isOtherOnline = false;
+
 
   // ── Pagination ──
   static const int _pageSize = 30;
@@ -318,20 +319,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
           },
         )
         // ── PRESENCE: online status ───────────────────────────
-        .onPresenceSync((_) {
-          if (!mounted) return;
-          try {
-            final state = _chatChannel!.presenceState();
-            final hasOthers = state.expand((s) => s.presences).any((p) {
-              try {
-                return (p.payload['user_id'] as String?) != _currentUserId;
-              } catch (_) {
-                return false;
-              }
-            });
-            setState(() => _isOtherOnline = hasOthers);
-          } catch (_) {}
-        })
+        .onPresenceSync((_) {})
         .subscribe((RealtimeSubscribeStatus status, [Object? error]) async {
           if (status == RealtimeSubscribeStatus.subscribed) {
             try {
@@ -580,7 +568,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
         ),
         backgroundColor: isError ? AdminColors.error : AdminColors.accent,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.all(16),
       ),
     );
@@ -596,10 +584,14 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
 
     return Scaffold(
       backgroundColor: _scaffoldBg(isDark),
+      appBar: DsPageHeader(
+        title: widget.customerName.isNotEmpty ? widget.customerName : widget.ticketNumber,
+        subtitle: widget.ticketNumber,
+        accent: HeroAccent.navy,
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            _buildHeader(isDark),
             if (_isInternalMode) _buildInternalModeBanner(isDark),
             Expanded(
               child: Stack(
@@ -731,8 +723,8 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                   ? AdminColors.primary.withAlpha(isDark ? 38 : 20)
                   : (isDark ? Brand.darkCardElevated : Colors.grey.shade100),
               borderRadius: BorderRadius.only(
-                topLeft: const Radius.circular(18),
-                topRight: const Radius.circular(18),
+                topLeft: Radius.circular(Brand.r(18)),
+                topRight: Radius.circular(Brand.r(18)),
                 bottomLeft: Radius.circular(isRight ? 18 : 4),
                 bottomRight: Radius.circular(isRight ? 4 : 18),
               ),
@@ -740,148 +732,6 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
           ),
         );
       },
-    );
-  }
-
-  // ─── HEADER ────────────────────────────────────────────────
-  Widget _buildHeader(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
-      decoration: BoxDecoration(
-        color: _cardBg(isDark),
-        border: isDark
-            ? Border(bottom: BorderSide(color: Brand.darkBorder))
-            : null,
-        boxShadow: isDark
-            ? null
-            : [
-                BoxShadow(
-                  // FIX: .withOpacity() → .withAlpha()
-                  color: Brand.royalBlue.withAlpha(10),
-                  blurRadius: 8,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-      ),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 38,
-              height: 38,
-              decoration: BoxDecoration(
-                color: _cardElevated(isDark),
-                borderRadius: BorderRadius.circular(10),
-                border:
-                    isDark ? Border.all(color: Brand.darkBorderLight) : null,
-              ),
-              child: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: _primaryColor(isDark),
-                size: 16,
-              ),
-            ),
-          ),
-          const SizedBox(width: 12),
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              // FIX: .withOpacity() → .withAlpha()
-              color: AdminColors.accent.withAlpha(isDark ? 38 : 26),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Center(
-              child: Text(
-                widget.customerName.isNotEmpty
-                    ? widget.customerName[0].toUpperCase()
-                    : 'C',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: isDark ? Brand.lightGreenBright : AdminColors.accent,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.customerName,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: _primaryColor(isDark),
-                  ),
-                ),
-                // ── Online presence indicator ──
-                Row(
-                  children: [
-                    if (_isOtherOnline) ...[
-                      Container(
-                        width: 7,
-                        height: 7,
-                        decoration: const BoxDecoration(
-                          color: Color(0xFF4CAF50),
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                      const SizedBox(width: 4),
-                      Text(
-                        'Online',
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w600,
-                          color: isDark
-                              ? const Color(0xFF4CAF50)
-                              : Colors.green.shade600,
-                        ),
-                      ),
-                      const SizedBox(width: 5),
-                      Text('·',
-                          style: TextStyle(
-                              fontSize: 11,
-                              color: _textSecondary(isDark))),
-                      const SizedBox(width: 5),
-                    ],
-                    Text(
-                      widget.ticketNumber,
-                      style: TextStyle(
-                          fontSize: 12, color: _textSecondary(isDark)),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              HapticFeedback.selectionClick();
-              _loadMessages();
-              _showSnackBar('Messages refreshed');
-            },
-            child: Container(
-              width: 38,
-              height: 38,
-              decoration: BoxDecoration(
-                color: _cardElevated(isDark),
-                borderRadius: BorderRadius.circular(10),
-                border:
-                    isDark ? Border.all(color: Brand.darkBorderLight) : null,
-              ),
-              child: Icon(
-                Icons.refresh_rounded,
-                color: isDark ? Brand.darkTextSecondary : AdminColors.primary,
-                size: 20,
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 
@@ -897,7 +747,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
             decoration: BoxDecoration(
               // FIX: .withOpacity() → .withAlpha()
               color: AdminColors.primary.withAlpha(isDark ? 26 : 15),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(Brand.r(20)),
             ),
             child: Icon(
               Icons.chat_bubble_outline_rounded,
@@ -959,7 +809,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             decoration: BoxDecoration(
               color: isDark ? Brand.darkCardElevated : Colors.grey.shade100,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(Brand.r(20)),
               border: isDark ? Border.all(color: Brand.darkBorderLight) : null,
             ),
             child: Text(
@@ -1100,8 +950,8 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                                       ? Brand.darkCardElevated
                                       : Brand.cardLight),
                       borderRadius: BorderRadius.only(
-                        topLeft: const Radius.circular(18),
-                        topRight: const Radius.circular(18),
+                        topLeft: Radius.circular(Brand.r(18)),
+                        topRight: Radius.circular(Brand.r(18)),
                         bottomLeft: Radius.circular(isAdmin ? 18 : 4),
                         bottomRight: Radius.circular(isAdmin ? 4 : 18),
                       ),
@@ -1362,7 +1212,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
               decoration: BoxDecoration(
                 // FIX: .withOpacity() → .withAlpha()
                 color: AdminColors.primary.withAlpha(isDark ? 31 : 15),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Brand.r(20)),
                 border: Border.all(
                   color: AdminColors.primary.withAlpha(isDark ? 64 : 38),
                 ),
@@ -1429,7 +1279,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                     // FIX: .withOpacity() → .withAlpha()
                     ? _warningColor.withAlpha(isDark ? 38 : 26)
                     : _cardElevated(isDark),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                   color: _isInternalMode
                       ? _warningColor.withAlpha(isDark ? 102 : 77)
@@ -1451,7 +1301,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
               constraints: const BoxConstraints(maxHeight: 120),
               decoration: BoxDecoration(
                 color: _cardElevated(isDark),
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(Brand.r(24)),
                 border: Border.all(
                   color: _isInternalMode
                       ? _warningColor.withAlpha(isDark ? 77 : 51)
@@ -1477,7 +1327,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                   ),
                   enabledBorder: InputBorder.none,
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(Brand.r(24)),
                     borderSide: BorderSide(
                         color: isDark ? Brand.darkIconActive : Brand.royalBlue,
                         width: 1.5),
@@ -1511,7 +1361,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                 color: _hasText && !_isSendingMessage
                     ? null
                     : (isDark ? Brand.darkBorder : Colors.grey.shade300),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 boxShadow: _hasText && !_isSendingMessage
                     ? [
                         BoxShadow(

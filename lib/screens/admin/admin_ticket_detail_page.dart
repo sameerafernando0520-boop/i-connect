@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_ticket_detail_page.dart
+﻿// lib/screens/admin/admin_ticket_detail_page.dart
 // ═══════════════════════════════════════════════════════════
 
 import 'dart:async';
@@ -11,6 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../models/ticket_detail.dart';
 import '../../models/chat_message.dart';
@@ -48,7 +49,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
   bool _hasError = false;
   String? _errorMessage;
   bool _isSendingMessage = false;
-  bool _showTicketInfo = true;
+  final bool _showTicketInfo = true;
   bool _showQuickReplies = false;
   bool _showScrollToBottom = false;
   bool _hasChanges = false;
@@ -57,7 +58,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
   String? _currentUserId;
   RealtimeChannel? _channel;
   Timer? _debounceTimer;
-  bool _isOtherOnline = false;
+
 
   bool get _isDark => Theme.of(context).brightness == Brightness.dark;
 
@@ -257,22 +258,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
       },
     );
 
-    // ── PRESENCE: customer online status ──────────────────────
-    _channel!.onPresenceSync((_) {
-      if (!mounted) return;
-      try {
-        final state = _channel!.presenceState();
-        final hasOthers =
-            state.expand((s) => s.presences).any((p) {
-          try {
-            return (p.payload['user_id'] as String?) != _currentUserId;
-          } catch (_) {
-            return false;
-          }
-        });
-        setState(() => _isOtherOnline = hasOthers);
-      } catch (_) {}
-    });
+    _channel!.onPresenceSync((_) {});
 
     _channel!.subscribe((RealtimeSubscribeStatus status, [Object? error]) async {
       if (status == RealtimeSubscribeStatus.subscribed) {
@@ -601,7 +587,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                           color: isAssigned
                               ? AdminColors.accent.withAlpha(dark ? 30 : 15)
                               : AdminColors.bg(sheetCtx),
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                           border: Border.all(
                             color: isAssigned
                                 ? AdminColors.accent.withAlpha(80)
@@ -617,7 +603,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                                   height: 40,
                                   decoration: BoxDecoration(
                                     color: AdminColors.primary.withAlpha(20),
-                                    borderRadius: BorderRadius.circular(12),
+                                    borderRadius: BorderRadius.circular(Brand.r(12)),
                                   ),
                                   child: const Icon(
                                     Icons.engineering_rounded,
@@ -760,7 +746,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
         ),
         backgroundColor: isError ? AdminColors.error : AdminColors.accent,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         duration: Duration(seconds: isError ? 4 : 2),
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       ),
@@ -790,10 +776,22 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
       },
       child: Scaffold(
         backgroundColor: AdminColors.bg(context),
+        appBar: DsPageHeader(
+          title: _ticket?.ticketNumber ?? 'Ticket',
+          subtitle: _ticket?.subject,
+          accent: HeroAccent.navy,
+          onBack: () => Navigator.of(context).pop(_hasChanges),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.more_vert_rounded),
+              onPressed: _showActionsSheet,
+              tooltip: 'Actions',
+            ),
+          ],
+        ),
         body: SafeArea(
           child: Column(
             children: [
-              _buildTopHeader(),
               if (_showTicketInfo) _buildTicketInfoPanel(),
               if (_showTicketInfo)
                 AdminNotesPanel(
@@ -892,7 +890,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                         height: 80,
                         decoration: BoxDecoration(
                           color: AdminColors.error.withAlpha(20),
-                          borderRadius: BorderRadius.circular(24),
+                          borderRadius: BorderRadius.circular(Brand.r(24)),
                         ),
                         child: const Icon(
                           Icons.error_outline_rounded,
@@ -927,7 +925,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                           backgroundColor: AdminColors.primary,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(Brand.r(12)),
                           ),
                           padding: const EdgeInsets.symmetric(
                               horizontal: 24, vertical: 12),
@@ -973,7 +971,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                       height: 64,
                       decoration: BoxDecoration(
                         color: AdminColors.primary.withAlpha(20),
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(Brand.r(18)),
                       ),
                       child: const Center(
                         child: CircularProgressIndicator(
@@ -1000,239 +998,6 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
     );
   }
 
-  // ─── TOP HEADER ──────────────────────────────────────────
-  Widget _buildTopHeader() {
-    final ticket = _ticket!;
-    final statusColor = AdminColors.statusColor(ticket.status);
-    final priorityColor = AdminColors.priorityColor(ticket.priority);
-
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
-      decoration: BoxDecoration(
-        color: AdminColors.card(context),
-        boxShadow: _isDark ? null : [
-          BoxShadow(
-            color: Brand.royalBlue.withAlpha(10),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          // Top row
-          Row(
-            children: [
-              _buildIconButton(
-                Icons.arrow_back_ios_new_rounded,
-                onTap: () => Navigator.of(context).pop(_hasChanges),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Flexible(
-                          child: Text(
-                            ticket.ticketNumber,
-                            style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: -0.3,
-                              color: _isDark
-                                  ? AdminColors.primary.withAlpha(220)
-                                  : AdminColors.primary,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        if (ticket.isUrgent) ...[
-                          const SizedBox(width: 6),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 6, vertical: 2),
-                            decoration: BoxDecoration(
-                              color: AdminColors.error,
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            child: const Text(
-                              '!',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                        if (ticket.escalated) ...[
-                          const SizedBox(width: 6),
-                          const Icon(
-                            Icons.warning_amber_rounded,
-                            size: 16,
-                            color: AdminColors.warning,
-                          ),
-                        ],
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Flexible(
-                          child: Text(
-                            ticket.subject,
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: AdminColors.textSub(context),
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        if (_isOtherOnline) ...[
-                          const SizedBox(width: 8),
-                          Container(
-                            width: 7,
-                            height: 7,
-                            decoration: const BoxDecoration(
-                              color: Color(0xFF4CAF50),
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            'Online',
-                            style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w600,
-                              color: _isDark
-                                  ? const Color(0xFF4CAF50)
-                                  : Colors.green.shade600,
-                            ),
-                          ),
-                        ],
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 8),
-              _buildIconButton(
-                Icons.flash_on_rounded,
-                isActive: _showQuickReplies,
-                onTap: () =>
-                    setState(() => _showQuickReplies = !_showQuickReplies),
-              ),
-              const SizedBox(width: 6),
-              _buildIconButton(
-                _showTicketInfo
-                    ? Icons.expand_less_rounded
-                    : Icons.expand_more_rounded,
-                isActive: _showTicketInfo,
-                onTap: () => setState(() => _showTicketInfo = !_showTicketInfo),
-              ),
-              const SizedBox(width: 6),
-              _buildIconButton(
-                Icons.more_vert_rounded,
-                onTap: _showActionsSheet,
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          // Status / Priority chips row
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                _buildChip(
-                  icon: _getStatusIcon(ticket.status),
-                  label: _formatLabel(ticket.status),
-                  color: statusColor,
-                  onTap: () => SelectionSheet.show(
-                    context,
-                    title: 'Update Status',
-                    options: SelectionSheet.statusOptions,
-                    currentValue: ticket.status,
-                    onSelect: _updateStatus,
-                    confirmMessage: 'This will also notify the customer.',
-                  ),
-                ),
-                const SizedBox(width: 8),
-                _buildChip(
-                  icon: _getPriorityIcon(ticket.priority),
-                  label: _formatLabel(ticket.priority),
-                  color: priorityColor,
-                  onTap: () => SelectionSheet.show(
-                    context,
-                    title: 'Update Priority',
-                    options: SelectionSheet.priorityOptions,
-                    currentValue: ticket.priority,
-                    onSelect: _updatePriority,
-                  ),
-                ),
-                if (ticket.category != null) ...[
-                  const SizedBox(width: 8),
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: AdminColors.bg(context),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      ticket.category!,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: AdminColors.textSub(context),
-                      ),
-                    ),
-                  ),
-                ],
-                const SizedBox(width: 8),
-                // Age indicator
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: ticket.age.inDays > 3
-                        ? AdminColors.error.withAlpha(_isDark ? 25 : 15)
-                        : AdminColors.bg(context),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Icons.schedule_rounded,
-                        size: 11,
-                        color: ticket.age.inDays > 3
-                            ? AdminColors.error
-                            : AdminColors.textHint(context),
-                      ),
-                      const SizedBox(width: 3),
-                      Text(
-                        ticket.ageDisplay,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: ticket.age.inDays > 3
-                              ? AdminColors.error
-                              : AdminColors.textHint(context),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildIconButton(
     IconData icon, {
     VoidCallback? onTap,
@@ -1247,7 +1012,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
           color: isActive
               ? AdminColors.primary.withAlpha(_isDark ? 40 : 25)
               : AdminColors.bg(context),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
         ),
         child: Icon(
           icon,
@@ -1255,43 +1020,6 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
               ? AdminColors.primary.withAlpha(200)
               : AdminColors.primary,
           size: 18,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildChip({
-    required IconData icon,
-    required String label,
-    required Color color,
-    VoidCallback? onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        decoration: BoxDecoration(
-          color: color.withAlpha(_isDark ? 35 : 25),
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: color.withAlpha(_isDark ? 70 : 50)),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 12, color: color),
-            const SizedBox(width: 4),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: color,
-                letterSpacing: 0.5,
-              ),
-            ),
-            const SizedBox(width: 2),
-            Icon(Icons.keyboard_arrow_down_rounded, size: 14, color: color),
-          ],
         ),
       ),
     );
@@ -1322,7 +1050,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: AdminColors.bg(context),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Text(
                   ticket.description!,
@@ -1363,7 +1091,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                 AdminColors.accent.withAlpha(20),
               ],
             ),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
           ),
           child: Center(
             child: Text(
@@ -1425,7 +1153,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: AdminColors.bg(context),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
         ),
         child: Row(
           children: [
@@ -1528,7 +1256,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: AdminColors.bg(context),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
         ),
         child: Row(
           children: [
@@ -1592,7 +1320,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
               decoration: BoxDecoration(
                 color: availColor.withAlpha(20),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: Text(
                 avail.toUpperCase(),
@@ -1616,7 +1344,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: AdminColors.accent.withAlpha(_isDark ? 20 : 12),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border: Border.all(color: AdminColors.accent.withAlpha(40)),
       ),
       child: Column(
@@ -1689,7 +1417,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: AdminColors.error.withAlpha(_isDark ? 25 : 12),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border: Border.all(color: AdminColors.error.withAlpha(50)),
       ),
       child: Row(
@@ -1699,7 +1427,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
             height: 36,
             decoration: BoxDecoration(
               color: AdminColors.error.withAlpha(30),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: const Icon(
               Icons.warning_amber_rounded,
@@ -1762,7 +1490,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
         color: overdue
             ? AdminColors.error.withAlpha(_isDark ? 20 : 10)
             : AdminColors.bg(context),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
         border:
             overdue ? Border.all(color: AdminColors.error.withAlpha(50)) : null,
       ),
@@ -1827,7 +1555,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
         height: 34,
         decoration: BoxDecoration(
           color: color.withAlpha(20),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
         ),
         child: Icon(icon, size: 16, color: color),
       ),
@@ -1845,7 +1573,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
             height: 70,
             decoration: BoxDecoration(
               color: AdminColors.primary.withAlpha(15),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(Brand.r(20)),
             ),
             child: Icon(
               Icons.chat_bubble_outline_rounded,
@@ -1877,7 +1605,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
                 color: AdminColors.primary.withAlpha(_isDark ? 25 : 15),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
                 border: Border.all(color: AdminColors.primary.withAlpha(40)),
               ),
               child: Row(
@@ -1910,7 +1638,6 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
     );
   }
 
-  // ─── ACTIONS SHEET ───────────────────────────────────────
   void _showActionsSheet() {
     final ticket = _ticket;
     if (ticket == null) {
@@ -1999,40 +1726,5 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
           ),
       ],
     );
-  }
-
-  // ─── ICON HELPERS ────────────────────────────────────────
-  IconData _getStatusIcon(String status) {
-    switch (status) {
-      case 'open':
-        return Icons.radio_button_unchecked_rounded;
-      case 'assigned':
-        return Icons.person_rounded;
-      case 'in_progress':
-        return Icons.autorenew_rounded;
-      case 'waiting_customer':
-        return Icons.hourglass_top_rounded;
-      case 'resolved':
-        return Icons.check_circle_rounded;
-      case 'closed':
-        return Icons.lock_rounded;
-      default:
-        return Icons.circle_outlined;
-    }
-  }
-
-  IconData _getPriorityIcon(String priority) {
-    switch (priority) {
-      case 'urgent':
-        return Icons.priority_high_rounded;
-      case 'high':
-        return Icons.arrow_upward_rounded;
-      case 'medium':
-        return Icons.remove_rounded;
-      case 'low':
-        return Icons.arrow_downward_rounded;
-      default:
-        return Icons.flag_rounded;
-    }
   }
 }

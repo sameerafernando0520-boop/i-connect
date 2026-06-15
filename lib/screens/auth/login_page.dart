@@ -137,7 +137,7 @@ class _LoginPageState extends State<LoginPage>
             backgroundColor: Colors.orange.shade700,
             behavior: SnackBarBehavior.floating,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
             margin: const EdgeInsets.all(16),
           ),
         );
@@ -194,7 +194,7 @@ class _LoginPageState extends State<LoginPage>
           backgroundColor: isDark ? const Color(0xFFCF6679) : Colors.red,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
           margin: const EdgeInsets.all(16),
         ),
       );
@@ -239,7 +239,7 @@ class _LoginPageState extends State<LoginPage>
             return Dialog(
               backgroundColor: Brand.surface(isDark),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(Brand.r(24)),
                 side: isDark
                     ? BorderSide(color: Brand.darkBorder, width: 1)
                     : BorderSide.none,
@@ -296,7 +296,7 @@ class _LoginPageState extends State<LoginPage>
                                       : Colors.red,
                                   behavior: SnackBarBehavior.floating,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12)),
+                                      borderRadius: BorderRadius.circular(Brand.r(12))),
                                   margin: const EdgeInsets.all(16),
                                 ),
                               );
@@ -331,7 +331,7 @@ class _LoginPageState extends State<LoginPage>
             color: isDark
                 ? Brand.lightGreen.withAlpha(((0.12) * 255).toInt())
                 : Brand.lightGreenSurface,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(Brand.r(20)),
             border: isDark
                 ? Border.all(color: Brand.lightGreen.withAlpha(((0.15) * 255).toInt()))
                 : null,
@@ -363,7 +363,7 @@ class _LoginPageState extends State<LoginPage>
           child: Container(
             decoration: BoxDecoration(
               color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               border: Border.all(
                 color: isDark ? Brand.darkBorderLight : Brand.borderLight,
               ),
@@ -398,7 +398,7 @@ class _LoginPageState extends State<LoginPage>
                     size: 20),
                 enabledBorder: InputBorder.none,
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   borderSide: BorderSide(
                     color: isDark ? Brand.darkIconActive : Brand.royalBlue,
                     width: 1.5,
@@ -423,7 +423,7 @@ class _LoginPageState extends State<LoginPage>
                       color: isDark ? Brand.darkBorderLight : Brand.borderLight,
                       width: 1.5,
                     ),
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                   ),
                   child: Center(
                     child: Text(t.commonCancel,
@@ -450,7 +450,7 @@ class _LoginPageState extends State<LoginPage>
                           ? [Brand.darkIconActive, Brand.royalBlueGlow]
                           : [Brand.royalBlue, Brand.royalBlueLight],
                     ),
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                     boxShadow: [
                       BoxShadow(
                         color: isDark
@@ -497,7 +497,7 @@ class _LoginPageState extends State<LoginPage>
             color: isDark
                 ? Brand.lightGreen.withAlpha(((0.12) * 255).toInt())
                 : Brand.lightGreenSurface,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(Brand.r(20)),
             border: isDark
                 ? Border.all(color: Brand.lightGreen.withAlpha(((0.15) * 255).toInt()))
                 : null,
@@ -539,7 +539,7 @@ class _LoginPageState extends State<LoginPage>
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             border: Border.all(
               color: isDark ? Brand.darkBorderLight : Brand.borderLight,
             ),
@@ -563,7 +563,7 @@ class _LoginPageState extends State<LoginPage>
             color: isDark
                 ? Brand.lightGreen.withAlpha(((0.08) * 255).toInt())
                 : Brand.lightGreenSurface,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
             border: Border.all(
               color: Brand.lightGreen.withAlpha(((isDark ? 0.15 : 0.2) * 255).toInt()),
             ),
@@ -599,7 +599,7 @@ class _LoginPageState extends State<LoginPage>
                       ? [Brand.darkIconActive, Brand.royalBlueGlow]
                       : [Brand.royalBlue, Brand.royalBlueLight],
                 ),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 boxShadow: [
                   BoxShadow(
                     color: isDark
@@ -775,7 +775,7 @@ class _LoginPageState extends State<LoginPage>
                               color: Brand.surface(isDark),
                               borderRadius: Brand.isWorkshop
                                   ? BorderRadius.circular(8)
-                                  : BorderRadius.circular(24),
+                                  : BorderRadius.circular(Brand.r(24)),
                               border: Brand.isWorkshop
                                   ? Border.all(
                                       color: Brand.cardBorder(isDark),
@@ -903,7 +903,7 @@ class _LoginPageState extends State<LoginPage>
                                             end: Alignment.bottomRight,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(14),
+                                              BorderRadius.circular(Brand.r(14)),
                                           boxShadow: isDark
                                               ? null
                                               : [
@@ -1057,24 +1057,24 @@ class _LoginPageState extends State<LoginPage>
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkBorderLight : Brand.borderLight,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkIconActive : Brand.royalBlue,
             width: 1.5,
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           borderSide: BorderSide(color: Colors.red.shade400),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           borderSide: BorderSide(color: Colors.red.shade400, width: 1.5),
         ),
       ),

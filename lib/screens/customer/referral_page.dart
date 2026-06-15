@@ -167,7 +167,7 @@ class _ReferralPageState extends State<ReferralPage> {
                       ? [Brand.darkCardElevated, Brand.darkCard]
                       : [Brand.royalBlueSurface, Colors.white],
                 ),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Brand.r(20)),
                 border: Border.all(
                     color: isDark
                         ? Brand.darkBorderLight
@@ -217,7 +217,7 @@ class _ReferralPageState extends State<ReferralPage> {
                             ? [Brand.darkIconActive, Brand.royalBlueGlow]
                             : [Brand.royalBlue, Brand.royalBlueLight],
                       ),
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                     ),
                     child: Center(
                         child: Text(S.of(context)!.referralCopyCode,
@@ -243,7 +243,7 @@ class _ReferralPageState extends State<ReferralPage> {
                           Brand.lightGreenBright,
                         ],
                       ),
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                     ),
                     child: Center(
                         child: Text(S.of(context)!.commonShare,
@@ -293,7 +293,7 @@ class _ReferralPageState extends State<ReferralPage> {
       ]),
       backgroundColor: isDark ? Brand.darkIconActive : Brand.royalBlue,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
       margin: const EdgeInsets.all(16),
     ));
   }
@@ -411,7 +411,7 @@ class _ReferralPageState extends State<ReferralPage> {
       margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(Brand.r(24)),
         gradient: LinearGradient(
           colors: isDark
               ? [Brand.darkCard, Brand.darkCardElevated]
@@ -434,7 +434,7 @@ class _ReferralPageState extends State<ReferralPage> {
           height: 64,
           decoration: BoxDecoration(
             color: Colors.amber.withAlpha(isDark ? 31 : 46),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(Brand.r(20)),
           ),
           child: const Icon(Icons.card_giftcard_rounded,
               color: Colors.amber, size: 32),
@@ -471,7 +471,7 @@ class _ReferralPageState extends State<ReferralPage> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Brand.r(22)),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
@@ -499,7 +499,7 @@ class _ReferralPageState extends State<ReferralPage> {
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
             decoration: BoxDecoration(
               color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(Brand.r(16)),
               border: Border.all(
                 color: isDark
                     ? Brand.darkBorderLight
@@ -530,7 +530,7 @@ class _ReferralPageState extends State<ReferralPage> {
                     color: isDark
                         ? Brand.darkIconActive.withAlpha(26)
                         : Brand.royalBlue.withAlpha(20),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                   ),
                   child: Icon(Icons.copy_rounded,
                       color: isDark ? Brand.darkIconActive : Brand.royalBlue,
@@ -586,7 +586,7 @@ class _ReferralPageState extends State<ReferralPage> {
           padding: const EdgeInsets.symmetric(vertical: 14),
           decoration: BoxDecoration(
             color: c.withAlpha(isDark ? 20 : 15),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             border: Border.all(color: c.withAlpha(isDark ? 38 : 31)),
           ),
           child: Column(children: [
@@ -634,7 +634,7 @@ class _ReferralPageState extends State<ReferralPage> {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
         ),
@@ -644,7 +644,7 @@ class _ReferralPageState extends State<ReferralPage> {
             height: 40,
             decoration: BoxDecoration(
               color: c.withAlpha(isDark ? 26 : 20),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
             ),
             child: Icon(icon, color: c, size: 20),
           ),
@@ -704,7 +704,7 @@ class _ReferralPageState extends State<ReferralPage> {
           margin: const EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(Brand.r(18)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
           ),
           child: Column(
@@ -741,7 +741,7 @@ class _ReferralPageState extends State<ReferralPage> {
                       height: 36,
                       decoration: BoxDecoration(
                         color: Brand.lightGreen.withAlpha(isDark ? 20 : 15),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                       ),
                       child: const Icon(Icons.percent_rounded,
                           color: Brand.lightGreenBright, size: 18),
@@ -848,7 +848,7 @@ class _ReferralPageState extends State<ReferralPage> {
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: Brand.surface(isDark),
-                    borderRadius: BorderRadius.circular(18),
+                    borderRadius: BorderRadius.circular(Brand.r(18)),
                     border: isDark ? Border.all(color: Brand.darkBorder) : null,
                   ),
                   child: Row(children: [
@@ -857,7 +857,7 @@ class _ReferralPageState extends State<ReferralPage> {
                       height: 44,
                       decoration: BoxDecoration(
                         color: sc.withAlpha(isDark ? 26 : 20),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                       ),
                       child: Icon(_statusIcon(status), color: sc, size: 22),
                     ),
@@ -881,7 +881,7 @@ class _ReferralPageState extends State<ReferralPage> {
                                     horizontal: 7, vertical: 2),
                                 decoration: BoxDecoration(
                                   color: sc.withAlpha(isDark ? 26 : 18),
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(Brand.r(10)),
                                 ),
                                 child: Text(_statusLabel(status),
                                     style: TextStyle(
@@ -933,7 +933,7 @@ class _ReferralPageState extends State<ReferralPage> {
       padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Brand.r(22)),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
       ),
@@ -943,7 +943,7 @@ class _ReferralPageState extends State<ReferralPage> {
           height: 72,
           decoration: BoxDecoration(
             color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(Brand.r(22)),
           ),
           child: Icon(Icons.people_outline_rounded,
               size: 36, color: isDark ? Brand.darkIconActive : Brand.royalBlue),

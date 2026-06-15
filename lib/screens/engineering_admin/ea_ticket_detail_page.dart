@@ -143,7 +143,7 @@ class _EaTicketDetailPageState extends State<EaTicketDetailPage> {
           content: const Text('Notes saved'),
           backgroundColor: AdminColors.success,
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(10))),
           margin: const EdgeInsets.all(12),
         ),
       );
@@ -154,7 +154,7 @@ class _EaTicketDetailPageState extends State<EaTicketDetailPage> {
           content: Text('Failed to save: $e'),
           backgroundColor: AdminColors.error,
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(10))),
           margin: const EdgeInsets.all(12),
         ),
       );
@@ -354,7 +354,7 @@ class _EaTicketDetailPageState extends State<EaTicketDetailPage> {
                         ? Brand.darkCardElevated
                         : Brand.scaffoldLight,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       borderSide: BorderSide.none,
                     ),
                     contentPadding: const EdgeInsets.all(12),
@@ -369,7 +369,7 @@ class _EaTicketDetailPageState extends State<EaTicketDetailPage> {
                       backgroundColor: _eaAccent,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(Brand.r(10))),
                     ),
                     child: _savingNotes
                         ? const SizedBox(
@@ -485,7 +485,7 @@ class _EaTicketDetailPageState extends State<EaTicketDetailPage> {
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
         ),
       ),
     );
@@ -533,7 +533,7 @@ class _SectionCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
         boxShadow: [
           BoxShadow(
@@ -765,7 +765,7 @@ class _EngineerSection extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: const Color(0xFFEF4444).withAlpha(12),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
               border: Border.all(
                   color: const Color(0xFFEF4444).withAlpha(40)),
             ),
@@ -797,7 +797,7 @@ class _EngineerSection extends StatelessWidget {
                 backgroundColor: _eaAccent,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
               ),
             ),
           ),
@@ -876,7 +876,7 @@ class _ChatShortcutButton extends StatelessWidget {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
           ),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
         ),
         child: Row(
           children: [
@@ -884,7 +884,7 @@ class _ChatShortcutButton extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: Colors.white.withAlpha(30),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: const Icon(Icons.chat_bubble_rounded,
                   color: Colors.white, size: 22),
@@ -1050,7 +1050,7 @@ class _DispatchHistoryItem extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

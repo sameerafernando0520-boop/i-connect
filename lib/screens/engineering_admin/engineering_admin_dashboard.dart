@@ -395,7 +395,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 12),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(Brand.r(22)),
           border: Border.all(
               color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0)),
           boxShadow: isDark
@@ -420,7 +420,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
   Widget _quickActionTile(_QuickAction a, bool isDark) {
     return InkWell(
       onTap: a.onTap,
-      borderRadius: BorderRadius.circular(14),
+      borderRadius: BorderRadius.circular(Brand.r(14)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
         child: Column(
@@ -437,7 +437,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(Brand.r(16)),
               ),
               child: Icon(a.icon, color: a.color, size: 26),
             ),
@@ -511,7 +511,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
             color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
           ),
           onSelected: (val) {
             switch (val) {
@@ -749,7 +749,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: Border.all(
             color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
           ),
@@ -777,7 +777,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                   height: 40,
                   decoration: BoxDecoration(
                     color: color.withAlpha(isDark ? 45 : 38),
-                    borderRadius: BorderRadius.circular(11),
+                    borderRadius: BorderRadius.circular(Brand.r(11)),
                   ),
                   child: Icon(icon, size: 22, color: color),
                 ),
@@ -1112,7 +1112,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: Border.all(
             color: isUnassigned
                 ? _eaRed.withAlpha(isDark ? 100 : 60)
@@ -1260,7 +1260,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
       decoration: BoxDecoration(
         color: alertColor.withAlpha(isDark ? 20 : 10),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border:
             Border.all(color: alertColor.withAlpha(isDark ? 60 : 45)),
       ),
@@ -1427,7 +1427,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
               backgroundColor: _eaAccent,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(Brand.r(10))),
             ),
           ),
         ],
@@ -1587,7 +1587,7 @@ class _MoreModuleCard extends StatelessWidget {
         padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: Border.all(
             color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
           ),
@@ -1608,7 +1608,7 @@ class _MoreModuleCard extends StatelessWidget {
               height: 50,
               decoration: BoxDecoration(
                 color: iconColor.withAlpha(isDark ? 45 : 25),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
               ),
               child: Icon(icon, color: iconColor, size: 28),
             ),

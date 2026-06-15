@@ -127,7 +127,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
                     filled: true,
                     fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         borderSide: BorderSide.none),
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
@@ -250,7 +250,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
           color: isSelected
               ? _catColor
               : (isDark ? Brand.darkCardElevated : Brand.scaffoldLight),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
               color: isSelected
                   ? _catColor
@@ -284,7 +284,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 16, offset: const Offset(0, 2)),
@@ -294,7 +294,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () => _showDetail(context, m, isDark),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Row(
@@ -302,7 +302,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
             children: [
               // ── Thumbnail ──
               ClipRRect(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 child: imageUrl != null && imageUrl.isNotEmpty
                     ? CachedNetworkImage(
                         imageUrl: imageUrl,
@@ -472,7 +472,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
                 // Image
                 if (imageUrl != null && imageUrl.isNotEmpty)
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(Brand.r(16)),
                     child: CachedNetworkImage(
                       imageUrl: imageUrl,
                       width: double.infinity,
@@ -506,7 +506,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
                       color: isDark
                           ? Brand.darkCardElevated
                           : Brand.scaffoldLight,
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(Brand.r(16)),
                     ),
                     child: const Icon(Icons.precision_manufacturing_rounded,
                         size: 56, color: _catColor),
@@ -561,7 +561,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: _catColor.withAlpha(isDark ? 25 : 15),
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                   ),
                   child: Row(
                     children: [

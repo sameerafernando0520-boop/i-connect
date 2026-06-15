@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
@@ -270,12 +271,16 @@ class _ServiceCalendarPageState extends State<ServiceCalendarPage> {
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
+      appBar: DsPageHeader(
+        title: 'Service Calendar',
+        accent: HeroAccent.navy,
+        actions: [
+          IconButton(icon: const Icon(Icons.refresh_rounded, color: Colors.white), onPressed: _loadSchedules),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            // ── Custom Header ──
-            _buildTopHeader(isDark),
-            // ── Body ──
             Expanded(
               child: _loading
                   ? _buildShimmer(isDark)
@@ -343,127 +348,6 @@ class _ServiceCalendarPageState extends State<ServiceCalendarPage> {
     );
   }
 
-  // ─── TOP HEADER ────────────────────────────────────────
-  Widget _buildTopHeader(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: isDark
-              ? Border.all(color: Brand.darkBorder)
-              : null,
-                boxShadow: isDark
-                    ? null
-                    : [
-                        BoxShadow(
-                          color: Brand.royalBlue.withAlpha(15),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-              ),
-              child: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: isDark ? Brand.darkIconActive : AdminColors.primary,
-                size: 18,
-              ),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Service Calendar',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.3,
-                    color: isDark ? Brand.darkTextPrimary : AdminColors.primary,
-                  ),
-                ),
-                Text(
-                  '$_totalToday scheduled today',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                _focusedDay = DateTime.now();
-                _selectedDay = DateTime.now();
-              });
-              _loadSchedules();
-            },
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: isDark
-              ? Border.all(color: Brand.darkBorder)
-              : null,
-                boxShadow: isDark
-                    ? null
-                    : [
-                        BoxShadow(
-                          color: Brand.royalBlue.withAlpha(15),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-              ),
-              child: Icon(
-                Icons.today_rounded,
-                color: isDark ? Brand.darkIconActive : AdminColors.primary,
-                size: 22,
-              ),
-            ),
-          ),
-          const SizedBox(width: 8),
-          GestureDetector(
-            onTap: _navigateToCreate,
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: AdminColors.primary,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: AdminColors.primary.withAlpha(89),
-                    blurRadius: 8,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: const Icon(
-                Icons.add_rounded,
-                color: Colors.white,
-                size: 22,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   // ── Summary Bar ──
 
   Widget _buildSummaryBar(bool isDark) {
@@ -508,7 +392,7 @@ class _ServiceCalendarPageState extends State<ServiceCalendarPage> {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 30 : 20),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border: Border.all(color: color.withAlpha(60)),
       ),
       child: Row(
@@ -543,7 +427,7 @@ class _ServiceCalendarPageState extends State<ServiceCalendarPage> {
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -587,7 +471,7 @@ class _ServiceCalendarPageState extends State<ServiceCalendarPage> {
             border: Border.all(
               color: isDark ? Brand.darkBorderLight : Brand.borderLight,
             ),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
           ),
           formatButtonTextStyle: TextStyle(
             color: isDark
@@ -799,7 +683,7 @@ class _ServiceCalendarPageState extends State<ServiceCalendarPage> {
                   horizontal: 10, vertical: 4),
               decoration: BoxDecoration(
                 color: Brand.royalBlue.withAlpha(26),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Brand.r(20)),
               ),
               child: Text(
                 '$count ${count == 1 ? 'schedule' : 'schedules'}',
@@ -892,7 +776,7 @@ class _ServiceCalendarPageState extends State<ServiceCalendarPage> {
       child: Container(
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -914,9 +798,9 @@ class _ServiceCalendarPageState extends State<ServiceCalendarPage> {
                 width: 4,
                 decoration: BoxDecoration(
                   color: _typeColor(type),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    bottomLeft: Radius.circular(16),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(Brand.r(16)),
+                    bottomLeft: Radius.circular(Brand.r(16)),
                   ),
                 ),
               ),
@@ -1125,7 +1009,7 @@ class _ServiceCalendarPageState extends State<ServiceCalendarPage> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 38 : 26),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
       ),
       child: Text(
         label,

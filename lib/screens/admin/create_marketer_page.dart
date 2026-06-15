@@ -163,7 +163,7 @@ class _CreateMarketerPageState extends State<CreateMarketerPage> {
           ),
           backgroundColor: AdminColors.success,
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         ),
       );
 
@@ -188,7 +188,7 @@ class _CreateMarketerPageState extends State<CreateMarketerPage> {
         ),
         backgroundColor: AdminColors.error,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       ),
     );
   }
@@ -370,7 +370,7 @@ class _CreateMarketerPageState extends State<CreateMarketerPage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: _maAccent,
                   foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
                   elevation: 0,
                 ),
               ),
@@ -400,7 +400,7 @@ class _CreateMarketerPageState extends State<CreateMarketerPage> {
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
       child: Column(children: children),
@@ -472,7 +472,7 @@ class _CreateMarketerPageState extends State<CreateMarketerPage> {
               height: 38,
               decoration: BoxDecoration(
                 color: enabled ? s.color.withAlpha(isDark ? 40 : 20) : (isDark ? Brand.darkCardElevated : Brand.scaffoldLight),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: Icon(s.icon, size: 18, color: enabled ? s.color : AdminColors.textHint(context)),
             ),

@@ -229,7 +229,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
           context: context,
           builder: (ctx) => AlertDialog(
             backgroundColor: isDark ? Brand.darkCard : Colors.white,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
             title: Row(children: [
               Container(
                 width: 38, height: 38,
@@ -412,7 +412,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
   }) {
     final selected = _audience == value;
     return InkWell(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(Brand.r(12)),
       onTap: () {
         setState(() => _audience = value);
         _refreshCount();
@@ -427,7 +427,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
           color: selected
               ? _eaAccent.withAlpha(isDark ? 35 : 18)
               : Colors.transparent,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: Border.all(
             color: selected
                 ? _eaAccent
@@ -440,7 +440,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
             width: 36, height: 36,
             decoration: BoxDecoration(
               color: _eaAccent.withAlpha(isDark ? 50 : 30),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: Icon(icon, color: _eaAccent, size: 18),
           ),
@@ -523,7 +523,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
                   final name = e['full_name'] as String? ?? 'Engineer';
                   final empId = e['employee_id'] as String? ?? '';
                   return ListTile(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(10))),
                     leading: CircleAvatar(
                       radius: 20,
                       backgroundColor: _eaAccent.withAlpha(30),
@@ -570,7 +570,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
             hintText: 'Title',
             hintStyle: TextStyle(color: hintColor),
             counterStyle: TextStyle(fontSize: 11, color: hintColor),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
             isDense: true,
           ),
         ),
@@ -584,7 +584,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
             hintText: 'Write your message…',
             hintStyle: TextStyle(color: hintColor),
             counterStyle: TextStyle(fontSize: 11, color: hintColor),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
           ),
         ),
       ]),
@@ -596,7 +596,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
         color: _eaAccent.withAlpha(isDark ? 35 : 18),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border: Border.all(color: _eaAccent.withAlpha(80)),
       ),
       child: Row(children: [
@@ -622,7 +622,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
         ),
@@ -667,7 +667,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
             style: FilledButton.styleFrom(
               backgroundColor: _eaAccent,
               disabledBackgroundColor: _eaAccent.withAlpha(110),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(16))),
             ),
             icon: _sending
                 ? const SizedBox(

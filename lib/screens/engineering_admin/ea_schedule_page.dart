@@ -312,7 +312,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
         });
       },
       icon: Icon(Icons.filter_list_rounded, color: AdminColors.textSub(context)),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
       itemBuilder: (_) => [
         const PopupMenuItem(value: 'all',        child: Text('All Statuses')),
         const PopupMenuItem(value: 'scheduled',  child: Text('Scheduled')),
@@ -335,7 +335,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         color: _eaAccent.withAlpha(isDark ? 38 : 22),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: Border.all(color: _eaAccent.withAlpha(80)),
       ),
       child: Text(
@@ -355,7 +355,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
       margin: const EdgeInsets.fromLTRB(12, 8, 12, 0),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -391,7 +391,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
           formatButtonShowsNext: false,
           formatButtonDecoration: BoxDecoration(
             color: _eaAccent.withAlpha(isDark ? 45 : 28),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
           ),
           formatButtonTextStyle: TextStyle(
             fontSize: 12,
@@ -578,7 +578,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -601,9 +601,9 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
                 width: 5,
                 decoration: BoxDecoration(
                   color: _statusColor(status),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    bottomLeft: Radius.circular(16),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(Brand.r(16)),
+                    bottomLeft: Radius.circular(Brand.r(16)),
                   ),
                 ),
               ),
@@ -869,7 +869,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
                 backgroundColor: _eaAccent,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
               ),
             ),
           ],

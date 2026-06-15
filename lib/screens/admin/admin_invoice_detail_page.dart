@@ -196,7 +196,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
             AdminColors.card(context),
           ],
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: Border.all(color: sColor.withAlpha(60)),
       ),
       child: Column(
@@ -246,7 +246,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
           const SizedBox(height: 14),
           // Payment progress bar
           ClipRRect(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Brand.r(10)),
             child: LinearProgressIndicator(
               value: paidPct,
               minHeight: 8,
@@ -399,7 +399,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
                         height: 24,
                         decoration: BoxDecoration(
                           color: AdminColors.primary.withAlpha(15),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child: Center(
                           child: Text(
@@ -626,7 +626,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: AdminColors.bg(context),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                     border: Border.all(
                       color: AdminColors.border(context),
                     ),
@@ -638,7 +638,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
                         height: 36,
                         decoration: BoxDecoration(
                           color: AdminColors.success.withAlpha(20),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child: Icon(
                           _methodIcon(method),
@@ -906,7 +906,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                 ),
               ),
             ),
@@ -924,7 +924,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 boxShadow: isDark
                     ? null
                     : [
@@ -978,7 +978,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                 ),
               ),
             ),
@@ -1051,7 +1051,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
         return AlertDialog(
           backgroundColor: AdminColors.card(ctx),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(Brand.r(20)),
           ),
           title: Text(
             'Cancel Invoice?',
@@ -1080,7 +1080,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
                   filled: true,
                   fillColor: AdminColors.bg(ctx),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                     borderSide: BorderSide.none,
                   ),
                   contentPadding: const EdgeInsets.symmetric(
@@ -1107,7 +1107,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
                 backgroundColor: AdminColors.error,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                 ),
               ),
               child: const Text('Cancel Invoice'),
@@ -1180,7 +1180,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
       width: double.infinity,
       decoration: BoxDecoration(
         color: AdminColors.card(context),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: Border.all(color: AdminColors.border(context)),
       ),
       child: child,
@@ -1365,7 +1365,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
         backgroundColor: isError ? AdminColors.error : AdminColors.success,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
         ),
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       ),
@@ -1380,7 +1380,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
               height: h,
               decoration: BoxDecoration(
                 color: AdminColors.card(context),
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(Brand.r(18)),
               ),
             ),
           ),
@@ -1438,7 +1438,7 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
                 backgroundColor: AdminColors.primary,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
               ),
             ),

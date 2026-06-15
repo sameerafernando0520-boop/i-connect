@@ -101,7 +101,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
           padding: const EdgeInsets.all(32),
           decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(Brand.r(22)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: isDark
                 ? null
@@ -122,7 +122,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
                 decoration: BoxDecoration(
                   color:
                       isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-                  borderRadius: BorderRadius.circular(24),
+                  borderRadius: BorderRadius.circular(Brand.r(24)),
                   border:
                       isDark ? Border.all(color: Brand.darkBorderLight) : null,
                 ),
@@ -180,7 +180,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
           boxShadow: isDark
@@ -206,7 +206,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
                     color: isDark
                         ? Brand.darkCardElevated
                         : Brand.royalBlueSurface,
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                     border: isDark
                         ? Border.all(color: Brand.darkBorderLight)
                         : null,
@@ -251,7 +251,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: Brand.lightGreen.withAlpha(30),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -287,7 +287,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
                 color: isDark
                     ? Brand.lightGreen.withAlpha(((0.08) * 255).toInt())
                     : Brand.lightGreenSurface,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -357,7 +357,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: Colors.red.withAlpha(((isDark ? 0.1 : 0.05) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                   border: Border.all(color: Colors.red.withAlpha(((0.2) * 255).toInt())),
                 ),
                 child: Row(
@@ -421,7 +421,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
                     foregroundColor: Colors.white,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                     ),
                     textStyle: const TextStyle(
                       fontSize: 13.5,

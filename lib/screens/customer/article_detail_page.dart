@@ -207,7 +207,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
       ]),
       backgroundColor: isError ? Colors.red : Brand.lightGreen,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
       margin: const EdgeInsets.all(16),
     ));
   }
@@ -280,7 +280,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
             height: 70,
             decoration: BoxDecoration(
               color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(Brand.r(20)),
             ),
             child: Center(
               child: SizedBox(
@@ -316,7 +316,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
           padding: const EdgeInsets.all(32),
           decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(Brand.r(22)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
           ),
           child: Column(
@@ -327,7 +327,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
                 height: 80,
                 decoration: BoxDecoration(
                   color: Colors.red.withAlpha(isDark ? 31 : 15),
-                  borderRadius: BorderRadius.circular(24),
+                  borderRadius: BorderRadius.circular(Brand.r(24)),
                 ),
                 child: Icon(Icons.article_outlined,
                     size: 38,
@@ -368,7 +368,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
                     elevation: 0,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
+                        borderRadius: BorderRadius.circular(Brand.r(14))),
                   ),
                 ),
               ),
@@ -511,7 +511,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
           color: isDark
               ? Brand.darkCardElevated.withAlpha(230)
               : Brand.cardLight.withAlpha(230),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
         ),
@@ -548,7 +548,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
               color: isDark
                   ? Brand.darkCardElevated.withAlpha(230)
                   : Brand.cardLight.withAlpha(230),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
               border: isDark ? Border.all(color: Brand.darkBorder) : null,
             ),
             child: isLoading
@@ -577,7 +577,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 26 : 20),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
         border: Border.all(color: color.withAlpha(38)),
       ),
       child: Row(
@@ -605,7 +605,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
       ),
@@ -702,7 +702,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Brand.r(20)),
                 border: Border.all(
                     color: isDark ? Brand.darkBorderLight : Brand.borderLight),
               ),
@@ -728,7 +728,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
@@ -748,7 +748,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
             height: 48,
             decoration: BoxDecoration(
               color: accentColor.withAlpha(26),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
             ),
             child: Icon(
               _isBookmarked
@@ -790,7 +790,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               decoration: BoxDecoration(
                 color: _isBookmarked ? accentColor : accentColor.withAlpha(26),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
               ),
               child: Text(
                 _isBookmarked ? 'Saved' : 'Save',
@@ -855,7 +855,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
         ),
@@ -866,7 +866,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
               height: 56,
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
               ),
               child: Icon(
                 _getCategoryIcon(category),

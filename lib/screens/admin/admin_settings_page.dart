@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_settings_page.dart
+﻿// lib/screens/admin/admin_settings_page.dart
 //
 // ═══════════════════════════════════════════════════════════
 //  CHANGES (v14 i18n):
@@ -19,6 +19,7 @@ import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' show FileOptions;
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/admin_theme.dart';
 import '../../providers/theme_provider.dart';
 import '../../providers/locale_provider.dart';
@@ -82,15 +83,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           ),
         ];
 
-  List<BoxShadow> _softShadow(bool d) => d
-      ? []
-      : [
-          BoxShadow(
-            color: Brand.royalBlue.withAlpha(15),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ];
+
 
   // ─── Lifecycle ─────────────────────────────────────────────
   @override
@@ -294,7 +287,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
           color: color.withAlpha(isDark ? 31 : 15),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: isDark ? Border.all(color: color.withAlpha(38)) : null,
         ),
         child: Row(
@@ -304,7 +297,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
               height: 40,
               decoration: BoxDecoration(
                 color: color.withAlpha(isDark ? 46 : 26),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
               ),
               child: Icon(icon, color: color, size: 20),
             ),
@@ -535,7 +528,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                     boxShadow: isDark
                         ? null
                         : [
@@ -574,15 +567,15 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
       fillColor: isDark ? Brand.darkCardElevated : Colors.grey.shade50,
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         borderSide: BorderSide(color: _borderColor(isDark)),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         borderSide: BorderSide(color: _borderColor(isDark)),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         borderSide: const BorderSide(color: Brand.royalBlue, width: 1.5),
       ),
     );
@@ -673,7 +666,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
               height: 60,
               decoration: BoxDecoration(
                 color: Brand.royalBlue.withAlpha(isDark ? 38 : 26),
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(Brand.r(18)),
               ),
               child: const Icon(Icons.lock_reset_rounded,
                   color: Brand.royalBlue, size: 28),
@@ -703,7 +696,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       decoration: BoxDecoration(
                         border: Border.all(color: _borderColor(isDark)),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                       ),
                       child: Center(
                         child: Text(
@@ -742,7 +735,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       decoration: BoxDecoration(
                         color: Brand.royalBlue,
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                       ),
                       child: const Center(
                         child: Text(
@@ -797,7 +790,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
               height: 68,
               decoration: BoxDecoration(
                 color: Colors.red.withAlpha(isDark ? 31 : 20),
-                borderRadius: BorderRadius.circular(22),
+                borderRadius: BorderRadius.circular(Brand.r(22)),
               ),
               child:
                   const Icon(Icons.logout_rounded, color: Colors.red, size: 32),
@@ -828,7 +821,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                       decoration: BoxDecoration(
                         border:
                             Border.all(color: _borderColor(isDark), width: 1.5),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                       ),
                       child: Center(
                         child: Text(
@@ -856,7 +849,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                             Color(0xFFEF5350),
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.red.withAlpha(89),
@@ -947,7 +940,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
         ),
         backgroundColor: isError ? Colors.red.shade400 : Brand.royalBlue,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.all(16),
       ),
     );
@@ -966,12 +959,16 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
 
     return Scaffold(
       backgroundColor: _scaffoldBg(isDark),
+      appBar: DsPageHeader(
+        title: 'Settings',
+        showBack: false,
+        accent: HeroAccent.navy,
+      ),
       body: SafeArea(
         child: _isLoading
             ? _buildSettingsSkeleton(isDark)
             : Column(
                 children: [
-                  _buildHeader(isDark),
                   Expanded(
                     child: RefreshIndicator(
                       onRefresh: _loadData,
@@ -1011,7 +1008,6 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
   Widget _buildSettingsSkeleton(bool isDark) {
     return Column(
       children: [
-        _buildHeader(isDark),
         Expanded(
           child: ListView(
             physics: const NeverScrollableScrollPhysics(),
@@ -1028,7 +1024,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
-                  borderRadius: BorderRadius.circular(22),
+                  borderRadius: BorderRadius.circular(Brand.r(22)),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -1102,44 +1098,8 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
       height: height,
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
-      ),
-    );
-  }
-
-  // ─── HEADER ────────────────────────────────────────────────
-  Widget _buildHeader(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 12),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: _cardBg(isDark),
-                borderRadius: BorderRadius.circular(12),
-                border: isDark ? Border.all(color: _borderColor(isDark)) : null,
-                boxShadow: _softShadow(isDark),
-              ),
-              child: const Icon(Icons.arrow_back_ios_new_rounded,
-                  color: Brand.royalBlue, size: 18),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Text(
-            'Settings',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-              letterSpacing: -0.3,
-              color: isDark ? Brand.darkTextPrimary : AdminColors.primaryDark,
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -1174,7 +1134,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Brand.r(22)),
         boxShadow: [
           BoxShadow(
             color: Brand.royalBlue.withAlpha(89),
@@ -1288,7 +1248,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                 decoration: BoxDecoration(
                   color: Colors.white.withAlpha(38),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(Brand.r(20)),
                 ),
                 child: const Row(
                   mainAxisSize: MainAxisSize.min,
@@ -1314,7 +1274,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                   decoration: BoxDecoration(
                     color: Brand.lightGreen.withAlpha(77),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(Brand.r(20)),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -1351,7 +1311,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
       padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
         color: _cardBg(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: _borderColor(isDark)) : null,
         boxShadow: _cardShadow(isDark),
       ),
@@ -1423,7 +1383,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           padding: const EdgeInsets.symmetric(vertical: 14),
           decoration: BoxDecoration(
             color: isSelected ? Brand.royalBlue : Colors.transparent,
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             boxShadow: isSelected
                 ? [
                     BoxShadow(
@@ -1470,7 +1430,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
       margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
         color: _cardBg(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: _borderColor(isDark)) : null,
         boxShadow: _cardShadow(isDark),
       ),
@@ -1485,7 +1445,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: Brand.royalBlue.withAlpha(26),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                 ),
                 child: const Icon(Icons.translate_rounded,
                     color: Brand.royalBlue, size: 20),
@@ -1519,7 +1479,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                   color: isDark
                       ? Brand.darkCardElevated
                       : Brand.royalBlue.withAlpha(26),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                   border:
                       isDark ? Border.all(color: Brand.darkBorderLight) : null,
                 ),
@@ -1550,7 +1510,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
       margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
         color: _cardBg(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: _borderColor(isDark)) : null,
         boxShadow: _cardShadow(isDark),
       ),
@@ -1632,7 +1592,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
             height: 38,
             decoration: BoxDecoration(
               color: color.withAlpha(isDark ? 38 : 26),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: Icon(icon, color: color, size: 18),
           ),
@@ -1682,7 +1642,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
       margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
         color: _cardBg(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: _borderColor(isDark)) : null,
         boxShadow: _cardShadow(isDark),
       ),
@@ -1726,7 +1686,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
               height: 38,
               decoration: BoxDecoration(
                 color: color.withAlpha(isDark ? 38 : 26),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: Icon(icon, color: color, size: 18),
             ),
@@ -1765,7 +1725,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
       margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
         color: _cardBg(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: _borderColor(isDark)) : null,
         boxShadow: _cardShadow(isDark),
       ),
@@ -1833,7 +1793,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                       height: 38,
                       decoration: BoxDecoration(
                         color: color.withAlpha(isDark ? 30 : 20),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                       ),
                       child: Icon(icon, color: color, size: 20),
                     ),
@@ -1861,7 +1821,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                                 horizontal: 6, vertical: 2),
                             decoration: BoxDecoration(
                               color: Colors.orange.withAlpha(20),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(Brand.r(10)),
                             ),
                             child: const Text('INACTIVE',
                                 style: TextStyle(
@@ -1907,7 +1867,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                   foregroundColor: Brand.royalBlue,
                   side: BorderSide(color: Brand.royalBlue.withAlpha(100)),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                   ),
                 ),
               ),
@@ -2023,7 +1983,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                           ? Brand.darkCardElevated
                           : Brand.scaffoldLight,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         borderSide: BorderSide.none,
                       ),
                       contentPadding: const EdgeInsets.symmetric(
@@ -2068,7 +2028,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                           ? Brand.darkCardElevated
                           : Brand.scaffoldLight,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         borderSide: BorderSide.none,
                       ),
                       contentPadding: const EdgeInsets.symmetric(
@@ -2116,7 +2076,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                       style: FilledButton.styleFrom(
                         backgroundColor: Brand.royalBlue,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                         ),
                       ),
                       child: Text(isNew ? 'Add Contact' : 'Save Changes',
@@ -2176,7 +2136,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
           color: isSel ? color.withAlpha(25) : Colors.transparent,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
           border: Border.all(
             color: isSel ? color : _borderColor(isDark),
             width: isSel ? 1.5 : 1,
@@ -2240,7 +2200,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
       margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
         color: _cardBg(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: _borderColor(isDark)) : null,
         boxShadow: _cardShadow(isDark),
       ),
@@ -2292,7 +2252,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           padding: const EdgeInsets.symmetric(vertical: 16),
           decoration: BoxDecoration(
             color: Colors.red.withAlpha(isDark ? 26 : 15),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             border: Border.all(color: Colors.red.withAlpha(38), width: 1.5),
           ),
           child: Row(

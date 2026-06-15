@@ -155,7 +155,7 @@ class _MaBannersPageState extends State<MaBannersPage> {
       content: Text(msg, style: const TextStyle(color: Colors.white)),
       backgroundColor: AdminColors.error,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
     ));
   }
 
@@ -168,7 +168,7 @@ class _MaBannersPageState extends State<MaBannersPage> {
       ]),
       backgroundColor: AdminColors.success,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       duration: const Duration(seconds: 2),
     ));
   }
@@ -278,7 +278,7 @@ class _MaBannersPageState extends State<MaBannersPage> {
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 16, offset: const Offset(0, 2)),
@@ -290,7 +290,7 @@ class _MaBannersPageState extends State<MaBannersPage> {
         children: [
           if (imgUrl != null && imgUrl.isNotEmpty)
             ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(18)),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(18))),
               child: CachedNetworkImage(
                 imageUrl: imgUrl, height: 140, width: double.infinity, fit: BoxFit.cover,
                 placeholder: (_, __) => Container(height: 140, color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
@@ -352,12 +352,12 @@ class _MaBannersPageState extends State<MaBannersPage> {
   Widget _btn(IconData icon, String label, Color color, bool isDark, VoidCallback onTap) {
     return Expanded(
       child: InkWell(
-        onTap: onTap, borderRadius: BorderRadius.circular(10),
+        onTap: onTap, borderRadius: BorderRadius.circular(Brand.r(10)),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
             color: color.withAlpha(isDark ? 25 : 12),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Brand.r(10)),
             border: Border.all(color: color.withAlpha(isDark ? 50 : 30)),
           ),
           child: Column(children: [
@@ -423,14 +423,14 @@ class _BannerFormDialogState extends State<_BannerFormDialog> {
               height: 100, width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.grey.withAlpha(30),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(color: Colors.grey.withAlpha(80)),
               ),
               child: _imageFile != null
-                  ? ClipRRect(borderRadius: BorderRadius.circular(12),
+                  ? ClipRRect(borderRadius: BorderRadius.circular(Brand.r(12)),
                       child: Image.file(_imageFile!, fit: BoxFit.cover))
                   : (widget.initial?['image_url'] != null && (widget.initial?['image_url'] as String).isNotEmpty)
-                      ? ClipRRect(borderRadius: BorderRadius.circular(12),
+                      ? ClipRRect(borderRadius: BorderRadius.circular(Brand.r(12)),
                           child: CachedNetworkImage(imageUrl: widget.initial!['image_url'], fit: BoxFit.cover))
                       : const Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                           Icon(Icons.add_photo_alternate_rounded, size: 32, color: Colors.grey),

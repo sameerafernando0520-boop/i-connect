@@ -1,8 +1,9 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/admin/shimmer_loading.dart';
 import 'create_quotation_page.dart';
@@ -117,10 +118,18 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
     return Scaffold(
       backgroundColor: isDark ? Brand.darkBg : AdminColors.background,
       floatingActionButton: _buildFAB(isDark),
+      appBar: DsPageHeader(
+        title: 'Quotations',
+        subtitle: '${_quotations.length} total',
+        accent: HeroAccent.navy,
+        actions: [
+          IconButton(icon: const Icon(Icons.search_rounded, color: Colors.white), onPressed: () { setState(() { _showSearch = !_showSearch; if (!_showSearch) { _searchCtrl.clear(); _load(); } }); }),
+          IconButton(icon: const Icon(Icons.refresh_rounded, color: Colors.white), onPressed: _load),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            _buildTopHeader(isDark),
             _buildFilterChips(isDark),
             if (_showSearch) _buildSearchBar(isDark),
             Expanded(
@@ -150,108 +159,12 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
     );
   }
 
-  Widget _buildTopHeader(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: isDark ? Border.all(color: Brand.darkBorder) : null,
-                boxShadow: isDark
-                    ? []
-                    : [
-                        BoxShadow(
-                          color: Brand.royalBlue.withAlpha(10),
-                          blurRadius: 8,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-              ),
-              child: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: isDark ? Brand.darkTextSecondary : AdminColors.primary,
-                size: 18,
-              ),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Quotation Management',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.3,
-                    color: isDark ? Brand.darkTextPrimary : AdminColors.primary,
-                  ),
-                ),
-                Text(
-                  '${_quotations.length} quotations',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: isDark
-                        ? Brand.darkTextSecondary
-                        : const Color(0xFF64748B),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                _showSearch = !_showSearch;
-                if (!_showSearch) {
-                  _searchCtrl.clear();
-                  _load();
-                }
-              });
-            },
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: isDark ? Border.all(color: Brand.darkBorder) : null,
-                boxShadow: isDark
-                    ? []
-                    : [
-                        BoxShadow(
-                          color: Brand.royalBlue.withAlpha(10),
-                          blurRadius: 8,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-              ),
-              child: Icon(
-                _showSearch ? Icons.close_rounded : Icons.search_rounded,
-                color: isDark ? Brand.darkTextSecondary : AdminColors.primary,
-                size: 22,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildSearchBar(bool isDark) {
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 14, 20, 0),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
             ? []
@@ -285,7 +198,7 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             borderSide: BorderSide.none,
           ),
         ),
@@ -310,7 +223,7 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           boxShadow: [
             BoxShadow(
               color: Brand.royalBlue.withAlpha(102),
@@ -371,7 +284,7 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
                     color: selected
                         ? f.$3.withAlpha(isDark ? 40 : 25)
                         : AdminColors.bg(context),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                     border: Border.all(
                       color: selected
                           ? f.$3.withAlpha(100)
@@ -413,9 +326,9 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
 
     return Material(
       color: AdminColors.card(context),
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(Brand.r(16)),
       child: InkWell(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         onTap: () => Navigator.push(
           context,
           MaterialPageRoute(
@@ -428,7 +341,7 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             border: Border.all(
               // FIX: Use AdminColors.warning instead of hardcoded
               color: isExpired
@@ -444,7 +357,7 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
                 height: 42,
                 decoration: BoxDecoration(
                   color: sColor.withAlpha(26),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Icon(
                   Icons.request_quote_rounded,
@@ -625,7 +538,7 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
           height: 88,
           decoration: BoxDecoration(
             color: AdminColors.card(context),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
           ),
         ),
       ),
@@ -684,7 +597,7 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
                 foregroundColor: AdminColors.primary,
                 side: BorderSide(color: AdminColors.primary.withAlpha(80)),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: BorderRadius.circular(Brand.r(10))),
               ),
             ),
           ],
@@ -732,7 +645,7 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
                 backgroundColor: AdminColors.primary,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
               ),
             ),

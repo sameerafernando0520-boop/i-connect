@@ -676,7 +676,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
         padding: const EdgeInsets.symmetric(vertical: 22),
         decoration: BoxDecoration(
           color: isDark ? color.withAlpha(26) : color.withAlpha(15),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: Border.all(color: color.withAlpha(38)),
         ),
         child: Column(
@@ -805,7 +805,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       context: context,
       builder: (dialogCtx) => Dialog(
         backgroundColor: Brand.surface(isDark),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(24))),
         child: Padding(
           padding: const EdgeInsets.all(28),
           child: Column(
@@ -816,7 +816,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                 height: 64,
                 decoration: BoxDecoration(
                   color: Brand.royalBlue.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(Brand.r(20)),
                 ),
                 child: Icon(Icons.help_outline_rounded,
                     color: isDark ? Brand.royalBlueGlow : Brand.royalBlue,
@@ -852,7 +852,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                                   ? Brand.darkBorderLight
                                   : Brand.borderLight,
                               width: 1.5),
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                         ),
                         child: Center(
                           child: Text('Cancel',
@@ -877,7 +877,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                           boxShadow: [
                             BoxShadow(
                                 color: Brand.royalBlue.withAlpha(89),
@@ -916,7 +916,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       ]),
       backgroundColor: Brand.lightGreen,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
       margin: const EdgeInsets.all(16),
     ));
   }
@@ -933,7 +933,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       ]),
       backgroundColor: const Color(0xFFE53935),
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
       margin: const EdgeInsets.all(16),
     ));
   }
@@ -1187,7 +1187,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                     color: isDark
                         ? Brand.royalBlue.withAlpha(26)
                         : Brand.royalBlueSurface,
-                    borderRadius: BorderRadius.circular(22),
+                    borderRadius: BorderRadius.circular(Brand.r(22)),
                   ),
                   child: Center(
                     child: SizedBox(
@@ -1232,7 +1232,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                   height: 76,
                   decoration: BoxDecoration(
                     color: Colors.red.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
-                    borderRadius: BorderRadius.circular(22),
+                    borderRadius: BorderRadius.circular(Brand.r(22)),
                   ),
                   child: const Icon(Icons.error_outline_rounded,
                       size: 38, color: Colors.red),
@@ -1255,7 +1255,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                       gradient: const LinearGradient(
                         colors: [Brand.royalBlueDark, Brand.royalBlue],
                       ),
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                       boxShadow: [
                         BoxShadow(
                             color: Brand.royalBlue.withAlpha(89),
@@ -1405,13 +1405,13 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             color: Colors.transparent,
             child: InkWell(
               onTap: () => Navigator.pop(context),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               child: Container(
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
                   color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   border: Border.all(
                       color:
                           isDark ? Brand.darkBorderLight : Brand.borderLight),
@@ -1444,7 +1444,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                           horizontal: 7, vertical: 3),
                       decoration: BoxDecoration(
                         color: statusColor.withAlpha(((isDark ? 0.15 : 0.08) * 255).toInt()),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                         border:
                             Border.all(color: statusColor.withAlpha(38)),
                       ),
@@ -1473,7 +1473,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                         decoration: BoxDecoration(
                           color:
                               Colors.orange.withAlpha(((isDark ? 0.15 : 0.08) * 255).toInt()),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                           border:
                               Border.all(color: Colors.orange.withAlpha(51)),
                         ),
@@ -1552,13 +1552,13 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         child: Container(
           width: 40,
           height: 40,
           decoration: BoxDecoration(
             color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
             border: Border.all(
                 color: isDark ? Brand.darkBorderLight : Brand.borderLight),
           ),
@@ -1590,11 +1590,11 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             height: 36,
             decoration: BoxDecoration(
               color: Brand.lightGreen.withAlpha(38),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
             ),
             child: engineer['profile_photo'] != null
                 ? ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                     child: CachedNetworkImage(
                         imageUrl: engineer['profile_photo'],
                         fit: BoxFit.cover,
@@ -1670,13 +1670,13 @@ class _TicketDetailPageState extends State<TicketDetailPage>
               color: Colors.transparent,
               child: InkWell(
                 onTap: () => _launchUrl('tel:${engineer['phone_number']}'),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
                 child: Container(
                   width: 36,
                   height: 36,
                   decoration: BoxDecoration(
                     color: Brand.lightGreen.withAlpha(38),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: const Icon(Icons.phone_rounded,
                       size: 16, color: Brand.lightGreenBright),
@@ -1858,7 +1858,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                 child: InkWell(
                   onTap: () =>
                       setState(() => _showActivities = !_showActivities),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                   child: Padding(
                     padding:
                         const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
@@ -1907,7 +1907,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Brand.royalBlue.withAlpha(((isDark ? 0.08 : 0.04) * 255).toInt()),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: Brand.royalBlue.withAlpha(31)),
       ),
       child: Column(
@@ -2028,7 +2028,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Brand.lightGreen.withAlpha(((isDark ? 0.06 : 0.04) * 255).toInt()),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: Brand.lightGreen.withAlpha(38)),
       ),
       child: Column(
@@ -2098,7 +2098,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
             color: isDark ? Brand.darkBorderLight : Brand.borderLight),
       ),
@@ -2111,7 +2111,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
               color: isDark
                   ? Brand.royalBlueDark.withAlpha(128)
                   : Brand.cardLight,
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               border: isDark ? Border.all(color: Brand.darkBorder) : null,
             ),
             child: _buildMachineImage(catalog, isDark),
@@ -2166,7 +2166,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
 
     if (imageUrl != null && imageUrl.isNotEmpty) {
       return ClipRRect(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         child: CachedNetworkImage(
           imageUrl: imageUrl,
           fit: BoxFit.cover,
@@ -2203,7 +2203,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: Border.all(
               color: isDark ? Brand.darkBorderLight : Brand.borderLight),
         ),
@@ -2253,7 +2253,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
             color: isDark ? Brand.darkBorderLight : Brand.borderLight),
       ),
@@ -2278,7 +2278,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                       color: isDark
                           ? Brand.royalBlue.withAlpha(31)
                           : Brand.royalBlueSurface,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Icon(
                       _getActivityIcon(activity['activity_type']),
@@ -2386,7 +2386,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                 color: isDark
                     ? Brand.royalBlue.withAlpha(26)
                     : Brand.royalBlueSurface,
-                borderRadius: BorderRadius.circular(22),
+                borderRadius: BorderRadius.circular(Brand.r(22)),
               ),
               child: Icon(Icons.chat_bubble_outline_rounded,
                   size: 34,
@@ -2447,7 +2447,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                     color: isDark ? Brand.darkBorderLight : Brand.borderLight),
               ),
@@ -2548,7 +2548,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
           color: isDark
               ? Brand.royalBlue.withAlpha(15)
               : Brand.royalBlueSurface.withAlpha(128),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: Border.all(color: Brand.royalBlue.withAlpha(26)),
         ),
         child: Row(
@@ -2663,8 +2663,8 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                               : Brand.royalBlue)
                           : (Brand.surface(isDark)),
                   borderRadius: BorderRadius.only(
-                    topLeft: const Radius.circular(18),
-                    topRight: const Radius.circular(18),
+                    topLeft: Radius.circular(Brand.r(18)),
+                    topRight: Radius.circular(Brand.r(18)),
                     bottomLeft: Radius.circular(isMyMessage ? 18 : 4),
                     bottomRight: Radius.circular(isMyMessage ? 4 : 18),
                   ),
@@ -2726,7 +2726,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                               constraints: const BoxConstraints(
                                   maxHeight: 200, maxWidth: 250),
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(14),
+                                borderRadius: BorderRadius.circular(Brand.r(14)),
                                 child: CachedNetworkImage(
                                   imageUrl: urlStr,
                                   fit: BoxFit.cover,
@@ -2736,7 +2736,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                                       color: isDark
                                           ? Brand.darkCardElevated
                                           : Brand.royalBlueSurface,
-                                      borderRadius: BorderRadius.circular(14),
+                                      borderRadius: BorderRadius.circular(Brand.r(14)),
                                     ),
                                     child: Center(
                                       child: CircularProgressIndicator(
@@ -2754,7 +2754,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                                       color: isDark
                                           ? Brand.darkCardElevated
                                           : Brand.royalBlueSurface,
-                                      borderRadius: BorderRadius.circular(14),
+                                      borderRadius: BorderRadius.circular(Brand.r(14)),
                                     ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -2790,7 +2790,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                                     : (isDark
                                         ? Brand.darkCardElevated
                                         : Brand.royalBlueSurface),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(Brand.r(12)),
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -2932,7 +2932,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -2953,7 +2953,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                 decoration: BoxDecoration(
                   color:
                       isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                 ),
                 child: Icon(Icons.copy_rounded,
                     color: isDark ? Colors.white60 : Brand.royalBlueDark,
@@ -3023,7 +3023,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           topLeft: Radius.circular(28),
           topRight: Radius.circular(28),
         ),
@@ -3075,7 +3075,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                   color: Colors.transparent,
                   child: InkWell(
                     onTap: _isUploading ? null : _pickAndUploadImage,
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                     child: Container(
                       width: 44,
                       height: 44,
@@ -3086,7 +3086,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                             : (isDark
                                 ? Brand.darkCardElevated
                                 : Brand.scaffoldLight),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                         border: Border.all(
                             color: isDark
                                 ? Brand.darkBorderLight
@@ -3109,7 +3109,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                     decoration: BoxDecoration(
                       color:
                           isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-                      borderRadius: BorderRadius.circular(22),
+                      borderRadius: BorderRadius.circular(Brand.r(22)),
                       border: Border.all(
                           color: isDark
                               ? Brand.darkBorderLight
@@ -3137,7 +3137,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                         ),
                         enabledBorder: InputBorder.none,
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(22),
+                          borderRadius: BorderRadius.circular(Brand.r(22)),
                           borderSide: BorderSide(
                               color: isDark ? Brand.darkIconActive : Brand.royalBlue,
                               width: 1.5),
@@ -3161,7 +3161,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(Brand.r(16)),
                       boxShadow: [
                         BoxShadow(
                           color: Brand.royalBlue.withAlpha(102),
@@ -3254,7 +3254,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
               color: Colors.transparent,
               child: InkWell(
                 onTap: () => _reopenTicket(),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -3378,21 +3378,21 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                     fillColor:
                         isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(Brand.r(16)),
                       borderSide: BorderSide(
                           color: isDark
                               ? Brand.darkBorderLight
                               : Brand.borderLight),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(Brand.r(16)),
                       borderSide: BorderSide(
                           color: isDark
                               ? Brand.darkBorderLight
                               : Brand.borderLight),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(Brand.r(16)),
                       borderSide: BorderSide(
                           color: isDark ? Brand.royalBlueGlow : Brand.royalBlue,
                           width: 2),
@@ -3420,7 +3420,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                         boxShadow: [
                           BoxShadow(
                               color: Brand.lightGreen.withAlpha(89),
@@ -3458,7 +3458,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           topLeft: Radius.circular(28),
           topRight: Radius.circular(28),
         ),
@@ -3480,7 +3480,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: statusColor.withAlpha(((isDark ? 0.08 : 0.05) * 255).toInt()),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(Brand.r(18)),
             border: Border.all(color: statusColor.withAlpha(38)),
           ),
           child: Row(
@@ -3490,7 +3490,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                 height: 46,
                 decoration: BoxDecoration(
                   color: statusColor.withAlpha(((isDark ? 0.15 : 0.1) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                 ),
                 child:
                     Icon(_getStatusIcon(status), color: statusColor, size: 22),
@@ -3560,7 +3560,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                     boxShadow: [
                       BoxShadow(
                         color: Brand.royalBlue.withAlpha(89),
@@ -3603,7 +3603,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
         margin: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(Brand.r(24)),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
         ),
@@ -3724,7 +3724,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
         height: 44,
         decoration: BoxDecoration(
           color: color.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
         ),
         child: Icon(icon, color: color, size: 20),
       ),

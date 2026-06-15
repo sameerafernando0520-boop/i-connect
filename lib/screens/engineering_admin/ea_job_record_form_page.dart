@@ -274,7 +274,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
                                     color: _eaAccent)
                                 : null,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12)),
+                                borderRadius: BorderRadius.circular(Brand.r(12))),
                             onTap: () {
                               setState(() {
                                 _engineerId = e['id'] as String;
@@ -406,7 +406,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
                                       : null,
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
-                                          BorderRadius.circular(12)),
+                                          BorderRadius.circular(Brand.r(12))),
                                   onTap: () {
                                     setState(() {
                                       _ticketId = t['id'] as String;
@@ -492,7 +492,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
       SnackBar(
         content: Text(msg),
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(10))),
       ),
     );
   }
@@ -567,7 +567,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
                         horizontal: 14, vertical: 8),
                     decoration: BoxDecoration(
                       color: sel ? _eaAccent.withAlpha(25) : inputFill,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                       border: Border.all(
                         color: sel ? _eaAccent : borderColor,
                         width: sel ? 1.5 : 1,
@@ -603,7 +603,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
                         horizontal: 14, vertical: 8),
                     decoration: BoxDecoration(
                       color: sel ? col.withAlpha(25) : inputFill,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                       border: Border.all(
                         color: sel ? col : borderColor,
                         width: sel ? 1.5 : 1,
@@ -709,7 +709,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
                   backgroundColor: _eaAccent,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16)),
+                      borderRadius: BorderRadius.circular(Brand.r(16))),
                   elevation: 0,
                 ),
                 child: _saving
@@ -766,7 +766,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         decoration: BoxDecoration(
           color: inputFill,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: Border.all(color: borderColor),
         ),
         child: Row(
@@ -802,17 +802,17 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
       fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
       contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         borderSide: BorderSide.none,
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         borderSide: BorderSide(
           color: isDark ? Brand.darkBorder : Brand.borderLight,
         ),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         borderSide: const BorderSide(color: _eaAccent, width: 1.5),
       ),
     );

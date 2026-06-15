@@ -175,7 +175,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
                 color: Brand.royalBlue.withAlpha(isDark ? 25 : 15),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(color: Brand.royalBlue.withAlpha(51)),
               ),
               child: Row(
@@ -318,7 +318,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
                   color: _saving
                       ? (isDark ? Brand.darkBorderLight : Brand.borderLight)
                       : null,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   boxShadow: isDark || _saving
                       ? null
                       : [
@@ -404,23 +404,23 @@ class _RequestServicePageState extends State<RequestServicePage> {
         filled: true,
         fillColor: isDark ? Brand.darkCardElevated : Colors.white,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkBorder : Brand.borderLight,
           ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkBorder : Brand.borderLight,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: const BorderSide(color: Brand.royalBlue, width: 1.5),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: const BorderSide(color: Color(0xFFEF4444)),
         ),
         contentPadding:
@@ -446,7 +446,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
               color: selected
                   ? t.$4.withAlpha(isDark ? 38 : 26)
                   : (isDark ? Brand.darkCard : Colors.white),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
               border: Border.all(
                 color: selected
                     ? t.$4
@@ -493,7 +493,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
         height: 56,
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -513,7 +513,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -559,7 +559,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
                 color: selected
                     ? Brand.royalBlue.withAlpha(isDark ? 25 : 15)
                     : (isDark ? Brand.darkCard : Colors.white),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                   color: selected
                       ? Brand.royalBlue
@@ -574,7 +574,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
                     height: 40,
                     decoration: BoxDecoration(
                       color: Brand.royalBlue.withAlpha(isDark ? 38 : 26),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Icon(
                       Icons.precision_manufacturing,
@@ -640,7 +640,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -686,7 +686,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,

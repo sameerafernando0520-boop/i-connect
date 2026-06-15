@@ -112,7 +112,7 @@ class _MaReferralPageState extends State<MaReferralPage>
       content: Text(msg, style: const TextStyle(color: Colors.white)),
       backgroundColor: AdminColors.error,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
     ));
   }
 
@@ -125,7 +125,7 @@ class _MaReferralPageState extends State<MaReferralPage>
       ]),
       backgroundColor: AdminColors.success,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       duration: const Duration(seconds: 2),
     ));
   }
@@ -183,7 +183,7 @@ class _MaReferralPageState extends State<MaReferralPage>
                               color: _statusFilter == s
                                   ? _refColor
                                   : (isDark ? Brand.darkCardElevated : Brand.scaffoldLight),
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(Brand.r(20)),
                               border: Border.all(
                                   color: _statusFilter == s
                                       ? _refColor
@@ -255,7 +255,7 @@ class _MaReferralPageState extends State<MaReferralPage>
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 16, offset: const Offset(0, 2)),
@@ -358,7 +358,7 @@ class _MaReferralPageState extends State<MaReferralPage>
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: Border.all(
             color: isActive
                 ? _refColor.withAlpha(isDark ? 60 : 40)

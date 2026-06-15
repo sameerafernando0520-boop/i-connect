@@ -178,7 +178,7 @@ class _AdminHotLeadsPageState extends State<AdminHotLeadsPage> {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
       ),
@@ -189,7 +189,7 @@ class _AdminHotLeadsPageState extends State<AdminHotLeadsPage> {
             height: 32,
             decoration: BoxDecoration(
               color: color.withAlpha(isDark ? 50 : 30),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: Icon(icon, size: 18, color: color),
           ),
@@ -236,7 +236,7 @@ class _AdminHotLeadsPageState extends State<AdminHotLeadsPage> {
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
               decoration: BoxDecoration(
                 color: sel ? c.withAlpha(isDark ? 50 : 30) : (Brand.surface(isDark)),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 border: Border.all(
                   color: sel ? c : (isDark ? Brand.darkBorder : Brand.borderLight),
                   width: sel ? 1.4 : 1,
@@ -339,11 +339,11 @@ class _AdminHotLeadsPageState extends State<AdminHotLeadsPage> {
               );
               if (mounted) _load(); // refresh after returning
             },
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(Brand.r(16)),
       child: Container(
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark ? Border.all(color: Brand.darkBorder) : null,
         ),
         padding: const EdgeInsets.all(12),
@@ -403,7 +403,7 @@ class _AdminHotLeadsPageState extends State<AdminHotLeadsPage> {
                     horizontal: 10, vertical: 6),
                 decoration: BoxDecoration(
                   color: scoreColor.withAlpha(35),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                 ),
                 child: Text(
                   '$score%',
@@ -512,7 +512,7 @@ class _AdminHotLeadsPageState extends State<AdminHotLeadsPage> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: color.withAlpha(35),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,

@@ -206,7 +206,7 @@ class _SignupPageState extends State<SignupPage> {
           backgroundColor: isDark ? const Color(0xFFCF6679) : Colors.red,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
           margin: const EdgeInsets.all(16),
         ),
       );
@@ -244,7 +244,7 @@ class _SignupPageState extends State<SignupPage> {
       builder: (dialogCtx) => Dialog(
         backgroundColor: Brand.surface(isDark),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(Brand.r(24)),
           side: isDark
               ? BorderSide(color: Brand.darkBorder, width: 1)
               : BorderSide.none,
@@ -261,7 +261,7 @@ class _SignupPageState extends State<SignupPage> {
                   color: isDark
                       ? Brand.lightGreen.withAlpha(((0.12) * 255).toInt())
                       : Brand.lightGreenSurface,
-                  borderRadius: BorderRadius.circular(22),
+                  borderRadius: BorderRadius.circular(Brand.r(22)),
                   border: isDark
                       ? Border.all(color: Brand.lightGreen.withAlpha(((0.15) * 255).toInt()))
                       : null,
@@ -301,7 +301,7 @@ class _SignupPageState extends State<SignupPage> {
                     elevation: 0,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
+                        borderRadius: BorderRadius.circular(Brand.r(14))),
                   ),
                   child: const Text('Sign In Now',
                       style:
@@ -343,7 +343,7 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                 borderRadius: Brand.isWorkshop
                     ? BorderRadius.zero
-                    : const BorderRadius.only(
+                    : BorderRadius.only(
                         bottomLeft: Radius.circular(40),
                         bottomRight: Radius.circular(40),
                       ),
@@ -403,7 +403,7 @@ class _SignupPageState extends State<SignupPage> {
                                 ? Brand.darkCardElevated
                                 : Colors.white.withAlpha(((0.15) * 255).toInt()),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12)),
+                                borderRadius: BorderRadius.circular(Brand.r(12))),
                           ),
                         ),
                         const SizedBox(width: 12),
@@ -459,7 +459,7 @@ class _SignupPageState extends State<SignupPage> {
                             color: Brand.surface(isDark),
                             borderRadius: Brand.isWorkshop
                                 ? BorderRadius.circular(8)
-                                : BorderRadius.circular(24),
+                                : BorderRadius.circular(Brand.r(24)),
                             border: Brand.isWorkshop
                                 ? Border.all(
                                     color: Brand.cardBorder(isDark),
@@ -508,7 +508,7 @@ class _SignupPageState extends State<SignupPage> {
         color: isDark
             ? Brand.lightGreen.withAlpha(((0.08) * 255).toInt())
             : Brand.lightGreenSurface,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border: Border.all(
           color: isDark
               ? Brand.lightGreen.withAlpha(((0.15) * 255).toInt())
@@ -622,7 +622,7 @@ class _SignupPageState extends State<SignupPage> {
               color: isDark
                   ? Brand.darkIconActive.withAlpha(((0.12) * 255).toInt())
                   : Brand.royalBlueSurface,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
               border: isDark
                   ? Border.all(color: Brand.darkIconActive.withAlpha(((0.15) * 255).toInt()))
                   : null,
@@ -709,7 +709,7 @@ class _SignupPageState extends State<SignupPage> {
         Container(
           decoration: BoxDecoration(
             color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             border: Border.all(
               color: _referralValid == true
                   ? (isDark ? Brand.lightGreenBright : Brand.lightGreen)
@@ -780,7 +780,7 @@ class _SignupPageState extends State<SignupPage> {
                               : null,
               enabledBorder: InputBorder.none,
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 borderSide: BorderSide(
                   color: isDark ? Brand.darkIconActive : Brand.royalBlue,
                   width: 1.5,
@@ -862,7 +862,7 @@ class _SignupPageState extends State<SignupPage> {
               color: isDark
                   ? Brand.lightGreen.withAlpha(((0.12) * 255).toInt())
                   : Brand.lightGreenSurface,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
               border: isDark
                   ? Border.all(color: Brand.lightGreen.withAlpha(((0.15) * 255).toInt()))
                   : null,
@@ -918,7 +918,7 @@ class _SignupPageState extends State<SignupPage> {
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             border: Border.all(
               color: isDark ? Brand.darkBorderLight : Brand.borderLight,
             ),
@@ -1012,13 +1012,13 @@ class _SignupPageState extends State<SignupPage> {
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkBorderLight : Brand.borderLight,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           borderSide: BorderSide(
             color: readOnly
                 ? (isDark ? Brand.darkBorderLight : Brand.borderLight)
@@ -1027,11 +1027,11 @@ class _SignupPageState extends State<SignupPage> {
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           borderSide: BorderSide(color: Colors.red.shade400),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           borderSide: BorderSide(color: Colors.red.shade400, width: 1.5),
         ),
       ),
@@ -1083,24 +1083,24 @@ class _SignupPageState extends State<SignupPage> {
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkBorderLight : Brand.borderLight,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkIconActive : Brand.royalBlue,
             width: 1.5,
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           borderSide: BorderSide(color: Colors.red.shade400),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           borderSide: BorderSide(color: Colors.red.shade400, width: 1.5),
         ),
       ),
@@ -1112,7 +1112,7 @@ class _SignupPageState extends State<SignupPage> {
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(24))),
         border: Border(
           top: BorderSide(
             color: isDark ? Brand.darkBorder : Brand.borderLight,
@@ -1161,7 +1161,7 @@ class _SignupPageState extends State<SignupPage> {
                             isDark ? const Color(0xFFCF6679) : Colors.red,
                         behavior: SnackBarBehavior.floating,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12)),
+                            borderRadius: BorderRadius.circular(Brand.r(12))),
                         margin: const EdgeInsets.all(16),
                       ));
                       return;
@@ -1179,7 +1179,7 @@ class _SignupPageState extends State<SignupPage> {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                       boxShadow: isDark
                           ? null
                           : [
@@ -1219,7 +1219,7 @@ class _SignupPageState extends State<SignupPage> {
                             isDark ? Brand.darkBorderLight : Brand.borderLight,
                         width: 1.5,
                       ),
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                     ),
                     child: Icon(Icons.arrow_back_rounded,
                         color:
@@ -1241,7 +1241,7 @@ class _SignupPageState extends State<SignupPage> {
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                         boxShadow: isDark
                             ? null
                             : [

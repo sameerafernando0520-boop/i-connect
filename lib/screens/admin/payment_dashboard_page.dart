@@ -194,7 +194,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
       decoration: BoxDecoration(
         // FIX: replaced Colors.white with Brand.cardLight
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -206,7 +206,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: color.withAlpha(26),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: Icon(icon, size: 20, color: color),
           ),
@@ -256,7 +256,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
       decoration: BoxDecoration(
         // FIX: replaced Colors.white with Brand.cardLight
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -481,7 +481,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
       decoration: BoxDecoration(
         // FIX: replaced Colors.white with Brand.cardLight
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -654,9 +654,9 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
       child: Material(
         // FIX: replaced Colors.white with Brand.cardLight
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         child: InkWell(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
@@ -668,7 +668,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
           child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(Brand.r(16)),
               border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -681,7 +681,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
                   height: 42,
                   decoration: BoxDecoration(
                     color: sColor.withAlpha(26),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                   ),
                   child: Icon(
                     Icons.receipt_rounded,
@@ -823,7 +823,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
         decoration: BoxDecoration(
           // FIX: replaced Colors.white with Brand.cardLight
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -836,7 +836,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
               height: 42,
               decoration: BoxDecoration(
                 color: Brand.lightGreen.withAlpha(26),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
               ),
               child: Icon(
                 _methodIcon(method),
@@ -1038,7 +1038,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
       decoration: BoxDecoration(
         // FIX: replaced Colors.white with Brand.cardLight
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -1075,7 +1075,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
               decoration: BoxDecoration(
                 // FIX: replaced Colors.white with Brand.cardLight
                 color: Brand.surface(isDark),
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(Brand.r(18)),
               ),
             ),
           ),
@@ -1150,7 +1150,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
                 backgroundColor: Brand.royalBlue,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 24,

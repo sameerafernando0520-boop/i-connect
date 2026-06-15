@@ -155,7 +155,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
         ]),
         backgroundColor: color,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       ),
     );
   }
@@ -247,17 +247,17 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
           filled: true,
           fillColor: Brand.surface(isDark),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             borderSide:
                 BorderSide(color: isDark ? Brand.darkBorder : Brand.borderLight),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             borderSide:
                 BorderSide(color: isDark ? Brand.darkBorder : Brand.borderLight),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             borderSide: BorderSide(color: Brand.royalBlue, width: 1.4),
           ),
           contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
@@ -288,7 +288,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
                 color: sel
                     ? t.color.withAlpha(isDark ? 50 : 30)
                     : (Brand.surface(isDark)),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 border: Border.all(
                   color: sel
                       ? t.color
@@ -408,11 +408,11 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
         if (saved == true) _load();
       },
       onLongPress: () => _delete(m),
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(Brand.r(16)),
       child: Container(
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark ? Border.all(color: Brand.darkBorder) : null,
         ),
         child: Padding(
@@ -426,7 +426,7 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
                 height: 60,
                 decoration: BoxDecoration(
                   color: t.color.withAlpha(isDark ? 60 : 25),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 clipBehavior: Clip.antiAlias,
                 child: thumbnail != null && thumbnail.isNotEmpty

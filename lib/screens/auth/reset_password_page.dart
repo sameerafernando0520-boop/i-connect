@@ -113,7 +113,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   height: 72,
                   decoration: BoxDecoration(
                     color: Brand.royalBlue.withAlpha(30),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(Brand.r(20)),
                   ),
                   child: const Icon(
                     Icons.lock_reset_rounded,
@@ -164,7 +164,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                           setState(() => _obscureNew = !_obscureNew),
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                       borderSide: BorderSide(
                         color: isDark
                             ? Brand.darkBorder
@@ -172,7 +172,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                       borderSide: BorderSide(
                         color: isDark
                             ? Brand.darkBorder
@@ -201,7 +201,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                           () => _obscureConfirm = !_obscureConfirm),
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                       borderSide: BorderSide(
                         color: isDark
                             ? Brand.darkBorder
@@ -209,7 +209,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                       borderSide: BorderSide(
                         color: isDark
                             ? Brand.darkBorder
@@ -226,7 +226,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                     ),
                   ),
                   child: _submitting

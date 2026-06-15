@@ -289,7 +289,7 @@ class _EngineerInstallationDetailPageState
       ]),
       backgroundColor: error ? Colors.red : const Color(0xFF10B981),
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
     ));
   }
 
@@ -367,7 +367,7 @@ class _EngineerInstallationDetailPageState
                 backgroundColor: _engAccent,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               ),
             ),
@@ -643,7 +643,7 @@ class _EngineerInstallationDetailPageState
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       decoration: BoxDecoration(
         color: _cardColor,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: _borderColor),
       ),
       child: Row(
@@ -783,7 +783,7 @@ class _EngineerInstallationDetailPageState
           backgroundColor: color,
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(14)),
+              borderRadius: BorderRadius.circular(Brand.r(14))),
         ),
         onPressed: _actionLoading ? null : onTap,
       ),
@@ -860,7 +860,7 @@ class _EngineerInstallationDetailPageState
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: _cardColor,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: _borderColor),
       ),
       child: child,

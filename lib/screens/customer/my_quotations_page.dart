@@ -182,7 +182,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
           color: sel
               ? Brand.royalBlue.withAlpha(isDark ? 40 : 25)
               : (isDark ? Brand.darkCard : Colors.white),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: sel
                 ? Brand.royalBlue
@@ -235,7 +235,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -372,7 +372,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: c.withAlpha(26),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
       ),
       child: Text(
         _qStatusLabel(status).toUpperCase(),
@@ -396,7 +396,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -425,7 +425,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
           color: isDark
               ? Brand.darkBorder.withAlpha(80)
               : Brand.borderLight.withAlpha(180),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
         ),
       );
 
@@ -550,7 +550,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
         backgroundColor: Theme.of(ctx).brightness == Brightness.dark
             ? Brand.darkCard
             : Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(18))),
         title: Text(
           '${verb[0].toUpperCase()}${verb.substring(1)} Quotation?',
           style: TextStyle(
@@ -587,7 +587,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
                   ? Brand.lightGreen
                   : const Color(0xFFEF4444),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(Brand.r(10))),
             ),
             onPressed: () => Navigator.pop(ctx, true),
             child: Text(verb[0].toUpperCase() + verb.substring(1)),
@@ -725,7 +725,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
             sc.withAlpha(isDark ? 25 : 12),
           ],
         ),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Brand.r(22)),
         border: Border.all(color: sc.withAlpha(isDark ? 70 : 50)),
       ),
       child: Column(
@@ -734,7 +734,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
             decoration: BoxDecoration(
               color: sc.withAlpha(40),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(Brand.r(20)),
               border: Border.all(color: sc.withAlpha(90)),
             ),
             child: Row(
@@ -896,7 +896,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: Brand.royalBlue.withAlpha(isDark ? 40 : 20),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: Text(
                     '${i + 1}',
@@ -1074,7 +1074,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
               side: const BorderSide(color: Color(0xFFEF4444)),
               padding: const EdgeInsets.symmetric(vertical: 14),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14)),
+                  borderRadius: BorderRadius.circular(Brand.r(14))),
             ),
           ),
         ),
@@ -1103,7 +1103,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 14),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14)),
+                  borderRadius: BorderRadius.circular(Brand.r(14))),
             ),
           ),
         ),
@@ -1120,7 +1120,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
         height: 120,
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -1140,7 +1140,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,

@@ -71,7 +71,7 @@ class _EngineeringAdminManagementPageState
         return AlertDialog(
           backgroundColor: Brand.surface(isDark),
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
           title: Text(
             'Remove Engineering Admin',
             style: TextStyle(
@@ -131,7 +131,7 @@ class _EngineeringAdminManagementPageState
         backgroundColor: AdminColors.error,
         behavior: SnackBarBehavior.floating,
         shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       ));
       return;
     }
@@ -147,7 +147,7 @@ class _EngineeringAdminManagementPageState
       backgroundColor: AdminColors.success,
       behavior: SnackBarBehavior.floating,
       shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
     ));
     _load();
   }
@@ -281,7 +281,7 @@ class _EngineeringAdminManagementPageState
                 backgroundColor: _eaAccent,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
                 elevation: 0,
                 padding: const EdgeInsets.symmetric(
                     horizontal: 20, vertical: 12),
@@ -314,7 +314,7 @@ class _EngineeringAdminManagementPageState
           Container(
             decoration: BoxDecoration(
               color: Brand.surface(isDark),
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(Brand.r(18)),
               border: isDark ? Border.all(color: Brand.darkBorder) : null,
             ),
             child: Column(

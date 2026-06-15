@@ -324,7 +324,7 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
                     fillColor: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
                     contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       borderSide: BorderSide.none,
                     ),
                   ),
@@ -504,7 +504,7 @@ class _SummaryChip extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       decoration: BoxDecoration(
         color: color.withAlpha(20),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: Border.all(color: color.withAlpha(60)),
       ),
       child: Row(
@@ -576,7 +576,7 @@ class _LeaveCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: Border.all(color: AdminColors.border(context)),
           boxShadow: isDark
               ? []
@@ -594,7 +594,7 @@ class _LeaveCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     decoration: BoxDecoration(
                       color: typeColor.withAlpha(20),
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(Brand.r(20)),
                       border: Border.all(color: typeColor.withAlpha(60)),
                     ),
                     child: Text(
@@ -611,7 +611,7 @@ class _LeaveCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     decoration: BoxDecoration(
                       color: statusColor.withAlpha(20),
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(Brand.r(20)),
                     ),
                     child: Text(
                       _statusLabel(status),

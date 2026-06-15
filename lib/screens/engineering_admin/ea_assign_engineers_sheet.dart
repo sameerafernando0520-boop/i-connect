@@ -290,7 +290,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
                   height: 38,
                   decoration: BoxDecoration(
                     color: _eaAccent.withAlpha(38),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                   ),
                   child:
                       const Icon(Icons.engineering_rounded, color: _eaAccent),
@@ -368,7 +368,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
                     isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                 contentPadding: const EdgeInsets.symmetric(vertical: 8),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   borderSide: BorderSide.none,
                 ),
               ),
@@ -421,7 +421,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
                   disabledBackgroundColor: AdminColors.border(context),
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16)),
+                      borderRadius: BorderRadius.circular(Brand.r(16))),
                   elevation: 0,
                 ),
                 child: _saving
@@ -456,12 +456,12 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(14),
+      borderRadius: BorderRadius.circular(Brand.r(14)),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
         ),
         child: Row(
           children: [
@@ -508,14 +508,14 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
           _leadId ??= id;
         }
       }),
-      borderRadius: BorderRadius.circular(14),
+      borderRadius: BorderRadius.circular(Brand.r(14)),
       child: Container(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
         decoration: BoxDecoration(
           color: selected
               ? _eaAccent.withAlpha(20)
               : (isDark ? Brand.darkCardElevated : Brand.scaffoldLight),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: Border.all(
             color: selected
                 ? _eaAccent.withAlpha(102)

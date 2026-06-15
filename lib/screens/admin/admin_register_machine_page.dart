@@ -1,10 +1,11 @@
-// lib/screens/admin/admin_register_machine_page.dart
+﻿// lib/screens/admin/admin_register_machine_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../services/points_service.dart';
 
@@ -369,7 +370,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
         backgroundColor: isError ? AdminColors.error : AdminColors.accent,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
         ),
         margin: const EdgeInsets.all(16),
       ),
@@ -454,7 +455,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
                                   height: 42,
                                   decoration: BoxDecoration(
                                     color: _primary.withAlpha(20),
-                                    borderRadius: BorderRadius.circular(12),
+                                    borderRadius: BorderRadius.circular(Brand.r(12)),
                                   ),
                                   child: Center(
                                     child: Text(
@@ -590,7 +591,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
                                   height: 42,
                                   decoration: BoxDecoration(
                                     color: _accent.withAlpha(20),
-                                    borderRadius: BorderRadius.circular(12),
+                                    borderRadius: BorderRadius.circular(Brand.r(12)),
                                     border: Border.all(
                                       color: _accent.withAlpha(38),
                                       width: 1.5,
@@ -674,10 +675,13 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
 
     return Scaffold(
       backgroundColor: _bg,
+      appBar: DsPageHeader(
+        title: 'Register Machine',
+        accent: HeroAccent.navy,
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            _buildTopHeader(),
             Expanded(
               child: _isLoading
                   ? _buildLoadingSkeleton()
@@ -813,7 +817,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
                                     padding: const EdgeInsets.all(14),
                                     decoration: BoxDecoration(
                                       color: _primary.withAlpha(10),
-                                      borderRadius: BorderRadius.circular(12),
+                                      borderRadius: BorderRadius.circular(Brand.r(12)),
                                       border: Border.all(color: _border),
                                     ),
                                     child: Row(
@@ -966,7 +970,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
                   end: Alignment.bottomRight,
                 ),
           color: _isSaving ? _border : null,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           boxShadow: _isSaving
               ? []
               : [
@@ -1011,61 +1015,6 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
     );
   }
 
-  // ════════════════════════════════════════════════════════
-  //  HEADER
-  // ════════════════════════════════════════════════════════
-
-  Widget _buildTopHeader() {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: _cardBg,
-                borderRadius: BorderRadius.circular(12),
-                border: _isDark ? Border.all(color: _border) : null,
-                boxShadow: _cardShadow,
-              ),
-              child: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: _isDark ? Brand.darkTextSecondary : AdminColors.primary,
-                size: 18,
-              ),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Register Machine',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.3,
-                    color: _textPrimary,
-                  ),
-                ),
-                Text(
-                  'Fill in the details below',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: _textMuted,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   // ════════════════════════════════════════════════════════
   //  SECTION CARD
@@ -1080,7 +1029,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
     return Container(
       decoration: BoxDecoration(
         color: _cardBg,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: _isDark ? Border.all(color: _border) : null,
         boxShadow: _cardShadow,
       ),
@@ -1096,7 +1045,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
                   height: 34,
                   decoration: BoxDecoration(
                     color: _primary.withAlpha(20),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: Icon(
                     icon,
@@ -1143,7 +1092,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: _inputBg,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: Border.all(
             color: hasValue ? _primary.withAlpha(77) : _border,
             width: hasValue ? 1.5 : 1,
@@ -1160,7 +1109,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
                     : (_isDark
                         ? Brand.darkBorderLight
                         : const Color(0xFFF1F5F9)),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: Icon(
                 icon,
@@ -1220,7 +1169,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
     return Container(
       decoration: BoxDecoration(
         color: _inputBg,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: Border.all(color: _border),
       ),
       child: TextFormField(
@@ -1251,18 +1200,18 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
             vertical: 14,
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             borderSide: BorderSide.none,
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             borderSide: BorderSide(
               color: _primary,
               width: 1.5,
             ),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             borderSide: BorderSide.none,
           ),
         ),
@@ -1286,7 +1235,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
         ),
         decoration: BoxDecoration(
           color: _inputBg,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: Border.all(
             color: val != null ? _primary.withAlpha(77) : _border,
             width: val != null ? 1.5 : 1,
@@ -1344,7 +1293,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
     return Container(
       decoration: BoxDecoration(
         color: _inputBg,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: Border.all(color: _border),
       ),
       child: TextField(
@@ -1368,7 +1317,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
             vertical: 14,
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             borderSide: BorderSide.none,
           ),
         ),
@@ -1404,7 +1353,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         boxShadow: [
           BoxShadow(
             color: Brand.royalBlue.withAlpha(89),
@@ -1425,7 +1374,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
                 ),
                 decoration: BoxDecoration(
                   color: _isDark ? Brand.lightGreenBright : Brand.lightGreen,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(Brand.r(20)),
                 ),
                 child: const Row(
                   mainAxisSize: MainAxisSize.min,
@@ -1489,7 +1438,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
               color: Colors.white.withAlpha(26),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               border: Border.all(
                 color: Colors.white.withAlpha(38),
               ),
@@ -1586,7 +1535,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
     return Container(
       decoration: BoxDecoration(
         color: _cardBg,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: _isDark ? Border.all(color: _border) : null,
         boxShadow: _cardShadow,
       ),
@@ -1604,7 +1553,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
                     height: 34,
                     decoration: BoxDecoration(
                       color: _primary.withAlpha(20),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Icon(
                       Icons.event_note_rounded,
@@ -1736,7 +1685,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
           height: 54,
           decoration: BoxDecoration(
             color: shimmerColor,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
           ),
         ),
       ],
@@ -1751,7 +1700,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
       height: height,
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: _isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
     );

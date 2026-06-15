@@ -121,7 +121,7 @@ class _MaTiersPageState extends State<MaTiersPage>
       content: Text(msg, style: const TextStyle(color: Colors.white)),
       backgroundColor: AdminColors.error,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
     ));
   }
 
@@ -134,7 +134,7 @@ class _MaTiersPageState extends State<MaTiersPage>
       ]),
       backgroundColor: AdminColors.success,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       duration: const Duration(seconds: 2),
     ));
   }
@@ -219,7 +219,7 @@ class _MaTiersPageState extends State<MaTiersPage>
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: Brand.surface(isDark),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               border: Border.all(color: colors[i].withAlpha(isDark ? 80 : 60)),
               boxShadow: isDark ? null : [
                 BoxShadow(color: Colors.black.withAlpha(6), blurRadius: 10, offset: const Offset(0, 2)),
@@ -252,7 +252,7 @@ class _MaTiersPageState extends State<MaTiersPage>
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: Border.all(color: color.withAlpha(isDark ? 60 : 40)),
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 16, offset: const Offset(0, 2)),
@@ -265,7 +265,7 @@ class _MaTiersPageState extends State<MaTiersPage>
           width: 44, height: 44,
           decoration: BoxDecoration(
             color: color.withAlpha(isDark ? 30 : 15),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
           ),
           child: Center(
             child: Text(tierName[0],
@@ -350,7 +350,7 @@ class _MaTiersPageState extends State<MaTiersPage>
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(6), blurRadius: 10, offset: const Offset(0, 1)),

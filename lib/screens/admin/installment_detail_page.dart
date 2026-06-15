@@ -102,7 +102,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
         backgroundColor: err ? const Color(0xFFDC2626) : Brand.lightGreen,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
         ),
         margin: const EdgeInsets.all(16),
       ),
@@ -223,16 +223,16 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                       filled: true,
                       fillColor: dk ? Brand.darkBg : Brand.scaffoldLight,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         borderSide: BorderSide(
                           color: dk ? Brand.darkBorder : Brand.borderLight,
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         borderSide: const BorderSide(
                           color: Brand.royalBlue,
                           width: 1.5,
@@ -257,16 +257,16 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                       filled: true,
                       fillColor: dk ? Brand.darkBg : Brand.scaffoldLight,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         borderSide: BorderSide(
                           color: dk ? Brand.darkBorder : Brand.borderLight,
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         borderSide: const BorderSide(
                           color: Brand.royalBlue,
                           width: 1.5,
@@ -292,7 +292,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                   : Brand.borderLight,
                             ),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(Brand.r(12)),
                             ),
                             foregroundColor: dk
                                 ? Brand.darkTextSecondary
@@ -317,7 +317,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                               vertical: 14,
                             ),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(Brand.r(12)),
                             ),
                           ),
                         ),
@@ -562,7 +562,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: dk ? Brand.darkCard : Brand.cardLight,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: dk ? Brand.darkBorder : Brand.borderLight,
           ),
@@ -610,7 +610,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: bgColor,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -734,7 +734,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
             decoration: BoxDecoration(
               color:
                   dk ? Brand.lightGreen.withAlpha(26) : Brand.lightGreenSurface,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -799,7 +799,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                 height: 12,
                 decoration: BoxDecoration(
                   color: dk ? Brand.darkBorderLight : Brand.borderLight,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                 ),
               ),
               FractionallySizedBox(
@@ -813,7 +813,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                         Brand.lightGreenBright,
                       ],
                     ),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                 ),
               ),
@@ -967,7 +967,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: itemBg,
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         border: Border.all(
                           color: itemBorder,
                         ),
@@ -994,7 +994,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                 ),
                                 decoration: BoxDecoration(
                                   color: dotColor.withAlpha(38),
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(Brand.r(10)),
                                 ),
                                 child: Text(
                                   status.toUpperCase(),
@@ -1296,7 +1296,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                 backgroundColor: Brand.royalBlue,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 24,
@@ -1505,7 +1505,7 @@ class _PaymentReceiptsStripState extends State<_PaymentReceiptsStrip> {
                 height: 70,
                 decoration: BoxDecoration(
                   color: const Color(0xFFEF4444).withAlpha(26),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                   border: Border.all(
                     color: const Color(0xFFEF4444).withAlpha(102),
                   ),
@@ -1523,7 +1523,7 @@ class _PaymentReceiptsStripState extends State<_PaymentReceiptsStrip> {
                 height: 70,
                 decoration: BoxDecoration(
                   color: fallbackBg,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                   border: Border.all(
                     color: widget.isDark ? Brand.darkBorder : Brand.borderLight,
                   ),
@@ -1539,7 +1539,7 @@ class _PaymentReceiptsStripState extends State<_PaymentReceiptsStrip> {
           return GestureDetector(
             onTap: () => _openFullScreen(url),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
               child: CachedNetworkImage(
                 imageUrl: url,
                 width: 70,

@@ -315,7 +315,7 @@ class _EaLeaveDetailPageState extends State<EaLeaveDetailPage> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: statusColor.withAlpha(15),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: statusColor.withAlpha(60)),
       ),
       child: Row(
@@ -354,7 +354,7 @@ class _EaLeaveDetailPageState extends State<EaLeaveDetailPage> {
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
             decoration: BoxDecoration(
               color: statusColor.withAlpha(25),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(Brand.r(20)),
               border: Border.all(color: statusColor.withAlpha(80)),
             ),
             child: Text(
@@ -481,7 +481,7 @@ class _EaLeaveDetailPageState extends State<EaLeaveDetailPage> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
         boxShadow: isDark
             ? []

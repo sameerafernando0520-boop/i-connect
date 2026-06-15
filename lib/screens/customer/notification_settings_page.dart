@@ -198,7 +198,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
       context: context,
       builder: (dialogCtx) => Dialog(
         backgroundColor: Brand.surface(isDark),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(24))),
         child: Padding(
           padding: const EdgeInsets.all(28),
           child: Column(
@@ -209,7 +209,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
                 height: 70,
                 decoration: BoxDecoration(
                   color: Colors.red.withAlpha(((isDark ? 0.15 : 0.08) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(Brand.r(20)),
                 ),
                 child: Icon(Icons.delete_sweep_rounded,
                     color: Colors.red.shade400, size: 34),
@@ -247,7 +247,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
                                 isDark ? Brand.darkBorder : Brand.borderLight,
                             width: 1.5,
                           ),
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                         ),
                         child: Center(
                           child: Text(
@@ -272,7 +272,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         decoration: BoxDecoration(
                           color: Colors.red,
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                         ),
                         child: const Center(
                           child: Text(
@@ -351,9 +351,9 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
             timePickerTheme: TimePickerThemeData(
               backgroundColor: Brand.surface(isDark),
               hourMinuteShape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14)),
+                  borderRadius: BorderRadius.circular(Brand.r(14))),
               dayPeriodShape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14)),
+                  borderRadius: BorderRadius.circular(Brand.r(14))),
             ),
           ),
           child: child!,
@@ -410,7 +410,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
         ),
         backgroundColor: isError ? Colors.red : Brand.lightGreen,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.all(16),
       ),
     );
@@ -434,7 +434,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
                 decoration: BoxDecoration(
                   color:
                       isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(Brand.r(20)),
                 ),
                 child: Center(
                   child: SizedBox(
@@ -501,7 +501,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
               color: Colors.white.withAlpha(20),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(Brand.r(20)),
               border: Border.all(color: const Color(0xFF2A3F6E)),
             ),
             child: Row(
@@ -542,7 +542,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: [
           BoxShadow(
@@ -563,7 +563,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
               color: isDark
                   ? accent.withAlpha(((0.15) * 255).toInt())
                   : Colors.white.withAlpha(((0.15) * 255).toInt()),
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(Brand.r(16)),
             ),
             child: Icon(
               Icons.notifications_rounded,
@@ -601,7 +601,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
               color: _notificationsEnabled
                   ? Brand.lightGreen.withAlpha(((isDark ? 0.2 : 1) * 255).toInt())
                   : Colors.red.withAlpha(((isDark ? 0.2 : 0.8) * 255).toInt()),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(Brand.r(20)),
             ),
             child: Text(
               _notificationsEnabled ? 'ON' : 'OFF',
@@ -630,7 +630,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: Border.all(
           color: _notificationsEnabled
               ? accent.withAlpha(((0.3) * 255).toInt())
@@ -656,7 +656,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
               color: _notificationsEnabled
                   ? accent.withAlpha(((0.1) * 255).toInt())
                   : (isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9)),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
             ),
             child: Icon(
               _notificationsEnabled
@@ -868,7 +868,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: Border.all(
           color: _quietHoursEnabled
               ? quietColor.withAlpha(((0.3) * 255).toInt())
@@ -892,7 +892,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
                 height: 40,
                 decoration: BoxDecoration(
                   color: quietColor.withAlpha(((0.1) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: const Icon(Icons.nightlight_round,
                     color: quietColor, size: 22),
@@ -983,7 +983,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: quietColor.withAlpha(((0.06) * 255).toInt()),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
                 border: Border.all(color: quietColor.withAlpha(((0.15) * 255).toInt())),
               ),
               child: Row(
@@ -1024,7 +1024,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
         ),
@@ -1099,7 +1099,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
       padding: const EdgeInsets.symmetric(vertical: 6),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
@@ -1158,7 +1158,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
@@ -1180,7 +1180,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
                 decoration: BoxDecoration(
                   color:
                       isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Icon(icon, color: accent, size: 22),
               ),
@@ -1229,7 +1229,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
                 height: 42,
                 decoration: BoxDecoration(
                   color: color.withAlpha(((0.1) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: isSaving
                     ? Padding(
@@ -1302,7 +1302,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
             height: 38,
             decoration: BoxDecoration(
               color: color.withAlpha(((0.1) * 255).toInt()),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: Icon(icon, color: color, size: 20),
           ),

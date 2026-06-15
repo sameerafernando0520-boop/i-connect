@@ -1,4 +1,4 @@
-// lib/screens/admin/customer_detail_page.dart
+﻿// lib/screens/admin/customer_detail_page.dart
 // Fixed: AdminColors.background/surface/textPrimary/primaryLight removed,
 //   Future.wait<dynamic>, mounted guards, spread-safe, AlwaysScrollable
 
@@ -7,6 +7,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
@@ -353,7 +354,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
         ),
         backgroundColor: isError ? AdminColors.error : AdminColors.accent,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       ),
     );
@@ -412,10 +413,16 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
 
     return Scaffold(
       backgroundColor: bg,
+      appBar: DsPageHeader(
+        title: 'Customer Details',
+        accent: HeroAccent.navy,
+        actions: [
+          IconButton(icon: const Icon(Icons.refresh_rounded, color: Colors.white), onPressed: _loadCustomerData),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            _buildTopHeader(isDark),
             Expanded(
               child: RefreshIndicator(
                 onRefresh: _loadCustomerData,
@@ -473,7 +480,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                       height: 64,
                       decoration: BoxDecoration(
                         color: AdminColors.primary.withAlpha(isDark ? 30 : 20),
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(Brand.r(18)),
                       ),
                       child: const Center(
                         child: CircularProgressIndicator(
@@ -545,7 +552,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                         height: 72,
                         decoration: BoxDecoration(
                           color: AdminColors.error.withAlpha(20),
-                          borderRadius: BorderRadius.circular(22),
+                          borderRadius: BorderRadius.circular(Brand.r(22)),
                         ),
                         child: const Icon(
                           Icons.error_outline_rounded,
@@ -581,7 +588,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                           backgroundColor: AdminColors.primary,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(Brand.r(12)),
                           ),
                           padding: const EdgeInsets.symmetric(
                               horizontal: 28, vertical: 12),
@@ -608,7 +615,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
         height: 42,
         decoration: BoxDecoration(
           color: _cardBg(isDark),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark ? Border.all(color: Brand.darkBorder) : null,
           boxShadow: isDark
               ? null
@@ -625,49 +632,6 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
           color: isDark ? Brand.darkTextPrimary : AdminColors.primary,
           size: 18,
         ),
-      ),
-    );
-  }
-
-  // ─── TOP HEADER ────────────────────────────────────────────
-
-  Widget _buildTopHeader(bool isDark) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-      child: Row(
-        children: [
-          _buildHeaderButton(
-            isDark,
-            Icons.arrow_back_ios_new_rounded,
-            () => Navigator.pop(context),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Customer Details',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.3,
-                    color: isDark ? Brand.darkTextPrimary : AdminColors.primary,
-                  ),
-                ),
-                Text(
-                  _customer?['company_name']?.toString() ??
-                      'iFrontiers Customer',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: _textSub(isDark),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          _buildHeaderButton(isDark, Icons.refresh_rounded, _loadCustomerData),
-        ],
       ),
     );
   }
@@ -696,7 +660,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         boxShadow: isDark
             ? null
             : [
@@ -717,7 +681,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                 height: 60,
                 decoration: BoxDecoration(
                   color: Colors.white.withAlpha(38),
-                  borderRadius: BorderRadius.circular(18),
+                  borderRadius: BorderRadius.circular(Brand.r(18)),
                   border: Border.all(
                     color: Colors.white.withAlpha(50),
                     width: 2,
@@ -761,7 +725,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                               horizontal: 8, vertical: 3),
                           decoration: BoxDecoration(
                             color: AdminColors.accent,
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(Brand.r(10)),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -808,7 +772,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
             decoration: BoxDecoration(
               color: Colors.white.withAlpha(25),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -840,7 +804,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
     final photo = _customer?['profile_photo']?.toString() ?? '';
     if (photo.isNotEmpty) {
       return ClipRRect(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         child: CachedNetworkImage(
           imageUrl: photo,
           fit: BoxFit.cover,
@@ -907,7 +871,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: cardBg,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
             ? null
@@ -994,7 +958,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                 elevation: 0,
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
               ),
             ),
@@ -1017,7 +981,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: cardBg,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
             ? null
@@ -1066,13 +1030,13 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                 height: 44,
                 decoration: BoxDecoration(
                   color: AdminColors.accent.withAlpha(isDark ? 38 : 26),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: _connector != null &&
                         (_connector!['profile_photo'] as String?)?.isNotEmpty ==
                             true
                     ? ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         child: CachedNetworkImage(
                           imageUrl: _connector!['profile_photo'] as String,
                           fit: BoxFit.cover,
@@ -1152,7 +1116,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                   padding:
                       const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(Brand.r(10))),
                 ),
               ),
             ],
@@ -1171,7 +1135,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
           height: 36,
           decoration: BoxDecoration(
             color: AdminColors.primary.withAlpha(isDark ? 30 : 20),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Brand.r(10)),
           ),
           child: Icon(icon, color: AdminColors.primary, size: 18),
         ),
@@ -1302,7 +1266,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                                     c['id'] == _customer?['connector_id'];
                                 final photo = c['profile_photo'] as String?;
                                 return InkWell(
-                                  borderRadius: BorderRadius.circular(14),
+                                  borderRadius: BorderRadius.circular(Brand.r(14)),
                                   onTap: () => Navigator.pop(
                                       sheetCtx, c['id'] as String),
                                   child: Container(
@@ -1315,7 +1279,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                                               ? Brand.darkCardElevated
                                               : Brand.scaffoldLight),
                                       borderRadius:
-                                          BorderRadius.circular(14),
+                                          BorderRadius.circular(Brand.r(14)),
                                       border: Border.all(
                                         color: selected
                                             ? AdminColors.primary
@@ -1333,7 +1297,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                                             color: AdminColors.primary
                                                 .withAlpha(31),
                                             borderRadius:
-                                                BorderRadius.circular(11),
+                                                BorderRadius.circular(Brand.r(11)),
                                           ),
                                           child: photo != null &&
                                                   photo.isNotEmpty
@@ -1437,7 +1401,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
           height: 36,
           decoration: BoxDecoration(
             color: color.withAlpha(isDark ? 30 : 20),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Brand.r(10)),
           ),
           child: Icon(icon, color: color, size: 18),
         ),
@@ -1470,7 +1434,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
           color: color.withAlpha(isDark ? 30 : 20),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: Border.all(color: color.withAlpha(isDark ? 60 : 38)),
         ),
         child: Row(
@@ -1550,7 +1514,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 10),
       decoration: BoxDecoration(
         color: _cardBg(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
             ? null
@@ -1569,7 +1533,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
             height: 34,
             decoration: BoxDecoration(
               color: color.withAlpha(isDark ? 30 : 25),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: iconWidget ?? Icon(icon, color: color, size: 18),
           ),
@@ -1607,7 +1571,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       margin: const EdgeInsets.fromLTRB(20, 14, 20, 0),
       decoration: BoxDecoration(
         color: cardBg,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
             ? null
@@ -1624,9 +1588,9 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
           Container(
             decoration: BoxDecoration(
               color: tabHeaderBg,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(Brand.r(20)),
+                topRight: Radius.circular(Brand.r(20)),
               ),
             ),
             child: TabBar(
@@ -1737,7 +1701,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: _itemBg(isDark),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               border: warrantyExpired
                   ? Border.all(color: AdminColors.error.withAlpha(50))
                   : isDark
@@ -1756,7 +1720,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                         AdminColors.accent.withAlpha(isDark ? 30 : 20),
                       ],
                     ),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                   ),
                   child: const Icon(
                     Icons.precision_manufacturing_rounded,
@@ -1841,7 +1805,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                         const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
                     decoration: BoxDecoration(
                       color: AdminColors.primary.withAlpha(isDark ? 30 : 15),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Text(
                       catalog!['brand'].toString(),
@@ -1906,7 +1870,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
               margin: const EdgeInsets.only(bottom: 10),
               decoration: BoxDecoration(
                 color: _itemBg(isDark),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
               ),
               child: Row(
@@ -1916,9 +1880,9 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                     height: 70,
                     decoration: BoxDecoration(
                       color: priorityColor,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(14),
-                        bottomLeft: Radius.circular(14),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(Brand.r(14)),
+                        bottomLeft: Radius.circular(Brand.r(14)),
                       ),
                     ),
                   ),
@@ -2045,7 +2009,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: _itemBg(isDark),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
               ),
               child: Row(
@@ -2060,7 +2024,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                           AdminColors.accent.withAlpha(isDark ? 30 : 20),
                         ],
                       ),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                     ),
                     child: const Icon(
                       Icons.inventory_2_rounded,
@@ -2234,7 +2198,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
                 color: _itemBg(isDark),
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(Brand.r(16)),
                 border: overdueCount > 0
                     ? Border.all(
                         color: AdminColors.error.withAlpha(60),
@@ -2255,7 +2219,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                         height: 44,
                         decoration: BoxDecoration(
                           color: statusColor.withAlpha(isDark ? 30 : 20),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                         ),
                         child: Icon(statusIcon, color: statusColor, size: 22),
                       ),
@@ -2646,7 +2610,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
           height: 48,
           decoration: BoxDecoration(
             color: _cardBg(isDark),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
           ),
           child: Center(
             child: SizedBox(
@@ -2676,7 +2640,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
           padding: const EdgeInsets.symmetric(vertical: 12),
           minimumSize: const Size.fromHeight(44),
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12)),
+              borderRadius: BorderRadius.circular(Brand.r(12))),
         ),
       ),
     );
@@ -2702,7 +2666,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       child: Container(
         decoration: BoxDecoration(
           color: _cardBg(isDark),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -2884,7 +2848,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                         backgroundColor: AdminColors.primary,
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(Brand.r(10))),
                       ),
                     ),
                   ),
@@ -2898,7 +2862,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                       foregroundColor: AdminColors.primary,
                       backgroundColor: AdminColors.primary.withAlpha(15),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(Brand.r(10))),
                     ),
                   ),
                   const SizedBox(width: 4),
@@ -2910,7 +2874,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                       foregroundColor: AdminColors.error,
                       backgroundColor: AdminColors.error.withAlpha(15),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(Brand.r(10))),
                     ),
                   ),
                 ],
@@ -2949,7 +2913,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: color.withAlpha(25),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
       ),
       child: Text(
         label,
@@ -3021,7 +2985,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                     ? Brand.darkCardElevated
                     : Brand.scaffoldLight,
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                   borderSide: BorderSide.none,
                 ),
                 contentPadding: const EdgeInsets.all(14),
@@ -3062,7 +3026,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                   backgroundColor: AdminColors.primary,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                      borderRadius: BorderRadius.circular(Brand.r(12))),
                 ),
                 child: const Text('Send Message'),
               ),
@@ -3103,7 +3067,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                 color: isDark
                     ? Brand.darkCard
                     : Brand.royalBlueSurface,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Brand.r(20)),
               ),
               child: iconWidget ??
                   Icon(
@@ -3270,7 +3234,7 @@ class _SuggestMachineSheetState extends State<_SuggestMachineSheet> {
                 color: widget.isDark
                     ? Brand.darkCardElevated
                     : Brand.scaffoldLight,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                   color: widget.isDark
                       ? Brand.darkBorder
@@ -3342,7 +3306,7 @@ class _SuggestMachineSheetState extends State<_SuggestMachineSheet> {
                   ? Brand.darkCardElevated
                   : Brand.scaffoldLight,
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 borderSide: BorderSide.none,
               ),
               contentPadding: const EdgeInsets.all(14),
@@ -3361,7 +3325,7 @@ class _SuggestMachineSheetState extends State<_SuggestMachineSheet> {
                     AdminColors.primary.withAlpha(80),
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
               ),
               child: _submitting
                   ? const SizedBox(
@@ -3462,7 +3426,7 @@ class _MachinePickerDialogState extends State<_MachinePickerDialog> {
     return Dialog(
       backgroundColor: bgColor,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20)),
+          borderRadius: BorderRadius.circular(Brand.r(20))),
       child: SizedBox(
         width: double.maxFinite,
         height: MediaQuery.of(context).size.height * 0.65,
@@ -3504,7 +3468,7 @@ class _MachinePickerDialogState extends State<_MachinePickerDialog> {
                       ? Brand.darkCardElevated
                       : Brand.scaffoldLight,
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                     borderSide: BorderSide.none,
                   ),
                   contentPadding:
@@ -3590,7 +3554,7 @@ class _MachinePickerDialogState extends State<_MachinePickerDialog> {
                                   : null,
                               shape: RoundedRectangleBorder(
                                   borderRadius:
-                                      BorderRadius.circular(10)),
+                                      BorderRadius.circular(Brand.r(10))),
                               onTap: () =>
                                   Navigator.pop(context, m),
                             );

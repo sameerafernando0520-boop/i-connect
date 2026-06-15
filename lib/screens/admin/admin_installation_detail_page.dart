@@ -273,7 +273,7 @@ class _AdminInstallationDetailPageState
                           color: isSelected
                               ? AdminColors.primary.withAlpha(20)
                               : AdminColors.bg(sheetCtx),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                           border: Border.all(
                             color: isSelected
                                 ? AdminColors.primary
@@ -387,7 +387,7 @@ class _AdminInstallationDetailPageState
                       foregroundColor: Colors.white,
                       minimumSize: const Size(double.infinity, 48),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                          borderRadius: BorderRadius.circular(Brand.r(12))),
                     ),
                     onPressed: () async {
                       if (selectedIds.isEmpty) {
@@ -915,7 +915,7 @@ class _AdminInstallationDetailPageState
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: AdminColors.card(context),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: Border.all(color: AdminColors.border(context)),
           boxShadow: isDark
               ? []
@@ -979,7 +979,7 @@ class _AdminInstallationDetailPageState
           padding:
               const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)),
+              borderRadius: BorderRadius.circular(Brand.r(10))),
         ),
         onPressed: fn,
       );

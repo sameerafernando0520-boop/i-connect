@@ -306,7 +306,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
           ),
           decoration: BoxDecoration(
             color: isDark ? Brand.darkCard : Colors.white,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
           ),
           child: Padding(
             padding: const EdgeInsets.all(24),
@@ -372,7 +372,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     fillColor:
                         isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       borderSide: BorderSide.none,
                     ),
                     contentPadding: const EdgeInsets.all(14),
@@ -406,7 +406,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     fillColor:
                         isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       borderSide: BorderSide.none,
                     ),
                     contentPadding: const EdgeInsets.all(14),
@@ -429,7 +429,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                                 isDark ? Brand.darkBorder : Brand.borderLight,
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(Brand.r(12)),
                           ),
                           padding: const EdgeInsets.symmetric(vertical: 14),
                         ),
@@ -464,7 +464,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                           backgroundColor: const Color(0xFF22C55E),
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(Brand.r(12)),
                           ),
                           padding: const EdgeInsets.symmetric(vertical: 14),
                         ),
@@ -514,7 +514,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
           ),
           decoration: BoxDecoration(
             color: isDark ? Brand.darkCard : Colors.white,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
           ),
           child: Padding(
             padding: const EdgeInsets.all(24),
@@ -538,7 +538,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                       width: 40, height: 40,
                       decoration: BoxDecoration(
                         color: const Color(0xFFEF4444).withAlpha(isDark ? 30 : 20),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                       ),
                       child: const Icon(Icons.cancel_outlined,
                           color: Color(0xFFEF4444), size: 22),
@@ -586,7 +586,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     filled: true,
                     fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       borderSide: BorderSide.none,
                     ),
                     contentPadding: const EdgeInsets.all(14),
@@ -601,7 +601,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                         style: OutlinedButton.styleFrom(
                           foregroundColor: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                           side: BorderSide(color: isDark ? Brand.darkBorder : Brand.borderLight),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
                           padding: const EdgeInsets.symmetric(vertical: 14),
                         ),
                         child: const Text('Keep'),
@@ -633,7 +633,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                         style: FilledButton.styleFrom(
                           backgroundColor: const Color(0xFFEF4444),
                           foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
                           padding: const EdgeInsets.symmetric(vertical: 14),
                         ),
                       ),
@@ -701,7 +701,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
               ),
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkCard : Colors.white,
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(24),
@@ -725,7 +725,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                           width: 40, height: 40,
                           decoration: BoxDecoration(
                             color: const Color(0xFF8B5CF6).withAlpha(isDark ? 30 : 20),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(Brand.r(10)),
                           ),
                           child: const Icon(Icons.schedule_send,
                               color: Color(0xFF8B5CF6), size: 22),
@@ -748,7 +748,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                         )),
                     const SizedBox(height: 8),
                     InkWell(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       onTap: () async {
                         final picked = await showDatePicker(
                           context: ctx,
@@ -765,7 +765,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
                         decoration: BoxDecoration(
                           color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                         ),
                         child: Row(
                           children: [
@@ -798,7 +798,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                         )),
                     const SizedBox(height: 8),
                     InkWell(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       onTap: () async {
                         final picked = await showTimePicker(
                           context: ctx,
@@ -813,7 +813,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
                         decoration: BoxDecoration(
                           color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                         ),
                         child: Row(
                           children: [
@@ -859,7 +859,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                         filled: true,
                         fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                           borderSide: BorderSide.none,
                         ),
                         contentPadding: const EdgeInsets.all(14),
@@ -885,7 +885,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                           backgroundColor: const Color(0xFF8B5CF6),
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12)),
+                            borderRadius: BorderRadius.circular(Brand.r(12))),
                         ),
                       ),
                     ),
@@ -983,7 +983,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
           ),
           decoration: BoxDecoration(
             color: isDark ? Brand.darkCard : Colors.white,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
           ),
           child: Padding(
             padding: const EdgeInsets.all(24),
@@ -1036,7 +1036,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     fillColor:
                         isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       borderSide: BorderSide.none,
                     ),
                     contentPadding: const EdgeInsets.all(14),
@@ -1052,7 +1052,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                       backgroundColor: _engAccent,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                       ),
                     ),
                     child: const Text('Save Notes',
@@ -1270,7 +1270,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: _engAccent.withAlpha(51)),
       ),
       child: Column(
@@ -1409,7 +1409,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
               child: Container(
                 decoration: BoxDecoration(
                   color: isDark ? Brand.darkCard : Colors.white,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(Brand.r(16)),
                   border: Border.all(
                     color: isActive
                         ? _engAccent.withAlpha(102)
@@ -1712,7 +1712,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     size: 20,
                     color: isDark ? Brand.darkTextTertiary : Brand.subtleLight),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
                 color: isDark ? Brand.darkCardElevated : Colors.white,
                 elevation: isDark ? 4 : 2,
                 onSelected: (v) {
@@ -1764,7 +1764,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     backgroundColor: const Color(0xFF6366F1),
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(Brand.r(10))),
                     padding: const EdgeInsets.symmetric(vertical: 10),
                   ),
                 ),
@@ -1780,7 +1780,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     backgroundColor: const Color(0xFFF97316),
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(Brand.r(10))),
                     padding: const EdgeInsets.symmetric(vertical: 10),
                   ),
                 ),
@@ -1797,7 +1797,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: Color(0xFFEF4444), width: 0.8),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(Brand.r(10))),
                     padding: const EdgeInsets.symmetric(vertical: 10),
                   ),
                 ),
@@ -1813,7 +1813,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     backgroundColor: const Color(0xFF22C55E),
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(Brand.r(10))),
                     padding: const EdgeInsets.symmetric(vertical: 10),
                   ),
                 ),
@@ -1954,7 +1954,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
     return Container(
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -1967,9 +1967,9 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
               width: 4,
               decoration: BoxDecoration(
                 color: _typeColor(type),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  bottomLeft: Radius.circular(16),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(Brand.r(16)),
+                  bottomLeft: Radius.circular(Brand.r(16)),
                 ),
               ),
             ),
@@ -2185,7 +2185,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 38 : 26),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
       ),
       child: Text(
         label,

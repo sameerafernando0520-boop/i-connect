@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/admin/customers_management_page.dart
 // REWRITTEN v18 — Full dark mode pass, CachedNetworkImage,
 //   AdminColors context-aware methods, .withAlpha() throughout
@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../services/export_service.dart';
 import '../../utils/time_utils.dart';
@@ -426,7 +427,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
         ),
         backgroundColor: isError ? AdminColors.error : AdminColors.accent,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
         margin: const EdgeInsets.all(16),
       ),
     );
@@ -461,10 +462,19 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
 
     return Scaffold(
       backgroundColor: isDark ? Brand.darkBg : AdminColors.bg(context),
+      appBar: DsPageHeader(
+        title: 'Customers',
+        subtitle: '${_customers.length} registered',
+        accent: HeroAccent.navy,
+        actions: [
+          IconButton(icon: const Icon(Icons.file_download_outlined, color: Colors.white), onPressed: _exportToExcel),
+          IconButton(icon: const Icon(Icons.sort_rounded, color: Colors.white), onPressed: () => _showSortOptions(isDark)),
+          IconButton(icon: const Icon(Icons.refresh_rounded, color: Colors.white), onPressed: _loadCustomers),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            _buildTopHeader(isDark),
             _buildSearchBar(isDark),
             _buildFilterChips(isDark),
             _buildResultsCount(isDark),
@@ -495,121 +505,6 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
     );
   }
 
-  // ─── TOP HEADER ────────────────────────────────────────────
-
-  Widget _buildTopHeader(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: isDark
-              ? Border.all(color: Brand.darkBorder)
-              : null,
-                boxShadow: isDark
-                    ? null
-                    : [
-                        BoxShadow(
-                          color: Brand.royalBlue.withAlpha(15),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-              ),
-              child: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: isDark ? Brand.darkIconActive : AdminColors.primary,
-                size: 18,
-              ),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Customers',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: isDark ? Brand.darkTextPrimary : AdminColors.primary,
-                  ),
-                ),
-                Text(
-                  '${_customers.length} registered customers',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          _buildHeaderIcon(
-            Icons.file_download_outlined,
-            isDark,
-            onTap: _exportToExcel,
-          ),
-          const SizedBox(width: 8),
-          _buildHeaderIcon(
-            Icons.sort_rounded,
-            isDark,
-            onTap: () => _showSortOptions(isDark),
-          ),
-          const SizedBox(width: 8),
-          _buildHeaderIcon(
-            Icons.refresh_rounded,
-            isDark,
-            onTap: _loadCustomers,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildHeaderIcon(
-    IconData icon,
-    bool isDark, {
-    VoidCallback? onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 42,
-        height: 42,
-        decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          border: isDark
-              ? Border.all(color: Brand.darkBorder)
-              : null,
-          boxShadow: isDark
-              ? null
-              : [
-                  BoxShadow(
-                    color: Brand.royalBlue.withAlpha(15),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-        ),
-        child: Icon(
-          icon,
-          color: isDark ? Brand.darkIconActive : AdminColors.primary,
-          size: 22,
-        ),
-      ),
-    );
-  }
-
   // ─── SEARCH BAR ────────────────────────────────────────────
 
   Widget _buildSearchBar(bool isDark) {
@@ -617,7 +512,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
       margin: const EdgeInsets.fromLTRB(20, 16, 20, 0),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -677,7 +572,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             borderSide: BorderSide.none,
           ),
         ),
@@ -726,7 +621,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                 color: isSelected
                     ? filter.color
                     : (isDark ? Brand.darkCard : Colors.white),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                   color: isSelected
                       ? filter.color
@@ -777,7 +672,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                       color: isSelected
                           ? Colors.white.withAlpha(63)
                           : filter.color.withAlpha(25),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Text(
                       '${filter.count}',
@@ -899,7 +794,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -934,11 +829,11 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(Brand.r(15)),
                         ),
                         child: photoUrl != null && photoUrl.isNotEmpty
                             ? ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
+                                borderRadius: BorderRadius.circular(Brand.r(15)),
                                 child: CachedNetworkImage(
                                   imageUrl: photoUrl,
                                   fit: BoxFit.cover,
@@ -1119,7 +1014,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                 decoration: BoxDecoration(
                   color:
                       isDark ? Brand.darkCardElevated : const Color(0xFFF4F6FA),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Row(
                   children: [
@@ -1263,7 +1158,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 38 : 30),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
       ),
       child: Text(
         label,
@@ -1361,7 +1256,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
             height: 64,
             decoration: BoxDecoration(
               color: AdminColors.primary.withAlpha(isDark ? 38 : 20),
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(Brand.r(18)),
             ),
             child: Center(
               child: CircularProgressIndicator(
@@ -1401,7 +1296,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
               height: 80,
               decoration: BoxDecoration(
                 color: AdminColors.primary.withAlpha(isDark ? 26 : 15),
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(Brand.r(24)),
               ),
               child: Icon(
                 Icons.people_outline_rounded,
@@ -1444,7 +1339,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: BoxDecoration(
                     color: AdminColors.accent.withAlpha(25),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                   ),
                   child: const Text(
                     'Clear Filters',
@@ -1605,7 +1500,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
           color: selected
               ? AdminColors.primary.withAlpha(isDark ? 51 : 26)
               : (isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9)),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: selected
                 ? AdminColors.primary
@@ -1701,7 +1596,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
           color: selected
               ? AdminColors.accent.withAlpha(isDark ? 51 : 26)
               : (isDark ? Brand.darkCardElevated : const Color(0xFFEFF5E3)),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: Border.all(
             color: selected
                 ? AdminColors.accent
@@ -1747,7 +1642,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
           color: isSelected
               ? AdminColors.primary.withAlpha(isDark ? 26 : 15)
               : Colors.transparent,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: isSelected
               ? Border.all(
                   color: AdminColors.primary.withAlpha(38),
@@ -1766,7 +1661,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                     : (isDark
                         ? Brand.darkCardElevated
                         : const Color(0xFFF1F5F9)),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: useChatGearIcon
                   ? IcChatGearIcon(

@@ -180,7 +180,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
                     fillColor:
                         isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       borderSide: BorderSide.none,
                     ),
                     contentPadding: const EdgeInsets.symmetric(
@@ -230,7 +230,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
                                 horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
                               color: AdminColors.error.withAlpha(20),
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(Brand.r(20)),
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -390,12 +390,12 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
 
     return InkWell(
       onTap: () => _openEngineerDetail(eng),
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(Brand.r(16)),
       child: Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -632,7 +632,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
           color: isActive
               ? _eaAccent.withAlpha(isDark ? 40 : 20)
               : (isDark ? Brand.darkCardElevated : Brand.scaffoldLight),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: isActive
                 ? _eaAccent.withAlpha(isDark ? 80 : 60)

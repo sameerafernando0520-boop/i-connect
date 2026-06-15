@@ -1,9 +1,10 @@
-// lib/screens/admin/admin_installments_page.dart
+﻿// lib/screens/admin/admin_installments_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import 'installment_detail_page.dart';
 import 'admin_register_machine_page.dart';
@@ -141,7 +142,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
         backgroundColor: isError ? AdminColors.error : AdminColors.accent,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
         ),
         margin: const EdgeInsets.all(16),
       ),
@@ -160,10 +161,17 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
 
     return Scaffold(
       backgroundColor: _bg(isDark),
+      appBar: DsPageHeader(
+        title: widget.customerIdFilter != null ? 'Customer Installments' : 'All Installments',
+        subtitle: '${_plans.length} plans',
+        accent: HeroAccent.navy,
+        actions: [
+          IconButton(icon: const Icon(Icons.refresh_rounded, color: Colors.white), onPressed: _load),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            _buildTopHeader(isDark),
             Expanded(
               child: _isLoading
                   ? _buildLoadingSkeleton(isDark)
@@ -214,86 +222,6 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
         ),
       ),
       floatingActionButton: isAdmin ? _buildFAB(isDark) : null,
-    );
-  }
-
-  // ─── TOP HEADER ──────────────────────────────────────────
-  Widget _buildTopHeader(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-      child: Row(
-        children: [
-          GestureDetector(
-            // L4: Guard with canPop() so a tap on the back chevron never
-            // throws "Navigator is empty" when this page was opened as the
-            // first route (e.g. deep-link into installments).
-            onTap: () {
-              final nav = Navigator.of(context);
-              if (nav.canPop()) nav.pop();
-            },
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: _cardBg(isDark),
-                borderRadius: BorderRadius.circular(12),
-                border: isDark ? Border.all(color: _border(isDark)) : null,
-                boxShadow: _shadow(isDark),
-              ),
-              child: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: isDark ? Brand.darkTextSecondary : AdminColors.primary,
-                size: 18,
-              ),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.customerIdFilter != null
-                      ? 'Customer Installments'
-                      : 'All Installments',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.3,
-                    color: isDark ? Brand.darkTextPrimary : AdminColors.primary,
-                  ),
-                ),
-                Text(
-                  '${_plans.length} plans • $_totalActive active',
-                  style: TextStyle(
-                    fontSize: 13,
-                    // FIX: replaced Colors.grey.shade500
-                    color: _textSub(isDark),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: _load,
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: _cardBg(isDark),
-                borderRadius: BorderRadius.circular(12),
-                border: isDark ? Border.all(color: _border(isDark)) : null,
-                boxShadow: _shadow(isDark),
-              ),
-              child: Icon(
-                Icons.refresh_rounded,
-                color: isDark ? Brand.darkTextSecondary : AdminColors.primary,
-                size: 22,
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 
@@ -357,7 +285,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
         ),
         decoration: BoxDecoration(
           color: _cardBg(isDark),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: isDark ? Border.all(color: _border(isDark)) : null,
           boxShadow: _shadow(isDark),
         ),
@@ -449,7 +377,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
               ),
               decoration: BoxDecoration(
                 color: isSelected ? color : _cardBg(isDark),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                   color: isSelected ? color : _border(isDark),
                   width: 1.5,
@@ -495,7 +423,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
       margin: const EdgeInsets.fromLTRB(20, 14, 20, 8),
       decoration: BoxDecoration(
         color: _inputBg(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: isDark ? Border.all(color: _border(isDark)) : null,
         boxShadow: isDark
             ? []
@@ -552,7 +480,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
             vertical: 14,
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             borderSide: BorderSide.none,
           ),
         ),
@@ -600,7 +528,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
           color: _cardBg(isDark),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: isDark
               ? Border.all(color: _border(isDark))
               : overdueCount > 0
@@ -635,7 +563,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
                           // FIX: replaced .withOpacity() with .withAlpha()
                           // 0.12 ≈ 31 alpha, 0.08 ≈ 20 alpha
                           color: statusColor.withAlpha(isDark ? 31 : 20),
-                          borderRadius: BorderRadius.circular(13),
+                          borderRadius: BorderRadius.circular(Brand.r(13)),
                           border: Border.all(
                             // 0.2 ≈ 51 alpha, 0.15 ≈ 38 alpha
                             color: statusColor.withAlpha(
@@ -786,8 +714,8 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
             Container(
               decoration: BoxDecoration(
                 color: Brand.canvas(isDark),
-                borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(18),
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(Brand.r(18)),
                 ),
               ),
               child: Row(
@@ -893,7 +821,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           boxShadow: [
             BoxShadow(
               color: Brand.royalBlue.withAlpha(102),
@@ -956,7 +884,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
                     margin: EdgeInsets.only(right: j < 3 ? 8 : 0),
                     decoration: BoxDecoration(
                       color: cardShimmer,
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                       border:
                           isDark ? Border.all(color: Brand.darkBorder) : null,
                     ),
@@ -979,7 +907,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
                     margin: const EdgeInsets.only(right: 8),
                     decoration: BoxDecoration(
                       color: shimmer,
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                     ),
                   );
                 }),
@@ -990,7 +918,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
               height: 50,
               decoration: BoxDecoration(
                 color: cardShimmer,
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
               ),
             );
@@ -1000,7 +928,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
               margin: const EdgeInsets.only(bottom: 12),
               decoration: BoxDecoration(
                 color: cardShimmer,
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(Brand.r(18)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
               ),
             );
@@ -1025,7 +953,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
               decoration: BoxDecoration(
                 color: (isDark ? Brand.royalBlueGlow : AdminColors.primary)
                     .withAlpha(15),
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(Brand.r(24)),
               ),
               child: Icon(
                 hasFilters
@@ -1074,7 +1002,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
                     color:
                         (isDark ? Brand.lightGreenBright : AdminColors.accent)
                             .withAlpha(26),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                   ),
                   child: Text(
                     'Clear Filters',

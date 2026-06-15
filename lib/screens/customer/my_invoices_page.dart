@@ -188,7 +188,7 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
           color: sel
               ? Brand.royalBlue.withAlpha(isDark ? 40 : 25)
               : (isDark ? Brand.darkCard : Colors.white),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: sel
                 ? Brand.royalBlue
@@ -365,7 +365,7 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: c.withAlpha(26),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
       ),
       child: Text(
         _statusLabel(t, status).toUpperCase(),
@@ -416,7 +416,7 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
           color: isDark
               ? Brand.darkBorder.withAlpha(80)
               : Brand.borderLight.withAlpha(180),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
         ),
       );
 

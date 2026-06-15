@@ -1,10 +1,11 @@
-// lib/screens/engineering_admin/ea_reports_page.dart
+﻿// lib/screens/engineering_admin/ea_reports_page.dart
 // Engineering Admin Portal — Reports & Data Export
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 
@@ -219,50 +220,18 @@ class _EaReportsPageState extends State<EaReportsPage>
 
     return Scaffold(
       backgroundColor: Brand.canvas(isDark),
-      appBar: _buildAppBar(isDark),
+      appBar: DsPageHeader(
+        title: 'Reports',
+        accent: HeroAccent.emerald,
+        actions: [
+          IconButton(icon: const Icon(Icons.refresh_rounded, color: Colors.white), onPressed: _load),
+        ],
+      ),
       body: _loading
           ? const Center(child: CircularProgressIndicator(color: _eaAccent))
           : _error != null
               ? _buildError(isDark)
               : _buildBody(isDark),
-    );
-  }
-
-  AppBar _buildAppBar(bool isDark) {
-    return AppBar(
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
-      elevation: 0,
-      scrolledUnderElevation: 0.5,
-      surfaceTintColor: Colors.transparent,
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back_ios_new_rounded,
-            size: 18,
-            color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark),
-        onPressed: () => Navigator.pop(context),
-      ),
-      title: Text(
-        'Reports',
-        style: TextStyle(
-          fontSize: 17,
-          fontWeight: FontWeight.w700,
-          color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-        ),
-      ),
-      actions: [
-        IconButton(
-          icon: Icon(Icons.refresh_rounded,
-              color: isDark ? Brand.darkTextSecondary : Brand.royalBlue),
-          onPressed: _load,
-          tooltip: 'Refresh',
-        ),
-      ],
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(0.5),
-        child: Container(
-          height: 0.5,
-          color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
-        ),
-      ),
     );
   }
 
@@ -382,7 +351,7 @@ class _EaReportsPageState extends State<EaReportsPage>
           color: selected
               ? _eaAccent.withAlpha(26)
               : (isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9)),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: selected
                 ? _eaAccent
@@ -414,7 +383,7 @@ class _EaReportsPageState extends State<EaReportsPage>
           color: selected
               ? _eaAccent.withAlpha(26)
               : (isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9)),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: selected
                 ? _eaAccent
@@ -891,7 +860,7 @@ class _KpiCard extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
         ),
@@ -905,7 +874,7 @@ class _KpiCard extends StatelessWidget {
             height: 34,
             decoration: BoxDecoration(
               color: iconColor.withAlpha(26),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: Icon(icon, color: iconColor, size: 18),
           ),
@@ -947,7 +916,7 @@ class _DataCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
         ),
@@ -1052,7 +1021,7 @@ class _StatusChip extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
           color: color.withAlpha(20),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: Border.all(color: color.withAlpha(60)),
         ),
         child: Column(

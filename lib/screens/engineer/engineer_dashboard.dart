@@ -497,7 +497,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 12),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(Brand.r(22)),
           border: Border.all(
             color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
           ),
@@ -516,7 +516,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
             return Expanded(
               child: InkWell(
                 onTap: a['tap'] as VoidCallback,
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 4, vertical: 6),
@@ -536,7 +536,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(Brand.r(16)),
                         ),
                         child: Icon(a['icon'] as IconData,
                             color: a['color'] as Color, size: 22),
@@ -604,7 +604,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                 width: 52,
                 height: 52,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(Brand.r(16)),
                   gradient: LinearGradient(
                     colors: isDark
                         ? [_engAccent, _engAccentDark]
@@ -622,7 +622,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                   ],
                 ),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(Brand.r(16)),
                   // ← FIXED #2: replaced Image.network
                   child: photo != null && photo.isNotEmpty
                       ? CachedNetworkImage(
@@ -686,7 +686,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                 decoration: BoxDecoration(
                   color: _availColor(avail).withAlpha(((isDark ? 0.12 : 0.1) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(Brand.r(20)),
                   border:
                       Border.all(color: _availColor(avail).withAlpha(89)),
                 ),
@@ -717,14 +717,14 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   onTap: () => _navigateTo(const EngineerSchedulePage()),
                   child: Container(
                     width: 44,
                     height: 44,
                     decoration: BoxDecoration(
                       color: Colors.white.withAlpha(20),
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                       border: Border.all(color: Colors.white.withAlpha(38)),
                     ),
                     child: const Icon(
@@ -741,7 +741,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
             Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   onTap: () {
                     // Navigate to ticket list filtered to show unread
                     setState(() => _selectedIndex = 1);
@@ -751,7 +751,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                     height: 44,
                     decoration: BoxDecoration(
                       color: Colors.white.withAlpha(20),
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                       border: Border.all(color: Colors.white.withAlpha(38)),
                     ),
                     child: Stack(children: [
@@ -870,7 +870,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
                   color: _engAccent.withAlpha(((isDark ? 0.12 : 0.18) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(24),
+                  borderRadius: BorderRadius.circular(Brand.r(24)),
                   border: Border.all(
                       color: _engAccent.withAlpha(((isDark ? 0.2 : 0.3) * 255).toInt())),
                 ),
@@ -933,7 +933,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               decoration: BoxDecoration(
                 color: Colors.white.withAlpha(((isDark ? 0.04 : 0.07) * 255).toInt()),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                     color: Colors.white.withAlpha(((isDark ? 0.05 : 0.08) * 255).toInt())),
               ),
@@ -975,7 +975,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
           height: 48,
           decoration: BoxDecoration(
             color: isDark ? _darkCardHighlight : Colors.white.withAlpha(18),
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             border: Border.all(
                 color: isDark
                     ? Brand.darkBorderLight
@@ -1016,7 +1016,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             border: Border.all(
               color: Brand.royalBlue.withAlpha(isDark ? 60 : 80),
             ),
@@ -1027,7 +1027,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               height: 44,
               decoration: BoxDecoration(
                 color: Brand.royalBlue.withAlpha(isDark ? 40 : 30),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
               ),
               child: Icon(Icons.event_available_rounded,
                   color: isDark
@@ -1090,7 +1090,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             border: Border.all(
               color: _engAccent.withAlpha(isDark ? 60 : 80),
             ),
@@ -1101,7 +1101,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               height: 44,
               decoration: BoxDecoration(
                 color: _engAccent.withAlpha(isDark ? 40 : 30),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
               ),
               child: const Icon(Icons.build_circle_rounded,
                   color: _engAccent, size: 24),
@@ -1167,7 +1167,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                         const EdgeInsets.symmetric(vertical: 14, horizontal: 6),
                     decoration: BoxDecoration(
                       color: Brand.surface(isDark),
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                       border: Border.all(
                           color: isDark
                               ? e.value.color.withAlpha(40)
@@ -1188,7 +1188,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                         height: 34,
                         decoration: BoxDecoration(
                           color: e.value.color.withAlpha(((isDark ? 0.12 : 0.1) * 255).toInt()),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child:
                             Icon(e.value.icon, color: e.value.color, size: 17),
@@ -1253,7 +1253,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
           decoration: BoxDecoration(
             color: (isDark ? Brand.darkIconActive : Brand.royalBlue)
                 .withAlpha(26),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
           ),
           child: Text('$count',
               style: TextStyle(
@@ -1268,7 +1268,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               color: Colors.transparent,
               child: InkWell(
                 onTap: onViewAll,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Brand.r(20)),
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -1276,7 +1276,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                     color: isDark
                         ? Brand.darkCardElevated
                         : Brand.royalBlueSurface,
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(Brand.r(20)),
                     border: Border.all(
                         color: isDark
                             ? Brand.darkBorderLight
@@ -1323,7 +1323,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
         margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: Border.all(
             color: isUrgent
                 ? pColor.withAlpha(115)
@@ -1452,7 +1452,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
       height: 40,
       decoration: BoxDecoration(
         color: c.withAlpha(((isDark ? 0.12 : 0.1) * 255).toInt()),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border: isDark ? Border.all(color: c.withAlpha(38)) : null,
       ),
       child: Icon(icon, color: c, size: 20),
@@ -1463,7 +1463,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
         decoration: BoxDecoration(
           color: c.withAlpha(isDark ? 31 : 20),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
           border: Border.all(color: c.withAlpha(isDark ? 51 : 38)),
         ),
         child: Text(text,
@@ -1480,7 +1480,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
         padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 24),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(Brand.r(22)),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
         ),
@@ -1490,7 +1490,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
             height: 72,
             decoration: BoxDecoration(
               color: isDark ? Brand.darkCardElevated : Brand.lightGreenSurface,
-              borderRadius: BorderRadius.circular(22),
+              borderRadius: BorderRadius.circular(Brand.r(22)),
             ),
             child: Icon(Icons.check_circle_outline_rounded,
                 size: 36,
@@ -1521,7 +1521,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               height: 80,
               decoration: BoxDecoration(
                   color: Colors.red.withAlpha(26),
-                  borderRadius: BorderRadius.circular(24)),
+                  borderRadius: BorderRadius.circular(Brand.r(24))),
               child: const Icon(Icons.cloud_off_rounded,
                   color: Colors.red, size: 40)),
           const SizedBox(height: 20),
@@ -1552,7 +1552,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14)),
+                  borderRadius: BorderRadius.circular(Brand.r(14))),
             ),
           ),
         ],
@@ -1657,7 +1657,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                   height: 46,
                   decoration: BoxDecoration(
                     color: o.color.withAlpha(((isDark ? 0.12 : 0.1) * 255).toInt()),
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                   ),
                   child: Icon(o.icon, color: o.color, size: 22),
                 ),
@@ -1741,7 +1741,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(Brand.r(20)),
             boxShadow: [
               BoxShadow(
                 color:
@@ -1802,7 +1802,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                         ? _engAccent.withAlpha(31)
                         : Brand.royalBlueSurface)
                     : Colors.transparent,
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
               ),
               child: Icon(
                 icon,

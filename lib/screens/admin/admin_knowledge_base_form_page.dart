@@ -389,7 +389,7 @@ class _AdminKnowledgeBaseFormPageState
                   backgroundColor: accent,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14)),
+                      borderRadius: BorderRadius.circular(Brand.r(14))),
                   elevation: 0,
                 ),
               ),
@@ -418,7 +418,7 @@ class _AdminKnowledgeBaseFormPageState
                     color: sel
                         ? t.color.withAlpha(isDark ? 60 : 30)
                         : (Brand.surface(isDark)),
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                     border: Border.all(
                       color: sel
                           ? t.color
@@ -712,7 +712,7 @@ class _AdminKnowledgeBaseFormPageState
                         hintText: 'Search machines',
                         prefixIcon: const Icon(Icons.search_rounded),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12)),
+                            borderRadius: BorderRadius.circular(Brand.r(12))),
                         contentPadding: const EdgeInsets.symmetric(
                             horizontal: 12, vertical: 10),
                       ),
@@ -776,7 +776,7 @@ class _AdminKnowledgeBaseFormPageState
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
       child: Column(children: children),

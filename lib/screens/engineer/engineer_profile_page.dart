@@ -320,7 +320,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
           color: color.withAlpha(((isDark ? 0.1 : 0.06) * 255).toInt()),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
         ),
         child: Row(
           children: [
@@ -329,7 +329,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
               height: 40,
               decoration: BoxDecoration(
                 color: color.withAlpha(((0.1) * 255).toInt()),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
               ),
               child: Icon(icon, color: color, size: 20),
             ),
@@ -488,7 +488,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
               height: 68,
               decoration: BoxDecoration(
                 color: Colors.red.withAlpha(((0.08) * 255).toInt()),
-                borderRadius: BorderRadius.circular(22),
+                borderRadius: BorderRadius.circular(Brand.r(22)),
               ),
               child: const Icon(
                 Icons.logout_rounded,
@@ -529,7 +529,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                               : Brand.borderLight,
                           width: 1.5,
                         ),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                       ),
                       child: Center(
                         child: Text(
@@ -556,7 +556,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                         gradient: const LinearGradient(
                           colors: [Color(0xFFE53935), Color(0xFFEF5350)],
                         ),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.red.withAlpha(((0.35) * 255).toInt()),
@@ -657,7 +657,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         backgroundColor: isError ? Colors.red.shade400 : _engAccent,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
         ),
         margin: const EdgeInsets.all(16),
       ),
@@ -781,14 +781,14 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
             color: Colors.transparent,
             child: InkWell(
               onTap: _enterEditMode,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 decoration: BoxDecoration(
                   color: (isDark ? Brand.darkIconActive : _engAccent)
                       .withAlpha(((isDark ? 0.12 : 0.06) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                   border: Border.all(
                     color: (isDark ? Brand.darkIconActive : _engAccent)
                         .withAlpha(((0.25) * 255).toInt()),
@@ -1125,7 +1125,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                       ),
                       decoration: BoxDecoration(
                         color: _engAccent.withAlpha(((isDark ? 0.12 : 0.1) * 255).toInt()),
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(Brand.r(20)),
                         border: Border.all(
                           color: _engAccent.withAlpha(((0.3) * 255).toInt()),
                         ),
@@ -1236,7 +1236,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
               color: isDark
                   ? Brand.darkBorderLight.withAlpha(((0.4) * 255).toInt())
                   : Colors.grey.shade100,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: FractionallySizedBox(
               widthFactor: (resRate / 100.0).clamp(0.0, 1.0),
@@ -1246,7 +1246,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                   gradient: const LinearGradient(
                     colors: [Brand.lightGreen, Brand.lightGreenBright],
                   ),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                   boxShadow: [
                     BoxShadow(
                       color: Brand.lightGreen.withAlpha(((0.4) * 255).toInt()),
@@ -1322,7 +1322,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
             height: 42,
             decoration: BoxDecoration(
               color: c.withAlpha(((isDark ? 0.12 : 0.1) * 255).toInt()),
-              borderRadius: BorderRadius.circular(13),
+              borderRadius: BorderRadius.circular(Brand.r(13)),
             ),
             child: Icon(icon, color: c, size: 20),
           ),
@@ -1424,7 +1424,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
             decoration: BoxDecoration(
               color: (isDark ? Brand.darkIconActive : _engAccent)
                   .withAlpha(((isDark ? 0.1 : 0.08) * 255).toInt()),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
             ),
             child: Icon(
               icon,
@@ -1497,7 +1497,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
             color: Colors.transparent,
             child: InkWell(
               onTap: () => showLanguageSelector(context),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6),
                 child: Row(
@@ -1509,7 +1509,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: _engAccent.withAlpha(26),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                       ),
                       child: Icon(
                         Icons.translate_rounded,
@@ -1568,7 +1568,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: _engAccent.withAlpha(26),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: Icon(
                     tp.isDarkMode
@@ -1601,7 +1601,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                 color: Colors.transparent,
                 child: InkWell(
                   onTap: () => ThemeStyleSheet.show(context),
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 6),
                     child: Row(children: [
@@ -1611,7 +1611,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           color: _engAccent.withAlpha(26),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child: Icon(
                           Icons.style_rounded,
@@ -1667,13 +1667,13 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         color: Colors.transparent,
         child: InkWell(
           onTap: _logout,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           child: Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 16),
             decoration: BoxDecoration(
               color: isDark ? Colors.red.withAlpha(((0.08) * 255).toInt()) : Colors.red.shade50,
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(Brand.r(18)),
               border: Border.all(color: Colors.red.withAlpha(((0.2) * 255).toInt())),
             ),
             child: Row(
@@ -1724,7 +1724,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Brand.surface(isDark),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -1752,7 +1752,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                   color: Colors.transparent,
                   child: InkWell(
                     onTap: _isSaving ? null : _saveProfile,
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 18,
@@ -1764,7 +1764,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                         boxShadow: [
                           BoxShadow(
                             color: _engAccent.withAlpha(((0.35) * 255).toInt()),
@@ -1868,19 +1868,19 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                 fillColor:
                     isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   borderSide: BorderSide(
                     color: isDark ? Brand.darkBorder : Brand.borderLight,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   borderSide: BorderSide(
                     color: isDark ? Brand.darkBorder : Brand.borderLight,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   borderSide: const BorderSide(color: _engAccent, width: 2),
                 ),
               ),
@@ -1929,7 +1929,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                               : (isDark
                                   ? Brand.darkCardElevated
                                   : Brand.royalBlueSurface),
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(Brand.r(20)),
                           border: Border.all(
                             color: isSel
                                 ? _engAccent.withAlpha(((0.5) * 255).toInt())
@@ -2005,19 +2005,19 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         filled: true,
         fillColor: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkBorder : Brand.borderLight,
           ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: BorderSide(
             color: isDark ? Brand.darkBorder : Brand.borderLight,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: const BorderSide(color: _engAccent, width: 2),
         ),
       ),
@@ -2033,7 +2033,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(Brand.r(22)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -2061,7 +2061,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Brand.r(22)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -2085,7 +2085,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
             height: 36,
             decoration: BoxDecoration(
               color: _engAccent.withAlpha(((isDark ? 0.12 : 0.1) * 255).toInt()),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: Icon(icon, color: _engAccent, size: 18),
           ),

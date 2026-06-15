@@ -508,7 +508,7 @@ class _CatalogPageState extends State<CatalogPage> {
           duration: const Duration(seconds: 1),
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))));
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12)))));
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -760,7 +760,7 @@ class _CatalogPageState extends State<CatalogPage> {
         height: 38,
         decoration: BoxDecoration(
           color: isActive ? Brand.lime.withAlpha(46) : Colors.white.withAlpha(18),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: Border.all(
               color: isActive ? Brand.lime : const Color(0xFF2A3F6E)),
         ),
@@ -776,7 +776,7 @@ class _CatalogPageState extends State<CatalogPage> {
       margin: const EdgeInsets.fromLTRB(20, 14, 20, 0),
       decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: Border.all(
               color: isDark
                   ? Brand.darkBorderLight
@@ -830,7 +830,7 @@ class _CatalogPageState extends State<CatalogPage> {
                   : null,
               enabledBorder: InputBorder.none,
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(Brand.r(16)),
                 borderSide: BorderSide(
                   color: isDark ? Brand.darkIconActive : Brand.royalBlue,
                   width: 1.5,
@@ -878,7 +878,7 @@ class _CatalogPageState extends State<CatalogPage> {
                           ? Brand.royalBlue.withAlpha(38)
                           : Brand.royalBlue)
                       : (Brand.surface(isDark)),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(Brand.r(20)),
                   border: Border.all(
                       color: sel
                           ? (isDark
@@ -914,7 +914,7 @@ class _CatalogPageState extends State<CatalogPage> {
                             color: sel
                                 ? Colors.white.withAlpha(isDark ? 20 : 38)
                                 : accent.withAlpha(isDark ? 26 : 15),
-                            borderRadius: BorderRadius.circular(13)),
+                            borderRadius: BorderRadius.circular(Brand.r(13))),
                         child: Center(
                             child: cat == 'All'
                                 ? Icon(Icons.apps_rounded,
@@ -991,7 +991,7 @@ class _CatalogPageState extends State<CatalogPage> {
                       color: sel
                           ? Brand.royalBlue.withAlpha(isDark ? 51 : 26)
                           : (Brand.surface(isDark)),
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(Brand.r(20)),
                       border: Border.all(
                           color: sel
                               ? Brand.royalBlue.withAlpha(102)
@@ -1068,12 +1068,12 @@ class _CatalogPageState extends State<CatalogPage> {
               color: Colors.transparent,
               child: InkWell(
                   onTap: _clearAll,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                   child: Container(
                       padding: const EdgeInsets.all(7),
                       decoration: BoxDecoration(
                           color: Colors.red.withAlpha(20),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                           border: Border.all(color: Colors.red.withAlpha(38))),
                       child: Icon(Icons.filter_alt_off_rounded,
                           size: 16, color: Colors.red.shade400))))
@@ -1090,7 +1090,7 @@ class _CatalogPageState extends State<CatalogPage> {
         color: Colors.transparent,
         child: InkWell(
             onTap: onTap,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Brand.r(10)),
             child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
@@ -1098,7 +1098,7 @@ class _CatalogPageState extends State<CatalogPage> {
                     color: isActive
                         ? Brand.royalBlue.withAlpha(isDark ? 38 : 20)
                         : (Brand.surface(isDark)),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                     border: Border.all(
                         color: isActive
                             ? Brand.royalBlue.withAlpha(77)
@@ -1356,7 +1356,7 @@ class _CatalogPageState extends State<CatalogPage> {
                             decoration: BoxDecoration(
                                 color:
                                     Brand.surface(isDark),
-                                borderRadius: BorderRadius.circular(14),
+                                borderRadius: BorderRadius.circular(Brand.r(14)),
                                 border: Border.all(
                                     color: isDark
                                         ? Brand.darkBorder
@@ -1369,9 +1369,9 @@ class _CatalogPageState extends State<CatalogPage> {
                                       color: isDark
                                           ? Brand.darkCardElevated
                                           : Brand.royalBlueSurface,
-                                      borderRadius: BorderRadius.circular(12)),
+                                      borderRadius: BorderRadius.circular(Brand.r(12))),
                                   child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(12),
+                                      borderRadius: BorderRadius.circular(Brand.r(12)),
                                       child: imgUrl != null
                                           ? CachedNetworkImage(
                                               imageUrl: imgUrl,
@@ -1444,11 +1444,11 @@ class _CatalogPageState extends State<CatalogPage> {
               if (mounted) _loadAllData();
             });
           },
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(Brand.r(22)),
           child: Container(
             decoration: BoxDecoration(
                 color: Brand.surface(isDark),
-                borderRadius: BorderRadius.circular(22),
+                borderRadius: BorderRadius.circular(Brand.r(22)),
                 border: Border.all(
                     color: owned
                         ? Brand.lightGreen.withAlpha(102)
@@ -1470,12 +1470,12 @@ class _CatalogPageState extends State<CatalogPage> {
                       color: isDark
                           ? Brand.darkCardElevated
                           : Brand.royalBlueSurface.withAlpha(128),
-                      borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(22))),
+                      borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(Brand.r(22)))),
                   child: Stack(children: [
                     ClipRRect(
-                        borderRadius: const BorderRadius.vertical(
-                            top: Radius.circular(22)),
+                        borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(Brand.r(22))),
                         child: imageUrl != null
                             ? CachedNetworkImage(
                                 imageUrl: imageUrl,
@@ -1502,7 +1502,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                   horizontal: 7, vertical: 4),
                               decoration: BoxDecoration(
                                   color: Colors.black.withAlpha(140),
-                                  borderRadius: BorderRadius.circular(10)),
+                                  borderRadius: BorderRadius.circular(Brand.r(10))),
                               child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -1591,7 +1591,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                     horizontal: 7, vertical: 3),
                                 decoration: BoxDecoration(
                                     color: accent.withAlpha(isDark ? 31 : 15),
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(Brand.r(10)),
                                     border: Border.all(
                                         color: accent.withAlpha(26))),
                                 child: Text(machine['brand'] ?? 'iFrontiers',
@@ -1655,7 +1655,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                                 Brand.royalBlueLight
                                               ]),
                                           borderRadius:
-                                              BorderRadius.circular(12)),
+                                              BorderRadius.circular(Brand.r(12))),
                                       child: Material(
                                           color: Colors.transparent,
                                           child: InkWell(
@@ -1675,7 +1675,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                                 });
                                               },
                                               borderRadius:
-                                                  BorderRadius.circular(12),
+                                                  BorderRadius.circular(Brand.r(12)),
                                               child: Center(
                                                   child: Text(S.of(context)!.machineViewDetails,
                                                       style: const TextStyle(
@@ -1690,7 +1690,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                   height: 36,
                                   decoration: BoxDecoration(
                                       color: accent.withAlpha(isDark ? 31 : 15),
-                                      borderRadius: BorderRadius.circular(12),
+                                      borderRadius: BorderRadius.circular(Brand.r(12)),
                                       border: Border.all(
                                           color: accent.withAlpha(51))),
                                   child: Material(
@@ -1699,7 +1699,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                           onTap: () =>
                                               _quickInquire(machine, isDark),
                                           borderRadius:
-                                              BorderRadius.circular(12),
+                                              BorderRadius.circular(Brand.r(12)),
                                           child: Icon(
                                               Icons.chat_bubble_outline_rounded,
                                               color: accent,
@@ -1736,12 +1736,12 @@ class _CatalogPageState extends State<CatalogPage> {
                     if (mounted) _loadAllData();
                   });
                 },
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Brand.r(20)),
                 child: Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                         color: Brand.surface(isDark),
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(Brand.r(20)),
                         border: Border.all(
                             color: owned
                                 ? Brand.lightGreen.withAlpha(102)
@@ -1765,10 +1765,10 @@ class _CatalogPageState extends State<CatalogPage> {
                               color: isDark
                                   ? Brand.darkCardElevated
                                   : Brand.royalBlueSurface.withAlpha(128),
-                              borderRadius: BorderRadius.circular(16)),
+                              borderRadius: BorderRadius.circular(Brand.r(16))),
                           child: Stack(children: [
                             ClipRRect(
-                                borderRadius: BorderRadius.circular(16),
+                                borderRadius: BorderRadius.circular(Brand.r(16)),
                                 child: imageUrl != null
                                     ? CachedNetworkImage(
                                         imageUrl: imageUrl,
@@ -1888,7 +1888,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                             ? Colors.white.withAlpha(10)
                                             : Brand.royalBlueSurface
                                                 .withAlpha(128)),
-                                    borderRadius: BorderRadius.circular(12)),
+                                    borderRadius: BorderRadius.circular(Brand.r(12))),
                                 child: Icon(
                                     saved
                                         ? Icons.bookmark_rounded
@@ -1909,7 +1909,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                 color: isDark
                                     ? Colors.white.withAlpha(10)
                                     : Brand.royalBlueSurface.withAlpha(128),
-                                borderRadius: BorderRadius.circular(12)),
+                                borderRadius: BorderRadius.circular(Brand.r(12))),
                             child: Icon(Icons.chevron_right_rounded,
                                 size: 18,
                                 color: isDark
@@ -1948,9 +1948,9 @@ class _CatalogPageState extends State<CatalogPage> {
                         color: isDark
                             ? Brand.darkCardElevated
                             : Brand.royalBlueSurface,
-                        borderRadius: BorderRadius.circular(16)),
+                        borderRadius: BorderRadius.circular(Brand.r(16))),
                     child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(Brand.r(16)),
                         child: _img(machine) != null
                             ? CachedNetworkImage(
                                 imageUrl: _img(machine)!,
@@ -2032,12 +2032,12 @@ class _CatalogPageState extends State<CatalogPage> {
         color: Colors.transparent,
         child: InkWell(
             onTap: onTap,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             child: Container(
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
                     color: c.withAlpha(isDark ? 20 : 10),
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(Brand.r(16)),
                     border: Border.all(color: c.withAlpha(38))),
                 child: Row(children: [
                   Container(
@@ -2045,7 +2045,7 @@ class _CatalogPageState extends State<CatalogPage> {
                       height: 46,
                       decoration: BoxDecoration(
                           color: c.withAlpha(isDark ? 31 : 20),
-                          borderRadius: BorderRadius.circular(14)),
+                          borderRadius: BorderRadius.circular(Brand.r(14))),
                       child: Icon(icon, color: c, size: 22)),
                   const SizedBox(width: 14),
                   Expanded(
@@ -2085,7 +2085,7 @@ class _CatalogPageState extends State<CatalogPage> {
         itemBuilder: (_, __) => Container(
             decoration: BoxDecoration(
                 color: Brand.surface(isDark),
-                borderRadius: BorderRadius.circular(22),
+                borderRadius: BorderRadius.circular(Brand.r(22)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -2095,8 +2095,8 @@ class _CatalogPageState extends State<CatalogPage> {
                       color: isDark
                           ? Colors.white.withAlpha(8)
                           : Brand.royalBlue.withAlpha(10),
-                      borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(22)))),
+                      borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(Brand.r(22))))),
               Padding(
                   padding: const EdgeInsets.all(12),
                   child: Column(
@@ -2130,7 +2130,7 @@ class _CatalogPageState extends State<CatalogPage> {
             padding: const EdgeInsets.all(32),
             decoration: BoxDecoration(
                 color: Brand.surface(isDark),
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(Brand.r(24)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null),
             child: Column(mainAxisSize: MainAxisSize.min, children: [
               Container(
@@ -2138,7 +2138,7 @@ class _CatalogPageState extends State<CatalogPage> {
                   height: 72,
                   decoration: BoxDecoration(
                       color: Colors.red.withAlpha(26),
-                      borderRadius: BorderRadius.circular(22)),
+                      borderRadius: BorderRadius.circular(Brand.r(22))),
                   child: const Icon(Icons.error_outline,
                       size: 34, color: Colors.red)),
               const SizedBox(height: 20),
@@ -2165,7 +2165,7 @@ class _CatalogPageState extends State<CatalogPage> {
                       foregroundColor: Colors.white,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14)),
+                          borderRadius: BorderRadius.circular(Brand.r(14))),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 28, vertical: 12)),
                   child: Text(S.of(context)!.commonTryAgain,
@@ -2182,7 +2182,7 @@ class _CatalogPageState extends State<CatalogPage> {
             padding: const EdgeInsets.all(32),
             decoration: BoxDecoration(
                 color: Brand.surface(isDark),
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(Brand.r(24)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
                 boxShadow: isDark
                     ? null
@@ -2200,7 +2200,7 @@ class _CatalogPageState extends State<CatalogPage> {
                       color: isDark
                           ? Brand.royalBlue.withAlpha(26)
                           : Brand.royalBlueSurface,
-                      borderRadius: BorderRadius.circular(22)),
+                      borderRadius: BorderRadius.circular(Brand.r(22))),
                   child: Icon(Icons.inventory_2_outlined,
                       size: 34,
                       color: isDark ? Brand.royalBlueGlow : Brand.royalBlue)),
@@ -2271,7 +2271,7 @@ class _CatalogPageState extends State<CatalogPage> {
                       foregroundColor: Colors.white,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14)),
+                          borderRadius: BorderRadius.circular(Brand.r(14))),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 28, vertical: 12)),
                   child: Text(S.of(context)!.machineClearFilters,
@@ -2285,7 +2285,7 @@ class _CatalogPageState extends State<CatalogPage> {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(
             color: Brand.royalBlue.withAlpha(isDark ? 31 : 15),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(Brand.r(20)),
             border: Border.all(color: Brand.royalBlue.withAlpha(51))),
         child: Row(mainAxisSize: MainAxisSize.min, children: [
           Text(label,
@@ -2311,7 +2311,7 @@ class _CatalogPageState extends State<CatalogPage> {
           height: 50,
           decoration: BoxDecoration(
               color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-              borderRadius: BorderRadius.circular(14)),
+              borderRadius: BorderRadius.circular(Brand.r(14))),
           child: Center(
               child: _catIcon(
                   cat,

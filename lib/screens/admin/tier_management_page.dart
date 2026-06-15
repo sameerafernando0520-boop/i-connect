@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/string_utils.dart';
 import '../../widgets/admin/shimmer_loading.dart';
@@ -153,10 +154,16 @@ class _TierManagementPageState extends State<TierManagementPage>
 
     return Scaffold(
       backgroundColor: AdminColors.bg(context),
+      appBar: DsPageHeader(
+        title: 'Loyalty Tiers',
+        accent: HeroAccent.navy,
+        actions: [
+          IconButton(icon: const Icon(Icons.refresh_rounded, color: Colors.white), onPressed: _load),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            _buildTopHeader(isDark),
             _buildTabChips(isDark),
             Expanded(
               child: _loading
@@ -175,97 +182,6 @@ class _TierManagementPageState extends State<TierManagementPage>
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  // ─── TOP HEADER ────────────────────────────────────────
-  Widget _buildTopHeader(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: isDark
-              ? Border.all(color: Brand.darkBorder)
-              : null,
-                boxShadow: isDark
-                    ? null
-                    : [
-                        BoxShadow(
-                          color: Brand.royalBlue.withAlpha(15),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-              ),
-              child: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: isDark ? Brand.darkIconActive : AdminColors.primary,
-                size: 18,
-              ),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Loyalty Tiers',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.3,
-                    color: isDark ? Brand.darkTextPrimary : AdminColors.primary,
-                  ),
-                ),
-                Text(
-                  '${_thresholds.length} tiers configured',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: _load,
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: isDark
-              ? Border.all(color: Brand.darkBorder)
-              : null,
-                boxShadow: isDark
-                    ? null
-                    : [
-                        BoxShadow(
-                          color: Brand.royalBlue.withAlpha(15),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-              ),
-              child: Icon(
-                Icons.refresh_rounded,
-                color: isDark ? Brand.darkIconActive : AdminColors.primary,
-                size: 22,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -303,7 +219,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                     color: isSelected
                         ? AdminColors.primary
                         : (isDark ? Brand.darkCard : Colors.white),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                     border: Border.all(
                       color: isSelected
                           ? AdminColors.primary
@@ -450,7 +366,7 @@ class _TierManagementPageState extends State<TierManagementPage>
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: AdminColors.card(context),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
       ),
       child: Column(
@@ -498,7 +414,7 @@ class _TierManagementPageState extends State<TierManagementPage>
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: AdminColors.card(context),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: Border.all(color: AdminColors.border(context)),
       ),
       child: Column(
@@ -645,7 +561,7 @@ class _TierManagementPageState extends State<TierManagementPage>
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
                 color: AdminColors.card(context),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 border: Border.all(color: AdminColors.border(context)),
               ),
               child: Row(
@@ -684,7 +600,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                     height: 36,
                     decoration: BoxDecoration(
                       color: tColor.withAlpha(26),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Center(
                       child: Text(
@@ -747,7 +663,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                             horizontal: 8, vertical: 3),
                         decoration: BoxDecoration(
                           color: tColor.withAlpha(26),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child: Text(
                           _capitaliseTier(tier),
@@ -811,7 +727,7 @@ class _TierManagementPageState extends State<TierManagementPage>
             AdminColors.card(context),
           ],
         ),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: Border.all(color: color.withAlpha(50)),
       ),
       child: Column(
@@ -824,7 +740,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                 height: 44,
                 decoration: BoxDecoration(
                   color: color.withAlpha(40),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Icon(
                   _tierIcon(name),
@@ -862,7 +778,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: AdminColors.primary.withAlpha(15),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: const Icon(
                     Icons.edit_rounded,
@@ -878,7 +794,7 @@ class _TierManagementPageState extends State<TierManagementPage>
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: AdminColors.bg(context),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
               border: Border.all(color: AdminColors.border(context)),
             ),
             child: Row(
@@ -961,7 +877,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                 decoration: BoxDecoration(
                   color: AdminColors.card(sheetCtx),
                   borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(28)),
+                      BorderRadius.vertical(top: Radius.circular(28)),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -1014,7 +930,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color: AdminColors.warning.withAlpha(15),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                         border: Border.all(
                           color: AdminColors.warning.withAlpha(40),
                         ),
@@ -1056,7 +972,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                                       backgroundColor: AdminColors.error,
                                       behavior: SnackBarBehavior.floating,
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
+                                        borderRadius: BorderRadius.circular(Brand.r(12)),
                                       ),
                                       margin: const EdgeInsets.fromLTRB(
                                           16, 0, 16, 16),
@@ -1075,7 +991,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                                       backgroundColor: AdminColors.error,
                                       behavior: SnackBarBehavior.floating,
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
+                                        borderRadius: BorderRadius.circular(Brand.r(12)),
                                       ),
                                       margin: const EdgeInsets.fromLTRB(
                                           16, 0, 16, 16),
@@ -1123,7 +1039,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                                         behavior: SnackBarBehavior.floating,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(12),
+                                              BorderRadius.circular(Brand.r(12)),
                                         ),
                                         margin: const EdgeInsets.fromLTRB(
                                             16, 0, 16, 16),
@@ -1140,7 +1056,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                                       backgroundColor: AdminColors.error,
                                       behavior: SnackBarBehavior.floating,
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
+                                        borderRadius: BorderRadius.circular(Brand.r(12)),
                                       ),
                                       margin: const EdgeInsets.fromLTRB(
                                           16, 0, 16, 16),
@@ -1153,7 +1069,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                           foregroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(vertical: 14),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(Brand.r(14)),
                           ),
                         ),
                         child: saving
@@ -1270,7 +1186,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
                           color: AdminColors.card(context),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                           border:
                               Border.all(color: AdminColors.border(context)),
                         ),
@@ -1296,7 +1212,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                           padding: const EdgeInsets.all(14),
                           decoration: BoxDecoration(
                             color: AdminColors.card(context),
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(Brand.r(14)),
                             border: Border.all(
                               color: active
                                   ? AdminColors.border(context)
@@ -1310,7 +1226,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                                 height: 36,
                                 decoration: BoxDecoration(
                                   color: color.withAlpha(20),
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(Brand.r(10)),
                                 ),
                                 child: Icon(
                                   _benefitIcon(
@@ -1386,7 +1302,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                                   padding: const EdgeInsets.all(6),
                                   decoration: BoxDecoration(
                                     color: AdminColors.primary.withAlpha(15),
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(Brand.r(10)),
                                   ),
                                   child: const Icon(
                                     Icons.edit_rounded,
@@ -1402,7 +1318,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                                   padding: const EdgeInsets.all(6),
                                   decoration: BoxDecoration(
                                     color: AdminColors.error.withAlpha(15),
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(Brand.r(10)),
                                   ),
                                   child: const Icon(
                                     Icons.delete_outline_rounded,
@@ -1598,7 +1514,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                                         behavior: SnackBarBehavior.floating,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(12),
+                                              BorderRadius.circular(Brand.r(12)),
                                         ),
                                         margin: const EdgeInsets.fromLTRB(
                                             16, 0, 16, 16),
@@ -1658,7 +1574,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                                           behavior: SnackBarBehavior.floating,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(12),
+                                                BorderRadius.circular(Brand.r(12)),
                                           ),
                                           margin: const EdgeInsets.fromLTRB(
                                               16, 0, 16, 16),
@@ -1678,7 +1594,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                                         behavior: SnackBarBehavior.floating,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(12),
+                                              BorderRadius.circular(Brand.r(12)),
                                         ),
                                         margin: const EdgeInsets.fromLTRB(
                                             16, 0, 16, 16),
@@ -1691,7 +1607,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(vertical: 14),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
+                              borderRadius: BorderRadius.circular(Brand.r(14)),
                             ),
                           ),
                           child: saving
@@ -1735,7 +1651,7 @@ class _TierManagementPageState extends State<TierManagementPage>
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AdminColors.card(ctx),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
         title: Text(
           'Delete Benefit?',
           style: TextStyle(color: AdminColors.text(ctx)),
@@ -1762,7 +1678,7 @@ class _TierManagementPageState extends State<TierManagementPage>
               backgroundColor: AdminColors.error,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(Brand.r(10))),
             ),
             child: const Text('Delete'),
           ),
@@ -1830,7 +1746,7 @@ class _TierManagementPageState extends State<TierManagementPage>
               filled: true,
               fillColor: isDark ? const Color(0xFF1E293B) : Colors.grey[100],
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 borderSide: BorderSide.none,
               ),
             ),
@@ -1880,7 +1796,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                         color: isDark ? const Color(0xFF1E293B) : Colors.white,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                           side: BorderSide(
                             color: isDark ? Colors.white10 : Colors.black12,
                           ),
@@ -2044,7 +1960,7 @@ class _TierManagementPageState extends State<TierManagementPage>
         filled: true,
         fillColor: AdminColors.bg(ctx),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide.none,
         ),
         isDense: true,
@@ -2079,7 +1995,7 @@ class _TierManagementPageState extends State<TierManagementPage>
         ),
         backgroundColor: isError ? AdminColors.error : AdminColors.success,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       ),
     );
@@ -2093,7 +2009,7 @@ class _TierManagementPageState extends State<TierManagementPage>
               height: h,
               decoration: BoxDecoration(
                 color: AdminColors.card(context),
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(Brand.r(18)),
               ),
             ),
           ),
@@ -2150,7 +2066,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                 backgroundColor: AdminColors.primary,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
               ),
             ),
           ],
@@ -2223,7 +2139,7 @@ class _CustomerHistorySheetState extends State<_CustomerHistorySheet> {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         color: AdminColors.bg(context),
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(24))),
       ),
       height: MediaQuery.of(context).size.height * 0.8,
       child: Column(
@@ -2234,7 +2150,7 @@ class _CustomerHistorySheetState extends State<_CustomerHistorySheet> {
             height: 5,
             decoration: BoxDecoration(
               color: isDark ? Brand.darkBorder : Brand.borderLight,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
           ),
           const SizedBox(height: 20),
@@ -2314,7 +2230,7 @@ class _CustomerHistorySheetState extends State<_CustomerHistorySheet> {
                                 padding: const EdgeInsets.all(16),
                                 decoration: BoxDecoration(
                                   color: AdminColors.card(context),
-                                  borderRadius: BorderRadius.circular(16),
+                                  borderRadius: BorderRadius.circular(Brand.r(16)),
                                   border: Border.all(
                                     color: AdminColors.border(context),
                                   ),
@@ -2329,7 +2245,7 @@ class _CustomerHistorySheetState extends State<_CustomerHistorySheet> {
                                                 ? AdminColors.success
                                                 : AdminColors.error)
                                             .withAlpha(26),
-                                        borderRadius: BorderRadius.circular(12),
+                                        borderRadius: BorderRadius.circular(Brand.r(12)),
                                       ),
                                       child: Icon(
                                         isPositive

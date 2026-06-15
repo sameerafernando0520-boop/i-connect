@@ -1,9 +1,10 @@
-// lib/screens/admin/inquiry_detail_page.dart
+﻿// lib/screens/admin/inquiry_detail_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/sales_stage_config.dart';
 import '../../models/inquiry_detail.dart';
 import '../../repositories/inquiry_detail_repository.dart';
@@ -56,9 +57,6 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
 
   Color _textSecondary(bool isDark) =>
       isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
-
-  Color _textMuted(bool isDark) =>
-      isDark ? Brand.darkTextTertiary : Colors.grey.shade400;
 
   Color _borderColor(bool isDark) =>
       isDark ? Brand.darkBorder : Brand.borderLight;
@@ -288,7 +286,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
             isError ? AdminColors.error : AdminColors.accent,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12)),
+            borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
         duration: Duration(seconds: isError ? 4 : 2),
       ),
@@ -332,10 +330,18 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
       },
       child: Scaffold(
         backgroundColor: _scaffoldBg(isDark),
+        appBar: DsPageHeader(
+          title: inquiry.ticketNumber,
+          subtitle: inquiry.customer?.fullName,
+          accent: HeroAccent.navy,
+          onBack: () => Navigator.pop(context, _hasChanges),
+          actions: [
+            IconButton(icon: const Icon(Icons.refresh_rounded, color: Colors.white), onPressed: _loadAll),
+          ],
+        ),
         body: SafeArea(
           child: Column(
             children: [
-              _buildTopHeader(inquiry, isDark),
               Expanded(
                 child: RefreshIndicator(
                   onRefresh: _loadAll,
@@ -463,7 +469,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
                   color: isDark
                       ? Brand.darkCard
                       : Colors.grey.shade100,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(Brand.r(16)),
                   border: isDark
                       ? Border.all(color: Brand.darkBorder)
                       : null,
@@ -495,7 +501,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
                   height: 42,
                   decoration: BoxDecoration(
                     color: _cardBg(isDark),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                     border: isDark
                         ? Border.all(color: _borderColor(isDark))
                         : null,
@@ -537,7 +543,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
                       // FIX: .withOpacity() → .withAlpha()
                       color: AdminColors.error
                           .withAlpha(isDark ? 31 : 20),
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(Brand.r(20)),
                     ),
                     child: const Icon(
                       Icons.error_outline_rounded,
@@ -574,7 +580,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
                       ),
                       decoration: BoxDecoration(
                         color: AdminColors.primary,
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         boxShadow: [
                           BoxShadow(
                             // Already .withAlpha() ✅
@@ -610,183 +616,6 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
     );
   }
 
-  // ═══════════════════════════════════════════════════════════
-  //  TOP HEADER
-  // ═══════════════════════════════════════════════════════════
-
-  Widget _buildTopHeader(InquiryDetail inquiry, bool isDark) {
-    final stage = SalesStage.fromValue(inquiry.salesStage);
-
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context, _hasChanges),
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: _cardBg(isDark),
-                borderRadius: BorderRadius.circular(12),
-                border: isDark
-                    ? Border.all(color: _borderColor(isDark))
-                    : null,
-                boxShadow: _softShadow(isDark),
-              ),
-              child: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: isDark
-                    ? Brand.darkTextSecondary
-                    : AdminColors.primary,
-                size: 18,
-              ),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  inquiry.ticketNumber,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.3,
-                    color: isDark
-                        ? Brand.darkTextPrimary
-                        : AdminColors.primary,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 3,
-                      ),
-                      decoration: BoxDecoration(
-                        // FIX: .withOpacity() → .withAlpha()
-                        color: stage.color
-                            .withAlpha(isDark ? 38 : 26),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(stage.icon,
-                              size: 12, color: stage.color),
-                          const SizedBox(width: 4),
-                          Text(
-                            stage.label.toUpperCase(),
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: stage.color,
-                              letterSpacing: 0.5,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      TimeUtils.getTimeAgo(inquiry.createdAt),
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: _textMuted(isDark),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          // Chat icon button
-          GestureDetector(
-            onTap: _openChat,
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                // FIX: .withOpacity() → .withAlpha()
-                color: AdminColors.accent
-                    .withAlpha(isDark ? 38 : 26),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Stack(
-                children: [
-                  Center(
-                    child: Icon(
-                      Icons.chat_rounded,
-                      color: isDark
-                          ? Brand.lightGreenBright
-                          : AdminColors.accent,
-                      size: 22,
-                    ),
-                  ),
-                  if (_unreadMessages > 0)
-                    Positioned(
-                      top: 4,
-                      right: 4,
-                      child: Container(
-                        width: 16,
-                        height: 16,
-                        decoration: BoxDecoration(
-                          color: AdminColors.error,
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: _scaffoldBg(isDark),
-                            width: 1.5,
-                          ),
-                        ),
-                        child: Center(
-                          child: Text(
-                            _unreadMessages > 9
-                                ? '9+'
-                                : '$_unreadMessages',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 11,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(width: 8),
-          GestureDetector(
-            onTap: _loadAll,
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: _cardBg(isDark),
-                borderRadius: BorderRadius.circular(12),
-                border: isDark
-                    ? Border.all(color: _borderColor(isDark))
-                    : null,
-                boxShadow: _softShadow(isDark),
-              ),
-              child: Icon(
-                Icons.refresh_rounded,
-                color: isDark
-                    ? Brand.darkTextSecondary
-                    : AdminColors.primary,
-                size: 22,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   // ═══════════════════════════════════════════════════════════
   //  CREATE QUOTATION BUTTON
@@ -817,7 +646,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
             boxShadow: isDark
                 ? null
                 : [
@@ -874,7 +703,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             color: _cardBg(isDark),
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
             border: Border.all(
               // FIX: .withOpacity() → .withAlpha()
               color: AdminColors.accent
@@ -892,7 +721,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
                   // FIX: .withOpacity() → .withAlpha()
                   color: AdminColors.accent
                       .withAlpha(isDark ? 38 : 26),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Icon(
                   Icons.receipt_long_rounded,
@@ -956,7 +785,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         boxShadow: [
           BoxShadow(
             // FIX: .withOpacity() → .withAlpha()
@@ -975,7 +804,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
             decoration: BoxDecoration(
               // FIX: .withOpacity() → .withAlpha()
               color: Colors.white.withAlpha(51),
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(Brand.r(16)),
             ),
             child: Icon(
               isWon
@@ -1024,7 +853,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
               decoration: BoxDecoration(
                 // FIX: .withOpacity() → .withAlpha()
                 color: Colors.white.withAlpha(51),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: const Text(
                 'Reopen',

@@ -1,8 +1,9 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 
 // Quotation accent — matches the purple used across quotation screens
@@ -168,6 +169,10 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
 
     return Scaffold(
       backgroundColor: isDark ? Brand.darkBg : AdminColors.background,
+      appBar: DsPageHeader(
+        title: 'Create Quotation',
+        accent: HeroAccent.navy,
+      ),
       body: SafeArea(
         child: _loading
             ? const Center(
@@ -178,7 +183,6 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
               )
             : Column(
                 children: [
-                  _buildTopHeader(isDark),
                   Expanded(
                     child: SingleChildScrollView(
                       padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
@@ -212,59 +216,6 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
     );
   }
 
-  // ═══════════════════════════════════════════════════════
-  //  TOP HEADER (matches other admin pages)
-  // ═══════════════════════════════════════════════════════
-
-  Widget _buildTopHeader(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 12),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: isDark
-              ? Border.all(color: Brand.darkBorder)
-              : null,
-                boxShadow: isDark
-                    ? null
-                    : [
-                        BoxShadow(
-                          color: Brand.royalBlue.withAlpha(15),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-              ),
-              child: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: isDark ? Brand.darkIconActive : AdminColors.primary,
-                size: 18,
-              ),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Text(
-              'Create Quotation',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                letterSpacing: -0.3,
-                color: isDark ? Brand.darkTextPrimary : AdminColors.primary,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   // ═══════════════════════════════════════════════════════
   //  1. CUSTOMER
@@ -274,7 +225,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
     return _card(
       child: InkWell(
         onTap: _selectCustomer,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
@@ -284,7 +235,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                 height: 44,
                 decoration: BoxDecoration(
                   color: AdminColors.primary.withAlpha(20),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Icon(
                   _customerId != null
@@ -396,7 +347,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                         filled: true,
                         fillColor: AdminColors.bg(sheetCtx),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                           borderSide: BorderSide.none,
                         ),
                         contentPadding:
@@ -483,7 +434,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                                 final c = results[i];
                                 return ListTile(
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14),
+                                    borderRadius: BorderRadius.circular(Brand.r(14)),
                                   ),
                                   tileColor: AdminColors.bg(sheetCtx),
                                   leading: Container(
@@ -491,7 +442,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                                     height: 40,
                                     decoration: BoxDecoration(
                                       color: AdminColors.primary.withAlpha(20),
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(Brand.r(10)),
                                     ),
                                     child: const Icon(
                                       Icons.person_rounded,
@@ -545,7 +496,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: AdminColors.accent.withAlpha(isDark ? 25 : 15),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border: Border.all(color: AdminColors.accent.withAlpha(50)),
       ),
       child: Row(
@@ -624,7 +575,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                   foregroundColor: AdminColors.primary,
                   side: BorderSide(color: AdminColors.primary.withAlpha(80)),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                      borderRadius: BorderRadius.circular(Brand.r(12))),
                   padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
               ),
@@ -640,7 +591,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                   foregroundColor: AdminColors.accent,
                   side: BorderSide(color: AdminColors.accent.withAlpha(80)),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                      borderRadius: BorderRadius.circular(Brand.r(12))),
                   padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
               ),
@@ -882,7 +833,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: AdminColors.bg(sheetCtx),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -922,7 +873,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                                 backgroundColor: AdminColors.error,
                                 behavior: SnackBarBehavior.floating,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
+                                  borderRadius: BorderRadius.circular(Brand.r(12)),
                                 ),
                                 margin:
                                     const EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -946,7 +897,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                           foregroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(vertical: 14),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(Brand.r(14)),
                           ),
                         ),
                         child: Text(
@@ -1080,7 +1031,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                         filled: true,
                         fillColor: AdminColors.bg(sheetCtx),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                           borderSide: BorderSide.none,
                         ),
                         contentPadding:
@@ -1169,7 +1120,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                                 final price = _dbl(m['price']);
                                 return ListTile(
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14),
+                                    borderRadius: BorderRadius.circular(Brand.r(14)),
                                   ),
                                   tileColor: AdminColors.bg(sheetCtx),
                                   leading: Container(
@@ -1177,7 +1128,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                                     height: 40,
                                     decoration: BoxDecoration(
                                       color: AdminColors.accent.withAlpha(20),
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(Brand.r(10)),
                                     ),
                                     child: const Icon(
                                       Icons.precision_manufacturing_rounded,
@@ -1269,7 +1220,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                 Container(
                   decoration: BoxDecoration(
                     color: AdminColors.bg(context),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                     border: Border.all(color: AdminColors.border(context)),
                   ),
                   child: Row(
@@ -1310,7 +1261,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                       filled: true,
                       fillColor: AdminColors.bg(context),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                         borderSide: BorderSide.none,
                       ),
                       isDense: true,
@@ -1358,7 +1309,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                       filled: true,
                       fillColor: AdminColors.bg(context),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                         borderSide: BorderSide.none,
                       ),
                       isDense: true,
@@ -1532,7 +1483,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
     return _card(
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         child: Padding(
           padding: const EdgeInsets.all(14),
           child: Column(
@@ -1615,7 +1566,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
         filled: true,
         fillColor: AdminColors.bg(context),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide.none,
         ),
         contentPadding:
@@ -1650,7 +1601,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                 side: BorderSide(color: AdminColors.primary.withAlpha(80)),
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14)),
+                    borderRadius: BorderRadius.circular(Brand.r(14))),
               ),
               child: _saving
                   ? const SizedBox(
@@ -1684,7 +1635,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                           end: Alignment.bottomRight,
                         ),
                   color: _saving ? _kQuotationPurple : null,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   boxShadow: isDark || _saving
                       ? null
                       : [
@@ -1902,7 +1853,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
         filled: true,
         fillColor: AdminColors.bg(ctx),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide.none,
         ),
         isDense: true,
@@ -1942,7 +1893,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
         filled: true,
         fillColor: AdminColors.bg(ctx),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide.none,
         ),
         isDense: true,
@@ -1977,7 +1928,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
         ),
         backgroundColor: isError ? AdminColors.error : AdminColors.success,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       ),
     );

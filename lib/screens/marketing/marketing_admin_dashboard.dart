@@ -99,9 +99,9 @@ class _MarketingAdminDashboardState extends State<MarketingAdminDashboard> {
     return Container(
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(24),
-          topRight: Radius.circular(24),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(Brand.r(24)),
+          topRight: Radius.circular(Brand.r(24)),
         ),
         border: isDark
             ? Border(
@@ -219,7 +219,7 @@ class _MarketingAdminDashboardState extends State<MarketingAdminDashboard> {
                         ? Brand.royalBlue.withAlpha(38)
                         : AdminColors.primary.withAlpha(26))
                     : Colors.transparent,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
               ),
               child: Icon(
                 isSelected ? activeIcon : icon,

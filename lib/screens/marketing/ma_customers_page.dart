@@ -114,7 +114,7 @@ class _MaCustomersPageState extends State<MaCustomersPage> {
                         : null,
                     filled: true,
                     fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(Brand.r(12)),
                         borderSide: BorderSide.none),
                     contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   ),
@@ -220,7 +220,7 @@ class _MaCustomersPageState extends State<MaCustomersPage> {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         decoration: BoxDecoration(
           color: isSelected ? color : (isDark ? Brand.darkCardElevated : Brand.scaffoldLight),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(color: isSelected ? color : (isDark ? Brand.darkBorder : Brand.borderLight)),
         ),
         child: Text(_cap(value),
@@ -252,7 +252,7 @@ class _MaCustomersPageState extends State<MaCustomersPage> {
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 16, offset: const Offset(0, 2)),

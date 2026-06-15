@@ -305,7 +305,7 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
                       filled: true,
                       fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         borderSide: BorderSide.none,
                       ),
                     ),
@@ -335,7 +335,7 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                         ),
                       ),
                       child: saving
@@ -513,7 +513,7 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
       SnackBar(
         content: Text(msg),
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(10))),
       ),
     );
   }
@@ -637,7 +637,7 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
         ),
         child: Row(
           children: [
@@ -858,7 +858,7 @@ class _SummaryChip extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         decoration: BoxDecoration(
           color: selected ? color.withAlpha(30) : Colors.transparent,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: selected ? color : color.withAlpha(60),
             width: selected ? 1.5 : 1,
@@ -941,7 +941,7 @@ class _AttendanceCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         color: cardBg,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border(
           left: BorderSide(color: attColor, width: 4),
           top: BorderSide(color: borderColor),
@@ -958,10 +958,10 @@ class _AttendanceCard extends StatelessWidget {
       ),
       child: Material(
         color: Colors.transparent,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         child: InkWell(
           onTap: onTap,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           child: Padding(
             padding: const EdgeInsets.all(14),
             child: Row(
@@ -1185,7 +1185,7 @@ class _ErrorView extends StatelessWidget {
                 backgroundColor: _eaAccent,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
               ),
             ),

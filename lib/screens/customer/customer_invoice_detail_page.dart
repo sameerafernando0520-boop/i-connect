@@ -253,7 +253,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
             sc.withAlpha(isDark ? 25 : 12),
           ],
         ),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Brand.r(22)),
         border: Border.all(color: sc.withAlpha(isDark ? 70 : 50)),
       ),
       child: Column(
@@ -263,7 +263,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
             decoration: BoxDecoration(
               color: sc.withAlpha(40),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(Brand.r(20)),
               border: Border.all(color: sc.withAlpha(90)),
             ),
             child: Row(
@@ -329,7 +329,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
             ),
             const SizedBox(height: 8),
             ClipRRect(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
               child: LinearProgressIndicator(
                 value: progress,
                 minHeight: 8,
@@ -464,7 +464,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: Brand.royalBlue.withAlpha(isDark ? 40 : 20),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: Text(
                     '${i + 1}',
@@ -623,7 +623,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
               color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -636,7 +636,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
                   height: 40,
                   decoration: BoxDecoration(
                     color: Brand.lightGreen.withAlpha(isDark ? 30 : 20),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Brand.r(12)),
                   ),
                   child: Icon(
                     _paymentIcon(method),
@@ -775,7 +775,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
           height: 120,
           decoration: BoxDecoration(
             color: isDark ? Brand.darkCard : Colors.white,
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(Brand.r(18)),
             border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -796,7 +796,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,

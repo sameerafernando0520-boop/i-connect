@@ -115,7 +115,7 @@ class _AssignEngineerSheetState extends State<AssignEngineerSheet> {
         return AlertDialog(
           backgroundColor: dark ? Brand.darkCard : Colors.white,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
           title: Text('Assign Engineer',
               style: TextStyle(
                   color: dark ? Brand.darkTextPrimary : Brand.royalBlue,
@@ -137,7 +137,7 @@ class _AssignEngineerSheetState extends State<AssignEngineerSheet> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Brand.royalBlue,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
               ),
               child:
                   const Text('Assign', style: TextStyle(color: Colors.white)),
@@ -173,7 +173,7 @@ class _AssignEngineerSheetState extends State<AssignEngineerSheet> {
         return AlertDialog(
           backgroundColor: dark ? Brand.darkCard : Colors.white,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
           title: Text('Unassign Engineer',
               style: TextStyle(
                   color: Colors.orange[700], fontWeight: FontWeight.w700)),
@@ -194,7 +194,7 @@ class _AssignEngineerSheetState extends State<AssignEngineerSheet> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orange[700],
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
               ),
               child:
                   const Text('Unassign', style: TextStyle(color: Colors.white)),
@@ -334,7 +334,7 @@ class _AssignEngineerSheetState extends State<AssignEngineerSheet> {
                 filled: true,
                 fillColor: dark ? Brand.darkCard : Colors.grey[100],
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   borderSide: BorderSide.none,
                 ),
                 contentPadding: const EdgeInsets.symmetric(vertical: 0),
@@ -401,14 +401,14 @@ class _AssignEngineerSheetState extends State<AssignEngineerSheet> {
       color: dark
           ? (isCurrent ? Brand.darkCardElevated : Brand.darkCard)
           : (isCurrent ? const Color(0xFFE8EEF9) : Colors.white),
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(Brand.r(16)),
       child: InkWell(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         onTap: (_isAssigning || isCurrent) ? null : () => _assign(eng),
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             border: Border.all(
               color: isCurrent
                   ? Brand.lightGreen.withAlpha(153)
@@ -517,7 +517,7 @@ class _AssignEngineerSheetState extends State<AssignEngineerSheet> {
                                     color: dark
                                         ? Brand.royalBlueLight.withAlpha(31)
                                         : const Color(0xFFE8EEF9),
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(Brand.r(10)),
                                   ),
                                   child: Text(s,
                                       style: TextStyle(
@@ -600,7 +600,7 @@ class _AssignEngineerSheetState extends State<AssignEngineerSheet> {
         height: 100,
         decoration: BoxDecoration(
           color: dark ? Brand.darkCard : Colors.grey[100],
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
         ),
       ),
     );

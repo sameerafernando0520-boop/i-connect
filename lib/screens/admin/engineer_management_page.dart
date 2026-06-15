@@ -1,4 +1,4 @@
-// lib/screens/admin/engineer_management_page.dart
+﻿// lib/screens/admin/engineer_management_page.dart
 // Fixed: .withOpacity() → .withAlpha() throughout,
 //   MediaQuery sheetCtx, mounted guards, AlwaysScrollableScrollPhysics,
 //   AdminColors.warning, error feedback on outer catch
@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/string_utils.dart';
 
@@ -252,7 +253,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
         backgroundColor:
             isError ? AdminColors.error : (color ?? Brand.lightGreenBright),
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.all(16),
         duration: Duration(seconds: isError ? 4 : 3),
       ),
@@ -308,10 +309,18 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
               .copyWith(statusBarColor: Colors.transparent),
       child: Scaffold(
         backgroundColor: Brand.canvas(isDark),
+        appBar: DsPageHeader(
+          title: 'Engineer Team',
+          subtitle: '${_engineers.length} registered',
+          accent: HeroAccent.navy,
+          actions: [
+            IconButton(icon: const Icon(Icons.person_add_outlined, color: Colors.white), onPressed: () => _showAddEngineerSheet(_isDark)),
+            IconButton(icon: const Icon(Icons.refresh_rounded, color: Colors.white), onPressed: _load),
+          ],
+        ),
         body: SafeArea(
           child: Column(
             children: [
-              _buildHeader(isDark),
               _buildSearchBar(isDark),
               _buildFilterChips(isDark),
               _buildSummaryRow(isDark),
@@ -344,70 +353,6 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
     );
   }
 
-  // ─── HEADER ───────────────────────────────────────────────
-  Widget _buildHeader(bool isDark) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-      child: Row(
-        children: [
-          IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-            ),
-            style: IconButton.styleFrom(
-              backgroundColor: Brand.surface(isDark),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Engineer Team',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.3,
-                    color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
-                  ),
-                ),
-                Text(
-                  '${_engineers.length} engineer'
-                  '${_engineers.length == 1 ? '' : 's'} registered',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              // ✅ .withAlpha() — was .withAlpha(((0.12/0.1) * 255).toInt())
-              color: _engAccent.withAlpha(isDark ? 31 : 26),
-              borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: _engAccent.withAlpha(77)),
-            ),
-            child: const Icon(
-              Icons.engineering_rounded,
-              color: _engAccent,
-              size: 22,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   // ─── SEARCH BAR ───────────────────────────────────────────
   Widget _buildSearchBar(bool isDark) {
     return Padding(
@@ -415,7 +360,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
       child: Container(
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -467,7 +412,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                 : null,
             enabledBorder: InputBorder.none,
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               borderSide: BorderSide(
                   color: isDark ? Brand.darkIconActive : Brand.royalBlue,
                   width: 1.5),
@@ -514,7 +459,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                     color: isSel
                         ? c.withAlpha(isDark ? 38 : 31)
                         : (Brand.surface(isDark)),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(Brand.r(20)),
                     border: Border.all(
                       color: isSel
                           ? c.withAlpha(128)
@@ -594,7 +539,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
           border: Border.all(
             color: isDark ? Brand.darkBorder : c.withAlpha(31),
           ),
@@ -641,7 +586,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -782,7 +727,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                       decoration: BoxDecoration(
                         // ✅ .withAlpha() — was .withOpacity()
                         color: aColor.withAlpha(isDark ? 31 : 26),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                         border: Border.all(color: aColor.withAlpha(77)),
                       ),
                       child: Text(
@@ -866,7 +811,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                           decoration: BoxDecoration(
                             // ✅ .withAlpha() — was .withOpacity()
                             color: _engAccent.withAlpha(isDark ? 26 : 20),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(Brand.r(10)),
                             border: Border.all(color: _engAccent.withAlpha(51)),
                           ),
                           child: Text(
@@ -889,7 +834,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                                           ? Brand.darkTextSecondary
                                           : Brand.subtleLight)
                                       .withAlpha(26),
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(Brand.r(10)),
                                 ),
                                 child: Text(
                                   '+${specs.length - 4} more',
@@ -953,7 +898,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
         size: 20,
       ),
       color: isDark ? Brand.darkCard : Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(16))),
       itemBuilder: (_) => [
         _menuItem('edit', 'Edit Details', Icons.edit_rounded,
             Brand.darkIconActive, isDark),
@@ -1008,7 +953,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           boxShadow: [
             BoxShadow(
               color: _engAccent.withAlpha(115),
@@ -1086,7 +1031,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
       context: context,
       builder: (dialogCtx) => AlertDialog(
         backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
         title: Text(
           'Remove Engineer',
           style: TextStyle(
@@ -1113,7 +1058,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                 decoration: BoxDecoration(
                   // ✅ AdminColors.warning — no hardcoded orange
                   color: AdminColors.warning.withAlpha(isDark ? 26 : 20),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                   border: Border.all(color: AdminColors.warning.withAlpha(77)),
                 ),
                 child: Row(
@@ -1203,7 +1148,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                   height: 80,
                   decoration: BoxDecoration(
                     color: isDark ? Brand.darkCard : Brand.royalBlueSurface,
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(Brand.r(24)),
                   ),
                   child: Icon(
                     Icons.engineering_rounded,
@@ -1258,7 +1203,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -1360,21 +1305,21 @@ Widget _sheetTextField(
       filled: true,
       fillColor: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         borderSide:
             BorderSide(color: isDark ? Brand.darkBorder : Brand.borderLight),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         borderSide:
             BorderSide(color: isDark ? Brand.darkBorder : Brand.borderLight),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         borderSide: const BorderSide(color: _engAccent, width: 2),
       ),
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         borderSide: const BorderSide(color: AdminColors.error),
       ),
     ),
@@ -1479,7 +1424,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
           backgroundColor: AdminColors.error,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
           ),
           margin: const EdgeInsets.all(16),
         ),
@@ -1520,7 +1465,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                   height: 44,
                   decoration: BoxDecoration(
                     color: _engAccent.withAlpha(isDark ? 31 : 26),
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(Brand.r(14)),
                   ),
                   child: const Icon(Icons.person_add_rounded,
                       color: _engAccent, size: 22),
@@ -1679,7 +1624,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                                   : (isDark
                                       ? Brand.darkCardElevated
                                       : Brand.royalBlueSurface),
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(Brand.r(20)),
                               border: Border.all(
                                 color: isSel
                                     ? _engAccent.withAlpha(128)
@@ -1724,7 +1669,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                         color: isDark
                             ? Brand.darkCardElevated
                             : Brand.royalBlueSurface,
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                         border: Border.all(
                           color: isDark
                               ? Brand.darkBorder
@@ -1751,7 +1696,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                           ),
                           enabledBorder: InputBorder.none,
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(Brand.r(14)),
                             borderSide: BorderSide(
                                 color: isDark
                                     ? Brand.darkIconActive
@@ -1767,7 +1712,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                       padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(
                         color: _engAccent.withAlpha(isDark ? 20 : 15),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                         border:
                             Border.all(color: _engAccent.withAlpha(51)),
                       ),
@@ -1849,7 +1794,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                         boxShadow: isDark
                             ? null
                             : [
@@ -1960,7 +1905,7 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
           backgroundColor: AdminColors.error,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
           ),
           margin: const EdgeInsets.all(16),
         ),
@@ -2075,7 +2020,7 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
                                   : (isDark
                                       ? Brand.darkCardElevated
                                       : Brand.royalBlueSurface),
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(Brand.r(20)),
                               border: Border.all(
                                 color: isSel
                                     ? _engAccent.withAlpha(128)
@@ -2118,7 +2063,7 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
                         color: isDark
                             ? Brand.darkCardElevated
                             : Brand.royalBlueSurface,
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                         border: Border.all(
                           color: isDark
                               ? Brand.darkBorder
@@ -2144,7 +2089,7 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
                           ),
                           enabledBorder: InputBorder.none,
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(Brand.r(14)),
                             borderSide: BorderSide(
                                 color: isDark
                                     ? Brand.darkIconActive
@@ -2187,7 +2132,7 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
                   color: _isSaving
                       ? (isDark ? Brand.darkIconActive : Brand.royalBlue)
                       : null,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   boxShadow: isDark || _isSaving
                       ? null
                       : [

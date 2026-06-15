@@ -64,7 +64,7 @@ class _MaBroadcastPageState extends State<MaBroadcastPage> {
         ]),
         backgroundColor: AdminColors.success,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       ));
     }
   }
@@ -90,7 +90,7 @@ class _MaBroadcastPageState extends State<MaBroadcastPage> {
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: InkWell(
               onTap: _openCompose,
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(Brand.r(18)),
               child: Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -98,7 +98,7 @@ class _MaBroadcastPageState extends State<MaBroadcastPage> {
                     colors: [Color(0xFFEF4444), Color(0xFFDC2626)],
                     begin: Alignment.topLeft, end: Alignment.bottomRight,
                   ),
-                  borderRadius: BorderRadius.circular(18),
+                  borderRadius: BorderRadius.circular(Brand.r(18)),
                   boxShadow: [
                     BoxShadow(color: _bcColor.withAlpha(60), blurRadius: 12, offset: const Offset(0, 4)),
                   ],
@@ -185,7 +185,7 @@ class _MaBroadcastPageState extends State<MaBroadcastPage> {
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 16, offset: const Offset(0, 2)),
@@ -200,7 +200,7 @@ class _MaBroadcastPageState extends State<MaBroadcastPage> {
             width: 36, height: 36,
             decoration: BoxDecoration(
               color: _bcColor.withAlpha(isDark ? 30 : 15),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: const Icon(Icons.campaign_rounded, size: 18, color: _bcColor),
           ),
@@ -314,7 +314,7 @@ class _ComposeSheetState extends State<_ComposeSheet> {
         content: Text(e.toString(), style: const TextStyle(color: Colors.white)),
         backgroundColor: AdminColors.error,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       ));
     }
   }
@@ -366,7 +366,7 @@ class _ComposeSheetState extends State<_ComposeSheet> {
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
                       color: selected ? _bcColor : (isDark ? Brand.darkCardElevated : Brand.scaffoldLight),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       border: Border.all(color: selected ? _bcColor : (isDark ? Brand.darkBorder : Brand.borderLight)),
                     ),
                     child: Text(a['label']!,
@@ -384,7 +384,7 @@ class _ComposeSheetState extends State<_ComposeSheet> {
           controller: _titleCtrl,
           decoration: InputDecoration(
             labelText: 'Title *',
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
             filled: true,
             fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
           ),
@@ -396,7 +396,7 @@ class _ComposeSheetState extends State<_ComposeSheet> {
           decoration: InputDecoration(
             labelText: 'Message *',
             alignLabelWithHint: true,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
             filled: true,
             fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
           ),
@@ -415,7 +415,7 @@ class _ComposeSheetState extends State<_ComposeSheet> {
             style: ElevatedButton.styleFrom(
               backgroundColor: _bcColor, foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 14),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
             ),
           ),
         ),

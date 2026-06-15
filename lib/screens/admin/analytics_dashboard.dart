@@ -1,9 +1,10 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../widgets/common/ic_icons.dart';
 
 class AnalyticsDashboardPage extends StatefulWidget {
@@ -108,16 +109,6 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
             color: Brand.royalBlue.withAlpha(10),
             blurRadius: 10,
             offset: const Offset(0, 4),
-          ),
-        ];
-
-  List<BoxShadow> get _softShadow => _isDark
-      ? []
-      : [
-          BoxShadow(
-            color: Brand.royalBlue.withAlpha(15),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
           ),
         ];
 
@@ -533,7 +524,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
             isError ? Colors.red.shade400 : (color ?? _primaryColor),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
         ),
         margin: const EdgeInsets.all(16),
       ),
@@ -549,10 +540,16 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
 
     return Scaffold(
       backgroundColor: _scaffoldBg,
+      appBar: DsPageHeader(
+        title: 'Analytics',
+        accent: HeroAccent.navy,
+        actions: [
+          IconButton(icon: const Icon(Icons.refresh_rounded, color: Colors.white), onPressed: _loadData),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            _buildHeader(),
             Expanded(
               child: _isLoading
                   ? _buildLoadingState()
@@ -616,75 +613,6 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
     );
   }
 
-  // ─── HEADER ────────────────────────────────────────────────
-  Widget _buildHeader() {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 12),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: _cardBg,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: _softShadow,
-              ),
-              child: const Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: _primaryColor,
-                size: 18,
-              ),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Analytics',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.3,
-                    color: _textPrimary,
-                  ),
-                ),
-                Text(
-                  'Performance insights & trends',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: _textMuted,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: _loadData,
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: _cardBg,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: _softShadow,
-              ),
-              child: const Icon(
-                Icons.refresh_rounded,
-                color: _primaryColor,
-                size: 22,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   // ─── PERIOD SELECTOR ───────────────────────────────────────
   Widget _buildPeriodSelector() {
     final periods = ['7d', '30d', '90d', 'All'];
@@ -695,7 +623,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         color: _cardBg,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: _isDark ? Border.all(color: _borderColor) : null,
         boxShadow: _cardShadow,
       ),
@@ -716,7 +644,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                 duration: const Duration(milliseconds: 200),
                 decoration: BoxDecoration(
                   color: isSelected ? _primaryColor : Colors.transparent,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                 ),
                 child: Center(
                   child: Text(
@@ -818,7 +746,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: _cardBg,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: _isDark ? Border.all(color: _borderColor) : null,
           boxShadow: _cardShadow,
         ),
@@ -920,7 +848,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
               ),
               decoration: BoxDecoration(
                 color: color.withAlpha(bgAlpha),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                   color: color.withAlpha(38),
                 ),
@@ -978,7 +906,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: _cardBg,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         border: _isDark ? Border.all(color: _borderColor) : null,
         boxShadow: _cardShadow,
       ),
@@ -1418,7 +1346,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                     ),
                     decoration: BoxDecoration(
                       color: _primaryColor.withAlpha(20),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Text(
                       '$resolved',

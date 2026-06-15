@@ -247,7 +247,7 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
                                         .withAlpha(26)
                                     : AdminColors.bg(sheetCtx),
                                 borderRadius:
-                                    BorderRadius.circular(10),
+                                    BorderRadius.circular(Brand.r(10)),
                                 border: Border.all(
                                   color: selected
                                       ? AdminColors.primary
@@ -406,7 +406,7 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
                                 vertical: 14),
                             shape: RoundedRectangleBorder(
                                 borderRadius:
-                                    BorderRadius.circular(12)),
+                                    BorderRadius.circular(Brand.r(12))),
                           ),
                           onPressed: () async {
                             if (selMachineId == null) {
@@ -733,7 +733,7 @@ class _Field extends StatelessWidget {
             const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         decoration: BoxDecoration(
           color: AdminColors.bg(context),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
           border: Border.all(color: AdminColors.border(context)),
         ),
         child: child,
@@ -767,7 +767,7 @@ class _InstallationCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
           color: AdminColors.card(context),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: Border.all(color: AdminColors.border(context)),
           boxShadow: isDark
               ? []

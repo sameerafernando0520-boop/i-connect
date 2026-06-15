@@ -394,7 +394,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                             ? Brand.darkCardElevated
                             : Brand.scaffoldLight,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                           borderSide: BorderSide.none,
                         ),
                         contentPadding: const EdgeInsets.all(14),
@@ -416,7 +416,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                               ? Brand.darkBorderLight
                               : Brand.borderLight,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(Brand.r(12)),
                           ),
                         ),
                         child: const Text('Submit Rating',
@@ -662,7 +662,7 @@ class _MySchedulePageState extends State<MySchedulePage>
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: Border.all(
             color: isExpanded
                 ? _typeColor(type).withAlpha(102)
@@ -692,7 +692,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                     height: 44,
                     decoration: BoxDecoration(
                       color: _typeColor(type).withAlpha(isDark ? 38 : 26),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                     ),
                     child: Icon(_typeIcon(type),
                         size: 22, color: _typeColor(type)),
@@ -831,7 +831,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: _statusColor(status).withAlpha(isDark ? 20 : 15),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                         border: Border.all(
                           color: _statusColor(status).withAlpha(51),
                         ),
@@ -950,7 +950,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
                           color: const Color(0xFFEF4444).withAlpha(15),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -986,7 +986,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
                           color: Brand.lightGreen.withAlpha(15),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1067,7 +1067,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                                 color: const Color(0xFFF59E0B).withAlpha(128),
                               ),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(Brand.r(12)),
                               ),
                             ),
                           ),
@@ -1130,7 +1130,7 @@ class _MySchedulePageState extends State<MySchedulePage>
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: color.withAlpha(isDark ? 38 : 26),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Brand.r(10)),
       ),
       child: Text(
         label,
@@ -1151,7 +1151,7 @@ class _MySchedulePageState extends State<MySchedulePage>
             height: 100,
             decoration: BoxDecoration(
               color: isDark ? Brand.darkCard : Colors.white,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(Brand.r(16)),
             ),
             child: const Center(
               child: CircularProgressIndicator(strokeWidth: 2),

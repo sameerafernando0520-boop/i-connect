@@ -107,7 +107,7 @@ class _EaCreateEngineerPageState extends State<EaCreateEngineerPage> {
           backgroundColor: AdminColors.success,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         ),
       );
 
@@ -134,7 +134,7 @@ class _EaCreateEngineerPageState extends State<EaCreateEngineerPage> {
         backgroundColor: AdminColors.error,
         behavior: SnackBarBehavior.floating,
         shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       ),
     );
   }
@@ -180,7 +180,7 @@ class _EaCreateEngineerPageState extends State<EaCreateEngineerPage> {
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
                 color: _eaAccent.withAlpha(isDark ? 25 : 15),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 border: Border.all(color: _eaAccent.withAlpha(60)),
               ),
               child: Row(
@@ -315,7 +315,7 @@ class _EaCreateEngineerPageState extends State<EaCreateEngineerPage> {
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Brand.surface(isDark),
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(Brand.r(18)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
               ),
               child: Column(
@@ -353,7 +353,7 @@ class _EaCreateEngineerPageState extends State<EaCreateEngineerPage> {
                                 : (isDark
                                     ? Brand.darkCardElevated
                                     : Brand.royalBlueSurface),
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(Brand.r(20)),
                             border: Border.all(
                               color: isSel
                                   ? _eaAccent.withAlpha(128)
@@ -399,7 +399,7 @@ class _EaCreateEngineerPageState extends State<EaCreateEngineerPage> {
             Container(
               decoration: BoxDecoration(
                 color: Brand.surface(isDark),
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(Brand.r(18)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
               ),
               child: Padding(
@@ -472,7 +472,7 @@ class _EaCreateEngineerPageState extends State<EaCreateEngineerPage> {
                   backgroundColor: _eaAccent,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14)),
+                      borderRadius: BorderRadius.circular(Brand.r(14))),
                   elevation: 0,
                 ),
               ),
@@ -504,7 +504,7 @@ class _EaCreateEngineerPageState extends State<EaCreateEngineerPage> {
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
       ),

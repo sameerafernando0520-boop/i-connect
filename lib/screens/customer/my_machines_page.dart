@@ -513,7 +513,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
           color: active
               ? Brand.lime.withAlpha(46)
               : Colors.white.withAlpha(18),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: Border.all(
             color: active ? Brand.lime : const Color(0xFF2A3F6E),
           ),
@@ -556,15 +556,15 @@ class _MyMachinesPageState extends State<MyMachinesPage>
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: const BorderSide(color: Color(0xFF2A3F6E)),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: const BorderSide(color: Color(0xFF2A3F6E)),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: const BorderSide(color: Brand.lime, width: 1.5),
         ),
       ),
@@ -620,7 +620,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : color.withAlpha(13),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(Brand.r(14)),
         border: Border.all(color: color.withAlpha(isDark ? 38 : 51)),
       ),
       child: Row(children: [
@@ -629,7 +629,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
           height: 36,
           decoration: BoxDecoration(
             color: color.withAlpha(isDark ? 31 : 26),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Brand.r(10)),
           ),
           child: Icon(icon, size: 18, color: color),
         ),
@@ -722,7 +722,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                 color: isSelected
                     ? color
                     : (Brand.surface(isDark)),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 border: Border.all(
                   color: isSelected
                       ? color
@@ -812,7 +812,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                 color: isDark
                     ? Brand.darkIconActive.withAlpha(26)
                     : Brand.royalBlue.withAlpha(20),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: Text('"$_searchQuery"',
                   style: TextStyle(
@@ -927,7 +927,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
           color: isFav
               ? (isDark ? Brand.darkTextSecondary : Colors.grey.shade400)
               : const Color(0xFFFF9800),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
         ),
         alignment: Alignment.centerLeft,
         padding: const EdgeInsets.only(left: 24),
@@ -946,7 +946,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
         ),
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.only(right: 24),
@@ -1001,7 +1001,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: isOverdue
                 ? (isDark
@@ -1035,7 +1035,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                     : [statusColor, statusColor.withAlpha(128)],
               ),
               borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(20)),
+                  BorderRadius.vertical(top: Radius.circular(Brand.r(20))),
             ),
           ),
           Padding(
@@ -1048,7 +1048,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                     color: isDark
                         ? Brand.darkCardElevated
                         : Brand.royalBlueSurface,
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(Brand.r(16)),
                     border: Border.all(
                         color:
                             isDark ? Brand.darkBorderLight : Brand.borderLight,
@@ -1057,7 +1057,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                   // ✅ FIX-5: CachedNetworkImage instead of Image.network
                   child: imageUrl != null
                       ? ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(Brand.r(16)),
                           child: CachedNetworkImage(
                             imageUrl: imageUrl,
                             fit: BoxFit.cover,
@@ -1128,7 +1128,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                               horizontal: 7, vertical: 3),
                           decoration: BoxDecoration(
                             color: statusColor.withAlpha(isDark ? 31 : 20),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(Brand.r(10)),
                             border:
                                 Border.all(color: statusColor.withAlpha(38)),
                           ),
@@ -1257,7 +1257,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                                         ? const Color(0xFFFFB74D)
                                         : const Color(0xFFFF9800)))
                                 .withAlpha(isDark ? 26 : 20),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(Brand.r(10)),
                           ),
                           child: Row(mainAxisSize: MainAxisSize.min, children: [
                             Icon(
@@ -1300,7 +1300,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                     color: isDark
                         ? Brand.darkCardElevated
                         : Brand.royalBlueSurface,
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: BorderRadius.circular(Brand.r(10))),
                 child: Icon(Icons.chevron_right_rounded,
                     size: 20,
                     color: isDark
@@ -1333,7 +1333,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
       child: Container(
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: isOverdue
                 ? (isDark
@@ -1356,12 +1356,12 @@ class _MyMachinesPageState extends State<MyMachinesPage>
             decoration: BoxDecoration(
               color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
               borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(20)),
+                  BorderRadius.vertical(top: Radius.circular(Brand.r(20))),
             ),
             child: Stack(children: [
               ClipRRect(
                 borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(20)),
+                    BorderRadius.vertical(top: Radius.circular(Brand.r(20))),
                 // ✅ FIX-5: CachedNetworkImage instead of Image.network
                 child: imageUrl != null
                     ? CachedNetworkImage(
@@ -1418,7 +1418,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                                 ? Brand.lightGreenBright
                                 : Brand.lightGreen)
                             : (isDark ? const Color(0xFFFF6B6B) : Colors.red),
-                        borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(Brand.r(10))),
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                       const Icon(Icons.verified_user_rounded,
                           size: 12, color: Colors.white),
@@ -1523,7 +1523,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
         height: 54,
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark ? Border.all(color: Brand.darkBorderLight) : null,
         ),
         child: Icon(_getCategoryIcon(category),
@@ -1592,7 +1592,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                           : (isDark
                               ? Brand.darkCardElevated
                               : Brand.royalBlueSurface),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(Brand.r(12)),
                       border: isDark && isSelected
                           ? Border.all(
                               color: Brand.darkIconActive.withAlpha(51))
@@ -1620,7 +1620,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                         size: 22)
                     : null,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 8),
               );
             }),
@@ -1655,7 +1655,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
             height: 50,
             decoration: BoxDecoration(
                 color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 border:
                     isDark ? Border.all(color: Brand.darkBorderLight) : null),
             child: Icon(_getCategoryIcon(catalog?['category']),
@@ -1746,7 +1746,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
         height: 42,
         decoration: BoxDecoration(
             color: color.withAlpha(isDark ? 26 : 20),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
             border: isDark ? Border.all(color: color.withAlpha(31)) : null),
         child: iconWidget ?? Icon(icon, color: color, size: 20),
       ),
@@ -1760,7 +1760,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
           color: isDark
               ? Brand.darkTextTertiary
               : Brand.subtleLight.withAlpha(102)),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       contentPadding: const EdgeInsets.symmetric(horizontal: 8),
     );
   }
@@ -1780,7 +1780,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                       margin: const EdgeInsets.symmetric(horizontal: 4),
                       decoration: BoxDecoration(
                           color: Brand.surface(isDark),
-                          borderRadius: BorderRadius.circular(18),
+                          borderRadius: BorderRadius.circular(Brand.r(18)),
                           border: Border.all(
                               color: isDark
                                   ? Brand.darkBorder
@@ -1797,7 +1797,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                   margin: const EdgeInsets.only(bottom: 12),
                   decoration: BoxDecoration(
                       color: Brand.surface(isDark),
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(Brand.r(20)),
                       border: Border.all(
                           color:
                               isDark ? Brand.darkBorder : Brand.borderLight)),
@@ -1822,7 +1822,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
           padding: const EdgeInsets.all(32),
           decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(Brand.r(22)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: isDark
                 ? null
@@ -1839,7 +1839,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
               height: 84,
               decoration: BoxDecoration(
                   color: Colors.red.withAlpha(isDark ? 31 : 15),
-                  borderRadius: BorderRadius.circular(24),
+                  borderRadius: BorderRadius.circular(Brand.r(24)),
                   border: isDark
                       ? Border.all(color: const Color(0xFFFF6B6B).withAlpha(38))
                       : null),
@@ -1878,7 +1878,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                     elevation: 0,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14))),
+                        borderRadius: BorderRadius.circular(Brand.r(14)))),
               ),
             ),
           ]),
@@ -1940,7 +1940,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
               ? [Brand.darkIconActive, Brand.royalBlueGlow]
               : [Brand.royalBlue, Brand.royalBlueLight],
         ),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         boxShadow: [
           BoxShadow(
               color: isDark
@@ -2019,7 +2019,7 @@ class _ShimmerWidgetState extends State<_ShimmerWidget>
                 widget.baseColor.withAlpha(13),
               ],
             ),
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(Brand.r(14)),
           ),
         );
       },

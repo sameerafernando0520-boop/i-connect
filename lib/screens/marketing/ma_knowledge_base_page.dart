@@ -167,7 +167,7 @@ class _MaKnowledgeBasePageState extends State<MaKnowledgeBasePage> {
       content: Text(msg, style: const TextStyle(color: Colors.white)),
       backgroundColor: AdminColors.error,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
     ));
   }
 
@@ -180,7 +180,7 @@ class _MaKnowledgeBasePageState extends State<MaKnowledgeBasePage> {
       ]),
       backgroundColor: AdminColors.success,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       duration: const Duration(seconds: 2),
     ));
   }
@@ -220,7 +220,7 @@ class _MaKnowledgeBasePageState extends State<MaKnowledgeBasePage> {
                         : null,
                     filled: true,
                     fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(Brand.r(12)),
                         borderSide: BorderSide.none),
                     contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   ),
@@ -338,7 +338,7 @@ class _MaKnowledgeBasePageState extends State<MaKnowledgeBasePage> {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
         decoration: BoxDecoration(
           color: isSelected ? _kbColor : (isDark ? Brand.darkCardElevated : Brand.scaffoldLight),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(color: isSelected ? _kbColor : (isDark ? Brand.darkBorder : Brand.borderLight)),
         ),
         child: Text(label,
@@ -358,7 +358,7 @@ class _MaKnowledgeBasePageState extends State<MaKnowledgeBasePage> {
     return Container(
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
           BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 16, offset: const Offset(0, 2)),
@@ -431,12 +431,12 @@ class _MaKnowledgeBasePageState extends State<MaKnowledgeBasePage> {
   Widget _actionBtn(IconData icon, String label, Color color, bool isDark, VoidCallback onTap) {
     return Expanded(
       child: InkWell(
-        onTap: onTap, borderRadius: BorderRadius.circular(10),
+        onTap: onTap, borderRadius: BorderRadius.circular(Brand.r(10)),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 7),
           decoration: BoxDecoration(
             color: color.withAlpha(isDark ? 25 : 12),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Brand.r(10)),
             border: Border.all(color: color.withAlpha(isDark ? 50 : 30)),
           ),
           child: Column(children: [

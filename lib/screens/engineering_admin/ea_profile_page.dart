@@ -187,7 +187,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
                                       horizontal: 12, vertical: 6),
                                   decoration: BoxDecoration(
                                     color: _eaAccent.withAlpha(isDark ? 40 : 22),
-                                    borderRadius: BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(Brand.r(20)),
                                     border: Border.all(
                                         color: _eaAccent.withAlpha(
                                             isDark ? 80 : 50)),
@@ -270,7 +270,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
@@ -346,7 +346,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
                           horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
                         color: _eaAccent.withAlpha(isDark ? 45 : 25),
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(Brand.r(20)),
                         border: Border.all(
                             color: _eaAccent.withAlpha(isDark ? 80 : 50)),
                       ),
@@ -412,7 +412,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
         Container(
           decoration: BoxDecoration(
             color: isDark ? Brand.darkCard : Colors.white,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
              border: isDark
              ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: isDark
@@ -557,7 +557,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
     return Consumer<LocaleProvider>(
       builder: (ctx, lp, _) => InkWell(
         onTap: () => showLanguageSelector(ctx),
-        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(16)),
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(Brand.r(16))),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Row(
@@ -614,7 +614,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
           disabledBackgroundColor: Colors.red.shade300,
           padding: const EdgeInsets.symmetric(vertical: 14),
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
           textStyle:
               const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
         ),

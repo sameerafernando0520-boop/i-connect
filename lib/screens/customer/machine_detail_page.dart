@@ -332,7 +332,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
           duration: const Duration(seconds: 1),
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))));
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12)))));
     } catch (_) {
       if (mounted) setState(() => _isSaved = was);
     }
@@ -346,14 +346,14 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: Brand.surface(isDark),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
         title: Row(
           children: [
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: Brand.royalBlue.withAlpha(26),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: const Icon(Icons.help_outline_rounded,
                   color: Brand.royalBlue, size: 20),
@@ -387,7 +387,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
               backgroundColor: Brand.royalBlue,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(Brand.r(12))),
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
             ),
             child: const Text(
@@ -454,7 +454,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
             decoration: BoxDecoration(
                 color: Brand.surface(isDark),
                 borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(28))),
+                    BorderRadius.vertical(top: Radius.circular(28))),
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(sheetCtx).viewInsets.bottom),
             child: SingleChildScrollView(
@@ -480,7 +480,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                             decoration: BoxDecoration(
                                 color: Brand.lightGreen
                                     .withAlpha(isDark ? 31 : 20),
-                                borderRadius: BorderRadius.circular(14)),
+                                borderRadius: BorderRadius.circular(Brand.r(14))),
                             child: const Icon(Icons.shopping_cart_rounded,
                                 color: Brand.lightGreen, size: 22)),
                         const SizedBox(width: 14),
@@ -529,7 +529,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                     'address': ac.text.trim(),
                                     'requirements': rc.text.trim()
                                   }),
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(Brand.r(16)),
                               child: Container(
                                   width: double.infinity,
                                   padding:
@@ -539,7 +539,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                         Brand.lightGreen,
                                         Brand.lightGreenBright
                                       ]),
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius: BorderRadius.circular(Brand.r(16)),
                                       boxShadow: [
                                         BoxShadow(
                                             color:
@@ -681,7 +681,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                     Brand.lightGreen.withAlpha(38),
                                     Brand.lightGreenBright.withAlpha(26)
                                   ]),
-                                  borderRadius: BorderRadius.circular(24)),
+                                  borderRadius: BorderRadius.circular(Brand.r(24))),
                               child: const Icon(Icons.check_circle_rounded,
                                   color: Brand.lightGreen, size: 42))),
                       const SizedBox(height: 22),
@@ -698,7 +698,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                           decoration: BoxDecoration(
                               color:
                                   Brand.royalBlue.withAlpha(isDark ? 31 : 15),
-                              borderRadius: BorderRadius.circular(10)),
+                              borderRadius: BorderRadius.circular(Brand.r(10))),
                           child: Text(ticketNumber,
                               style: TextStyle(
                                   fontSize: 13,
@@ -730,7 +730,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                             builder: (_) => TicketDetailPage(
                                                 ticketId: ticketId)));
                                   },
-                                  borderRadius: BorderRadius.circular(16),
+                                  borderRadius: BorderRadius.circular(Brand.r(16)),
                                   child: Container(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 15),
@@ -741,7 +741,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                                 Brand.royalBlueLight
                                               ]),
                                           borderRadius:
-                                              BorderRadius.circular(16),
+                                              BorderRadius.circular(Brand.r(16)),
                                           boxShadow: [
                                             BoxShadow(
                                                 color: Brand.royalBlue
@@ -971,7 +971,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
           content: const Text('Product info copied!'),
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))));
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12)))));
     }
   }
 
@@ -1001,16 +1001,16 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 borderSide: BorderSide(
                     color: isDark ? Brand.darkBorderLight : Brand.borderLight)),
             focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 borderSide: BorderSide(
                     color: isDark ? Brand.darkIconActive : Brand.royalBlue,
                     width: 1.5)),
             border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(14))));
+                borderRadius: BorderRadius.circular(Brand.r(14)))));
   }
 
   // ═══════════════════════════════════════════════════════════
@@ -1104,7 +1104,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
             height: 42,
             decoration: BoxDecoration(
                 color: bg ?? Colors.black.withAlpha(71),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 border: Border.all(color: Colors.white.withAlpha(20))),
             child: Icon(icon, color: Colors.white, size: 18)));
   }
@@ -1187,7 +1187,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
                     color: Colors.black.withAlpha(115),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(Brand.r(20)),
                     border: Border.all(color: Colors.white.withAlpha(26))),
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
                   const Icon(Icons.photo_library_rounded,
@@ -1220,7 +1220,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
           height: 80,
           decoration: BoxDecoration(
               color: isDark ? _dNavy.withAlpha(128) : Brand.royalBlueSurface,
-              borderRadius: BorderRadius.circular(24)),
+              borderRadius: BorderRadius.circular(Brand.r(24))),
           child: Center(
               child: _catIcon(
                   cat,
@@ -1243,7 +1243,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
             color: Brand.lightGreen.withAlpha(isDark ? 20 : 13),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             border: Border.all(color: Brand.lightGreen.withAlpha(51))),
         child: Row(children: [
           Container(
@@ -1252,7 +1252,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
               decoration: BoxDecoration(
                   gradient: const LinearGradient(
                       colors: [Brand.lightGreen, Brand.lightGreenBright]),
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(Brand.r(10))),
               child: const Icon(Icons.check_circle,
                   color: Colors.white, size: 18)),
           const SizedBox(width: 12),
@@ -1291,7 +1291,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
             color: Brand.royalBlue.withAlpha(isDark ? 20 : 10),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             border: Border.all(color: Brand.royalBlue.withAlpha(38))),
         child: Row(children: [
           Icon(Icons.info_outline_rounded,
@@ -1315,7 +1315,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         padding: const EdgeInsets.all(22),
         decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(Brand.r(24)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: isDark
                 ? null
@@ -1373,7 +1373,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                     color: isDark
                         ? Colors.white.withAlpha(8)
                         : Brand.royalBlueSurface.withAlpha(102),
-                    borderRadius: BorderRadius.circular(14)),
+                    borderRadius: BorderRadius.circular(Brand.r(14))),
                 child: Text(m['description'],
                     style: TextStyle(
                         fontSize: 13,
@@ -1415,7 +1415,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
                             color: Brand.surface(isDark),
-                            borderRadius: BorderRadius.circular(18),
+                            borderRadius: BorderRadius.circular(Brand.r(18)),
                             border: Border.all(
                                 color: isDark
                                     ? Brand.darkBorder
@@ -1436,7 +1436,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                   color: isDark
                                       ? Brand.royalBlue.withAlpha(26)
                                       : Brand.royalBlueSurface,
-                                  borderRadius: BorderRadius.circular(11)),
+                                  borderRadius: BorderRadius.circular(Brand.r(11))),
                               child: Icon(
                                   _specIcon(e.value['icon'] ?? 'settings'),
                                   color: isDark
@@ -1494,12 +1494,12 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         color: Colors.transparent,
         child: InkWell(
             onTap: onTap,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(Brand.r(16)),
             child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 decoration: BoxDecoration(
                     color: c.withAlpha(isDark ? 20 : 13),
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(Brand.r(16)),
                     border: Border.all(color: c.withAlpha(38))),
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -1526,7 +1526,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                           ? Colors.white.withAlpha(5)
                           : Brand.royalBlueSurface.withAlpha(77))
                       : Colors.transparent,
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(Brand.r(10))),
               child:
                   Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Container(
@@ -1629,7 +1629,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(Brand.r(14)),
                       child: Stack(
                         fit: StackFit.expand,
                         children: [
@@ -1723,7 +1723,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                         color: isDark
                             ? Brand.darkCardElevated
                             : Brand.royalBlueSurface.withAlpha(128),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                         border: Border.all(
                             color: isDark
                                 ? Brand.darkBorderLight
@@ -1760,7 +1760,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         margin: const EdgeInsets.fromLTRB(16, 14, 16, 0),
         decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(Brand.r(22)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: isDark
                 ? null
@@ -1775,7 +1775,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
               color: Colors.transparent,
               child: InkWell(
                   onTap: onToggle,
-                  borderRadius: BorderRadius.circular(22),
+                  borderRadius: BorderRadius.circular(Brand.r(22)),
                   child: Padding(
                       padding: const EdgeInsets.all(18),
                       child: Row(children: [
@@ -1786,7 +1786,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                 color: isDark
                                     ? Brand.royalBlue.withAlpha(26)
                                     : Brand.royalBlueSurface,
-                                borderRadius: BorderRadius.circular(12)),
+                                borderRadius: BorderRadius.circular(Brand.r(12))),
                             child: Icon(icon,
                                 color: isDark
                                     ? Brand.royalBlueGlow
@@ -1836,7 +1836,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         color: Colors.transparent,
         child: InkWell(
             onTap: _isInquiryLoading ? null : _createInquiry,
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(Brand.r(22)),
             child: Container(
                 margin: const EdgeInsets.fromLTRB(16, 14, 16, 0),
                 padding: const EdgeInsets.all(20),
@@ -1848,7 +1848,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                 Brand.royalBlueDark.withAlpha(10),
                                 Brand.lightGreen.withAlpha(15)
                               ]),
-                    borderRadius: BorderRadius.circular(22),
+                    borderRadius: BorderRadius.circular(Brand.r(22)),
                     border: Border.all(
                         color: isDark
                             ? Brand.royalBlueLight.withAlpha(38)
@@ -1863,7 +1863,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                             Brand.lightGreen.withAlpha(38),
                             Brand.lightGreenBright.withAlpha(26)
                           ]),
-                          borderRadius: BorderRadius.circular(16)),
+                          borderRadius: BorderRadius.circular(Brand.r(16))),
                       child: const Icon(Icons.request_quote_rounded,
                           color: Brand.lightGreen, size: 24)),
                   const SizedBox(width: 14),
@@ -1891,7 +1891,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                       height: 34,
                       decoration: BoxDecoration(
                           color: Brand.lightGreen.withAlpha(26),
-                          borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(Brand.r(10))),
                       child: const Icon(Icons.arrow_forward_ios_rounded,
                           color: Brand.lightGreen, size: 14)),
                 ]))));
@@ -1904,7 +1904,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(Brand.r(22)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null),
         child: Row(children: [
           Container(
@@ -1914,7 +1914,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                   color: isDark
                       ? Brand.royalBlue.withAlpha(26)
                       : Brand.royalBlueSurface,
-                  borderRadius: BorderRadius.circular(16)),
+                  borderRadius: BorderRadius.circular(Brand.r(16))),
               child: Icon(Icons.headset_mic_rounded,
                   color: isDark ? Brand.royalBlueGlow : Brand.royalBlue,
                   size: 24)),
@@ -1940,14 +1940,14 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
               color: Colors.transparent,
               child: InkWell(
                   onTap: _callNeedHelp,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                   child: Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 10),
                       decoration: BoxDecoration(
                           gradient: const LinearGradient(
                               colors: [Brand.royalBlue, Brand.royalBlueLight]),
-                          borderRadius: BorderRadius.circular(12)),
+                          borderRadius: BorderRadius.circular(Brand.r(12))),
                       child: Row(children: [
                         const Icon(Icons.phone, color: Colors.white, size: 14),
                         const SizedBox(width: 6),
@@ -2023,7 +2023,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                             decoration: BoxDecoration(
                                 color:
                                     Brand.surface(isDark),
-                                borderRadius: BorderRadius.circular(18),
+                                borderRadius: BorderRadius.circular(Brand.r(18)),
                                 border: Border.all(
                                     color: isDark
                                         ? Brand.darkBorder
@@ -2048,12 +2048,12 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                                               : Brand.royalBlueSurface
                                                   .withAlpha(128),
                                           borderRadius:
-                                              const BorderRadius.vertical(
-                                                  top: Radius.circular(18))),
+                                              BorderRadius.vertical(
+                                                  top: Radius.circular(Brand.r(18)))),
                                       child: ClipRRect(
                                           borderRadius:
-                                              const BorderRadius.vertical(
-                                                  top: Radius.circular(18)),
+                                              BorderRadius.vertical(
+                                                  top: Radius.circular(Brand.r(18))),
                                           child: img != null
                                               ? CachedNetworkImage(
                                                   imageUrl: img,
@@ -2105,7 +2105,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
       padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
       decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: const BorderRadius.only(
+          borderRadius: BorderRadius.only(
               topLeft: Radius.circular(28), topRight: Radius.circular(28)),
           border: Border(
               top: BorderSide(
@@ -2125,11 +2125,11 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                 color: Colors.transparent,
                 child: InkWell(
                     onTap: _isInquiryLoading ? null : _createInquiry,
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(Brand.r(16)),
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(Brand.r(16)),
                           border: Border.all(
                               color: isDark
                                   ? Brand.royalBlueLight
@@ -2170,7 +2170,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                 color: Colors.transparent,
                 child: InkWell(
                     onTap: _isOrderLoading ? null : _showOrderForm,
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(Brand.r(16)),
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       decoration: BoxDecoration(
@@ -2178,7 +2178,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
                             Brand.lightGreen,
                             Brand.lightGreenBright
                           ]),
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(Brand.r(16)),
                           boxShadow: [
                             BoxShadow(
                                 color: Brand.lightGreen.withAlpha(102),

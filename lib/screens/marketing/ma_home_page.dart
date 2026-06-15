@@ -390,7 +390,7 @@ class _MaHomePageState extends State<MaHomePage> {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
           decoration: BoxDecoration(
             color: AdminColors.primary.withAlpha(isDark ? 31 : 20),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(Brand.r(20)),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -432,7 +432,7 @@ class _MaHomePageState extends State<MaHomePage> {
               height: 80,
               decoration: BoxDecoration(
                 color: AdminColors.error.withAlpha(isDark ? 31 : 20),
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(Brand.r(24)),
               ),
               child: const Icon(Icons.cloud_off_rounded,
                   size: 40, color: AdminColors.error),
@@ -463,7 +463,7 @@ class _MaHomePageState extends State<MaHomePage> {
                     const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
                 decoration: BoxDecoration(
                   color: AdminColors.primary,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   boxShadow: [
                     BoxShadow(
                       color: AdminColors.primary.withAlpha(89),
@@ -522,7 +522,7 @@ class _MaHomePageState extends State<MaHomePage> {
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Brand.r(22)),
         color: isDark ? Brand.darkCard : Colors.white,
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
@@ -546,9 +546,9 @@ class _MaHomePageState extends State<MaHomePage> {
           Container(
             height: 4,
             decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(22),
-                topRight: Radius.circular(22),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(Brand.r(22)),
+                topRight: Radius.circular(Brand.r(22)),
               ),
               gradient: LinearGradient(
                 colors: isDark
@@ -571,7 +571,7 @@ class _MaHomePageState extends State<MaHomePage> {
                       color: isDark
                           ? Brand.royalBlue.withAlpha(38)
                           : Brand.royalBlueSurface,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(Brand.r(20)),
                     ),
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                       Icon(Icons.campaign_rounded,
@@ -601,7 +601,7 @@ class _MaHomePageState extends State<MaHomePage> {
                       color: isDark
                           ? Brand.lightGreen.withAlpha(26)
                           : Brand.lightGreenSurface,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(Brand.r(20)),
                     ),
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                       Icon(Icons.circle,
@@ -709,7 +709,7 @@ class _MaHomePageState extends State<MaHomePage> {
                     color: isDark
                         ? Brand.darkBorderLight.withAlpha(77)
                         : const Color(0xFFE2E8F0),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: Stack(children: [
                     TweenAnimationBuilder<double>(
@@ -731,7 +731,7 @@ class _MaHomePageState extends State<MaHomePage> {
                                     ? [Brand.lightGreenBright, Brand.lightGreen]
                                     : [Brand.lightGreen, Brand.lightGreenBright],
                               ),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(Brand.r(10)),
                             ),
                           ),
                         );
@@ -755,7 +755,7 @@ class _MaHomePageState extends State<MaHomePage> {
         height: 46,
         decoration: BoxDecoration(
           color: color.withAlpha(isDark ? 30 : 18),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
         ),
         child: Icon(icon, color: color, size: 20),
       ),
@@ -841,7 +841,7 @@ class _MaHomePageState extends State<MaHomePage> {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
             ? null
@@ -866,7 +866,7 @@ class _MaHomePageState extends State<MaHomePage> {
             height: 40,
             decoration: BoxDecoration(
               color: k.color.withAlpha(28),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
             ),
             child: Icon(k.icon, color: k.color, size: 20),
           ),
@@ -958,7 +958,7 @@ class _MaHomePageState extends State<MaHomePage> {
             height: 56,
             decoration: BoxDecoration(
               color: tile.color.withAlpha(isDark ? 28 : 15),
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(Brand.r(16)),
               border: isDark
                   ? Border.all(color: tile.color.withAlpha(51), width: 1)
                   : null,
@@ -1011,7 +1011,7 @@ class _MaHomePageState extends State<MaHomePage> {
                   color: isDark
                       ? AdminColors.primary.withAlpha(26)
                       : Brand.royalBlueSurface,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Text(
                   '${perms.enabledCount} of 9',
@@ -1042,7 +1042,7 @@ class _MaHomePageState extends State<MaHomePage> {
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark ? Border.all(color: Brand.darkBorder) : null,
           boxShadow: isDark
               ? null
@@ -1066,7 +1066,7 @@ class _MaHomePageState extends State<MaHomePage> {
               height: 44,
               decoration: BoxDecoration(
                 color: tile.color.withAlpha(isDark ? 30 : 15),
-                borderRadius: BorderRadius.circular(13),
+                borderRadius: BorderRadius.circular(Brand.r(13)),
                 border: isDark
                     ? Border.all(color: tile.color.withAlpha(51), width: 1)
                     : null,
@@ -1113,7 +1113,7 @@ class _MaHomePageState extends State<MaHomePage> {
       padding: const EdgeInsets.all(28),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
             ? null

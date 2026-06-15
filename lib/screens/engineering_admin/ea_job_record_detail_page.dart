@@ -342,7 +342,7 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
                           horizontal: 12, vertical: 6),
                       decoration: BoxDecoration(
                         color: _statusColor(status).withAlpha(25),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                         border: Border.all(
                             color: _statusColor(status).withAlpha(70)),
                       ),
@@ -499,7 +499,7 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
                       color: isDark
                           ? Brand.darkCardElevated
                           : Brand.royalBlueSurface,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -629,7 +629,7 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: cardBg,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
@@ -764,7 +764,7 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
           color: color.withAlpha(20),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Brand.r(10)),
           border: Border.all(color: color.withAlpha(70)),
         ),
         child: Row(
@@ -859,7 +859,7 @@ class _ErrorView extends StatelessWidget {
                 backgroundColor: _eaAccent,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
               ),
             ),
           ],

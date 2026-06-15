@@ -227,7 +227,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                       height: 90,
                       decoration: BoxDecoration(
                         color: AdminColors.card(context),
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(Brand.r(16)),
                       ),
                     ),
                   ),
@@ -239,7 +239,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                       height: 90,
                       decoration: BoxDecoration(
                         color: AdminColors.card(context),
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(Brand.r(16)),
                       ),
                     ),
                   ),
@@ -255,7 +255,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                       height: 90,
                       decoration: BoxDecoration(
                         color: AdminColors.card(context),
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(Brand.r(16)),
                       ),
                     ),
                   ),
@@ -267,7 +267,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                       height: 90,
                       decoration: BoxDecoration(
                         color: AdminColors.card(context),
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(Brand.r(16)),
                       ),
                     ),
                   ),
@@ -360,7 +360,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: AdminColors.card(context),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
       ),
       child: Column(
@@ -442,7 +442,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                     color: selected
                         ? f.$3.withAlpha(isDark ? 40 : 25)
                         : AdminColors.card(context),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                     border: Border.all(
                       color: selected
                           ? f.$3.withAlpha(100)
@@ -491,7 +491,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
     return Container(
       decoration: BoxDecoration(
         color: AdminColors.card(context),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
       ),
       child: Theme(
@@ -500,13 +500,13 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
           tilePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
           childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(16))),
           leading: Container(
             width: 42,
             height: 42,
             decoration: BoxDecoration(
               color: sColor.withAlpha(26),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(Brand.r(12)),
             ),
             child: Icon(
               Icons.people_alt_rounded,
@@ -637,7 +637,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                           foregroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(Brand.r(12)),
                           ),
                         ),
                       ),
@@ -665,7 +665,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                           ),
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(Brand.r(12)),
                           ),
                         ),
                       ),
@@ -794,7 +794,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       decoration: BoxDecoration(
                         color: AdminColors.bg(sheetCtx),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                       ),
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton<String>(
@@ -857,7 +857,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                         filled: true,
                         fillColor: AdminColors.bg(sheetCtx),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                           borderSide: BorderSide.none,
                         ),
                         isDense: true,
@@ -883,7 +883,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                         filled: true,
                         fillColor: AdminColors.bg(sheetCtx),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                           borderSide: BorderSide.none,
                         ),
                         isDense: true,
@@ -906,7 +906,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                           foregroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(vertical: 14),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(Brand.r(14)),
                           ),
                         ),
                       ),
@@ -968,7 +968,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AdminColors.card(ctx),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
         title: Text(
           'Reject Referral?',
           style: TextStyle(color: AdminColors.text(ctx)),
@@ -995,7 +995,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                 filled: true,
                 fillColor: AdminColors.bg(ctx),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                   borderSide: BorderSide.none,
                 ),
                 contentPadding:
@@ -1021,7 +1021,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
               backgroundColor: AdminColors.error,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(Brand.r(10))),
             ),
             child: const Text('Reject'),
           ),
@@ -1153,7 +1153,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
         ),
         backgroundColor: isError ? AdminColors.error : AdminColors.success,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       ),
     );
@@ -1172,7 +1172,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                 height: 88,
                 decoration: BoxDecoration(
                   color: AdminColors.card(context),
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(Brand.r(16)),
                 ),
               ),
             ),
@@ -1231,7 +1231,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                   foregroundColor: AdminColors.primary,
                   side: BorderSide(color: AdminColors.primary.withAlpha(80)),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(Brand.r(10))),
                 ),
               ),
             ],
@@ -1278,7 +1278,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                 backgroundColor: AdminColors.primary,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
               ),
             ),
           ],

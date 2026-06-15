@@ -206,7 +206,7 @@ class _SettingsCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
         ),
@@ -263,7 +263,7 @@ class _ToggleRow extends StatelessWidget {
             height: 36,
             decoration: BoxDecoration(
               color: iconColor.withAlpha(26),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: Icon(icon, color: iconColor, size: 18),
           ),
@@ -319,7 +319,7 @@ class _ActionRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(Brand.r(16)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(
@@ -329,7 +329,7 @@ class _ActionRow extends StatelessWidget {
               height: 36,
               decoration: BoxDecoration(
                 color: iconColor.withAlpha(26),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: Icon(icon, color: iconColor, size: 18),
             ),
@@ -393,7 +393,7 @@ class _InfoRow extends StatelessWidget {
             height: 36,
             decoration: BoxDecoration(
               color: iconColor.withAlpha(26),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: Icon(icon, color: iconColor, size: 18),
           ),

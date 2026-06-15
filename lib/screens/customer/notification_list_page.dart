@@ -592,7 +592,7 @@ class _NotificationListPageState extends State<NotificationListPage>
       ]),
       backgroundColor: isSuccess ? Brand.lightGreen : Colors.red,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       margin: const EdgeInsets.all(16),
     ));
   }
@@ -754,7 +754,7 @@ class _NotificationListPageState extends State<NotificationListPage>
           height: 38,
           decoration: BoxDecoration(
             color: Colors.white.withAlpha(18),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
             border: Border.all(color: const Color(0xFF2A3F6E)),
           ),
           child: Icon(icon, color: Colors.white, size: 19),
@@ -771,7 +771,7 @@ class _NotificationListPageState extends State<NotificationListPage>
         height: 44,
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(Brand.r(14)),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
         ),
@@ -782,7 +782,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                 colors: isDark
                     ? [Brand.darkIconActive, Brand.royalBlueGlow]
                     : [Brand.royalBlue, Brand.royalBlueLight]),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Brand.r(10)),
           ),
           indicatorSize: TabBarIndicatorSize.tab,
           indicatorPadding: const EdgeInsets.all(3),
@@ -918,7 +918,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                 builder: (dialogCtx) => AlertDialog(
                   backgroundColor: Brand.surface(isDark),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
+                      borderRadius: BorderRadius.circular(Brand.r(20))),
                   title: Text(S.of(context)!.notificationDeleteConfirm,
                       style: TextStyle(
                           color: isDark
@@ -946,7 +946,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                             foregroundColor: Colors.white,
                             elevation: 0,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10))),
+                                borderRadius: BorderRadius.circular(Brand.r(10)))),
                         child: Text(S.of(context)!.commonDelete,
                             style: const TextStyle(fontWeight: FontWeight.w700))),
                   ],
@@ -959,7 +959,7 @@ class _NotificationListPageState extends State<NotificationListPage>
           color: Colors.transparent,
           child: InkWell(
             onTap: () => _handleTap(n),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(Brand.r(18)),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 250),
               padding: const EdgeInsets.all(14),
@@ -969,7 +969,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                     : (isDark
                         ? Brand.darkCardElevated
                         : ntype.color.withAlpha(((0.03) * 255).toInt())),
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(Brand.r(18)),
                 border: Border.all(
                   color: isRead
                       ? (isDark ? Brand.darkBorder : Brand.borderLight)
@@ -997,7 +997,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                       height: 46,
                       decoration: BoxDecoration(
                         color: ntype.color.withAlpha(((isDark ? 0.1 : 0.08) * 255).toInt()),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                         border: isDark
                             ? Border.all(color: ntype.color.withAlpha(((0.12) * 255).toInt()))
                             : null,
@@ -1082,7 +1082,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                             decoration: BoxDecoration(
                               color: ntype.color
                                   .withAlpha(((isDark ? 0.15 : 0.10) * 255).toInt()),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(Brand.r(10)),
                               border: Border.all(
                                   color: ntype.color
                                       .withAlpha(((isDark ? 0.35 : 0.30) * 255).toInt())),
@@ -1121,7 +1121,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                                           ? Brand.darkIconActive
                                           : Brand.royalBlue)
                                       .withAlpha(((0.08) * 255).toInt()),
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(Brand.r(10)),
                                   border: Border.all(
                                       color: (isDark
                                               ? Brand.darkIconActive
@@ -1174,7 +1174,7 @@ class _NotificationListPageState extends State<NotificationListPage>
         margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
           color: Colors.red.withAlpha(((isDark ? 0.2 : 0.1) * 255).toInt()),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: Border.all(color: Colors.red.withAlpha(((isDark ? 0.3 : 0.2) * 255).toInt())),
         ),
         alignment: Alignment.centerRight,
@@ -1211,7 +1211,7 @@ class _NotificationListPageState extends State<NotificationListPage>
               height: 80,
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkCard : Brand.royalBlueSurface,
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(Brand.r(24)),
                 border:
                     isDark ? Border.all(color: Brand.darkBorderLight) : null,
               ),
@@ -1254,7 +1254,7 @@ class _NotificationListPageState extends State<NotificationListPage>
               height: 70,
               decoration: BoxDecoration(
                 color: Colors.red.withAlpha(((isDark ? 0.15 : 0.1) * 255).toInt()),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Brand.r(20)),
               ),
               child: Icon(Icons.error_outline,
                   size: 34,
@@ -1293,7 +1293,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                 padding:
                     const EdgeInsets.symmetric(horizontal: 28, vertical: 12),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(Brand.r(12))),
               ),
             ),
           ],
@@ -1315,7 +1315,7 @@ class _NotificationListPageState extends State<NotificationListPage>
             color: isDark
                 ? Brand.darkBorderLight.withAlpha(((0.2) * 255).toInt())
                 : Brand.royalBlue.withAlpha(((0.04) * 255).toInt()),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(Brand.r(18)),
           ),
           padding: const EdgeInsets.all(14),
           child: Row(children: [
@@ -1326,7 +1326,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                 color: isDark
                     ? Brand.darkBorderLight.withAlpha(((0.3) * 255).toInt())
                     : Brand.royalBlue.withAlpha(((0.06) * 255).toInt()),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
               ),
             ),
             const SizedBox(width: 12),
@@ -1342,7 +1342,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                       color: isDark
                           ? Brand.darkBorderLight.withAlpha(((0.3) * 255).toInt())
                           : Brand.royalBlue.withAlpha(((0.06) * 255).toInt()),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -1353,7 +1353,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                       color: isDark
                           ? Brand.darkBorderLight.withAlpha(((0.2) * 255).toInt())
                           : Brand.royalBlue.withAlpha(((0.04) * 255).toInt()),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                   ),
                 ],

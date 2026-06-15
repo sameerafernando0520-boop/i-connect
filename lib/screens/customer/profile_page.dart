@@ -773,7 +773,7 @@ class _ProfilePageState extends State<ProfilePage>
         backgroundColor: Brand.lightGreen,
         behavior: SnackBarBehavior.floating,
         shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))));
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12)))));
   }
 
   void _showError(String msg) {
@@ -788,7 +788,7 @@ class _ProfilePageState extends State<ProfilePage>
         backgroundColor: Colors.red,
         behavior: SnackBarBehavior.floating,
         shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))));
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12)))));
   }
 
   String _getMemberSince() {
@@ -967,7 +967,7 @@ class _ProfilePageState extends State<ProfilePage>
               height: 72,
               decoration: BoxDecoration(
                   color: isDark ? Brand.darkCard : Brand.royalBlueSurface,
-                  borderRadius: BorderRadius.circular(22),
+                  borderRadius: BorderRadius.circular(Brand.r(22)),
                   border: isDark ? Border.all(color: Brand.darkBorder) : null),
               child: Center(
                   child: SizedBox(
@@ -1054,7 +1054,7 @@ class _ProfilePageState extends State<ProfilePage>
       padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(Brand.r(24)),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null),
       child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -1063,7 +1063,7 @@ class _ProfilePageState extends State<ProfilePage>
             height: 72,
             decoration: BoxDecoration(
                 color: Colors.red.withAlpha(isDark ? 38 : 26),
-                borderRadius: BorderRadius.circular(22)),
+                borderRadius: BorderRadius.circular(Brand.r(22))),
             child: Icon(Icons.error_outline,
                 size: 36,
                 color: isDark ? const Color(0xFFFF6B6B) : Colors.red)),
@@ -1090,7 +1090,7 @@ class _ProfilePageState extends State<ProfilePage>
                               ? Brand.darkBorderLight
                               : Brand.borderLight),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14))),
+                          borderRadius: BorderRadius.circular(Brand.r(14)))),
                   child: Text(S.of(context)!.commonBack,
                       style: TextStyle(
                           color: isDark
@@ -1111,7 +1111,7 @@ class _ProfilePageState extends State<ProfilePage>
                           isDark ? Brand.darkIconActive : Brand.royalBlue,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14))),
+                          borderRadius: BorderRadius.circular(Brand.r(14)))),
                   child: Text(S.of(context)!.commonRetry,
                       style: TextStyle(fontWeight: FontWeight.w700)))),
         ]),
@@ -1302,7 +1302,7 @@ class _ProfilePageState extends State<ProfilePage>
                                 horizontal: 10, vertical: 5),
                             decoration: BoxDecoration(
                                 color: tierColor.withAlpha(isDark ? 31 : 46),
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(Brand.r(20)),
                                 border: Border.all(
                                     color:
                                         tierColor.withAlpha(isDark ? 51 : 64))),
@@ -1343,7 +1343,7 @@ class _ProfilePageState extends State<ProfilePage>
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
                       color: tierColor.withAlpha(isDark ? 31 : 46),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                       border: Border.all(
                           color: tierColor.withAlpha(isDark ? 38 : 51)),
                     ),
@@ -1365,7 +1365,7 @@ class _ProfilePageState extends State<ProfilePage>
                           horizontal: 8, vertical: 5),
                       decoration: BoxDecoration(
                         color: Colors.orange.withAlpha(isDark ? 26 : 31),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                         border: Border.all(
                             color: Colors.orange.withAlpha(isDark ? 38 : 46)),
                       ),
@@ -1445,7 +1445,7 @@ class _ProfilePageState extends State<ProfilePage>
       decoration: BoxDecoration(
           color:
               isDark ? Brand.darkCard : Brand.royalBlueSurface.withAlpha(179),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(Brand.r(18)),
           border: Border.all(
               color:
                   isDark ? Brand.darkBorder : Brand.royalBlue.withAlpha(26))),
@@ -1479,7 +1479,7 @@ class _ProfilePageState extends State<ProfilePage>
         ]),
         const SizedBox(height: 12),
         ClipRRect(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Brand.r(10)),
             child: LinearProgressIndicator(
                 value: _profileCompletePercent / 100,
                 minHeight: 6,
@@ -1552,7 +1552,7 @@ class _ProfilePageState extends State<ProfilePage>
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     decoration: BoxDecoration(
                         color: Brand.surface(isDark),
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(Brand.r(18)),
                         border: Border.all(
                             color: isDark
                                 ? Brand.darkBorder
@@ -1571,7 +1571,7 @@ class _ProfilePageState extends State<ProfilePage>
                           height: 38,
                           decoration: BoxDecoration(
                               color: s.color.withAlpha(isDark ? 31 : 20),
-                              borderRadius: BorderRadius.circular(11),
+                              borderRadius: BorderRadius.circular(Brand.r(11)),
                               border: isDark
                                   ? Border.all(color: s.color.withAlpha(38))
                                   : null),
@@ -1605,7 +1605,7 @@ class _ProfilePageState extends State<ProfilePage>
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(Brand.r(22)),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
           boxShadow: isDark
@@ -1624,7 +1624,7 @@ class _ProfilePageState extends State<ProfilePage>
               decoration: BoxDecoration(
                   color:
                       isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                   border:
                       isDark ? Border.all(color: Brand.darkBorderLight) : null),
               child: Icon(Icons.trending_up_rounded,
@@ -1643,7 +1643,7 @@ class _ProfilePageState extends State<ProfilePage>
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
                   color: mc.withAlpha(isDark ? 31 : 26),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(Brand.r(10)),
                   border: isDark ? Border.all(color: mc.withAlpha(51)) : null),
               child: Row(mainAxisSize: MainAxisSize.min, children: [
                 Icon(_getMilestoneIcon(), color: mc, size: 14),
@@ -1826,7 +1826,7 @@ class _ProfilePageState extends State<ProfilePage>
       margin: const EdgeInsets.fromLTRB(20, 16, 20, 0),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Brand.r(22)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
               : null,
@@ -1852,7 +1852,7 @@ class _ProfilePageState extends State<ProfilePage>
                 height: 42,
                 decoration: BoxDecoration(
                   color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                   border: isDark ? Border.all(color: Brand.darkBorderLight) : null,
                 ),
                 child: Icon(
@@ -1936,7 +1936,7 @@ class _ProfilePageState extends State<ProfilePage>
                           : (isDark
                               ? Brand.darkCardElevated
                               : const Color(0xFFF1F5F9)),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                       border: isUnlocked
                           ? Border.all(color: color.withAlpha(isDark ? 64 : 51))
                           : null,
@@ -1971,7 +1971,7 @@ class _ProfilePageState extends State<ProfilePage>
                             horizontal: 7, vertical: 2),
                         decoration: BoxDecoration(
                           color: color.withAlpha(isDark ? 51 : 38),
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(Brand.r(20)),
                         ),
                         child: Text(
                           'Current',
@@ -2184,7 +2184,7 @@ class _ProfilePageState extends State<ProfilePage>
                                   _isEditing = true;
                                   _accountInfoExpanded = true;
                                 }),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(Brand.r(10)),
                             child: Container(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 5),
@@ -2193,7 +2193,7 @@ class _ProfilePageState extends State<ProfilePage>
                                             ? Brand.darkIconActive
                                             : Brand.royalBlue)
                                         .withAlpha(isDark ? 31 : 15),
-                                    borderRadius: BorderRadius.circular(10)),
+                                    borderRadius: BorderRadius.circular(Brand.r(10))),
                                 child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -2233,14 +2233,14 @@ class _ProfilePageState extends State<ProfilePage>
                               setState(() => _isEditing = false);
                             }
                           },
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Brand.r(10)),
                           child: Container(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 5),
                               decoration: BoxDecoration(
                                   color:
                                       Colors.red.withAlpha(isDark ? 31 : 15),
-                                  borderRadius: BorderRadius.circular(10)),
+                                  borderRadius: BorderRadius.circular(Brand.r(10))),
                               child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -2330,7 +2330,7 @@ class _ProfilePageState extends State<ProfilePage>
                           color: Colors.transparent,
                           child: InkWell(
                               onTap: _isSaving ? null : _saveProfile,
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(Brand.r(16)),
                               child: Container(
                                   width: double.infinity,
                                   padding:
@@ -2346,7 +2346,7 @@ class _ProfilePageState extends State<ProfilePage>
                                                   Brand.royalBlue,
                                                   Brand.royalBlueLight
                                                 ]),
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius: BorderRadius.circular(Brand.r(16)),
                                       boxShadow: [
                                         BoxShadow(
                                             color: isDark
@@ -2411,7 +2411,7 @@ class _ProfilePageState extends State<ProfilePage>
                         : (isDark
                             ? Brand.darkCardElevated.withAlpha(128)
                             : Brand.royalBlueSurface.withAlpha(128)),
-                    borderRadius: BorderRadius.circular(11),
+                    borderRadius: BorderRadius.circular(Brand.r(11)),
                     border: isDark && enabled
                         ? Border.all(color: Brand.darkBorderLight)
                         : null),
@@ -2507,7 +2507,7 @@ class _ProfilePageState extends State<ProfilePage>
                   : (isDark
                       ? Brand.darkCardElevated.withAlpha(128)
                       : Brand.royalBlueSurface.withAlpha(128)),
-              borderRadius: BorderRadius.circular(11),
+              borderRadius: BorderRadius.circular(Brand.r(11)),
               border: isDark && enabled
                   ? Border.all(color: Brand.darkBorderLight)
                   : null,
@@ -2666,12 +2666,12 @@ class _ProfilePageState extends State<ProfilePage>
             color: Colors.transparent,
             child: InkWell(
                 onTap: onTap,
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(Brand.r(18)),
                 child: Container(
                     padding: const EdgeInsets.all(14),
                     decoration: BoxDecoration(
                         color: Brand.surface(isDark),
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(Brand.r(18)),
                         border: Border.all(
                             color: isDark ? Brand.darkBorder : c.withAlpha(20)),
                         boxShadow: isDark
@@ -2688,7 +2688,7 @@ class _ProfilePageState extends State<ProfilePage>
                           height: 44,
                           decoration: BoxDecoration(
                               color: c.withAlpha(isDark ? 26 : 20),
-                              borderRadius: BorderRadius.circular(14),
+                              borderRadius: BorderRadius.circular(Brand.r(14)),
                               border: isDark
                                   ? Border.all(color: c.withAlpha(38))
                                   : null),
@@ -2795,12 +2795,12 @@ class _ProfilePageState extends State<ProfilePage>
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Brand.r(20)),
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(Brand.r(20)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: isDark
                 ? null
@@ -2818,7 +2818,7 @@ class _ProfilePageState extends State<ProfilePage>
               height: 48,
               decoration: BoxDecoration(
                 color: accent.withAlpha(isDark ? 38 : 26),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
               ),
               child: Icon(icon, color: accent, size: 24),
             ),
@@ -2959,12 +2959,12 @@ class _ProfilePageState extends State<ProfilePage>
             color: Colors.transparent,
             child: InkWell(
                 onTap: onTap,
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     decoration: BoxDecoration(
                         color: c.withAlpha(isDark ? 26 : 15),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(Brand.r(14)),
                         border:
                             Border.all(color: c.withAlpha(isDark ? 38 : 31))),
                     child: Column(children: [
@@ -3045,7 +3045,7 @@ class _ProfilePageState extends State<ProfilePage>
               HapticFeedback.selectionClick();
               ThemeStyleSheet.show(context);
             },
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(Brand.r(12)),
             child: Container(
               padding:
                   const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
@@ -3053,7 +3053,7 @@ class _ProfilePageState extends State<ProfilePage>
                 color: isDark
                     ? Brand.darkCardElevated
                     : Brand.royalBlueSurface,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                     color: isDark ? Brand.darkBorderLight : Brand.borderLight),
               ),
@@ -3112,7 +3112,7 @@ class _ProfilePageState extends State<ProfilePage>
                   : (isDark
                       ? Brand.darkCardElevated
                       : Brand.royalBlueSurface.withAlpha(128)),
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(Brand.r(18)),
               border: Border.all(
                   color: isSelected
                       ? (isDark ? Brand.darkIconActive : Brand.royalBlue)
@@ -3215,7 +3215,7 @@ class _ProfilePageState extends State<ProfilePage>
                     color: isDark
                         ? Brand.darkCardElevated
                         : Brand.royalBlue.withAlpha(26),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                     border: isDark
                         ? Border.all(color: Brand.darkBorderLight)
                         : null),
@@ -3269,7 +3269,7 @@ class _ProfilePageState extends State<ProfilePage>
                       height: 42,
                       decoration: BoxDecoration(
                           color: c.withAlpha(isDark ? 26 : 20),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(Brand.r(12)),
                           border: isDark
                               ? Border.all(color: c.withAlpha(31))
                               : null),
@@ -3330,7 +3330,7 @@ class _ProfilePageState extends State<ProfilePage>
         padding: const EdgeInsets.symmetric(vertical: 6),
         decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(Brand.r(22)),
             border: Border.all(color: Colors.red.withAlpha(isDark ? 38 : 26))),
         child: Column(children: [
           Padding(
@@ -3375,13 +3375,13 @@ class _ProfilePageState extends State<ProfilePage>
             color: Colors.transparent,
             child: InkWell(
                 onTap: _logout,
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(Brand.r(18)),
                 child: Container(
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     decoration: BoxDecoration(
                         color: Brand.surface(isDark),
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(Brand.r(18)),
                         border: Border.all(
                             color: Colors.red.withAlpha(isDark ? 64 : 51),
                             width: 1.5)),
@@ -3427,7 +3427,7 @@ class _ProfilePageState extends State<ProfilePage>
   // ── Shared Decorations ──────────────────────────────────────
   BoxDecoration _cardDeco(bool isDark) => BoxDecoration(
       color: Brand.surface(isDark),
-      borderRadius: BorderRadius.circular(22),
+      borderRadius: BorderRadius.circular(Brand.r(22)),
       border: isDark ? Border.all(color: Brand.darkBorder) : null,
       boxShadow: isDark
           ? null
@@ -3443,7 +3443,7 @@ class _ProfilePageState extends State<ProfilePage>
       height: 42,
       decoration: BoxDecoration(
           color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark ? Border.all(color: Brand.darkBorderLight) : null),
       child: Icon(icon,
           color: isDark ? Brand.darkIconActive : Brand.royalBlue, size: 22));
@@ -3462,7 +3462,7 @@ class _ProfilePageState extends State<ProfilePage>
             decoration: BoxDecoration(
                 color: filled ? border : null,
                 border: filled ? null : Border.all(color: border, width: 1.5),
-                borderRadius: BorderRadius.circular(14)),
+                borderRadius: BorderRadius.circular(Brand.r(14))),
             child: Center(
                 child: Text(text,
                     style: TextStyle(
@@ -3483,7 +3483,7 @@ class _ProfilePageState extends State<ProfilePage>
     final isDark = _isDark;
     return Dialog(
         backgroundColor: Brand.surface(isDark),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(24))),
         child: Padding(
             padding: const EdgeInsets.all(28),
             child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -3492,7 +3492,7 @@ class _ProfilePageState extends State<ProfilePage>
                   height: 70,
                   decoration: BoxDecoration(
                       color: iconColor.withAlpha(isDark ? 31 : 26),
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(Brand.r(20)),
                       border: isDark
                           ? Border.all(color: iconColor.withAlpha(38))
                           : null),
@@ -3535,7 +3535,7 @@ class _ProfilePageState extends State<ProfilePage>
         margin: const EdgeInsets.all(16),
         decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(24)),
+            borderRadius: BorderRadius.circular(Brand.r(24))),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           const SizedBox(height: 12),
           Container(
@@ -3599,7 +3599,7 @@ class _ProfilePageState extends State<ProfilePage>
             height: 46,
             decoration: BoxDecoration(
                 color: bg,
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 border: isDark ? Border.all(color: ic.withAlpha(31)) : null),
             child: Icon(icon, color: ic, size: 24)),
         title: Text(title,
@@ -3627,7 +3627,7 @@ class _ProfilePageState extends State<ProfilePage>
                 decoration: BoxDecoration(
                     color: Brand.surface(isDark),
                     borderRadius:
-                        const BorderRadius.vertical(top: Radius.circular(24))),
+                        BorderRadius.vertical(top: Radius.circular(Brand.r(24)))),
                 child: Column(children: [
                   const SizedBox(height: 12),
                   Container(
@@ -3669,12 +3669,12 @@ class _ProfilePageState extends State<ProfilePage>
         builder: (context) => Dialog(
             backgroundColor: Brand.surface(isDark),
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(24))),
             child: Padding(
                 padding: const EdgeInsets.all(28),
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
                   ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(Brand.r(16)),
                       child: const AppLogo.mark(height: 56, width: 56)),
                   const SizedBox(height: 16),
                   Text('iFrontiers Connect',
@@ -3712,7 +3712,7 @@ class _ProfilePageState extends State<ProfilePage>
                                   : Brand.royalBlue,
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(14))),
+                                  borderRadius: BorderRadius.circular(Brand.r(14)))),
                           child: const Text('Close'))),
                 ]))));
   }

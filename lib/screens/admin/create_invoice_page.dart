@@ -1,9 +1,10 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
+import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 
 class CreateInvoicePage extends StatefulWidget {
@@ -160,6 +161,10 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
 
     return Scaffold(
       backgroundColor: isDark ? Brand.darkBg : AdminColors.background,
+      appBar: DsPageHeader(
+        title: 'Create Invoice',
+        accent: HeroAccent.navy,
+      ),
       body: SafeArea(
         child: _loading
             ? const Center(
@@ -167,7 +172,6 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                     color: AdminColors.primary, strokeWidth: 3))
             : Column(
                 children: [
-                  _buildTopHeader(isDark),
                   Expanded(
                     child: SingleChildScrollView(
                       padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
@@ -203,58 +207,6 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
 
   // ═════════════════════════════════════════════════════════
   //  1. CUSTOMER SELECTION
-  // ═════════════════════════════════════════════════════════
-  //  TOP HEADER (matches other admin pages)
-  // ═════════════════════════════════════════════════════════
-
-  Widget _buildTopHeader(bool isDark) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 12),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: isDark
-              ? Border.all(color: Brand.darkBorder)
-              : null,
-                boxShadow: isDark
-                    ? null
-                    : [
-                        BoxShadow(
-                          color: Brand.royalBlue.withAlpha(15),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-              ),
-              child: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: isDark ? Brand.darkIconActive : AdminColors.primary,
-                size: 18,
-              ),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Text(
-              'Create Invoice',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                color: isDark ? Brand.darkTextPrimary : AdminColors.primary,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   // ═════════════════════════════════════════════════════════
 
@@ -263,7 +215,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
       isDark: isDark,
       child: InkWell(
         onTap: _selectCustomer,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
@@ -273,7 +225,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                 height: 44,
                 decoration: BoxDecoration(
                   color: AdminColors.primary.withAlpha(20),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Icon(
                   _customerId != null
@@ -381,7 +333,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                         filled: true,
                         fillColor: AdminColors.bg(sheetCtx),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                           borderSide: BorderSide.none,
                         ),
                         contentPadding:
@@ -447,7 +399,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                                 final c = results[i];
                                 return ListTile(
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14),
+                                    borderRadius: BorderRadius.circular(Brand.r(14)),
                                   ),
                                   tileColor: AdminColors.bg(sheetCtx),
                                   leading: Container(
@@ -455,7 +407,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                                     height: 40,
                                     decoration: BoxDecoration(
                                       color: AdminColors.primary.withAlpha(20),
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(Brand.r(10)),
                                     ),
                                     child: const Icon(Icons.person_rounded,
                                         color: AdminColors.primary, size: 20),
@@ -509,7 +461,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: AdminColors.accent.withAlpha(isDark ? 20 : 12),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(Brand.r(12)),
         border: Border.all(color: AdminColors.accent.withAlpha(40)),
       ),
       child: Row(
@@ -576,7 +528,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                   foregroundColor: AdminColors.primary,
                   side: BorderSide(color: AdminColors.primary.withAlpha(80)),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                      borderRadius: BorderRadius.circular(Brand.r(12))),
                   padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
               ),
@@ -592,7 +544,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                   foregroundColor: AdminColors.accent,
                   side: BorderSide(color: AdminColors.accent.withAlpha(80)),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                      borderRadius: BorderRadius.circular(Brand.r(12))),
                   padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
               ),
@@ -805,7 +757,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: AdminColors.bg(sheetCtx),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Brand.r(12)),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -870,7 +822,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                           foregroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(vertical: 14),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(Brand.r(14)),
                           ),
                         ),
                         child: Text(
@@ -1002,7 +954,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                         filled: true,
                         fillColor: AdminColors.bg(sheetCtx),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                           borderSide: BorderSide.none,
                         ),
                       ),
@@ -1068,7 +1020,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                                 final price = _dbl(m['price']);
                                 return ListTile(
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14),
+                                    borderRadius: BorderRadius.circular(Brand.r(14)),
                                   ),
                                   tileColor: AdminColors.bg(sheetCtx),
                                   leading: Container(
@@ -1076,7 +1028,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                                     height: 40,
                                     decoration: BoxDecoration(
                                       color: AdminColors.accent.withAlpha(20),
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(Brand.r(10)),
                                     ),
                                     child: const Icon(
                                         Icons.precision_manufacturing_rounded,
@@ -1168,7 +1120,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                 Container(
                   decoration: BoxDecoration(
                     color: AdminColors.bg(context),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -1200,7 +1152,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                       filled: true,
                       fillColor: AdminColors.bg(context),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                         borderSide: BorderSide.none,
                       ),
                       isDense: true,
@@ -1244,7 +1196,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                       filled: true,
                       fillColor: AdminColors.bg(context),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
                         borderSide: BorderSide.none,
                       ),
                       isDense: true,
@@ -1417,7 +1369,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
       isDark: isDark,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(Brand.r(16)),
         child: Padding(
           padding: const EdgeInsets.all(14),
           child: Column(
@@ -1499,7 +1451,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
         filled: true,
         fillColor: AdminColors.bg(ctx),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide.none,
         ),
         contentPadding:
@@ -1532,7 +1484,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                 side: BorderSide(color: AdminColors.primary.withAlpha(80)),
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14)),
+                    borderRadius: BorderRadius.circular(Brand.r(14))),
               ),
               child: _saving
                   ? const SizedBox(
@@ -1562,7 +1514,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
                           end: Alignment.bottomRight,
                         ),
                   color: _saving ? AdminColors.primary : null,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   boxShadow: isDark || _saving
                       ? null
                       : [
@@ -1771,7 +1723,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
         filled: true,
         fillColor: AdminColors.bg(ctx),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide.none,
         ),
         isDense: true,
@@ -1802,7 +1754,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
         filled: true,
         fillColor: AdminColors.bg(ctx),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide.none,
         ),
         isDense: true,
@@ -1828,7 +1780,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
       ]),
       backgroundColor: isError ? AdminColors.error : AdminColors.accent,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
     ));
   }

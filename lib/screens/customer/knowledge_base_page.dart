@@ -413,7 +413,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
       ]),
       backgroundColor: const Color(0xFFE53935),
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
       margin: const EdgeInsets.all(16),
     ));
   }
@@ -548,13 +548,13 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             color: Colors.transparent,
             child: InkWell(
               onTap: () => Navigator.pop(context),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               child: Container(
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
                   color: Colors.white.withAlpha(((isDark ? 0.08 : 0.15) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   border: Border.all(color: Colors.white.withAlpha(((0.1) * 255).toInt())),
                 ),
                 child: const Icon(Icons.arrow_back_ios_new_rounded,
@@ -589,13 +589,13 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             color: Colors.transparent,
             child: InkWell(
               onTap: () => _showBookmarkedArticles(isDark),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               child: Container(
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
                   color: Colors.white.withAlpha(((isDark ? 0.08 : 0.15) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   border: Border.all(color: Colors.white.withAlpha(((0.1) * 255).toInt())),
                 ),
                 child: Stack(
@@ -643,13 +643,13 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             child: InkWell(
               onTap: () =>
                   setState(() => _isSearchExpanded = !_isSearchExpanded),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(Brand.r(14)),
               child: Container(
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
                   color: Colors.white.withAlpha(((isDark ? 0.08 : 0.15) * 255).toInt()),
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(Brand.r(14)),
                   border: Border.all(color: Colors.white.withAlpha(((0.1) * 255).toInt())),
                 ),
                 child: Icon(
@@ -679,7 +679,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
       padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 8),
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(Brand.r(22)),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark ? null : [
@@ -773,7 +773,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                 color: isSelected
                     ? color
                     : (Brand.surface(isDark)),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(Brand.r(14)),
                 border: Border.all(
                     color: isSelected
                         ? color
@@ -839,7 +839,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                         ? Brand.royalBlue.withAlpha(((0.12) * 255).toInt())
                         : Brand.royalBlueSurface)
                     : Colors.transparent,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                   color: isSelected
                       ? (isDark ? Brand.royalBlueGlow : Brand.royalBlue)
@@ -904,7 +904,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             child: Container(
               decoration: BoxDecoration(
                 color: Brand.surface(isDark),
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(Brand.r(16)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
                 boxShadow: isDark
                     ? []
@@ -950,10 +950,10 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                   filled: true,
                   fillColor: isDark ? Brand.darkCard : Brand.royalBlueSurface,
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(Brand.r(16)),
                       borderSide: BorderSide.none),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(Brand.r(16)),
                       borderSide: BorderSide(
                           color:
                               isDark ? Brand.royalBlueGlow : Brand.royalBlue,
@@ -1037,7 +1037,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Brand.r(10)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null),
         child: Row(mainAxisSize: MainAxisSize.min, children: [
           Icon(Icons.sort_rounded,
@@ -1068,7 +1068,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
         decoration: BoxDecoration(
             color: Brand.surface(isDark),
             borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(24))),
+                BorderRadius.vertical(top: Radius.circular(Brand.r(24)))),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           Container(
               width: 40,
@@ -1109,7 +1109,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                       ? Brand.royalBlue.withAlpha(((0.12) * 255).toInt())
                       : Brand.royalBlueSurface)
                   : (isDark ? Brand.darkCardElevated : Brand.scaffoldLight),
-              borderRadius: BorderRadius.circular(14)),
+              borderRadius: BorderRadius.circular(Brand.r(14))),
           child: Icon(icon,
               color: isSelected
                   ? (isDark ? Brand.royalBlueGlow : Brand.royalBlue)
@@ -1241,7 +1241,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                 color: isDark
                     ? Brand.lightGreen.withAlpha(((0.12) * 255).toInt())
                     : Brand.lightGreenSurface,
-                borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(Brand.r(10))),
             child: const Icon(Icons.auto_awesome_rounded,
                 size: 16, color: Brand.lightGreenBright)),
         const SizedBox(width: 10),
@@ -1276,7 +1276,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(Brand.r(18)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(children: [
@@ -1284,7 +1284,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
                     color: color.withAlpha(((isDark ? 0.15 : 0.08) * 255).toInt()),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(Brand.r(10)),
                     border: Border.all(color: color.withAlpha(((0.15) * 255).toInt()))),
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
                   Icon(_getIconForType(contentType), size: 11, color: color),
@@ -1343,7 +1343,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                 color: isDark
                     ? Brand.royalBlue.withAlpha(((0.12) * 255).toInt())
                     : Brand.royalBlueSurface,
-                borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(Brand.r(10))),
             child: Icon(Icons.history_rounded,
                 size: 16,
                 color: isDark ? Brand.royalBlueGlow : Brand.royalBlue)),
@@ -1372,7 +1372,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                             horizontal: 12, vertical: 8),
                         decoration: BoxDecoration(
                             color: Brand.surface(isDark),
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(Brand.r(14)),
                             border: Border.all(
                                 color: isDark
                                     ? Brand.darkBorder
@@ -1384,7 +1384,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                               decoration: BoxDecoration(
                                   color:
                                       color.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
-                                  borderRadius: BorderRadius.circular(10)),
+                                  borderRadius: BorderRadius.circular(Brand.r(10))),
                               child: Icon(
                                   _getIconForType(article['content_type']),
                                   size: 14,
@@ -1424,7 +1424,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                     : [Brand.royalBlueDark, Brand.royalBlue],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight),
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(Brand.r(24)),
             boxShadow: isDark ? null : [
               BoxShadow(
                   color: Brand.royalBlue.withAlpha(89),
@@ -1457,7 +1457,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
                       color: Brand.lightGreen.withAlpha(((0.18) * 255).toInt()),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                       border: Border.all(
                           color: Brand.lightGreen.withAlpha(((0.25) * 255).toInt()))),
                   child: const Row(mainAxisSize: MainAxisSize.min, children: [
@@ -1531,7 +1531,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                             horizontal: 8, vertical: 3),
                         decoration: BoxDecoration(
                             color: Colors.white.withAlpha(((0.06) * 255).toInt()),
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(Brand.r(10))),
                         child: Text('#$tag',
                             style: TextStyle(
                                 fontSize: 11,
@@ -1566,7 +1566,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                       const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
                   decoration: BoxDecoration(
                       color: Brand.lightGreen.withAlpha(((0.18) * 255).toInt()),
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(Brand.r(10)),
                       border: Border.all(
                           color: Brand.lightGreen.withAlpha(((0.25) * 255).toInt()))),
                   child: const Row(mainAxisSize: MainAxisSize.min, children: [
@@ -1608,7 +1608,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(Brand.r(20)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null,
             boxShadow: isDark
                 ? []
@@ -1624,9 +1624,9 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
               height: 105,
               decoration: BoxDecoration(
                   color: color,
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      bottomLeft: Radius.circular(20)))),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(Brand.r(20)),
+                      bottomLeft: Radius.circular(Brand.r(20))))),
           Container(
               width: 60,
               height: 105,
@@ -1634,7 +1634,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
               child: Center(
                   child: article['thumbnail_url'] != null
                       ? ClipRRect(
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(Brand.r(14)),
                           child: CachedNetworkImage(
                               imageUrl: article['thumbnail_url'],
                               width: 48,
@@ -1657,7 +1657,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                               decoration: BoxDecoration(
                                   color:
                                       color.withAlpha(((isDark ? 0.15 : 0.08) * 255).toInt()),
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(Brand.r(10)),
                                   border: Border.all(
                                       color: color.withAlpha(((0.15) * 255).toInt()))),
                               child: Text(
@@ -1770,7 +1770,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                         color: isDark
                             ? Colors.white.withAlpha(((0.04) * 255).toInt())
                             : Brand.royalBlueSurface,
-                        borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(Brand.r(10))),
                     child: Icon(Icons.arrow_forward_ios_rounded,
                         size: 12,
                         color: isDark
@@ -1788,7 +1788,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
         height: 48,
         decoration: BoxDecoration(
             color: color.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
-            borderRadius: BorderRadius.circular(14)),
+            borderRadius: BorderRadius.circular(Brand.r(14))),
         child: Icon(icon, color: color, size: 24));
   }
 
@@ -1806,7 +1806,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
           backgroundColor: Brand.royalBlue,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
           margin: const EdgeInsets.all(16)));
       return;
     }
@@ -1827,7 +1827,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                 decoration: BoxDecoration(
                     color: Brand.surface(isDark),
                     borderRadius:
-                        const BorderRadius.vertical(top: Radius.circular(24))),
+                        BorderRadius.vertical(top: Radius.circular(Brand.r(24)))),
                 child: Column(children: [
                   Padding(
                       padding: const EdgeInsets.all(20),
@@ -1848,7 +1848,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                               decoration: BoxDecoration(
                                   color: Colors.amber
                                       .withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
-                                  borderRadius: BorderRadius.circular(11)),
+                                  borderRadius: BorderRadius.circular(Brand.r(11))),
                               child: const Icon(Icons.bookmark_rounded,
                                   color: Colors.amber, size: 18)),
                           const SizedBox(width: 12),
@@ -1944,7 +1944,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                         decoration: BoxDecoration(
                             gradient: const LinearGradient(
                                 colors: [Brand.royalBlueDark, Brand.royalBlue]),
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(Brand.r(14)),
                             boxShadow: [
                               BoxShadow(
                                   color: Brand.royalBlue.withAlpha(((0.35) * 255).toInt()),
@@ -1978,7 +1978,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
         height: 200,
         decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(Brand.r(24)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null),
         padding: const EdgeInsets.all(22),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -2008,7 +2008,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
             color: Brand.surface(isDark),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(Brand.r(20)),
             border: isDark ? Border.all(color: Brand.darkBorder) : null),
         child: Row(children: [
           _skBox(48, 48, isDark, radius: 14),

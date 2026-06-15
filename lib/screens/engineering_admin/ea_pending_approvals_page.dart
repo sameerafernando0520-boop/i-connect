@@ -214,7 +214,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
         title: const Text('Reject schedule'),
         content: TextField(
           controller: ctrl,
@@ -339,7 +339,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
     return Container(
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(Brand.r(18)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
         ),
@@ -395,7 +395,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: AdminColors.bg(context),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: Text(notes,
                   style: TextStyle(
@@ -415,7 +415,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
                   foregroundColor: _eaRed,
                   side: const BorderSide(color: _eaRed),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                      borderRadius: BorderRadius.circular(Brand.r(12))),
                 ),
               ),
             ),
@@ -435,7 +435,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
                 style: FilledButton.styleFrom(
                   backgroundColor: _eaAccent,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                      borderRadius: BorderRadius.circular(Brand.r(12))),
                 ),
               ),
             ),
