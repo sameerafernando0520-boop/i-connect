@@ -328,52 +328,59 @@ class _SignupPageState extends State<SignupPage> {
         backgroundColor: Brand.canvas(isDark),
         body: Stack(
           children: [
-            // Top gradient
+            // Top header — NavyGlow: deep gradient + glow orbs
+            //              Workshop: flat ink panel with hairline border
             Container(
               height: MediaQuery.of(context).size.height * 0.28,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: isDark
-                      ? [const Color(0xFF081A40), const Color(0xFF102A63)]
-                      : [const Color(0xFF081A40), const Color(0xFF102A63)],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(40),
-                  bottomRight: Radius.circular(40),
-                ),
+                color: Brand.isWorkshop ? Brand.workshopInk : null,
+                gradient: Brand.isWorkshop
+                    ? null
+                    : LinearGradient(
+                        colors: [Brand.splashNavyEdge, Brand.splashNavyGlow],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                borderRadius: Brand.isWorkshop
+                    ? BorderRadius.zero
+                    : const BorderRadius.only(
+                        bottomLeft: Radius.circular(40),
+                        bottomRight: Radius.circular(40),
+                      ),
+                border: Brand.isWorkshop
+                    ? const Border(
+                        bottom: BorderSide(
+                            color: Brand.workshopHairline, width: 1.5))
+                    : null,
               ),
               child: Stack(
                 children: [
-                  Positioned(
-                    top: -40,
-                    right: -40,
-                    child: Container(
-                      width: 150,
-                      height: 150,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: isDark
-                            ? Brand.darkBorderLight.withAlpha(((0.15) * 255).toInt())
-                            : Colors.white.withAlpha(((0.04) * 255).toInt()),
+                  if (!Brand.isWorkshop) ...[
+                    Positioned(
+                      top: -40,
+                      right: -40,
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white.withAlpha(10),
+                        ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    bottom: -20,
-                    left: -20,
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: isDark
-                            ? Brand.darkBorderLight.withAlpha(((0.1) * 255).toInt())
-                            : Brand.lightGreen.withAlpha(((0.05) * 255).toInt()),
+                    Positioned(
+                      bottom: -20,
+                      left: -20,
+                      child: Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white.withAlpha(8),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ],
               ),
             ),
@@ -450,12 +457,19 @@ class _SignupPageState extends State<SignupPage> {
                           padding: const EdgeInsets.all(24),
                           decoration: BoxDecoration(
                             color: Brand.surface(isDark),
-                            borderRadius: BorderRadius.circular(24),
-                            border: Border.all(
-                              color:
-                                  isDark ? Brand.darkBorder : Brand.borderLight,
-                            ),
-                            boxShadow: isDark
+                            borderRadius: Brand.isWorkshop
+                                ? BorderRadius.circular(8)
+                                : BorderRadius.circular(24),
+                            border: Brand.isWorkshop
+                                ? Border.all(
+                                    color: Brand.cardBorder(isDark),
+                                    width: Brand.cardBorderWidth)
+                                : Border.all(
+                                    color: isDark
+                                        ? Brand.darkBorder
+                                        : Brand.borderLight,
+                                  ),
+                            boxShadow: Brand.isWorkshop || isDark
                                 ? null
                                 : [
                                     BoxShadow(

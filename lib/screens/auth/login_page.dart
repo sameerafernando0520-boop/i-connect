@@ -673,53 +673,59 @@ class _LoginPageState extends State<LoginPage>
         backgroundColor: Brand.canvas(isDark),
         body: Stack(
           children: [
-            // Top gradient header
+            // Top header — NavyGlow: deep radial gradient + glow orbs
+            //              Workshop: flat ink panel with hairline border
             Container(
               height: MediaQuery.of(context).size.height * 0.38,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: isDark
-                      ? [Brand.darkCard, Brand.darkCardElevated]
-                      : [const Color(0xFF1A56DB), const Color(0xFF3B82F6)],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(40),
-                  bottomRight: Radius.circular(40),
-                ),
+                color: Brand.isWorkshop ? Brand.workshopInk : null,
+                gradient: Brand.isWorkshop
+                    ? null
+                    : LinearGradient(
+                        colors: [Brand.splashNavyGlow, Brand.splashNavyEdge],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                borderRadius: Brand.isWorkshop
+                    ? BorderRadius.zero
+                    : const BorderRadius.only(
+                        bottomLeft: Radius.circular(40),
+                        bottomRight: Radius.circular(40),
+                      ),
+                border: Brand.isWorkshop
+                    ? const Border(
+                        bottom: BorderSide(
+                            color: Brand.workshopHairline, width: 1.5))
+                    : null,
               ),
               child: Stack(
                 children: [
-                  // Subtle decorative glow
-                  Positioned(
-                    top: -60,
-                    right: -40,
-                    child: Container(
-                      width: 180,
-                      height: 180,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: isDark
-                            ? Brand.darkBorderLight.withAlpha(30)
-                            : Colors.white.withAlpha(12),
+                  if (!Brand.isWorkshop) ...[
+                    Positioned(
+                      top: -60,
+                      right: -40,
+                      child: Container(
+                        width: 180,
+                        height: 180,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white.withAlpha(10),
+                        ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    bottom: -20,
-                    left: -30,
-                    child: Container(
-                      width: 120,
-                      height: 120,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: isDark
-                            ? Brand.darkBorderLight.withAlpha(20)
-                            : Colors.white.withAlpha(8),
+                    Positioned(
+                      bottom: -20,
+                      left: -30,
+                      child: Container(
+                        width: 120,
+                        height: 120,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white.withAlpha(6),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ],
               ),
             ),
@@ -766,12 +772,18 @@ class _LoginPageState extends State<LoginPage>
                           Container(
                             padding: const EdgeInsets.all(28),
                             decoration: BoxDecoration(
-                              color: isDark ? Brand.darkCard : Colors.white,
-                              borderRadius: BorderRadius.circular(24),
-                              border: isDark
-                                  ? Border.all(color: Brand.darkBorder)
-                                  : null,
-                              boxShadow: isDark
+                              color: Brand.surface(isDark),
+                              borderRadius: Brand.isWorkshop
+                                  ? BorderRadius.circular(8)
+                                  : BorderRadius.circular(24),
+                              border: Brand.isWorkshop
+                                  ? Border.all(
+                                      color: Brand.cardBorder(isDark),
+                                      width: Brand.cardBorderWidth)
+                                  : isDark
+                                      ? Border.all(color: Brand.darkBorder)
+                                      : null,
+                              boxShadow: Brand.isWorkshop || isDark
                                   ? null
                                   : [
                                       BoxShadow(
