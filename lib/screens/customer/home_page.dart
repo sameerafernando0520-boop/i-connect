@@ -2367,6 +2367,8 @@ class _HomePageState extends State<HomePage>
     final tierColor = tierConfig['color'] as Color;
     final tierLabel = tierConfig['label'] as String;
     final tierEmoji = tierConfig['emoji'] as String;
+    final pal = Brand.navyHero;
+    final isW = Brand.isWorkshop;
 
     return GestureDetector(
       onTap: () => _showTierDetailsSheet(isDark),
@@ -2374,24 +2376,33 @@ class _HomePageState extends State<HomePage>
         margin: const EdgeInsets.fromLTRB(20, 24, 20, 0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Brand.r(22)),
-          color: isDark ? Brand.darkCard : Colors.white,
-          border: isDark
-              ? Border.all(color: Brand.darkBorder)
+          gradient: isW
+              ? null
+              : RadialGradient(
+                  center: const Alignment(0.6, -1.4),
+                  radius: 2.0,
+                  colors: isDark
+                      ? [const Color(0xFF0D1B30), const Color(0xFF0A1628), const Color(0xFF060E1A)]
+                      : pal.gradient,
+                  stops: const [0.0, 0.45, 1.0],
+                ),
+          color: isW
+              ? (isDark ? Brand.darkCard : Brand.canvas(isDark))
               : null,
+          border: isW
+              ? Border.all(color: Brand.cardBorder(isDark), width: 1.5)
+              : (isDark ? Border.all(color: pal.frostedBorder.withAlpha(60)) : null),
           boxShadow: isDark
               ? null
-              : [
-                  BoxShadow(
-                    color: Brand.royalBlue.withAlpha(18),
-                    blurRadius: 24,
-                    offset: const Offset(0, 8),
-                  ),
-                  BoxShadow(
-                    color: Colors.black.withAlpha(8),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
+              : isW
+                  ? null
+                  : [
+                      BoxShadow(
+                        color: Brand.splashNavyEdge.withAlpha(40),
+                        blurRadius: 24,
+                        offset: const Offset(0, 8),
+                      ),
+                    ],
         ),
         child: Column(children: [
           // ── Top accent bar ──
@@ -2417,7 +2428,9 @@ class _HomePageState extends State<HomePage>
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                    color: tierColor.withAlpha(isDark ? 31 : 18),
+                    color: isW
+                        ? tierColor.withAlpha(isDark ? 31 : 18)
+                        : tierColor.withAlpha(50),
                     borderRadius: BorderRadius.circular(Brand.r(20)),
                   ),
                   child: Row(mainAxisSize: MainAxisSize.min, children: [
@@ -2425,7 +2438,7 @@ class _HomePageState extends State<HomePage>
                     const SizedBox(width: 5),
                     Text('$tierLabel Member',
                         style: TextStyle(
-                          color: tierColor,
+                          color: isW ? tierColor : Colors.white,
                           fontSize: 11,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 0.2,
@@ -2437,9 +2450,9 @@ class _HomePageState extends State<HomePage>
                   Flexible(
                       child: Text(_companyName,
                           style: TextStyle(
-                            color: isDark
-                                ? Brand.darkTextTertiary
-                                : Brand.subtleLight,
+                            color: isW
+                                ? Brand.inkSoft(isDark)
+                                : pal.label,
                             fontSize: 11,
                             fontWeight: FontWeight.w500,
                           ),
@@ -2452,17 +2465,17 @@ class _HomePageState extends State<HomePage>
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text(S.of(context)!.homeMyMachines,
                       style: TextStyle(
-                          color: isDark
-                              ? Brand.darkTextSecondary
-                              : Brand.subtleLight,
+                          color: isW
+                              ? Brand.inkSoft(isDark)
+                              : pal.label,
                           fontSize: 13,
                           fontWeight: FontWeight.w500)),
                   const SizedBox(height: 4),
                   Text('$_totalMachines',
                       style: TextStyle(
-                        color: isDark
-                            ? Brand.darkTextPrimary
-                            : Brand.royalBlueDark,
+                        color: isW
+                            ? Brand.ink(isDark)
+                            : Colors.white,
                         fontSize: 42,
                         fontWeight: FontWeight.w700,
                         height: 1.0,
@@ -2487,15 +2500,18 @@ class _HomePageState extends State<HomePage>
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                    color: tierColor.withAlpha(isDark ? 26 : 15),
+                    color: isW
+                        ? tierColor.withAlpha(isDark ? 26 : 15)
+                        : tierColor.withAlpha(45),
                     borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: Row(mainAxisSize: MainAxisSize.min, children: [
-                    Icon(Icons.stars_rounded, color: tierColor, size: 14),
+                    Icon(Icons.stars_rounded,
+                        color: isW ? tierColor : Colors.white, size: 14),
                     const SizedBox(width: 4),
                     Text('$_totalPoints pts',
                         style: TextStyle(
-                          color: tierColor,
+                          color: isW ? tierColor : Colors.white,
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
                         )),
@@ -2508,7 +2524,9 @@ class _HomePageState extends State<HomePage>
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                     decoration: BoxDecoration(
-                      color: Colors.orange.withAlpha(isDark ? 22 : 15),
+                      color: isW
+                          ? Colors.orange.withAlpha(isDark ? 22 : 15)
+                          : Colors.orange.withAlpha(40),
                       borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
@@ -2516,9 +2534,11 @@ class _HomePageState extends State<HomePage>
                       const SizedBox(width: 3),
                       Text('$_loginStreak day',
                           style: TextStyle(
-                            color: isDark
-                                ? Colors.orange.shade300
-                                : Colors.orange.shade700,
+                            color: isW
+                                ? (isDark
+                                    ? Colors.orange.shade300
+                                    : Colors.orange.shade700)
+                                : Colors.orange.shade200,
                             fontSize: 11,
                             fontWeight: FontWeight.w700,
                           )),
@@ -2529,9 +2549,9 @@ class _HomePageState extends State<HomePage>
                 Flexible(
                   child: Text(_getTierProgressMessage(),
                       style: TextStyle(
-                        color: isDark
-                            ? Brand.darkTextTertiary
-                            : Brand.subtleLight,
+                        color: isW
+                            ? Brand.inkSoft(isDark)
+                            : pal.label,
                         fontSize: 11,
                         fontWeight: FontWeight.w500,
                       ),
@@ -2545,9 +2565,11 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 5,
                 decoration: BoxDecoration(
-                    color: isDark
-                        ? Brand.darkBorderLight.withAlpha(77)
-                        : const Color(0xFFE2E8F0),
+                    color: isW
+                        ? (isDark
+                            ? Brand.darkBorderLight.withAlpha(77)
+                            : const Color(0xFFE2E8F0))
+                        : Colors.white.withAlpha(30),
                     borderRadius: BorderRadius.circular(Brand.r(10))),
                 child: Stack(children: [
                   FractionallySizedBox(
@@ -2569,29 +2591,34 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget _heroStat(Widget Function(Color) iconWidget, String val, String label, bool isDark) {
+    final isW = Brand.isWorkshop;
     return Column(children: [
       Container(
           width: 46,
           height: 46,
           decoration: BoxDecoration(
-            color: isDark
-                ? Brand.lightGreen.withAlpha(22)
-                : Brand.lightGreenSurface,
+            color: isW
+                ? (isDark ? Brand.lightGreen.withAlpha(22) : Brand.lightGreenSurface)
+                : Brand.lightGreen.withAlpha(35),
             borderRadius: BorderRadius.circular(Brand.r(14)),
           ),
           child: Center(
-              child: iconWidget(
-                  isDark ? Brand.lightGreenBright : Brand.lightGreen))),
+              child: iconWidget(isW
+                  ? (isDark ? Brand.lightGreenBright : Brand.lightGreen)
+                  : Brand.lightGreenBright))),
       const SizedBox(height: 7),
       Text(val,
           style: TextStyle(
-              color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+              color: isW
+                  ? (isDark ? Brand.darkTextPrimary : Brand.royalBlueDark)
+                  : Colors.white,
               fontWeight: FontWeight.w700,
               fontSize: 17)),
       Text(label,
           style: TextStyle(
-              color:
-                  isDark ? Brand.darkTextTertiary : Brand.subtleLight,
+              color: isW
+                  ? (isDark ? Brand.darkTextTertiary : Brand.subtleLight)
+                  : Brand.navyHero.label,
               fontSize: 11,
               fontWeight: FontWeight.w500)),
     ]);
