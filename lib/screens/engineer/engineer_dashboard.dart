@@ -30,6 +30,10 @@ const Color _engAccent = Color(0xFF22C55E); // Green (was cyan)
 const Color _engAccentDark = Color(0xFF16A34A); // Dark green (was dark cyan)
 const Color _darkCardHighlight = Color(0xFF22272E);
 
+// ── Asset URLs ──────────────────────────────────────────────────
+// TRI Engineering logo (navy/dark background variant)
+const String _triLogoUrl = 'https://res.cloudinary.com/dlqzqponw/image/upload/q_auto/f_auto/v1775711293/Logo-04_gwnmsr.png';
+
 // ══════════════════════════════════════════════════════════════
 //  ENGINEER DASHBOARD
 // ══════════════════════════════════════════════════════════════
@@ -646,8 +650,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                   // TRI Engineering logo
                   // Navy hero — always use the dark-background logo variant.
                   CachedNetworkImage(
-                    imageUrl:
-                        'https://res.cloudinary.com/dlqzqponw/image/upload/q_auto/f_auto/v1775711293/Logo-04_gwnmsr.png',
+                    imageUrl: _triLogoUrl,
                     height: 18,
                     fit: BoxFit.contain,
                     alignment: Alignment.centerLeft,
