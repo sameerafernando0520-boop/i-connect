@@ -128,14 +128,12 @@ class _EngineerInstallationListPageState
     if (_statusFilter == 'all') {
       _filtered = List.from(_all);
     } else {
-      // Filter by installation status grouping:
-      // 'assigned' tab → inst status pending/scheduled + my status = assigned/acknowledged
-      // 'in_progress' tab → inst status in_progress
-      // 'completed' tab → inst status completed
+      // BUG-39: Filter by the engineer's personal assignment status (_my_status),
+      // not the overall installation status, to avoid ambiguous tab placement.
       if (_statusFilter == 'assigned') {
         _filtered = _all.where((r) {
-          final s = r['status'] as String? ?? '';
-          return s == 'pending' || s == 'scheduled';
+          final myStatus = r['_my_status'] as String? ?? '';
+          return myStatus == 'assigned' || myStatus == 'acknowledged';
         }).toList();
       } else {
         _filtered = _all

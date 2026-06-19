@@ -26,10 +26,12 @@ class _LaserIcon extends StatelessWidget {
   final double size;
   const _LaserIcon({this.color = Brand.royalBlue, this.size = 20});
   @override
-  Widget build(BuildContext context) => SizedBox(
-      width: size,
-      height: size,
-      child: CustomPaint(painter: _LaserP(color: color)));
+  Widget build(BuildContext context) => Semantics(
+      label: 'Laser cutter',
+      child: SizedBox(
+          width: size,
+          height: size,
+          child: CustomPaint(painter: _LaserP(color: color))));
 }
 
 class _LaserP extends CustomPainter {
@@ -72,10 +74,12 @@ class _CncIcon extends StatelessWidget {
   final double size;
   const _CncIcon({this.color = Brand.royalBlue, this.size = 20});
   @override
-  Widget build(BuildContext context) => SizedBox(
-      width: size,
-      height: size,
-      child: CustomPaint(painter: _CncP(color: color)));
+  Widget build(BuildContext context) => Semantics(
+      label: 'CNC router',
+      child: SizedBox(
+          width: size,
+          height: size,
+          child: CustomPaint(painter: _CncP(color: color))));
 }
 
 class _CncP extends CustomPainter {

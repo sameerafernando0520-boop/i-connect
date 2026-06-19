@@ -266,8 +266,8 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
             : machine?['image_url'],
         'message_count': 0,
         'unread_count': 0,
-        'days_open': DateTime.now()
-            .difference(DateTime.parse(i['created_at'].toString()))
+        'days_open': DateTime.now().toUtc()
+            .difference(DateTime.parse(i['created_at'].toString()).toUtc())
             .inDays,
       };
     }).toList();
@@ -289,8 +289,8 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
       filtered = filtered.where((i) {
         final lastActivity = i['last_activity_at'];
         if (lastActivity == null) return true;
-        return DateTime.now()
-                .difference(DateTime.parse(lastActivity.toString()))
+        return DateTime.now().toUtc()
+                .difference(DateTime.parse(lastActivity.toString()).toUtc())
                 .inDays >=
             3;
       }).toList();

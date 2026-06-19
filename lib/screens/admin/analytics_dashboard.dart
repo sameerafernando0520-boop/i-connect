@@ -179,8 +179,8 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
 
   // ─── COMPUTE ANALYTICS ────────────────────────────────────
   void _computeAnalytics() {
-    // Filter by period
-    final now = DateTime.now();
+    // Filter by period — use UTC on both sides to match server timestamptz values
+    final now = DateTime.now().toUtc();
     DateTime? cutoff;
     switch (_period) {
       case '7d':
@@ -199,7 +199,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
     _filteredTickets = cutoff == null
         ? List<Map<String, dynamic>>.from(_allTickets)
         : _allTickets.where((t) {
-            final d = DateTime.tryParse(t['created_at'] ?? '');
+            final d = DateTime.tryParse(t['created_at'] ?? '')?.toUtc();
             return d != null && d.isAfter(cutoff!);
           }).toList();
 

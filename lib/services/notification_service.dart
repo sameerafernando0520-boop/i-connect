@@ -291,6 +291,8 @@ class NotificationService {
         'type': type,
         'related_id': relatedId,
         'is_read': false,
+        // Push was already delivered via FCM — prevent dispatch-push re-sending.
+        'push_sent_at': DateTime.now().toUtc().toIso8601String(),
       });
     } catch (e) {
       // Distinguish between duplicate-key errors (expected, silent) and real errors

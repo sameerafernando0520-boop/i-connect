@@ -146,6 +146,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   List<Map<String, dynamic>> _todaySchedules = [];
+  List<Map<String, dynamic>> _overdueSchedules = [];
   List<Map<String, dynamic>> _upcomingSchedules = [];
   List<Map<String, dynamic>> _completedSchedules = [];
   bool _loading = true;
@@ -226,7 +227,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
             )
           ''')
           .eq('engineer_id', userId)
-          .is_('is_deleted', false)
+          .eq('is_deleted', false)
           .gte('scheduled_date', pastStart)
           .lte('scheduled_date', futureEnd)
           .order('scheduled_date')
@@ -234,6 +235,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
 
       final schedules = List<Map<String, dynamic>>.from(data);
       final today = <Map<String, dynamic>>[];
+      final overdue = <Map<String, dynamic>>[];
       final upcoming = <Map<String, dynamic>>[];
       final completed = <Map<String, dynamic>>[];
 
@@ -250,8 +252,8 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
         } else if (dateStr.compareTo(todayStr) > 0) {
           upcoming.add(s);
         } else {
-          // Past but not completed — overdue, show in today
-          today.add(s);
+          // BUG-10: past non-completed go to Overdue, not Today
+          overdue.add(s);
         }
       }
 
@@ -261,10 +263,17 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
         final bd = b['scheduled_date'] as String? ?? '';
         return bd.compareTo(ad);
       });
+      // Sort overdue oldest-first so most urgent appear at top
+      overdue.sort((a, b) {
+        final ad = a['scheduled_date'] as String? ?? '';
+        final bd = b['scheduled_date'] as String? ?? '';
+        return ad.compareTo(bd);
+      });
 
       if (!mounted) return;
       setState(() {
         _todaySchedules = today;
+        _overdueSchedules = overdue;
         _upcomingSchedules = upcoming;
         _completedSchedules = completed;
         _loading = false;
@@ -905,7 +914,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
 
     final newDate = result['date'] as DateTime;
     final newTime = result['time'] as TimeOfDay;
-    final reason = result['reason'] as String;
+    final reason = result['reason'] as String?;
     final dateStr =
         '${newDate.year}-${newDate.month.toString().padLeft(2, '0')}-${newDate.day.toString().padLeft(2, '0')}';
     final timeStr =
@@ -914,8 +923,8 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
     await _updateStatus(schedule['id'] as String, 'rescheduled', {
       'scheduled_date': dateStr,
       'scheduled_time': timeStr,
-      'cancellation_reason':
-          reason.isNotEmpty ? 'Rescheduled: $reason' : 'Rescheduled by engineer',
+      if (reason != null && reason.trim().isNotEmpty)
+        'reschedule_reason': reason.trim(),
     });
   }
 
@@ -1134,7 +1143,9 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
           unselectedLabelStyle:
               const TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
           tabs: [
-            Tab(text: 'Today (${_todaySchedules.length})'),
+            Tab(text: _overdueSchedules.isEmpty
+                ? 'Today (${_todaySchedules.length})'
+                : 'Today (${_todaySchedules.length}+${_overdueSchedules.length}⚠)'),
             Tab(text: 'Upcoming (${_upcomingSchedules.length})'),
             Tab(text: 'Done (${_completedSchedules.length})'),
           ],
@@ -1178,7 +1189,10 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
   // ── Today Tab (Timeline) ──
 
   Widget _buildTodayTab(bool isDark) {
-    if (_todaySchedules.isEmpty) {
+    final hasOverdue = _overdueSchedules.isNotEmpty;
+    final hasToday = _todaySchedules.isNotEmpty;
+
+    if (!hasOverdue && !hasToday) {
       return RefreshIndicator(
         color: _engAccent,
         onRefresh: _load,
@@ -1232,16 +1246,70 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 40),
         children: [
           // ── Summary Bar ──
-          _buildTodaySummary(isDark),
-          const SizedBox(height: 16),
+          if (hasToday) ...[
+            _buildTodaySummary(isDark),
+            const SizedBox(height: 16),
+          ],
 
-          // ── Timeline ──
-          ...List.generate(_todaySchedules.length, (i) {
-            return _buildTimelineItem(_todaySchedules[i], isDark,
-                isFirst: i == 0, isLast: i == _todaySchedules.length - 1);
-          }),
+          // ── BUG-10: Overdue section shown above today's timeline ──
+          if (hasOverdue) ...[
+            _buildSectionHeader(
+              icon: Icons.warning_amber_rounded,
+              label: 'Overdue (${_overdueSchedules.length})',
+              color: StatusColors.danger,
+              isDark: isDark,
+            ),
+            const SizedBox(height: 8),
+            ...List.generate(_overdueSchedules.length, (i) =>
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: _buildCompactCard(_overdueSchedules[i], isDark),
+              ),
+            ),
+            const SizedBox(height: 16),
+          ],
+
+          // ── Today's Timeline ──
+          if (hasToday) ...[
+            if (hasOverdue)
+              _buildSectionHeader(
+                icon: Icons.today_rounded,
+                label: 'Today',
+                color: _engAccent,
+                isDark: isDark,
+              ),
+            if (hasOverdue) const SizedBox(height: 8),
+            ...List.generate(_todaySchedules.length, (i) {
+              return _buildTimelineItem(_todaySchedules[i], isDark,
+                  isFirst: i == 0, isLast: i == _todaySchedules.length - 1);
+            }),
+          ],
         ],
       ),
+    );
+  }
+
+  Widget _buildSectionHeader({
+    required IconData icon,
+    required String label,
+    required Color color,
+    required bool isDark,
+  }) {
+    return Row(
+      children: [
+        Icon(icon, size: 16, color: color),
+        const SizedBox(width: 6),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w700,
+            color: color,
+          ),
+        ),
+        const SizedBox(width: 8),
+        Expanded(child: Divider(color: color.withAlpha(60), thickness: 1)),
+      ],
     );
   }
 

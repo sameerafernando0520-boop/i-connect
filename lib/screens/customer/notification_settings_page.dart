@@ -9,6 +9,7 @@ import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../services/notification_service.dart';
+import '../../utils/app_logger.dart';
 
 class NotificationSettingsPage extends StatefulWidget {
   const NotificationSettingsPage({super.key});
@@ -126,7 +127,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
 
       _animController.forward();
     } catch (e) {
-      debugPrint('NotificationSettings load error: $e');
+      AppLogger.error('NotificationSettings', 'load error', error: e);
       if (!mounted) return;
       setState(() => _isLoading = false);
       _animController.forward();

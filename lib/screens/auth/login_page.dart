@@ -35,6 +35,8 @@ class _LoginPageState extends State<LoginPage>
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
   bool _obscurePassword = true;
+  // BUG-40: rate-limit cooldown — disable button for 30s after 429
+  DateTime? _rateLimitUntil;
 
   late AnimationController _animController;
   late Animation<double> _fadeAnim;
@@ -217,8 +219,12 @@ class _LoginPageState extends State<LoginPage>
     if (msg.contains('network') || msg.contains('socket')) {
       return 'Network error. Check your connection.';
     }
-    if (msg.contains('too many')) {
-      return 'Too many attempts. Please wait and try again.';
+    if (msg.contains('too many') || msg.contains('rate limit') || msg.contains('429')) {
+      _rateLimitUntil = DateTime.now().add(const Duration(seconds: 30));
+      Future.delayed(const Duration(seconds: 30), () {
+        if (mounted) setState(() => _rateLimitUntil = null);
+      });
+      return 'Too many login attempts. Please wait 30 seconds before trying again.';
     }
     return 'Something went wrong. Please try again.';
   }
@@ -893,7 +899,7 @@ class _LoginPageState extends State<LoginPage>
                                   SizedBox(
                                     width: double.infinity,
                                     child: GestureDetector(
-                                      onTap: _isLoading ? null : _login,
+                                      onTap: (_isLoading || (_rateLimitUntil != null && DateTime.now().isBefore(_rateLimitUntil!))) ? null : _login,
                                       child: Container(
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 16),
@@ -934,25 +940,37 @@ class _LoginPageState extends State<LoginPage>
                                                           color: Colors.white,
                                                           strokeWidth: 2.5),
                                                 )
-                                              : Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    const Icon(
-                                                        Icons.login_rounded,
-                                                        color: Colors.white,
-                                                        size: 20),
-                                                    const SizedBox(width: 10),
-                                                    Text(t.authSignIn,
-                                                        style: const TextStyle(
-                                                            fontSize: 14,
-                                                            fontWeight:
-                                                                FontWeight.w700,
-                                                            letterSpacing: 0.2,
-                                                            color:
-                                                                Colors.white)),
-                                                  ],
-                                                ),
+                                              : _rateLimitUntil != null && DateTime.now().isBefore(_rateLimitUntil!)
+                                                  ? Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        const Icon(Icons.timer_rounded, color: Colors.white70, size: 18),
+                                                        const SizedBox(width: 8),
+                                                        Text(
+                                                          'Try again in ${_rateLimitUntil!.difference(DateTime.now()).inSeconds}s',
+                                                          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.white70),
+                                                        ),
+                                                      ],
+                                                    )
+                                                  : Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment.center,
+                                                      children: [
+                                                        const Icon(
+                                                            Icons.login_rounded,
+                                                            color: Colors.white,
+                                                            size: 20),
+                                                        const SizedBox(width: 10),
+                                                        Text(t.authSignIn,
+                                                            style: const TextStyle(
+                                                                fontSize: 14,
+                                                                fontWeight:
+                                                                    FontWeight.w700,
+                                                                letterSpacing: 0.2,
+                                                                color:
+                                                                    Colors.white)),
+                                                      ],
+                                                    ),
                                         ),
                                       ),
                                     ),

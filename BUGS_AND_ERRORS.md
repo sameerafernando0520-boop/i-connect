@@ -1,7 +1,7 @@
 # i_connect — Bugs & Errors
 
 > Full-codebase audit findings. Severity: 🔴 Critical · 🟠 High · 🟡 Medium · 🟢 Low  
-> Status: `open` (unfixed as of 2026-06-20)
+> Status: `open` · `fixed` · `partial` (last updated 2026-06-20)
 
 ---
 
@@ -12,43 +12,43 @@
 | 1 | 🔴 | `config/supabase_config.dart` | Hardcoded fallback production URL — must never exist | open |
 | 2 | 🔴 | `services/attendance_service.dart` | Late detection uses device local time — can be gamed by changing timezone | open |
 | 3 | 🔴 | `screens/auth/signup_page.dart` | Points awarded BEFORE referral RPC; no rollback if referral fails | open |
-| 4 | 🟠 | `utils/string_utils.dart` | `getInitials()` crashes on whitespace-only or empty string input | open |
+| 4 | 🟠 | `utils/string_utils.dart` | `getInitials()` crashes on whitespace-only or empty string input | **fixed** |
 | 5 | 🟠 | `services/attendance_service.dart` | `checkOut()` reads `check_in_time` without null guard — crashes if row exists but has no check-in | open |
 | 6 | 🟠 | `services/points_service.dart` | `awardOnce()` race — two parallel calls both pass the SharedPreferences guard, awarding double points | open |
 | 7 | 🟠 | `services/chat_attachment_service.dart` | No file-size validation before upload — can attempt multi-GB upload | open |
 | 8 | 🟠 | `screens/engineer/engineer_my_schedules_page.dart` | `job_records` insert is fire-and-forget with no error feedback | open |
-| 9 | 🟠 | `screens/engineer/engineer_schedule_page.dart` | Reschedule stores reason in `cancellation_reason` field — semantically wrong | open |
-| 10 | 🟠 | `screens/engineer/engineer_schedule_page.dart` | Overdue/past schedules appear in the Today tab alongside current schedules | open |
+| 9 | 🟠 | `screens/engineer/engineer_schedule_page.dart` | Reschedule stores reason in `cancellation_reason` field — semantically wrong | **fixed** — `reschedule_reason TEXT` column added via migration; Flutter code now writes to correct column |
+| 10 | 🟠 | `screens/engineer/engineer_schedule_page.dart` | Overdue/past schedules appear in the Today tab alongside current schedules | **fixed** |
 | 11 | 🟠 | `screens/engineer/engineer_installation_detail_page.dart` | Completion dialog creates TextEditingControllers but only disposes them on confirm — memory leak on dismiss | open |
 | 12 | 🟠 | `screens/engineer/engineer_profile_page.dart` | Storage path extraction (`_extractStoragePath`) breaks if CDN URL format changes | open |
 | 13 | 🟠 | `screens/admin/admin_installations_page.dart` | Machine picker hard-limited to 300 rows — silently cuts off older machines | open |
-| 14 | 🟠 | `screens/admin/admin_installments_page.dart` | `plan['paid_count']` and `plan['num_installments']` not null-checked before `.toDouble()` — crash on bad RPC data | open |
-| 15 | 🟡 | `config/supabase_config.dart` | No SSL/certificate pinning — vulnerable to MITM on untrusted networks | open |
-| 16 | 🟡 | `screens/splash_screen.dart` | Supabase domain hardcoded in DNS check — should read from `SupabaseConfig` | open |
-| 17 | 🟡 | `services/connectivity_service.dart` | Supabase domain hardcoded in heartbeat (same issue as above) | open |
-| 18 | 🟡 | `services/connectivity_service.dart` | No jitter on 15s heartbeat timer — all devices ping simultaneously | open |
-| 19 | 🟡 | `providers/permissions_provider.dart` | No cache-invalidation: permission changes made server-side are invisible until restart | open |
-| 20 | 🟡 | `screens/engineer/engineer_schedule_page.dart` | No `is_deleted` filter — soft-deleted schedules still appear in timeline | open |
+| 14 | 🟠 | `screens/admin/admin_installments_page.dart` | `plan['paid_count']` and `plan['num_installments']` not null-checked before `.toDouble()` — crash on bad RPC data | **fixed** |
+| 15 | 🟡 | `config/supabase_config.dart` | No SSL/certificate pinning — vulnerable to MITM on untrusted networks | **partial** — Android enforced via `network_security_config.xml`; iOS not pinned |
+| 16 | 🟡 | `screens/splash_screen.dart` | Supabase domain hardcoded in DNS check — should read from `SupabaseConfig` | **fixed** |
+| 17 | 🟡 | `services/connectivity_service.dart` | Supabase domain hardcoded in heartbeat (same issue as above) | **fixed** |
+| 18 | 🟡 | `services/connectivity_service.dart` | No jitter on 15s heartbeat timer — all devices ping simultaneously | **fixed** |
+| 19 | 🟡 | `providers/permissions_provider.dart` | No cache-invalidation: permission changes made server-side are invisible until restart | **fixed** |
+| 20 | 🟡 | `screens/engineer/engineer_schedule_page.dart` | No `is_deleted` filter — soft-deleted schedules still appear in timeline | **fixed** |
 | 21 | 🟡 | `screens/engineer/engineer_installation_detail_page.dart` | Completion report field has no required validation — empty report can be submitted | open |
-| 22 | 🟡 | `screens/engineer/engineer_my_schedules_page.dart` | `start_time` falls back to completion time when engineer never pressed "Start" — misleading job record | open |
+| 22 | 🟡 | `screens/engineer/engineer_my_schedules_page.dart` | `start_time` falls back to completion time when engineer never pressed "Start" — misleading job record | **fixed** |
 | 23 | 🟡 | `screens/engineer/engineer_profile_page.dart` | Logout spinner never dismisses if `signOut()` throws — user stuck on loading | open |
-| 24 | 🟡 | `screens/customer/my_invoices_page.dart` | No pagination — fetches all invoices without `limit()` / `offset()` | open |
-| 25 | 🟡 | `screens/admin/admin_hot_leads_page.dart` | No pagination — could load thousands of suggestions into memory | open |
+| 24 | 🟡 | `screens/customer/my_invoices_page.dart` | No pagination — fetches all invoices without `limit()` / `offset()` | **fixed** |
+| 25 | 🟡 | `screens/admin/admin_hot_leads_page.dart` | No pagination — could load thousands of suggestions into memory | **fixed** |
 | 26 | 🟡 | `screens/customer/customer_shell_page.dart` | All 5 tabs kept alive in `IndexedStack` — memory held for tabs user never visits | open |
 | 27 | 🟡 | `screens/auth/login_page.dart` | Email regex too loose — allows malformed addresses (consecutive dots, missing TLD length) | open |
-| 28 | 🟡 | `screens/auth/signup_page.dart` | Referral code field has no debounce — rapid typing triggers parallel DB validation calls | open |
+| 28 | 🟡 | `screens/auth/signup_page.dart` | Referral code field has no debounce — rapid typing triggers parallel DB validation calls | **fixed** |
 | 29 | 🟡 | `screens/auth/reset_password_page.dart` | No specific handling for expired recovery session (1-hour TTL) — shows generic error | open |
-| 30 | 🟡 | Multiple screens | `DateTime.now()` used for staleness/display comparisons instead of UTC — inconsistent with server data | open |
-| 31 | 🟡 | `services/notification_service.dart` | `_storeNotification` silently swallows duplicate-insert errors — real errors masked | open |
-| 32 | 🟡 | `screens/engineer/engineer_ticket_detail_page.dart` | `_startLocationStream()` can create duplicate subscriptions if called twice | open |
-| 33 | 🟢 | `config/app_theme.dart` | Dead code — entire file unused; `ThemeProvider` is the live implementation | open |
+| 30 | 🟡 | Multiple screens | `DateTime.now()` used for staleness/display comparisons instead of UTC — inconsistent with server data | **partial** — fixed in analytics, hot-leads, inquiry-management; 50+ locations remain |
+| 31 | 🟡 | `services/notification_service.dart` | `_storeNotification` silently swallows duplicate-insert errors — real errors masked | **fixed** |
+| 32 | 🟡 | `screens/engineer/engineer_ticket_detail_page.dart` | `_startLocationStream()` can create duplicate subscriptions if called twice | **fixed** |
+| 33 | 🟢 | `config/app_theme.dart` | Dead code — entire file unused; `ThemeProvider` is the live implementation | **fixed** — file deleted |
 | 34 | 🟢 | `providers/theme_provider.dart` | Workshop/Fusion styles marked "retired" in comments but code still branches on them | open |
-| 35 | 🟢 | `screens/engineer/engineer_dashboard.dart` | TRI Engineering logo URL is hardcoded Cloudinary string — breaks if asset is moved | open |
-| 36 | 🟢 | Multiple admin screens | Mixed color sources: some use `Brand.*`, some use `AdminColors.*`, some use `const Color(0xFF...)` | open |
-| 37 | 🟢 | Multiple screens | Custom paint icons (`LaserIcon`, `CncIcon`) have no `Semantics` label — screen readers see nothing | open |
-| 38 | 🟢 | Multiple screens | Status strings hardcoded in English — not routed through `S.of(context)` | open |
-| 39 | 🟢 | `screens/engineer/engineer_installation_list_page.dart` | Filter logic mixes installation status with engineer's personal status — ambiguous which tab some items appear in | open |
-| 40 | 🟢 | `screens/auth/login_page.dart` | "Too many attempts" message hardcoded — no exponential backoff guidance to user | open |
+| 35 | 🟢 | `screens/engineer/engineer_dashboard.dart` | TRI Engineering logo URL is hardcoded Cloudinary string — breaks if asset is moved | **fixed** |
+| 36 | 🟢 | Multiple admin screens | Mixed color sources: some use `Brand.*`, some use `AdminColors.*`, some use `const Color(0xFF...)` | open — pre-existing in 25+ files; high regression risk |
+| 37 | 🟢 | Multiple screens | Custom paint icons (`LaserIcon`, `CncIcon`) have no `Semantics` label — screen readers see nothing | **fixed** |
+| 38 | 🟢 | Multiple screens | Status strings hardcoded in English — not routed through `S.of(context)` | **fixed** — `StringUtils.statusLabel()` helper added |
+| 39 | 🟢 | `screens/engineer/engineer_installation_list_page.dart` | Filter logic mixes installation status with engineer's personal status — ambiguous which tab some items appear in | **fixed** |
+| 40 | 🟢 | `screens/auth/login_page.dart` | "Too many attempts" message hardcoded — no exponential backoff guidance to user | **fixed** |
 
 ---
 

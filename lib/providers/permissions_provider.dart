@@ -3,13 +3,19 @@
 // Caches the logged-in marketing_admin's permission record.
 // Drives dynamic navigation and feature visibility throughout the marketer portal.
 
+import 'dart:async';
 import 'package:flutter/foundation.dart';
 import '../config/supabase_config.dart';
+import '../utils/app_logger.dart';
 
 class PermissionsProvider extends ChangeNotifier {
   Map<String, bool>? _perms;
   bool _isLoading = false;
   String? _error;
+  // BUG-19: periodic refresh so server-side permission changes take effect
+  // without requiring a full app restart.
+  Timer? _refreshTimer;
+  static const _refreshInterval = Duration(minutes: 5);
 
   bool get isLoading => _isLoading;
   String? get error => _error;
@@ -80,17 +86,54 @@ class PermissionsProvider extends ChangeNotifier {
         };
       }
       _error = null;
+      _scheduleRefresh();
     } catch (e) {
       _error = e.toString();
-      debugPrint('⚠️ PermissionsProvider.load failed: $e');
+      AppLogger.error('PermissionsProvider', 'load failed', error: e);
     } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
 
+  /// Silently re-fetches permissions; called by the periodic timer and on
+  /// app resume so admin-side permission changes are reflected within 5 min.
+  Future<void> refresh() async {
+    if (SupabaseConfig.client.auth.currentUser == null) return;
+    try {
+      final res = await SupabaseConfig.client
+          .from('marketer_permissions')
+          .select()
+          .eq('user_id', SupabaseConfig.client.auth.currentUser!.id)
+          .maybeSingle();
+      if (res != null) {
+        _perms = {
+          'customers':        (res['customers']        as bool?) ?? false,
+          'referral_program': (res['referral_program'] as bool?) ?? false,
+          'loyalty_tiers':    (res['loyalty_tiers']    as bool?) ?? false,
+          'banners':          (res['banners']           as bool?) ?? false,
+          'knowledge_base':   (res['knowledge_base']   as bool?) ?? false,
+          'broadcast':        (res['broadcast']         as bool?) ?? false,
+          'analytics':        (res['analytics']         as bool?) ?? false,
+          'machine_catalog':  (res['machine_catalog']   as bool?) ?? false,
+          'point_activities': (res['point_activities']  as bool?) ?? false,
+        };
+        notifyListeners();
+      }
+    } catch (e) {
+      AppLogger.error('PermissionsProvider', 'refresh failed', error: e);
+    }
+  }
+
+  void _scheduleRefresh() {
+    _refreshTimer?.cancel();
+    _refreshTimer = Timer.periodic(_refreshInterval, (_) => refresh());
+  }
+
   // ── Clear ───────────────────────────────────────────────────────────────────
   void clear() {
+    _refreshTimer?.cancel();
+    _refreshTimer = null;
     _perms = null;
     _isLoading = false;
     _error = null;
@@ -99,4 +142,10 @@ class PermissionsProvider extends ChangeNotifier {
 
   // ── Check by key ────────────────────────────────────────────────────────────
   bool check(String key) => _perms?[key] ?? false;
+
+  @override
+  void dispose() {
+    _refreshTimer?.cancel();
+    super.dispose();
+  }
 }

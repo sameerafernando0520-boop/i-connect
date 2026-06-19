@@ -198,7 +198,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
                 'Job completed. Engineer pressed Complete from My Schedules.',
           });
         } catch (jobErr) {
-          AppLogger.error('ScheduleUpdate', 'Failed to create job_records', jobErr);
+          AppLogger.error('ScheduleUpdate', 'Failed to create job_records', error: jobErr);
           rethrow;
         }
 
@@ -211,7 +211,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
               'updated_at': now,
             }).eq('id', ticketId);
           } catch (ticketErr) {
-            AppLogger.error('ScheduleUpdate', 'Failed to update ticket status', ticketErr);
+            AppLogger.error('ScheduleUpdate', 'Failed to update ticket status', error: ticketErr);
             rethrow;
           }
         }
@@ -375,7 +375,8 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
         sseStatus == 'acknowledged';
     final showArrived = sseStatus == 'travelling';
     final showStart = sseStatus == 'on_site' && a['started_at'] == null;
-    final showComplete = sseStatus == 'on_site' || sseStatus == 'travelling';
+    // BUG-22: require "Start work" before "Complete" so started_at is never null on job records
+    final showComplete = sseStatus == 'on_site' && a['started_at'] != null;
     final isDone = sseStatus == 'completed';
 
     return Container(

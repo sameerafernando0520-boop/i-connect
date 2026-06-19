@@ -529,8 +529,8 @@ class _AdminHotLeadsPageState extends State<AdminHotLeadsPage> {
   }
 
   String _relativeDate(DateTime when) {
-    final now = DateTime.now();
-    final diff = when.difference(now);
+    final now = DateTime.now().toUtc();
+    final diff = when.toUtc().difference(now);
     if (diff.inDays > 1) return 'in ${diff.inDays}d';
     if (diff.inHours > 1) return 'in ${diff.inHours}h';
     if (diff.inMinutes > 1) return 'in ${diff.inMinutes}m';

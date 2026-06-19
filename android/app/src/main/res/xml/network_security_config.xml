@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  BUG-15: Enforce HTTPS-only for all network traffic.
+  Cleartext (HTTP) is disabled globally; the Supabase domain is explicitly
+  restricted to system-trusted CAs only (no user-installed CA overrides).
+  Debug builds still allow cleartext for localhost tooling.
+-->
+<network-security-config>
+
+    <!-- Default: no cleartext, system CAs only -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- Supabase backend: explicitly trust only system CAs, no user CAs -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">supabase.co</domain>
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </domain-config>
+
+    <!-- Debug builds: allow cleartext to localhost / emulator addresses only -->
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+
+</network-security-config>
