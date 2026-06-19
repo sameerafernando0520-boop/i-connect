@@ -62,3 +62,12 @@ app.*.map.json
 supabase.exe
 firebase-sa.json
 *-sa.json
+hs_err_pid*.log
+replay_pid*.log
+_arb_index.txt
+analyze*.txt
+analysis_output.txt
+fix*.ps1
+replace_*.ps1
+test_db.dart
+.flutter_analyze.txt
