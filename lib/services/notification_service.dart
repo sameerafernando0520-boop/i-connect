@@ -293,7 +293,13 @@ class NotificationService {
         'is_read': false,
       });
     } catch (e) {
-      AppLogger.warn('FCM', 'Store notification skipped (may be duplicate)', error: e);
+      // Distinguish between duplicate-key errors (expected, silent) and real errors
+      final errorMsg = e.toString().toLowerCase();
+      if (errorMsg.contains('unique') || errorMsg.contains('duplicate') || errorMsg.contains('constraint')) {
+        AppLogger.debug('FCM', 'Notification duplicate (expected): ${message.data['type']}');
+      } else {
+        AppLogger.error('FCM', 'Failed to store notification', error: e);
+      }
     }
   }
 

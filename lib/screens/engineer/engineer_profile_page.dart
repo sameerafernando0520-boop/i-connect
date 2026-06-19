@@ -214,9 +214,18 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
 
   String? _extractStoragePath(String? url) {
     if (url == null || url.isEmpty) return null;
+
+    // Extract storage path from Supabase URL
+    // Expected format: https://{project}.supabase.co/storage/v1/object/public/profile-photos/{path}
+    // or (for signed URLs): https://{project}.supabase.co/storage/v1/object/authenticated/profile-photos/{path}
     const marker = '/profile-photos/';
     final idx = url.indexOf(marker);
-    if (idx == -1) return null;
+    if (idx == -1) {
+      // URL doesn't contain the profile-photos bucket marker
+      // This might be a CDN URL or the format has changed
+      debugPrint('⚠️ Storage path extraction: URL format unexpected: $url');
+      return null;
+    }
     return url.substring(idx + marker.length);
   }
 

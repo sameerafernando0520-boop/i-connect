@@ -472,12 +472,16 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
   }
 
   Future<void> _startLocationStream() async {
-    await _locSub?.cancel();
+    // Prevent duplicate subscriptions if called multiple times in quick succession
+    if (_locSub != null) return;
+
     final uid = _currentUserId;
     if (uid == null) return;
+
     try {
       _upsertLocation(uid, await Geolocator.getCurrentPosition());
     } catch (_) {}
+
     _locSub = Geolocator.getPositionStream(
       locationSettings: const LocationSettings(
         accuracy: LocationAccuracy.high,

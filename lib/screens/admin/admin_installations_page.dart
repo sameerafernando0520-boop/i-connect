@@ -134,7 +134,7 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
             catalog:machine_catalog!catalog_machine_id(machine_name, model_number)
           ''')
           .order('created_at', ascending: false)
-          .limit(300);
+          .limit(1000);
       machines = List<Map<String, dynamic>>.from(data as List);
     } catch (_) {}
 
