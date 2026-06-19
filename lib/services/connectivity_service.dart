@@ -18,8 +18,10 @@
 
 import 'dart:async';
 import 'dart:io';
+import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import '../config/supabase_config.dart';
 
 class ConnectivityService {
   ConnectivityService._();
@@ -92,13 +94,18 @@ class ConnectivityService {
     _initialized = false;
   }
 
-  /// Proactively ping Supabase REST endpoint every 15s to detect network recovery
-  /// or server-side issues that the interface stream won't catch.
+  /// Proactively ping Supabase REST endpoint every 15-18s (with jitter) to detect
+  /// network recovery or server-side issues. Jitter prevents thundering herd where
+  /// all devices ping simultaneously.
   void _startHeartbeat() {
-    _heartbeat = Timer.periodic(const Duration(seconds: 15), (_) async {
+    void _ping() async {
       try {
-        final result =
-            await InternetAddress.lookup('mgfehxoampnafcyriqzt.supabase.co');
+        // Extract domain from Supabase URL (e.g., "https://project.supabase.co" → "project.supabase.co")
+        final url = SupabaseConfig.projectUrl;
+        final uri = Uri.parse(url);
+        final host = uri.host;
+
+        final result = await InternetAddress.lookup(host);
         if (result.isNotEmpty) {
           markOnline();
         } else {
@@ -107,6 +114,13 @@ class ConnectivityService {
       } catch (_) {
         markOffline();
       }
-    });
+
+      // Schedule next ping with jitter (15-18 seconds)
+      final jitterMs = Random().nextInt(3000);
+      _heartbeat = Timer(Duration(seconds: 15, milliseconds: jitterMs), _ping);
+    }
+
+    // Start first ping with jitter
+    _ping();
   }
 }

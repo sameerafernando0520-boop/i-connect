@@ -79,7 +79,8 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
           .select('*')
           .eq('customer_id', uid)
           .neq('status', 'draft')
-          .order('created_at', ascending: false);
+          .order('created_at', ascending: false)
+          .limit(100);
 
       if (!mounted) return;
       setState(() {

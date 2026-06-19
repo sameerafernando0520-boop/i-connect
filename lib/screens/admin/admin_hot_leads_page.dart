@@ -56,7 +56,8 @@ class _AdminHotLeadsPageState extends State<AdminHotLeadsPage> {
           .filter('outcome', 'is', null)
           .gte('journey_score', _minScore)
           .order('journey_score', ascending: false)
-          .order('score_updated_at', ascending: true, nullsFirst: true);
+          .order('score_updated_at', ascending: true, nullsFirst: true)
+          .limit(200);
 
       if (!mounted) return;
       setState(() {
