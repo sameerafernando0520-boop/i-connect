@@ -53,9 +53,10 @@ class AttendanceService {
     // Stored as timestamptz — must be UTC with offset, otherwise Postgres
     // misreads Sri Lanka local time as UTC and shifts it by +5:30.
     final now = DateTime.now().toUtc().toIso8601String();
-    // Decide status: if current LOCAL time after 09:30, mark as 'late'.
-    final t = DateTime.now();
-    final isLate = t.hour > 9 || (t.hour == 9 && t.minute >= 30);
+    // Decide status: if office time (Asia/Colombo UTC+5:30) after 09:30, mark as 'late'.
+    final nowUtc = DateTime.now().toUtc();
+    final officeTime = nowUtc.add(const Duration(hours: 5, minutes: 30));
+    final isLate = officeTime.hour > 9 || (officeTime.hour == 9 && officeTime.minute >= 30);
 
     final existing = await SupabaseConfig.client
         .from('engineer_attendance')
@@ -110,12 +111,13 @@ class AttendanceService {
     // nothing else does.
     double? totalHours;
     final checkInRaw = existing['check_in_time'] as String?;
-    if (checkInRaw != null) {
-      final checkIn = DateTime.tryParse(checkInRaw)?.toUtc();
-      if (checkIn != null && nowUtc.isAfter(checkIn)) {
-        totalHours = double.parse(
-            (nowUtc.difference(checkIn).inMinutes / 60).toStringAsFixed(2));
-      }
+    if (checkInRaw == null) {
+      throw Exception('No check-in time recorded for today');
+    }
+    final checkIn = DateTime.tryParse(checkInRaw)?.toUtc();
+    if (checkIn != null && nowUtc.isAfter(checkIn)) {
+      totalHours = double.parse(
+          (nowUtc.difference(checkIn).inMinutes / 60).toStringAsFixed(2));
     }
 
     final updated = await SupabaseConfig.client

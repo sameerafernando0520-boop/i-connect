@@ -224,12 +224,13 @@ class _OrderFormPageState extends State<OrderFormPage> {
                               return Container(
                                 decoration: BoxDecoration(
                                   color: isSelected
-                                      ? Brand.royalBlue
-                                          .withAlpha(((isDark ? 0.2 : 0.08) * 255).toInt())
+                                      ? Brand.royalBlue.withAlpha(
+                                          ((isDark ? 0.2 : 0.08) * 255).toInt())
                                       : (isDark
                                           ? Brand.darkCardElevated
                                           : Colors.grey.shade50),
-                                  borderRadius: BorderRadius.circular(Brand.r(16)),
+                                  borderRadius:
+                                      BorderRadius.circular(Brand.r(16)),
                                   border: Border.all(
                                     color: isSelected
                                         ? Brand.royalBlueLight
@@ -239,72 +240,80 @@ class _OrderFormPageState extends State<OrderFormPage> {
                                     width: isSelected ? 2 : 1,
                                   ),
                                 ),
-                                child: ListTile(
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      horizontal: 14, vertical: 6),
-                                  leading: ClipRRect(
-                                    borderRadius: BorderRadius.circular(Brand.r(10)),
-                                    child: SizedBox(
-                                      width: 52,
-                                      height: 52,
-                                      child: imageUrl != null
-                                          ? CachedNetworkImage(
-                                              imageUrl: imageUrl,
-                                              fit: BoxFit.cover,
-                                              placeholder: (_, __) => Container(
-                                                color: isDark
-                                                    ? Brand.darkBg
-                                                    : Colors.grey.shade200,
-                                              ),
-                                              errorWidget: (_, __, ___) =>
-                                                  _machineIcon(isDark),
-                                            )
-                                          : _machineIcon(isDark),
+                                // Material(transparency) gives ListTile a
+                                // Material ancestor below the decorated
+                                // Container so its ink/background render.
+                                child: Material(
+                                  type: MaterialType.transparency,
+                                  child: ListTile(
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 14, vertical: 6),
+                                    leading: ClipRRect(
+                                      borderRadius:
+                                          BorderRadius.circular(Brand.r(10)),
+                                      child: SizedBox(
+                                        width: 52,
+                                        height: 52,
+                                        child: imageUrl != null
+                                            ? CachedNetworkImage(
+                                                imageUrl: imageUrl,
+                                                fit: BoxFit.cover,
+                                                placeholder: (_, __) =>
+                                                    Container(
+                                                  color: isDark
+                                                      ? Brand.darkBg
+                                                      : Colors.grey.shade200,
+                                                ),
+                                                errorWidget: (_, __, ___) =>
+                                                    _machineIcon(isDark),
+                                              )
+                                            : _machineIcon(isDark),
+                                      ),
                                     ),
-                                  ),
-                                  // L3: bind ListTile text to 1–2 lines so a
-                                  // long machine_name / category / price from
-                                  // the DB can't push the row out of layout
-                                  // or overflow into sibling columns.
-                                  title: Text(
-                                    m['machine_name'] ?? 'Unknown',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14,
-                                      color: isDark
-                                          ? Brand.darkTextPrimary
-                                          : Colors.black87,
+                                    // L3: bind ListTile text to 1–2 lines so a
+                                    // long machine_name / category / price from
+                                    // the DB can't push the row out of layout
+                                    // or overflow into sibling columns.
+                                    title: Text(
+                                      m['machine_name'] ?? 'Unknown',
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 14,
+                                        color: isDark
+                                            ? Brand.darkTextPrimary
+                                            : Colors.black87,
+                                      ),
                                     ),
-                                  ),
-                                  subtitle: Text(
-                                    '${m['model_number'] ?? ''} • ${m['category'] ?? ''}',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: isDark
-                                          ? Brand.darkTextSecondary
-                                          : Colors.grey.shade600,
+                                    subtitle: Text(
+                                      '${m['model_number'] ?? ''} • ${m['category'] ?? ''}',
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: isDark
+                                            ? Brand.darkTextSecondary
+                                            : Colors.grey.shade600,
+                                      ),
                                     ),
+                                    trailing: m['price'] != null
+                                        ? Text(
+                                            'Rs. ${_formatPrice(m['price'])}',
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w700,
+                                              color: Brand.lightGreenDark,
+                                            ),
+                                          )
+                                        : null,
+                                    onTap: () {
+                                      setState(() => _selectedMachine = m);
+                                      Navigator.pop(sheetCtx);
+                                    },
                                   ),
-                                  trailing: m['price'] != null
-                                      ? Text(
-                                          'Rs. ${_formatPrice(m['price'])}',
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w700,
-                                            color: Brand.lightGreenDark,
-                                          ),
-                                        )
-                                      : null,
-                                  onTap: () {
-                                    setState(() => _selectedMachine = m);
-                                    Navigator.pop(sheetCtx);
-                                  },
                                 ),
                               );
                             },
@@ -349,8 +358,8 @@ class _OrderFormPageState extends State<OrderFormPage> {
           ),
           backgroundColor: Colors.red,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(Brand.r(12))),
           margin: const EdgeInsets.all(16),
         ),
       );
@@ -417,8 +426,8 @@ class _OrderFormPageState extends State<OrderFormPage> {
           ),
           backgroundColor: Colors.red,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(Brand.r(12))),
           margin: const EdgeInsets.all(16),
         ),
       );
@@ -433,7 +442,8 @@ class _OrderFormPageState extends State<OrderFormPage> {
       barrierDismissible: false,
       builder: (dialogCtx) => AlertDialog(
         backgroundColor: isDark ? Brand.darkCard : Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(24))),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Brand.r(24))),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -511,157 +521,160 @@ class _OrderFormPageState extends State<OrderFormPage> {
           const DsPageHeader(title: 'Place Order'),
           Expanded(
             child: _isLoading
-            ? _buildShimmer(isDark)
-            : RefreshIndicator(
-                color: Brand.royalBlue,
-                backgroundColor: Brand.surface(isDark),
-                onRefresh: _loadData,
-                child: Form(
-                  key: _formKey,
-                  child: ListView(
-                    padding: const EdgeInsets.fromLTRB(20, 20, 20, 40),
-                    children: [
-                      // ── Machine Selection ──
-                      _sectionTitle('Select Machine *', isDark),
-                      const SizedBox(height: 10),
-                      _buildMachineSelector(isDark),
+                ? _buildShimmer(isDark)
+                : RefreshIndicator(
+                    color: Brand.royalBlue,
+                    backgroundColor: Brand.surface(isDark),
+                    onRefresh: _loadData,
+                    child: Form(
+                      key: _formKey,
+                      child: ListView(
+                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 40),
+                        children: [
+                          // ── Machine Selection ──
+                          _sectionTitle('Select Machine *', isDark),
+                          const SizedBox(height: 10),
+                          _buildMachineSelector(isDark),
 
-                      const SizedBox(height: 24),
+                          const SizedBox(height: 24),
 
-                      // ── Quantity ──
-                      _sectionTitle('Quantity', isDark),
-                      const SizedBox(height: 10),
-                      _buildQuantitySelector(isDark),
+                          // ── Quantity ──
+                          _sectionTitle('Quantity', isDark),
+                          const SizedBox(height: 10),
+                          _buildQuantitySelector(isDark),
 
-                      const SizedBox(height: 24),
+                          const SizedBox(height: 24),
 
-                      // ── Company ──
-                      _sectionTitle('Company Name *', isDark),
-                      const SizedBox(height: 10),
-                      _buildTextField(
-                        controller: _companyCtrl,
-                        hint: 'Your company name',
-                        isDark: isDark,
-                        validator: (v) => (v == null || v.trim().isEmpty)
-                            ? 'Company name is required'
-                            : null,
-                      ),
-
-                      const SizedBox(height: 20),
-
-                      // ── Contact ──
-                      _sectionTitle('Contact Number *', isDark),
-                      const SizedBox(height: 10),
-                      _buildTextField(
-                        controller: _contactCtrl,
-                        hint: '+94 XX XXX XXXX',
-                        isDark: isDark,
-                        keyboardType: TextInputType.phone,
-                        validator: (v) => (v == null || v.trim().isEmpty)
-                            ? 'Contact number is required'
-                            : null,
-                      ),
-
-                      const SizedBox(height: 20),
-
-                      // ── Address ──
-                      _sectionTitle('Delivery Address *', isDark),
-                      const SizedBox(height: 10),
-                      _buildTextField(
-                        controller: _addressCtrl,
-                        hint: 'Full delivery address',
-                        isDark: isDark,
-                        maxLines: 3,
-                        validator: (v) => (v == null || v.trim().isEmpty)
-                            ? 'Delivery address is required'
-                            : null,
-                      ),
-
-                      const SizedBox(height: 20),
-
-                      // ── Notes ──
-                      _sectionTitle('Additional Notes', isDark),
-                      const SizedBox(height: 10),
-                      _buildTextField(
-                        controller: _notesCtrl,
-                        hint: 'Special requirements, preferred date, etc.',
-                        isDark: isDark,
-                        maxLines: 3,
-                      ),
-
-                      // ── Summary ──
-                      if (_selectedMachine != null) ...[
-                        const SizedBox(height: 28),
-                        _buildOrderSummary(isDark),
-                      ],
-
-                      const SizedBox(height: 32),
-
-                      // ── Submit ──
-                      GestureDetector(
-                        onTap: _isSubmitting ? null : _submitOrder,
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 200),
-                          width: double.infinity,
-                          height: 54,
-                          decoration: BoxDecoration(
-                            gradient: _isSubmitting
-                                ? null
-                                : const LinearGradient(
-                                    colors: [
-                                      Brand.royalBlueDark,
-                                      Brand.royalBlueLight
-                                    ],
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                  ),
-                            color: _isSubmitting ? Brand.royalBlue : null,
-                            borderRadius: BorderRadius.circular(Brand.r(14)),
-                            boxShadow: isDark || _isSubmitting
-                                ? null
-                                : [
-                                    BoxShadow(
-                                      color: Brand.royalBlue.withAlpha(89),
-                                      blurRadius: 12,
-                                      offset: const Offset(0, 4),
-                                    ),
-                                  ],
+                          // ── Company ──
+                          _sectionTitle('Company Name *', isDark),
+                          const SizedBox(height: 10),
+                          _buildTextField(
+                            controller: _companyCtrl,
+                            hint: 'Your company name',
+                            isDark: isDark,
+                            validator: (v) => (v == null || v.trim().isEmpty)
+                                ? 'Company name is required'
+                                : null,
                           ),
-                          child: Center(
-                            child: _isSubmitting
-                                ? const SizedBox(
-                                    width: 24,
-                                    height: 24,
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 2.5,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                : const Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                          Icons.shopping_cart_checkout_rounded,
-                                          size: 20,
-                                          color: Colors.white),
-                                      SizedBox(width: 10),
-                                      Text(
-                                        'Place Order',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700,
+
+                          const SizedBox(height: 20),
+
+                          // ── Contact ──
+                          _sectionTitle('Contact Number *', isDark),
+                          const SizedBox(height: 10),
+                          _buildTextField(
+                            controller: _contactCtrl,
+                            hint: '+94 XX XXX XXXX',
+                            isDark: isDark,
+                            keyboardType: TextInputType.phone,
+                            validator: (v) => (v == null || v.trim().isEmpty)
+                                ? 'Contact number is required'
+                                : null,
+                          ),
+
+                          const SizedBox(height: 20),
+
+                          // ── Address ──
+                          _sectionTitle('Delivery Address *', isDark),
+                          const SizedBox(height: 10),
+                          _buildTextField(
+                            controller: _addressCtrl,
+                            hint: 'Full delivery address',
+                            isDark: isDark,
+                            maxLines: 3,
+                            validator: (v) => (v == null || v.trim().isEmpty)
+                                ? 'Delivery address is required'
+                                : null,
+                          ),
+
+                          const SizedBox(height: 20),
+
+                          // ── Notes ──
+                          _sectionTitle('Additional Notes', isDark),
+                          const SizedBox(height: 10),
+                          _buildTextField(
+                            controller: _notesCtrl,
+                            hint: 'Special requirements, preferred date, etc.',
+                            isDark: isDark,
+                            maxLines: 3,
+                          ),
+
+                          // ── Summary ──
+                          if (_selectedMachine != null) ...[
+                            const SizedBox(height: 28),
+                            _buildOrderSummary(isDark),
+                          ],
+
+                          const SizedBox(height: 32),
+
+                          // ── Submit ──
+                          GestureDetector(
+                            onTap: _isSubmitting ? null : _submitOrder,
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 200),
+                              width: double.infinity,
+                              height: 54,
+                              decoration: BoxDecoration(
+                                gradient: _isSubmitting
+                                    ? null
+                                    : const LinearGradient(
+                                        colors: [
+                                          Brand.royalBlueDark,
+                                          Brand.royalBlueLight
+                                        ],
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                      ),
+                                color: _isSubmitting ? Brand.royalBlue : null,
+                                borderRadius:
+                                    BorderRadius.circular(Brand.r(14)),
+                                boxShadow: isDark || _isSubmitting
+                                    ? null
+                                    : [
+                                        BoxShadow(
+                                          color: Brand.royalBlue.withAlpha(89),
+                                          blurRadius: 12,
+                                          offset: const Offset(0, 4),
+                                        ),
+                                      ],
+                              ),
+                              child: Center(
+                                child: _isSubmitting
+                                    ? const SizedBox(
+                                        width: 24,
+                                        height: 24,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2.5,
                                           color: Colors.white,
                                         ),
+                                      )
+                                    : const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                              Icons
+                                                  .shopping_cart_checkout_rounded,
+                                              size: 20,
+                                              color: Colors.white),
+                                          SizedBox(width: 10),
+                                          Text(
+                                            'Place Order',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
           ),
         ]),
       ),
@@ -763,8 +776,8 @@ class _OrderFormPageState extends State<OrderFormPage> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 8, vertical: 3),
                             decoration: BoxDecoration(
-                              color: Brand.royalBlueSurface
-                                  .withAlpha(((isDark ? 0.15 : 1) * 255).toInt()),
+                              color: Brand.royalBlueSurface.withAlpha(
+                                  ((isDark ? 0.15 : 1) * 255).toInt()),
                               borderRadius: BorderRadius.circular(Brand.r(10)),
                             ),
                             child: Text(

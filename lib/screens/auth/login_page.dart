@@ -10,14 +10,15 @@ import '../engineering_admin/engineering_admin_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../config/supabase_config.dart';
-import 'package:supabase_flutter/supabase_flutter.dart' show AuthException, AuthResponse;
+import 'package:supabase_flutter/supabase_flutter.dart'
+    show AuthException, AuthResponse;
 import '../../config/brand_colors.dart';
 import '../../providers/permissions_provider.dart';
 import '../../services/notification_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import 'signup_page.dart';
-import '../customer/home_page.dart';
+import '../customer/customer_shell_page.dart';
 import '../../widgets/common/app_logo.dart';
 
 class LoginPage extends StatefulWidget {
@@ -91,16 +92,14 @@ class _LoginPageState extends State<LoginPage>
         if (!isUsername) rethrow;
         // Marketing domain failed → try engineering_admin domain
         try {
-          emailForAuth =
-              '${rawInput.toLowerCase()}@engineering.iconnect.lk';
+          emailForAuth = '${rawInput.toLowerCase()}@engineering.iconnect.lk';
           response = await SupabaseConfig.client.auth.signInWithPassword(
             email: emailForAuth,
             password: _passwordController.text,
           );
         } on AuthException catch (_) {
           // Engineering admin domain failed → try engineer domain
-          emailForAuth =
-              '${rawInput.toLowerCase()}@engineer.iconnect.lk';
+          emailForAuth = '${rawInput.toLowerCase()}@engineer.iconnect.lk';
           response = await SupabaseConfig.client.auth.signInWithPassword(
             email: emailForAuth,
             password: _passwordController.text,
@@ -136,8 +135,8 @@ class _LoginPageState extends State<LoginPage>
             ),
             backgroundColor: Colors.orange.shade700,
             behavior: SnackBarBehavior.floating,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Brand.r(12))),
             margin: const EdgeInsets.all(16),
           ),
         );
@@ -166,16 +165,20 @@ class _LoginPageState extends State<LoginPage>
           if (!mounted) return;
           await context.read<PermissionsProvider>().load();
           if (!mounted) return;
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (_) => const MarketingAdminDashboard()));
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (_) => const MarketingAdminDashboard()));
           break;
         case 'engineering_admin':
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (_) => const EngineeringAdminDashboard()));
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (_) => const EngineeringAdminDashboard()));
           break;
         default:
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (_) => const HomePage()));
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (_) => const CustomerShellPage()));
           break;
       }
     } catch (e) {
@@ -193,8 +196,8 @@ class _LoginPageState extends State<LoginPage>
           ),
           backgroundColor: isDark ? const Color(0xFFCF6679) : Colors.red,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(Brand.r(12))),
           margin: const EdgeInsets.all(16),
         ),
       );
@@ -296,7 +299,8 @@ class _LoginPageState extends State<LoginPage>
                                       : Colors.red,
                                   behavior: SnackBarBehavior.floating,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(Brand.r(12))),
+                                      borderRadius:
+                                          BorderRadius.circular(Brand.r(12))),
                                   margin: const EdgeInsets.all(16),
                                 ),
                               );
@@ -333,7 +337,8 @@ class _LoginPageState extends State<LoginPage>
                 : Brand.lightGreenSurface,
             borderRadius: BorderRadius.circular(Brand.r(20)),
             border: isDark
-                ? Border.all(color: Brand.lightGreen.withAlpha(((0.15) * 255).toInt()))
+                ? Border.all(
+                    color: Brand.lightGreen.withAlpha(((0.15) * 255).toInt()))
                 : null,
           ),
           child: Icon(Icons.lock_reset_rounded,
@@ -382,7 +387,7 @@ class _LoginPageState extends State<LoginPage>
                 // H9: reject "a@b." / "a@b" / "a@.b" / whitespace — these
                 // all satisfied the old contains() check but are not valid
                 // addresses and only fail later against Supabase Auth.
-                if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(v.trim())) {
+                if (!RegExp(r'^[^@\s.][^@\s]*@[^@\s]+\.[a-zA-Z]{2,}$').hasMatch(v.trim())) {
                   return 'Please enter a valid email';
                 }
                 return null;
@@ -454,7 +459,8 @@ class _LoginPageState extends State<LoginPage>
                     boxShadow: [
                       BoxShadow(
                         color: isDark
-                            ? Brand.darkIconActive.withAlpha(((0.3) * 255).toInt())
+                            ? Brand.darkIconActive
+                                .withAlpha(((0.3) * 255).toInt())
                             : Brand.royalBlue.withAlpha(((0.35) * 255).toInt()),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
@@ -499,7 +505,8 @@ class _LoginPageState extends State<LoginPage>
                 : Brand.lightGreenSurface,
             borderRadius: BorderRadius.circular(Brand.r(20)),
             border: isDark
-                ? Border.all(color: Brand.lightGreen.withAlpha(((0.15) * 255).toInt()))
+                ? Border.all(
+                    color: Brand.lightGreen.withAlpha(((0.15) * 255).toInt()))
                 : null,
           ),
           child: Icon(Icons.mark_email_read_rounded,
@@ -565,7 +572,8 @@ class _LoginPageState extends State<LoginPage>
                 : Brand.lightGreenSurface,
             borderRadius: BorderRadius.circular(Brand.r(12)),
             border: Border.all(
-              color: Brand.lightGreen.withAlpha(((isDark ? 0.15 : 0.2) * 255).toInt()),
+              color: Brand.lightGreen
+                  .withAlpha(((isDark ? 0.15 : 0.2) * 255).toInt()),
             ),
           ),
           child: Row(
@@ -763,7 +771,8 @@ class _LoginPageState extends State<LoginPage>
                                 fontSize: 14,
                                 color: isDark
                                     ? Brand.darkTextSecondary
-                                    : Colors.white.withAlpha(((0.55) * 255).toInt()),
+                                    : Colors.white
+                                        .withAlpha(((0.55) * 255).toInt()),
                               )),
 
                           const SizedBox(height: 40),
@@ -823,7 +832,7 @@ class _LoginPageState extends State<LoginPage>
                                       if (v == null || v.isEmpty) {
                                         return 'Please enter your email';
                                       }
-                                      if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
+                                      if (!RegExp(r'^[^@\s.][^@\s]*@[^@\s]+\.[a-zA-Z]{2,}$')
                                           .hasMatch(v.trim())) {
                                         return 'Please enter a valid email';
                                       }
@@ -902,8 +911,8 @@ class _LoginPageState extends State<LoginPage>
                                             begin: Alignment.topLeft,
                                             end: Alignment.bottomRight,
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(Brand.r(14)),
+                                          borderRadius: BorderRadius.circular(
+                                              Brand.r(14)),
                                           boxShadow: isDark
                                               ? null
                                               : [
@@ -911,8 +920,7 @@ class _LoginPageState extends State<LoginPage>
                                                     color: Brand.royalBlue
                                                         .withAlpha(89),
                                                     blurRadius: 12,
-                                                    offset:
-                                                        const Offset(0, 4),
+                                                    offset: const Offset(0, 4),
                                                   ),
                                                 ],
                                         ),
@@ -930,7 +938,8 @@ class _LoginPageState extends State<LoginPage>
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
                                                   children: [
-                                                    const Icon(Icons.login_rounded,
+                                                    const Icon(
+                                                        Icons.login_rounded,
                                                         color: Colors.white,
                                                         size: 20),
                                                     const SizedBox(width: 10),
@@ -987,7 +996,8 @@ class _LoginPageState extends State<LoginPage>
 
                           // Footer
                           CachedNetworkImage(
-                            imageUrl: 'https://res.cloudinary.com/dez4dicac/image/upload/v1769885091/Logo_1-01_gsz76s.png',
+                            imageUrl:
+                                'https://res.cloudinary.com/dez4dicac/image/upload/v1769885091/Logo_1-01_gsz76s.png',
                             height: 30,
                             color: isDark ? Brand.darkTextTertiary : null,
                             errorWidget: (_, __, ___) => Text('iFrontiers',

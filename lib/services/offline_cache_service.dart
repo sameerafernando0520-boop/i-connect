@@ -52,14 +52,18 @@ class OfflineCacheService {
     }
   }
 
-  /// Return cached payload (may be List or Map) or `null` if absent / corrupt.
-  dynamic read(String key) {
+  /// Return cached payload typed as `T`, or `null` if absent / corrupt.
+  T? read<T>(String key) {
     if (_prefs == null) return null;
     final raw = _prefs!.getString('$_prefix$key');
     if (raw == null) return null;
     try {
       final env = jsonDecode(raw) as Map<String, dynamic>;
-      return env['data'];
+      final data = env['data'];
+      if (data is T) {
+        return data;
+      }
+      return null;
     } catch (_) {
       return null;
     }

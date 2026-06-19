@@ -1,5 +1,6 @@
 // lib/screens/auth/signup_page.dart
 
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../config/supabase_config.dart';
@@ -44,6 +45,7 @@ class _SignupPageState extends State<SignupPage> {
   bool _referralValidating = false;
   bool? _referralValid; // null=not checked, true=valid, false=invalid
   String? _referrerName;
+  Timer? _referralDebounce;
 
   @override
   void initState() {
@@ -73,10 +75,29 @@ class _SignupPageState extends State<SignupPage> {
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     _referralCodeController.dispose(); // ④ NEW
+    _referralDebounce?.cancel(); // ④ NEW: clean up debounce timer
     super.dispose();
   }
 
-  // ⑤ NEW: referral code validation method
+  // ⑤ NEW: referral code validation method with debounce
+  void _onReferralCodeChanged(String value) {
+    // Cancel previous pending validation
+    _referralDebounce?.cancel();
+
+    if (value.trim().isEmpty) {
+      setState(() {
+        _referralValid = null;
+        _referrerName = null;
+      });
+      return;
+    }
+
+    // Debounce: wait 600ms before validating
+    _referralDebounce = Timer(const Duration(milliseconds: 600), () {
+      _validateReferralCode();
+    });
+  }
+
   Future<void> _validateReferralCode() async {
     final code = _referralCodeController.text.trim();
     if (code.isEmpty) {
@@ -159,17 +180,9 @@ class _SignupPageState extends State<SignupPage> {
           rethrow;
         }
 
-        // ── Award signup points (fire-and-forget) ──
-        PointsService.awardOnce(
-            'account_creation', 100, 'Welcome to iConnect!');
-
-        // ── NEW: Apply referral code if valid ──
-        // M10: Normalize the code to uppercase before the RPC. The validation
-        // query above already uppercases, but without the same normalization
-        // here a user who typed "abc123" would pass validation (lookup is
-        // case-insensitive) and then hit `apply_referral_code` with lowercase
-        // input — which may or may not match depending on how strict the RPC
-        // is about the `p_code` value. Always send the canonical form.
+        // ── Apply referral code FIRST if valid ──
+        // Critical operation: must complete before awarding points.
+        // Normalize the code to uppercase before the RPC.
         final referralCode =
             _referralCodeController.text.trim().toUpperCase();
         if (referralCode.isNotEmpty && _referralValid == true) {
@@ -180,10 +193,15 @@ class _SignupPageState extends State<SignupPage> {
             });
             debugPrint('✅ Referral code applied: $referralCode');
           } catch (refErr) {
-            debugPrint('⚠️ Referral apply error (non-fatal): $refErr');
-            // Non-fatal — don't block signup
+            debugPrint('⚠️ Referral apply error: $refErr');
+            // Non-fatal — don't block signup, but ensure referral is logged
           }
         }
+
+        // ── Award signup points (fire-and-forget) ──
+        // Points are awarded after referral completes to maintain consistency.
+        PointsService.awardOnce(
+            'account_creation', 100, 'Welcome to iConnect!');
 
         if (mounted) _showSuccessDialog();
       } else {
@@ -730,15 +748,7 @@ class _SignupPageState extends State<SignupPage> {
               letterSpacing: 1.0,
               color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
             ),
-            onChanged: (val) {
-              // Reset validation when user types
-              if (_referralValid != null) {
-                setState(() {
-                  _referralValid = null;
-                  _referrerName = null;
-                });
-              }
-            },
+            onChanged: _onReferralCodeChanged,
             onFieldSubmitted: (_) => _validateReferralCode(),
             onEditingComplete: _validateReferralCode,
             decoration: InputDecoration(

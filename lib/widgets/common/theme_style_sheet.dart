@@ -1,5 +1,4 @@
-// Bottom sheet for picking the app appearance:
-// Light, or one of three dark looks — Navy Glow, Workshop, Fusion.
+// Bottom sheet for picking the app appearance: Light or Dark.
 // Open with ThemeStyleSheet.show(context) from any settings page.
 
 import 'package:flutter/material.dart';
@@ -51,174 +50,30 @@ class _ThemeStyleBody extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
-                color:
-                    isDark ? Brand.darkTextPrimary : Brand.textPrimaryLight,
+                color: isDark ? Brand.darkTextPrimary : Brand.textPrimaryLight,
               ),
             ),
             const SizedBox(height: 4),
             Text(
-              'Choose a design, then a light or dark look.',
+              'Choose a light or dark look.',
               style: TextStyle(
                 fontSize: 12.5,
-                color: isDark
-                    ? Brand.darkTextSecondary
-                    : Brand.textSecondaryLight,
+                color:
+                    isDark ? Brand.darkTextSecondary : Brand.textSecondaryLight,
               ),
             ),
             const SizedBox(height: 16),
-            // ── Structural design switch (Navy Glow vs Workshop) ──
-            Text(
-              'DESIGN',
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.8,
-                color: isDark
-                    ? Brand.darkTextTertiary
-                    : Brand.textSecondaryLight,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Row(
-              children: [
-                Expanded(
-                  child: _DesignTile(
-                    name: 'Navy Glow',
-                    caption: 'Radial navy heroes',
-                    selected: tp.design == AppDesign.navyGlow,
-                    onTap: () => tp.setDesign(AppDesign.navyGlow),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: _DesignTile(
-                    name: 'Workshop',
-                    caption: 'Ink-outlined panels',
-                    selected: tp.design == AppDesign.workshop,
-                    onTap: () => tp.setDesign(AppDesign.workshop),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 18),
-            Text(
-              'THEME',
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.8,
-                color: isDark
-                    ? Brand.darkTextTertiary
-                    : Brand.textSecondaryLight,
-              ),
-            ),
-            const SizedBox(height: 8),
             _LightTile(
               selected: !tp.isDarkMode,
               onTap: () => tp.setDarkMode(false),
             ),
             const SizedBox(height: 10),
-            ...DarkStyle.values.map((s) {
-              final p = Brand.paletteFor(s);
-              final selected = tp.isDarkMode && tp.darkStyle == s;
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: _StyleTile(
-                  name: ThemeProvider.styleName(s),
-                  caption: switch (s) {
-                    DarkStyle.navy =>
-                        'Deep splash navy with a soft blue glow',
-                    DarkStyle.workshop =>
-                        'Warm ink canvas with the lime spark',
-                    DarkStyle.fusion =>
-                        'Navy depth with outlined Workshop cards',
-                  },
-                  palette: p,
-                  selected: selected,
-                  onTap: () => tp.setDarkStyle(s),
-                ),
-              );
-            }),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-/// Compact selector for the structural design (Navy Glow vs Workshop).
-class _DesignTile extends StatelessWidget {
-  final String name;
-  final String caption;
-  final bool selected;
-  final VoidCallback onTap;
-
-  const _DesignTile({
-    required this.name,
-    required this.caption,
-    required this.selected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final accent = isDark ? Brand.darkIconActive : Brand.royalBlue;
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(14),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-        decoration: BoxDecoration(
-          color: Brand.surface(isDark),
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(
-            color: selected
-                ? accent
-                : (isDark ? Brand.darkBorder : Brand.borderLight),
-            width: selected ? 1.6 : 1,
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Icon(
-                  selected
-                      ? Icons.check_circle_rounded
-                      : Icons.circle_outlined,
-                  size: 18,
-                  color: selected
-                      ? accent
-                      : (isDark ? Brand.darkBorderLight : Brand.borderLight),
-                ),
-                const SizedBox(width: 6),
-                Expanded(
-                  child: Text(
-                    name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w700,
-                      color: isDark
-                          ? Brand.darkTextPrimary
-                          : Brand.textPrimaryLight,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 4),
-            Text(
-              caption,
-              style: TextStyle(
-                fontSize: 11,
-                color: isDark
-                    ? Brand.darkTextSecondary
-                    : Brand.textSecondaryLight,
-              ),
+            _StyleTile(
+              name: 'Dark',
+              caption: 'Deep splash navy with a soft blue glow',
+              palette: Brand.paletteFor(DarkStyle.navy),
+              selected: tp.isDarkMode,
+              onTap: () => tp.setDarkStyle(DarkStyle.navy),
             ),
           ],
         ),
@@ -355,9 +210,8 @@ class _TileShell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final border = selected
-        ? accent
-        : (isDark ? Brand.darkBorder : Brand.borderLight);
+    final border =
+        selected ? accent : (isDark ? Brand.darkBorder : Brand.borderLight);
 
     return InkWell(
       onTap: onTap,
@@ -401,9 +255,7 @@ class _TileShell extends StatelessWidget {
               ),
             ),
             Icon(
-              selected
-                  ? Icons.check_circle_rounded
-                  : Icons.circle_outlined,
+              selected ? Icons.check_circle_rounded : Icons.circle_outlined,
               size: 22,
               color: selected
                   ? accent

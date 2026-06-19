@@ -188,82 +188,94 @@ class _EngineerInstallationDetailPageState
     final notesCtrl  = TextEditingController(
         text: (_inst?['engineer_notes'] as String?) ?? '');
 
-    final ok = await showDialog<bool>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: _cardColor,
-        title: const Text('Mark as Completed'),
-        content: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text('Completion Report',
-                  style: TextStyle(
-                      fontSize: 13, fontWeight: FontWeight.w600)),
-              const SizedBox(height: 8),
-              TextField(
-                controller: reportCtrl,
-                maxLines: 4,
-                decoration: const InputDecoration(
-                  hintText: 'Describe what was done, results, issues…',
-                  border: OutlineInputBorder(),
-                  contentPadding: EdgeInsets.all(12),
-                ),
-              ),
-              const SizedBox(height: 16),
-              const Text('Engineer Notes (optional)',
-                  style: TextStyle(
-                      fontSize: 13, fontWeight: FontWeight.w600)),
-              const SizedBox(height: 8),
-              TextField(
-                controller: notesCtrl,
-                maxLines: 3,
-                decoration: const InputDecoration(
-                  hintText: 'Internal notes for the team…',
-                  border: OutlineInputBorder(),
-                  contentPadding: EdgeInsets.all(12),
-                ),
-              ),
-            ],
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF10B981)),
-            onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('Submit Completion',
-                style: TextStyle(color: Colors.white)),
-          ),
-        ],
-      ),
-    );
-    if (ok != true || !mounted) return;
-
-    setState(() => _actionLoading = true);
     try {
-      await SupabaseConfig.client
-          .rpc('update_installation_status', params: {
-        'p_installation_id': widget.installationId,
-        'p_status': 'completed',
-        'p_completion_report':
-            reportCtrl.text.trim().isEmpty ? null : reportCtrl.text.trim(),
-        'p_engineer_notes':
-            notesCtrl.text.trim().isEmpty ? null : notesCtrl.text.trim(),
-      });
-      if (!mounted) return;
-      _changed = true;
-      _load();
-    } catch (e) {
-      if (!mounted) return;
-      _showSnack('Failed: ${e.toString()}', error: true);
+      final ok = await showDialog<bool>(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          backgroundColor: _cardColor,
+          title: const Text('Mark as Completed'),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Completion Report',
+                    style: TextStyle(
+                        fontSize: 13, fontWeight: FontWeight.w600)),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: reportCtrl,
+                  maxLines: 4,
+                  decoration: const InputDecoration(
+                    hintText: 'Describe what was done, results, issues…',
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.all(12),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                const Text('Engineer Notes (optional)',
+                    style: TextStyle(
+                        fontSize: 13, fontWeight: FontWeight.w600)),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: notesCtrl,
+                  maxLines: 3,
+                  decoration: const InputDecoration(
+                    hintText: 'Internal notes for the team…',
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.all(12),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx, false),
+              child: const Text('Cancel'),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF10B981)),
+              onPressed: () => Navigator.pop(ctx, true),
+              child: const Text('Submit Completion',
+                  style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        ),
+      );
+      if (ok != true || !mounted) return;
+
+      // Validate that completion report is not empty
+      if (reportCtrl.text.trim().isEmpty) {
+        if (mounted) {
+          _showSnack('Please enter a completion report', error: true);
+        }
+        return;
+      }
+
+      setState(() => _actionLoading = true);
+      try {
+        await SupabaseConfig.client
+            .rpc('update_installation_status', params: {
+          'p_installation_id': widget.installationId,
+          'p_status': 'completed',
+          'p_completion_report': reportCtrl.text.trim(),
+          'p_engineer_notes':
+              notesCtrl.text.trim().isEmpty ? null : notesCtrl.text.trim(),
+        });
+        if (!mounted) return;
+        _changed = true;
+        _load();
+      } catch (e) {
+        if (!mounted) return;
+        _showSnack('Failed: ${e.toString()}', error: true);
+      } finally {
+        if (mounted) setState(() => _actionLoading = false);
+      }
     } finally {
-      if (mounted) setState(() => _actionLoading = false);
+      reportCtrl.dispose();
+      notesCtrl.dispose();
     }
   }
 

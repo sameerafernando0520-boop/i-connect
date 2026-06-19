@@ -227,6 +227,8 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
     String message, {
     bool isError = false,
     Color? color,
+    String? actionLabel,
+    VoidCallback? onAction,
   }) {
     if (!mounted) return;
     ScaffoldMessenger.of(context).clearSnackBars();
@@ -255,7 +257,14 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.all(16),
-        duration: Duration(seconds: isError ? 4 : 3),
+        duration: Duration(seconds: actionLabel != null ? 6 : (isError ? 4 : 3)),
+        action: actionLabel != null && onAction != null
+            ? SnackBarAction(
+                label: actionLabel,
+                textColor: Colors.white,
+                onPressed: onAction,
+              )
+            : null,
       ),
     );
   }
@@ -1033,7 +1042,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
         backgroundColor: isDark ? Brand.darkCard : Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
         title: Text(
-          'Remove Engineer',
+          'Demote to Customer',
           style: TextStyle(
             fontWeight: FontWeight.w700,
             color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
@@ -1044,9 +1053,10 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Remove $name from the engineer team? '
-              'Their account will remain but they will '
-              'lose engineer access.',
+              'This changes $name\'s account role from engineer to '
+              'customer. They will lose engineer access immediately '
+              'and the app will treat them as a regular customer '
+              'until an admin sets their role back to engineer.',
               style: TextStyle(
                 color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
               ),
@@ -1105,8 +1115,23 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                     .update({'role': 'customer'}).eq('id', eng['id'] as String);
                 if (!mounted) return;
                 _showSnackBar(
-                  '$name removed from engineer team',
+                  '$name demoted to customer',
                   color: AdminColors.warning,
+                  actionLabel: 'Undo',
+                  onAction: () async {
+                    try {
+                      await SupabaseConfig.client
+                          .from('users')
+                          .update({'role': 'engineer'}).eq(
+                              'id', eng['id'] as String);
+                      if (!mounted) return;
+                      _showSnackBar('$name restored as engineer');
+                      _load();
+                    } catch (e) {
+                      if (!mounted) return;
+                      _showSnackBar('Failed to undo', isError: true);
+                    }
+                  },
                 );
                 _load();
               } catch (e) {
@@ -1118,7 +1143,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
               }
             },
             child: const Text(
-              'Remove',
+              'Demote',
               style: TextStyle(
                 color: AdminColors.error,
                 fontWeight: FontWeight.w700,

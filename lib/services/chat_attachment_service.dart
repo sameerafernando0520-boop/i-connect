@@ -15,6 +15,7 @@ import 'package:supabase_flutter/supabase_flutter.dart' show FileOptions;
 
 import '../config/supabase_config.dart';
 import '../utils/app_logger.dart';
+import '../utils/upload_validator.dart';
 
 /// A document chosen by the user (file + display name + byte size).
 class PickedDoc {
@@ -32,12 +33,26 @@ class ChatAttachmentService {
 
   // ── Uploads ───────────────────────────────────────────────
   /// Upload raw [bytes] under `<ticketId>/<ts>_<uid>.<ext>`; returns public URL.
+  /// Validates file size and MIME type before upload; throws if invalid.
   static Future<String> uploadBytes({
     required String ticketId,
     required Uint8List bytes,
     required String ext,
     String? contentType,
   }) async {
+    // Validate before upload to catch oversized files early
+    final filename = 'attachment.$ext';
+    final validation = UploadValidator.validate(
+      bytes: bytes,
+      filename: filename,
+      mimeTypeHint: contentType,
+      category: UploadCategory.chatAttachment,
+    );
+
+    if (!validation.ok) {
+      throw Exception(validation.error ?? 'Upload validation failed');
+    }
+
     final uid = _client.auth.currentUser?.id ?? 'anon';
     final path =
         '$ticketId/${DateTime.now().millisecondsSinceEpoch}_$uid.$ext';

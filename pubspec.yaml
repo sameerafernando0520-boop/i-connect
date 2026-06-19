@@ -24,9 +24,6 @@ dependencies:
   # URL Launcher
   url_launcher: ^6.2.1
 
-  # Navigation
-  go_router: ^17.2.2
-
   # Backend & Database
   supabase_flutter: ^2.3.0
 
@@ -65,23 +62,11 @@ dependencies:
   connectivity_plus: ^7.1.1
   record: ^7.0.0
   just_audio: ^0.10.5
-  file_picker: ^11.0.2
+  file_picker: ^12.0.0-beta.7
   geolocator: ^14.0.1
   permission_handler: ^12.0.1
   flutter_map: ^8.3.0
   latlong2: ^0.9.1
-
-# win32 is a Windows-desktop-only transitive, but several plugins export their
-# win32 FFI code via `if (dart.library.ffi)` — which is TRUE on Android — so it
-# is type-checked during the Android build. file_picker (8/11) is written for
-# win32 ^5.x; package_info_plus 10 + share_plus 13 moved to win32 ^6. There is
-# no file_picker release on win32 6, so we pin win32 to 5.x and pin
-# package_info_plus back to 9.0.1 — the newest release still on win32 ^5.5.3
-# (it is only pulled by geolocator_linux). share_plus 13's win32 code still
-# compiles against 5.x. No effect on the actual Android/iOS runtime.
-dependency_overrides:
-  win32: ^5.9.0
-  package_info_plus: 9.0.1
 
 dev_dependencies:
   flutter_test:

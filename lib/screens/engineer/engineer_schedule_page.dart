@@ -208,7 +208,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
       final futureEnd = _fmtDate(now.add(const Duration(days: 90)));
       final pastStart = _fmtDate(now.subtract(const Duration(days: 30)));
 
-      // Fetch all schedules in one query
+      // Fetch all schedules in one query (exclude soft-deleted)
       final data = await SupabaseConfig.client
           .from('service_schedules')
           .select('''
@@ -226,6 +226,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
             )
           ''')
           .eq('engineer_id', userId)
+          .is_('is_deleted', false)
           .gte('scheduled_date', pastStart)
           .lte('scheduled_date', futureEnd)
           .order('scheduled_date')

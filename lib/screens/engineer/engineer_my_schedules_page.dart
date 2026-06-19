@@ -16,6 +16,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
+import '../../utils/app_logger.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
 const Color _engAccent = Color(0xFF00B4D8);
@@ -182,27 +183,37 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
         final schedule = assignment['schedule'] as Map<String, dynamic>?;
         final ticketId = schedule?['ticket_id'] as String?;
         final customer = schedule?['customer'] as Map<String, dynamic>?;
-        await SupabaseConfig.client.from('job_records').insert({
-          'ticket_id': ticketId,
-          'schedule_id': scheduleId,
-          'engineer_id': _currentUserId,
-          'customer_id': customer?['id'],
-          'job_date': DateTime.now().toIso8601String().substring(0, 10),
-          'start_time': assignment['started_at'] ?? now,
-          'end_time': now,
-          'job_type': 'service',
-          'job_status': 'completed',
-          'work_done':
-              'Job completed. Engineer pressed Complete from My Schedules.',
-        });
+        try {
+          await SupabaseConfig.client.from('job_records').insert({
+            'ticket_id': ticketId,
+            'schedule_id': scheduleId,
+            'engineer_id': _currentUserId,
+            'customer_id': customer?['id'],
+            'job_date': DateTime.now().toUtc().toIso8601String().substring(0, 10),
+            'start_time': assignment['started_at'] ?? now,
+            'end_time': now,
+            'job_type': 'service',
+            'job_status': 'completed',
+            'work_done':
+                'Job completed. Engineer pressed Complete from My Schedules.',
+          });
+        } catch (jobErr) {
+          AppLogger.error('ScheduleUpdate', 'Failed to create job_records', jobErr);
+          rethrow;
+        }
 
         // Update ticket status
         if (ticketId != null) {
-          await SupabaseConfig.client.from('service_tickets').update({
-            'status': 'resolved',
-            'closed_at': now,
-            'updated_at': now,
-          }).eq('id', ticketId);
+          try {
+            await SupabaseConfig.client.from('service_tickets').update({
+              'status': 'resolved',
+              'closed_at': now,
+              'updated_at': now,
+            }).eq('id', ticketId);
+          } catch (ticketErr) {
+            AppLogger.error('ScheduleUpdate', 'Failed to update ticket status', ticketErr);
+            rethrow;
+          }
         }
       }
 

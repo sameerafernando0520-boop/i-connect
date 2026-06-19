@@ -17,6 +17,7 @@
 // Never throws — failures fall back to "online=true" so the app remains usable.
 
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
@@ -61,6 +62,9 @@ class ConnectivityService {
         // Keep online=true by default
       }
     });
+
+    // ── Step 3: Start heartbeat for proactive connectivity checks ──
+    _startHeartbeat();
   }
 
   void _update(List<ConnectivityResult> results) {
@@ -86,5 +90,23 @@ class ConnectivityService {
     _sub?.cancel();
     _heartbeat?.cancel();
     _initialized = false;
+  }
+
+  /// Proactively ping Supabase REST endpoint every 15s to detect network recovery
+  /// or server-side issues that the interface stream won't catch.
+  void _startHeartbeat() {
+    _heartbeat = Timer.periodic(const Duration(seconds: 15), (_) async {
+      try {
+        final result =
+            await InternetAddress.lookup('mgfehxoampnafcyriqzt.supabase.co');
+        if (result.isNotEmpty) {
+          markOnline();
+        } else {
+          markOffline();
+        }
+      } catch (_) {
+        markOffline();
+      }
+    });
   }
 }

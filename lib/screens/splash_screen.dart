@@ -4,6 +4,7 @@ import 'dart:async';
 import '../config/brand_colors.dart';
 import '../config/supabase_config.dart';
 import '../services/notification_service.dart';
+import '../utils/app_logger.dart';
 import 'package:provider/provider.dart';
 import '../providers/permissions_provider.dart';
 import 'auth/login_page.dart';
@@ -52,20 +53,26 @@ class _SplashScreenState extends State<SplashScreen>
       duration: const Duration(milliseconds: 2200),
     )..forward();
 
-    _bgFade     = _iv(0.00, 0.18, Curves.easeOut);
-    _glowIn     = _iv(0.05, 0.45, Curves.easeOutCubic);
-    _logoFade   = _iv(0.18, 0.52, Curves.easeOut);
-    _logoScale  = Tween<double>(begin: 0.90, end: 1.0).animate(
-      CurvedAnimation(parent: _main, curve: const Interval(0.18, 0.58, curve: Curves.easeOutCubic)),
+    _bgFade = _iv(0.00, 0.18, Curves.easeOut);
+    _glowIn = _iv(0.05, 0.45, Curves.easeOutCubic);
+    _logoFade = _iv(0.18, 0.52, Curves.easeOut);
+    _logoScale = Tween<double>(begin: 0.90, end: 1.0).animate(
+      CurvedAnimation(
+          parent: _main,
+          curve: const Interval(0.18, 0.58, curve: Curves.easeOutCubic)),
     );
-    _logoSlide  = Tween<double>(begin: 18, end: 0).animate(
-      CurvedAnimation(parent: _main, curve: const Interval(0.18, 0.58, curve: Curves.easeOutCubic)),
+    _logoSlide = Tween<double>(begin: 18, end: 0).animate(
+      CurvedAnimation(
+          parent: _main,
+          curve: const Interval(0.18, 0.58, curve: Curves.easeOutCubic)),
     );
-    _tagFade    = _iv(0.42, 0.70, Curves.easeOut);
+    _tagFade = _iv(0.42, 0.70, Curves.easeOut);
     _tagSpacing = Tween<double>(begin: 1.0, end: 3.7).animate(
-      CurvedAnimation(parent: _main, curve: const Interval(0.42, 0.85, curve: Curves.easeOutCubic)),
+      CurvedAnimation(
+          parent: _main,
+          curve: const Interval(0.42, 0.85, curve: Curves.easeOutCubic)),
     );
-    _lineGrow   = _iv(0.60, 0.90, Curves.easeInOut);
+    _lineGrow = _iv(0.60, 0.90, Curves.easeInOut);
     _footerFade = _iv(0.72, 1.00, Curves.easeOut);
 
     // ── Breathing glow (looping) ──
@@ -89,7 +96,8 @@ class _SplashScreenState extends State<SplashScreen>
 
   Animation<double> _iv(double start, double end, Curve curve) =>
       Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(parent: _main, curve: Interval(start, end, curve: curve)),
+        CurvedAnimation(
+            parent: _main, curve: Interval(start, end, curve: curve)),
       );
 
   @override
@@ -152,6 +160,8 @@ class _SplashScreenState extends State<SplashScreen>
         case 'engineering_admin':
           return const EngineeringAdminDashboard();
         default:
+          AppLogger.warn('SplashScreen',
+              'Unknown/unhandled role "$role" — falling back to CustomerShellPage');
           return const CustomerShellPage();
       }
     } catch (e) {
@@ -174,7 +184,7 @@ class _SplashScreenState extends State<SplashScreen>
   static const _navyEdge = Color(0xFF081A40);
   static const _navyCore = Color(0xFF102A63);
   static const _navyGlow = Color(0xFF15397A);
-  static const _lime     = Color(0xFFABBD37);
+  static const _lime = Color(0xFFABBD37);
   static const _tagColor = Color(0xFFE8EDF7);
   static const _footerCap = Color(0xFFB8C2D6);
   static const _footerSub = Color(0xFF8C9ABB);
@@ -283,7 +293,8 @@ class _SplashScreenState extends State<SplashScreen>
                                     imageUrl: _ifrontiersUrl,
                                     height: 36,
                                     fit: BoxFit.contain,
-                                    errorWidget: (_, __, ___) => _ifrontiersFallback(),
+                                    errorWidget: (_, __, ___) =>
+                                        _ifrontiersFallback(),
                                   ),
                                   const SizedBox(height: 8),
                                   const Text(

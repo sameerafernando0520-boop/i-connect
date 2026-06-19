@@ -612,8 +612,16 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         (route) => false,
       );
     } catch (e) {
+      // Ensure spinner is dismissed even if signOut throws
+      try {
+        if (mounted && Navigator.canPop(context)) {
+          Navigator.of(context).pop();
+        }
+      } catch (_) {
+        // Ignore navigation errors during cleanup
+      }
+
       if (!mounted) return;
-      Navigator.of(context).pop(); // dismiss loading
       _showSnackBar('Sign out failed: $e', isError: true);
     }
   }

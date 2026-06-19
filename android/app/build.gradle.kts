@@ -1,6 +1,5 @@
 import java.util.Properties
 import java.io.FileInputStream
-
 // Load keystore properties
 val keystorePropertiesFile = rootProject.file("key.properties")
 val keystoreProperties = Properties()
@@ -84,3 +83,4 @@ flutter {
 }
 
 dependencies {}
+ 

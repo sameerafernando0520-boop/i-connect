@@ -267,9 +267,8 @@ class _ProfilePageState extends State<ProfilePage>
       'in_progress',
       'waiting_customer',
     };
-    final open = ticketList
-        .where((t) => activeStatuses.contains(t['status']))
-        .length;
+    final open =
+        ticketList.where((t) => activeStatuses.contains(t['status'])).length;
     final resolved = ticketList.length - open;
 
     int progress = 0;
@@ -718,7 +717,8 @@ class _ProfilePageState extends State<ProfilePage>
 
   Future<void> _shareApp() async {
     await SharePlus.instance.share(ShareParams(
-        text: 'Check out iFrontiers Connect - The smart way to manage your industrial machines! Download from: https://play.google.com/store/apps/details?id=com.ifrontiers.connect',
+        text:
+            'Check out iFrontiers Connect - The smart way to manage your industrial machines! Download from: https://play.google.com/store/apps/details?id=com.ifrontiers.connect',
         subject: 'iFrontiers Connect App'));
   }
 
@@ -772,8 +772,8 @@ class _ProfilePageState extends State<ProfilePage>
         ]),
         backgroundColor: Brand.lightGreen,
         behavior: SnackBarBehavior.floating,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12)))));
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Brand.r(12)))));
   }
 
   void _showError(String msg) {
@@ -787,8 +787,8 @@ class _ProfilePageState extends State<ProfilePage>
         ]),
         backgroundColor: Colors.red,
         behavior: SnackBarBehavior.floating,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12)))));
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Brand.r(12)))));
   }
 
   String _getMemberSince() {
@@ -1055,8 +1055,7 @@ class _ProfilePageState extends State<ProfilePage>
       decoration: BoxDecoration(
           color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(24)),
-           border: isDark
-           ? Border.all(color: Brand.darkBorder) : null),
+          border: isDark ? Border.all(color: Brand.darkBorder) : null),
       child: Column(mainAxisSize: MainAxisSize.min, children: [
         Container(
             width: 72,
@@ -1165,12 +1164,14 @@ class _ProfilePageState extends State<ProfilePage>
             end: Alignment.bottomRight),
         border:
             isDark ? Border.all(color: Brand.darkBorderLight, width: 1) : null,
-        boxShadow: isDark ? null : [
-          BoxShadow(
-              color: Brand.royalBlue.withAlpha(89),
-              blurRadius: 28,
-              offset: const Offset(0, 10))
-        ],
+        boxShadow: isDark
+            ? null
+            : [
+                BoxShadow(
+                    color: Brand.royalBlue.withAlpha(89),
+                    blurRadius: 28,
+                    offset: const Offset(0, 10))
+              ],
       ),
       child: Stack(children: [
         Positioned(
@@ -1302,7 +1303,8 @@ class _ProfilePageState extends State<ProfilePage>
                                 horizontal: 10, vertical: 5),
                             decoration: BoxDecoration(
                                 color: tierColor.withAlpha(isDark ? 31 : 46),
-                                borderRadius: BorderRadius.circular(Brand.r(20)),
+                                borderRadius:
+                                    BorderRadius.circular(Brand.r(20)),
                                 border: Border.all(
                                     color:
                                         tierColor.withAlpha(isDark ? 51 : 64))),
@@ -1522,25 +1524,17 @@ class _ProfilePageState extends State<ProfilePage>
   Widget _buildStatsGrid(bool isDark) {
     final stats = [
       _Stat(
-          (c) => IcTwinGearIcon(primaryColor: c, secondaryColor: c.withAlpha(180), size: 19),
+          (c) => IcTwinGearIcon(
+              primaryColor: c, secondaryColor: c.withAlpha(180), size: 19),
           '$_totalMachines',
           'Machines',
           isDark ? Brand.darkIconActive : Brand.royalBlue),
-      _Stat(
-          (c) => IcTicketIcon(color: c, size: 19),
-          '$_totalTickets',
-          'Tickets',
-          isDark ? Brand.lightGreenBright : Brand.lightGreen),
-      _Stat(
-          (c) => IcChatGearIcon(color: c, size: 19),
-          '$_openTickets',
-          'Open',
+      _Stat((c) => IcTicketIcon(color: c, size: 19), '$_totalTickets',
+          'Tickets', isDark ? Brand.lightGreenBright : Brand.lightGreen),
+      _Stat((c) => IcChatGearIcon(color: c, size: 19), '$_openTickets', 'Open',
           isDark ? const Color(0xFFFFB74D) : Colors.orange),
-      _Stat(
-          (c) => Icon(Icons.check_circle_rounded, color: c, size: 19),
-          '$_resolvedTickets',
-          'Resolved',
-          const Color(0xFF4CAF50)),
+      _Stat((c) => Icon(Icons.check_circle_rounded, color: c, size: 19),
+          '$_resolvedTickets', 'Resolved', const Color(0xFF4CAF50)),
     ];
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
@@ -1606,8 +1600,7 @@ class _ProfilePageState extends State<ProfilePage>
       decoration: BoxDecoration(
           color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(22)),
-           border: isDark
-           ? Border.all(color: Brand.darkBorder) : null,
+          border: isDark ? Border.all(color: Brand.darkBorder) : null,
           boxShadow: isDark
               ? null
               : [
@@ -1730,9 +1723,8 @@ class _ProfilePageState extends State<ProfilePage>
                       : (isDark
                           ? Brand.darkTextTertiary.withAlpha(77)
                           : Brand.subtleLight.withAlpha(51)),
-                  border: Border.all(
-                      color: Brand.surface(isDark),
-                      width: 1.5)))));
+                  border:
+                      Border.all(color: Brand.surface(isDark), width: 1.5)))));
 
   Widget _mMarker(String l, int t, Color c, bool isDark) {
     final r = _progressPercentage >= t;
@@ -1817,7 +1809,8 @@ class _ProfilePageState extends State<ProfilePage>
 
     // Determine which tiers to show (those with benefits or with known thresholds)
     final tiersToShow = tierOrder
-        .where((t) => (grouped[t]?.isNotEmpty ?? false) || minPts.containsKey(t))
+        .where(
+            (t) => (grouped[t]?.isNotEmpty ?? false) || minPts.containsKey(t))
         .toList();
 
     if (tiersToShow.isEmpty) return const SizedBox.shrink();
@@ -1827,9 +1820,7 @@ class _ProfilePageState extends State<ProfilePage>
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(22)),
-        border: isDark
-              ? Border.all(color: Brand.darkBorder)
-              : null,
+        border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
             ? null
             : [
@@ -1851,9 +1842,11 @@ class _ProfilePageState extends State<ProfilePage>
                 width: 42,
                 height: 42,
                 decoration: BoxDecoration(
-                  color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
+                  color:
+                      isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
                   borderRadius: BorderRadius.circular(Brand.r(12)),
-                  border: isDark ? Border.all(color: Brand.darkBorderLight) : null,
+                  border:
+                      isDark ? Border.all(color: Brand.darkBorderLight) : null,
                 ),
                 child: Icon(
                   Icons.card_giftcard_rounded,
@@ -1871,14 +1864,18 @@ class _ProfilePageState extends State<ProfilePage>
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
-                        color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
+                        color: isDark
+                            ? Brand.darkTextPrimary
+                            : Brand.royalBlueDark,
                       ),
                     ),
                     Text(
                       'Perks unlocked by tier',
                       style: TextStyle(
                         fontSize: 12,
-                        color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
+                        color: isDark
+                            ? Brand.darkTextSecondary
+                            : Brand.subtleLight,
                       ),
                     ),
                   ],
@@ -1900,8 +1897,8 @@ class _ProfilePageState extends State<ProfilePage>
             final emoji = cfg['emoji'] as String;
             final tierBenefits = grouped[tierName] ?? [];
             final isCurrentTier = tierName == _currentTier;
-            final isUnlocked = tierOrder.indexOf(tierName) <=
-                tierOrder.indexOf(_currentTier);
+            final isUnlocked =
+                tierOrder.indexOf(tierName) <= tierOrder.indexOf(_currentTier);
             final pts = minPts[tierName] ?? 0;
 
             return Container(
@@ -1916,183 +1913,191 @@ class _ProfilePageState extends State<ProfilePage>
                   ),
                 ),
               ),
-              child: Theme(
-                data: Theme.of(context).copyWith(
-                  dividerColor: Colors.transparent,
-                ),
-                child: ExpansionTile(
-                  initiallyExpanded: isCurrentTier,
-                  tilePadding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 4,
+              // Material(transparency) sits between the decorated card
+              // Container and ExpansionTile's internal ListTile so the tile
+              // can paint its ink/background. Without it Flutter asserts:
+              // "ListTile background color or ink splashes may be invisible."
+              child: Material(
+                type: MaterialType.transparency,
+                child: Theme(
+                  data: Theme.of(context).copyWith(
+                    dividerColor: Colors.transparent,
                   ),
-                  childrenPadding: EdgeInsets.zero,
-                  leading: Container(
-                    width: 36,
-                    height: 36,
-                    decoration: BoxDecoration(
-                      color: isUnlocked
-                          ? color.withAlpha(isDark ? 38 : 26)
-                          : (isDark
-                              ? Brand.darkCardElevated
-                              : const Color(0xFFF1F5F9)),
-                      borderRadius: BorderRadius.circular(Brand.r(10)),
-                      border: isUnlocked
-                          ? Border.all(color: color.withAlpha(isDark ? 64 : 51))
-                          : null,
+                  child: ExpansionTile(
+                    initiallyExpanded: isCurrentTier,
+                    tilePadding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 4,
                     ),
-                    child: Center(
-                      child: Text(
-                        isUnlocked ? emoji : '🔒',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: isUnlocked ? null : Colors.grey,
-                        ),
-                      ),
-                    ),
-                  ),
-                  title: Row(children: [
-                    Text(
-                      label,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
+                    childrenPadding: EdgeInsets.zero,
+                    leading: Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
                         color: isUnlocked
-                            ? color
+                            ? color.withAlpha(isDark ? 38 : 26)
                             : (isDark
-                                ? Brand.darkTextTertiary
-                                : Brand.subtleLight),
+                                ? Brand.darkCardElevated
+                                : const Color(0xFFF1F5F9)),
+                        borderRadius: BorderRadius.circular(Brand.r(10)),
+                        border: isUnlocked
+                            ? Border.all(
+                                color: color.withAlpha(isDark ? 64 : 51))
+                            : null,
                       ),
-                    ),
-                    if (isCurrentTier) ...[
-                      const SizedBox(width: 6),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 7, vertical: 2),
-                        decoration: BoxDecoration(
-                          color: color.withAlpha(isDark ? 51 : 38),
-                          borderRadius: BorderRadius.circular(Brand.r(20)),
-                        ),
+                      child: Center(
                         child: Text(
-                          'Current',
+                          isUnlocked ? emoji : '🔒',
                           style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w700,
-                            color: color,
+                            fontSize: 16,
+                            color: isUnlocked ? null : Colors.grey,
                           ),
                         ),
                       ),
-                    ],
-                  ]),
-                  subtitle: Text(
-                    isUnlocked
-                        ? (isCurrentTier
-                            ? '$_totalPoints pts earned'
-                            : 'Unlocked at $pts pts')
-                        : 'Unlock at $pts pts',
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: isDark
-                          ? Brand.darkTextTertiary
-                          : Brand.subtleLight,
                     ),
-                  ),
-                  children: tierBenefits.isEmpty
-                      ? [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
-                            child: Text(
-                              'No specific benefits listed for this tier yet.',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: isDark
-                                    ? Brand.darkTextTertiary
-                                    : Brand.subtleLight,
-                                fontStyle: FontStyle.italic,
-                              ),
+                    title: Row(children: [
+                      Text(
+                        label,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          color: isUnlocked
+                              ? color
+                              : (isDark
+                                  ? Brand.darkTextTertiary
+                                  : Brand.subtleLight),
+                        ),
+                      ),
+                      if (isCurrentTier) ...[
+                        const SizedBox(width: 6),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 7, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: color.withAlpha(isDark ? 51 : 38),
+                            borderRadius: BorderRadius.circular(Brand.r(20)),
+                          ),
+                          child: Text(
+                            'Current',
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w700,
+                              color: color,
                             ),
                           ),
-                        ]
-                      : tierBenefits.map((b) {
-                          final name =
-                              (b['benefit_name'] as String?) ?? 'Benefit';
-                          final desc =
-                              (b['benefit_description'] as String?) ?? '';
-                          final iconName =
-                              (b['icon_name'] as String?) ?? 'star';
-                          final IconData icon = _benefitIcon(iconName);
+                        ),
+                      ],
+                    ]),
+                    subtitle: Text(
+                      isUnlocked
+                          ? (isCurrentTier
+                              ? '$_totalPoints pts earned'
+                              : 'Unlocked at $pts pts')
+                          : 'Unlock at $pts pts',
+                      style: TextStyle(
+                        fontSize: 11,
+                        color:
+                            isDark ? Brand.darkTextTertiary : Brand.subtleLight,
+                      ),
+                    ),
+                    children: tierBenefits.isEmpty
+                        ? [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
+                              child: Text(
+                                'No specific benefits listed for this tier yet.',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: isDark
+                                      ? Brand.darkTextTertiary
+                                      : Brand.subtleLight,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+                            ),
+                          ]
+                        : tierBenefits.map((b) {
+                            final name =
+                                (b['benefit_name'] as String?) ?? 'Benefit';
+                            final desc =
+                                (b['benefit_description'] as String?) ?? '';
+                            final iconName =
+                                (b['icon_name'] as String?) ?? 'star';
+                            final IconData icon = _benefitIcon(iconName);
 
-                          return Opacity(
-                            opacity: isUnlocked ? 1.0 : 0.45,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(20, 0, 20, 12),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: 32,
-                                    height: 32,
-                                    margin: const EdgeInsets.only(top: 1),
-                                    decoration: BoxDecoration(
-                                      color: isUnlocked
-                                          ? color.withAlpha(isDark ? 31 : 20)
-                                          : (isDark
-                                              ? Brand.darkCardElevated
-                                              : const Color(0xFFF1F5F9)),
-                                      borderRadius: BorderRadius.circular(Brand.r(8)),
+                            return Opacity(
+                              opacity: isUnlocked ? 1.0 : 0.45,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(20, 0, 20, 12),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      width: 32,
+                                      height: 32,
+                                      margin: const EdgeInsets.only(top: 1),
+                                      decoration: BoxDecoration(
+                                        color: isUnlocked
+                                            ? color.withAlpha(isDark ? 31 : 20)
+                                            : (isDark
+                                                ? Brand.darkCardElevated
+                                                : const Color(0xFFF1F5F9)),
+                                        borderRadius:
+                                            BorderRadius.circular(Brand.r(8)),
+                                      ),
+                                      child: Icon(
+                                        icon,
+                                        size: 16,
+                                        color: isUnlocked
+                                            ? color
+                                            : (isDark
+                                                ? Brand.darkTextTertiary
+                                                : Brand.subtleLight),
+                                      ),
                                     ),
-                                    child: Icon(
-                                      icon,
-                                      size: 16,
-                                      color: isUnlocked
-                                          ? color
-                                          : (isDark
-                                              ? Brand.darkTextTertiary
-                                              : Brand.subtleLight),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          name,
-                                          style: TextStyle(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w600,
-                                            color: isUnlocked
-                                                ? (isDark
-                                                    ? Brand.darkTextPrimary
-                                                    : const Color(0xFF1E293B))
-                                                : (isDark
-                                                    ? Brand.darkTextTertiary
-                                                    : Brand.subtleLight),
-                                          ),
-                                        ),
-                                        if (desc.isNotEmpty) ...[
-                                          const SizedBox(height: 2),
+                                    const SizedBox(width: 12),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
                                           Text(
-                                            desc,
+                                            name,
                                             style: TextStyle(
-                                              fontSize: 12,
-                                              color: isDark
-                                                  ? Brand.darkTextSecondary
-                                                  : Brand.subtleLight,
-                                              height: 1.4,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w600,
+                                              color: isUnlocked
+                                                  ? (isDark
+                                                      ? Brand.darkTextPrimary
+                                                      : const Color(0xFF1E293B))
+                                                  : (isDark
+                                                      ? Brand.darkTextTertiary
+                                                      : Brand.subtleLight),
                                             ),
                                           ),
+                                          if (desc.isNotEmpty) ...[
+                                            const SizedBox(height: 2),
+                                            Text(
+                                              desc,
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: isDark
+                                                    ? Brand.darkTextSecondary
+                                                    : Brand.subtleLight,
+                                                height: 1.4,
+                                              ),
+                                            ),
+                                          ],
                                         ],
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          );
-                        }).toList(),
+                            );
+                          }).toList(),
+                  ),
                 ),
               ),
             );
@@ -2156,8 +2161,8 @@ class _ProfilePageState extends State<ProfilePage>
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             GestureDetector(
-              onTap: () => setState(() =>
-                  _accountInfoExpanded = !_accountInfoExpanded),
+              onTap: () =>
+                  setState(() => _accountInfoExpanded = !_accountInfoExpanded),
               behavior: HitTestBehavior.opaque,
               child: Row(children: [
                 _sectionIcon(Icons.person_rounded, isDark),
@@ -2193,7 +2198,8 @@ class _ProfilePageState extends State<ProfilePage>
                                             ? Brand.darkIconActive
                                             : Brand.royalBlue)
                                         .withAlpha(isDark ? 31 : 15),
-                                    borderRadius: BorderRadius.circular(Brand.r(10))),
+                                    borderRadius:
+                                        BorderRadius.circular(Brand.r(10))),
                                 child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -2238,9 +2244,9 @@ class _ProfilePageState extends State<ProfilePage>
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 5),
                               decoration: BoxDecoration(
-                                  color:
-                                      Colors.red.withAlpha(isDark ? 31 : 15),
-                                  borderRadius: BorderRadius.circular(Brand.r(10))),
+                                  color: Colors.red.withAlpha(isDark ? 31 : 15),
+                                  borderRadius:
+                                      BorderRadius.circular(Brand.r(10))),
                               child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -2277,8 +2283,8 @@ class _ProfilePageState extends State<ProfilePage>
                         false, isDark,
                         showLock: true),
                     _infoField('Phone', _phoneController, Icons.phone_rounded,
-                        _isEditing, isDark,
-                        keyboardType: TextInputType.phone, validator: (v) {
+                        _isEditing, isDark, keyboardType: TextInputType.phone,
+                        validator: (v) {
                       if (v != null && v.isNotEmpty) {
                         final c = v.replaceAll(RegExp(r'[\s\-\(\)]'), '');
                         if (c.length < 9 || c.length > 15) {
@@ -2313,11 +2319,9 @@ class _ProfilePageState extends State<ProfilePage>
                       label: S.of(context)!.profileDistrict,
                       icon: Icons.location_on_outlined,
                       value: _district,
-                      enabled:
-                          _isEditing && (_province != null),
+                      enabled: _isEditing && (_province != null),
                       isDark: isDark,
-                      options:
-                          SriLankaLocations.districtsOf(_province),
+                      options: SriLankaLocations.districtsOf(_province),
                       onChanged: (v) => setState(() => _district = v),
                       placeholder: _province == null
                           ? 'Select province first'
@@ -2346,7 +2350,8 @@ class _ProfilePageState extends State<ProfilePage>
                                                   Brand.royalBlue,
                                                   Brand.royalBlueLight
                                                 ]),
-                                      borderRadius: BorderRadius.circular(Brand.r(16)),
+                                      borderRadius:
+                                          BorderRadius.circular(Brand.r(16)),
                                       boxShadow: [
                                         BoxShadow(
                                             color: isDark
@@ -2372,7 +2377,10 @@ class _ProfilePageState extends State<ProfilePage>
                                                       color: Colors.white,
                                                       size: 20),
                                                   const SizedBox(width: 8),
-                                                  Text(S.of(context)!.profileSaveChanges,
+                                                  Text(
+                                                      S
+                                                          .of(context)!
+                                                          .profileSaveChanges,
                                                       style: const TextStyle(
                                                           color: Colors.white,
                                                           fontWeight:
@@ -2452,11 +2460,14 @@ class _ProfilePageState extends State<ProfilePage>
                                   : Brand.subtleLight)),
                       decoration: InputDecoration(
                           isDense: true,
-                          contentPadding: const EdgeInsets.symmetric(vertical: 5),
+                          contentPadding:
+                              const EdgeInsets.symmetric(vertical: 5),
                           enabledBorder: InputBorder.none,
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                                color: isDark ? Brand.darkIconActive : Brand.royalBlue,
+                                color: isDark
+                                    ? Brand.darkIconActive
+                                    : Brand.royalBlue,
                                 width: 1.5),
                           ),
                           border: InputBorder.none)),
@@ -2516,79 +2527,75 @@ class _ProfilePageState extends State<ProfilePage>
                 size: 18,
                 color: enabled
                     ? (isDark ? Brand.darkIconActive : Brand.royalBlue)
-                    : (isDark
-                        ? Brand.darkTextTertiary
-                        : Brand.subtleLight)),
+                    : (isDark ? Brand.darkTextTertiary : Brand.subtleLight)),
           ),
           const SizedBox(width: 12),
           Expanded(
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(label,
-                      style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                          color: isDark
-                              ? Brand.darkTextSecondary
-                              : Brand.subtleLight,
-                          letterSpacing: 0.5)),
-                  // When not editing OR no options → render as plain text so
-                  // the row visually matches _infoField.
-                  if (!enabled || options.isEmpty)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5),
-                      child: Text(
-                        (value == null || value.isEmpty)
-                            ? (enabled ? placeholder : '—')
-                            : value,
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(label,
+                  style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      color:
+                          isDark ? Brand.darkTextSecondary : Brand.subtleLight,
+                      letterSpacing: 0.5)),
+              // When not editing OR no options → render as plain text so
+              // the row visually matches _infoField.
+              if (!enabled || options.isEmpty)
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Text(
+                    (value == null || value.isEmpty)
+                        ? (enabled ? placeholder : '—')
+                        : value,
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: (value == null || value.isEmpty)
+                            ? (isDark
+                                ? Brand.darkTextTertiary
+                                : Brand.subtleLight)
+                            : (isDark
+                                ? Brand.darkTextPrimary
+                                : Brand.royalBlueDark)),
+                  ),
+                )
+              else
+                DropdownButtonHideUnderline(
+                  child: DropdownButton<String>(
+                    isExpanded: true,
+                    value: options.contains(value) ? value : null,
+                    hint: Text(placeholder,
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
-                            color: (value == null || value.isEmpty)
-                                ? (isDark
-                                    ? Brand.darkTextTertiary
-                                    : Brand.subtleLight)
-                                : (isDark
-                                    ? Brand.darkTextPrimary
-                                    : Brand.royalBlueDark)),
-                      ),
-                    )
-                  else
-                    DropdownButtonHideUnderline(
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        value: options.contains(value) ? value : null,
-                        hint: Text(placeholder,
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: isDark
-                                    ? Brand.darkTextTertiary
-                                    : Brand.subtleLight)),
-                        icon: Icon(Icons.expand_more_rounded,
-                            size: 18,
                             color: isDark
-                                ? Brand.darkTextSecondary
-                                : Brand.subtleLight),
-                        dropdownColor:
-                            isDark ? Brand.darkCardElevated : Colors.white,
-                        items: options
-                            .map((o) => DropdownMenuItem<String>(
-                                  value: o,
-                                  child: Text(o,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600,
-                                          color: isDark
-                                              ? Brand.darkTextPrimary
-                                              : Brand.royalBlueDark)),
-                                ))
-                            .toList(),
-                        onChanged: onChanged,
-                      ),
-                    ),
-                ]),
+                                ? Brand.darkTextTertiary
+                                : Brand.subtleLight)),
+                    icon: Icon(Icons.expand_more_rounded,
+                        size: 18,
+                        color: isDark
+                            ? Brand.darkTextSecondary
+                            : Brand.subtleLight),
+                    dropdownColor:
+                        isDark ? Brand.darkCardElevated : Colors.white,
+                    items: options
+                        .map((o) => DropdownMenuItem<String>(
+                              value: o,
+                              child: Text(o,
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: isDark
+                                          ? Brand.darkTextPrimary
+                                          : Brand.royalBlueDark)),
+                            ))
+                        .toList(),
+                    onChanged: onChanged,
+                  ),
+                ),
+            ]),
           ),
           if (enabled && options.isNotEmpty)
             Icon(Icons.edit_rounded,
@@ -2832,9 +2839,8 @@ class _ProfilePageState extends State<ProfilePage>
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
-                      color: isDark
-                          ? Brand.darkTextPrimary
-                          : Brand.royalBlueDark,
+                      color:
+                          isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
                     ),
                   ),
                   const SizedBox(height: 2),
@@ -2843,9 +2849,8 @@ class _ProfilePageState extends State<ProfilePage>
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
-                      color: isDark
-                          ? Brand.darkTextSecondary
-                          : Brand.subtleLight,
+                      color:
+                          isDark ? Brand.darkTextSecondary : Brand.subtleLight,
                     ),
                   ),
                 ],
@@ -2864,10 +2869,14 @@ class _ProfilePageState extends State<ProfilePage>
 
   Widget _buildContactCard(bool isDark) {
     // Group contacts by type for display
-    final callContacts = _supportContacts.where((c) => c['contact_type'] == 'call').toList();
-    final whatsappContacts = _supportContacts.where((c) => c['contact_type'] == 'whatsapp').toList();
-    final emailContacts = _supportContacts.where((c) => c['contact_type'] == 'email').toList();
-    final webContacts = _supportContacts.where((c) => c['contact_type'] == 'web').toList();
+    final callContacts =
+        _supportContacts.where((c) => c['contact_type'] == 'call').toList();
+    final whatsappContacts =
+        _supportContacts.where((c) => c['contact_type'] == 'whatsapp').toList();
+    final emailContacts =
+        _supportContacts.where((c) => c['contact_type'] == 'email').toList();
+    final webContacts =
+        _supportContacts.where((c) => c['contact_type'] == 'web').toList();
 
     // Build contact button list — show all contacts grouped by type
     final List<Widget> contactWidgets = [];
@@ -2939,7 +2948,8 @@ class _ProfilePageState extends State<ProfilePage>
           Row(children: [
             _sectionIcon(Icons.contact_support_rounded, isDark),
             const SizedBox(width: 10),
-            Text(S.of(context)!.profileContactSupport, style: _sectionTitle(isDark)),
+            Text(S.of(context)!.profileContactSupport,
+                style: _sectionTitle(isDark)),
           ]),
           const SizedBox(height: 16),
           // Use Wrap for flexible layout when many contacts
@@ -2995,7 +3005,9 @@ class _ProfilePageState extends State<ProfilePage>
           Row(children: [
             _sectionIcon(Icons.palette_rounded, isDark),
             const SizedBox(width: 10),
-            Expanded(child: Text(S.of(context)!.profileAppearance, style: _sectionTitle(isDark))),
+            Expanded(
+                child: Text(S.of(context)!.profileAppearance,
+                    style: _sectionTitle(isDark))),
             Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
@@ -3006,7 +3018,10 @@ class _ProfilePageState extends State<ProfilePage>
                     border: isDark
                         ? Border.all(color: Brand.darkBorderLight)
                         : null),
-                child: Text(currentIsDark ? S.of(context)!.profileDark : S.of(context)!.profileLight,
+                child: Text(
+                    currentIsDark
+                        ? S.of(context)!.profileDark
+                        : S.of(context)!.profileLight,
                     style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w700,
@@ -3047,12 +3062,9 @@ class _ProfilePageState extends State<ProfilePage>
             },
             borderRadius: BorderRadius.circular(Brand.r(12)),
             child: Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
               decoration: BoxDecoration(
-                color: isDark
-                    ? Brand.darkCardElevated
-                    : Brand.royalBlueSurface,
+                color: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
                 borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                     color: isDark ? Brand.darkBorderLight : Brand.borderLight),
@@ -3081,9 +3093,7 @@ class _ProfilePageState extends State<ProfilePage>
                 const SizedBox(width: 4),
                 Icon(Icons.chevron_right_rounded,
                     size: 18,
-                    color: isDark
-                        ? Brand.darkTextTertiary
-                        : Brand.subtleLight),
+                    color: isDark ? Brand.darkTextTertiary : Brand.subtleLight),
               ]),
             ),
           ),
@@ -3483,7 +3493,8 @@ class _ProfilePageState extends State<ProfilePage>
     final isDark = _isDark;
     return Dialog(
         backgroundColor: Brand.surface(isDark),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(24))),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Brand.r(24))),
         child: Padding(
             padding: const EdgeInsets.all(28),
             child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -3626,8 +3637,8 @@ class _ProfilePageState extends State<ProfilePage>
             builder: (context, sc) => Container(
                 decoration: BoxDecoration(
                     color: Brand.surface(isDark),
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(Brand.r(24)))),
+                    borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(Brand.r(24)))),
                 child: Column(children: [
                   const SizedBox(height: 12),
                   Container(
@@ -3668,8 +3679,8 @@ class _ProfilePageState extends State<ProfilePage>
         context: context,
         builder: (context) => Dialog(
             backgroundColor: Brand.surface(isDark),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(24))),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Brand.r(24))),
             child: Padding(
                 padding: const EdgeInsets.all(28),
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -3712,7 +3723,8 @@ class _ProfilePageState extends State<ProfilePage>
                                   : Brand.royalBlue,
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(Brand.r(14)))),
+                                  borderRadius:
+                                      BorderRadius.circular(Brand.r(14)))),
                           child: const Text('Close'))),
                 ]))));
   }

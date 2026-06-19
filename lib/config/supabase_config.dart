@@ -30,20 +30,25 @@ class SupabaseConfig {
     if (_initialized) return;
 
     // ── Read from .env using KEY NAMES (not values) ──
-    final url = dotenv.env['SUPABASE_URL'] ??
-        'https://mgfehxoampnafcyriqzt.supabase.co';
+    final url = dotenv.env['SUPABASE_URL'];
+    final anonKey = dotenv.env['SUPABASE_ANON_KEY'];
 
-    final anonKey = dotenv.env['SUPABASE_ANON_KEY'] ?? '';
+    if (url == null || url.isEmpty) {
+      throw Exception(
+        'SUPABASE_URL not found in .env — '
+        'copy .env.example to .env and fill in your values.',
+      );
+    }
 
-    _url = url;
-    _anonKey = anonKey;
-
-    if (anonKey.isEmpty) {
+    if (anonKey == null || anonKey.isEmpty) {
       throw Exception(
         'SUPABASE_ANON_KEY not found in .env — '
         'copy .env.example to .env and fill in your values.',
       );
     }
+
+    _url = url;
+    _anonKey = anonKey;
 
     await Supabase.initialize(
       url: url,
@@ -52,7 +57,7 @@ class SupabaseConfig {
         authFlowType: AuthFlowType.pkce,
       ),
       realtimeClientOptions: const RealtimeClientOptions(
-        logLevel: RealtimeLogLevel.info,
+        logLevel: kReleaseMode ? RealtimeLogLevel.error : RealtimeLogLevel.info,
       ),
       storageOptions: const StorageClientOptions(
         retryAttempts: 3,

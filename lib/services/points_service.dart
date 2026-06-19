@@ -44,7 +44,9 @@ class PointsService {
         .catchError((e) => AppLogger.warn('PointsService', 'Award failed ($activityType)', error: e));
   }
 
-  // ── One-time award (SharedPreferences guard for current user) ──
+  // ── One-time award (DB-side unique constraint enforces single award per user+type) ──
+  // Check SharedPreferences first for fast local dedup, then rely on DB constraint
+  // to prevent double-awards from parallel calls.
 
   static Future<void> awardOnce(
     String activityType,
@@ -57,9 +59,22 @@ class PointsService {
 
       final prefs = await SharedPreferences.getInstance();
       final key = 'pts_${userId}_$activityType';
+
+      // Fast local dedup for normal case
       if (prefs.getBool(key) == true) return;
 
-      awardTo(userId, activityType, points, description);
+      // Award via RPC (DB constraint prevents duplicate even if parallel calls race)
+      try {
+        awardTo(userId, activityType, points, description);
+      } catch (rpcErr) {
+        // DB unique constraint may reject duplicate — this is expected
+        if (!rpcErr.toString().contains('unique') && !rpcErr.toString().contains('duplicate')) {
+          rethrow;
+        }
+        AppLogger.info('PointsService', 'Award already exists ($activityType)');
+      }
+
+      // Mark as attempted (idempotent)
       await prefs.setBool(key, true);
     } catch (e) {
       AppLogger.warn('PointsService', 'awardOnce failed ($activityType)', error: e);
