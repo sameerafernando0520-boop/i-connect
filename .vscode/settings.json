@@ -4,5 +4,10 @@
     "emulator.emulatorPathWindows": "C:\\Users\\sheha\\AppData\\Local\\Android\\Sdk\\emulator",
     "emulator.emulatorPath": "C:\\Users\\sheha\\AppData\\Local\\Android\\Sdk\\emulator",
     "emulator.androidColdBoot": true,
-    "emulator.androidExtraBootArgs": "C:\\Users\\sheha\\AppData\\Local\\Android\\Sdk\\emulator -avd Medium_Phone"
+    "emulator.androidExtraBootArgs": "C:\\Users\\sheha\\AppData\\Local\\Android\\Sdk\\emulator -avd Medium_Phone",
+    "builder.serverUrl": "",
+    "builder.command": "",
+    "builder.runDevServer": true,
+    "builder.autoDetectDevServer": true,
+    "builder.launchType": "editor"
 }
