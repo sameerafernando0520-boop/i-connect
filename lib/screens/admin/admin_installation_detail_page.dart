@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_installation_detail_page.dart
+﻿// lib/screens/admin/admin_installation_detail_page.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -17,19 +17,19 @@ const _typeLabels = {
 };
 
 const _typeColors = {
-  'new_install':   Color(0xFF10B981),
-  'replacement':   Color(0xFF3B82F6),
-  'upgrade':       Color(0xFF8B5CF6),
-  'commissioning': Color(0xFFF59E0B),
-  'decommission':  Color(0xFFEF4444),
+  'new_install':   StatusColors.resolved,
+  'replacement':   AdminColors.info,
+  'upgrade':       StatusColors.assigned,
+  'commissioning': AdminColors.warning,
+  'decommission':  AdminColors.error,
 };
 
 const _statusColors = {
-  'pending':     Color(0xFFF59E0B),
-  'scheduled':   Color(0xFF3B82F6),
-  'in_progress': Color(0xFF8B5CF6),
-  'completed':   Color(0xFF10B981),
-  'cancelled':   Color(0xFF6B7280),
+  'pending':     AdminColors.warning,
+  'scheduled':   AdminColors.info,
+  'in_progress': StatusColors.assigned,
+  'completed':   StatusColors.resolved,
+  'cancelled':   StatusColors.gray,
 };
 
 // ══════════════════════════════════════════════════════════════
@@ -227,7 +227,7 @@ class _AdminInstallationDetailPageState
             decoration: BoxDecoration(
               color: AdminColors.card(sheetCtx),
               borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(28)),
+                  BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
             ),
             child: Column(
               children: [
@@ -623,11 +623,11 @@ class _AdminInstallationDetailPageState
                   children: [
                     if (status == 'scheduled')
                       _actionBtn('Mark In Progress',
-                          const Color(0xFF8B5CF6), Icons.play_arrow,
+                          StatusColors.assigned, Icons.play_arrow,
                           () => _updateStatus('in_progress')),
                     if (status == 'in_progress')
                       _actionBtn('Mark Completed',
-                          const Color(0xFF10B981), Icons.check_circle,
+                          StatusColors.resolved, Icons.check_circle,
                           () => _updateStatus('completed')),
                     _actionBtn('Cancel Installation',
                         AdminColors.error, Icons.cancel,
@@ -726,7 +726,7 @@ class _AdminInstallationDetailPageState
                       e['role'] as String? ?? 'technician';
                   final engStatus = e['status'] as String? ?? '';
                   final roleColor = roleStr == 'lead'
-                      ? const Color(0xFFF59E0B)
+                      ? AdminColors.warning
                       : roleStr == 'technician'
                           ? AdminColors.primary
                           : AdminColors.info;

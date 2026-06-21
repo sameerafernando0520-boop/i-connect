@@ -1,4 +1,4 @@
-// lib/screens/marketing/ma_referral_page.dart
+﻿// lib/screens/marketing/ma_referral_page.dart
 // P2 — Referral Program: view referrals + manage commission rules
 
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _refColor = Color(0xFF10B981);
+const Color _refColor = StatusColors.resolved;
 
 class MaReferralPage extends StatefulWidget {
   const MaReferralPage({super.key});
@@ -437,7 +437,7 @@ class _MaReferralPageState extends State<MaReferralPage>
   Color _statusColor(String status) {
     switch (status) {
       case 'approved': return AdminColors.success;
-      case 'paid': return const Color(0xFF10B981);
+      case 'paid': return StatusColors.resolved;
       case 'qualified': return AdminColors.info;
       case 'expired': return AdminColors.error;
       case 'rejected': return AdminColors.error;
@@ -498,8 +498,8 @@ class _RuleEditDialogState extends State<_RuleEditDialog> {
             selected: {_commType},
             onSelectionChanged: (v) => setState(() => _commType = v.first),
             style: SegmentedButton.styleFrom(
-              selectedBackgroundColor: const Color(0xFF10B981).withAlpha(30),
-              selectedForegroundColor: const Color(0xFF10B981),
+              selectedBackgroundColor: StatusColors.resolved.withAlpha(30),
+              selectedForegroundColor: StatusColors.resolved,
             ),
           ),
           const SizedBox(height: 12),
@@ -516,7 +516,7 @@ class _RuleEditDialogState extends State<_RuleEditDialog> {
             title: const Text('Active'),
             value: _isActive,
             onChanged: (v) => setState(() => _isActive = v),
-            activeThumbColor: const Color(0xFF10B981),
+            activeThumbColor: StatusColors.resolved,
             contentPadding: EdgeInsets.zero,
           ),
         ]),
@@ -530,7 +530,7 @@ class _RuleEditDialogState extends State<_RuleEditDialog> {
             'is_active': _isActive,
           }),
           style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF10B981), foregroundColor: Colors.white),
+              backgroundColor: StatusColors.resolved, foregroundColor: Colors.white),
           child: const Text('Save'),
         ),
       ],

@@ -1,4 +1,4 @@
-// lib/screens/engineering_admin/ea_create_engineer_page.dart
+﻿// lib/screens/engineering_admin/ea_create_engineer_page.dart
 // Engineering Admin Portal — Create Engineer (username + password, no email)
 
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _eaAccent = Color(0xFF16A34A); // sky blue
+const Color _eaAccent = Brand.lightGreenDark; // sky blue
 
 const _allSpecializations = [
   'Digital Printers',

@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/customer/referral_page.dart
 // Refer & Earn — Customer referral program page
 // ═══════════════════════════════════════════════════════════════
@@ -12,6 +12,7 @@ import '../../config/brand_colors.dart';
 import '../../l10n/s.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
+import '../../utils/app_logger.dart';
 
 class ReferralPage extends StatefulWidget {
   const ReferralPage({super.key});
@@ -51,7 +52,7 @@ class _ReferralPageState extends State<ReferralPage> {
         _fetchCommissionRules(),
       ]);
     } catch (e) {
-      debugPrint('❌ Referral page load error: $e');
+      AppLogger.debug('ReferralPage', 'Referral page load error: $e');
     }
 
     if (!mounted) return;
@@ -68,7 +69,7 @@ class _ReferralPageState extends State<ReferralPage> {
         setState(() => _referralCode = result[0]['code'] as String?);
       }
     } catch (e) {
-      debugPrint('⚠️ Generate referral code error: $e');
+      AppLogger.debug('ReferralPage', 'Generate referral code error: $e');
     }
   }
 
@@ -92,7 +93,7 @@ class _ReferralPageState extends State<ReferralPage> {
         });
       }
     } catch (e) {
-      debugPrint('⚠️ Referral dashboard error: $e');
+      AppLogger.debug('ReferralPage', 'Referral dashboard error: $e');
     }
   }
 
@@ -109,7 +110,7 @@ class _ReferralPageState extends State<ReferralPage> {
         _commissionRules = List<Map<String, dynamic>>.from(result);
       });
     } catch (e) {
-      debugPrint('⚠️ Commission rules error: $e');
+      AppLogger.debug('ReferralPage', 'Commission rules error: $e');
     }
   }
 
@@ -138,7 +139,7 @@ class _ReferralPageState extends State<ReferralPage> {
         padding: const EdgeInsets.all(28),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -304,14 +305,14 @@ class _ReferralPageState extends State<ReferralPage> {
         return isDark ? Brand.darkIconActive : Brand.royalBlueLight;
       case 'cooling':
       case 'qualified':
-        return isDark ? const Color(0xFFFFB74D) : Colors.orange;
+        return isDark ? StatusColors.warningLight : Colors.orange;
       case 'approved':
       case 'paid':
         return isDark ? Brand.lightGreenBright : Brand.lightGreen;
       case 'expired':
         return isDark ? Brand.darkTextSecondary : Brand.subtleLight;
       case 'rejected':
-        return isDark ? const Color(0xFFFF6B6B) : Colors.red;
+        return isDark ? StatusColors.softRed : Colors.red;
       default:
         return isDark ? Brand.darkTextSecondary : Brand.subtleLight;
     }
@@ -550,7 +551,7 @@ class _ReferralPageState extends State<ReferralPage> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
       child: Row(children: [
-        _shareBtn(Icons.message_rounded, 'WhatsApp', const Color(0xFF25D366),
+        _shareBtn(Icons.message_rounded, 'WhatsApp', Brand.whatsappGreen,
             isDark, _shareViaWhatsApp),
         const SizedBox(width: 10),
         _shareBtn(
@@ -570,7 +571,7 @@ class _ReferralPageState extends State<ReferralPage> {
         _shareBtn(
             Icons.qr_code_2_rounded,
             'QR Code',
-            isDark ? const Color(0xFFFFB74D) : Colors.orange,
+            isDark ? StatusColors.warningLight : Colors.orange,
             isDark,
             _showCodeSheet),
       ]),
@@ -621,7 +622,7 @@ class _ReferralPageState extends State<ReferralPage> {
             'Earned',
             _formatLKR(totalEarned),
             Icons.account_balance_wallet_rounded,
-            isDark ? const Color(0xFFFFB74D) : Colors.orange,
+            isDark ? StatusColors.warningLight : Colors.orange,
             isDark),
       ]),
     );

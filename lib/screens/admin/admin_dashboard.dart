@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_dashboard.dart
+﻿// lib/screens/admin/admin_dashboard.dart
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -39,6 +39,7 @@ import 'referral_management_page.dart';
 import 'admin_more_page.dart';
 import 'create_quotation_page.dart';
 import 'create_schedule_page.dart';
+import '../../utils/app_logger.dart';
 
 class AdminDashboard extends StatefulWidget {
   const AdminDashboard({super.key});
@@ -113,14 +114,14 @@ class _AdminDashboardState extends State<AdminDashboard>
       (_) {
         // Debounce to avoid rapid successive reloads
         _debounceTimer?.cancel();
-        _debounceTimer = Timer(const Duration(milliseconds: 500), () {
+        _debounceTimer = Timer(const Duration(seconds: 2), () {
           if (mounted) {
             _loadDashboardData(forceRefresh: true, silent: true);
           }
         });
       },
       onError: (e) {
-        debugPrint('Dashboard stream error: $e');
+        AppLogger.debug('AdminDashboard', 'Dashboard stream error: $e');
       },
     );
   }
@@ -181,7 +182,7 @@ class _AdminDashboardState extends State<AdminDashboard>
         _isRefreshing = false;
       });
     } catch (e) {
-      debugPrint('Dashboard load error: $e');
+      AppLogger.debug('AdminDashboard', 'Dashboard load error: $e');
       if (!mounted) return;
       setState(() {
         _isLoading = false;
@@ -283,7 +284,7 @@ class _AdminDashboardState extends State<AdminDashboard>
       result['pendingQuotations'] = (responses[2] as List).length;
       result['overdueInstallments'] = (responses[3] as List).length;
     } catch (e) {
-      debugPrint('Business Hub stats error: $e');
+      AppLogger.debug('AdminDashboard', 'Business Hub stats error: $e');
     }
     return result;
   }
@@ -534,7 +535,7 @@ class _AdminDashboardState extends State<AdminDashboard>
   // ─── TOP HEADER (matches customer dashboard style) ─────
   Widget _buildTopHeader(bool isDark) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         // Splash-navy radial — the brand signature shared by every role home.
         gradient: RadialGradient(
           center: Alignment(0, -1.2),
@@ -546,7 +547,7 @@ class _AdminDashboardState extends State<AdminDashboard>
           ],
           stops: [0.0, 0.45, 1.0],
         ),
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(28)),
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(Brand.r(28))),
       ),
       padding: EdgeInsets.fromLTRB(
           20, MediaQuery.of(context).padding.top + 16, 20, 22),
@@ -756,7 +757,7 @@ class _AdminDashboardState extends State<AdminDashboard>
         gradient: LinearGradient(
           colors: isDark
               ? [Brand.darkCard, Brand.darkCardElevated]
-              : [const Color(0xFF1A56DB), const Color(0xFF3B82F6)],
+              : [AdminColors.primary, AdminColors.info],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
@@ -1178,7 +1179,7 @@ class _AdminDashboardState extends State<AdminDashboard>
       if (_pendingReferralCount > 0)
         _OverviewKpi(
           iconWidget: (c) => Icon(Icons.people_alt_rounded, color: c, size: 24),
-          color: const Color(0xFF06B6D4),
+          color: StatusColors.info,
           label: 'Pending Referrals',
           value: '$_pendingReferralCount',
           badge: 'Awaiting review',
@@ -1318,19 +1319,19 @@ class _AdminDashboardState extends State<AdminDashboard>
       _QuickAction(
         'Engineers',
         Icons.engineering_rounded,
-        const Color(0xFF00B4D8),
+        TierColors.platinum,
         () => _navigateTo(const EngineerManagementPage()),
       ),
       _QuickAction(
         'Analytics',
         Icons.analytics_rounded,
-        const Color(0xFF8B5CF6),
+        StatusColors.assigned,
         () => _navigateTo(const AnalyticsDashboardPage()),
       ),
       _QuickAction(
         'Broadcast',
         Icons.campaign_rounded,
-        const Color(0xFFAB47BC),
+        StatusColors.lavender,
         () => _navigateTo(const BroadcastNotificationsPage()),
       ),
     ];
@@ -1494,13 +1495,13 @@ class _AdminDashboardState extends State<AdminDashboard>
       ),
       _HubKpi(
         icon: Icons.account_balance_wallet_rounded,
-        color: const Color(0xFFF59E0B),
+        color: AdminColors.warning,
         label: 'Outstanding',
         value: _formatCompactCurrency(_hubOutstandingReceivables),
       ),
       _HubKpi(
         icon: Icons.request_quote_rounded,
-        color: const Color(0xFF8B5CF6),
+        color: StatusColors.assigned,
         label: 'Pending Quotations',
         value: '$_hubPendingQuotations',
       ),
@@ -1796,7 +1797,7 @@ class _AdminDashboardState extends State<AdminDashboard>
               decoration: BoxDecoration(
                 color: Brand.surface(isDark),
                 borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(28)),
+                    BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -1838,7 +1839,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                     isDark,
                     Icons.description_rounded,
                     'Create Quotation',
-                    const Color(0xFF8B5CF6),
+                    StatusColors.assigned,
                     () => _navigateTo(const CreateQuotationPage()),
                   ),
                   _quickCreateTile(
@@ -1854,7 +1855,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                     isDark,
                     Icons.calendar_month_rounded,
                     'Create Schedule',
-                    const Color(0xFF14B8A6),
+                    StatusColors.teal,
                     () => _navigateTo(const CreateSchedulePage()),
                   ),
                 ],

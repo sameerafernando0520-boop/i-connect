@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:i_connect/config/brand_colors.dart';
+import 'package:i_connect/config/admin_theme.dart';
 import 'package:i_connect/config/supabase_config.dart';
 import 'package:intl/intl.dart';
 import 'package:i_connect/widgets/ds/ds_widgets.dart';
@@ -164,8 +165,8 @@ class _PointsHistoryPageState extends State<PointsHistoryPage> {
                                 height: 44,
                                 decoration: BoxDecoration(
                                   color: (isPositive
-                                          ? const Color(0xFF22C55E)
-                                          : const Color(0xFFEF4444))
+                                          ? Brand.lightGreen
+                                          : AdminColors.error)
                                       .withAlpha(isDark ? 30 : 20),
                                   borderRadius: BorderRadius.circular(Brand.r(12)),
                                 ),
@@ -175,8 +176,8 @@ class _PointsHistoryPageState extends State<PointsHistoryPage> {
                                       : Icons.remove_rounded,
                                   size: 24,
                                   color: isPositive
-                                      ? const Color(0xFF22C55E)
-                                      : const Color(0xFFEF4444),
+                                      ? Brand.lightGreen
+                                      : AdminColors.error,
                                 ),
                               ),
                               const SizedBox(width: 16),
@@ -215,8 +216,8 @@ class _PointsHistoryPageState extends State<PointsHistoryPage> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700,
                                   color: isPositive
-                                      ? const Color(0xFF22C55E)
-                                      : const Color(0xFFEF4444),
+                                      ? Brand.lightGreen
+                                      : AdminColors.error,
                                 ),
                               ),
                             ],

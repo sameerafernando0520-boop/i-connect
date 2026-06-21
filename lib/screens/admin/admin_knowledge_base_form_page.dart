@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_knowledge_base_form_page.dart
+﻿// lib/screens/admin/admin_knowledge_base_form_page.dart
 //
 // Admin Knowledge Base — create / edit form (v22).
 // Supports four content types with type-specific fields:
@@ -29,10 +29,10 @@ class _AdminKnowledgeBaseFormPageState
     extends State<AdminKnowledgeBaseFormPage> {
   // ─── Type catalogue ──────────────────────────────────────────
   static const _types = <_KbType>[
-    _KbType('manual',      'Manual',       Icons.menu_book_rounded,        Color(0xFF3B82F6)),
-    _KbType('article',     'Article',      Icons.article_rounded,          Color(0xFF8B5CF6)),
-    _KbType('testimonial', 'Testimonial',  Icons.format_quote_rounded,     Color(0xFFEC4899)),
-    _KbType('video',       'Video',        Icons.play_circle_fill_rounded, Color(0xFFEF4444)),
+    _KbType('manual',      'Manual',       Icons.menu_book_rounded,        AdminColors.info),
+    _KbType('article',     'Article',      Icons.article_rounded,          StatusColors.assigned),
+    _KbType('testimonial', 'Testimonial',  Icons.format_quote_rounded,     StatusColors.pink),
+    _KbType('video',       'Video',        Icons.play_circle_fill_rounded, AdminColors.error),
   ];
 
   final _formKey = GlobalKey<FormState>();
@@ -673,8 +673,8 @@ class _AdminKnowledgeBaseFormPageState
       context: context,
       isScrollControlled: true,
       backgroundColor: Brand.surface(isDark),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       builder: (sheetCtx) {
         String q = '';

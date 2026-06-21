@@ -1,4 +1,4 @@
-// lib/screens/customer/knowledge_base_page.dart
+﻿// lib/screens/customer/knowledge_base_page.dart
 
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../utils/time_utils.dart';
 import '../../services/points_service.dart';
 import '../../widgets/customer/customer_nav_bar.dart';
 import '../../widgets/customer/customer_nav_controller.dart';
 import 'article_detail_page.dart';
 import '../../widgets/ds/ds_widgets.dart';
+import '../../utils/app_logger.dart';
 
 class KnowledgeBasePage extends StatefulWidget {
   final String? initialCategory;
@@ -190,7 +192,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
       if (mounted) {
         setState(() => _isLoading = false);
         _showErrorSnackBar('Failed to load articles');
-        debugPrint('Error loading articles: $e');
+        AppLogger.debug('KnowledgeBasePage', 'Error loading articles: $e');
       }
     }
   }
@@ -229,7 +231,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
       }
       setState(() => _recentlyViewed = unique);
     } catch (e) {
-      debugPrint('⚠️ Recently viewed not available: $e');
+      AppLogger.debug('KnowledgeBasePage', 'Recently viewed not available: $e');
     }
   }
 
@@ -247,7 +249,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             data.map<String>((b) => b['article_id'].toString()).toSet();
       });
     } catch (e) {
-      debugPrint('⚠️ Bookmarks not available: $e');
+      AppLogger.debug('KnowledgeBasePage', 'Bookmarks not available: $e');
     }
   }
 
@@ -270,7 +272,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
           .toList();
       setState(() => _userMachineCategories = categories);
     } catch (e) {
-      debugPrint('Error loading user machine categories: $e');
+      AppLogger.debug('KnowledgeBasePage', 'Error loading user machine categories: $e');
     }
   }
 
@@ -309,7 +311,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
           _bookmarkedIds.remove(articleId);
         }
       });
-      debugPrint('Error toggling bookmark: $e');
+      AppLogger.debug('KnowledgeBasePage', 'Error toggling bookmark: $e');
     }
   }
 
@@ -371,9 +373,9 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
       case 'manual':
         return Brand.royalBlueDark;
       case 'video':
-        return const Color(0xFFE53935);
+        return AdminColors.error;
       case 'troubleshooting':
-        return const Color(0xFFFF9800);
+        return StatusColors.materialOrange;
       case 'faq':
         return Brand.lightGreen;
       case 'guide':
@@ -411,7 +413,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             child: Text(message,
                 style: const TextStyle(fontWeight: FontWeight.w600))),
       ]),
-      backgroundColor: const Color(0xFFE53935),
+      backgroundColor: AdminColors.error,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
       margin: const EdgeInsets.all(16),
@@ -432,7 +434,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             onConflict: 'user_id,article_id',
           )
           .then((_) {})
-          .catchError((e) { debugPrint('⚠️ View tracking error: $e'); return null; });
+          .catchError((e) { AppLogger.debug('KnowledgeBasePage', 'View tracking error: $e'); return null; });
     }
 
     // ── Award article read points (max 5/day) ──
@@ -471,7 +473,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
           children: [
             Container(
               height: 200,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: RadialGradient(
                   center: Alignment(0, -1.2),
                   radius: 1.6,
@@ -483,8 +485,8 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                   stops: [0.0, 0.45, 1.0],
                 ),
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(28),
-                  bottomRight: Radius.circular(28),
+                  bottomLeft: Radius.circular(Brand.r(28)),
+                  bottomRight: Radius.circular(Brand.r(28)),
                 ),
               ),
             ),
@@ -498,9 +500,9 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                       margin: const EdgeInsets.only(top: 12),
                       decoration: BoxDecoration(
                         color: Brand.canvas(isDark),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(Brand.r(30)),
+                          topRight: Radius.circular(Brand.r(30)),
                         ),
                       ),
                       child: Column(
@@ -571,7 +573,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                     style: TextStyle(
                         fontSize: 11,
                         letterSpacing: 0.3,
-                        color: const Color(0xFF8FA3C8),
+                        color: Brand.subtleLight,
                         fontWeight: FontWeight.w500)),
                 const SizedBox(height: 2),
                 const Text('Knowledge Base',
@@ -701,7 +703,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
               isDark),
           _buildStatDivider(isDark),
           _buildStatItem(Icons.play_circle_rounded, '$videoCount', 'Videos',
-              const Color(0xFFE53935), isDark),
+              AdminColors.error, isDark),
           _buildStatDivider(isDark),
           _buildStatItem(Icons.visibility_rounded, '$totalViews', 'Views',
               isDark ? Brand.royalBlueGlow : Brand.royalBlueLight, isDark),

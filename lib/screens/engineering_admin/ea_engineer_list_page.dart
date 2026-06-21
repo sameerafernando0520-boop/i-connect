@@ -1,4 +1,4 @@
-// lib/screens/engineering_admin/ea_engineer_list_page.dart
+﻿// lib/screens/engineering_admin/ea_engineer_list_page.dart
 // Engineering Admin Portal â€” Screen 5: Engineer List
 // v20 â€” Phase 1
 
@@ -12,7 +12,7 @@ import '../../utils/time_utils.dart';
 import 'ea_engineer_detail_page.dart';
 import 'ea_create_engineer_page.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = Brand.lightGreenDark;
 
 // Sort options
 enum _SortBy { name, zone, rating, joinDate }
@@ -480,7 +480,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
                       ),
                       if (rating != null) ...[
                         const Icon(Icons.star_rounded,
-                            size: 14, color: Color(0xFFF59E0B)),
+                            size: 14, color: AdminColors.warning),
                         const SizedBox(width: 2),
                         Text(
                           rating.toStringAsFixed(1),
@@ -673,7 +673,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
           decoration: BoxDecoration(
             color: Brand.surface(isDark),
             borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(28)),
+                BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
           ),
           padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
           child: Column(
@@ -789,7 +789,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
           decoration: BoxDecoration(
             color: Brand.surface(isDark),
             borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(28)),
+                BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
           ),
           padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
           child: Column(
@@ -898,7 +898,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
       case 'late':
         return AdminColors.warning;
       case 'half_day':
-        return const Color(0xFF10B981);
+        return StatusColors.resolved;
       case 'on_leave':
         return AdminColors.info;
       case 'absent':

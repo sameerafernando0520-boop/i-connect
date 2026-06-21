@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
+import '../../utils/app_logger.dart';
 
 class RequestServicePage extends StatefulWidget {
   const RequestServicePage({super.key});
@@ -26,25 +28,25 @@ class _RequestServicePageState extends State<RequestServicePage> {
   bool _saving = false;
 
   static const _scheduleTypes = [
-    ('repair', 'Repair', Icons.handyman, Color(0xFFEF4444)),
+    ('repair', 'Repair', Icons.handyman, AdminColors.error),
     (
       'preventive',
       'Preventive Maintenance',
       Icons.build_circle_outlined,
-      Color(0xFF3B82F6)
+      AdminColors.info
     ),
-    ('inspection', 'Inspection', Icons.search, Color(0xFF14B8A6)),
+    ('inspection', 'Inspection', Icons.search, StatusColors.teal),
     (
       'installation',
       'Installation',
       Icons.precision_manufacturing,
-      Color(0xFF8B5CF6)
+      StatusColors.assigned
     ),
     (
       'warranty_visit',
       'Warranty Visit',
       Icons.verified_user,
-      Color(0xFFF59E0B)
+      AdminColors.warning
     ),
   ];
 
@@ -84,7 +86,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
         _loadingMachines = false;
       });
     } catch (e) {
-      debugPrint('Load machines error: $e');
+      AppLogger.debug('RequestServicePage', 'Load machines error: $e');
       if (mounted) setState(() => _loadingMachines = false);
     }
   }
@@ -421,7 +423,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
-          borderSide: const BorderSide(color: Color(0xFFEF4444)),
+          borderSide: const BorderSide(color: AdminColors.error),
         ),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 14, vertical: 12),

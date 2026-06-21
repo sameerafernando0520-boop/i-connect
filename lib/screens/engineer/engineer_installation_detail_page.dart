@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/engineer/engineer_installation_detail_page.dart
 // Engineer — Installation detail with full status progression
 // Flow: assigned → acknowledge → start work → complete
@@ -7,10 +7,10 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _engAccent = Color(0xFF00B4D8);
 
 const _typeLabels = {
   'new_install':   'New Install',
@@ -20,11 +20,11 @@ const _typeLabels = {
   'decommission':  'Decommission',
 };
 const _typeColors = {
-  'new_install':   Color(0xFF10B981),
-  'replacement':   Color(0xFF8B5CF6),
-  'upgrade':       Color(0xFF3B82F6),
-  'commissioning': Color(0xFFF59E0B),
-  'decommission':  Color(0xFFEF4444),
+  'new_install':   StatusColors.resolved,
+  'replacement':   StatusColors.assigned,
+  'upgrade':       AdminColors.info,
+  'commissioning': AdminColors.warning,
+  'decommission':  AdminColors.error,
 };
 const _statusLabels = {
   'pending':     'Pending',
@@ -34,11 +34,11 @@ const _statusLabels = {
   'cancelled':   'Cancelled',
 };
 const _statusColors = {
-  'pending':     Color(0xFFF59E0B),
-  'scheduled':   Color(0xFF3B82F6),
-  'in_progress': Color(0xFF8B5CF6),
-  'completed':   Color(0xFF10B981),
-  'cancelled':   Color(0xFF6B7280),
+  'pending':     AdminColors.warning,
+  'scheduled':   AdminColors.info,
+  'in_progress': StatusColors.assigned,
+  'completed':   StatusColors.resolved,
+  'cancelled':   StatusColors.gray,
 };
 
 class EngineerInstallationDetailPage extends StatefulWidget {
@@ -153,7 +153,7 @@ class _EngineerInstallationDetailPageState
             child: const Text('Cancel'),
           ),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: _engAccent),
+            style: ElevatedButton.styleFrom(backgroundColor: Brand.lightGreen),
             onPressed: () => Navigator.pop(ctx, true),
             child: const Text('Start',
                 style: TextStyle(color: Colors.white)),
@@ -236,7 +236,7 @@ class _EngineerInstallationDetailPageState
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF10B981)),
+                  backgroundColor: StatusColors.resolved),
               onPressed: () => Navigator.pop(ctx, true),
               child: const Text('Submit Completion',
                   style: TextStyle(color: Colors.white)),
@@ -299,7 +299,7 @@ class _EngineerInstallationDetailPageState
         const SizedBox(width: 8),
         Expanded(child: Text(msg)),
       ]),
-      backgroundColor: error ? Colors.red : const Color(0xFF10B981),
+      backgroundColor: error ? Colors.red : StatusColors.resolved,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
     ));
@@ -340,7 +340,7 @@ class _EngineerInstallationDetailPageState
         ],
       ),
       body: _loading
-          ? Center(child: CircularProgressIndicator(color: _engAccent))
+          ? Center(child: CircularProgressIndicator(color: Brand.lightGreen))
           : _error != null
               ? _buildError()
               : _buildContent(),
@@ -354,11 +354,11 @@ class _EngineerInstallationDetailPageState
             Container(
               width: 72, height: 72,
               decoration: BoxDecoration(
-                color: const Color(0xFFEF4444).withAlpha(_isDark ? 25 : 15),
+                color: AdminColors.error.withAlpha(_isDark ? 25 : 15),
                 shape: BoxShape.circle,
               ),
               child: const Icon(Icons.error_outline,
-                  color: Color(0xFFEF4444), size: 36),
+                  color: AdminColors.error, size: 36),
             ),
             const SizedBox(height: 16),
             Text('Something went wrong',
@@ -376,7 +376,7 @@ class _EngineerInstallationDetailPageState
               icon: const Icon(Icons.refresh, size: 18),
               label: const Text('Try Again'),
               style: FilledButton.styleFrom(
-                backgroundColor: _engAccent,
+                backgroundColor: Brand.lightGreen,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(Brand.r(12))),
@@ -394,15 +394,15 @@ class _EngineerInstallationDetailPageState
     final type     = inst['installation_type'] as String? ?? 'new_install';
     final myStatus = myAssign?['status'] as String? ?? 'assigned';
 
-    final statusColor = _statusColors[status] ?? const Color(0xFF6B7280);
-    final typeColor   = _typeColors[type] ?? const Color(0xFF6B7280);
+    final statusColor = _statusColors[status] ?? StatusColors.gray;
+    final typeColor   = _typeColors[type] ?? StatusColors.gray;
 
     final engineers = ((inst['installation_engineers'] as List?) ?? [])
         .where((e) => (e['status'] as String?) != 'removed')
         .toList();
 
     return RefreshIndicator(
-      color: _engAccent,
+      color: Brand.lightGreen,
       onRefresh: _load,
       child: ListView(
         padding: const EdgeInsets.all(16),
@@ -459,14 +459,14 @@ class _EngineerInstallationDetailPageState
                   const SizedBox(height: 6),
                   Row(children: [
                     const Icon(Icons.badge_outlined,
-                        size: 14, color: _engAccent),
+                        size: 14, color: Brand.lightGreen),
                     const SizedBox(width: 6),
                     Text(
                       'My Role: ${(myAssign['role'] as String?)?.toUpperCase() ?? 'TECHNICIAN'}',
                       style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
-                          color: _engAccent),
+                          color: Brand.lightGreen),
                     ),
                   ]),
                 ],
@@ -492,17 +492,17 @@ class _EngineerInstallationDetailPageState
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF22C55E).withAlpha(_isDark ? 25 : 15),
+                            color: Brand.lightGreen.withAlpha(_isDark ? 25 : 15),
                             borderRadius: BorderRadius.circular(Brand.r(8)),
                           ),
                           child: const Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(Icons.phone, size: 14, color: Color(0xFF22C55E)),
+                              Icon(Icons.phone, size: 14, color: Brand.lightGreen),
                               SizedBox(width: 4),
                               Text('Call', style: TextStyle(
                                 fontSize: 12, fontWeight: FontWeight.w600,
-                                color: Color(0xFF22C55E),
+                                color: Brand.lightGreen,
                               )),
                             ],
                           ),
@@ -676,14 +676,14 @@ class _EngineerInstallationDetailPageState
                         height: 32,
                         decoration: BoxDecoration(
                           color: done
-                              ? _engAccent
+                              ? Brand.lightGreen
                               : _isDark
                                   ? Brand.darkCardElevated
-                                  : const Color(0xFFF1F5F9),
+                                  : Brand.slateLight,
                           shape: BoxShape.circle,
                           border: active
                               ? Border.all(
-                                  color: _engAccent, width: 2)
+                                  color: Brand.lightGreen, width: 2)
                               : null,
                         ),
                         child: Icon(
@@ -700,7 +700,7 @@ class _EngineerInstallationDetailPageState
                           fontWeight: active
                               ? FontWeight.w700
                               : FontWeight.w400,
-                          color: done ? _engAccent : _textSub,
+                          color: done ? Brand.lightGreen : _textSub,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -713,7 +713,7 @@ class _EngineerInstallationDetailPageState
                       height: 2,
                       margin: const EdgeInsets.only(bottom: 18),
                       color: i < currentIdx
-                          ? _engAccent
+                          ? Brand.lightGreen
                           : _isDark
                               ? Brand.darkBorderLight
                               : Brand.borderLight,
@@ -741,7 +741,7 @@ class _EngineerInstallationDetailPageState
       btn = _actionBtn(
         label: 'Acknowledge Assignment',
         icon: Icons.thumb_up_outlined,
-        color: const Color(0xFF3B82F6),
+        color: AdminColors.info,
         onTap: _acknowledge,
       );
     } else if (myStatus == 'acknowledged' &&
@@ -750,7 +750,7 @@ class _EngineerInstallationDetailPageState
       btn = _actionBtn(
         label: 'Start Installation Work',
         icon: Icons.play_arrow_rounded,
-        color: const Color(0xFF8B5CF6),
+        color: StatusColors.assigned,
         onTap: _startWork,
       );
     } else if (instStatus == 'in_progress') {
@@ -758,7 +758,7 @@ class _EngineerInstallationDetailPageState
       btn = _actionBtn(
         label: 'Submit Completion Report',
         icon: Icons.check_circle_outline,
-        color: const Color(0xFF10B981),
+        color: StatusColors.resolved,
         onTap: _complete,
       );
     }
@@ -814,10 +814,10 @@ class _EngineerInstallationDetailPageState
 
     Color dot;
     switch (status) {
-      case 'acknowledged': dot = const Color(0xFF3B82F6); break;
-      case 'in_progress':  dot = _engAccent; break;
-      case 'completed':    dot = const Color(0xFF10B981); break;
-      default:             dot = const Color(0xFFF59E0B);
+      case 'acknowledged': dot = AdminColors.info; break;
+      case 'in_progress':  dot = Brand.lightGreen; break;
+      case 'completed':    dot = StatusColors.resolved; break;
+      default:             dot = AdminColors.warning;
     }
 
     return Padding(
@@ -844,14 +844,14 @@ class _EngineerInstallationDetailPageState
                     padding: const EdgeInsets.symmetric(
                         horizontal: 6, vertical: 2),
                     decoration: BoxDecoration(
-                      color: _engAccent.withAlpha(26),
+                      color: Brand.lightGreen.withAlpha(26),
                       borderRadius: BorderRadius.circular(Brand.r(6)),
                     ),
                     child: const Text('You',
                         style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w700,
-                            color: _engAccent)),
+                            color: Brand.lightGreen)),
                   ),
                 ],
               ]),
@@ -883,7 +883,7 @@ class _EngineerInstallationDetailPageState
       style: const TextStyle(
           fontSize: 13,
           fontWeight: FontWeight.w700,
-          color: _engAccent,
+          color: Brand.lightGreen,
           letterSpacing: 0.5));
 
   Widget _kv(String k, String v) => Padding(
@@ -926,13 +926,13 @@ class _EngineerInstallationDetailPageState
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
-                          color: onTap != null ? _engAccent : _textPrimary,
+                          color: onTap != null ? Brand.lightGreen : _textPrimary,
                           decoration: onTap != null ? TextDecoration.underline : null,
-                          decorationColor: _engAccent,
+                          decorationColor: Brand.lightGreen,
                         )),
                     if (onTap != null) ...[
                       const SizedBox(width: 4),
-                      Icon(Icons.open_in_new, size: 12, color: _engAccent),
+                      Icon(Icons.open_in_new, size: 12, color: Brand.lightGreen),
                     ],
                   ],
                 ),

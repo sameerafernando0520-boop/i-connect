@@ -23,6 +23,12 @@ class AdminColors {
   static const Color info = Color(0xFF3B82F6);
   static const Color internal = Color(0xFFF97316);
 
+  // ── Role-specific accents ──────────────────────────────────
+  static const Color eaAccent = Color(0xFF0EA5E9);     // sky-blue — engineering admin
+  static const Color eaAccentDark = Color(0xFF0077A8); // darker sky-blue
+  static const Color maAccent = Color(0xFFD946EF);     // fuchsia — marketing admin
+  static const Color engAccentDark = Color(0xFF0096B7); // dark cyan — engineer role dark
+
   // ── Light-only constants ───────────────────────────────────
   static const Color background = Color(0xFFF8FAFC);
   static const Color surfaceLight = Color(0xFFFFFFFF);

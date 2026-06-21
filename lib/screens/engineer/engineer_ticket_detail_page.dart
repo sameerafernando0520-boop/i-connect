@@ -1,4 +1,4 @@
-// lib/screens/engineer/engineer_ticket_detail_page.dart
+﻿// lib/screens/engineer/engineer_ticket_detail_page.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -14,15 +14,17 @@ import 'package:supabase_flutter/supabase_flutter.dart'
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../utils/time_utils.dart';
 import '../../utils/string_utils.dart';
 import '../../widgets/common/chat_attach_bar.dart';
 import '../../widgets/common/chat_message_attachments.dart';
+import '../../utils/app_logger.dart';
 
 // ── Engineer accent (per handoff §26) ──
-const Color _engAccent = Color(0xFF00B4D8);
-const Color _engAccentDark = Color(0xFF0096B7);
+
+// AdminColors.engAccentDark: use AdminColors.engAccentDark
 
 class EngineerTicketDetailPage extends StatefulWidget {
   final String ticketId;
@@ -143,7 +145,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
       // Fire-and-forget: mark messages as read
       _markMessagesAsRead();
     } catch (e) {
-      debugPrint('❌ Engineer ticket detail load error: $e');
+      AppLogger.debug('EngineerTicketDetailPage', 'Engineer ticket detail load error: $e');
       if (!mounted) return;
       setState(() => _isLoading = false);
     }
@@ -232,7 +234,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
         _markMessagesAsRead();
       }
     } catch (e) {
-      debugPrint('⚠️ Failed to fetch realtime message: $e');
+      AppLogger.debug('EngineerTicketDetailPage', 'Failed to fetch realtime message: $e');
     }
   }
 
@@ -348,7 +350,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
         }
       });
     } catch (e) {
-      debugPrint('❌ Load more messages error: $e');
+      AppLogger.debug('EngineerTicketDetailPage', 'Load more messages error: $e');
       if (!mounted) return;
       setState(() => _isLoadingMore = false);
     }
@@ -564,11 +566,11 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
       case 'open':
         return Brand.darkIconActive;
       case 'assigned':
-        return const Color(0xFF7986CB);
+        return StatusColors.assigned;
       case 'in_progress':
-        return const Color(0xFFFFB74D);
+        return StatusColors.warningLight;
       case 'waiting_customer':
-        return const Color(0xFFCE93D8);
+        return StatusColors.lavender;
       case 'resolved':
         return Brand.lightGreenBright;
       case 'closed':
@@ -597,7 +599,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
             ),
           ],
         ),
-        backgroundColor: isError ? Colors.red.shade400 : _engAccent,
+        backgroundColor: isError ? Colors.red.shade400 : Brand.lightGreen,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
         margin: const EdgeInsets.all(16),
@@ -1321,7 +1323,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
 
     if (isMe) {
       senderName = 'You';
-      senderLabelColor = _engAccent;
+      senderLabelColor = Brand.lightGreen;
       senderIcon = Icons.engineering_rounded;
     } else if (isAdmin) {
       senderName = sender?['full_name'] ?? 'Admin';
@@ -1491,7 +1493,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                     gradient: (isMe && !isInternal)
                         ? LinearGradient(
                             colors: isDark
-                                ? [_engAccent, _engAccentDark]
+                                ? [Brand.lightGreen, AdminColors.engAccentDark]
                                 : [
                                     Brand.royalBlue,
                                     Brand.royalBlueLight,
@@ -1584,7 +1586,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                           attachments: atts,
                           metadata: meta,
                           isMe: isMe && !isInternal,
-                          accent: _engAccent,
+                          accent: Brand.lightGreen,
                         );
                         return w == null
                             ? const SizedBox.shrink()
@@ -1637,7 +1639,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                             return const Icon(
                               Icons.done_all_rounded,
                               size: 13,
-                              color: Color(0xFF58A6FF), // blue = read
+                              color: AdminColors.info, // blue = read
                             );
                           }
                           if (delivered) {
@@ -1760,7 +1762,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
               const SizedBox(width: 2),
               ChatAttachMenuButton(
                 ticketId: widget.ticketId,
-                accent: _engAccent,
+                accent: Brand.lightGreen,
                 onSend: ({
                   required String messageType,
                   required List<String> attachments,
@@ -1799,7 +1801,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                       fontSize: 14,
                     ),
                     cursorColor:
-                        _internalMode ? Colors.orange[700] : _engAccent,
+                        _internalMode ? Colors.orange[700] : Brand.lightGreen,
                     decoration: InputDecoration(
                       hintText: _internalMode
                           ? 'Write internal note...'
@@ -1813,7 +1815,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(Brand.r(24)),
                         borderSide: BorderSide(
-                          color: isDark ? Brand.darkIconActive : _engAccent,
+                          color: isDark ? Brand.darkIconActive : Brand.lightGreen,
                           width: 1.5,
                         ),
                       ),
@@ -1828,7 +1830,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
               const SizedBox(width: 4),
               ChatVoiceRecorderButton(
                 ticketId: widget.ticketId,
-                accent: _engAccent,
+                accent: Brand.lightGreen,
                 onSend: ({
                   required String messageType,
                   required List<String> attachments,
@@ -1862,8 +1864,8 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                             )
                           : const LinearGradient(
                               colors: [
-                                _engAccent,
-                                _engAccentDark,
+                                Brand.lightGreen,
+                                AdminColors.engAccentDark,
                               ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
@@ -1871,7 +1873,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                       borderRadius: BorderRadius.circular(Brand.r(16)),
                       boxShadow: [
                         BoxShadow(
-                          color: (_internalMode ? Colors.orange : _engAccent)
+                          color: (_internalMode ? Colors.orange : Brand.lightGreen)
                               .withAlpha(102),
                           blurRadius: 10,
                           offset: const Offset(0, 4),
@@ -2018,14 +2020,14 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [
-                        _engAccent,
-                        _engAccentDark,
+                        Brand.lightGreen,
+                        AdminColors.engAccentDark,
                       ],
                     ),
                     borderRadius: BorderRadius.circular(Brand.r(10)),
                     boxShadow: [
                       BoxShadow(
-                        color: _engAccent.withAlpha(89),
+                        color: Brand.lightGreen.withAlpha(89),
                         blurRadius: 8,
                         offset: const Offset(0, 3),
                       ),
@@ -2196,7 +2198,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
               height: 16,
               child: CircularProgressIndicator(
                 strokeWidth: 2,
-                color: isDark ? _engAccent : Brand.royalBlue,
+                color: isDark ? Brand.lightGreen : Brand.royalBlue,
               ),
             ),
             const SizedBox(width: 10),

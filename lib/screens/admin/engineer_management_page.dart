@@ -1,4 +1,4 @@
-// lib/screens/admin/engineer_management_page.dart
+﻿// lib/screens/admin/engineer_management_page.dart
 // Fixed: .withOpacity() → .withAlpha() throughout,
 //   MediaQuery sheetCtx, mounted guards, AlwaysScrollableScrollPhysics,
 //   AdminColors.warning, error feedback on outer catch
@@ -11,10 +11,11 @@ import '../../config/brand_colors.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/string_utils.dart';
+import '../../utils/app_logger.dart';
 
 // ── Engineer-specific accent (file-level const, not in Brand) ─
-const Color _engAccent = Color(0xFF00B4D8);
-const Color _engAccentDark = Color(0xFF0077A8);
+
+// AdminColors.engAccentDark: use AdminColors.eaAccentDark
 
 const _allSpecializations = [
   'Digital Printers',
@@ -98,7 +99,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
         _isLoading = false;
       });
     } catch (e) {
-      debugPrint('Load engineers error: $e');
+      AppLogger.debug('EngineerManagementPage', 'Load engineers error: $e');
       if (!mounted) return;
       setState(() => _isLoading = false);
       _showSnackBar('Failed to load engineers. Please retry.', isError: true);
@@ -627,7 +628,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: LinearGradient(
-                          colors: [_engAccent, _engAccentDark],
+                          colors: [Brand.lightGreen, AdminColors.engAccentDark],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
@@ -819,14 +820,14 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                               horizontal: 8, vertical: 3),
                           decoration: BoxDecoration(
                             // ✅ .withAlpha() — was .withOpacity()
-                            color: _engAccent.withAlpha(isDark ? 26 : 20),
+                            color: Brand.lightGreen.withAlpha(isDark ? 26 : 20),
                             borderRadius: BorderRadius.circular(Brand.r(10)),
-                            border: Border.all(color: _engAccent.withAlpha(51)),
+                            border: Border.all(color: Brand.lightGreen.withAlpha(51)),
                           ),
                           child: Text(
                             s,
                             style: const TextStyle(
-                              color: _engAccent,
+                              color: Brand.lightGreen,
                               fontSize: 12,
                               fontWeight: FontWeight.w700,
                             ),
@@ -958,14 +959,14 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
-            colors: [_engAccent, _engAccentDark],
+            colors: [Brand.lightGreen, AdminColors.engAccentDark],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(Brand.r(18)),
           boxShadow: [
             BoxShadow(
-              color: _engAccent.withAlpha(115),
+              color: Brand.lightGreen.withAlpha(115),
               blurRadius: 16,
               offset: const Offset(0, 6),
             ),
@@ -1277,10 +1278,10 @@ Widget _sectionTitle(String title, IconData icon, bool isDark) {
         width: 32,
         height: 32,
         decoration: BoxDecoration(
-          color: _engAccent.withAlpha(isDark ? 31 : 26),
+          color: Brand.lightGreen.withAlpha(isDark ? 31 : 26),
           borderRadius: BorderRadius.circular(Brand.r(9)),
         ),
-        child: Icon(icon, color: _engAccent, size: 16),
+        child: Icon(icon, color: Brand.lightGreen, size: 16),
       ),
       const SizedBox(width: 10),
       Text(
@@ -1341,7 +1342,7 @@ Widget _sheetTextField(
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(Brand.r(14)),
-        borderSide: const BorderSide(color: _engAccent, width: 2),
+        borderSide: const BorderSide(color: Brand.lightGreen, width: 2),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(Brand.r(14)),
@@ -1468,7 +1469,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
         borderRadius:
-            const BorderRadius.vertical(top: Radius.circular(28)),
+            BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       child: Column(
         children: [
@@ -1489,11 +1490,11 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                   width: 44,
                   height: 44,
                   decoration: BoxDecoration(
-                    color: _engAccent.withAlpha(isDark ? 31 : 26),
+                    color: Brand.lightGreen.withAlpha(isDark ? 31 : 26),
                     borderRadius: BorderRadius.circular(Brand.r(14)),
                   ),
                   child: const Icon(Icons.person_add_rounded,
-                      color: _engAccent, size: 22),
+                      color: Brand.lightGreen, size: 22),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
@@ -1645,14 +1646,14 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                                 horizontal: 12, vertical: 7),
                             decoration: BoxDecoration(
                               color: isSel
-                                  ? _engAccent.withAlpha(isDark ? 38 : 31)
+                                  ? Brand.lightGreen.withAlpha(isDark ? 38 : 31)
                                   : (isDark
                                       ? Brand.darkCardElevated
                                       : Brand.royalBlueSurface),
                               borderRadius: BorderRadius.circular(Brand.r(20)),
                               border: Border.all(
                                 color: isSel
-                                    ? _engAccent.withAlpha(128)
+                                    ? Brand.lightGreen.withAlpha(128)
                                     : (isDark
                                         ? Brand.darkBorder
                                         : Brand.borderLight),
@@ -1664,7 +1665,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                               children: [
                                 if (isSel) ...[
                                   const Icon(Icons.check_rounded,
-                                      color: _engAccent, size: 12),
+                                      color: Brand.lightGreen, size: 12),
                                   const SizedBox(width: 4),
                                 ],
                                 Text(
@@ -1673,7 +1674,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                                     fontSize: 12,
                                     fontWeight: FontWeight.w700,
                                     color: isSel
-                                        ? _engAccent
+                                        ? Brand.lightGreen
                                         : (isDark
                                             ? Brand.darkTextSecondary
                                             : Brand.subtleLight),
@@ -1736,16 +1737,16 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                     Container(
                       padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(
-                        color: _engAccent.withAlpha(isDark ? 20 : 15),
+                        color: Brand.lightGreen.withAlpha(isDark ? 20 : 15),
                         borderRadius: BorderRadius.circular(Brand.r(14)),
                         border:
-                            Border.all(color: _engAccent.withAlpha(51)),
+                            Border.all(color: Brand.lightGreen.withAlpha(51)),
                       ),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Icon(Icons.info_outline_rounded,
-                              color: _engAccent, size: 18),
+                              color: Brand.lightGreen, size: 18),
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(
@@ -1790,7 +1791,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                             width: 20,
                             height: 20,
                             child: CircularProgressIndicator(
-                              color: isDark ? _engAccent : Brand.royalBlue,
+                              color: isDark ? Brand.lightGreen : Brand.royalBlue,
                               strokeWidth: 2.5,
                             ),
                           ),
@@ -1815,7 +1816,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [_engAccentDark, _engAccent],
+                          colors: [AdminColors.engAccentDark, Brand.lightGreen],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
@@ -1824,7 +1825,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
                             ? null
                             : [
                                 BoxShadow(
-                                  color: _engAccent.withAlpha(89),
+                                  color: Brand.lightGreen.withAlpha(89),
                                   blurRadius: 12,
                                   offset: const Offset(0, 4),
                                 ),
@@ -1949,7 +1950,7 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
         borderRadius:
-            const BorderRadius.vertical(top: Radius.circular(28)),
+            BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       child: Column(
         children: [
@@ -2041,14 +2042,14 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
                                 horizontal: 12, vertical: 7),
                             decoration: BoxDecoration(
                               color: isSel
-                                  ? _engAccent.withAlpha(38)
+                                  ? Brand.lightGreen.withAlpha(38)
                                   : (isDark
                                       ? Brand.darkCardElevated
                                       : Brand.royalBlueSurface),
                               borderRadius: BorderRadius.circular(Brand.r(20)),
                               border: Border.all(
                                 color: isSel
-                                    ? _engAccent.withAlpha(128)
+                                    ? Brand.lightGreen.withAlpha(128)
                                     : (isDark
                                         ? Brand.darkBorder
                                         : Brand.borderLight),
@@ -2059,7 +2060,7 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
                               children: [
                                 if (isSel) ...[
                                   const Icon(Icons.check_rounded,
-                                      color: _engAccent, size: 12),
+                                      color: Brand.lightGreen, size: 12),
                                   const SizedBox(width: 4),
                                 ],
                                 Text(
@@ -2068,7 +2069,7 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
                                     fontSize: 12,
                                     fontWeight: FontWeight.w700,
                                     color: isSel
-                                        ? _engAccent
+                                        ? Brand.lightGreen
                                         : (isDark
                                             ? Brand.darkTextSecondary
                                             : Brand.subtleLight),

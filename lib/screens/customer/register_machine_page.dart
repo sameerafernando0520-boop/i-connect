@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // FILE: lib/screens/customer/register_machine_page.dart
 // ============================================================
 
@@ -9,8 +9,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../l10n/s.dart';
+import '../../utils/app_logger.dart';
 
 class RegisterMachinePage extends StatefulWidget {
   final Map<String, dynamic>? preselectedMachine;
@@ -95,14 +97,14 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
       'value': 'extended',
       'label': 'Extended Warranty',
       'icon': Icons.security_rounded,
-      'color': const Color(0xFF2196F3),
+      'color': StatusColors.materialBlue,
       'desc': 'Additional coverage purchased',
     },
     {
       'value': 'none',
       'label': 'No Warranty',
       'icon': Icons.remove_circle_outline_rounded,
-      'color': const Color(0xFF9E9E9E),
+      'color': StatusColors.mutedGray,
       'desc': 'Warranty expired or not applicable',
     },
   ];
@@ -189,7 +191,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
         _loadingConnectors = false;
       });
     } catch (e) {
-      debugPrint('Failed to load connectors: $e');
+      AppLogger.debug('RegisterMachinePage', 'Failed to load connectors: $e');
       if (!mounted) return;
       setState(() => _loadingConnectors = false);
     }
@@ -215,7 +217,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
         });
       }
     } catch (e) {
-      debugPrint('Failed to load current connector: $e');
+      AppLogger.debug('RegisterMachinePage', 'Failed to load current connector: $e');
     }
   }
 
@@ -343,8 +345,8 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
     return showModalBottomSheet<ImageSource>(
       context: context,
       backgroundColor: Brand.surface(isDark),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       builder: (sheetCtx) => Padding(
         padding: const EdgeInsets.all(24),
@@ -375,7 +377,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                   child: _buildImageSourceOption(
                     icon: Icons.camera_alt_rounded,
                     label: S.of(context)!.ticketCamera,
-                    color: const Color(0xFF2196F3),
+                    color: StatusColors.materialBlue,
                     onTap: () => Navigator.pop(sheetCtx, ImageSource.camera),
                   ),
                 ),
@@ -384,7 +386,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                   child: _buildImageSourceOption(
                     icon: Icons.photo_library_rounded,
                     label: S.of(context)!.ticketGallery,
-                    color: const Color(0xFF4CAF50),
+                    color: StatusColors.materialGreen,
                     onTap: () => Navigator.pop(sheetCtx, ImageSource.gallery),
                   ),
                 ),
@@ -447,7 +449,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
             .getPublicUrl(path);
         urls.add(url);
       } catch (e) {
-        debugPrint('Failed to upload photo $i: $e');
+        AppLogger.debug('RegisterMachinePage', 'Failed to upload photo $i: $e');
       }
     }
 
@@ -472,7 +474,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
           .from('machine-photos')
           .getPublicUrl(path);
     } catch (e) {
-      debugPrint('Failed to upload purchase proof: $e');
+      AppLogger.debug('RegisterMachinePage', 'Failed to upload purchase proof: $e');
       return null;
     }
   }
@@ -496,7 +498,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
             colorScheme: isDark
                 ? ColorScheme.dark(
                     primary: Brand.darkIconActive,
-                    onPrimary: const Color(0xFF1A1F36),
+                    onPrimary: Brand.darkNavy,
                     surface: Brand.darkCard,
                     onSurface: Brand.darkTextPrimary,
                   )
@@ -601,7 +603,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
         machineId = data['machine_id'];
         machineName = data['machine_name'];
       } catch (rpcError) {
-        debugPrint('RPC failed, using fallback: $rpcError');
+        AppLogger.debug('RegisterMachinePage', 'RPC failed, using fallback: $rpcError');
 
         final insertResult = await SupabaseConfig.client
             .from('customer_machines')
@@ -650,7 +652,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
             'updated_at': DateTime.now().toUtc().toIso8601String(),
           }).eq('id', userId);
         } catch (e) {
-          debugPrint('Failed to save connector_id: $e');
+          AppLogger.debug('RegisterMachinePage', 'Failed to save connector_id: $e');
         }
       }
 
@@ -724,15 +726,15 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
   Color _getCategoryColor(String? category) {
     switch (category) {
       case 'Digital Printers':
-        return const Color(0xFF2196F3);
+        return StatusColors.materialBlue;
       case 'CNC Routers':
-        return const Color(0xFFFF9800);
+        return StatusColors.materialOrange;
       case 'Laser Cutters':
-        return const Color(0xFFE91E63);
+        return StatusColors.pink;
       case 'Finishing Equipment':
-        return const Color(0xFF4CAF50);
+        return StatusColors.materialGreen;
       default:
-        return const Color(0xFF9E9E9E);
+        return StatusColors.mutedGray;
     }
   }
 
@@ -1019,7 +1021,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                             color:
-                                isDark ? const Color(0xFF1A1F36) : Colors.white,
+                                isDark ? Brand.darkNavy : Colors.white,
                           ),
                         ),
                       ),
@@ -1088,7 +1090,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
               decoration: BoxDecoration(
                 color: Colors.white.withAlpha(18),
                 borderRadius: BorderRadius.circular(Brand.r(10)),
-                border: Border.all(color: const Color(0xFF2A3F6E)),
+                border: Border.all(color: Brand.navyMid),
               ),
               child: const Row(
                 mainAxisSize: MainAxisSize.min,
@@ -1177,7 +1179,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                               ? accent
                               : (isDark
                                   ? Brand.darkCardElevated
-                                  : const Color(0xFFF1F5F9)),
+                                  : Brand.slateLight),
                           shape: BoxShape.circle,
                           border: !isActive
                               ? Border.all(
@@ -1200,7 +1202,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                               ? Icon(Icons.check_rounded,
                                   size: 14,
                                   color: isDark
-                                      ? const Color(0xFF1A1F36)
+                                      ? Brand.darkNavy
                                       : Colors.white)
                               : Text(
                                   '${index + 1}',
@@ -1209,7 +1211,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                                     fontWeight: FontWeight.bold,
                                     color: isActive
                                         ? (isDark
-                                            ? const Color(0xFF1A1F36)
+                                            ? Brand.darkNavy
                                             : Colors.white)
                                         : (isDark
                                             ? Brand.darkTextSecondary
@@ -1401,7 +1403,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                               isSelected ? FontWeight.bold : FontWeight.w500,
                           color: isSelected
                               ? (isDark
-                                  ? const Color(0xFF1A1F36)
+                                  ? Brand.darkNavy
                                   : Colors.white)
                               : (isDark
                                   ? Brand.darkTextSecondary
@@ -1417,7 +1419,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                               ? Colors.white.withAlpha(((0.2) * 255).toInt())
                               : (isDark
                                   ? Brand.darkCardElevated
-                                  : const Color(0xFFF1F5F9)),
+                                  : Brand.slateLight),
                           borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child: Text(
@@ -1427,7 +1429,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                             fontWeight: FontWeight.bold,
                             color: isSelected
                                 ? (isDark
-                                    ? const Color(0xFF1A1F36)
+                                    ? Brand.darkNavy
                                     : Colors.white)
                                 : (isDark
                                     ? Brand.darkTextSecondary
@@ -1561,7 +1563,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                     ? categoryColor.withAlpha(((0.1) * 255).toInt())
                     : (isDark
                         ? Brand.darkCardElevated
-                        : const Color(0xFFF1F5F9)),
+                        : Brand.slateLight),
                 borderRadius: BorderRadius.circular(Brand.r(14)),
               ),
               child: imageUrl != null
@@ -1675,7 +1677,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
               child: isSelected
                   ? Icon(Icons.check_rounded,
                       size: 16,
-                      color: isDark ? const Color(0xFF1A1F36) : Colors.white)
+                      color: isDark ? Brand.darkNavy : Colors.white)
                   : null,
             ),
           ],
@@ -1868,7 +1870,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
             width: 52,
             height: 52,
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9),
+              color: isDark ? Brand.darkCardElevated : Brand.slateLight,
               borderRadius: BorderRadius.circular(Brand.r(12)),
             ),
             child: imageUrl != null
@@ -1922,7 +1924,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
                 color:
-                    isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9),
+                    isDark ? Brand.darkCardElevated : Brand.slateLight,
                 borderRadius: BorderRadius.circular(Brand.r(8)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
               ),
@@ -2270,7 +2272,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
             decoration: BoxDecoration(
               color: Brand.surface(isDark),
               borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(28)),
+                  BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
             ),
             child: Column(
               children: [
@@ -2553,7 +2555,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
               height: 80,
               decoration: BoxDecoration(
                 color:
-                    isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9),
+                    isDark ? Brand.darkCardElevated : Brand.slateLight,
                 borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: isDark ? Border.all(color: Brand.darkBorder) : null,
               ),
@@ -2644,7 +2646,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9),
+          color: isDark ? Brand.darkCardElevated : Brand.slateLight,
           borderRadius: BorderRadius.circular(Brand.r(14)),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
@@ -2952,7 +2954,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFFE53935),
+                color: AdminColors.error,
               )),
         if (isOptional)
           Text(
@@ -3076,7 +3078,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                     ? accent.withAlpha(((isDark ? 0.15 : 0.1) * 255).toInt())
                     : (isDark
                         ? Brand.darkCardElevated
-                        : const Color(0xFFF1F5F9)),
+                        : Brand.slateLight),
                 borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: Icon(icon,
@@ -3278,7 +3280,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                             height: 22,
                             child: CircularProgressIndicator(
                               color: isDark
-                                  ? const Color(0xFF1A1F36)
+                                  ? Brand.darkNavy
                                   : Colors.white,
                               strokeWidth: 2.5,
                             ),
@@ -3292,7 +3294,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                                 Icons.check_circle_rounded,
                                 color: canProceed
                                     ? (isDark
-                                        ? const Color(0xFF1A1F36)
+                                        ? Brand.darkNavy
                                         : Colors.white)
                                     : (isDark
                                         ? Brand.darkTextSecondary
@@ -3307,7 +3309,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                                 style: TextStyle(
                                   color: canProceed
                                       ? (isDark
-                                          ? const Color(0xFF1A1F36)
+                                          ? Brand.darkNavy
                                           : Colors.white)
                                       : (isDark
                                           ? Brand.darkTextSecondary
@@ -3324,7 +3326,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                                 Icons.arrow_forward_rounded,
                                 color: canProceed
                                     ? (isDark
-                                        ? const Color(0xFF1A1F36)
+                                        ? Brand.darkNavy
                                         : Colors.white)
                                     : (isDark
                                         ? Brand.darkTextSecondary

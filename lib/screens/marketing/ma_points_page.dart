@@ -1,4 +1,4 @@
-// lib/screens/marketing/ma_points_page.dart
+﻿// lib/screens/marketing/ma_points_page.dart
 // P9 — Points Activity: read-only feed of all point_activities with user info
 
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _ptColor = Color(0xFFF97316);
+const Color _ptColor = AdminColors.internal;
 
 class MaPointsPage extends StatefulWidget {
   const MaPointsPage({super.key});

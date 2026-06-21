@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:intl/intl.dart';
 
@@ -8,7 +8,7 @@ import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import 'ea_leave_detail_page.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = Brand.lightGreenDark;
 
 class EaLeaveManagementPage extends StatefulWidget {
   final String? engineerId;
@@ -137,7 +137,7 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
           TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
           ElevatedButton(
             onPressed: () => Navigator.pop(context, true),
-            style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF10B981)),
+            style: ElevatedButton.styleFrom(backgroundColor: StatusColors.resolved),
             child: const Text('Approve', style: TextStyle(color: Colors.white)),
           ),
         ],
@@ -156,7 +156,7 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
       if (!mounted) return;
       _load();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Leave approved'), backgroundColor: Color(0xFF10B981)),
+        const SnackBar(content: Text('Leave approved'), backgroundColor: StatusColors.resolved),
       );
     } catch (e) {
       if (!mounted) return;
@@ -229,8 +229,8 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
     showModalBottomSheet(
       context: context,
       backgroundColor: isDark ? Brand.darkCard : Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       builder: (_) {
         const opts = [
@@ -432,23 +432,23 @@ String _statusLabel(String s) {
 
 Color _statusColor(String? s) {
   switch (s) {
-    case 'pending': return const Color(0xFFF59E0B);
-    case 'approved': return const Color(0xFF10B981);
-    case 'rejected': return const Color(0xFFEF4444);
-    case 'cancelled': return const Color(0xFF94A3B8);
-    default: return const Color(0xFF94A3B8);
+    case 'pending': return AdminColors.warning;
+    case 'approved': return StatusColors.resolved;
+    case 'rejected': return AdminColors.error;
+    case 'cancelled': return Brand.subtleLight;
+    default: return Brand.subtleLight;
   }
 }
 
 Color _leaveTypeColor(String? t) {
   switch (t) {
-    case 'sick': return const Color(0xFFEF4444);
-    case 'casual': return const Color(0xFF3B82F6);
-    case 'annual': return const Color(0xFF10B981);
-    case 'emergency': return const Color(0xFFEF4444);
-    case 'maternity': return const Color(0xFFEC4899);
-    case 'paternity': return const Color(0xFF8B5CF6);
-    default: return const Color(0xFF94A3B8);
+    case 'sick': return AdminColors.error;
+    case 'casual': return AdminColors.info;
+    case 'annual': return StatusColors.resolved;
+    case 'emergency': return AdminColors.error;
+    case 'maternity': return StatusColors.pink;
+    case 'paternity': return StatusColors.assigned;
+    default: return Brand.subtleLight;
   }
 }
 
@@ -481,11 +481,11 @@ class _SummaryRow extends StatelessWidget {
         children: [
           _SummaryChip(label: 'Total', count: all.length, color: _eaAccent),
           const SizedBox(width: 8),
-          _SummaryChip(label: 'Pending', count: _count('pending'), color: const Color(0xFFF59E0B)),
+          _SummaryChip(label: 'Pending', count: _count('pending'), color: AdminColors.warning),
           const SizedBox(width: 8),
-          _SummaryChip(label: 'Approved', count: _count('approved'), color: const Color(0xFF10B981)),
+          _SummaryChip(label: 'Approved', count: _count('approved'), color: StatusColors.resolved),
           const SizedBox(width: 8),
-          _SummaryChip(label: 'Rejected', count: _count('rejected'), color: const Color(0xFFEF4444)),
+          _SummaryChip(label: 'Rejected', count: _count('rejected'), color: AdminColors.error),
         ],
       ),
     );
@@ -697,7 +697,7 @@ class _LeaveCard extends StatelessWidget {
                           label: const Text('Reject'),
                           style: OutlinedButton.styleFrom(
                             foregroundColor: AdminColors.error,
-                            side: const BorderSide(color: Color(0xFFEF4444)),
+                            side: const BorderSide(color: AdminColors.error),
                             padding: const EdgeInsets.symmetric(vertical: 8),
                             textStyle: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
                           ),
@@ -711,7 +711,7 @@ class _LeaveCard extends StatelessWidget {
                           icon: const Icon(Icons.check_rounded, size: 16),
                           label: const Text('Approve'),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF10B981),
+                            backgroundColor: StatusColors.resolved,
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(vertical: 8),
                             elevation: 0,

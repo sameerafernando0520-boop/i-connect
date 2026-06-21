@@ -1,13 +1,14 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
+import '../../utils/app_logger.dart';
 
 // Quotation accent — matches the purple used across quotation screens
-const _kQuotationPurple = Color(0xFF8B5CF6);
+const _kQuotationPurple = StatusColors.assigned;
 
 class CreateQuotationPage extends StatefulWidget {
   final String? customerId;
@@ -308,7 +309,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
               decoration: BoxDecoration(
                 color: AdminColors.card(sheetCtx),
                 borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(28)),
+                    BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
               ),
               child: Column(
                 children: [
@@ -760,7 +761,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                 decoration: BoxDecoration(
                   color: AdminColors.card(sheetCtx),
                   borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(28)),
+                      BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -992,7 +993,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
               decoration: BoxDecoration(
                 color: AdminColors.card(sheetCtx),
                 borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(28)),
+                    BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
               ),
               child: Column(
                 children: [
@@ -1630,7 +1631,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                   gradient: _saving
                       ? null
                       : const LinearGradient(
-                          colors: [Color(0xFF6D28D9), _kQuotationPurple],
+                          colors: [StatusColors.deepPurple, _kQuotationPurple],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
@@ -1774,7 +1775,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
             'p_admin_id': _currentUserId,
           });
         } catch (rpcErr) {
-          debugPrint('send_quotation RPC failed, using fallback: $rpcErr');
+          AppLogger.debug('CreateQuotationPage', 'send_quotation RPC failed, using fallback: $rpcErr');
           // Fallback if RPC not available
           await _supabase.from('quotations').update({
             'status': 'sent',
@@ -1787,7 +1788,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
       _snack(send ? 'Quotation sent!' : 'Draft saved!');
       if (mounted) Navigator.pop(context, true);
     } catch (e) {
-      debugPrint('createQuotation save failed: $e');
+      AppLogger.debug('CreateQuotationPage', 'createQuotation save failed: $e');
       if (!mounted) return;
       setState(() => _saving = false);
       _snack(

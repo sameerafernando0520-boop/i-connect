@@ -1,4 +1,4 @@
-// lib/screens/engineer/engineer_profile_page.dart
+﻿// lib/screens/engineer/engineer_profile_page.dart
 
 import 'package:i_connect/l10n/s.dart';
 import 'dart:io';
@@ -10,6 +10,7 @@ import 'package:supabase_flutter/supabase_flutter.dart' show FileOptions;
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../services/notification_service.dart';
 import '../../utils/string_utils.dart';
 import '../../utils/upload_validator.dart';
@@ -20,10 +21,10 @@ import '../../widgets/common/language_selector_sheet.dart';
 import '../../providers/locale_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../widgets/common/theme_style_sheet.dart';
+import '../../utils/app_logger.dart';
 
 // ── Engineer accent (per handoff §26 — NOT in Brand class) ──
-const Color _engAccent = Color(0xFF00B4D8);
-const Color _engAccentDark = Color(0xFF0096B7);
+// AdminColors.engAccentDark: use AdminColors.engAccentDark
 
 // All specializations an engineer can have
 const _allSpecializations = [
@@ -150,7 +151,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         _isLoading = false;
       });
     } catch (e) {
-      debugPrint('❌ Engineer profile load error: $e');
+      AppLogger.debug('EngineerProfilePage', 'Engineer profile load error: $e');
       if (!mounted) return;
       setState(() => _isLoading = false);
     }
@@ -223,7 +224,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
     if (idx == -1) {
       // URL doesn't contain the profile-photos bucket marker
       // This might be a CDN URL or the format has changed
-      debugPrint('⚠️ Storage path extraction: URL format unexpected: $url');
+      AppLogger.debug('EngineerProfilePage', 'Storage path extraction: URL format unexpected: $url');
       return null;
     }
     return url.substring(idx + marker.length);
@@ -235,7 +236,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
     try {
       await SupabaseConfig.client.storage.from('profile-photos').remove([path]);
     } catch (e) {
-      debugPrint('⚠️ Storage cleanup failed: $e');
+      AppLogger.debug('EngineerProfilePage', 'Storage cleanup failed: $e');
     }
   }
 
@@ -254,7 +255,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -280,7 +281,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
             _buildPhotoOption(
               Icons.camera_alt_rounded,
               'Take Photo',
-              _engAccent,
+              Brand.lightGreen,
               isDark,
               () {
                 Navigator.pop(sheetCtx);
@@ -478,7 +479,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         padding: const EdgeInsets.all(28),
         decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -563,7 +564,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [Color(0xFFE53935), Color(0xFFEF5350)],
+                          colors: [AdminColors.error, AdminColors.error],
                         ),
                         borderRadius: BorderRadius.circular(Brand.r(14)),
                         boxShadow: [
@@ -644,7 +645,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
       case 'available':
         return Brand.lightGreenBright;
       case 'busy':
-        return const Color(0xFFFFB74D);
+        return StatusColors.warningLight;
       default:
         return Brand.darkTextSecondary;
     }
@@ -671,7 +672,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
             ),
           ],
         ),
-        backgroundColor: isError ? Colors.red.shade400 : _engAccent,
+        backgroundColor: isError ? Colors.red.shade400 : Brand.lightGreen,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
@@ -729,7 +730,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         DateTime.tryParse(_profile['created_at'] as String? ?? '');
 
     return RefreshIndicator(
-      color: isDark ? Brand.darkIconActive : _engAccent,
+      color: isDark ? Brand.darkIconActive : Brand.lightGreen,
       backgroundColor: isDark ? Brand.darkCard : Colors.white,
       onRefresh: _loadProfile,
       child: SingleChildScrollView(
@@ -776,7 +777,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
               gradient: LinearGradient(
                 colors: isDark
                     ? [Brand.darkIconActive, Brand.royalBlueGlow]
-                    : [_engAccent, _engAccentDark],
+                    : [Brand.lightGreen, AdminColors.engAccentDark],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -803,11 +804,11 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 decoration: BoxDecoration(
-                  color: (isDark ? Brand.darkIconActive : _engAccent)
+                  color: (isDark ? Brand.darkIconActive : Brand.lightGreen)
                       .withAlpha(((isDark ? 0.12 : 0.06) * 255).toInt()),
                   borderRadius: BorderRadius.circular(Brand.r(12)),
                   border: Border.all(
-                    color: (isDark ? Brand.darkIconActive : _engAccent)
+                    color: (isDark ? Brand.darkIconActive : Brand.lightGreen)
                         .withAlpha(((0.25) * 255).toInt()),
                   ),
                 ),
@@ -817,7 +818,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                     Icon(
                       Icons.edit_rounded,
                       size: 15,
-                      color: isDark ? Brand.darkIconActive : _engAccent,
+                      color: isDark ? Brand.darkIconActive : Brand.lightGreen,
                     ),
                     const SizedBox(width: 5),
                     Text(
@@ -825,7 +826,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w700,
-                        color: isDark ? Brand.darkIconActive : _engAccent,
+                        color: isDark ? Brand.darkIconActive : Brand.lightGreen,
                       ),
                     ),
                   ],
@@ -864,14 +865,14 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         borderRadius: BorderRadius.circular(Brand.r(26)),
         gradient: LinearGradient(
           colors: isDark
-              ? [const Color(0xFF052E16), const Color(0xFF14532D)]
-              : [const Color(0xFF14532D), const Color(0xFF16A34A)],
+              ? [Brand.lightGreenDark, Brand.lightGreenDark]
+              : [Brand.lightGreenDark, Brand.lightGreenDark],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         boxShadow: isDark ? null : [
           BoxShadow(
-            color: const Color(0xFF16A34A).withAlpha(89),
+            color: Brand.lightGreenDark.withAlpha(89),
             blurRadius: 30,
             offset: const Offset(0, 12),
           ),
@@ -918,13 +919,13 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: const LinearGradient(
-                            colors: [_engAccent, _engAccentDark],
+                            colors: [Brand.lightGreen, AdminColors.engAccentDark],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: _engAccent.withAlpha(((0.4) * 255).toInt()),
+                              color: Brand.lightGreen.withAlpha(((0.4) * 255).toInt()),
                               blurRadius: 16,
                               offset: const Offset(0, 6),
                             ),
@@ -1141,10 +1142,10 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                         vertical: 7,
                       ),
                       decoration: BoxDecoration(
-                        color: _engAccent.withAlpha(((isDark ? 0.12 : 0.1) * 255).toInt()),
+                        color: Brand.lightGreen.withAlpha(((isDark ? 0.12 : 0.1) * 255).toInt()),
                         borderRadius: BorderRadius.circular(Brand.r(20)),
                         border: Border.all(
-                          color: _engAccent.withAlpha(((0.3) * 255).toInt()),
+                          color: Brand.lightGreen.withAlpha(((0.3) * 255).toInt()),
                         ),
                       ),
                       child: Row(
@@ -1152,14 +1153,14 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                         children: [
                           const Icon(
                             Icons.check_circle_rounded,
-                            color: _engAccent,
+                            color: Brand.lightGreen,
                             size: 13,
                           ),
                           const SizedBox(width: 5),
                           Text(
                             s,
                             style: const TextStyle(
-                              color: _engAccent,
+                              color: Brand.lightGreen,
                               fontSize: 12,
                               fontWeight: FontWeight.w700,
                             ),
@@ -1217,7 +1218,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                   'Open',
                   '$open',
                   Icons.pending_actions_rounded,
-                  const Color(0xFFFFB74D),
+                  StatusColors.warningLight,
                   isDark,
                 ),
               ),
@@ -1439,13 +1440,13 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: (isDark ? Brand.darkIconActive : _engAccent)
+              color: (isDark ? Brand.darkIconActive : Brand.lightGreen)
                   .withAlpha(((isDark ? 0.1 : 0.08) * 255).toInt()),
               borderRadius: BorderRadius.circular(Brand.r(12)),
             ),
             child: Icon(
               icon,
-              color: isDark ? Brand.darkIconActive : _engAccent,
+              color: isDark ? Brand.darkIconActive : Brand.lightGreen,
               size: 18,
             ),
           ),
@@ -1525,12 +1526,12 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                       height: 40,
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: _engAccent.withAlpha(26),
+                        color: Brand.lightGreen.withAlpha(26),
                         borderRadius: BorderRadius.circular(Brand.r(10)),
                       ),
                       child: Icon(
                         Icons.translate_rounded,
-                        color: _engAccent,
+                        color: Brand.lightGreen,
                         size: 20,
                       ),
                     ),
@@ -1547,7 +1548,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                               fontWeight: FontWeight.w600,
                               color: isDark
                                   ? Brand.darkTextPrimary
-                                  : const Color(0xFF1E293B),
+                                  : Brand.darkSurface,
                             ),
                           ),
                           const SizedBox(height: 2),
@@ -1584,14 +1585,14 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                   height: 40,
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: _engAccent.withAlpha(26),
+                    color: Brand.lightGreen.withAlpha(26),
                     borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: Icon(
                     tp.isDarkMode
                         ? Icons.dark_mode_rounded
                         : Icons.light_mode_rounded,
-                    color: _engAccent,
+                    color: Brand.lightGreen,
                     size: 20,
                   ),
                 ),
@@ -1604,14 +1605,14 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                       fontWeight: FontWeight.w600,
                       color: isDark
                           ? Brand.darkTextPrimary
-                          : const Color(0xFF1E293B),
+                          : Brand.darkSurface,
                     ),
                   ),
                 ),
                 Switch.adaptive(
                   value: tp.isDarkMode,
                   onChanged: (_) => tp.toggleTheme(),
-                  activeThumbColor: _engAccent,
+                  activeThumbColor: Brand.lightGreen,
                 ),
               ]),
               Material(
@@ -1627,12 +1628,12 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                         height: 40,
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: _engAccent.withAlpha(26),
+                          color: Brand.lightGreen.withAlpha(26),
                           borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child: Icon(
                           Icons.style_rounded,
-                          color: _engAccent,
+                          color: Brand.lightGreen,
                           size: 20,
                         ),
                       ),
@@ -1645,7 +1646,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                             fontWeight: FontWeight.w600,
                             color: isDark
                                 ? Brand.darkTextPrimary
-                                : const Color(0xFF1E293B),
+                                : Brand.darkSurface,
                           ),
                         ),
                       ),
@@ -1777,14 +1778,14 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                       ),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [_engAccent, _engAccentDark],
+                          colors: [Brand.lightGreen, AdminColors.engAccentDark],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
                         borderRadius: BorderRadius.circular(Brand.r(14)),
                         boxShadow: [
                           BoxShadow(
-                            color: _engAccent.withAlpha(((0.35) * 255).toInt()),
+                            color: Brand.lightGreen.withAlpha(((0.35) * 255).toInt()),
                             blurRadius: 10,
                             offset: const Offset(0, 4),
                           ),
@@ -1898,7 +1899,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(Brand.r(14)),
-                  borderSide: const BorderSide(color: _engAccent, width: 2),
+                  borderSide: const BorderSide(color: Brand.lightGreen, width: 2),
                 ),
               ),
             ),
@@ -1942,14 +1943,14 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                         ),
                         decoration: BoxDecoration(
                           color: isSel
-                              ? _engAccent.withAlpha(((isDark ? 0.15 : 0.12) * 255).toInt())
+                              ? Brand.lightGreen.withAlpha(((isDark ? 0.15 : 0.12) * 255).toInt())
                               : (isDark
                                   ? Brand.darkCardElevated
                                   : Brand.royalBlueSurface),
                           borderRadius: BorderRadius.circular(Brand.r(20)),
                           border: Border.all(
                             color: isSel
-                                ? _engAccent.withAlpha(((0.5) * 255).toInt())
+                                ? Brand.lightGreen.withAlpha(((0.5) * 255).toInt())
                                 : (isDark
                                     ? Brand.darkBorder
                                     : Brand.borderLight),
@@ -1962,7 +1963,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                             if (isSel) ...[
                               const Icon(
                                 Icons.check_rounded,
-                                color: _engAccent,
+                                color: Brand.lightGreen,
                                 size: 13,
                               ),
                               const SizedBox(width: 4),
@@ -1973,7 +1974,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                                 fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 color: isSel
-                                    ? _engAccent
+                                    ? Brand.lightGreen
                                     : (isDark
                                         ? Brand.darkTextSecondary
                                         : Brand.subtleLight),
@@ -2035,7 +2036,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(14)),
-          borderSide: const BorderSide(color: _engAccent, width: 2),
+          borderSide: const BorderSide(color: Brand.lightGreen, width: 2),
         ),
       ),
     );
@@ -2101,10 +2102,10 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              color: _engAccent.withAlpha(((isDark ? 0.12 : 0.1) * 255).toInt()),
+              color: Brand.lightGreen.withAlpha(((isDark ? 0.12 : 0.1) * 255).toInt()),
               borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
-            child: Icon(icon, color: _engAccent, size: 18),
+            child: Icon(icon, color: Brand.lightGreen, size: 18),
           ),
           const SizedBox(width: 10),
           Text(

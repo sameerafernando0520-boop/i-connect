@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/engineering_admin/ea_job_record_form_page.dart
 // Engineering Admin Portal — Screen 10: Job Record Form
 // Create or edit a job record. Supports engineer picker,
@@ -8,10 +8,11 @@
 
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = Brand.lightGreenDark;
 
 class EaJobRecordFormPage extends StatefulWidget {
   // For edit mode — pass the existing record map
@@ -188,8 +189,8 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
   void _pickEngineer() {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final cardBg = isDark ? Brand.darkCard : Colors.white;
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
-    final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkSurface;
+    final textSecondary = isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight;
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
 
     showModalBottomSheet(
@@ -204,7 +205,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
           decoration: BoxDecoration(
             color: cardBg,
             borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(28)),
+                BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
           ),
           child: Column(
             children: [
@@ -298,8 +299,8 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
 
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final cardBg = isDark ? Brand.darkCard : Colors.white;
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
-    final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkSurface;
+    final textSecondary = isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight;
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
 
     showModalBottomSheet(
@@ -315,7 +316,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
             decoration: BoxDecoration(
               color: cardBg,
               borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(28)),
+                  BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
             ),
             child: Column(
               children: [
@@ -350,7 +351,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
                             Navigator.pop(context);
                           },
                           child: const Text('Clear',
-                              style: TextStyle(color: Color(0xFFEF4444))),
+                              style: TextStyle(color: AdminColors.error)),
                         ),
                     ],
                   ),
@@ -503,8 +504,8 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = Brand.canvas(isDark);
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
-    final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkSurface;
+    final textSecondary = isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight;
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
     final inputFill = isDark ? Brand.darkCardElevated : Brand.scaffoldLight;
 
@@ -821,15 +822,15 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
   Color _statusColor(String s) {
     switch (s) {
       case 'pending':
-        return const Color(0xFFF59E0B);
+        return AdminColors.warning;
       case 'in_progress':
-        return const Color(0xFF3B82F6);
+        return AdminColors.info;
       case 'completed':
-        return const Color(0xFF10B981);
+        return StatusColors.resolved;
       case 'cancelled':
-        return const Color(0xFFEF4444);
+        return AdminColors.error;
       default:
-        return const Color(0xFF94A3B8);
+        return Brand.subtleLight;
     }
   }
 }

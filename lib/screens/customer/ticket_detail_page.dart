@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // FILE: lib/screens/customer/ticket_detail_page.dart
 // UPDATED — filters internal notes, order metadata, bug fixes,
 //           uses Brand colors, CachedNetworkImage, TimeUtils,
@@ -21,12 +21,14 @@ import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/common/estimate_chat_card.dart';
 import '../../widgets/common/chat_message_attachments.dart';
 import '../../widgets/common/engineer_route_map.dart';
 import '../../l10n/s.dart';
+import '../../utils/app_logger.dart';
 
 class TicketDetailPage extends StatefulWidget {
   final String ticketId;
@@ -142,7 +144,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       if (mounted) {
         setState(() => _isLoading = false);
         _showErrorSnackBar('Failed to load ticket details');
-        debugPrint('Error loading ticket: $e');
+        AppLogger.debug('TicketDetailPage', 'Error loading ticket: $e');
       }
     }
   }
@@ -168,7 +170,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
         _markMessagesAsRead();
       }
     } catch (e) {
-      debugPrint('Error loading messages (trying without filter): $e');
+      AppLogger.debug('TicketDetailPage', 'Error loading messages (trying without filter): $e');
       try {
         final data = await SupabaseConfig.client
             .from('chat_messages')
@@ -193,7 +195,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
           _markMessagesAsRead();
         }
       } catch (e2) {
-        debugPrint('Error loading messages: $e2');
+        AppLogger.debug('TicketDetailPage', 'Error loading messages: $e2');
       }
     }
   }
@@ -213,7 +215,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
         });
       }
     } catch (e) {
-      debugPrint('Error loading activities: $e');
+      AppLogger.debug('TicketDetailPage', 'Error loading activities: $e');
     }
   }
 
@@ -287,7 +289,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                       .eq('id', msgId)
                       .filter('delivered_at', 'is', null);
                 } catch (e) {
-                  debugPrint('delivered_at mark failed: $e');
+                  AppLogger.debug('TicketDetailPage', 'delivered_at mark failed: $e');
                 }
               }
 
@@ -326,7 +328,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
 
               _scrollToBottomIfNeeded();
             } catch (e) {
-              debugPrint('⚠️ Realtime message enrich error: $e');
+              AppLogger.debug('TicketDetailPage', 'Realtime message enrich error: $e');
             }
           },
         )
@@ -373,7 +375,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                 }
               });
             } catch (e) {
-              debugPrint('Realtime msg update error: $e');
+              AppLogger.debug('TicketDetailPage', 'Realtime msg update error: $e');
             }
           },
         )
@@ -457,7 +459,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
         }
       });
     } catch (e) {
-      debugPrint('❌ Load more messages error: $e');
+      AppLogger.debug('TicketDetailPage', 'Load more messages error: $e');
       if (!mounted) return;
       setState(() => _isLoadingMore = false);
     }
@@ -596,7 +598,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       _messageController.clear();
     } catch (e) {
       _showErrorSnackBar('Failed to upload image');
-      debugPrint('Upload error: $e');
+      AppLogger.debug('TicketDetailPage', 'Upload error: $e');
     } finally {
       if (mounted) setState(() => _isUploading = false);
     }
@@ -612,7 +614,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -757,13 +759,13 @@ class _TicketDetailPageState extends State<TicketDetailPage>
           'is_internal': false,
         });
       } catch (e) {
-        debugPrint('close ticket system message failed (non-fatal): $e');
+        AppLogger.debug('TicketDetailPage', 'close ticket system message failed (non-fatal): $e');
       }
 
       await _loadAllData();
       if (mounted) _showSuccessSnackBar('Ticket closed');
     } catch (e) {
-      debugPrint('closeTicket failed: $e');
+      AppLogger.debug('TicketDetailPage', 'closeTicket failed: $e');
       if (mounted) {
         setState(() => _isLoading = false);
         _showErrorSnackBar('Failed to close ticket');
@@ -931,7 +933,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             child: Text(message,
                 style: const TextStyle(fontWeight: FontWeight.w600))),
       ]),
-      backgroundColor: const Color(0xFFE53935),
+      backgroundColor: AdminColors.error,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
       margin: const EdgeInsets.all(16),
@@ -1061,9 +1063,9 @@ class _TicketDetailPageState extends State<TicketDetailPage>
   Color _getPriorityColor(String priority) {
     switch (priority.toLowerCase()) {
       case 'urgent':
-        return const Color(0xFFE53935);
+        return AdminColors.error;
       case 'high':
-        return const Color(0xFFFF9800);
+        return StatusColors.materialOrange;
       case 'medium':
         return Brand.royalBlueLight;
       case 'low':
@@ -1322,7 +1324,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                         child: Row(
                           children: [
                             const Icon(Icons.navigation_rounded,
-                                size: 16, color: Color(0xFF16A34A)),
+                                size: 16, color: Brand.lightGreenDark),
                             const SizedBox(width: 6),
                             Text(
                               'Your engineer is on the way',
@@ -1634,7 +1636,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                         width: 7,
                         height: 7,
                         decoration: const BoxDecoration(
-                          color: Color(0xFF4CAF50),
+                          color: StatusColors.materialGreen,
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -1645,7 +1647,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                           fontSize: 11,
                           fontWeight: FontWeight.w600,
                           color: isDark
-                              ? const Color(0xFF4CAF50)
+                              ? StatusColors.materialGreen
                               : Colors.green.shade600,
                         ),
                       ),
@@ -2932,7 +2934,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: Brand.surface(isDark),
-          borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -3024,8 +3026,8 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       decoration: BoxDecoration(
         color: Brand.surface(isDark),
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(28),
-          topRight: Radius.circular(28),
+          topLeft: Radius.circular(Brand.r(28)),
+          topRight: Radius.circular(Brand.r(28)),
         ),
         border: Border(
             top: BorderSide(
@@ -3200,9 +3202,9 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(28),
-          topRight: Radius.circular(28),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(Brand.r(28)),
+          topRight: Radius.circular(Brand.r(28)),
         ),
         border: Border(
             top: BorderSide(
@@ -3290,7 +3292,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             decoration: BoxDecoration(
               color: Brand.surface(isDark),
               borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(28)),
+                  BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -3459,8 +3461,8 @@ class _TicketDetailPageState extends State<TicketDetailPage>
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(28),
-          topRight: Radius.circular(28),
+          topLeft: Radius.circular(Brand.r(28)),
+          topRight: Radius.circular(Brand.r(28)),
         ),
         border: Border(
             top: BorderSide(

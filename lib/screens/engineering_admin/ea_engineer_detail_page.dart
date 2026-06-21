@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/engineering_admin/ea_engineer_detail_page.dart
 // Engineering Admin Portal — Screen 6: Engineer Detail
 // 8-tab HR profile view for an individual engineer.
@@ -13,7 +13,7 @@ import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../utils/time_utils.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = Brand.lightGreenDark;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Widget
@@ -346,9 +346,9 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
     final joinedAt = p['date_joined'] as String?;
 
     final textPrimary =
-        isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+        isDark ? Brand.darkTextPrimary : Brand.darkSurface;
     final textSecondary =
-        isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+        isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight;
 
     return RefreshIndicator(
       onRefresh: _load,
@@ -435,7 +435,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
 
   Widget _buildAttendanceTab(bool isDark) {
     final textPrimary =
-        isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+        isDark ? Brand.darkTextPrimary : Brand.darkSurface;
 
     return RefreshIndicator(
       onRefresh: _load,
@@ -560,7 +560,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
           label,
           style: TextStyle(
               fontSize: 11,
-              color: isDark ? Brand.darkTextSecondary : const Color(0xFF64748B)),
+              color: isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight),
         ),
       ],
     );
@@ -609,7 +609,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                     fontWeight: FontWeight.w700,
                     color: isDark
                         ? Brand.darkTextPrimary
-                        : const Color(0xFF1E293B),
+                        : Brand.darkSurface,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -712,7 +712,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                     fontWeight: FontWeight.w700,
                     color: isDark
                         ? Brand.darkTextPrimary
-                        : const Color(0xFF1E293B),
+                        : Brand.darkSurface,
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -863,7 +863,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                     child: _kpiMetric(
                         'Satisfaction',
                         '${satisfaction.toStringAsFixed(1)} ★',
-                        const Color(0xFFF59E0B),
+                        AdminColors.warning,
                         isDark)),
               if (attendanceRate != null) ...[
                 const SizedBox(width: 10),
@@ -924,7 +924,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
             satisfaction != null
                 ? satisfaction.toStringAsFixed(1)
                 : '—',
-            const Color(0xFFF59E0B),
+            AdminColors.warning,
             Icons.star_rounded,
             isDark,
           ),
@@ -1094,7 +1094,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                     fontWeight: FontWeight.w700,
                     color: isDark
                         ? Brand.darkTextPrimary
-                        : const Color(0xFF1E293B),
+                        : Brand.darkSurface,
                   ),
                 ),
               ),
@@ -1227,7 +1227,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                     fontWeight: FontWeight.w700,
                     color: isDark
                         ? Brand.darkTextPrimary
-                        : const Color(0xFF1E293B),
+                        : Brand.darkSurface,
                   ),
                 ),
               ),
@@ -1399,7 +1399,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                     fontWeight: FontWeight.w700,
                     color: isDark
                         ? Brand.darkTextPrimary
-                        : const Color(0xFF1E293B),
+                        : Brand.darkSurface,
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -1499,7 +1499,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
               decoration: BoxDecoration(
                 color: Brand.surface(isDark),
                 borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(28)),
+                    BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
               ),
               padding:
                   const EdgeInsets.fromLTRB(20, 12, 20, 32),
@@ -1698,7 +1698,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
             decoration: BoxDecoration(
               color: Brand.surface(isDark),
               borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(28)),
+                  BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
             ),
             padding: const EdgeInsets.fromLTRB(20, 12, 20, 40),
             child: Column(
@@ -1952,7 +1952,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
                 fontWeight: FontWeight.w600,
                 color: isDark
                     ? Brand.darkTextPrimary
-                    : const Color(0xFF1E293B),
+                    : Brand.darkSurface,
               ),
             ),
           ),
@@ -2019,7 +2019,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
       case 'late':
         return AdminColors.warning;
       case 'half_day':
-        return const Color(0xFF8B5CF6);
+        return StatusColors.assigned;
       case 'on_leave':
         return _eaAccent;
       default:
@@ -2142,7 +2142,7 @@ class _EaEngineerDetailPageState extends State<EaEngineerDetailPage>
   Color _levelColor(String level) {
     switch (level) {
       case 'expert':
-        return const Color(0xFF8B5CF6);
+        return StatusColors.assigned;
       case 'advanced':
         return AdminColors.success;
       case 'intermediate':

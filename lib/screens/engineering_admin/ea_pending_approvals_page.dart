@@ -1,4 +1,4 @@
-// lib/screens/engineering_admin/ea_pending_approvals_page.dart
+﻿// lib/screens/engineering_admin/ea_pending_approvals_page.dart
 // v24 — Schedule + installation approval queue
 //
 // Surfaces engineer-proposed service_schedules (status='pending_approval')
@@ -19,8 +19,8 @@ import '../../widgets/ds/ds_widgets.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
-const Color _eaRed = Color(0xFFEF4444);
+const Color _eaAccent = Brand.lightGreenDark;
+const Color _eaRed = AdminColors.error;
 
 class EaPendingApprovalsPage extends StatefulWidget {
   const EaPendingApprovalsPage({super.key});
@@ -341,7 +341,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
         color: isDark ? Brand.darkCard : Colors.white,
         borderRadius: BorderRadius.circular(Brand.r(18)),
         border: Border.all(
-          color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
+          color: isDark ? Brand.darkBorder : Brand.borderLight,
         ),
       ),
       padding: const EdgeInsets.all(14),
@@ -374,7 +374,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
                     fontWeight: FontWeight.w700,
                     color: isDark
                         ? Brand.darkTextPrimary
-                        : const Color(0xFF0F172A),
+                        : AdminColors.textPrimary,
                   )),
             ),
           ]),

@@ -1,4 +1,4 @@
-// lib/screens/marketing/ma_profile_page.dart
+﻿// lib/screens/marketing/ma_profile_page.dart
 //
 // Premium marketing admin profile — matches customer profile_page.dart
 // design language with hero card, stats, and premium card styling.
@@ -18,6 +18,7 @@ import '../../utils/string_utils.dart';
 import '../../widgets/common/language_selector_sheet.dart';
 import '../../screens/auth/login_page.dart';
 import '../../widgets/common/theme_style_sheet.dart';
+import '../../utils/app_logger.dart';
 
 class MaProfilePage extends StatefulWidget {
   const MaProfilePage({super.key});
@@ -87,7 +88,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
         _hasError = false;
       });
     } catch (e) {
-      debugPrint('Profile load error: $e');
+      AppLogger.debug('MaProfilePage', 'Profile load error: $e');
       if (!mounted) return;
       setState(() {
         _loading = false;
@@ -102,7 +103,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
       context: context,
       builder: (_) => _buildConfirmDialog(
         icon: Icons.logout_rounded,
-        iconColor: isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400,
+        iconColor: isDark ? StatusColors.softRed : Colors.red.shade400,
         title: 'Sign Out?',
         message: 'Are you sure you want to sign out\nof your account?',
         confirmText: 'Sign Out',
@@ -286,7 +287,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                   child: Icon(Icons.error_outline,
                       size: 36,
                       color:
-                          isDark ? const Color(0xFFFF6B6B) : Colors.red),
+                          isDark ? StatusColors.softRed : Colors.red),
                 ),
                 const SizedBox(height: 20),
                 Text(
@@ -635,9 +636,9 @@ class _MaProfilePageState extends State<MaProfilePage> {
       _StatItem(Icons.article_rounded, '$_publishedArticles', 'Articles',
           isDark ? Brand.lightGreenBright : Brand.lightGreen),
       _StatItem(Icons.campaign_rounded, '$_broadcastsSent', 'Broadcasts',
-          isDark ? const Color(0xFFFFB74D) : const Color(0xFFEF4444)),
+          isDark ? StatusColors.warningLight : AdminColors.error),
       _StatItem(Icons.share_rounded, '$_activeReferrals', 'Referrals',
-          const Color(0xFF10B981)),
+          StatusColors.resolved),
     ];
 
     return Padding(
@@ -730,13 +731,13 @@ class _MaProfilePageState extends State<MaProfilePage> {
                 height: 1),
             _buildInfoRow(
                 Icons.alternate_email_rounded, 'Username', '@$username', isDark,
-                color: const Color(0xFF8B5CF6)),
+                color: StatusColors.assigned),
           ],
           Divider(
               color: isDark ? Brand.darkBorder : Brand.borderLight, height: 1),
           _buildInfoRow(Icons.calendar_today_rounded, 'Member Since',
               _getMemberSince(), isDark,
-              color: const Color(0xFF10B981)),
+              color: StatusColors.resolved),
         ],
       ),
     );
@@ -812,17 +813,17 @@ class _MaProfilePageState extends State<MaProfilePage> {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF6366F1).withAlpha(isDark ? 30 : 15),
+                  color: StatusColors.indigo.withAlpha(isDark ? 30 : 15),
                   borderRadius: BorderRadius.circular(Brand.r(13)),
                   border: isDark
                       ? Border.all(
-                          color: const Color(0xFF6366F1).withAlpha(51))
+                          color: StatusColors.indigo.withAlpha(51))
                       : null,
                 ),
                 child: Icon(
                   isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
                   size: 22,
-                  color: const Color(0xFF6366F1),
+                  color: StatusColors.indigo,
                 ),
               ),
               const SizedBox(width: 14),
@@ -856,8 +857,8 @@ class _MaProfilePageState extends State<MaProfilePage> {
               Switch(
                 value: themeProvider.isDarkMode,
                 onChanged: (_) => themeProvider.toggleTheme(),
-                activeThumbColor: const Color(0xFF6366F1),
-                activeTrackColor: const Color(0xFF6366F1).withAlpha(77),
+                activeThumbColor: StatusColors.indigo,
+                activeTrackColor: StatusColors.indigo.withAlpha(77),
               ),
             ],
           ),
@@ -868,7 +869,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
             leading: const SizedBox(
               width: 44,
               child: Icon(Icons.style_rounded,
-                  size: 22, color: Color(0xFF6366F1)),
+                  size: 22, color: StatusColors.indigo),
             ),
             title: Text(
               'Dark style',
@@ -924,15 +925,15 @@ class _MaProfilePageState extends State<MaProfilePage> {
                   width: 44,
                   height: 44,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF14B8A6).withAlpha(isDark ? 30 : 15),
+                    color: StatusColors.teal.withAlpha(isDark ? 30 : 15),
                     borderRadius: BorderRadius.circular(Brand.r(13)),
                     border: isDark
                         ? Border.all(
-                            color: const Color(0xFF14B8A6).withAlpha(51))
+                            color: StatusColors.teal.withAlpha(51))
                         : null,
                   ),
                   child: const Icon(Icons.language_rounded,
-                      size: 22, color: Color(0xFF14B8A6)),
+                      size: 22, color: StatusColors.teal),
                 ),
                 const SizedBox(width: 14),
                 Expanded(
@@ -1011,7 +1012,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
               ),
               child: Icon(Icons.logout_rounded,
                   size: 22,
-                  color: isDark ? const Color(0xFFFF6B6B) : Colors.red),
+                  color: isDark ? StatusColors.softRed : Colors.red),
             ),
             const SizedBox(width: 14),
             Expanded(
@@ -1023,7 +1024,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
-                      color: isDark ? const Color(0xFFFF6B6B) : Colors.red,
+                      color: isDark ? StatusColors.softRed : Colors.red,
                     ),
                   ),
                   const SizedBox(height: 2),
@@ -1041,7 +1042,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
             Icon(Icons.chevron_right_rounded,
                 size: 22,
                 color: isDark
-                    ? const Color(0xFFFF6B6B).withAlpha(128)
+                    ? StatusColors.softRed.withAlpha(128)
                     : Colors.red.withAlpha(128)),
           ],
         ),

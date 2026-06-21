@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
@@ -37,17 +37,17 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
   // values that match AdminColors exactly.
   static const _filters = <(String?, String, Color)>[
     (null, 'All', AdminColors.primary),
-    ('draft', 'Draft', Color(0xFF94A3B8)),
-    ('sent', 'Sent', Color(0xFF8B5CF6)),
-    ('viewed', 'Viewed', Color(0xFF06B6D4)),
+    ('draft', 'Draft', Brand.subtleLight),
+    ('sent', 'Sent', StatusColors.assigned),
+    ('viewed', 'Viewed', StatusColors.info),
     // FIX: Use AdminColors.success literal value (0xFF22C55E matches)
-    ('accepted', 'Accepted', Color(0xFF22C55E)),
+    ('accepted', 'Accepted', Brand.lightGreen),
     // FIX: Use AdminColors.error literal value (0xFFEF4444 matches)
-    ('rejected', 'Rejected', Color(0xFFEF4444)),
+    ('rejected', 'Rejected', AdminColors.error),
     // FIX: Use AdminColors.warning literal value (0xFFF59E0B matches)
-    ('expired', 'Expired', Color(0xFFF59E0B)),
+    ('expired', 'Expired', AdminColors.warning),
     // FIX: Use AdminColors.info literal value (0xFF3B82F6 matches)
-    ('converted', 'Converted', Color(0xFF3B82F6)),
+    ('converted', 'Converted', AdminColors.info),
   ];
 
   // ── Lifecycle ──
@@ -180,17 +180,17 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
         controller: _searchCtrl,
         autofocus: true,
         style: TextStyle(
-          color: isDark ? Brand.darkTextPrimary : const Color(0xFF1A1A2E),
+          color: isDark ? Brand.darkTextPrimary : Brand.darkDeep,
         ),
         decoration: InputDecoration(
           hintText: 'Search quotations…',
           hintStyle: TextStyle(
-            color: isDark ? Brand.darkTextTertiary : const Color(0xFF94A3B8),
+            color: isDark ? Brand.darkTextTertiary : Brand.subtleLight,
             fontSize: 14,
           ),
           prefixIcon: Icon(
             Icons.search_rounded,
-            color: isDark ? Brand.darkTextTertiary : const Color(0xFF94A3B8),
+            color: isDark ? Brand.darkTextTertiary : Brand.subtleLight,
             size: 22,
           ),
           filled: true,
@@ -464,11 +464,11 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
   Color _statusColor(String s) {
     switch (s) {
       case 'draft':
-        return const Color(0xFF94A3B8);
+        return Brand.subtleLight;
       case 'sent':
-        return const Color(0xFF8B5CF6);
+        return StatusColors.assigned;
       case 'viewed':
-        return const Color(0xFF06B6D4);
+        return StatusColors.info;
       case 'accepted':
         // Matches AdminColors.success
         return AdminColors.success;
@@ -482,7 +482,7 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
         // Matches AdminColors.info
         return AdminColors.info;
       default:
-        return const Color(0xFF94A3B8);
+        return Brand.subtleLight;
     }
   }
 

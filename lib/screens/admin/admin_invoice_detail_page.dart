@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
@@ -1267,17 +1267,17 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
       case 'sent':
         return Brand.royalBlueLight;
       case 'viewed':
-        return const Color(0xFF06B6D4);
+        return StatusColors.info;
       case 'overdue':
         return AdminColors.error;
       case 'draft':
-        return const Color(0xFF6B7280);
+        return StatusColors.gray;
       case 'cancelled':
-        return const Color(0xFF6B7280);
+        return StatusColors.gray;
       case 'refunded':
         return AdminColors.warning;
       default:
-        return const Color(0xFF6B7280);
+        return StatusColors.gray;
     }
   }
 

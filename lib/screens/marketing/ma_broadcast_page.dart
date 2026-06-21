@@ -1,4 +1,4 @@
-// lib/screens/marketing/ma_broadcast_page.dart
+﻿// lib/screens/marketing/ma_broadcast_page.dart
 // P6 — Broadcast Notifications: compose + send to all / by role
 
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _bcColor = Color(0xFFEF4444);
+const Color _bcColor = AdminColors.error;
 
 class MaBroadcastPage extends StatefulWidget {
   const MaBroadcastPage({super.key});
@@ -95,7 +95,7 @@ class _MaBroadcastPageState extends State<MaBroadcastPage> {
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    colors: [Color(0xFFEF4444), Color(0xFFDC2626)],
+                    colors: [AdminColors.error, StatusColors.danger],
                     begin: Alignment.topLeft, end: Alignment.bottomRight,
                   ),
                   borderRadius: BorderRadius.circular(Brand.r(18)),
@@ -327,7 +327,7 @@ class _ComposeSheetState extends State<_ComposeSheet> {
     return Container(
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       padding: EdgeInsets.fromLTRB(20, 20, 20, 20 + bottomPad),
       child: Column(mainAxisSize: MainAxisSize.min, children: [

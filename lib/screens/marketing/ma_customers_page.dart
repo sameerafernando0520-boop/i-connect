@@ -1,4 +1,4 @@
-// lib/screens/marketing/ma_customers_page.dart
+﻿// lib/screens/marketing/ma_customers_page.dart
 // P1 — Customers: read-only list with tier badges and basic profile info
 
 import 'package:flutter/material.dart';
@@ -9,7 +9,7 @@ import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _custColor = Color(0xFF3B82F6);
+const Color _custColor = AdminColors.info;
 
 class MaCustomersPage extends StatefulWidget {
   const MaCustomersPage({super.key});
@@ -325,10 +325,10 @@ class _MaCustomersPageState extends State<MaCustomersPage> {
 
   Color _tierColorFor(String tier) {
     switch (tier.toLowerCase()) {
-      case 'silver': return const Color(0xFFC0C0C0);
-      case 'gold': return const Color(0xFFFFD700);
-      case 'platinum': return const Color(0xFF00B4D8);
-      default: return const Color(0xFFCD7F32);
+      case 'silver': return TierColors.silver;
+      case 'gold': return TierColors.gold;
+      case 'platinum': return TierColors.platinum;
+      default: return TierColors.bronze;
     }
   }
 

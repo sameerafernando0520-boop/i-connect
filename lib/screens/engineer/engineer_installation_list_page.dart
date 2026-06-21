@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/engineer/engineer_installation_list_page.dart
 // Engineer — My Machine Installations (assigned to me)
 // Ticket-like status tabs: assigned → acknowledged → in_progress → completed
@@ -6,11 +6,11 @@
 
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import 'engineer_installation_detail_page.dart';
 
-const Color _engAccent = Color(0xFF00B4D8);
 
 const _instTypeLabels = {
   'new_install':   'New Install',
@@ -20,11 +20,11 @@ const _instTypeLabels = {
   'decommission':  'Decommission',
 };
 const _instTypeColors = {
-  'new_install':   Color(0xFF10B981),
-  'replacement':   Color(0xFF8B5CF6),
-  'upgrade':       Color(0xFF3B82F6),
-  'commissioning': Color(0xFFF59E0B),
-  'decommission':  Color(0xFFEF4444),
+  'new_install':   StatusColors.resolved,
+  'replacement':   StatusColors.assigned,
+  'upgrade':       AdminColors.info,
+  'commissioning': AdminColors.warning,
+  'decommission':  AdminColors.error,
 };
 const _instStatusLabels = {
   'pending':     'Pending',
@@ -34,18 +34,18 @@ const _instStatusLabels = {
   'cancelled':   'Cancelled',
 };
 const _instStatusColors = {
-  'pending':     Color(0xFFF59E0B),
-  'scheduled':   Color(0xFF3B82F6),
-  'in_progress': Color(0xFF8B5CF6),
-  'completed':   Color(0xFF10B981),
-  'cancelled':   Color(0xFF6B7280),
+  'pending':     AdminColors.warning,
+  'scheduled':   AdminColors.info,
+  'in_progress': StatusColors.assigned,
+  'completed':   StatusColors.resolved,
+  'cancelled':   StatusColors.gray,
 };
 // Engineer's own status on this installation
 const _myStatusColors = {
-  'assigned':     Color(0xFFF59E0B),
-  'acknowledged': Color(0xFF3B82F6),
-  'in_progress':  Color(0xFF8B5CF6),
-  'completed':    Color(0xFF10B981),
+  'assigned':     AdminColors.warning,
+  'acknowledged': AdminColors.info,
+  'in_progress':  StatusColors.assigned,
+  'completed':    StatusColors.resolved,
 };
 
 class EngineerInstallationListPage extends StatefulWidget {
@@ -208,15 +208,15 @@ class _EngineerInstallationListPageState
               onSelected: (_) {
                 setState(() { _statusFilter = s; _applyFilter(); });
               },
-              selectedColor: _engAccent.withAlpha(30),
-              checkmarkColor: _engAccent,
+              selectedColor: Brand.lightGreen.withAlpha(30),
+              checkmarkColor: Brand.lightGreen,
               labelStyle: TextStyle(
                 fontSize: 12,
                 fontWeight: active ? FontWeight.w600 : FontWeight.w400,
-                color: active ? _engAccent : Colors.grey,
+                color: active ? Brand.lightGreen : Colors.grey,
               ),
               side: BorderSide(
-                color: active ? _engAccent : Colors.grey.withAlpha(80),
+                color: active ? Brand.lightGreen : Colors.grey.withAlpha(80),
               ),
               backgroundColor: isDark ? Brand.darkCardElevated : Colors.white,
             ),
@@ -232,7 +232,7 @@ class _EngineerInstallationListPageState
     if (_filtered.isEmpty) return _buildEmpty(isDark);
 
     return RefreshIndicator(
-      color: _engAccent,
+      color: Brand.lightGreen,
       onRefresh: _load,
       child: ListView.builder(
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 40),
@@ -279,11 +279,11 @@ class _EngineerInstallationListPageState
             Container(
               width: 72, height: 72,
               decoration: BoxDecoration(
-                color: const Color(0xFFEF4444).withAlpha(isDark ? 25 : 15),
+                color: AdminColors.error.withAlpha(isDark ? 25 : 15),
                 shape: BoxShape.circle,
               ),
               child: const Icon(Icons.error_outline,
-                  color: Color(0xFFEF4444), size: 36),
+                  color: AdminColors.error, size: 36),
             ),
             const SizedBox(height: 16),
             Text('Something went wrong',
@@ -304,7 +304,7 @@ class _EngineerInstallationListPageState
               icon: const Icon(Icons.refresh, size: 18),
               label: const Text('Try Again'),
               style: FilledButton.styleFrom(
-                backgroundColor: _engAccent,
+                backgroundColor: Brand.lightGreen,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(Brand.r(12))),
@@ -317,7 +317,7 @@ class _EngineerInstallationListPageState
       );
 
   Widget _buildEmpty(bool isDark) => RefreshIndicator(
-        color: _engAccent,
+        color: Brand.lightGreen,
         onRefresh: _load,
         child: ListView(
           children: [
@@ -328,11 +328,11 @@ class _EngineerInstallationListPageState
                   Container(
                     width: 80, height: 80,
                     decoration: BoxDecoration(
-                      color: _engAccent.withAlpha(isDark ? 25 : 20),
+                      color: Brand.lightGreen.withAlpha(isDark ? 25 : 20),
                       shape: BoxShape.circle,
                     ),
                     child: Icon(Icons.precision_manufacturing_outlined,
-                        size: 40, color: isDark ? _engAccent : const Color(0xFF0096B7)),
+                        size: 40, color: isDark ? Brand.lightGreen : AdminColors.engAccentDark),
                   ),
                   const SizedBox(height: 16),
                   Text('No installations found',
@@ -389,9 +389,9 @@ class _EngInstallCard extends StatelessWidget {
     final myStatus = data['_my_status'] as String? ?? 'assigned';
     final myRole   = data['_my_role'] as String? ?? 'technician';
 
-    final statusColor = _instStatusColors[status] ?? const Color(0xFF6B7280);
-    final typeColor   = _instTypeColors[type] ?? const Color(0xFF6B7280);
-    final myStatusColor = _myStatusColors[myStatus] ?? const Color(0xFF6B7280);
+    final statusColor = _instStatusColors[status] ?? StatusColors.gray;
+    final typeColor   = _instTypeColors[type] ?? StatusColors.gray;
+    final myStatusColor = _myStatusColors[myStatus] ?? StatusColors.gray;
 
     final customer = (data['customer'] as Map?)?['full_name'] ?? '—';
     final machineMap = data['machine'] as Map?;
@@ -463,7 +463,7 @@ class _EngInstallCard extends StatelessWidget {
                         children: [
                           _badge(_instTypeLabels[type] ?? type, typeColor, isDark),
                           const SizedBox(width: 6),
-                          _badge(roleLabel, _engAccent, isDark),
+                          _badge(roleLabel, Brand.lightGreen, isDark),
                           const Spacer(),
                           _badge(_instStatusLabels[status] ?? status,
                               statusColor, isDark),

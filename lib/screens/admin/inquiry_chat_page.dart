@@ -1,4 +1,4 @@
-// lib/screens/admin/inquiry_chat_page.dart
+﻿// lib/screens/admin/inquiry_chat_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,6 +17,7 @@ import '../../config/brand_colors.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
+import '../../utils/app_logger.dart';
 
 class InquiryChatPage extends StatefulWidget {
   final String ticketId;
@@ -247,7 +248,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                       .eq('id', msgId)
                       .filter('delivered_at', 'is', null);
                 } catch (e) {
-                  debugPrint('delivered_at mark failed: $e');
+                  AppLogger.debug('InquiryChatPage', 'delivered_at mark failed: $e');
                 }
               }
 
@@ -282,7 +283,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
 
               _scrollToBottomIfNeeded();
             } catch (e) {
-              debugPrint('Realtime message enrich error: $e');
+              AppLogger.debug('InquiryChatPage', 'Realtime message enrich error: $e');
             }
           },
         )
@@ -314,7 +315,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                 }
               });
             } catch (e) {
-              debugPrint('Realtime update error: $e');
+              AppLogger.debug('InquiryChatPage', 'Realtime update error: $e');
             }
           },
         )
@@ -406,7 +407,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
         }
       });
     } catch (e) {
-      debugPrint('Load more messages error: $e');
+      AppLogger.debug('InquiryChatPage', 'Load more messages error: $e');
       if (!mounted) return;
       setState(() => _isLoadingMore = false);
     }
@@ -464,7 +465,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
             'is_read': false,
           });
         } catch (e) {
-          debugPrint('⚠️ Inquiry reply notification failed (non-critical): $e');
+          AppLogger.debug('InquiryChatPage', 'Inquiry reply notification failed (non-critical): $e');
         }
       }
 
@@ -1072,7 +1073,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                                   // Blue double tick = read
                                   return const Icon(Icons.done_all_rounded,
                                       size: 14,
-                                      color: Color(0xFF58A6FF));
+                                      color: AdminColors.info);
                                 }
                                 if (delivered) {
                                   // Grey double tick = delivered

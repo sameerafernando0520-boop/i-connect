@@ -1,4 +1,4 @@
-// lib/screens/engineer/engineer_ticket_list_page.dart
+﻿// lib/screens/engineer/engineer_ticket_list_page.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -7,11 +7,12 @@ import 'package:supabase_flutter/supabase_flutter.dart'
          PostgresChangeFilterType;
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import 'engineer_ticket_detail_page.dart';
+import '../../utils/app_logger.dart';
 
 // ── Engineer accent (per handoff §26) ──
-const Color _engAccent = Color(0xFF00B4D8);
-const Color _engAccentDark = Color(0xFF0096B7);
+// AdminColors.engAccentDark: use AdminColors.engAccentDark
 
 class EngineerTicketListPage extends StatefulWidget {
   const EngineerTicketListPage({super.key});
@@ -131,7 +132,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
         _isLoading = false;
       });
     } catch (e) {
-      debugPrint('❌ Engineer ticket list load error: $e');
+      AppLogger.debug('EngineerTicketListPage', 'Engineer ticket list load error: $e');
       if (!mounted) return;
       setState(() => _isLoading = false);
     }
@@ -228,9 +229,9 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
   Color _priorityColor(String p) {
     switch (p) {
       case 'urgent':
-        return const Color(0xFFFF4757);
+        return StatusColors.coral;
       case 'high':
-        return const Color(0xFFFFB74D);
+        return StatusColors.warningLight;
       case 'medium':
         return Brand.lightGreenBright;
       default:
@@ -243,11 +244,11 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
       case 'open':
         return Brand.darkIconActive;
       case 'assigned':
-        return const Color(0xFF7986CB);
+        return StatusColors.assigned;
       case 'in_progress':
-        return const Color(0xFFFFB74D);
+        return StatusColors.warningLight;
       case 'waiting_customer':
-        return const Color(0xFFCE93D8);
+        return StatusColors.lavender;
       case 'resolved':
         return Brand.lightGreenBright;
       case 'closed':
@@ -323,7 +324,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
               gradient: LinearGradient(
                 colors: isDark
                     ? [Brand.darkIconActive, Brand.royalBlueGlow]
-                    : [_engAccent, _engAccentDark],
+                    : [Brand.lightGreen, AdminColors.engAccentDark],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -345,13 +346,13 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
               color:
-                  (isDark ? Brand.darkIconActive : _engAccent).withAlpha(26),
+                  (isDark ? Brand.darkIconActive : Brand.lightGreen).withAlpha(26),
               borderRadius: BorderRadius.circular(Brand.r(12)),
             ),
             child: Text(
               '${_filteredTickets.length}/${_allTickets.length}',
               style: TextStyle(
-                color: isDark ? Brand.darkIconActive : _engAccent,
+                color: isDark ? Brand.darkIconActive : Brand.lightGreen,
                 fontSize: 12,
                 fontWeight: FontWeight.w700,
               ),
@@ -426,7 +427,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(Brand.r(16)),
               borderSide: BorderSide(
-                color: isDark ? Brand.darkIconActive : _engAccent,
+                color: isDark ? Brand.darkIconActive : Brand.lightGreen,
                 width: 1.5,
               ),
             ),
@@ -522,7 +523,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                   decoration: BoxDecoration(
                     color: isSel
                         ? (o == 'all'
-                            ? (isDark ? Brand.darkIconActive : _engAccent)
+                            ? (isDark ? Brand.darkIconActive : Brand.lightGreen)
                                 .withAlpha(38)
                             : c.withAlpha(38))
                         : (Brand.surface(isDark)),
@@ -530,7 +531,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                     border: Border.all(
                       color: isSel
                           ? (o == 'all'
-                                  ? (isDark ? Brand.darkIconActive : _engAccent)
+                                  ? (isDark ? Brand.darkIconActive : Brand.lightGreen)
                                   : c)
                               .withAlpha(128)
                           : (isDark ? Brand.darkBorder : Brand.borderLight),
@@ -546,7 +547,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                           size: 12,
                           color: isSel
                               ? (o == 'all'
-                                  ? (isDark ? Brand.darkIconActive : _engAccent)
+                                  ? (isDark ? Brand.darkIconActive : Brand.lightGreen)
                                   : c)
                               : (isDark
                                   ? Brand.darkTextSecondary
@@ -563,7 +564,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                           fontWeight: FontWeight.w700,
                           color: isSel
                               ? (o == 'all'
-                                  ? (isDark ? Brand.darkIconActive : _engAccent)
+                                  ? (isDark ? Brand.darkIconActive : Brand.lightGreen)
                                   : c)
                               : (isDark
                                   ? Brand.darkTextSecondary
@@ -589,27 +590,27 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
       case 'open':
         return (Brand.darkIconActive, Icons.radio_button_unchecked);
       case 'assigned':
-        return (const Color(0xFF7986CB), Icons.person_add_rounded);
+        return (StatusColors.assigned, Icons.person_add_rounded);
       case 'in_progress':
-        return (const Color(0xFFFFB74D), Icons.autorenew_rounded);
+        return (StatusColors.warningLight, Icons.autorenew_rounded);
       case 'waiting_customer':
-        return (const Color(0xFFCE93D8), Icons.hourglass_top_rounded);
+        return (StatusColors.lavender, Icons.hourglass_top_rounded);
       case 'resolved':
         return (Brand.lightGreenBright, Icons.check_circle_rounded);
       case 'closed':
         return (Brand.darkTextSecondary, Icons.archive_rounded);
       // Priority
       case 'urgent':
-        return (const Color(0xFFFF4757), Icons.warning_rounded);
+        return (StatusColors.coral, Icons.warning_rounded);
       case 'high':
-        return (const Color(0xFFFFB74D), Icons.arrow_upward_rounded);
+        return (StatusColors.warningLight, Icons.arrow_upward_rounded);
       case 'medium':
         return (Brand.lightGreenBright, Icons.remove_rounded);
       case 'low':
         return (Brand.darkTextSecondary, Icons.arrow_downward_rounded);
       // Type
       case 'support':
-        return (const Color(0xFFFF8A65), Icons.build_rounded);
+        return (StatusColors.materialOrange, Icons.build_rounded);
       case 'inquiry':
         return (Brand.darkIconActive, Icons.help_outline_rounded);
       case 'order':
@@ -638,7 +639,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
               gradient: LinearGradient(
                 colors: isDark
                     ? [Brand.darkIconActive, Brand.royalBlueGlow]
-                    : [_engAccent, _engAccentDark],
+                    : [Brand.lightGreen, AdminColors.engAccentDark],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -670,7 +671,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: (isDark ? Brand.darkIconActive : _engAccent)
+                color: (isDark ? Brand.darkIconActive : Brand.lightGreen)
                     .withAlpha(20),
                 borderRadius: BorderRadius.circular(Brand.r(8)),
               ),
@@ -679,7 +680,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                 children: [
                   Icon(Icons.sort_rounded,
                       size: 13,
-                      color: isDark ? Brand.darkIconActive : _engAccent),
+                      color: isDark ? Brand.darkIconActive : Brand.lightGreen),
                   const SizedBox(width: 4),
                   Text(
                     _sortBy == 'updated'
@@ -690,7 +691,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                     style: TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.w600,
-                      color: isDark ? Brand.darkIconActive : _engAccent,
+                      color: isDark ? Brand.darkIconActive : Brand.lightGreen,
                     ),
                   ),
                 ],
@@ -706,7 +707,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
-                  color: isDark ? _engAccent : Brand.royalBlueLight,
+                  color: isDark ? Brand.lightGreen : Brand.royalBlueLight,
                 ),
               ),
             ),
@@ -735,7 +736,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
     switch (type) {
       case 'support':
         typeIcon = Icons.build_rounded;
-        typeColor = const Color(0xFFFF8A65);
+        typeColor = StatusColors.materialOrange;
         break;
       case 'inquiry':
         typeIcon = Icons.help_outline_rounded;
@@ -971,7 +972,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
 
   Widget _buildEmptyState(bool isDark) {
     return RefreshIndicator(
-      color: isDark ? Brand.darkIconActive : _engAccent,
+      color: isDark ? Brand.darkIconActive : Brand.lightGreen,
       backgroundColor: isDark ? Brand.darkCard : Colors.white,
       onRefresh: _loadTickets,
       child: SingleChildScrollView(
@@ -1032,11 +1033,11 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                           vertical: 10,
                         ),
                         decoration: BoxDecoration(
-                          color: (isDark ? Brand.darkIconActive : _engAccent)
+                          color: (isDark ? Brand.darkIconActive : Brand.lightGreen)
                               .withAlpha(26),
                           borderRadius: BorderRadius.circular(Brand.r(12)),
                           border: Border.all(
-                            color: (isDark ? Brand.darkIconActive : _engAccent)
+                            color: (isDark ? Brand.darkIconActive : Brand.lightGreen)
                                 .withAlpha(64),
                           ),
                         ),
@@ -1045,7 +1046,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
-                            color: isDark ? Brand.darkIconActive : _engAccent,
+                            color: isDark ? Brand.darkIconActive : Brand.lightGreen,
                           ),
                         ),
                       ),

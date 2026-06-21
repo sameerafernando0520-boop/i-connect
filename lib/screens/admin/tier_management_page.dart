@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
@@ -877,7 +877,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                 decoration: BoxDecoration(
                   color: AdminColors.card(sheetCtx),
                   borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(28)),
+                      BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -1376,7 +1376,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                 decoration: BoxDecoration(
                   color: AdminColors.card(sheetCtx),
                   borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(28)),
+                      BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
                 ),
                 child: SingleChildScrollView(
                   child: Column(
@@ -1744,7 +1744,7 @@ class _TierManagementPageState extends State<TierManagementPage>
               hintStyle: TextStyle(color: AdminColors.textSub(context)),
               prefixIcon: Icon(Icons.search, color: AdminColors.textSub(context)),
               filled: true,
-              fillColor: isDark ? const Color(0xFF1E293B) : Colors.grey[100],
+              fillColor: isDark ? Brand.darkSurface : Colors.grey[100],
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(Brand.r(12)),
                 borderSide: BorderSide.none,
@@ -1793,7 +1793,7 @@ class _TierManagementPageState extends State<TierManagementPage>
 
                       return Card(
                         margin: const EdgeInsets.only(bottom: 12),
-                        color: isDark ? const Color(0xFF1E293B) : Colors.white,
+                        color: isDark ? Brand.darkSurface : Colors.white,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(Brand.r(12)),
@@ -1876,16 +1876,16 @@ class _TierManagementPageState extends State<TierManagementPage>
   Color _tierColor(String tier) {
     switch (tier) {
       case 'bronze':
-        return const Color(0xFFCD7F32);
+        return TierColors.bronze;
       case 'silver':
-        return const Color(0xFF94A3B8);
+        return Brand.subtleLight;
       case 'gold':
         // FIX: Matches AdminColors.warning
         return AdminColors.warning;
       case 'platinum':
-        return const Color(0xFF8B5CF6);
+        return StatusColors.assigned;
       default:
-        return const Color(0xFF94A3B8);
+        return Brand.subtleLight;
     }
   }
 
@@ -1909,11 +1909,11 @@ class _TierManagementPageState extends State<TierManagementPage>
       case 0:
         return AdminColors.warning; // Gold
       case 1:
-        return const Color(0xFF94A3B8); // Silver
+        return Brand.subtleLight; // Silver
       case 2:
-        return const Color(0xFFCD7F32); // Bronze
+        return TierColors.bronze; // Bronze
       default:
-        return const Color(0xFF94A3B8);
+        return Brand.subtleLight;
     }
   }
 

@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_installments_page.dart
+﻿// lib/screens/admin/admin_installments_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -44,9 +44,9 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
   Color _cardBg(bool dk) => dk ? Brand.darkCard : Colors.white;
   Color _inputBg(bool dk) => dk ? Brand.darkCard : Colors.white;
   Color _textSub(bool dk) =>
-      dk ? Brand.darkTextSecondary : const Color(0xFF64748B);
+      dk ? Brand.darkTextSecondary : AdminColors.textSecondaryLight;
   Color _textHint(bool dk) =>
-      dk ? Brand.darkTextTertiary : const Color(0xFF94A3B8);
+      dk ? Brand.darkTextTertiary : Brand.subtleLight;
   Color _border(bool dk) => dk ? Brand.darkBorder : Brand.borderLight;
 
   List<BoxShadow> _shadow(bool dk) => dk
@@ -228,7 +228,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
   // ─── STATS ROW ───────────────────────────────────────────
   Widget _buildStatsRow(bool isDark) {
     // FIX: replaced Colors.teal with const color
-    const tealColor = Color(0xFF14B8A6);
+    const tealColor = StatusColors.teal;
 
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 16, 20, 0),
@@ -254,7 +254,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
             isDark,
             '$_totalCompleted',
             'Done',
-            isDark ? const Color(0xFF4DD0B8) : tealColor,
+            isDark ? StatusColors.resolved : tealColor,
             Icons.task_alt_rounded,
           ),
           const SizedBox(width: 8),
@@ -318,7 +318,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
   // ─── FILTER CHIPS ────────────────────────────────────────
   Widget _buildFilterChips(bool isDark) {
     // FIX: replaced Colors.teal with const
-    const tealColor = Color(0xFF14B8A6);
+    const tealColor = StatusColors.teal;
 
     final filters = [
       {
@@ -337,7 +337,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
         'label': 'Completed',
         'value': 'completed',
         'icon': Icons.task_alt_rounded,
-        'color': isDark ? const Color(0xFF4DD0B8) : tealColor,
+        'color': isDark ? StatusColors.resolved : tealColor,
       },
       {
         'label': 'Defaulted',
@@ -439,7 +439,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
         onChanged: (v) => setState(() => _searchQuery = v),
         // FIX: replaced Colors.black87
         style: TextStyle(
-          color: isDark ? Brand.darkTextPrimary : const Color(0xFF1A1A2E),
+          color: isDark ? Brand.darkTextPrimary : Brand.darkDeep,
         ),
         decoration: InputDecoration(
           hintText: 'Search customer, machine, serial...',
@@ -462,7 +462,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
                     decoration: BoxDecoration(
                       color: isDark
                           ? Brand.darkBorderLight
-                          : const Color(0xFFF1F5F9),
+                          : Brand.slateLight,
                       borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Icon(
@@ -691,7 +691,7 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
                         minHeight: 7,
                         backgroundColor: isDark
                             ? Brand.darkBorderLight
-                            : const Color(0xFFF1F5F9),
+                            : Brand.slateLight,
                         valueColor: AlwaysStoppedAnimation(
                           status == 'completed'
                               ? (isDark
@@ -855,8 +855,8 @@ class _AdminInstallmentsPageState extends State<AdminInstallmentsPage> {
 
   // ─── LOADING SKELETON ────────────────────────────────────
   Widget _buildLoadingSkeleton(bool isDark) {
-    final shimmer = isDark ? Brand.darkCardElevated : const Color(0xFFEEF0F5);
-    final cardShimmer = isDark ? Brand.darkCard : const Color(0xFFF8FAFC);
+    final shimmer = isDark ? Brand.darkCardElevated : Brand.slateLight;
+    final cardShimmer = isDark ? Brand.darkCard : Brand.scaffoldLight;
 
     // M6: Lazy-build instead of constructing every skeleton child at mount.
     // Layout is fixed-height, mixed-type, so we switch on the index:

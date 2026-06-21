@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_ticket_detail_page.dart
+﻿// lib/screens/admin/admin_ticket_detail_page.dart
 // ═══════════════════════════════════════════════════════════
 
 import 'dart:async';
@@ -26,6 +26,7 @@ import '../../widgets/admin/sheets/status_sheet.dart';
 import '../../widgets/admin/sheets/actions_sheet.dart';
 import '../../widgets/admin/admin_notes_panel.dart';
 import 'create_invoice_page.dart';
+import '../../utils/app_logger.dart';
 
 class AdminTicketDetailPage extends StatefulWidget {
   final String ticketId;
@@ -219,7 +220,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
           if (!_showScrollToBottom) _scrollToBottom();
         } catch (e) {
           // Silently handle realtime errors — UI not affected
-          debugPrint('Realtime callback error: $e');
+          AppLogger.debug('AdminTicketDetailPage', 'Realtime callback error: $e');
         }
       },
     );
@@ -253,7 +254,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
             }
           });
         } catch (e) {
-          debugPrint('Realtime msg update error: $e');
+          AppLogger.debug('AdminTicketDetailPage', 'Realtime msg update error: $e');
         }
       },
     );
@@ -403,7 +404,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
           'Status changed from ${_formatLabel(old)} to ${_formatLabel(newStatus)}',
         );
       } catch (e) {
-        debugPrint('addSystemMessage failed (non-fatal): $e');
+        AppLogger.debug('AdminTicketDetailPage', 'addSystemMessage failed (non-fatal): $e');
       }
 
       if (!mounted) return;
@@ -424,7 +425,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
         }
       }
     } catch (e) {
-      debugPrint('updateStatus failed: $e');
+      AppLogger.debug('AdminTicketDetailPage', 'updateStatus failed: $e');
       if (!mounted) return;
       setState(() => _ticket = _ticket!.copyWith(status: old));
       _showSnackBar('Failed to update status', isError: true);
@@ -448,12 +449,12 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
           'Priority changed from ${_formatLabel(old)} to ${_formatLabel(newPriority)}',
         );
       } catch (e) {
-        debugPrint('addSystemMessage failed (non-fatal): $e');
+        AppLogger.debug('AdminTicketDetailPage', 'addSystemMessage failed (non-fatal): $e');
       }
       if (!mounted) return;
       _showSnackBar('Priority updated to ${_formatLabel(newPriority)}');
     } catch (e) {
-      debugPrint('updatePriority failed: $e');
+      AppLogger.debug('AdminTicketDetailPage', 'updatePriority failed: $e');
       if (!mounted) return;
       setState(() => _ticket = _ticket!.copyWith(priority: old));
       _showSnackBar('Failed to update priority', isError: true);
@@ -505,7 +506,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             color: AdminColors.card(sheetCtx),
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,

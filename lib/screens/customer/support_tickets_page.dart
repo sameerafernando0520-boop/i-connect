@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // FILE: lib/screens/customer/support_tickets_page.dart
 // ============================================================
 
@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../l10n/s.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/common/ic_icons.dart';
@@ -141,7 +142,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
             children: [
               const Icon(Icons.error_outline, color: Colors.white, size: 20),
               const SizedBox(width: 10),
-              Expanded(child: Text('Error: $e')),
+              const Expanded(child: Text('Failed to load tickets. Please try again.')),
             ],
           ),
           backgroundColor: Colors.red,
@@ -220,7 +221,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
             decoration: BoxDecoration(
               color: Colors.white.withAlpha(18),
               borderRadius: BorderRadius.circular(Brand.r(12)),
-              border: Border.all(color: const Color(0xFF2A3F6E)),
+              border: Border.all(color: Brand.navyMid),
             ),
             child: const Icon(Icons.refresh_rounded,
                 color: Colors.white, size: 19),
@@ -323,7 +324,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
           ),
           borderRadius: BorderRadius.circular(Brand.r(12)),
         ),
-        labelColor: isDark ? const Color(0xFF1A1F36) : Colors.white,
+        labelColor: isDark ? Brand.darkNavy : Colors.white,
         unselectedLabelColor:
             isDark ? Brand.darkTextSecondary : Brand.subtleLight,
         labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
@@ -444,7 +445,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                     config['icon'] as IconData,
                     size: 14,
                     color: isSelected
-                        ? (isDark ? const Color(0xFF1A1F36) : Colors.white)
+                        ? (isDark ? Brand.darkNavy : Colors.white)
                         : color,
                   ),
                   const SizedBox(width: 6),
@@ -455,7 +456,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                       fontWeight:
                           isSelected ? FontWeight.bold : FontWeight.w500,
                       color: isSelected
-                          ? (isDark ? const Color(0xFF1A1F36) : Colors.white)
+                          ? (isDark ? Brand.darkNavy : Colors.white)
                           : (isDark
                               ? Brand.darkTextSecondary
                               : Brand.subtleLight),
@@ -481,7 +482,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                           fontWeight: FontWeight.bold,
                           color: isSelected
                               ? (isDark
-                                  ? const Color(0xFF1A1F36)
+                                  ? Brand.darkNavy
                                   : Colors.white)
                               : color,
                         ),
@@ -720,7 +721,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                       decoration: BoxDecoration(
                         color: isDark
                             ? Brand.darkCardElevated
-                            : const Color(0xFFF1F5F9),
+                            : Brand.slateLight,
                         borderRadius: BorderRadius.circular(Brand.r(12)),
                         border: Border.all(
                             color:
@@ -1043,7 +1044,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                           Icon(Icons.add_rounded,
                               size: 18,
                               color: isDark
-                                  ? const Color(0xFF1A1F36)
+                                  ? Brand.darkNavy
                                   : Colors.white),
                           const SizedBox(width: 6),
                           Text(
@@ -1051,7 +1052,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: isDark
-                                  ? const Color(0xFF1A1F36)
+                                  ? Brand.darkNavy
                                   : Colors.white,
                             ),
                           ),
@@ -1138,11 +1139,11 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
         backgroundColor: Colors.transparent,
         elevation: 0,
         icon: Icon(Icons.add_rounded,
-            color: isDark ? const Color(0xFF1A1F36) : Colors.white, size: 22),
+            color: isDark ? Brand.darkNavy : Colors.white, size: 22),
         label: Text(
           S.of(context)!.ticketNewTicket,
           style: TextStyle(
-            color: isDark ? const Color(0xFF1A1F36) : Colors.white,
+            color: isDark ? Brand.darkNavy : Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 14,
           ),
@@ -1155,13 +1156,13 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
   Color _getPriorityColor(String priority) {
     switch (priority.toLowerCase()) {
       case 'urgent':
-        return const Color(0xFFE53935);
+        return AdminColors.error;
       case 'high':
-        return const Color(0xFFFF9800);
+        return StatusColors.materialOrange;
       case 'medium':
-        return const Color(0xFF2196F3);
+        return StatusColors.materialBlue;
       case 'low':
-        return const Color(0xFF4CAF50);
+        return StatusColors.materialGreen;
       default:
         return Colors.grey;
     }
@@ -1174,7 +1175,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
       case 'inquiry':
         return Brand.lightGreen;
       case 'order':
-        return const Color(0xFFFF9800);
+        return StatusColors.materialOrange;
       default:
         return Colors.grey;
     }

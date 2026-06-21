@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/customer/article_detail_page.dart
 // REWRITTEN v18 — Full feature article detail with bookmarks,
 //   share, related articles, view tracking, dark mode,
@@ -11,6 +11,7 @@ import 'package:share_plus/share_plus.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
 import '../../utils/time_utils.dart';
+import '../../utils/app_logger.dart';
 
 class ArticleDetailPage extends StatefulWidget {
   final dynamic articleId;
@@ -83,7 +84,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
         _loadRelatedArticles();
       }
     } catch (e) {
-      debugPrint('Article load error: $e');
+      AppLogger.debug('ArticleDetailPage', 'Article load error: $e');
       if (!mounted) return;
       setState(() {
         _isLoading = false;
@@ -332,7 +333,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
                 child: Icon(Icons.article_outlined,
                     size: 38,
                     color:
-                        isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400),
+                        isDark ? StatusColors.softRed : Colors.red.shade400),
               ),
               const SizedBox(height: 20),
               Text(

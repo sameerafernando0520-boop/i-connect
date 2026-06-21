@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // FILE: lib/screens/auth/reset_password_page.dart
 // Password reset landing page reached via iconnect://password-reset
 // deep link. Supabase auth listener fires passwordRecovery event
@@ -73,7 +73,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(e.message),
-          backgroundColor: const Color(0xFFDC2626),
+          backgroundColor: StatusColors.danger,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -83,7 +83,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Failed to update password: $e'),
-          backgroundColor: const Color(0xFFDC2626),
+          backgroundColor: StatusColors.danger,
           behavior: SnackBarBehavior.floating,
         ),
       );

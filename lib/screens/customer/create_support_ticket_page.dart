@@ -1,4 +1,4 @@
-// lib/screens/customer/create_support_ticket_page.dart
+﻿// lib/screens/customer/create_support_ticket_page.dart
 
 import 'dart:async';
 import 'dart:io';
@@ -8,9 +8,11 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../services/points_service.dart';
 import 'ticket_detail_page.dart';
+import '../../utils/app_logger.dart';
 
 class CreateSupportTicketPage extends StatefulWidget {
   final String? preselectedMachineId;
@@ -60,49 +62,49 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
     {
       'value': 'Technical Issue',
       'icon': Icons.bug_report_rounded,
-      'color': const Color(0xFFE53935),
+      'color': AdminColors.error,
       'desc': 'Software or hardware problems',
     },
     {
       'value': 'Maintenance Request',
       'icon': Icons.build_rounded,
-      'color': const Color(0xFFFF9800),
+      'color': StatusColors.materialOrange,
       'desc': 'Scheduled or preventive service',
     },
     {
       'value': 'Parts Request',
       'icon': Icons.settings_rounded,
-      'color': const Color(0xFF9C27B0),
+      'color': StatusColors.deepPurple,
       'desc': 'Spare parts or consumables',
     },
     {
       'value': 'Installation Support',
       'icon': Icons.handyman_rounded,
-      'color': const Color(0xFF2196F3),
+      'color': StatusColors.materialBlue,
       'desc': 'Setup and configuration help',
     },
     {
       'value': 'Training Request',
       'icon': Icons.school_rounded,
-      'color': const Color(0xFF4CAF50),
+      'color': StatusColors.materialGreen,
       'desc': 'Operator training needed',
     },
     {
       'value': 'Performance Issue',
       'icon': Icons.speed_rounded,
-      'color': const Color(0xFFFF5722),
+      'color': AdminColors.internal,
       'desc': 'Quality or speed problems',
     },
     {
       'value': 'Error/Fault',
       'icon': Icons.error_outline_rounded,
-      'color': const Color(0xFFD32F2F),
+      'color': AdminColors.error,
       'desc': 'Error codes or machine faults',
     },
     {
       'value': 'Other',
       'icon': Icons.more_horiz_rounded,
-      'color': const Color(0xFF607D8B),
+      'color': StatusColors.closed,
       'desc': 'Something else',
     },
   ];
@@ -112,28 +114,28 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
       'value': 'low',
       'label': 'Low',
       'desc': 'Minor issue',
-      'color': const Color(0xFF4CAF50),
+      'color': StatusColors.materialGreen,
       'icon': Icons.arrow_downward_rounded,
     },
     {
       'value': 'medium',
       'label': 'Medium',
       'desc': 'Normal issue',
-      'color': const Color(0xFF2196F3),
+      'color': StatusColors.materialBlue,
       'icon': Icons.remove_rounded,
     },
     {
       'value': 'high',
       'label': 'High',
       'desc': 'Affecting work',
-      'color': const Color(0xFFFF9800),
+      'color': StatusColors.materialOrange,
       'icon': Icons.arrow_upward_rounded,
     },
     {
       'value': 'urgent',
       'label': 'Urgent',
       'desc': 'Machine down',
-      'color': const Color(0xFFE53935),
+      'color': AdminColors.error,
       'icon': Icons.priority_high_rounded,
     },
   ];
@@ -224,7 +226,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
         }
       }
     } catch (e) {
-      debugPrint('Error loading machines: $e');
+      AppLogger.debug('CreateSupportTicketPage', 'Error loading machines: $e');
       if (!mounted) return;
       setState(() {
         _loadingMachines = false;
@@ -266,7 +268,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
         _showExistingTicketWarning = _existingOpenTickets.isNotEmpty;
       });
     } catch (e) {
-      debugPrint('Error checking existing tickets: $e');
+      AppLogger.debug('CreateSupportTicketPage', 'Error checking existing tickets: $e');
     }
   }
 
@@ -308,7 +310,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
         setState(() => _hasDraft = true);
       }
     } catch (e) {
-      debugPrint('⚠️ Draft save skipped (table may not exist): $e');
+      AppLogger.debug('CreateSupportTicketPage', 'Draft save skipped (table may not exist): $e');
     }
   }
 
@@ -352,7 +354,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
         }
       }
     } catch (e) {
-      debugPrint('⚠️ Draft load skipped: $e');
+      AppLogger.debug('CreateSupportTicketPage', 'Draft load skipped: $e');
     }
   }
 
@@ -594,7 +596,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
 
         uploadedUrls.add(url);
       } catch (e) {
-        debugPrint('Error uploading attachment $i: $e');
+        AppLogger.debug('CreateSupportTicketPage', 'Error uploading attachment $i: $e');
       }
     }
 
@@ -701,7 +703,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                     style: const TextStyle(fontWeight: FontWeight.w600))),
           ],
         ),
-        backgroundColor: const Color(0xFFE53935),
+        backgroundColor: AdminColors.error,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
       ),
@@ -2172,8 +2174,8 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                               height: 24,
                               decoration: BoxDecoration(
                                 gradient: const LinearGradient(colors: [
-                                  Color(0xFFFF4757),
-                                  Color(0xFFFF6B81)
+                                  StatusColors.coral,
+                                  StatusColors.softRed
                                 ]),
                                 shape: BoxShape.circle,
                                 border: Border.all(
@@ -2584,9 +2586,9 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
       padding: const EdgeInsets.fromLTRB(20, 14, 20, 14),
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(28),
-          topRight: Radius.circular(28),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(Brand.r(28)),
+          topRight: Radius.circular(Brand.r(28)),
         ),
         border: Border(
           top: BorderSide(
@@ -2813,7 +2815,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
               style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w700,
-                  color: Color(0xFFE53935))),
+                  color: AdminColors.error)),
       ],
     );
   }

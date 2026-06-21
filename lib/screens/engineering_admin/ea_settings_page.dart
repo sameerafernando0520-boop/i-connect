@@ -1,4 +1,4 @@
-// lib/screens/engineering_admin/ea_settings_page.dart
+﻿// lib/screens/engineering_admin/ea_settings_page.dart
 // Engineering Admin Portal — App Settings
 
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ import '../../widgets/common/language_selector_sheet.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../widgets/common/theme_style_sheet.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = Brand.lightGreenDark;
 
 class EaSettingsPage extends StatelessWidget {
   const EaSettingsPage({super.key});
@@ -31,7 +31,7 @@ class EaSettingsPage extends StatelessWidget {
           preferredSize: const Size.fromHeight(0.5),
           child: Container(
               height: 0.5,
-              color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0)),
+              color: isDark ? Brand.darkBorder : Brand.borderLight),
         ),
       ),
       body: ListView(
@@ -68,7 +68,7 @@ class EaSettingsPage extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: isDark
                             ? Brand.darkTextPrimary
-                            : const Color(0xFF0F172A))),
+                            : AdminColors.textPrimary)),
                 subtitle: Text(
                     ThemeProvider.styleName(themeProvider.darkStyle),
                     style: TextStyle(
@@ -96,7 +96,7 @@ class EaSettingsPage extends StatelessWidget {
             children: [
               _ActionRow(
                 icon: Icons.language_rounded,
-                iconColor: const Color(0xFF0EA5E9),
+                iconColor: AdminColors.eaAccent,
                 title: 'App Language',
                 subtitle: localeProvider.currentLanguageName,
                 isDark: isDark,
@@ -115,7 +115,7 @@ class EaSettingsPage extends StatelessWidget {
             children: [
               _InfoRow(
                 icon: Icons.notifications_outlined,
-                iconColor: const Color(0xFFF59E0B),
+                iconColor: AdminColors.warning,
                 title: 'Push Notifications',
                 subtitle: 'Manage notification preferences in your device settings',
                 isDark: isDark,
@@ -208,7 +208,7 @@ class _SettingsCard extends StatelessWidget {
         color: isDark ? Brand.darkCard : Colors.white,
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
-          color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
+          color: isDark ? Brand.darkBorder : Brand.borderLight,
         ),
       ),
       child: Column(
@@ -228,7 +228,7 @@ class _Divider extends StatelessWidget {
     return Container(
       height: 0.5,
       margin: const EdgeInsets.only(left: 56),
-      color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
+      color: isDark ? Brand.darkBorder : Brand.borderLight,
     );
   }
 }
@@ -276,7 +276,7 @@ class _ToggleRow extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B),
+                      color: isDark ? Brand.darkTextPrimary : Brand.darkSurface,
                     )),
                 const SizedBox(height: 2),
                 Text(subtitle,
@@ -344,7 +344,7 @@ class _ActionRow extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: isDark
                             ? Brand.darkTextPrimary
-                            : const Color(0xFF1E293B),
+                            : Brand.darkSurface,
                       )),
                   const SizedBox(height: 2),
                   Text(subtitle,
@@ -408,7 +408,7 @@ class _InfoRow extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       color: isDark
                           ? Brand.darkTextPrimary
-                          : const Color(0xFF1E293B),
+                          : Brand.darkSurface,
                     )),
                 const SizedBox(height: 2),
                 Text(subtitle,

@@ -1,4 +1,4 @@
-// lib/screens/marketing/ma_banners_page.dart
+﻿// lib/screens/marketing/ma_banners_page.dart
 // P4 — Promotional Banners: full CRUD
 
 import 'dart:io';
@@ -12,7 +12,7 @@ import '../../widgets/ds/ds_widgets.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../config/supabase_config.dart';
 
-const Color _bannerColor = Color(0xFFEC4899);
+const Color _bannerColor = StatusColors.pink;
 
 class MaBannersPage extends StatefulWidget {
   const MaBannersPage({super.key});

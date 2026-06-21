@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/engineering_admin/ea_ticket_list_page.dart
 // EA Ticket List — Engineering Admin's primary work queue
 // Shows ALL service tickets with filter tabs + quick dispatch FAB
@@ -15,7 +15,7 @@ import '../../services/export_service.dart';
 import 'ea_ticket_detail_page.dart';
 import 'ea_ticket_chat_page.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = Brand.lightGreenDark;
 
 // Filter tabs
 enum _TicketFilter { all, unassigned, inProgress, resolved, closed }
@@ -425,8 +425,8 @@ class _EaTicketListPageState extends State<EaTicketListPage>
     showModalBottomSheet(
       context: context,
       backgroundColor: isDark ? Brand.darkCard : Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       builder: (sheetCtx) => SafeArea(
         child: Column(
@@ -500,8 +500,8 @@ class _EaTicketListPageState extends State<EaTicketListPage>
       context: context,
       backgroundColor: isDark ? Brand.darkCard : Colors.white,
       isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       builder: (sheetCtx) => DraggableScrollableSheet(
         initialChildSize: 0.55,
@@ -538,13 +538,13 @@ class _EaTicketListPageState extends State<EaTicketListPage>
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFEF4444).withAlpha(20),
+                      color: AdminColors.error.withAlpha(20),
                       borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Text(
                       '${unassigned.length} unassigned',
                       style: const TextStyle(
-                        color: Color(0xFFEF4444),
+                        color: AdminColors.error,
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                       ),
@@ -587,11 +587,11 @@ class _EaTicketListPageState extends State<EaTicketListPage>
                               width: 40,
                               height: 40,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFEF4444).withAlpha(20),
+                                color: AdminColors.error.withAlpha(20),
                                 borderRadius: BorderRadius.circular(Brand.r(10)),
                               ),
                               child: const Icon(Icons.warning_amber_rounded,
-                                  color: Color(0xFFEF4444), size: 20),
+                                  color: AdminColors.error, size: 20),
                             ),
                             title: Text(
                               t['subject'] as String? ?? 'Ticket',
@@ -700,7 +700,7 @@ class _EaTicketListPageState extends State<EaTicketListPage>
   // ── Loading / Error / Empty ───────────────────────────────────
 
   Widget _buildShimmer(bool isDark) {
-    final shimmer = isDark ? Brand.darkCardElevated : const Color(0xFFE2E8F0);
+    final shimmer = isDark ? Brand.darkCardElevated : Brand.borderLight;
     return ListView.builder(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 100),
       itemCount: 6,
@@ -822,7 +822,7 @@ class _TicketCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(Brand.r(16)),
           border: Border.all(
             color: isUnassigned
-                ? const Color(0xFFEF4444).withAlpha(80)
+                ? AdminColors.error.withAlpha(80)
                 : AdminColors.border(context),
           ),
           boxShadow: [
@@ -914,15 +914,15 @@ class _TicketCard extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 3),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFEF4444).withAlpha(15),
+                            color: AdminColors.error.withAlpha(15),
                             borderRadius: BorderRadius.circular(Brand.r(6)),
                             border: Border.all(
-                                color: const Color(0xFFEF4444).withAlpha(40)),
+                                color: AdminColors.error.withAlpha(40)),
                           ),
                           child: const Text(
                             'Unassigned',
                             style: TextStyle(
-                              color: Color(0xFFEF4444),
+                              color: AdminColors.error,
                               fontSize: 11,
                               fontWeight: FontWeight.w700,
                             ),
@@ -969,10 +969,10 @@ class _TicketCard extends StatelessWidget {
 
   Color _categoryColor(String category) {
     final c = category.toLowerCase();
-    if (c.contains('witcolor') || c.contains('uv')) return const Color(0xFF8B5CF6);
-    if (c.contains('laser')) return const Color(0xFFEF4444);
-    if (c.contains('cnc')) return const Color(0xFF10B981);
-    if (c.contains('fiber')) return const Color(0xFFF97316);
+    if (c.contains('witcolor') || c.contains('uv')) return StatusColors.assigned;
+    if (c.contains('laser')) return AdminColors.error;
+    if (c.contains('cnc')) return StatusColors.resolved;
+    if (c.contains('fiber')) return AdminColors.internal;
     return Brand.royalBlue;
   }
 

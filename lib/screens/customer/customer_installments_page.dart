@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // FILE: lib/screens/customer/customer_installments_page.dart
 // ============================================================
 
@@ -10,6 +10,7 @@ import '../../config/supabase_config.dart';
 import '../../widgets/customer/submit_payment_sheet.dart';
 import '../admin/installment_detail_page.dart';
 import '../../widgets/ds/ds_widgets.dart';
+import '../../utils/app_logger.dart';
 
 class CustomerInstallmentsPage extends StatefulWidget {
   const CustomerInstallmentsPage({super.key});
@@ -54,7 +55,7 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
         _isLoading = false;
       });
     } catch (e) {
-      debugPrint('Installments load error: $e');
+      AppLogger.debug('CustomerInstallmentsPage', 'Installments load error: $e');
       if (!mounted) return;
       setState(() => _isLoading = false);
     }

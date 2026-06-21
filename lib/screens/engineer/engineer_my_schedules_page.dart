@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/engineer/engineer_my_schedules_page.dart
 // Shows every service_schedule this engineer is assigned to
 // (via service_schedule_engineers join). Each card has lifecycle
@@ -14,12 +14,12 @@ import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../utils/app_logger.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _engAccent = Color(0xFF00B4D8);
 
 class EngineerMySchedulesPage extends StatefulWidget {
   const EngineerMySchedulesPage({super.key});
@@ -300,12 +300,12 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
         decoration: BoxDecoration(
           color: selected
-              ? _engAccent
+              ? Brand.lightGreen
               : (isDark ? Brand.darkCard : Colors.white),
           borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: selected
-                ? _engAccent
+                ? Brand.lightGreen
                 : (isDark ? Brand.darkBorder : Brand.borderLight),
           ),
         ),
@@ -386,7 +386,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
         border: Border.all(
           color: isDone
               ? Brand.lightGreenBright.withAlpha(80)
-              : _engAccent.withAlpha(60),
+              : Brand.lightGreen.withAlpha(60),
         ),
       ),
       padding: const EdgeInsets.fromLTRB(14, 14, 14, 12),
@@ -398,14 +398,14 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
             children: [
               CircleAvatar(
                 radius: 18,
-                backgroundColor: _engAccent.withAlpha(40),
+                backgroundColor: Brand.lightGreen.withAlpha(40),
                 backgroundImage:
                     (customer?['profile_photo'] as String?) != null
                         ? CachedNetworkImageProvider(
                             customer!['profile_photo'] as String)
                         : null,
                 child: (customer?['profile_photo'] as String?) == null
-                    ? Icon(Icons.person_rounded, color: _engAccent)
+                    ? Icon(Icons.person_rounded, color: Brand.lightGreen)
                     : null,
               ),
               const SizedBox(width: 10),
@@ -442,7 +442,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 7, vertical: 3),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF8B5CF6),
+                    color: StatusColors.assigned,
                     borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: const Text(
@@ -513,10 +513,10 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
                     customer['phone_number'] as String,
                     style: TextStyle(
                       fontSize: 12,
-                      color: _engAccent,
+                      color: Brand.lightGreen,
                       fontWeight: FontWeight.w600,
                       decoration: TextDecoration.underline,
-                      decorationColor: _engAccent,
+                      decorationColor: Brand.lightGreen,
                     ),
                   ),
                 ),
@@ -527,17 +527,17 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF22C55E).withAlpha(isDark ? 25 : 15),
+                      color: Brand.lightGreen.withAlpha(isDark ? 25 : 15),
                       borderRadius: BorderRadius.circular(Brand.r(6)),
                     ),
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.phone, size: 12, color: Color(0xFF22C55E)),
+                        Icon(Icons.phone, size: 12, color: Brand.lightGreen),
                         SizedBox(width: 3),
                         Text('Call', style: TextStyle(
                           fontSize: 11, fontWeight: FontWeight.w700,
-                          color: Color(0xFF22C55E),
+                          color: Brand.lightGreen,
                         )),
                       ],
                     ),
@@ -582,7 +582,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
                 if (showStart)
                   _actionBtn('Start work',
                       icon: Icons.play_arrow_rounded,
-                      color: _engAccent,
+                      color: Brand.lightGreen,
                       onTap: () => _action(a, 'started')),
                 if (showComplete)
                   _actionBtn('Complete',
@@ -640,7 +640,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
         label = 'On the way';
         break;
       case 'on_site':
-        c = _engAccent;
+        c = Brand.lightGreen;
         label = 'On site';
         break;
       case 'completed':
@@ -707,6 +707,6 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
 
 // Minimal local color helper so this file doesn't depend on admin_theme.
 class AdminColorsLite {
-  static const Color info = Color(0xFF3B82F6);
-  static const Color warning = Color(0xFFF59E0B);
+  static const Color info = AdminColors.info;
+  static const Color warning = AdminColors.warning;
 }

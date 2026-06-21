@@ -1,4 +1,4 @@
-// lib/screens/admin/customer_detail_page.dart
+﻿// lib/screens/admin/customer_detail_page.dart
 // Fixed: AdminColors.background/surface/textPrimary/primaryLight removed,
 //   Future.wait<dynamic>, mounted guards, spread-safe, AlwaysScrollable
 
@@ -16,6 +16,7 @@ import 'admin_ticket_detail_page.dart';
 import 'inquiry_detail_page.dart';
 import 'admin_installments_page.dart';
 import 'installment_detail_page.dart';
+import '../../utils/app_logger.dart';
 
 class CustomerDetailPage extends StatefulWidget {
   final String customerId;
@@ -253,7 +254,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       setState(() => _connector =
           row == null ? null : Map<String, dynamic>.from(row as Map));
     } catch (e) {
-      debugPrint('Failed to load connector profile: $e');
+      AppLogger.debug('CustomerDetailPage', 'Failed to load connector profile: $e');
     }
   }
 
@@ -276,7 +277,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
         _loadingAllConnectors = false;
       });
     } catch (e) {
-      debugPrint('Failed to load connectors: $e');
+      AppLogger.debug('CustomerDetailPage', 'Failed to load connectors: $e');
       if (!mounted) return;
       setState(() => _loadingAllConnectors = false);
     }
@@ -386,7 +387,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       isDark ? Brand.darkCardElevated : Brand.scaffoldLight;
 
   Color _textPrimary(bool isDark) =>
-      isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+      isDark ? Brand.darkTextPrimary : Brand.darkSurface;
 
   Color _textSub(bool isDark) =>
       isDark ? Brand.darkTextSecondary : Colors.grey.shade500;
@@ -656,7 +657,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
         gradient: LinearGradient(
           colors: isDark
               ? [Brand.darkCard, Brand.darkCardElevated]
-              : [const Color(0xFF0F2557), Brand.royalBlue],
+              : [Brand.darkNavy, Brand.royalBlue],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -917,7 +918,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                 child: _actionButton(
                   Icons.message_rounded,
                   'WhatsApp',
-                  const Color(0xFF25D366),
+                  Brand.whatsappGreen,
                   isDark,
                   () => _launchWhatsApp(phone),
                 ),
@@ -1192,7 +1193,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
             decoration: BoxDecoration(
               color: Brand.surface(isDark),
               borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(28)),
+                  BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
             ),
             child: Column(
               children: [
@@ -2442,11 +2443,11 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       case 'new':
         return AdminColors.info;
       case 'contacted':
-        return const Color(0xFF8E24AA);
+        return StatusColors.deepPurple;
       case 'quoted':
         return AdminColors.warning;
       case 'negotiating':
-        return const Color(0xFFFF8F00);
+        return AdminColors.warning;
       case 'won':
         return AdminColors.accent;
       case 'lost':
@@ -2933,8 +2934,8 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       context: context,
       isScrollControlled: true,
       backgroundColor: _cardBg(isDark),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       builder: (sheetCtx) => Padding(
         padding: EdgeInsets.only(
@@ -3123,9 +3124,9 @@ class _SuggestMachineSheetState extends State<_SuggestMachineSheet> {
 
   Color get _bg => widget.isDark ? Brand.darkCard : Colors.white;
   Color get _textPrimary =>
-      widget.isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+      widget.isDark ? Brand.darkTextPrimary : Brand.darkSurface;
   Color get _textSub =>
-      widget.isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+      widget.isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight;
 
   @override
   void dispose() {
@@ -3177,7 +3178,7 @@ class _SuggestMachineSheetState extends State<_SuggestMachineSheet> {
       decoration: BoxDecoration(
         color: _bg,
         borderRadius:
-            const BorderRadius.vertical(top: Radius.circular(28)),
+            BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       padding: EdgeInsets.only(
         left: 20,
@@ -3419,9 +3420,9 @@ class _MachinePickerDialogState extends State<_MachinePickerDialog> {
     final isDark = widget.isDark;
     final bgColor = isDark ? Brand.darkCard : Colors.white;
     final textPrimary =
-        isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+        isDark ? Brand.darkTextPrimary : Brand.darkSurface;
     final textSub =
-        isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+        isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight;
 
     return Dialog(
       backgroundColor: bgColor,

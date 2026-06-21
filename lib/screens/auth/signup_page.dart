@@ -1,4 +1,4 @@
-// lib/screens/auth/signup_page.dart
+﻿// lib/screens/auth/signup_page.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -221,7 +221,7 @@ class _SignupPageState extends State<SignupPage> {
               Expanded(child: Text(_friendlyError(e))),
             ],
           ),
-          backgroundColor: isDark ? const Color(0xFFCF6679) : Colors.red,
+          backgroundColor: isDark ? StatusColors.softRed : Colors.red,
           behavior: SnackBarBehavior.floating,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
@@ -1168,7 +1168,7 @@ class _SignupPageState extends State<SignupPage> {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text(error),
                         backgroundColor:
-                            isDark ? const Color(0xFFCF6679) : Colors.red,
+                            isDark ? StatusColors.softRed : Colors.red,
                         behavior: SnackBarBehavior.floating,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(Brand.r(12))),

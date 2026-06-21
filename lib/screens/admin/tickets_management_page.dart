@@ -1,4 +1,4 @@
-// lib/screens/admin/tickets_management_page.dart
+﻿// lib/screens/admin/tickets_management_page.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -81,7 +81,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
   Color get _accentColor =>
       _isDark ? Brand.lightGreenBright : AdminColors.accent;
   Color get _elevatedFill =>
-      _isDark ? const Color(0xFF22272E) : Colors.grey.shade100;
+      _isDark ? Brand.darkCardHighlight : Colors.grey.shade100;
 
   List<BoxShadow> get _cardShadow => _isDark
       ? []
@@ -757,11 +757,11 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
       case 'urgent':
         return AdminColors.error;
       case 'high':
-        return const Color(0xFFF97316);
+        return AdminColors.internal;
       case 'medium':
         return AdminColors.info;
       case 'low':
-        return const Color(0xFF22C55E);
+        return Brand.lightGreen;
       default:
         return Colors.grey;
     }
@@ -847,7 +847,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: _sheetBg,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -1216,7 +1216,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
           _buildStatItem(
             'Today',
             '+$_createdToday / ✓$_resolvedToday',
-            const Color(0xFF8B5CF6),
+            StatusColors.assigned,
           ),
         ],
       ),
@@ -1514,7 +1514,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
         decoration: BoxDecoration(
             color: _sheetBg,
             borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(28))),
+                BorderRadius.vertical(top: Radius.circular(Brand.r(28)))),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -1593,7 +1593,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
         decoration: BoxDecoration(
             color: _sheetBg,
             borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(28))),
+                BorderRadius.vertical(top: Radius.circular(Brand.r(28)))),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -1615,11 +1615,11 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
             _buildPriorityOption(ctx, 'urgent', 'Urgent', Icons.error_rounded,
                 AdminColors.error),
             _buildPriorityOption(ctx, 'high', 'High', Icons.warning_rounded,
-                const Color(0xFFF97316)),
+                AdminColors.internal),
             _buildPriorityOption(
                 ctx, 'medium', 'Medium', Icons.info_rounded, AdminColors.info),
             _buildPriorityOption(ctx, 'low', 'Low', Icons.check_circle_rounded,
-                const Color(0xFF22C55E)),
+                Brand.lightGreen),
             const SizedBox(height: 12),
           ],
         ),
@@ -2118,7 +2118,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
         decoration: BoxDecoration(
             color: _sheetBg,
             borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(28))),
+                BorderRadius.vertical(top: Radius.circular(Brand.r(28)))),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -2268,7 +2268,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
         decoration: BoxDecoration(
             color: _sheetBg,
             borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(28))),
+                BorderRadius.vertical(top: Radius.circular(Brand.r(28)))),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

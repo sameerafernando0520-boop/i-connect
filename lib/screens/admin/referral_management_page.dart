@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
@@ -37,17 +37,17 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
   // use literal values that exactly match AdminColors statics.
   static const _filters = <(String?, String, Color)>[
     (null, 'All', AdminColors.primary),
-    ('pending', 'Pending', Color(0xFF94A3B8)),
-    ('signed_up', 'Signed Up', Color(0xFF8B5CF6)),
-    ('cooling', 'Cooling', Color(0xFF06B6D4)),
+    ('pending', 'Pending', Brand.subtleLight),
+    ('signed_up', 'Signed Up', StatusColors.assigned),
+    ('cooling', 'Cooling', StatusColors.info),
     // FIX: AdminColors.success = 0xFF22C55E
-    ('approved', 'Approved', Color(0xFF22C55E)),
+    ('approved', 'Approved', Brand.lightGreen),
     // FIX: AdminColors.info = 0xFF3B82F6
-    ('paid', 'Paid', Color(0xFF3B82F6)),
+    ('paid', 'Paid', AdminColors.info),
     // FIX: AdminColors.error = 0xFFEF4444
-    ('rejected', 'Rejected', Color(0xFFEF4444)),
+    ('rejected', 'Rejected', AdminColors.error),
     // FIX: AdminColors.warning = 0xFFF59E0B
-    ('expired', 'Expired', Color(0xFFF59E0B)),
+    ('expired', 'Expired', AdminColors.warning),
   ];
 
   // ── Lifecycle ──
@@ -738,7 +738,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
                 decoration: BoxDecoration(
                   color: AdminColors.card(sheetCtx),
                   borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(28)),
+                      BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -1069,11 +1069,11 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
   Color _statusColor(String s) {
     switch (s) {
       case 'pending':
-        return const Color(0xFF94A3B8);
+        return Brand.subtleLight;
       case 'signed_up':
-        return const Color(0xFF8B5CF6);
+        return StatusColors.assigned;
       case 'cooling':
-        return const Color(0xFF06B6D4);
+        return StatusColors.info;
       case 'approved':
         return AdminColors.success;
       case 'paid':
@@ -1083,7 +1083,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
       case 'expired':
         return AdminColors.warning;
       default:
-        return const Color(0xFF94A3B8);
+        return Brand.subtleLight;
     }
   }
 

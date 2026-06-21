@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_installations_page.dart
+﻿// lib/screens/admin/admin_installations_page.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -18,19 +18,19 @@ const _typeLabels = {
 };
 
 const _typeColors = {
-  'new_install':   Color(0xFF10B981),
-  'replacement':   Color(0xFF3B82F6),
-  'upgrade':       Color(0xFF8B5CF6),
-  'commissioning': Color(0xFFF59E0B),
-  'decommission':  Color(0xFFEF4444),
+  'new_install':   StatusColors.resolved,
+  'replacement':   AdminColors.info,
+  'upgrade':       StatusColors.assigned,
+  'commissioning': AdminColors.warning,
+  'decommission':  AdminColors.error,
 };
 
 const _statusColors = {
-  'pending':     Color(0xFFF59E0B),
-  'scheduled':   Color(0xFF3B82F6),
-  'in_progress': Color(0xFF8B5CF6),
-  'completed':   Color(0xFF10B981),
-  'cancelled':   Color(0xFF6B7280),
+  'pending':     AdminColors.warning,
+  'scheduled':   AdminColors.info,
+  'in_progress': StatusColors.assigned,
+  'completed':   StatusColors.resolved,
+  'cancelled':   StatusColors.gray,
 };
 
 // ══════════════════════════════════════════════════════════════
@@ -175,7 +175,7 @@ class _AdminInstallationsPageState extends State<AdminInstallationsPage> {
               decoration: BoxDecoration(
                 color: AdminColors.card(sheetCtx),
                 borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(28)),
+                    BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
               ),
               child: Column(
                 children: [

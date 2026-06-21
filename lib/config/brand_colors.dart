@@ -283,20 +283,37 @@ class Brand {
   static Color get darkCardElevated => _dark.cardElevated;
   static Color get darkBorder => _dark.border;
   static Color get darkBorderLight => _dark.borderLight;
+  static const Color darkCardHighlight = Color(0xFF22272E); // engineer dark card tint
 
   // ─── Light Theme (premium clean whites) ─────────
   static const Color scaffoldLight = Color(0xFFF8FAFC);
   static const Color cardLight = Colors.white;
   static const Color borderLight = Color(0xFFE2E8F0);
+  static const Color borderMedium = Color(0xFFCBD5E1); // slate-200
+  static const Color slateLight = Color(0xFFF1F5F9);   // slate-100
 
   // ─── Text ───────────────────────────────────────
   static const Color subtleLight = Color(0xFF94A3B8);
   static const Color textPrimaryLight = Color(0xFF0F172A);
   static const Color textSecondaryLight = Color(0xFF64748B);
+  static const Color textSlate = Color(0xFF475569);     // slate-600
+  static const Color textGray = Color(0xFF374151);      // gray-700
   static Color get darkTextPrimary => _dark.textPrimary;
   static Color get darkTextSecondary => _dark.textSecondary;
   static Color get darkTextTertiary => _dark.textTertiary;
   static Color get darkIconActive => _dark.iconActive;
+
+  // ─── Dark Surface Shades ───────────────────────
+  // These represent the range of navy/dark-mode card backgrounds used across
+  // engineer and admin screens. New screens should use Brand.canvas(isDark) /
+  // Brand.surface(isDark) instead; these constants are for existing inline usages.
+  static const Color darkSurface = Color(0xFF1E293B);       // slate-800 — dark card bg
+  static const Color darkNavy = Color(0xFF1A1F36);          // deep navy panel
+  static const Color darkDeep = Color(0xFF1A1A2E);          // darkest dark-mode bg
+  static const Color navyMid = Color(0xFF2A3F6E);           // medium navy accent
+
+  // ─── Misc brand colours ────────────────────────
+  static const Color whatsappGreen = Color(0xFF25D366);  // WhatsApp CTA
 }
 
 /// L2: Canonical semantic/status palette.
@@ -321,4 +338,66 @@ class StatusColors {
   static const Color warningDark = Color(0xFFD97706); // amber-dark
   static const Color danger = Color(0xFFEF4444); // red
   static const Color info = Color(0xFF06B6D4); // cyan
+
+  // Extended status shades (used in installation, job-record, completion flows)
+  static const Color resolved = Color(0xFF10B981); // emerald — completed/resolved
+  static const Color teal = Color(0xFF14B8A6); // teal — service/catalog accent
+  static const Color indigo = Color(0xFF6366F1); // indigo — analytics/kb accent
+  static const Color pink = Color(0xFFEC4899); // pink — banners/marketing accent
+  static const Color gray = Color(0xFF6B7280); // neutral gray — default/unknown states
+  static const Color subtle = Color(0xFF94A3B8); // light slate — hint/tertiary text
+
+  // Soft / light variants (notification cards, loyalty tier cards, inline badges)
+  static const Color softRed = Color(0xFFFF6B6B);      // coral-red — delete/error emphasis
+  static const Color coral = Color(0xFFFF4757);         // bright red-coral — CTA danger
+  static const Color warningLight = Color(0xFFFFB74D);  // amber-300 — soft warning chip
+  static const Color materialOrange = Color(0xFFFF9800); // material orange — timeline
+  static const Color lavender = Color(0xFFCE93D8);      // light purple — loyalty/tier
+  static const Color deepPurple = Color(0xFF6A1B9A);    // deep purple — premium tier
+  static const Color materialGreen = Color(0xFF4CAF50); // material green — success alt
+  static const Color materialBlue = Color(0xFF2196F3);  // material blue — info alt
+  static const Color skyBlue = Color(0xFF0EA5E9);       // sky-blue (= AdminColors.eaAccent)
+  static const Color mutedGray = Color(0xFF9E9E9E);     // muted gray — disabled states
+}
+
+/// L3: Tier colours. Loyalty tiers (customer portal + marketing portal) were
+/// re-declaring these hex codes inline. One canonical location prevents drift.
+class TierColors {
+  TierColors._();
+
+  static const Color bronze = Color(0xFFCD7F32);
+  static const Color silver = Color(0xFFC0C0C0);
+  static const Color gold = Color(0xFFFFD700);
+  static const Color platinum = Color(0xFF00B4D8); // cyan-teal
+
+  static Color forTier(String? tier) {
+    switch (tier?.toLowerCase()) {
+      case 'platinum': return platinum;
+      case 'gold': return gold;
+      case 'silver': return silver;
+      default: return bronze;
+    }
+  }
+}
+
+/// L4: Chart / analytics series colours. Data-vis screens were declaring
+/// inline Color(0xFF...) per series. Named palette prevents series-colour
+/// drift across the analytics dashboard, KPI graphs, and marketing pages.
+class ChartColors {
+  ChartColors._();
+
+  static const Color blue = Color(0xFF3B82F6);
+  static const Color purple = Color(0xFF8B5CF6);
+  static const Color amber = Color(0xFFF59E0B);
+  static const Color red = Color(0xFFEF4444);
+  static const Color teal = Color(0xFF14B8A6);
+  static const Color pink = Color(0xFFEC4899);
+  static const Color orange = Color(0xFFF97316);
+  static const Color indigo = Color(0xFF6366F1);
+  static const Color emerald = Color(0xFF10B981);
+  static const Color cyan = Color(0xFF06B6D4);
+  static const Color gray = Color(0xFF6B7280);
+
+  /// Ordered series palette — use index to pick a colour for the Nth data series.
+  static const List<Color> series = [blue, purple, amber, red, teal, pink, orange, indigo];
 }

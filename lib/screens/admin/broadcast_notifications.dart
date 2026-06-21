@@ -1,4 +1,4 @@
-// lib/screens/admin/broadcast_notifications.dart
+﻿// lib/screens/admin/broadcast_notifications.dart
 
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -6,8 +6,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../utils/time_utils.dart';
+import '../../utils/app_logger.dart';
 
 class BroadcastNotificationsPage extends StatefulWidget {
   const BroadcastNotificationsPage({super.key});
@@ -53,7 +55,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       'all_engineers',
       'All Engineers',
       Icons.engineering_rounded,
-      Color(0xFF00B4D8),
+      TierColors.platinum,
     ),
     (
       'all_users',
@@ -65,7 +67,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       'specific_machine',
       'By Machine Category',
       Icons.precision_manufacturing_rounded,
-      Color(0xFFFF9800),
+      StatusColors.materialOrange,
     ),
   ];
 
@@ -74,25 +76,25 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       'new_year',
       'New Year',
       Icons.celebration_rounded,
-      Color(0xFFE91E63),
+      StatusColors.pink,
     ),
     (
       'holiday',
       'Holiday',
       Icons.card_giftcard_rounded,
-      Color(0xFFE53935),
+      AdminColors.error,
     ),
     (
       'mid_year',
       'Mid-Year',
       Icons.local_offer_rounded,
-      Color(0xFFFF9800),
+      StatusColors.materialOrange,
     ),
     (
       'special',
       'Special',
       Icons.star_rounded,
-      Color(0xFF9C27B0),
+      StatusColors.deepPurple,
     ),
   ];
 
@@ -104,11 +106,11 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
   ];
 
   // ── Const color aliases ──
-  static const _redColor = Color(0xFFE53935);
-  static const _redLight = Color(0xFFEF5350); // shade400
-  static const _greyColor = Color(0xFF607D8B);
-  static const _orangeColor = Color(0xFFFF9800);
-  static const _greyDark = Color(0xFF455A64); // shade700
+  static const _redColor = AdminColors.error;
+  static const _redLight = AdminColors.error; // shade400
+  static const _greyColor = StatusColors.closed;
+  static const _orangeColor = StatusColors.materialOrange;
+  static const _greyDark = StatusColors.closed; // shade700
 
   @override
   void initState() {
@@ -151,7 +153,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       }
       return true;
     } catch (e) {
-      debugPrint('⚠️ Admin role check failed: $e');
+      AppLogger.debug('BroadcastNotifications', 'Admin role check failed: $e');
       if (mounted) Navigator.of(context).maybePop();
       return false;
     }
@@ -198,7 +200,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         _isLoadingHistory = false;
       });
     } catch (e) {
-      debugPrint('Error loading broadcast history: $e');
+      AppLogger.debug('BroadcastNotifications', 'Error loading broadcast history: $e');
       if (!mounted) return;
       setState(() => _isLoadingHistory = false);
     }
@@ -224,7 +226,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         () => _machineCategories = categories.toList(),
       );
     } catch (e) {
-      debugPrint('Error loading machine categories: $e');
+      AppLogger.debug('BroadcastNotifications', 'Error loading machine categories: $e');
     }
   }
 
@@ -290,7 +292,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         _recipientLoading = false;
       });
     } catch (e) {
-      debugPrint('Error counting recipients: $e');
+      AppLogger.debug('BroadcastNotifications', 'Error counting recipients: $e');
       if (!mounted) return;
       setState(() {
         // Keep the previous count visually, but flag the error so the
@@ -453,9 +455,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         } catch (_) {
           pushError = e.toString();
         }
-        debugPrint(
-          'FCM push call failed (notifications saved): $pushError',
-        );
+        AppLogger.warn('BroadcastNotifications', 'FCM push call failed (notifications saved)', error: pushError);
       }
 
       _titleCtrl.clear();
@@ -480,7 +480,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         );
       }
     } catch (e) {
-      debugPrint('Broadcast send error: $e');
+      AppLogger.debug('BroadcastNotifications', 'Broadcast send error: $e');
       if (!mounted) return;
       setState(() => _isSending = false);
       _snack(
@@ -721,7 +721,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         _loadingBanners = false;
       });
     } catch (e) {
-      debugPrint('Error loading banners: $e');
+      AppLogger.debug('BroadcastNotifications', 'Error loading banners: $e');
       if (!mounted) return;
       setState(() => _loadingBanners = false);
     }
@@ -900,7 +900,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
           .from('promotional-banners')
           .getPublicUrl(path);
     } catch (e) {
-      debugPrint('Banner image upload error: $e');
+      AppLogger.debug('BroadcastNotifications', 'Banner image upload error: $e');
       return null;
     }
   }
@@ -928,7 +928,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       case 'active':
         return Brand.lightGreen;
       case 'scheduled':
-        return const Color(0xFF2196F3);
+        return StatusColors.materialBlue;
       case 'expired':
         return _redColor;
       case 'inactive':
@@ -1147,7 +1147,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
               decoration: BoxDecoration(
                 color: Brand.surface(isDark),
                 borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(28),
+                  top: Radius.circular(Brand.r(28)),
                 ),
               ),
               child: Column(
@@ -1171,7 +1171,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                               // FIX: replaced Colors.grey.shade300
                               color: isDark
                                   ? Brand.darkBorderLight
-                                  : const Color(0xFFCBD5E1),
+                                  : Brand.borderMedium,
                               borderRadius: BorderRadius.circular(Brand.r(2)),
                             ),
                           ),
@@ -1836,7 +1836,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
               hintText: 'Notification title...',
               hintStyle: TextStyle(
                 color:
-                    isDark ? Brand.darkTextTertiary : const Color(0xFFCBD5E1),
+                    isDark ? Brand.darkTextTertiary : Brand.borderMedium,
                 fontWeight: FontWeight.w600,
               ),
               prefixIcon: Icon(
@@ -1872,7 +1872,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
               hintText: 'Write your message...',
               hintStyle: TextStyle(
                 color:
-                    isDark ? Brand.darkTextTertiary : const Color(0xFFCBD5E1),
+                    isDark ? Brand.darkTextTertiary : Brand.borderMedium,
               ),
               filled: true,
               fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
@@ -1998,7 +1998,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                   style: TextStyle(
                     color: isDark
                         ? Brand.darkTextTertiary
-                        : const Color(0xFFCBD5E1),
+                        : Brand.borderMedium,
                     fontSize: 14,
                   ),
                 ),
@@ -2189,7 +2189,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
             height: 80,
             margin: const EdgeInsets.only(bottom: 10),
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCardElevated : const Color(0xFFEEF0F5),
+              color: isDark ? Brand.darkCardElevated : Brand.slateLight,
               borderRadius: BorderRadius.circular(Brand.r(16)),
             ),
           ),
@@ -2212,7 +2212,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
             Icon(
               Icons.campaign_outlined,
               size: 42,
-              color: isDark ? Brand.darkTextTertiary : const Color(0xFFCBD5E1),
+              color: isDark ? Brand.darkTextTertiary : Brand.borderMedium,
             ),
             const SizedBox(height: 12),
             Text(
@@ -2305,7 +2305,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                       size: 12,
                       color: isDark
                           ? Brand.darkTextTertiary
-                          : const Color(0xFFCBD5E1),
+                          : Brand.borderMedium,
                     ),
                     const SizedBox(width: 4),
                     Text(
@@ -2314,7 +2314,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                         fontSize: 12,
                         color: isDark
                             ? Brand.darkTextTertiary
-                            : const Color(0xFFCBD5E1),
+                            : Brand.borderMedium,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -2328,7 +2328,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                           fontSize: 12,
                           color: isDark
                               ? Brand.darkTextTertiary
-                              : const Color(0xFFCBD5E1),
+                              : Brand.borderMedium,
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -2446,7 +2446,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         _buildStatChip(
           'Scheduled',
           '$scheduled',
-          const Color(0xFF2196F3),
+          StatusColors.materialBlue,
           isDark,
         ),
         const SizedBox(width: 8),
@@ -2767,7 +2767,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
             Icon(
               Icons.photo_library_outlined,
               size: 48,
-              color: isDark ? Brand.darkTextTertiary : const Color(0xFFCBD5E1),
+              color: isDark ? Brand.darkTextTertiary : Brand.borderMedium,
             ),
             const SizedBox(height: 16),
             Text(
@@ -2835,8 +2835,8 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
 
   // ── Banners loading skeleton ──
   Widget _buildBannersLoadingSkeleton(bool isDark) {
-    final shimmer = isDark ? Brand.darkCardElevated : const Color(0xFFEEF0F5);
-    final card = isDark ? Brand.darkCard : const Color(0xFFF8FAFC);
+    final shimmer = isDark ? Brand.darkCardElevated : Brand.slateLight;
+    final card = isDark ? Brand.darkCard : Brand.scaffoldLight;
 
     return ListView(
       physics: const NeverScrollableScrollPhysics(),
@@ -2909,7 +2909,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: TextStyle(
-          color: isDark ? Brand.darkTextTertiary : const Color(0xFFCBD5E1),
+          color: isDark ? Brand.darkTextTertiary : Brand.borderMedium,
           fontSize: 13,
         ),
         filled: true,
@@ -3076,7 +3076,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
             'Recommended: 1920×1080 (16:9)',
             style: TextStyle(
               fontSize: 12,
-              color: isDark ? Brand.darkTextTertiary : const Color(0xFFCBD5E1),
+              color: isDark ? Brand.darkTextTertiary : Brand.borderMedium,
             ),
           ),
         ],

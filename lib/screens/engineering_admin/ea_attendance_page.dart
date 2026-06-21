@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/engineering_admin/ea_attendance_page.dart
 // Engineering Admin Portal — Screen 7: Attendance Management
 // Full-day attendance view with manual record/edit capabilities.
@@ -7,10 +7,11 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = Brand.lightGreenDark;
 
 class EaAttendancePage extends StatefulWidget {
   const EaAttendancePage({super.key});
@@ -179,8 +180,8 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
       builder: (sheetCtx) => StatefulBuilder(
         builder: (sheetCtx, setSheet) {
           final cardBg = isDark ? Brand.darkCard : Colors.white;
-          final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
-          final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+          final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkSurface;
+          final textSecondary = isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight;
 
           return Padding(
             padding: EdgeInsets.only(
@@ -189,7 +190,7 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
             child: Container(
               decoration: BoxDecoration(
                 color: cardBg,
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
               ),
               padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
               child: Column(
@@ -496,15 +497,15 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
   Color _attColor(String status) {
     switch (status) {
       case 'present':
-        return const Color(0xFF10B981);
+        return StatusColors.resolved;
       case 'late':
-        return const Color(0xFFF59E0B);
+        return AdminColors.warning;
       case 'absent':
-        return const Color(0xFFEF4444);
+        return AdminColors.error;
       case 'on_leave':
-        return const Color(0xFF8B5CF6);
+        return StatusColors.assigned;
       default:
-        return const Color(0xFF94A3B8);
+        return Brand.subtleLight;
     }
   }
 
@@ -539,8 +540,8 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = Brand.canvas(isDark);
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
-    final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkSurface;
+    final textSecondary = isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight;
 
     return Scaffold(
       backgroundColor: bg,
@@ -628,8 +629,8 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
     required bool isDark,
     required VoidCallback onTap,
   }) {
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
-    final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkSurface;
+    final textSecondary = isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight;
 
     return GestureDetector(
       onTap: onTap,
@@ -689,7 +690,7 @@ class _DateBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cardBg = isDark ? Brand.darkCard : Colors.white;
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkSurface;
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
 
     return Container(
@@ -789,7 +790,7 @@ class _SummaryRow extends StatelessWidget {
             _SummaryChip(
               label: 'Present',
               count: present,
-              color: const Color(0xFF10B981),
+              color: StatusColors.resolved,
               selected: selected == 'present',
               onTap: () => onSelect('present'),
             ),
@@ -797,7 +798,7 @@ class _SummaryRow extends StatelessWidget {
             _SummaryChip(
               label: 'Late',
               count: late,
-              color: const Color(0xFFF59E0B),
+              color: AdminColors.warning,
               selected: selected == 'late',
               onTap: () => onSelect('late'),
             ),
@@ -805,7 +806,7 @@ class _SummaryRow extends StatelessWidget {
             _SummaryChip(
               label: 'Absent',
               count: absent,
-              color: const Color(0xFFEF4444),
+              color: AdminColors.error,
               selected: selected == 'absent',
               onTap: () => onSelect('absent'),
             ),
@@ -813,7 +814,7 @@ class _SummaryRow extends StatelessWidget {
             _SummaryChip(
               label: 'On Leave',
               count: onLeave,
-              color: const Color(0xFF8B5CF6),
+              color: StatusColors.assigned,
               selected: selected == 'on_leave',
               onTap: () => onSelect('on_leave'),
             ),
@@ -822,7 +823,7 @@ class _SummaryRow extends StatelessWidget {
               _SummaryChip(
                 label: 'Not Marked',
                 count: notMarked,
-                color: const Color(0xFF94A3B8),
+                color: Brand.subtleLight,
                 selected: selected == 'not_marked',
                 onTap: () => onSelect('not_marked'),
               ),
@@ -1058,7 +1059,7 @@ class _AttendanceCard extends StatelessWidget {
                             if (checkIn != null) ...[
                               Icon(Icons.login_rounded,
                                   size: 12,
-                                  color: const Color(0xFF10B981)),
+                                  color: StatusColors.resolved),
                               const SizedBox(width: 3),
                               Text(
                                 formatTime(checkIn),
@@ -1072,7 +1073,7 @@ class _AttendanceCard extends StatelessWidget {
                             if (checkOut != null) ...[
                               Icon(Icons.logout_rounded,
                                   size: 12,
-                                  color: const Color(0xFFEF4444)),
+                                  color: AdminColors.error),
                               const SizedBox(width: 3),
                               Text(
                                 formatTime(checkOut),
@@ -1153,14 +1154,14 @@ class _ErrorView extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(Icons.error_outline_rounded,
-                size: 48, color: Color(0xFFEF4444)),
+                size: 48, color: AdminColors.error),
             const SizedBox(height: 12),
             Text(
               'Failed to load attendance',
               style: TextStyle(
                 color: Theme.of(context).brightness == Brightness.dark
                     ? Brand.darkTextPrimary
-                    : const Color(0xFF1E293B),
+                    : Brand.darkSurface,
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
               ),
@@ -1169,7 +1170,7 @@ class _ErrorView extends StatelessWidget {
             Text(
               error,
               style: const TextStyle(
-                color: Color(0xFF94A3B8),
+                color: Brand.subtleLight,
                 fontSize: 12,
               ),
               textAlign: TextAlign.center,
@@ -1215,13 +1216,13 @@ class _EmptyState extends StatelessWidget {
           Icon(
             Icons.people_outline_rounded,
             size: 64,
-            color: isDark ? Brand.darkTextTertiary : const Color(0xFFCBD5E1),
+            color: isDark ? Brand.darkTextTertiary : Brand.borderMedium,
           ),
           const SizedBox(height: 16),
           Text(
             message,
             style: TextStyle(
-              color: isDark ? Brand.darkTextSecondary : const Color(0xFF64748B),
+              color: isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight,
               fontSize: 15,
               fontWeight: FontWeight.w500,
             ),

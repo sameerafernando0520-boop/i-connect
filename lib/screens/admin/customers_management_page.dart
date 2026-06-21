@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/admin/customers_management_page.dart
 // REWRITTEN v18 — Full dark mode pass, CachedNetworkImage,
 //   AdminColors context-aware methods, .withAlpha() throughout
@@ -16,6 +16,7 @@ import '../../services/export_service.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/common/ic_icons.dart';
 import 'customer_detail_page.dart';
+import '../../utils/app_logger.dart';
 
 class CustomersManagementPage extends StatefulWidget {
   const CustomersManagementPage({super.key});
@@ -353,7 +354,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
         _applyFilters();
       });
     } catch (e) {
-      debugPrint('Failed to load connectors: $e');
+      AppLogger.debug('CustomersManagementPage', 'Failed to load connectors: $e');
       if (!mounted) return;
       setState(() => _loadingConnectorsList = false);
     }
@@ -531,7 +532,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
         onChanged: (_) => setState(() => _applyFilters()),
         style: TextStyle(
           fontSize: 14,
-          color: isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B),
+          color: isDark ? Brand.darkTextPrimary : Brand.darkSurface,
         ),
         decoration: InputDecoration(
           hintText: 'Search name, company, email, phone...',
@@ -555,7 +556,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                     decoration: BoxDecoration(
                       color: isDark
                           ? Brand.darkCardElevated
-                          : const Color(0xFFF1F5F9),
+                          : Brand.slateLight,
                       borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Icon(
@@ -593,7 +594,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
       _FilterItem('with_inquiries', 'Inquiries', _withInquiriesCount,
           Icons.mail_rounded, AdminColors.info),
       _FilterItem('active', 'Active', _activeCount, Icons.flash_on_rounded,
-          const Color(0xFF8E24AA)),
+          StatusColors.deepPurple),
       _FilterItem('new', 'New', _newThisWeekCount, Icons.fiber_new_rounded,
           AdminColors.success),
     ];
@@ -725,7 +726,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
                 color:
-                    isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9),
+                    isDark ? Brand.darkCardElevated : Brand.slateLight,
                 borderRadius: BorderRadius.circular(Brand.r(8)),
               ),
               child: Row(
@@ -919,7 +920,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                             fontWeight: FontWeight.bold,
                             color: isDark
                                 ? Brand.darkTextPrimary
-                                : const Color(0xFF1E293B),
+                                : Brand.darkSurface,
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -992,7 +993,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                       decoration: BoxDecoration(
                         color: isDark
                             ? Brand.darkCardElevated
-                            : const Color(0xFFF4F6FA),
+                            : Brand.slateLight,
                         borderRadius: BorderRadius.circular(Brand.r(8)),
                       ),
                       child: Icon(
@@ -1013,7 +1014,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                 decoration: BoxDecoration(
                   color:
-                      isDark ? Brand.darkCardElevated : const Color(0xFFF4F6FA),
+                      isDark ? Brand.darkCardElevated : Brand.slateLight,
                   borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Row(
@@ -1032,7 +1033,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                           fontSize: 12,
                           color: isDark
                               ? Brand.darkTextSecondary
-                              : const Color(0xFF64748B),
+                              : AdminColors.textSecondaryLight,
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -1060,7 +1061,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                             fontSize: 12,
                             color: isDark
                                 ? Brand.darkTextSecondary
-                                : const Color(0xFF64748B),
+                                : AdminColors.textSecondaryLight,
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -1211,7 +1212,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
         ? AdminColors.accent.withAlpha(isDark ? 38 : 26)
         : (isDark
             ? Brand.darkCardElevated
-            : const Color(0xFFF4F6FA));
+            : Brand.slateLight);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
@@ -1310,7 +1311,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
               style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w600,
-                color: isDark ? Brand.darkTextPrimary : const Color(0xFF475569),
+                color: isDark ? Brand.darkTextPrimary : Brand.textSlate,
               ),
             ),
             const SizedBox(height: 8),
@@ -1387,7 +1388,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             color: sheetDark ? Brand.darkCard : Colors.white,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -1499,7 +1500,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
         decoration: BoxDecoration(
           color: selected
               ? AdminColors.primary.withAlpha(isDark ? 51 : 26)
-              : (isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9)),
+              : (isDark ? Brand.darkCardElevated : Brand.slateLight),
           borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: selected
@@ -1595,7 +1596,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
         decoration: BoxDecoration(
           color: selected
               ? AdminColors.accent.withAlpha(isDark ? 51 : 26)
-              : (isDark ? Brand.darkCardElevated : const Color(0xFFEFF5E3)),
+              : (isDark ? Brand.darkCardElevated : Brand.slateLight),
           borderRadius: BorderRadius.circular(Brand.r(18)),
           border: Border.all(
             color: selected
@@ -1660,7 +1661,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                     ? AdminColors.primary.withAlpha(isDark ? 38 : 25)
                     : (isDark
                         ? Brand.darkCardElevated
-                        : const Color(0xFFF1F5F9)),
+                        : Brand.slateLight),
                 borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: useChatGearIcon
@@ -1696,7 +1697,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                     ? (isDark ? Brand.darkIconActive : AdminColors.primary)
                     : (isDark
                         ? Brand.darkTextPrimary
-                        : const Color(0xFF475569)),
+                        : Brand.textSlate),
               ),
             ),
             const Spacer(),

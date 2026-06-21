@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_knowledge_base_page.dart
+﻿// lib/screens/admin/admin_knowledge_base_page.dart
 //
 // Admin-side Knowledge Base manager (v22).
 // Lists all knowledge_base rows with type filter chips, search, and inline
@@ -25,11 +25,11 @@ class _AdminKnowledgeBasePageState extends State<AdminKnowledgeBasePage> {
   // Keep these labels and values aligned with the form page and the
   // CHECK constraint applied in the v22 schema migration.
   static const _types = <_KbType>[
-    _KbType('all',         'All',          Icons.dashboard_rounded,           Color(0xFF6366F1)),
-    _KbType('manual',      'Manuals',      Icons.menu_book_rounded,           Color(0xFF3B82F6)),
-    _KbType('article',     'Articles',     Icons.article_rounded,             Color(0xFF8B5CF6)),
-    _KbType('testimonial', 'Testimonials', Icons.format_quote_rounded,        Color(0xFFEC4899)),
-    _KbType('video',       'Videos',       Icons.play_circle_fill_rounded,    Color(0xFFEF4444)),
+    _KbType('all',         'All',          Icons.dashboard_rounded,           StatusColors.indigo),
+    _KbType('manual',      'Manuals',      Icons.menu_book_rounded,           AdminColors.info),
+    _KbType('article',     'Articles',     Icons.article_rounded,             StatusColors.assigned),
+    _KbType('testimonial', 'Testimonials', Icons.format_quote_rounded,        StatusColors.pink),
+    _KbType('video',       'Videos',       Icons.play_circle_fill_rounded,    AdminColors.error),
   ];
 
   // ─── State ───────────────────────────────────────────────────

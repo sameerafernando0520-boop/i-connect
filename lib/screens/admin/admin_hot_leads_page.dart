@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_hot_leads_page.dart
+﻿// lib/screens/admin/admin_hot_leads_page.dart
 //
 // Hot Leads dashboard (v22 enhancement on top of the Journey Progress system).
 // Lists every active suggestion at 75%+ across all customers, sorted by how
@@ -93,7 +93,7 @@ class _AdminHotLeadsPageState extends State<AdminHotLeadsPage> {
 
   Color _scoreColor(int s) {
     if (s >= 100) return AdminColors.success;
-    if (s >= 75) return const Color(0xFF7CB342);
+    if (s >= 75) return StatusColors.materialGreen;
     if (s >= 50) return AdminColors.warning;
     return AdminColors.info;
   }

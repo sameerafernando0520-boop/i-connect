@@ -1,4 +1,4 @@
-// lib/screens/marketing/ma_catalog_page.dart
+﻿// lib/screens/marketing/ma_catalog_page.dart
 // P8 — Machine Catalog: read-only browser with search + category filter
 
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _catColor = Color(0xFF14B8A6);
+const Color _catColor = StatusColors.teal;
 
 class MaCatalogPage extends StatefulWidget {
   const MaCatalogPage({super.key});
@@ -448,7 +448,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
           decoration: BoxDecoration(
             color: isDark ? Brand.darkCard : Colors.white,
             borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(28)),
+                BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
           ),
           child: SingleChildScrollView(
             controller: scrollCtrl,

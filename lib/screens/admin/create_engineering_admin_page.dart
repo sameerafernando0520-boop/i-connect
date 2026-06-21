@@ -1,4 +1,4 @@
-// lib/screens/admin/create_engineering_admin_page.dart
+﻿// lib/screens/admin/create_engineering_admin_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,7 +7,7 @@ import '../../widgets/ds/ds_widgets.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 
-const Color _eaAccent = Color(0xFF0EA5E9); // sky blue
+// AdminColors.eaAccent: use AdminColors.eaAccent
 
 class CreateEngineeringAdminPage extends StatefulWidget {
   const CreateEngineeringAdminPage({super.key});
@@ -151,15 +151,15 @@ class _CreateEngineeringAdminPageState
               margin: const EdgeInsets.only(bottom: 20),
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
-                color: _eaAccent.withAlpha(isDark ? 25 : 15),
+                color: AdminColors.eaAccent.withAlpha(isDark ? 25 : 15),
                 borderRadius: BorderRadius.circular(Brand.r(14)),
-                border: Border.all(color: _eaAccent.withAlpha(60)),
+                border: Border.all(color: AdminColors.eaAccent.withAlpha(60)),
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(Icons.info_outline_rounded,
-                      size: 18, color: _eaAccent),
+                      size: 18, color: AdminColors.eaAccent),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(
@@ -303,7 +303,7 @@ class _CreateEngineeringAdminPageState
                       fontWeight: FontWeight.w700, fontSize: 15),
                 ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: _eaAccent,
+                  backgroundColor: AdminColors.eaAccent,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(Brand.r(14))),
@@ -382,7 +382,7 @@ class _CreateEngineeringAdminPageState
         decoration: InputDecoration(
           labelText: label,
           hintText: hint,
-          prefixIcon: Icon(icon, size: 20, color: _eaAccent),
+          prefixIcon: Icon(icon, size: 20, color: AdminColors.eaAccent),
           suffixIcon: suffixIcon,
           border: InputBorder.none,
           labelStyle: TextStyle(

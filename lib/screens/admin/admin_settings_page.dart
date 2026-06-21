@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_settings_page.dart
+﻿// lib/screens/admin/admin_settings_page.dart
 //
 // ═══════════════════════════════════════════════════════════
 //  CHANGES (v14 i18n):
@@ -29,6 +29,7 @@ import '../../utils/upload_validator.dart';
 import '../../widgets/common/language_selector_sheet.dart';
 import '../../widgets/common/theme_style_sheet.dart';
 import '../auth/login_page.dart';
+import '../../utils/app_logger.dart';
 
 class AdminSettingsPage extends StatefulWidget {
   const AdminSettingsPage({super.key});
@@ -62,7 +63,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
   Color _scaffoldBg(bool d) => d ? Brand.darkBg : Brand.scaffoldLight;
   Color _cardBg(bool d) => d ? Brand.darkCard : Brand.cardLight;
   Color _textPrimary(bool d) =>
-      d ? Brand.darkTextPrimary : const Color(0xFF1A1A2E);
+      d ? Brand.darkTextPrimary : Brand.darkDeep;
   Color _textSecondary(bool d) =>
       d ? Brand.darkTextSecondary : Colors.grey.shade600;
   Color _textMuted(bool d) => d ? Brand.darkTextTertiary : Brand.subtleLight;
@@ -152,7 +153,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
         _supportContacts = List<Map<String, dynamic>>.from(rows);
       });
     } catch (e) {
-      debugPrint('Support contacts load failed: $e');
+      AppLogger.debug('AdminSettingsPage', 'Support contacts load failed: $e');
     }
   }
 
@@ -212,7 +213,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: _sheetBg(isDark),
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -424,7 +425,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             color: _sheetBg(isDark),
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -647,7 +648,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: _sheetBg(isDark),
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -771,7 +772,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
         padding: const EdgeInsets.all(28),
         decoration: BoxDecoration(
           color: _sheetBg(isDark),
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -845,8 +846,8 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
                           colors: [
-                            Color(0xFFE53935),
-                            Color(0xFFEF5350),
+                            AdminColors.error,
+                            AdminColors.error,
                           ],
                         ),
                         borderRadius: BorderRadius.circular(Brand.r(14)),
@@ -1529,7 +1530,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           _buildTileDivider(isDark),
           _buildToggleTile(
             icon: Icons.email_rounded,
-            color: const Color(0xFF3B82F6),
+            color: AdminColors.info,
             title: 'Email Notifications',
             subtitle: 'Receive updates via email',
             value: _emailEnabled,
@@ -1539,7 +1540,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           _buildTileDivider(isDark),
           _buildToggleTile(
             icon: Icons.confirmation_number_rounded,
-            color: const Color(0xFFF59E0B),
+            color: AdminColors.warning,
             title: 'Ticket Updates',
             subtitle: 'Status changes & new assignments',
             value: _ticketUpdates,
@@ -1559,7 +1560,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           _buildTileDivider(isDark),
           _buildToggleTile(
             icon: Icons.campaign_rounded,
-            color: const Color(0xFF8B5CF6),
+            color: StatusColors.assigned,
             title: 'Promotions',
             subtitle: 'Marketing & promotional content',
             value: _promotions,
@@ -1766,15 +1767,15 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
               switch (type) {
                 case 'call':
                   icon = Icons.phone_rounded;
-                  color = const Color(0xFF4CAF50);
+                  color = StatusColors.materialGreen;
                   break;
                 case 'whatsapp':
                   icon = Icons.chat_rounded;
-                  color = const Color(0xFF25D366);
+                  color = Brand.whatsappGreen;
                   break;
                 case 'email':
                   icon = Icons.email_rounded;
-                  color = const Color(0xFFE91E63);
+                  color = StatusColors.pink;
                   break;
                 case 'web':
                   icon = Icons.public_rounded;
@@ -1839,7 +1840,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                         ),
                         IconButton(
                           icon: const Icon(Icons.delete_outline_rounded,
-                              size: 18, color: Color(0xFFEF4444)),
+                              size: 18, color: AdminColors.error),
                           onPressed: () => _deleteContact(c),
                           tooltip: 'Delete',
                         ),
@@ -1901,7 +1902,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
             decoration: BoxDecoration(
               color: _sheetBg(isDark),
               borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(28)),
+                  BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
             ),
             child: Padding(
               padding: const EdgeInsets.all(24),
@@ -1941,20 +1942,20 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                     spacing: 8,
                     children: [
                       _contactTypeChip('call', 'Call', Icons.phone_rounded,
-                          const Color(0xFF4CAF50), type, isDark, (v) {
+                          StatusColors.materialGreen, type, isDark, (v) {
                         setSS(() => type = v);
                       }),
                       _contactTypeChip(
                           'whatsapp',
                           'WhatsApp',
                           Icons.chat_rounded,
-                          const Color(0xFF25D366),
+                          Brand.whatsappGreen,
                           type,
                           isDark, (v) {
                         setSS(() => type = v);
                       }),
                       _contactTypeChip('email', 'Email', Icons.email_rounded,
-                          const Color(0xFFE91E63), type, isDark, (v) {
+                          StatusColors.pink, type, isDark, (v) {
                         setSS(() => type = v);
                       }),
                       _contactTypeChip('web', 'Web', Icons.public_rounded,
@@ -2066,7 +2067,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                             const SnackBar(
                               content: Text('Label and value are required'),
                               behavior: SnackBarBehavior.floating,
-                              backgroundColor: Color(0xFFEF4444),
+                              backgroundColor: AdminColors.error,
                             ),
                           );
                           return;
@@ -2173,7 +2174,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           ElevatedButton(
             onPressed: () => Navigator.pop(context, true),
             style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFEF4444),
+                backgroundColor: AdminColors.error,
                 foregroundColor: Colors.white),
             child: const Text('Delete'),
           ),
@@ -2208,7 +2209,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
         children: [
           _buildSettingsTile(
             icon: Icons.help_outline_rounded,
-            color: const Color(0xFF3B82F6),
+            color: AdminColors.info,
             title: 'Help & Support',
             subtitle: 'Get help with iFrontiers Connect',
             isDark: isDark,
@@ -2218,7 +2219,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           _buildTileDivider(isDark),
           _buildSettingsTile(
             icon: Icons.privacy_tip_outlined,
-            color: const Color(0xFF8B5CF6),
+            color: StatusColors.assigned,
             title: 'Privacy Policy',
             subtitle: 'View our privacy policy',
             isDark: isDark,
@@ -2227,7 +2228,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           _buildTileDivider(isDark),
           _buildSettingsTile(
             icon: Icons.description_outlined,
-            color: const Color(0xFFF59E0B),
+            color: AdminColors.warning,
             title: 'Terms of Service',
             subtitle: 'View terms and conditions',
             isDark: isDark,

@@ -1,4 +1,4 @@
-// lib/screens/admin/machines_management_page.dart
+﻿// lib/screens/admin/machines_management_page.dart
 // Fixed: AdminColors.textPrimary removed, Colors.red/orange/blue → AdminColors,
 //   _isDark anti-pattern fixed, mounted guards, sheetCtx, border radius 28,
 //   _isRefreshing setState, duplicate mounted check removed
@@ -49,7 +49,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
   Color get _scaffoldBg => Brand.canvas(_isDark);
   Color get _cardBg => Brand.surface(_isDark);
   Color get _textPrimary =>
-      _isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+      _isDark ? Brand.darkTextPrimary : Brand.darkSurface;
   Color get _textSecondary =>
       _isDark ? Brand.darkTextSecondary : Colors.grey.shade600;
   Color get _textMuted =>
@@ -66,7 +66,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
   Color get _accentColor =>
       _isDark ? Brand.lightGreenBright : AdminColors.accent;
   Color get _elevatedFill =>
-      _isDark ? const Color(0xFF22272E) : Colors.grey.shade100;
+      _isDark ? Brand.darkCardHighlight : Colors.grey.shade100;
 
   List<BoxShadow> get _cardShadow => _isDark
       ? []
@@ -416,9 +416,9 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
   Color _getCategoryColor(String category) {
     switch (category) {
       case 'Digital Printers':
-        return const Color(0xFF262261);
+        return Brand.navyMid;
       case 'CNC Routers':
-        return const Color(0xFFABBD37);
+        return Brand.lime;
       case 'Laser Cutters':
         return AdminColors.warning;
       case 'Finishing Equipment':
@@ -487,7 +487,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: _sheetBg,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -1138,7 +1138,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
         return Container(
           decoration: BoxDecoration(
             color: _sheetBg,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -1626,7 +1626,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
         return Container(
           decoration: BoxDecoration(
             color: _sheetBg,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -1681,7 +1681,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
                 Icons.copy_rounded,
                 'Duplicate',
                 'Create a copy of this machine',
-                const Color(0xFF8B5CF6),
+                StatusColors.assigned,
                 () {
                   Navigator.pop(sheetCtx);
                   _duplicateMachine(machine);
@@ -1762,7 +1762,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
           gradient: LinearGradient(
             colors: [
               _accentColor,
-              const Color(0xFF8FA52E),
+              Brand.lime,
             ],
           ),
           borderRadius: BorderRadius.circular(Brand.r(16)),
@@ -1987,7 +1987,7 @@ class _MachineDetailSheetState extends State<_MachineDetailSheet> {
   Color get _cardBg => Brand.surface(_isDark);
   // ✅ AdminColors.textPrimary does NOT exist → use explicit color
   Color get _textPrimary =>
-      _isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+      _isDark ? Brand.darkTextPrimary : Brand.darkSurface;
   Color get _textMuted =>
       _isDark ? Brand.darkTextTertiary : Colors.grey.shade400;
   Color get _borderColor => Brand.cardBorder(_isDark);
@@ -2170,7 +2170,7 @@ class _MachineDetailSheetState extends State<_MachineDetailSheet> {
                 _buildStatChip('Won', '${stats['won_deals'] ?? 0}',
                     Icons.emoji_events_rounded, _accentColor),
                 _buildStatChip('Support', '${stats['support_tickets'] ?? 0}',
-                    Icons.build_rounded, const Color(0xFF8B5CF6)),
+                    Icons.build_rounded, StatusColors.assigned),
               ],
             ),
           ),
@@ -2551,14 +2551,14 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
   Color get _cardBg => Brand.surface(_isDark);
   // ✅ AdminColors.textPrimary does NOT exist
   Color get _textPrimary =>
-      _isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+      _isDark ? Brand.darkTextPrimary : Brand.darkSurface;
   Color get _textSecondary =>
       _isDark ? Brand.darkTextSecondary : Colors.grey.shade600;
   Color get _textMuted =>
       _isDark ? Brand.darkTextTertiary : Colors.grey.shade400;
   Color get _borderColor => Brand.cardBorder(_isDark);
   Color get _elevatedFill =>
-      _isDark ? const Color(0xFF22272E) : Colors.grey.shade100;
+      _isDark ? Brand.darkCardHighlight : Colors.grey.shade100;
   Color get _primaryColor =>
       _isDark ? Brand.royalBlueGlow : AdminColors.primary;
   Color get _accentColor =>
@@ -2732,7 +2732,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: _cardBg,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -3710,7 +3710,7 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
                             gradient: LinearGradient(
                               colors: [
                                 _accentColor,
-                                const Color(0xFF8FA52E),
+                                Brand.lime,
                               ],
                             ),
                             borderRadius: BorderRadius.circular(Brand.r(16)),

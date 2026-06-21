@@ -27,10 +27,14 @@ class CustomerShellPage extends StatefulWidget {
 }
 
 class _CustomerShellPageState extends State<CustomerShellPage> {
-  // ── Tab pages ────────────────────────────────────────────────
-  // Home tab is kept alive in IndexedStack for instant navigation.
-  // Other tabs are built conditionally to save memory.
-  late final Widget _homePage = HomePage(showNavBar: false);
+  // ── Tab pages — all pre-built so IndexedStack keeps each alive ──
+  late final List<Widget> _pages = [
+    HomePage(showNavBar: false),
+    MyMachinesPage(showNavBar: false),
+    SupportTicketsPage(showNavBar: false),
+    KnowledgeBasePage(showNavBar: false),
+    ProfilePage(showNavBar: false),
+  ];
 
   @override
   void initState() {
@@ -41,23 +45,6 @@ class _CustomerShellPageState extends State<CustomerShellPage> {
     }
   }
 
-  Widget _buildCurrentTab(int index) {
-    switch (index) {
-      case 0:
-        return _homePage;
-      case 1:
-        return MyMachinesPage(showNavBar: false);
-      case 2:
-        return SupportTicketsPage(showNavBar: false);
-      case 3:
-        return KnowledgeBasePage(showNavBar: false);
-      case 4:
-        return ProfilePage(showNavBar: false);
-      default:
-        return _homePage;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<int>(
@@ -65,7 +52,10 @@ class _CustomerShellPageState extends State<CustomerShellPage> {
       builder: (context, currentIndex, _) {
         return Scaffold(
           body: OfflineBanner(
-            child: _buildCurrentTab(currentIndex),
+            child: IndexedStack(
+              index: currentIndex,
+              children: _pages,
+            ),
           ),
           bottomNavigationBar: ValueListenableBuilder<int>(
             valueListenable: CustomerNavController.openTickets,

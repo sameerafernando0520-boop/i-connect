@@ -56,7 +56,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
       isDark ? Brand.darkTextPrimary : Brand.royalBlueDark;
 
   Color _textSecondary(bool isDark) =>
-      isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+      isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight;
 
   Color _borderColor(bool isDark) =>
       isDark ? Brand.darkBorder : Brand.borderLight;
@@ -642,7 +642,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
           padding: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
-              colors: [Color(0xFF6D28D9), Color(0xFF8B5CF6)],
+              colors: [StatusColors.deepPurple, StatusColors.assigned],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -651,7 +651,7 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
                 ? null
                 : [
                     BoxShadow(
-                      color: const Color(0xFF8B5CF6).withAlpha(76),
+                      color: StatusColors.assigned.withAlpha(76),
                       blurRadius: 10,
                       offset: const Offset(0, 3),
                     ),
@@ -780,8 +780,8 @@ class _InquiryDetailPageState extends State<InquiryDetailPage> {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: isWon
-              ? [AdminColors.accent, const Color(0xFF93A52E)]
-              : [AdminColors.error, const Color(0xFFC62828)],
+              ? [AdminColors.accent, Brand.lime]
+              : [AdminColors.error, AdminColors.error],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),

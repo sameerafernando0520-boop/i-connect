@@ -1,4 +1,4 @@
-// lib/screens/admin/marketer_management_page.dart
+﻿// lib/screens/admin/marketer_management_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -8,7 +8,7 @@ import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import 'create_marketer_page.dart';
 
-const Color _maAccent = Color(0xFFD946EF);
+// AdminColors.maAccent: use AdminColors.maAccent
 
 // 9 permission sections — keep in sync with create_marketer_page.dart
 const _permSections = [
@@ -17,63 +17,63 @@ const _permSections = [
     icon: Icons.people_rounded,
     label: 'Customer Directory',
     description: 'View customer profiles and their activity',
-    color: Color(0xFF3B82F6),
+    color: AdminColors.info,
   ),
   _PermSection(
     key: 'referral_program',
     icon: Icons.share_rounded,
     label: 'Referral Program',
     description: 'View and manage referral rules, codes, and payouts',
-    color: Color(0xFF10B981),
+    color: StatusColors.resolved,
   ),
   _PermSection(
     key: 'loyalty_tiers',
     icon: Icons.star_rounded,
     label: 'Loyalty Tiers',
     description: 'Configure tier thresholds and benefits',
-    color: Color(0xFFF59E0B),
+    color: AdminColors.warning,
   ),
   _PermSection(
     key: 'banners',
     icon: Icons.image_rounded,
     label: 'Promotional Banners',
     description: 'Create, edit, and remove promotional banners',
-    color: Color(0xFFEC4899),
+    color: StatusColors.pink,
   ),
   _PermSection(
     key: 'knowledge_base',
     icon: Icons.menu_book_rounded,
     label: 'Knowledge Base',
     description: 'Manage articles and educational content',
-    color: Color(0xFF8B5CF6),
+    color: StatusColors.assigned,
   ),
   _PermSection(
     key: 'broadcast',
     icon: Icons.campaign_rounded,
     label: 'Broadcast Notifications',
     description: 'Send push notifications to all users',
-    color: Color(0xFFEF4444),
+    color: AdminColors.error,
   ),
   _PermSection(
     key: 'analytics',
     icon: Icons.analytics_rounded,
     label: 'Analytics',
     description: 'View article views and user engagement data',
-    color: Color(0xFF6366F1),
+    color: StatusColors.indigo,
   ),
   _PermSection(
     key: 'machine_catalog',
     icon: Icons.precision_manufacturing_rounded,
     label: 'Machine Catalog',
     description: 'Browse and view machine listings',
-    color: Color(0xFF14B8A6),
+    color: StatusColors.teal,
   ),
   _PermSection(
     key: 'point_activities',
     icon: Icons.emoji_events_rounded,
     label: 'Points & Rewards',
     description: 'View point activity and customer reward history',
-    color: Color(0xFFF97316),
+    color: AdminColors.internal,
   ),
 ];
 
@@ -170,7 +170,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
             builder: (_, scrollCtrl) => Container(
               decoration: BoxDecoration(
                 color: Brand.surface(isDark),
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
               ),
               child: Column(
                 children: [
@@ -194,10 +194,10 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                               width: 40,
                               height: 40,
                               decoration: BoxDecoration(
-                                color: _maAccent.withAlpha(isDark ? 30 : 15),
+                                color: AdminColors.maAccent.withAlpha(isDark ? 30 : 15),
                                 borderRadius: BorderRadius.circular(Brand.r(12)),
                               ),
-                              child: const Icon(Icons.tune_rounded, color: _maAccent, size: 20),
+                              child: const Icon(Icons.tune_rounded, color: AdminColors.maAccent, size: 20),
                             ),
                             const SizedBox(width: 12),
                             Expanded(
@@ -336,7 +336,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                                 }
                               },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: _maAccent,
+                          backgroundColor: AdminColors.maAccent,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
                           elevation: 0,
@@ -376,7 +376,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
           child: Container(
             decoration: BoxDecoration(
               color: Brand.surface(isDark),
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
             ),
             padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
             child: Form(
@@ -416,7 +416,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                     decoration: InputDecoration(
                       labelText: 'New Password',
                       hintText: 'Min 8 characters',
-                      prefixIcon: Icon(Icons.lock_rounded, color: _maAccent, size: 20),
+                      prefixIcon: Icon(Icons.lock_rounded, color: AdminColors.maAccent, size: 20),
                       suffixIcon: IconButton(
                         icon: Icon(obscurePw ? Icons.visibility_rounded : Icons.visibility_off_rounded, size: 20),
                         onPressed: () => setSheetState(() => obscurePw = !obscurePw),
@@ -437,7 +437,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                     obscureText: obscureConfirm,
                     decoration: InputDecoration(
                       labelText: 'Confirm Password',
-                      prefixIcon: Icon(Icons.lock_outline_rounded, color: _maAccent, size: 20),
+                      prefixIcon: Icon(Icons.lock_outline_rounded, color: AdminColors.maAccent, size: 20),
                       suffixIcon: IconButton(
                         icon: Icon(obscureConfirm ? Icons.visibility_rounded : Icons.visibility_off_rounded, size: 20),
                         onPressed: () => setSheetState(() => obscureConfirm = !obscureConfirm),
@@ -497,7 +497,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                               }
                             },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: _maAccent,
+                        backgroundColor: AdminColors.maAccent,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
                         elevation: 0,
@@ -661,7 +661,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
       ),
       body: RefreshIndicator(
         onRefresh: _load,
-        color: _maAccent,
+        color: AdminColors.maAccent,
         child: Column(
           children: [
             // Search bar
@@ -684,7 +684,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(Brand.r(14)),
-                    borderSide: const BorderSide(color: _maAccent, width: 1.5),
+                    borderSide: const BorderSide(color: AdminColors.maAccent, width: 1.5),
                   ),
                   contentPadding: const EdgeInsets.symmetric(vertical: 12),
                 ),
@@ -693,7 +693,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
             // Content
             Expanded(
               child: _isLoading
-                  ? const Center(child: CircularProgressIndicator(color: _maAccent))
+                  ? const Center(child: CircularProgressIndicator(color: AdminColors.maAccent))
                   : _error != null
                       ? _buildError(isDark)
                       : _filtered.isEmpty
@@ -713,7 +713,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
         },
         icon: const Icon(Icons.person_add_rounded),
         label: const Text('Add Marketer', style: TextStyle(fontWeight: FontWeight.w600)),
-        backgroundColor: _maAccent,
+        backgroundColor: AdminColors.maAccent,
         foregroundColor: Colors.white,
       ),
     );
@@ -749,10 +749,10 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                 width: 72,
                 height: 72,
                 decoration: BoxDecoration(
-                  color: _maAccent.withAlpha(isDark ? 30 : 15),
+                  color: AdminColors.maAccent.withAlpha(isDark ? 30 : 15),
                   borderRadius: BorderRadius.circular(Brand.r(20)),
                 ),
-                child: const Icon(Icons.campaign_rounded, size: 36, color: _maAccent),
+                child: const Icon(Icons.campaign_rounded, size: 36, color: AdminColors.maAccent),
               ),
               const SizedBox(height: 16),
               Text(
@@ -809,7 +809,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                   children: [
                     CircleAvatar(
                       radius: 24,
-                      backgroundColor: _maAccent.withAlpha(isDark ? 40 : 20),
+                      backgroundColor: AdminColors.maAccent.withAlpha(isDark ? 40 : 20),
                       child: photoUrl != null && photoUrl.isNotEmpty
                           ? ClipOval(
                               child: CachedNetworkImage(
@@ -820,13 +820,13 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                                 placeholder: (_, __) => const SizedBox(),
                                 errorWidget: (_, __, ___) => Text(
                                   name.isNotEmpty ? name[0].toUpperCase() : 'M',
-                                  style: const TextStyle(color: _maAccent, fontWeight: FontWeight.w700, fontSize: 18),
+                                  style: const TextStyle(color: AdminColors.maAccent, fontWeight: FontWeight.w700, fontSize: 18),
                                 ),
                               ),
                             )
                           : Text(
                               name.isNotEmpty ? name[0].toUpperCase() : 'M',
-                              style: const TextStyle(color: _maAccent, fontWeight: FontWeight.w700, fontSize: 18),
+                              style: const TextStyle(color: AdminColors.maAccent, fontWeight: FontWeight.w700, fontSize: 18),
                             ),
                     ),
                     Positioned(
@@ -940,7 +940,7 @@ class _MarketerManagementPageState extends State<MarketerManagementPage> {
                 _actionBtn(
                   icon: Icons.tune_rounded,
                   label: 'Permissions',
-                  color: _maAccent,
+                  color: AdminColors.maAccent,
                   isDark: isDark,
                   onTap: () => _showPermissionsSheet(m),
                 ),

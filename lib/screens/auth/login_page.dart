@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // FILE: lib/screens/auth/login_page.dart
 // ============================================================
 
@@ -196,7 +196,7 @@ class _LoginPageState extends State<LoginPage>
               Expanded(child: Text(_friendlyError(e))),
             ],
           ),
-          backgroundColor: isDark ? const Color(0xFFCF6679) : Colors.red,
+          backgroundColor: isDark ? StatusColors.softRed : Colors.red,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(Brand.r(12))),
@@ -301,7 +301,7 @@ class _LoginPageState extends State<LoginPage>
                                     ],
                                   ),
                                   backgroundColor: isDark
-                                      ? const Color(0xFFCF6679)
+                                      ? StatusColors.softRed
                                       : Colors.red,
                                   behavior: SnackBarBehavior.floating,
                                   shape: RoundedRectangleBorder(

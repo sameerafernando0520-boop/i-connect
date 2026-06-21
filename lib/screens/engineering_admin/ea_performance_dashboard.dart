@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
@@ -8,7 +8,7 @@ import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = Brand.lightGreenDark;
 
 class EaPerformanceDashboard extends StatefulWidget {
   const EaPerformanceDashboard({super.key});
@@ -175,8 +175,8 @@ class _EaPerformanceDashboardState extends State<EaPerformanceDashboard>
     showModalBottomSheet(
       context: context,
       backgroundColor: isDark ? Brand.darkCard : Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       builder: (_) => Padding(
         padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
@@ -221,8 +221,8 @@ class _EaPerformanceDashboardState extends State<EaPerformanceDashboard>
     showModalBottomSheet(
       context: context,
       backgroundColor: isDark ? Brand.darkCard : Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       isScrollControlled: true,
       builder: (_) {
@@ -429,7 +429,7 @@ class _OverviewTab extends StatelessWidget {
         // KPI cards row
         Row(
           children: [
-            Expanded(child: _KpiCard(label: 'Avg Attendance', value: '${avgAtt.toStringAsFixed(1)}%', icon: Icons.event_available_rounded, color: const Color(0xFF10B981))),
+            Expanded(child: _KpiCard(label: 'Avg Attendance', value: '${avgAtt.toStringAsFixed(1)}%', icon: Icons.event_available_rounded, color: StatusColors.resolved)),
             const SizedBox(width: 10),
             Expanded(child: _KpiCard(label: 'Avg Completion', value: '${avgComp.toStringAsFixed(1)}%', icon: Icons.task_alt_rounded, color: _eaAccent)),
           ],
@@ -437,9 +437,9 @@ class _OverviewTab extends StatelessWidget {
         const SizedBox(height: 10),
         Row(
           children: [
-            Expanded(child: _KpiCard(label: 'Avg Rating', value: avgRating > 0 ? '${avgRating.toStringAsFixed(1)} ★' : '—', icon: Icons.star_rounded, color: const Color(0xFFF59E0B))),
+            Expanded(child: _KpiCard(label: 'Avg Rating', value: avgRating > 0 ? '${avgRating.toStringAsFixed(1)} ★' : '—', icon: Icons.star_rounded, color: AdminColors.warning)),
             const SizedBox(width: 10),
-            Expanded(child: _KpiCard(label: 'Total Jobs', value: '$completedJobs / $totalJobs', icon: Icons.work_outline_rounded, color: const Color(0xFF8B5CF6))),
+            Expanded(child: _KpiCard(label: 'Total Jobs', value: '$completedJobs / $totalJobs', icon: Icons.work_outline_rounded, color: StatusColors.assigned)),
           ],
         ),
 
@@ -570,7 +570,7 @@ class _TopPerformers extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 8),
             child: Row(
               children: [
-                Icon(Icons.emoji_events_rounded, size: 18, color: const Color(0xFFF59E0B)),
+                Icon(Icons.emoji_events_rounded, size: 18, color: AdminColors.warning),
                 const SizedBox(width: 6),
                 Text('Top Performers',
                     style: TextStyle(
@@ -619,9 +619,9 @@ class _PerformerRow extends StatelessWidget {
     final rating = (kpi['avg_rating'] as num?)?.toDouble();
 
     Color rankColor = AdminColors.textHint(context);
-    if (rank == 1) rankColor = const Color(0xFFFFD700);
-    if (rank == 2) rankColor = const Color(0xFFC0C0C0);
-    if (rank == 3) rankColor = const Color(0xFFCD7F32);
+    if (rank == 1) rankColor = TierColors.gold;
+    if (rank == 2) rankColor = TierColors.silver;
+    if (rank == 3) rankColor = TierColors.bronze;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -651,12 +651,12 @@ class _PerformerRow extends StatelessWidget {
                     )),
                 Row(
                   children: [
-                    _miniStat('Att ${att.toStringAsFixed(0)}%', const Color(0xFF10B981)),
+                    _miniStat('Att ${att.toStringAsFixed(0)}%', StatusColors.resolved),
                     const SizedBox(width: 8),
                     _miniStat('Comp ${comp.toStringAsFixed(0)}%', _eaAccent),
                     if (rating != null && rating > 0) ...[
                       const SizedBox(width: 8),
-                      _miniStat('${rating.toStringAsFixed(1)}★', const Color(0xFFF59E0B)),
+                      _miniStat('${rating.toStringAsFixed(1)}★', AdminColors.warning),
                     ],
                   ],
                 ),
@@ -737,7 +737,7 @@ class _AttendancePieCard extends StatelessWidget {
       if (high > 0)
         PieChartSectionData(
           value: high.toDouble(),
-          color: const Color(0xFF10B981),
+          color: StatusColors.resolved,
           title: '$high',
           radius: 55,
           titleStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
@@ -745,7 +745,7 @@ class _AttendancePieCard extends StatelessWidget {
       if (medium > 0)
         PieChartSectionData(
           value: medium.toDouble(),
-          color: const Color(0xFFF59E0B),
+          color: AdminColors.warning,
           title: '$medium',
           radius: 55,
           titleStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
@@ -753,7 +753,7 @@ class _AttendancePieCard extends StatelessWidget {
       if (low > 0)
         PieChartSectionData(
           value: low.toDouble(),
-          color: const Color(0xFFEF4444),
+          color: AdminColors.error,
           title: '$low',
           radius: 55,
           titleStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
@@ -761,7 +761,7 @@ class _AttendancePieCard extends StatelessWidget {
       if (noData > 0)
         PieChartSectionData(
           value: noData.toDouble(),
-          color: const Color(0xFF94A3B8),
+          color: Brand.subtleLight,
           title: '$noData',
           radius: 55,
           titleStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
@@ -794,10 +794,10 @@ class _AttendancePieCard extends StatelessWidget {
             runSpacing: 8,
             alignment: WrapAlignment.center,
             children: [
-              if (high > 0) _legend('≥80% (Good)', const Color(0xFF10B981)),
-              if (medium > 0) _legend('60–79% (Fair)', const Color(0xFFF59E0B)),
-              if (low > 0) _legend('<60% (Poor)', const Color(0xFFEF4444)),
-              if (noData > 0) _legend('No Data', const Color(0xFF94A3B8)),
+              if (high > 0) _legend('≥80% (Good)', StatusColors.resolved),
+              if (medium > 0) _legend('60–79% (Fair)', AdminColors.warning),
+              if (low > 0) _legend('<60% (Poor)', AdminColors.error),
+              if (noData > 0) _legend('No Data', Brand.subtleLight),
             ],
           ),
         ],
@@ -907,19 +907,19 @@ class _EngineerKpiCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFEF3C7),
+                    color: Brand.slateLight,
                     borderRadius: BorderRadius.circular(Brand.r(20)),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.star_rounded, size: 14, color: Color(0xFFF59E0B)),
+                      const Icon(Icons.star_rounded, size: 14, color: AdminColors.warning),
                       const SizedBox(width: 3),
                       Text(rating.toStringAsFixed(1),
                           style: const TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFFB45309),
+                            color: StatusColors.warningDark,
                           )),
                     ],
                   ),
@@ -941,7 +941,7 @@ class _EngineerKpiCard extends StatelessWidget {
               label: 'Attendance',
               value: (att ?? 0) / 100,
               displayValue: att != null ? '${att.toStringAsFixed(1)}%' : '—',
-              color: const Color(0xFF10B981),
+              color: StatusColors.resolved,
             ),
             const SizedBox(height: 8),
 
@@ -1165,12 +1165,12 @@ class _SingleEngineerTrends extends StatelessWidget {
                 LineChartBarData(
                   spots: attSpots,
                   isCurved: true,
-                  color: const Color(0xFF10B981),
+                  color: StatusColors.resolved,
                   barWidth: 2.5,
                   dotData: const FlDotData(show: true),
                   belowBarData: BarAreaData(
                     show: true,
-                    color: const Color(0xFF10B981).withAlpha(25),
+                    color: StatusColors.resolved.withAlpha(25),
                   ),
                 ),
                 LineChartBarData(
@@ -1188,7 +1188,7 @@ class _SingleEngineerTrends extends StatelessWidget {
             ),
           ),
           legend: [
-            _TrendLegendItem(label: 'Attendance', color: const Color(0xFF10B981)),
+            _TrendLegendItem(label: 'Attendance', color: StatusColors.resolved),
             _TrendLegendItem(label: 'Completion', color: _eaAccent),
           ],
         ),
@@ -1298,12 +1298,12 @@ class _TeamTrends extends StatelessWidget {
                 LineChartBarData(
                   spots: attSpots,
                   isCurved: true,
-                  color: const Color(0xFF10B981),
+                  color: StatusColors.resolved,
                   barWidth: 2.5,
                   dotData: const FlDotData(show: true),
                   belowBarData: BarAreaData(
                     show: true,
-                    color: const Color(0xFF10B981).withAlpha(25),
+                    color: StatusColors.resolved.withAlpha(25),
                   ),
                 ),
                 LineChartBarData(
@@ -1321,7 +1321,7 @@ class _TeamTrends extends StatelessWidget {
             ),
           ),
           legend: [
-            _TrendLegendItem(label: 'Avg Attendance', color: const Color(0xFF10B981)),
+            _TrendLegendItem(label: 'Avg Attendance', color: StatusColors.resolved),
             _TrendLegendItem(label: 'Avg Completion', color: _eaAccent),
           ],
         ),

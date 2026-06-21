@@ -1,4 +1,4 @@
-// lib/screens/admin/engineering_admin_management_page.dart
+﻿// lib/screens/admin/engineering_admin_management_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -8,7 +8,7 @@ import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import 'create_engineering_admin_page.dart';
 
-const Color _eaAccent = Color(0xFF0EA5E9); // sky blue
+// AdminColors.eaAccent: use AdminColors.eaAccent
 
 class EngineeringAdminManagementPage extends StatefulWidget {
   const EngineeringAdminManagementPage({super.key});
@@ -239,11 +239,11 @@ class _EngineeringAdminManagementPageState
               width: 72,
               height: 72,
               decoration: BoxDecoration(
-                color: _eaAccent.withAlpha(isDark ? 30 : 20),
+                color: AdminColors.eaAccent.withAlpha(isDark ? 30 : 20),
                 shape: BoxShape.circle,
               ),
               child: Icon(Icons.admin_panel_settings_rounded,
-                  size: 34, color: _eaAccent),
+                  size: 34, color: AdminColors.eaAccent),
             ),
             const SizedBox(height: 16),
             Text(
@@ -278,7 +278,7 @@ class _EngineeringAdminManagementPageState
               icon: const Icon(Icons.add_rounded, size: 18),
               label: const Text('Add Engineering Admin'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: _eaAccent,
+                backgroundColor: AdminColors.eaAccent,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(Brand.r(12))),
@@ -351,7 +351,7 @@ class _EngineeringAdminManagementPageState
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: _eaAccent.withAlpha(isDark ? 40 : 20),
+                  color: AdminColors.eaAccent.withAlpha(isDark ? 40 : 20),
                   shape: BoxShape.circle,
                 ),
                 clipBehavior: Clip.antiAlias,
@@ -364,14 +364,14 @@ class _EngineeringAdminManagementPageState
                               style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700,
-                                  color: _eaAccent)),
+                                  color: AdminColors.eaAccent)),
                         ),
                         errorWidget: (_, __, ___) => Center(
                           child: Text(initial,
                               style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700,
-                                  color: _eaAccent)),
+                                  color: AdminColors.eaAccent)),
                         ),
                       )
                     : Center(
@@ -379,7 +379,7 @@ class _EngineeringAdminManagementPageState
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700,
-                                color: _eaAccent)),
+                                color: AdminColors.eaAccent)),
                       ),
               ),
               const SizedBox(width: 12),
@@ -429,7 +429,7 @@ class _EngineeringAdminManagementPageState
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: _eaAccent.withAlpha(isDark ? 30 : 18),
+                      color: AdminColors.eaAccent.withAlpha(isDark ? 30 : 18),
                       borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Text(
@@ -437,7 +437,7 @@ class _EngineeringAdminManagementPageState
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w700,
-                        color: _eaAccent,
+                        color: AdminColors.eaAccent,
                       ),
                     ),
                   ),

@@ -1,4 +1,4 @@
-// lib/screens/customer/catalog_page.dart
+﻿// lib/screens/customer/catalog_page.dart
 //
 // ═══════════════════════════════════════════════════════════
 //  CHANGES (v13 fix):
@@ -18,9 +18,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../l10n/s.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import 'machine_detail_page.dart';
+import '../../utils/app_logger.dart';
 
 // ── Custom Icons (private to this file) ──────────────────────
 class _LaserIcon extends StatelessWidget {
@@ -151,7 +153,7 @@ class _CncPainter extends CustomPainter {
     canvas.drawRRect(
         RRect.fromRectAndRadius(
             Rect.fromLTWH(w * 0.62, h * 0.06, w * 0.32, h * 0.20),
-            const Radius.circular(3)),
+            Radius.circular(Brand.r(3))),
         p);
     canvas.drawRect(Rect.fromLTWH(w * 0.63, h * 0.14, w * 0.30, h * 0.04),
         Paint()..color = Colors.white.withAlpha(89));
@@ -355,7 +357,7 @@ class _CatalogPageState extends State<CatalogPage> {
         };
       }).toList();
     } catch (e) {
-      debugPrint('⚠️ Fetch machines error: $e');
+      AppLogger.debug('CatalogPage', 'Fetch machines error: $e');
       return [];
     }
   }
@@ -385,7 +387,7 @@ class _CatalogPageState extends State<CatalogPage> {
         };
       }).toList();
     } catch (e) {
-      debugPrint('⚠️ Recently viewed not available: $e');
+      AppLogger.debug('CatalogPage', 'Recently viewed not available: $e');
       return [];
     }
   }
@@ -678,9 +680,9 @@ class _CatalogPageState extends State<CatalogPage> {
       case 'Digital Printers':
         return Brand.royalBlue;
       case 'CNC Routers':
-        return const Color(0xFFE65100);
+        return AdminColors.internal;
       case 'Laser Cutters':
-        return const Color(0xFF6A1B9A);
+        return StatusColors.deepPurple;
       case 'Finishing Equipment':
         return Brand.lightGreen;
       default:
@@ -766,7 +768,7 @@ class _CatalogPageState extends State<CatalogPage> {
           color: isActive ? Brand.lime.withAlpha(46) : Colors.white.withAlpha(18),
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: Border.all(
-              color: isActive ? Brand.lime : const Color(0xFF2A3F6E)),
+              color: isActive ? Brand.lime : Brand.navyMid),
         ),
         child: Icon(icon,
             color: isActive ? Brand.lime : Colors.white, size: 19),
@@ -1143,8 +1145,8 @@ class _CatalogPageState extends State<CatalogPage> {
         context: context,
         backgroundColor: Brand.surface(isDark),
         // ✅ FIX-7: radius 24 → 28
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28)))),
         builder: (sheetCtx) => Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
@@ -1213,8 +1215,8 @@ class _CatalogPageState extends State<CatalogPage> {
         context: context,
         backgroundColor: Brand.surface(isDark),
         // ✅ FIX-7: radius 24 → 28
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28)))),
         builder: (sheetCtx) => Padding(
             padding: const EdgeInsets.all(20),
             child: Column(
@@ -1929,8 +1931,8 @@ class _CatalogPageState extends State<CatalogPage> {
         context: context,
         backgroundColor: Brand.surface(isDark),
         // ✅ FIX-7: radius 24 → 28
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28)))),
         builder: (sheetCtx) => Padding(
             padding: const EdgeInsets.all(24),
             child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -2023,7 +2025,7 @@ class _CatalogPageState extends State<CatalogPage> {
                   Icons.phone_outlined,
                   'Call Sales Team',
                   '0777 244 882',
-                  const Color(0xFF4CAF50),
+                  StatusColors.materialGreen,
                   isDark,
                   () => Navigator.pop(sheetCtx)),
               const SizedBox(height: 16),

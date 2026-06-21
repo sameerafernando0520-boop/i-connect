@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // FILE: lib/screens/customer/notification_list_page.dart
 // Role-aware navigation (works for customer + admin + engineer)
 // ============================================================
@@ -14,6 +14,7 @@ import 'package:supabase_flutter/supabase_flutter.dart'
         PostgresChangeFilterType;
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../l10n/s.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
@@ -30,6 +31,7 @@ import '../admin/admin_ticket_detail_page.dart';
 import '../admin/inquiry_detail_page.dart';
 import '../admin/installment_detail_page.dart';
 import '../engineer/engineer_ticket_detail_page.dart';
+import '../../utils/app_logger.dart';
 
 // ══════════════════════════════════════════════════════════════
 //  NOTIFICATION TYPES & VISUAL CONFIG
@@ -50,11 +52,11 @@ class _NType {
       case 'service_scheduled':
       case 'service_completed':
         return _NType(Icons.build_circle_rounded,
-            isDark ? const Color(0xFFFFB74D) : Colors.orange.shade700);
+            isDark ? StatusColors.warningLight : Colors.orange.shade700);
       case 'warranty_expiry':
       case 'warranty_extended':
         return _NType(Icons.shield_rounded,
-            isDark ? const Color(0xFFCE93D8) : const Color(0xFF6A1B9A));
+            isDark ? StatusColors.lavender : StatusColors.deepPurple);
       case 'order_update':
       case 'order_confirmed':
       case 'order_shipped':
@@ -65,17 +67,17 @@ class _NType {
       case 'tier_upgrade':
       case 'free_item':
         return _NType(Icons.star_rounded,
-            isDark ? const Color(0xFFFFD54F) : Colors.amber.shade700);
+            isDark ? StatusColors.warningLight : Colors.amber.shade700);
       case 'promotion':
       case 'announcement':
       case 'broadcast':
         return _NType(Icons.campaign_rounded,
-            isDark ? const Color(0xFFFF8A65) : const Color(0xFFE65100));
+            isDark ? StatusColors.materialOrange : AdminColors.internal);
       case 'message':
       case 'chat':
       case 'new_message':
         return _NType(Icons.chat_bubble_rounded,
-            isDark ? const Color(0xFF80CBC4) : const Color(0xFF00695C));
+            isDark ? StatusColors.teal : StatusColors.teal);
       case 'system':
       default:
         return _NType(Icons.notifications_rounded,
@@ -147,7 +149,7 @@ class _NotificationListPageState extends State<NotificationListPage>
             .order('created_at', ascending: false)
             .limit(100);
       } catch (queryError) {
-        debugPrint('❌ Notifications query error: $queryError');
+        AppLogger.debug('NotificationListPage', 'Notifications query error: $queryError');
         if (mounted) {
           setState(() {
             _all = [];
@@ -192,7 +194,7 @@ class _NotificationListPageState extends State<NotificationListPage>
         });
       }
     } catch (e) {
-      debugPrint('❌ Notification load error: $e');
+      AppLogger.debug('NotificationListPage', 'Notification load error: $e');
       if (mounted) {
         setState(() {
           _isLoading = false;
@@ -270,7 +272,7 @@ class _NotificationListPageState extends State<NotificationListPage>
         });
       }
     } catch (e) {
-      debugPrint('⚠️ Mark read error: $e');
+      AppLogger.debug('NotificationListPage', 'Mark read error: $e');
       if (mounted) setState(() => _markingIds.remove(id));
     }
   }
@@ -299,7 +301,7 @@ class _NotificationListPageState extends State<NotificationListPage>
         _showSnack('All notifications marked as read', isSuccess: true);
       }
     } catch (e) {
-      debugPrint('⚠️ Mark all read error: $e');
+      AppLogger.debug('NotificationListPage', 'Mark all read error: $e');
       if (mounted) {
         setState(() => _isMarkingAll = false);
         _showSnack('Failed to mark all as read');
@@ -575,7 +577,7 @@ class _NotificationListPageState extends State<NotificationListPage>
         });
       }
     } catch (e) {
-      debugPrint('⚠️ Delete error: $e');
+      AppLogger.debug('NotificationListPage', 'Delete error: $e');
       if (mounted) _showSnack('Failed to delete notification');
     }
   }
@@ -755,7 +757,7 @@ class _NotificationListPageState extends State<NotificationListPage>
           decoration: BoxDecoration(
             color: Colors.white.withAlpha(18),
             borderRadius: BorderRadius.circular(Brand.r(12)),
-            border: Border.all(color: const Color(0xFF2A3F6E)),
+            border: Border.all(color: Brand.navyMid),
           ),
           child: Icon(icon, color: Colors.white, size: 19),
         ),
@@ -1181,7 +1183,7 @@ class _NotificationListPageState extends State<NotificationListPage>
         padding: const EdgeInsets.only(right: 20),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           Icon(Icons.delete_outline_rounded,
-              color: isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400,
+              color: isDark ? StatusColors.softRed : Colors.red.shade400,
               size: 24),
           const SizedBox(height: 4),
           Text(S.of(context)!.commonDelete,
@@ -1189,7 +1191,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                   fontSize: 11,
                   fontWeight: FontWeight.w700,
                   color:
-                      isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400)),
+                      isDark ? StatusColors.softRed : Colors.red.shade400)),
         ]),
       );
 
@@ -1258,7 +1260,7 @@ class _NotificationListPageState extends State<NotificationListPage>
               ),
               child: Icon(Icons.error_outline,
                   size: 34,
-                  color: isDark ? const Color(0xFFFF6B6B) : Colors.red),
+                  color: isDark ? StatusColors.softRed : Colors.red),
             ),
             const SizedBox(height: 16),
             Text(S.of(context)!.notificationLoadFailed,

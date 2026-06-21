@@ -1,4 +1,4 @@
-// lib/screens/marketing/ma_knowledge_base_page.dart
+﻿// lib/screens/marketing/ma_knowledge_base_page.dart
 // P5 — Knowledge Base: full CRUD for articles
 
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _kbColor = Color(0xFF8B5CF6);
+const Color _kbColor = StatusColors.assigned;
 
 class MaKnowledgeBasePage extends StatefulWidget {
   const MaKnowledgeBasePage({super.key});

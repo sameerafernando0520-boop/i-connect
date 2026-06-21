@@ -1,4 +1,4 @@
-// lib/screens/admin/inquiry_management_page.dart
+﻿// lib/screens/admin/inquiry_management_page.dart
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -12,6 +12,7 @@ import '../../services/export_service.dart';
 import '../../utils/time_utils.dart';
 import '../../utils/string_utils.dart';
 import 'inquiry_detail_page.dart';
+import '../../utils/app_logger.dart';
 
 class InquiryManagementPage extends StatefulWidget {
   const InquiryManagementPage({super.key});
@@ -86,7 +87,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
   Color _primaryLight(bool d) => d ? Brand.royalBlue : Brand.royalBlueLight;
 
   // FIX: AdminColors.info doesn't exist → const value
-  static const Color _infoColor = Color(0xFF3B82F6);
+  static const Color _infoColor = AdminColors.info;
 
   List<BoxShadow> _softShadow(bool d) => d
       ? []
@@ -156,11 +157,11 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                 if (mounted) _loadInquiries(silent: true);
               });
             } catch (e) {
-              debugPrint('Realtime callback error: $e');
+              AppLogger.debug('InquiryManagementPage', 'Realtime callback error: $e');
             }
           },
           onError: (e) {
-            debugPrint('Inquiry stream error: $e');
+            AppLogger.debug('InquiryManagementPage', 'Inquiry stream error: $e');
           },
         );
   }
@@ -206,7 +207,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
       if (result is Map) return Map<String, dynamic>.from(result);
       return <String, dynamic>{};
     } catch (e) {
-      debugPrint('Pipeline fetch error: $e');
+      AppLogger.debug('InquiryManagementPage', 'Pipeline fetch error: $e');
       return <String, dynamic>{};
     }
   }
@@ -224,7 +225,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
       }
       return await _loadInquiriesFallback();
     } catch (e) {
-      debugPrint('Inquiries RPC error: $e — using fallback');
+      AppLogger.debug('InquiryManagementPage', 'Inquiries RPC error: $e — using fallback');
       return await _loadInquiriesFallback();
     }
   }
@@ -448,23 +449,23 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
   Color _getStageColor(String stage) {
     switch (stage) {
       case 'new':
-        return const Color(0xFF3B82F6);
+        return AdminColors.info;
       case 'contacted':
-        return const Color(0xFF8B5CF6);
+        return StatusColors.assigned;
       case 'quoted':
-        return const Color(0xFFF59E0B);
+        return AdminColors.warning;
       case 'negotiating':
-        return const Color(0xFFEF8C22);
+        return AdminColors.warning;
       case 'won':
         return AdminColors.accent;
       case 'lost':
         return AdminColors.error;
       case 'hot':
-        return const Color(0xFFFF6B35);
+        return StatusColors.softRed;
       case 'overdue':
-        return const Color(0xFFDC2626);
+        return StatusColors.danger;
       case 'needs_attention':
-        return const Color(0xFFCA8A04);
+        return StatusColors.warningDark;
       default:
         return Colors.grey;
     }
@@ -1217,7 +1218,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
         return Container(
           decoration: BoxDecoration(
             color: _sheetBg(isDark),
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -1882,7 +1883,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                             : stageColor,
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(Brand.r(18)),
-                          bottomRight: Radius.circular(4),
+                          bottomRight: Radius.circular(Brand.r(4)),
                         ),
                       ),
                     ),
@@ -1911,7 +1912,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
         return Container(
           decoration: BoxDecoration(
             color: _sheetBg(isDark),
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,

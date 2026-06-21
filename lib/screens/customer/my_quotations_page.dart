@@ -1,4 +1,4 @@
-// ════════════════════════════════════════════════════════════════
+﻿// ════════════════════════════════════════════════════════════════
 // Customer — My Quotations (list + inline detail page)
 // ════════════════════════════════════════════════════════════════
 
@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../l10n/s.dart';
 import '../../widgets/ds/ds_widgets.dart';
@@ -97,7 +98,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
             Expanded(child: Text(S.of(context)!.quotationLoadFailed)),
           ]),
           behavior: SnackBarBehavior.floating,
-          backgroundColor: const Color(0xFFEF4444),
+          backgroundColor: AdminColors.error,
         ),
       );
     }
@@ -353,15 +354,15 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
 
     final diff = validUntil.difference(DateTime.now()).inDays;
     if (diff < 0) {
-      return ('Expired', const Color(0xFFEF4444));
+      return ('Expired', AdminColors.error);
     }
     if (diff == 0) {
-      return ('Expires today', const Color(0xFFF59E0B));
+      return ('Expires today', AdminColors.warning);
     }
     if (diff <= 14) {
       return (
         'Valid for $diff more day${diff == 1 ? '' : 's'}',
-        const Color(0xFFF59E0B)
+        AdminColors.warning
       );
     }
     return null;
@@ -526,7 +527,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
             Expanded(child: Text(S.of(context)!.quotationDetailLoadFailed)),
           ]),
           behavior: SnackBarBehavior.floating,
-          backgroundColor: const Color(0xFFEF4444),
+          backgroundColor: AdminColors.error,
         ),
       );
     }
@@ -585,7 +586,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
             style: FilledButton.styleFrom(
               backgroundColor: response == 'accepted'
                   ? Brand.lightGreen
-                  : const Color(0xFFEF4444),
+                  : AdminColors.error,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(Brand.r(10))),
             ),
@@ -631,7 +632,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
           SnackBar(
             content: Text(res['error'] ?? 'Failed to update'),
             behavior: SnackBarBehavior.floating,
-            backgroundColor: const Color(0xFFEF4444),
+            backgroundColor: AdminColors.error,
           ),
         );
       }
@@ -646,7 +647,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
             Expanded(child: Text(S.of(context)!.commonSomethingWentWrong)),
           ]),
           behavior: SnackBarBehavior.floating,
-          backgroundColor: const Color(0xFFEF4444),
+          backgroundColor: AdminColors.error,
         ),
       );
     }
@@ -795,13 +796,13 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
       final diff = validUntil.difference(DateTime.now()).inDays;
       if (diff < 0) {
         hint = 'Expired';
-        hintColor = const Color(0xFFEF4444);
+        hintColor = AdminColors.error;
       } else if (diff == 0) {
         hint = 'Expires today';
-        hintColor = const Color(0xFFF59E0B);
+        hintColor = AdminColors.warning;
       } else if (diff <= 14) {
         hint = 'Valid for $diff more day${diff == 1 ? '' : 's'}';
-        hintColor = const Color(0xFFF59E0B);
+        hintColor = AdminColors.warning;
       }
     }
 
@@ -992,7 +993,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
           if (discAmt > 0) ...[
             const SizedBox(height: 6),
             _sumRow(discLabel, '- ${_fmtCur(discAmt)}', isDark,
-                valueColor: const Color(0xFFF59E0B)),
+                valueColor: AdminColors.warning),
           ],
           if (taxAmt > 0) ...[
             const SizedBox(height: 6),
@@ -1080,8 +1081,8 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
             icon: const Icon(Icons.close_rounded, size: 18),
             label: Text(S.of(context)!.quotationReject),
             style: OutlinedButton.styleFrom(
-              foregroundColor: const Color(0xFFEF4444),
-              side: const BorderSide(color: Color(0xFFEF4444)),
+              foregroundColor: AdminColors.error,
+              side: const BorderSide(color: AdminColors.error),
               padding: const EdgeInsets.symmetric(vertical: 14),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(Brand.r(14))),

@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // iFrontiers Connect — Order Form Page
 // Customer places machine / parts orders
 // Creates service_ticket with type='order' + metadata JSONB
@@ -11,6 +11,7 @@ import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
 import '../../services/points_service.dart';
 import '../../widgets/ds/ds_widgets.dart';
+import '../../utils/app_logger.dart';
 
 class OrderFormPage extends StatefulWidget {
   final Map<String, dynamic>? preselectedMachine;
@@ -87,7 +88,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
         _isLoading = false;
       });
     } catch (e) {
-      debugPrint('OrderForm load error: $e');
+      AppLogger.debug('OrderFormPage', 'OrderForm load error: $e');
       if (!mounted) return;
       setState(() => _isLoading = false);
     }
@@ -132,7 +133,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkCard : Colors.white,
                 borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(28)),
+                    BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
               ),
               child: Column(
                 children: [

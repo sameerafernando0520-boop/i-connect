@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/admin_theme.dart';
 import '../../config/brand_colors.dart';
@@ -420,7 +420,7 @@ class _ReferralRulesPageState extends State<ReferralRulesPage> {
                 decoration: BoxDecoration(
                   color: AdminColors.card(sheetCtx),
                   borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(28)),
+                      BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
                 ),
                 child: SingleChildScrollView(
                   child: Column(

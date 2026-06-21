@@ -1,27 +1,29 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../services/points_service.dart';
 import '../../utils/time_utils.dart';
 import 'request_service_page.dart';
+import '../../utils/app_logger.dart';
 
 // ── Schedule Helpers ──
 
 Color _typeColor(String? type) {
   switch (type) {
     case 'preventive':
-      return const Color(0xFF3B82F6);
+      return AdminColors.info;
     case 'repair':
-      return const Color(0xFFEF4444);
+      return AdminColors.error;
     case 'inspection':
-      return const Color(0xFF14B8A6);
+      return StatusColors.teal;
     case 'installation':
-      return const Color(0xFF8B5CF6);
+      return StatusColors.assigned;
     case 'warranty_visit':
-      return const Color(0xFFF59E0B);
+      return AdminColors.warning;
     default:
-      return const Color(0xFF6B7280);
+      return StatusColors.gray;
   }
 }
 
@@ -62,21 +64,21 @@ IconData _typeIcon(String? type) {
 Color _statusColor(String? status) {
   switch (status) {
     case 'requested':
-      return const Color(0xFFF59E0B);
+      return AdminColors.warning;
     case 'scheduled':
-      return const Color(0xFF3B82F6);
+      return AdminColors.info;
     case 'confirmed':
-      return const Color(0xFF6366F1);
+      return StatusColors.indigo;
     case 'in_progress':
-      return const Color(0xFFF97316);
+      return AdminColors.internal;
     case 'completed':
-      return const Color(0xFF22C55E);
+      return Brand.lightGreen;
     case 'cancelled':
-      return const Color(0xFFEF4444);
+      return AdminColors.error;
     case 'rescheduled':
-      return const Color(0xFF8B5CF6);
+      return StatusColors.assigned;
     default:
-      return const Color(0xFF6B7280);
+      return StatusColors.gray;
   }
 }
 
@@ -245,7 +247,7 @@ class _MySchedulePageState extends State<MySchedulePage>
         _loading = false;
       });
     } catch (e) {
-      debugPrint('Load schedules error: $e');
+      AppLogger.debug('MySchedulePage', 'Load schedules error: $e');
       if (!mounted) return;
       setState(() => _loading = false);
       ScaffoldMessenger.of(context).showSnackBar(
@@ -285,7 +287,7 @@ class _MySchedulePageState extends State<MySchedulePage>
               decoration: BoxDecoration(
                 color: isDark ? Brand.darkCard : Colors.white,
                 borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(28)),
+                    BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(24),
@@ -340,7 +342,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                                   : Icons.star_border_rounded,
                               size: 40,
                               color: i < rating
-                                  ? const Color(0xFFF59E0B)
+                                  ? AdminColors.warning
                                   : (isDark
                                       ? Brand.darkTextTertiary
                                       : Brand.subtleLight),
@@ -368,7 +370,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                             ? (isDark
                                 ? Brand.darkTextTertiary
                                 : Brand.subtleLight)
-                            : const Color(0xFFF59E0B),
+                            : AdminColors.warning,
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -789,7 +791,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                                   fontSize: 11,
                                   fontWeight: FontWeight.w500,
                                   color: daysLabel == 'Today'
-                                      ? const Color(0xFFF97316)
+                                      ? AdminColors.internal
                                       : (isDark
                                           ? Brand.darkTextTertiary
                                           : Brand.subtleLight),
@@ -893,7 +895,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                       engineerName,
                       isDark,
                       valueColor:
-                          engineer != null ? null : const Color(0xFFF59E0B),
+                          engineer != null ? null : AdminColors.warning,
                     ),
                     const SizedBox(height: 10),
 
@@ -949,7 +951,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                         width: double.infinity,
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFEF4444).withAlpha(15),
+                          color: AdminColors.error.withAlpha(15),
                           borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child: Column(
@@ -959,7 +961,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
-                                  color: const Color(0xFFEF4444),
+                                  color: AdminColors.error,
                                 )),
                             const SizedBox(height: 4),
                             Text(
@@ -1033,7 +1035,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                                     ? Icons.star_rounded
                                     : Icons.star_border_rounded,
                                 size: 20,
-                                color: const Color(0xFFF59E0B),
+                                color: AdminColors.warning,
                               ),
                             ),
                           ],
@@ -1062,9 +1064,9 @@ class _MySchedulePageState extends State<MySchedulePage>
                             icon: const Icon(Icons.star_outline, size: 18),
                             label: const Text('Rate This Service'),
                             style: OutlinedButton.styleFrom(
-                              foregroundColor: const Color(0xFFF59E0B),
+                              foregroundColor: AdminColors.warning,
                               side: BorderSide(
-                                color: const Color(0xFFF59E0B).withAlpha(128),
+                                color: AdminColors.warning.withAlpha(128),
                               ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(Brand.r(12)),

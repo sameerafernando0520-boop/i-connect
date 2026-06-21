@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/engineering_admin/ea_schedule_page.dart
 // EA Schedule Calendar — Engineering Admin views all service
 // schedules on a monthly calendar; tap a day to see that day's
@@ -14,16 +14,16 @@ import '../../config/supabase_config.dart';
 import '../admin/create_schedule_page.dart';
 import 'ea_ticket_detail_page.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = Brand.lightGreenDark;
 
 // ── Status colour mapping ──────────────────────────────────────
 const _statusColors = <String, Color>{
-  'scheduled':   Color(0xFF3B82F6), // blue
-  'confirmed':   Color(0xFF6366F1), // indigo
-  'in_progress': Color(0xFFF59E0B), // amber
-  'completed':   Color(0xFF16A34A), // green
-  'cancelled':   Color(0xFF6B7280), // grey
-  'rescheduled': Color(0xFF8B5CF6), // purple
+  'scheduled':   AdminColors.info, // blue
+  'confirmed':   StatusColors.indigo, // indigo
+  'in_progress': AdminColors.warning, // amber
+  'completed':   Brand.lightGreenDark, // green
+  'cancelled':   StatusColors.gray, // grey
+  'rescheduled': StatusColors.assigned, // purple
 };
 
 const _statusLabels = <String, String>{
@@ -37,11 +37,11 @@ const _statusLabels = <String, String>{
 
 // ── Schedule type colour mapping ───────────────────────────────
 const _typeColors = <String, Color>{
-  'preventive':     Color(0xFF14B8A6),
-  'repair':         Color(0xFFEF4444),
-  'inspection':     Color(0xFF3B82F6),
-  'installation':   Color(0xFF8B5CF6),
-  'warranty_visit': Color(0xFFF59E0B),
+  'preventive':     StatusColors.teal,
+  'repair':         AdminColors.error,
+  'inspection':     AdminColors.info,
+  'installation':   StatusColors.assigned,
+  'warranty_visit': AdminColors.warning,
 };
 
 const _typeLabels = <String, String>{
@@ -189,13 +189,13 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
   }
 
   Color _statusColor(String? s) =>
-      _statusColors[s ?? ''] ?? const Color(0xFF6B7280);
+      _statusColors[s ?? ''] ?? StatusColors.gray;
 
   String _statusLabel(String? s) =>
       _statusLabels[s ?? ''] ?? (s ?? 'Unknown');
 
   Color _typeColor(String? t) =>
-      _typeColors[t ?? ''] ?? const Color(0xFF6B7280);
+      _typeColors[t ?? ''] ?? StatusColors.gray;
 
   String _typeLabel(String? t) =>
       _typeLabels[t ?? ''] ?? (t ?? '');
@@ -451,7 +451,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
             color: isDark ? Colors.white : _eaAccent,
           ),
           markerDecoration: const BoxDecoration(
-            color: Color(0xFFF59E0B),
+            color: AdminColors.warning,
             shape: BoxShape.circle,
           ),
           markersMaxCount: 3,
@@ -530,9 +530,9 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
           Wrap(
             spacing: 10,
             children: [
-              _legendDot(const Color(0xFF3B82F6), 'Sched'),
-              _legendDot(const Color(0xFFF59E0B), 'Active'),
-              _legendDot(const Color(0xFF16A34A), 'Done'),
+              _legendDot(AdminColors.info, 'Sched'),
+              _legendDot(AdminColors.warning, 'Active'),
+              _legendDot(Brand.lightGreenDark, 'Done'),
             ],
           ),
         ],
@@ -678,7 +678,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
                         engineerName,
                         isDark,
                         valueColor: engineer == null
-                            ? const Color(0xFFEF4444)
+                            ? AdminColors.error
                             : null,
                       ),
                       if (loc != null && loc.isNotEmpty) ...[
@@ -835,7 +835,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
       height: height,
       margin: EdgeInsets.fromLTRB(margin, 0, margin, 14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCardElevated : const Color(0xFFE5E7EB),
+        color: isDark ? Brand.darkCardElevated : Brand.borderLight,
         borderRadius: BorderRadius.circular(radius),
       ),
     );
@@ -850,7 +850,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Icon(Icons.error_outline_rounded,
-                size: 48, color: Color(0xFFEF4444)),
+                size: 48, color: AdminColors.error),
             const SizedBox(height: 12),
             Text(
               'Failed to load schedules',

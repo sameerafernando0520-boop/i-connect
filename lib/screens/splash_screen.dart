@@ -181,13 +181,13 @@ class _SplashScreenState extends State<SplashScreen>
   // ════════════════════════════════════════════════════════════
   //  PALETTE
   // ════════════════════════════════════════════════════════════
-  static const _navyEdge = Color(0xFF081A40);
-  static const _navyCore = Color(0xFF102A63);
-  static const _navyGlow = Color(0xFF15397A);
-  static const _lime = Color(0xFFABBD37);
-  static const _tagColor = Color(0xFFE8EDF7);
-  static const _footerCap = Color(0xFFB8C2D6);
-  static const _footerSub = Color(0xFF8C9ABB);
+  static const _navyEdge = Color(0xFF081A40); // splash gradient deep edge
+  static const _navyCore = Color(0xFF102A63); // splash gradient core
+  static const _navyGlow = Color(0xFF15397A); // splash gradient inner glow
+  static const _lime = Brand.lime;
+  static const _tagColor = Color(0xFFE8EDF7); // splash tagline chip bg
+  static const _footerCap = Color(0xFFB8C2D6); // splash footer cap text
+  static const _footerSub = Color(0xFF8C9ABB); // splash footer sub text
 
   static const _ifrontiersUrl =
       'https://res.cloudinary.com/dez4dicac/image/upload/q_auto/f_auto/v1769810412/IF_logo-01_kcln3e.png';

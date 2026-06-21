@@ -1,4 +1,4 @@
-// lib/screens/marketing/ma_home_page.dart
+﻿// lib/screens/marketing/ma_home_page.dart
 //
 // Premium marketing admin dashboard — matches admin_dashboard.dart design
 // language with marketing-specific KPIs and module access.
@@ -23,6 +23,7 @@ import 'ma_customers_page.dart';
 import 'ma_catalog_page.dart';
 import 'ma_points_page.dart';
 import 'ma_analytics_page.dart';
+import '../../utils/app_logger.dart';
 
 // ── Module tile data class ──
 class _NavTile {
@@ -49,7 +50,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.image_rounded,
     label: 'Banners',
     subtitle: 'Promotional banners',
-    color: const Color(0xFFEC4899),
+    color: StatusColors.pink,
     pageBuilder: () => const MaBannersPage(),
   ),
   _NavTile(
@@ -57,7 +58,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.menu_book_rounded,
     label: 'Knowledge Base',
     subtitle: 'Articles & guides',
-    color: const Color(0xFF8B5CF6),
+    color: StatusColors.assigned,
     pageBuilder: () => const MaKnowledgeBasePage(),
   ),
   _NavTile(
@@ -65,7 +66,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.campaign_rounded,
     label: 'Broadcast',
     subtitle: 'Send notifications',
-    color: const Color(0xFFEF4444),
+    color: AdminColors.error,
     pageBuilder: () => const MaBroadcastPage(),
   ),
   _NavTile(
@@ -73,7 +74,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.share_rounded,
     label: 'Referral',
     subtitle: 'Referral program',
-    color: const Color(0xFF10B981),
+    color: StatusColors.resolved,
     pageBuilder: () => const MaReferralPage(),
   ),
   _NavTile(
@@ -81,7 +82,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.star_rounded,
     label: 'Tiers',
     subtitle: 'Loyalty tiers',
-    color: const Color(0xFFF59E0B),
+    color: AdminColors.warning,
     pageBuilder: () => const MaTiersPage(),
   ),
   _NavTile(
@@ -89,7 +90,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.people_rounded,
     label: 'Customers',
     subtitle: 'Customer directory',
-    color: const Color(0xFF3B82F6),
+    color: AdminColors.info,
     pageBuilder: () => const MaCustomersPage(),
   ),
   _NavTile(
@@ -97,7 +98,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.precision_manufacturing_rounded,
     label: 'Catalog',
     subtitle: 'Machine catalog',
-    color: const Color(0xFF14B8A6),
+    color: StatusColors.teal,
     pageBuilder: () => const MaCatalogPage(),
   ),
   _NavTile(
@@ -105,7 +106,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.emoji_events_rounded,
     label: 'Points',
     subtitle: 'Points activity',
-    color: const Color(0xFFF97316),
+    color: AdminColors.internal,
     pageBuilder: () => const MaPointsPage(),
   ),
   _NavTile(
@@ -113,7 +114,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.analytics_rounded,
     label: 'Analytics',
     subtitle: 'KB analytics',
-    color: const Color(0xFF6366F1),
+    color: StatusColors.indigo,
     pageBuilder: () => const MaAnalyticsPage(),
   ),
 ];
@@ -175,7 +176,7 @@ class _MaHomePageState extends State<MaHomePage> {
       if (user == null) return;
 
       final now = DateTime.now();
-      final monthStart = DateTime(now.year, now.month, 1).toIso8601String();
+      final monthStart = DateTime(now.year, now.month, 1).toUtc().toIso8601String();
 
       final results = await Future.wait<dynamic>([
         // 0: profile
@@ -258,7 +259,7 @@ class _MaHomePageState extends State<MaHomePage> {
         _isRefreshing = false;
       });
     } catch (e) {
-      debugPrint('Marketing dashboard error: $e');
+      AppLogger.debug('MaHomePage', 'Marketing dashboard error: $e');
       if (!mounted) return;
       setState(() {
         _isLoading = false;
@@ -499,17 +500,17 @@ class _MaHomePageState extends State<MaHomePage> {
         IconButton(
           onPressed: _loadDashboard,
           icon: const Icon(Icons.refresh_rounded,
-              size: 20, color: Color(0xFF8FA3C8)),
+              size: 20, color: Brand.subtleLight),
         ),
         DsHeroAvatar(
           initials: StringUtils.getInitials(_name),
-          color: const Color(0xFF8B5CF6),
+          color: StatusColors.assigned,
           photoUrl: _photoUrl,
         ),
       ]),
       actionCard: DsHeroCard(
         icon: Icons.campaign_rounded,
-        iconColor: const Color(0xFFB79DF8),
+        iconColor: StatusColors.lavender,
         label: 'Marketing studio',
         title: 'Banners, broadcasts & loyalty',
         onTap: () {},
@@ -708,7 +709,7 @@ class _MaHomePageState extends State<MaHomePage> {
                   decoration: BoxDecoration(
                     color: isDark
                         ? Brand.darkBorderLight.withAlpha(77)
-                        : const Color(0xFFE2E8F0),
+                        : Brand.borderLight,
                     borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: Stack(children: [
@@ -784,28 +785,28 @@ class _MaHomePageState extends State<MaHomePage> {
     final cards = [
       _KpiData(
         icon: Icons.campaign_rounded,
-        color: const Color(0xFFEF4444),
+        color: AdminColors.error,
         label: 'Broadcasts',
         value: '$_broadcastsSent',
         badge: 'Sent',
       ),
       _KpiData(
         icon: Icons.people_alt_rounded,
-        color: const Color(0xFF10B981),
+        color: StatusColors.resolved,
         label: 'Referrals',
         value: '$_activeReferrals',
         badge: 'Active',
       ),
       _KpiData(
         icon: Icons.emoji_events_rounded,
-        color: const Color(0xFFF97316),
+        color: AdminColors.internal,
         label: 'Points Given',
         value: _formatCompact(_totalPointsDistributed),
         badge: 'Total',
       ),
       _KpiData(
         icon: Icons.precision_manufacturing_rounded,
-        color: const Color(0xFF14B8A6),
+        color: StatusColors.teal,
         label: 'Catalog Items',
         value: '$_totalCatalogItems',
         badge: 'Machines',

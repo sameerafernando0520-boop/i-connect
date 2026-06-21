@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // FILE: lib/screens/customer/machine_detail_page.dart
 // FIXED v18 — Removed AppTheme, _B class; uses Brand + Theme.of
 // ============================================================
@@ -11,14 +11,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../l10n/s.dart';
 import '../../utils/machine_image_helper.dart';
 import 'ticket_detail_page.dart';
 import 'my_machines_page.dart';
+import '../../utils/app_logger.dart';
 
 // ── Colors not in Brand (machine detail specific) ────────────
-const _dNavy = Color(0xFF0D1B3E);
-const _dNavySurf = Color(0xFF132044);
+const _dNavy = Brand.darkDeep;
+const _dNavySurf = Brand.darkNavy;
 
 // ── Custom Icons ─────────────────────────────────────────────
 class _LaserIcon extends StatelessWidget {
@@ -120,7 +122,7 @@ class _CncP extends CustomPainter {
     c.drawRRect(
         RRect.fromRectAndRadius(
             Rect.fromLTWH(w * .62, h * .06, w * .32, h * .20),
-            const Radius.circular(3)),
+            Radius.circular(Brand.r(3))),
         p);
     c.drawPath(
         Path()
@@ -458,7 +460,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
             decoration: BoxDecoration(
                 color: Brand.surface(isDark),
                 borderRadius:
-                    BorderRadius.vertical(top: Radius.circular(28))),
+                    BorderRadius.vertical(top: Radius.circular(Brand.r(28)))),
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(sheetCtx).viewInsets.bottom),
             child: SingleChildScrollView(
@@ -823,9 +825,9 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
       case 'Digital Printers':
         return Brand.royalBlue;
       case 'CNC Routers':
-        return const Color(0xFFE65100);
+        return AdminColors.internal;
       case 'Laser Cutters':
-        return const Color(0xFF6A1B9A);
+        return StatusColors.deepPurple;
       case 'Finishing Equipment':
         return Brand.lightGreen;
       default:
@@ -932,7 +934,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         }
       }
     } catch (e) {
-      debugPrint('Connector phone lookup failed: $e');
+      AppLogger.debug('MachineDetailPage', 'Connector phone lookup failed: $e');
     }
 
     if (phone == null || phone.isEmpty) {
@@ -946,7 +948,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
         final p = (ci?['phone'] as String?)?.trim();
         if (p != null && p.isNotEmpty) phone = p;
       } catch (e) {
-        debugPrint('company_info phone lookup failed: $e');
+        AppLogger.debug('MachineDetailPage', 'company_info phone lookup failed: $e');
       }
     }
 
@@ -2110,7 +2112,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
       decoration: BoxDecoration(
           color: isDark ? Brand.darkCard : Colors.white,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(28), topRight: Radius.circular(28)),
+              topLeft: Radius.circular(Brand.r(28)), topRight: Radius.circular(Brand.r(28))),
           border: Border(
               top: BorderSide(
                   color: isDark ? Brand.darkBorder : Brand.borderLight,

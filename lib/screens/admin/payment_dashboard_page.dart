@@ -1,9 +1,10 @@
-// lib/screens/admin/payment_dashboard_page.dart
+﻿// lib/screens/admin/payment_dashboard_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/admin/shimmer_loading.dart';
@@ -161,7 +162,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
                 value: 'Rs. ${_fmt.format(_d(s['total_overdue']))}',
                 sub: '${_i(s['overdue_invoices'])} overdue',
                 icon: Icons.warning_amber_rounded,
-                color: const Color(0xFFEF4444),
+                color: AdminColors.error,
               ),
             ),
             const SizedBox(width: 12),
@@ -172,7 +173,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
                 value: 'Rs. ${_fmt.format(_d(s['this_month_revenue']))}',
                 sub: null,
                 icon: Icons.trending_up_rounded,
-                color: const Color(0xFF8B5CF6),
+                color: StatusColors.assigned,
               ),
             ),
           ],
@@ -410,8 +411,8 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
               toY: _d(item['total']),
               color: Brand.royalBlue,
               width: barW,
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(6),
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(Brand.r(6)),
               ),
               backDrawRodData: BackgroundBarChartRodData(
                 show: true,
@@ -464,14 +465,14 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
     final total = counts.values.fold<int>(0, (s, v) => s + _i(v));
 
     const statuses = <(String, String, Color)>[
-      ('paid', 'Paid', Color(0xFF22C55E)),
-      ('partially_paid', 'Partial', Color(0xFF3B82F6)),
-      ('sent', 'Sent', Color(0xFF8B5CF6)),
-      ('viewed', 'Viewed', Color(0xFF06B6D4)),
-      ('overdue', 'Overdue', Color(0xFFEF4444)),
-      ('draft', 'Draft', Color(0xFF94A3B8)),
-      ('cancelled', 'Cancelled', Color(0xFF6B7280)),
-      ('refunded', 'Refunded', Color(0xFFF59E0B)),
+      ('paid', 'Paid', Brand.lightGreen),
+      ('partially_paid', 'Partial', AdminColors.info),
+      ('sent', 'Sent', StatusColors.assigned),
+      ('viewed', 'Viewed', StatusColors.info),
+      ('overdue', 'Overdue', AdminColors.error),
+      ('draft', 'Draft', Brand.subtleLight),
+      ('cancelled', 'Cancelled', StatusColors.gray),
+      ('refunded', 'Refunded', AdminColors.warning),
     ];
 
     final visible = statuses.where((s) => _i(counts[s.$1]) > 0).toList();
@@ -722,7 +723,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
                           style: TextStyle(
                             fontSize: 12,
                             color: status == 'overdue'
-                                ? const Color(0xFFEF4444)
+                                ? AdminColors.error
                                 : isDark
                                     ? Brand.darkTextTertiary
                                     : Brand.subtleLight,
@@ -905,7 +906,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
                       Icon(
                         Icons.verified_rounded,
                         size: 14,
-                        color: Color(0xFF22C55E),
+                        color: Brand.lightGreen,
                       ),
                       SizedBox(width: 3),
                       Text(
@@ -913,7 +914,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF22C55E),
+                          color: Brand.lightGreen,
                         ),
                       ),
                     ],
@@ -942,23 +943,23 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
   Color _statusColor(String s) {
     switch (s) {
       case 'paid':
-        return const Color(0xFF22C55E);
+        return Brand.lightGreen;
       case 'partially_paid':
-        return const Color(0xFF3B82F6);
+        return AdminColors.info;
       case 'sent':
-        return const Color(0xFF8B5CF6);
+        return StatusColors.assigned;
       case 'viewed':
-        return const Color(0xFF06B6D4);
+        return StatusColors.info;
       case 'overdue':
-        return const Color(0xFFEF4444);
+        return AdminColors.error;
       case 'draft':
-        return const Color(0xFF94A3B8);
+        return Brand.subtleLight;
       case 'cancelled':
-        return const Color(0xFF6B7280);
+        return StatusColors.gray;
       case 'refunded':
-        return const Color(0xFFF59E0B);
+        return AdminColors.warning;
       default:
-        return const Color(0xFF94A3B8);
+        return Brand.subtleLight;
     }
   }
 

@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/string_utils.dart';
 
-const Color _engAccent = Color(0xFF00B4D8);
 
 
 class EngineerCreateSchedulePage extends StatefulWidget {
@@ -45,17 +45,17 @@ class _EngineerCreateSchedulePageState
   static Color _typeColor(String type) {
     switch (type) {
       case 'preventive':
-        return const Color(0xFF3B82F6);
+        return AdminColors.info;
       case 'repair':
-        return const Color(0xFFEF4444);
+        return AdminColors.error;
       case 'inspection':
-        return const Color(0xFF14B8A6);
+        return StatusColors.teal;
       case 'installation':
-        return const Color(0xFF8B5CF6);
+        return StatusColors.assigned;
       case 'warranty_visit':
-        return const Color(0xFFF59E0B);
+        return AdminColors.warning;
       default:
-        return const Color(0xFF6B7280);
+        return StatusColors.gray;
     }
   }
 
@@ -161,7 +161,7 @@ class _EngineerCreateSchedulePageState
         ]),
         behavior: SnackBarBehavior.floating,
         backgroundColor:
-            isError ? const Color(0xFFEF4444) : const Color(0xFF22C55E),
+            isError ? AdminColors.error : Brand.lightGreen,
       ),
     );
   }
@@ -274,9 +274,9 @@ class _EngineerCreateSchedulePageState
                       icon: const Icon(Icons.close, size: 18),
                       tooltip: 'Clear machine',
                       style: IconButton.styleFrom(
-                        foregroundColor: const Color(0xFFEF4444),
+                        foregroundColor: AdminColors.error,
                         backgroundColor:
-                            const Color(0xFFEF4444).withAlpha(20),
+                            AdminColors.error.withAlpha(20),
                       ),
                     ),
                   ],
@@ -390,15 +390,15 @@ class _EngineerCreateSchedulePageState
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
-          borderSide: const BorderSide(color: _engAccent, width: 1.5),
+          borderSide: const BorderSide(color: Brand.lightGreen, width: 1.5),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
-          borderSide: const BorderSide(color: Color(0xFFEF4444)),
+          borderSide: const BorderSide(color: AdminColors.error),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
-          borderSide: const BorderSide(color: Color(0xFFEF4444), width: 1.5),
+          borderSide: const BorderSide(color: AdminColors.error, width: 1.5),
         ),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
@@ -462,7 +462,7 @@ class _EngineerCreateSchedulePageState
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: Border.all(
             color: isSelected
-                ? _engAccent.withAlpha(128)
+                ? Brand.lightGreen.withAlpha(128)
                 : (isDark ? Brand.darkBorder : Brand.borderLight),
           ),
         ),
@@ -472,7 +472,7 @@ class _EngineerCreateSchedulePageState
               icon,
               size: 20,
               color: isSelected
-                  ? _engAccent
+                  ? Brand.lightGreen
                   : (isDark ? Brand.darkTextTertiary : Brand.subtleLight),
             ),
             const SizedBox(width: 12),
@@ -538,7 +538,7 @@ class _EngineerCreateSchedulePageState
           builder: (ctx, child) => Theme(
             data: Theme.of(ctx).copyWith(
               colorScheme: ColorScheme.fromSeed(
-                seedColor: _engAccent,
+                seedColor: Brand.lightGreen,
                 brightness: isDark ? Brightness.dark : Brightness.light,
               ),
             ),
@@ -593,7 +593,7 @@ class _EngineerCreateSchedulePageState
           builder: (ctx, child) => Theme(
             data: Theme.of(ctx).copyWith(
               colorScheme: ColorScheme.fromSeed(
-                seedColor: _engAccent,
+                seedColor: Brand.lightGreen,
                 brightness: isDark ? Brightness.dark : Brightness.light,
               ),
             ),
@@ -654,7 +654,7 @@ class _EngineerCreateSchedulePageState
           label: Text(label),
           selected: selected,
           onSelected: (_) => setState(() => _duration = d),
-          selectedColor: _engAccent,
+          selectedColor: Brand.lightGreen,
           backgroundColor: isDark ? Brand.darkCardElevated : Colors.white,
           labelStyle: TextStyle(
             fontSize: 13,
@@ -665,7 +665,7 @@ class _EngineerCreateSchedulePageState
           ),
           side: BorderSide(
             color: selected
-                ? _engAccent
+                ? Brand.lightGreen
                 : (isDark ? Brand.darkBorder : Brand.borderLight),
           ),
           showCheckmark: false,
@@ -795,7 +795,7 @@ class _CustomerPickerSheetState extends State<_CustomerPickerSheet> {
       height: MediaQuery.of(context).size.height * 0.72,
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       child: Column(
         children: [
@@ -906,11 +906,11 @@ class _CustomerPickerSheetState extends State<_CustomerPickerSheet> {
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       leading: CircleAvatar(
         radius: 22,
-        backgroundColor: _engAccent.withAlpha(26),
+        backgroundColor: Brand.lightGreen.withAlpha(26),
         child: Text(
           StringUtils.getInitials(name),
           style: const TextStyle(
-            color: _engAccent,
+            color: Brand.lightGreen,
             fontWeight: FontWeight.w600,
             fontSize: 14,
           ),
@@ -1023,7 +1023,7 @@ class _CustomerPickerSheetState extends State<_CustomerPickerSheet> {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(Icons.error_outline,
-                size: 48, color: Color(0xFFEF4444)),
+                size: 48, color: AdminColors.error),
             const SizedBox(height: 12),
             Text(
               'Failed to load customers',
@@ -1038,7 +1038,7 @@ class _CustomerPickerSheetState extends State<_CustomerPickerSheet> {
               icon: const Icon(Icons.refresh),
               label: const Text('Retry'),
               style:
-                  TextButton.styleFrom(foregroundColor: _engAccent),
+                  TextButton.styleFrom(foregroundColor: Brand.lightGreen),
             ),
           ],
         ),
@@ -1107,7 +1107,7 @@ class _MachinePickerSheetState extends State<_MachinePickerSheet> {
       height: MediaQuery.of(context).size.height * 0.58,
       decoration: BoxDecoration(
         color: isDark ? Brand.darkCard : Colors.white,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       child: Column(
         children: [
@@ -1185,13 +1185,13 @@ class _MachinePickerSheetState extends State<_MachinePickerSheet> {
         width: 48,
         height: 48,
         decoration: BoxDecoration(
-          color: const Color(0xFF8B5CF6).withAlpha(26),
+          color: StatusColors.assigned.withAlpha(26),
           borderRadius: BorderRadius.circular(Brand.r(10)),
         ),
         child: const Icon(
           Icons.precision_manufacturing,
           size: 24,
-          color: Color(0xFF8B5CF6),
+          color: StatusColors.assigned,
         ),
       ),
       title: Text(
@@ -1286,7 +1286,7 @@ class _MachinePickerSheetState extends State<_MachinePickerSheet> {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(Icons.error_outline,
-                size: 48, color: Color(0xFFEF4444)),
+                size: 48, color: AdminColors.error),
             const SizedBox(height: 12),
             Text(
               'Failed to load machines',
@@ -1301,7 +1301,7 @@ class _MachinePickerSheetState extends State<_MachinePickerSheet> {
               icon: const Icon(Icons.refresh),
               label: const Text('Retry'),
               style:
-                  TextButton.styleFrom(foregroundColor: _engAccent),
+                  TextButton.styleFrom(foregroundColor: Brand.lightGreen),
             ),
           ],
         ),

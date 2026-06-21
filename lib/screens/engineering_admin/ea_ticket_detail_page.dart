@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════════
 // FILE: lib/screens/engineering_admin/ea_ticket_detail_page.dart
 // EA Ticket Detail — Full ticket view for Engineering Admin
 // Sections: status, customer, machine, engineer, chat shortcut,
@@ -15,7 +15,7 @@ import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import 'ea_ticket_chat_page.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = Brand.lightGreenDark;
 
 class EaTicketDetailPage extends StatefulWidget {
   final String ticketId;
@@ -476,7 +476,7 @@ class _EaTicketDetailPageState extends State<EaTicketDetailPage> {
 
   Widget _buildShimmer(bool isDark) {
     final color =
-        isDark ? Brand.darkCardElevated : const Color(0xFFE2E8F0);
+        isDark ? Brand.darkCardElevated : Brand.borderLight;
     return ListView.builder(
       padding: const EdgeInsets.all(16),
       itemCount: 5,
@@ -764,15 +764,15 @@ class _EngineerSection extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: const Color(0xFFEF4444).withAlpha(12),
+              color: AdminColors.error.withAlpha(12),
               borderRadius: BorderRadius.circular(Brand.r(12)),
               border: Border.all(
-                  color: const Color(0xFFEF4444).withAlpha(40)),
+                  color: AdminColors.error.withAlpha(40)),
             ),
             child: Row(
               children: [
                 const Icon(Icons.warning_amber_rounded,
-                    color: Color(0xFFEF4444), size: 20),
+                    color: AdminColors.error, size: 20),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(

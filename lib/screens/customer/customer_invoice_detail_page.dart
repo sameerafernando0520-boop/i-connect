@@ -1,4 +1,4 @@
-// ════════════════════════════════════════════════════════════════
+﻿// ════════════════════════════════════════════════════════════════
 // Customer — Invoice Detail
 // ════════════════════════════════════════════════════════════════
 
@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
@@ -148,7 +149,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
             const Expanded(child: Text('Failed to load details')),
           ]),
           behavior: SnackBarBehavior.floating,
-          backgroundColor: const Color(0xFFEF4444),
+          backgroundColor: AdminColors.error,
         ),
       );
     }
@@ -362,13 +363,13 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
       final diff = dueDate.difference(DateTime.now()).inDays;
       if (diff < 0) {
         dueHint = 'Overdue by ${diff.abs()} day${diff.abs() == 1 ? '' : 's'}';
-        hintColor = const Color(0xFFEF4444);
+        hintColor = AdminColors.error;
       } else if (diff == 0) {
         dueHint = 'Due today';
-        hintColor = const Color(0xFFF59E0B);
+        hintColor = AdminColors.warning;
       } else if (diff <= 14) {
         dueHint = 'Due in $diff day${diff == 1 ? '' : 's'}';
-        hintColor = const Color(0xFFF59E0B);
+        hintColor = AdminColors.warning;
       }
     }
 
@@ -561,7 +562,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
           if (discAmt > 0) ...[
             const SizedBox(height: 6),
             _summaryRow(discLabel, '- ${_fmtCur(discAmt)}', isDark,
-                valueColor: const Color(0xFFF59E0B)),
+                valueColor: AdminColors.warning),
           ],
           if (taxAmt > 0) ...[
             const SizedBox(height: 6),
@@ -580,7 +581,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
           if (balance > 0) ...[
             const SizedBox(height: 6),
             _summaryRow('Balance Due', _fmtCur(balance), isDark,
-                bold: true, valueColor: const Color(0xFFEF4444)),
+                bold: true, valueColor: AdminColors.error),
           ],
         ],
       ),

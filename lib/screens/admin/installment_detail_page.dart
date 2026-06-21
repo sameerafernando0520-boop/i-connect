@@ -1,12 +1,14 @@
-// lib/screens/admin/installment_detail_page.dart
+﻿// lib/screens/admin/installment_detail_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../services/points_service.dart';
+import '../../utils/app_logger.dart';
 
 class InstallmentDetailPage extends StatefulWidget {
   final String planId;
@@ -99,7 +101,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
           ],
         ),
         // FIX: replaced Colors.red.shade600 with const color
-        backgroundColor: err ? const Color(0xFFDC2626) : Brand.lightGreen,
+        backgroundColor: err ? StatusColors.danger : Brand.lightGreen,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
@@ -129,8 +131,8 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
             ),
             decoration: BoxDecoration(
               color: dk ? Brand.darkCard : Colors.white,
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(28),
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(Brand.r(28)),
               ),
             ),
             child: Padding(
@@ -195,7 +197,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                 ? Colors.white
                                 : (dk
                                     ? Brand.darkTextSecondary
-                                    : const Color(0xFF64748B)),
+                                    : AdminColors.textSecondaryLight),
                           ),
                         ),
                         selected: isSelected,
@@ -213,7 +215,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                     controller: refCtrl,
                     style: TextStyle(
                       color:
-                          dk ? Brand.darkTextPrimary : const Color(0xFF1A1A2E),
+                          dk ? Brand.darkTextPrimary : Brand.darkDeep,
                     ),
                     decoration: InputDecoration(
                       labelText: 'Reference Number (optional)',
@@ -247,7 +249,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                     controller: noteCtrl,
                     style: TextStyle(
                       color:
-                          dk ? Brand.darkTextPrimary : const Color(0xFF1A1A2E),
+                          dk ? Brand.darkTextPrimary : Brand.darkDeep,
                     ),
                     decoration: InputDecoration(
                       labelText: 'Notes (optional)',
@@ -296,7 +298,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                             ),
                             foregroundColor: dk
                                 ? Brand.darkTextSecondary
-                                : const Color(0xFF64748B),
+                                : AdminColors.textSecondaryLight,
                           ),
                           child: const Text('Cancel'),
                         ),
@@ -424,7 +426,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
           });
         }
       } catch (e) {
-        debugPrint('notify customer failed: $e');
+        AppLogger.debug('InstallmentDetailPage', 'notify customer failed: $e');
       }
 
       _snack('Payment verified');
@@ -464,7 +466,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
           ElevatedButton(
             onPressed: () => Navigator.pop(context, true),
             style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFEF4444),
+                backgroundColor: AdminColors.error,
                 foregroundColor: Colors.white),
             child: const Text('Reject'),
           ),
@@ -501,7 +503,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
           });
         }
       } catch (e) {
-        debugPrint('notify customer failed: $e');
+        AppLogger.debug('InstallmentDetailPage', 'notify customer failed: $e');
       }
 
       _snack('Payment rejected');
@@ -592,9 +594,9 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
         break;
       case 'defaulted':
         bgColor = dk
-            ? const Color(0xFFEF4444).withAlpha(38)
-            : const Color(0xFFEF4444).withAlpha(26);
-        fgColor = const Color(0xFFEF4444);
+            ? AdminColors.error.withAlpha(38)
+            : AdminColors.error.withAlpha(26);
+        fgColor = AdminColors.error;
         icon = Icons.warning_amber_rounded;
         label = 'DEFAULTED';
         break;
@@ -827,7 +829,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                 '${paid.toInt()} / ${total.toInt()} payments',
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  color: dk ? Brand.darkTextPrimary : const Color(0xFF1A1A2E),
+                  color: dk ? Brand.darkTextPrimary : Brand.darkDeep,
                 ),
               ),
               Text(
@@ -891,11 +893,11 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                 dotIcon = Icons.check_circle_rounded;
                 break;
               case 'overdue':
-                dotColor = const Color(0xFFEF4444);
+                dotColor = AdminColors.error;
                 dotIcon = Icons.error_rounded;
                 break;
               case 'submitted':
-                dotColor = const Color(0xFFF59E0B);
+                dotColor = AdminColors.warning;
                 dotIcon = Icons.hourglass_bottom_rounded;
                 break;
               default:
@@ -910,9 +912,9 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
             switch (status) {
               case 'overdue':
                 itemBg = dk
-                    ? const Color(0xFFEF4444).withAlpha(26)
-                    : const Color(0xFFEF4444).withAlpha(13);
-                itemBorder = const Color(0xFFEF4444).withAlpha(77);
+                    ? AdminColors.error.withAlpha(26)
+                    : AdminColors.error.withAlpha(13);
+                itemBorder = AdminColors.error.withAlpha(77);
                 break;
               case 'paid':
                 itemBg = dk
@@ -921,8 +923,8 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                 itemBorder = Brand.lightGreen.withAlpha(77);
                 break;
               case 'submitted':
-                itemBg = const Color(0xFFF59E0B).withAlpha(20);
-                itemBorder = const Color(0xFFF59E0B).withAlpha(77);
+                itemBg = AdminColors.warning.withAlpha(20);
+                itemBorder = AdminColors.warning.withAlpha(77);
                 break;
               default:
                 itemBg = dk ? Brand.darkBg : Brand.scaffoldLight;
@@ -983,7 +985,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                   fontWeight: FontWeight.w700,
                                   color: dk
                                       ? Brand.darkTextPrimary
-                                      : const Color(0xFF1A1A2E),
+                                      : Brand.darkDeep,
                                 ),
                               ),
                               const Spacer(),
@@ -1017,7 +1019,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                   fontSize: 13,
                                   color: dk
                                       ? Brand.darkTextSecondary
-                                      : const Color(0xFF64748B),
+                                      : AdminColors.textSecondaryLight,
                                 ),
                               ),
                               Text(
@@ -1028,7 +1030,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                   fontWeight: FontWeight.w700,
                                   color: dk
                                       ? Brand.darkTextPrimary
-                                      : const Color(0xFF1A1A2E),
+                                      : Brand.darkDeep,
                                 ),
                               ),
                             ],
@@ -1058,7 +1060,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                   'Overdue by $days day(s)',
                                   style: const TextStyle(
                                     fontSize: 12,
-                                    color: Color(0xFFEF4444),
+                                    color: AdminColors.error,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 );
@@ -1103,9 +1105,9 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                       label: const Text('Reject'),
                                       style: OutlinedButton.styleFrom(
                                         foregroundColor:
-                                            const Color(0xFFEF4444),
+                                            AdminColors.error,
                                         side: const BorderSide(
-                                            color: Color(0xFFEF4444)),
+                                            color: AdminColors.error),
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 8),
                                         shape: RoundedRectangleBorder(
@@ -1209,7 +1211,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
-                  color: dk ? Brand.darkTextPrimary : const Color(0xFF1A1A2E),
+                  color: dk ? Brand.darkTextPrimary : Brand.darkDeep,
                 ),
               ),
             ),
@@ -1226,7 +1228,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
     bool highlight = false,
   }) {
     // FIX: replaced Colors.amber.shade700 with const color
-    const amberColor = Color(0xFFB45309); // amber-700
+    const amberColor = StatusColors.warningDark; // amber-700
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
@@ -1238,7 +1240,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
               fontSize: 14,
               color: highlight
                   ? amberColor
-                  : (dk ? Brand.darkTextSecondary : const Color(0xFF64748B)),
+                  : (dk ? Brand.darkTextSecondary : AdminColors.textSecondaryLight),
             ),
           ),
           Text(
@@ -1248,7 +1250,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
               fontWeight: bold ? FontWeight.w700 : FontWeight.w500,
               color: highlight
                   ? amberColor
-                  : (dk ? Brand.darkTextPrimary : const Color(0xFF1A1A2E)),
+                  : (dk ? Brand.darkTextPrimary : Brand.darkDeep),
             ),
           ),
         ],
@@ -1275,7 +1277,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: dk ? Brand.darkTextPrimary : const Color(0xFF1A1A2E),
+                color: dk ? Brand.darkTextPrimary : Brand.darkDeep,
               ),
             ),
             const SizedBox(height: 8),
@@ -1312,7 +1314,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
 
   // ── Loading skeleton ──
   Widget _buildLoadingSkeleton(bool dk) {
-    final shimmer = dk ? Brand.darkCardElevated : const Color(0xFFEEF0F5);
+    final shimmer = dk ? Brand.darkCardElevated : Brand.slateLight;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
@@ -1394,7 +1396,7 @@ class _PaymentReceiptsStripState extends State<_PaymentReceiptsStrip> {
       for (final r in list) {
         final path = r['file_url']?.toString();
         if (path == null || path.isEmpty) {
-          debugPrint('warning: receipt has no file_url');
+          AppLogger.debug('InstallmentDetailPage', 'warning: receipt has no file_url');
           r['_error'] = 'Missing file path';
           continue;
         }
@@ -1404,7 +1406,7 @@ class _PaymentReceiptsStripState extends State<_PaymentReceiptsStrip> {
               .createSignedUrl(path, 3600);
           r['_signed'] = signed;
         } catch (e) {
-          debugPrint('signed url failed for $path: $e');
+          AppLogger.debug('InstallmentDetailPage', 'signed url failed for $path: $e');
           r['_error'] = 'Unable to load receipt: ${e.toString()}';
         }
       }
@@ -1415,7 +1417,7 @@ class _PaymentReceiptsStripState extends State<_PaymentReceiptsStrip> {
         _loading = false;
       });
     } catch (e) {
-      debugPrint('receipts load failed: $e');
+      AppLogger.debug('InstallmentDetailPage', 'receipts load failed: $e');
       if (mounted) setState(() => _loading = false);
     }
   }
@@ -1504,14 +1506,14 @@ class _PaymentReceiptsStripState extends State<_PaymentReceiptsStrip> {
                 width: 70,
                 height: 70,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFEF4444).withAlpha(26),
+                  color: AdminColors.error.withAlpha(26),
                   borderRadius: BorderRadius.circular(Brand.r(10)),
                   border: Border.all(
-                    color: const Color(0xFFEF4444).withAlpha(102),
+                    color: AdminColors.error.withAlpha(102),
                   ),
                 ),
                 child: const Icon(Icons.warning_rounded,
-                    size: 20, color: Color(0xFFEF4444)),
+                    size: 20, color: AdminColors.error),
               ),
             );
           }
@@ -1531,7 +1533,7 @@ class _PaymentReceiptsStripState extends State<_PaymentReceiptsStrip> {
                 child: const Icon(
                   Icons.picture_as_pdf_rounded,
                   size: 26,
-                  color: Color(0xFFEF4444),
+                  color: AdminColors.error,
                 ),
               ),
             );

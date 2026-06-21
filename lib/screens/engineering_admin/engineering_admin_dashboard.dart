@@ -1,4 +1,4 @@
-// lib/screens/engineering_admin/engineering_admin_dashboard.dart
+﻿// lib/screens/engineering_admin/engineering_admin_dashboard.dart
 // Engineering Admin Portal — Shell with bottom navigation (v22)
 
 import 'dart:async';
@@ -28,10 +28,10 @@ import 'ea_pending_approvals_page.dart';
 import '../admin/create_schedule_page.dart';
 import '../../widgets/common/offline_banner.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
-const Color _eaGreen  = Color(0xFF22C55E);
-const Color _eaRed    = Color(0xFFEF4444);
-const Color _eaAmber  = Color(0xFFF59E0B);
+const Color _eaAccent = Brand.lightGreenDark;
+const Color _eaGreen  = Brand.lightGreen;
+const Color _eaRed    = AdminColors.error;
+const Color _eaAmber  = AdminColors.warning;
 
 // ═══════════════════════════════════════════════════════════════════════════
 //  SHELL — manages the bottom nav + per-tab navigator stack
@@ -360,7 +360,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
       _QuickAction(
         icon: Icons.event_available_rounded,
         label: 'New Schedule',
-        color: const Color(0xFF3B82F6),
+        color: AdminColors.info,
         onTap: () async {
           final created = await Navigator.push<bool>(
             context,
@@ -372,7 +372,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
       _QuickAction(
         icon: Icons.build_circle_rounded,
         label: 'New Installation',
-        color: const Color(0xFF8B5CF6),
+        color: StatusColors.assigned,
         onTap: () => Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => const EaInstallationPage()),
@@ -381,7 +381,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
       _QuickAction(
         icon: Icons.campaign_rounded,
         label: 'Broadcast',
-        color: const Color(0xFFF59E0B),
+        color: AdminColors.warning,
         onTap: () => Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => const EaBroadcastPage()),
@@ -397,7 +397,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
           color: isDark ? Brand.darkCard : Colors.white,
           borderRadius: BorderRadius.circular(Brand.r(22)),
           border: Border.all(
-              color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0)),
+              color: isDark ? Brand.darkBorder : Brand.borderLight),
           boxShadow: isDark
               ? null
               : [
@@ -453,7 +453,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                 height: 1.15,
                 color: isDark
                     ? Brand.darkTextPrimary
-                    : const Color(0xFF0F172A),
+                    : AdminColors.textPrimary,
               ),
             ),
           ],
@@ -605,7 +605,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
         preferredSize: const Size.fromHeight(0.5),
         child: Container(
           height: 0.5,
-          color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
+          color: isDark ? Brand.darkBorder : Brand.borderLight,
         ),
       ),
     );
@@ -718,7 +718,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
         icon:  Icons.build_circle_rounded,
         label: 'Installations',
         value: _stats['active_installations'] ?? 0,
-        color: const Color(0xFF8B5CF6),
+        color: StatusColors.assigned,
         onTap: () => Navigator.push(context,
             MaterialPageRoute(builder: (_) => const EaInstallationPage())),
       ),
@@ -751,7 +751,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
           color: isDark ? Brand.darkCard : Colors.white,
           borderRadius: BorderRadius.circular(Brand.r(16)),
           border: Border.all(
-            color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
+            color: isDark ? Brand.darkBorder : Brand.borderLight,
           ),
           boxShadow: isDark
               ? null
@@ -800,7 +800,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                     height: 1,
                     color: isDark
                         ? Brand.darkTextPrimary
-                        : const Color(0xFF0F172A),
+                        : AdminColors.textPrimary,
                   ),
                 ),
                 const SizedBox(height: 3),
@@ -875,7 +875,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
             case 'present':
             case 'late':
             case 'half_day':
-              ringColor = activeJobs >= 3 ? const Color(0xFFF97316) : _eaGreen;
+              ringColor = activeJobs >= 3 ? AdminColors.internal : _eaGreen;
               ringLabel = activeJobs >= 3 ? 'Busy' : 'Free';
               break;
             case 'on_leave':
@@ -985,8 +985,8 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
     showModalBottomSheet(
       context: context,
       backgroundColor: isDark ? Brand.darkCard : Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       builder: (sheetCtx) {
         final name      = eng['full_name'] as String? ?? 'Engineer';
@@ -1071,7 +1071,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
             fontWeight: FontWeight.w600,
             color: isDark
                 ? Brand.darkTextPrimary
-                : const Color(0xFF0F172A),
+                : AdminColors.textPrimary,
           ),
         ),
       ],
@@ -1116,7 +1116,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
           border: Border.all(
             color: isUnassigned
                 ? _eaRed.withAlpha(isDark ? 100 : 60)
-                : (isDark ? Brand.darkBorder : const Color(0xFFE2E8F0)),
+                : (isDark ? Brand.darkBorder : Brand.borderLight),
             width: isUnassigned ? 1.5 : 1,
           ),
           boxShadow: isDark
@@ -1157,7 +1157,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                             fontWeight: FontWeight.w600,
                             color: isDark
                                 ? Brand.darkTextPrimary
-                                : const Color(0xFF0F172A),
+                                : AdminColors.textPrimary,
                           ),
                         ),
                       ),
@@ -1355,7 +1355,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
               Container(
                 width: 1.5,
                 height: 22,
-                color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
+                color: isDark ? Brand.darkBorder : Brand.borderLight,
               ),
             ],
           ),
@@ -1372,7 +1372,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
                         fontWeight: FontWeight.w500,
                         color: isDark
                             ? Brand.darkTextSecondary
-                            : const Color(0xFF374151),
+                            : Brand.textGray,
                       )),
                   const SizedBox(height: 2),
                   Text(timeAgo,
@@ -1440,14 +1440,14 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
   Color _statusColor(String status) {
     switch (status) {
       case 'new':
-      case 'open':             return const Color(0xFF3B82F6);
+      case 'open':             return AdminColors.info;
       case 'assigned':         return _eaAccent;
       case 'in_progress':      return _eaGreen;
       case 'waiting_customer': return _eaAmber;
       case 'resolved':
       case 'closed':
-      case 'completed':        return const Color(0xFF6B7280);
-      default:                 return const Color(0xFF9CA3AF);
+      case 'completed':        return StatusColors.gray;
+      default:                 return Brand.subtleLight;
     }
   }
 
@@ -1530,7 +1530,7 @@ class _EaHrHubPage extends StatelessWidget {
           const SizedBox(height: 12),
           _MoreModuleCard(
             icon:      Icons.insights_rounded,
-            iconColor: const Color(0xFF8B5CF6),
+            iconColor: StatusColors.assigned,
             title:     'Performance',
             subtitle:  'Engineer KPIs, ratings, and team analytics',
             onTap: () => Navigator.push(context,
@@ -1572,7 +1572,7 @@ class _MoreModuleCard extends StatelessWidget {
           color: isDark ? Brand.darkCard : Colors.white,
           borderRadius: BorderRadius.circular(Brand.r(18)),
           border: Border.all(
-            color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
+            color: isDark ? Brand.darkBorder : Brand.borderLight,
           ),
           boxShadow: isDark
               ? null
@@ -1607,7 +1607,7 @@ class _MoreModuleCard extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       color: isDark
                           ? Brand.darkTextPrimary
-                          : const Color(0xFF0F172A),
+                          : AdminColors.textPrimary,
                     ),
                   ),
                   const SizedBox(height: 3),

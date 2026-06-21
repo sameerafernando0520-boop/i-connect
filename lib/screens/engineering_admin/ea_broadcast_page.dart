@@ -1,4 +1,4 @@
-// lib/screens/engineering_admin/ea_broadcast_page.dart
+﻿// lib/screens/engineering_admin/ea_broadcast_page.dart
 // v24 — Engineering Admin Broadcast Composer
 //
 // Allows EA to send push notifications to:
@@ -19,7 +19,7 @@ import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = Brand.lightGreenDark;
 
 enum _BroadcastAudience {
   allEngineers,
@@ -263,7 +263,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(msg),
-      backgroundColor: isError ? const Color(0xFFDC2626) : _eaAccent,
+      backgroundColor: isError ? StatusColors.danger : _eaAccent,
       behavior: SnackBarBehavior.floating,
     ));
   }
@@ -343,12 +343,12 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
                       decoration: BoxDecoration(
                         color: selected
                             ? _eaAccent
-                            : (isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9)),
+                            : (isDark ? Brand.darkCardElevated : Brand.slateLight),
                         borderRadius: BorderRadius.circular(Brand.r(999)),
                         border: Border.all(
                           color: selected
                               ? _eaAccent
-                              : (isDark ? Brand.darkBorder : const Color(0xFFE2E8F0)),
+                              : (isDark ? Brand.darkBorder : Brand.borderLight),
                         ),
                       ),
                       child: Text(s,
@@ -356,7 +356,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
                             fontSize: 12, fontWeight: FontWeight.w600,
                             color: selected
                                 ? Colors.white
-                                : (isDark ? Brand.darkTextPrimary : const Color(0xFF334155)),
+                                : (isDark ? Brand.darkTextPrimary : Brand.darkSurface),
                           )),
                     ),
                   );
@@ -387,7 +387,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
               title: Text('Also notify customer',
                   style: TextStyle(
                     fontSize: 13, fontWeight: FontWeight.w600,
-                    color: isDark ? Brand.darkTextPrimary : const Color(0xFF0F172A),
+                    color: isDark ? Brand.darkTextPrimary : AdminColors.textPrimary,
                   )),
               subtitle: Text(widget.prefilledCustomerName ?? '',
                   style: TextStyle(
@@ -431,7 +431,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
           border: Border.all(
             color: selected
                 ? _eaAccent
-                : (isDark ? Brand.darkBorder : const Color(0xFFE2E8F0)),
+                : (isDark ? Brand.darkBorder : Brand.borderLight),
             width: selected ? 1.5 : 1,
           ),
         ),
@@ -452,7 +452,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
                 Text(label,
                     style: TextStyle(
                       fontSize: 13, fontWeight: FontWeight.w700,
-                      color: isDark ? Brand.darkTextPrimary : const Color(0xFF0F172A),
+                      color: isDark ? Brand.darkTextPrimary : AdminColors.textPrimary,
                     )),
                 const SizedBox(height: 2),
                 Text(sub,
@@ -479,8 +479,8 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
       context: context,
       backgroundColor: isDark ? Brand.darkCard : Colors.white,
       isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28))),
       ),
       builder: (sheetCtx) => DraggableScrollableSheet(
         initialChildSize: 0.7,
@@ -554,7 +554,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
 
   // ── Message card ──────────────────────────────────────────────────────
   Widget _messageCard(bool isDark) {
-    final txtColor = isDark ? Brand.darkTextPrimary : const Color(0xFF0F172A);
+    final txtColor = isDark ? Brand.darkTextPrimary : AdminColors.textPrimary;
     final hintColor = AdminColors.textHint(context);
 
     return _section(
@@ -624,7 +624,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
         color: isDark ? Brand.darkCard : Colors.white,
         borderRadius: BorderRadius.circular(Brand.r(20)),
         border: Border.all(
-          color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
+          color: isDark ? Brand.darkBorder : Brand.borderLight,
         ),
         boxShadow: isDark
             ? null
@@ -645,7 +645,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
             Text(title,
                 style: TextStyle(
                   fontSize: 14, fontWeight: FontWeight.w700,
-                  color: isDark ? Brand.darkTextPrimary : const Color(0xFF0F172A),
+                  color: isDark ? Brand.darkTextPrimary : AdminColors.textPrimary,
                 )),
           ]),
           const SizedBox(height: 12),

@@ -1,9 +1,10 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../widgets/common/ic_icons.dart';
 
@@ -20,32 +21,32 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
   static const _accentColor = Brand.lightGreen;
 
   static const _statusColors = {
-    'open': Color(0xFFF59E0B),
-    'assigned': Color(0xFF3B82F6),
+    'open': AdminColors.warning,
+    'assigned': AdminColors.info,
     'in_progress': Brand.royalBlue,
-    'waiting_customer': Color(0xFFEF8C22),
+    'waiting_customer': AdminColors.warning,
     'resolved': Brand.lightGreen,
-    'closed': Color(0xFF6B7280),
+    'closed': StatusColors.gray,
   };
 
   static const _priorityColors = {
-    'urgent': Color(0xFFEF4444),
-    'high': Color(0xFFF97316),
-    'medium': Color(0xFF3B82F6),
-    'low': Color(0xFF22C55E),
+    'urgent': AdminColors.error,
+    'high': AdminColors.internal,
+    'medium': AdminColors.info,
+    'low': Brand.lightGreen,
   };
 
   static const _categoryPalette = [
     Brand.royalBlue,
     Brand.lightGreen,
-    Color(0xFF3B82F6),
-    Color(0xFFF59E0B),
-    Color(0xFFEF4444),
-    Color(0xFF8B5CF6),
-    Color(0xFF06B6D4),
-    Color(0xFFEC4899),
-    Color(0xFF14B8A6),
-    Color(0xFFF97316),
+    AdminColors.info,
+    AdminColors.warning,
+    AdminColors.error,
+    StatusColors.assigned,
+    StatusColors.info,
+    StatusColors.pink,
+    StatusColors.teal,
+    AdminColors.internal,
   ];
 
   // ─── State ─────────────────────────────────────────────────
@@ -89,17 +90,17 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
   Color get _scaffoldBg => Brand.canvas(_isDark);
   Color get _cardBg => Brand.surface(_isDark);
   Color get _textPrimary =>
-      _isDark ? Brand.darkTextPrimary : const Color(0xFF1A1A2E);
+      _isDark ? Brand.darkTextPrimary : Brand.darkDeep;
   Color get _textSecondary =>
-      _isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+      _isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight;
   Color get _textMuted =>
-      _isDark ? Brand.darkTextTertiary : const Color(0xFF94A3B8);
+      _isDark ? Brand.darkTextTertiary : Brand.subtleLight;
   Color get _borderColor => _isDark ? Brand.darkBorder : Brand.borderLight;
   Color get _dividerColor =>
-      _isDark ? Brand.darkBorderLight : const Color(0xFFE2E8F0);
-  Color get _gridColor => _isDark ? Brand.darkBorder : const Color(0xFFF1F5F9);
+      _isDark ? Brand.darkBorderLight : Brand.borderLight;
+  Color get _gridColor => _isDark ? Brand.darkBorder : Brand.slateLight;
   Color get _barBg =>
-      _isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9);
+      _isDark ? Brand.darkCardElevated : Brand.slateLight;
   Color get _tooltipBg => _isDark ? Brand.darkCardElevated : Colors.white;
 
   List<BoxShadow> get _cardShadow => _isDark
@@ -686,14 +687,14 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                 value: _avgResolutionHours > 0
                     ? _formatHours(_avgResolutionHours)
                     : '—',
-                color: const Color(0xFF8B5CF6),
+                color: StatusColors.assigned,
               ),
               const SizedBox(width: 10),
               _buildStatCard(
                 icon: Icons.star_rounded,
                 label: 'Satisfaction',
                 value: _ratingCount > 0 ? _avgRating.toStringAsFixed(1) : '—',
-                color: const Color(0xFFF59E0B),
+                color: AdminColors.warning,
                 suffix: _ratingCount > 0 ? '/5' : null,
               ),
             ],
@@ -707,7 +708,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                 value: _avgResponseMinutes > 0
                     ? _formatMinutes(_avgResponseMinutes)
                     : '—',
-                color: const Color(0xFF06B6D4),
+                color: StatusColors.info,
               ),
               const SizedBox(width: 10),
               _buildStatCard(
@@ -725,7 +726,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                 value: _totalCount > 0
                     ? '${_escalationRate.toStringAsFixed(0)}%'
                     : '—',
-                color: const Color(0xFFEF4444),
+                color: AdminColors.error,
               ),
             ],
           ),
@@ -825,7 +826,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
         'key': 'inquiry',
         'label': 'Inquiries',
         'icon': Icons.help_outline_rounded,
-        'color': const Color(0xFFF59E0B),
+        'color': AdminColors.warning,
       },
     ];
 
@@ -1179,8 +1180,8 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                 toY: values[i],
                 color: colors[i],
                 width: 28,
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(6),
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(Brand.r(6)),
                 ),
                 backDrawRodData: BackgroundBarChartRodData(
                   show: true,
@@ -1327,7 +1328,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                     const Icon(
                       Icons.star_rounded,
                       size: 14,
-                      color: Color(0xFFF59E0B),
+                      color: AdminColors.warning,
                     ),
                     const SizedBox(width: 2),
                     Text(
@@ -1724,7 +1725,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
     return Container(
       height: height,
       decoration: BoxDecoration(
-        color: _isDark ? Brand.darkCardElevated : const Color(0xFFEEF0F5),
+        color: _isDark ? Brand.darkCardElevated : Brand.slateLight,
         borderRadius: BorderRadius.circular(radius),
       ),
     );

@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // FILE: lib/screens/customer/my_machine_detail_page.dart
 // ============================================================
 
@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/common/ic_icons.dart';
 
 class MyMachineDetailPage extends StatefulWidget {
@@ -171,9 +172,9 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
       case 'active':
         return isDark ? Brand.lightGreenBright : Brand.lightGreen;
       case 'service':
-        return isDark ? const Color(0xFFFFB74D) : const Color(0xFFFF9800);
+        return isDark ? StatusColors.warningLight : StatusColors.materialOrange;
       case 'inactive':
-        return isDark ? const Color(0xFFFF6B6B) : const Color(0xFFE53935);
+        return isDark ? StatusColors.softRed : AdminColors.error;
       default:
         return isDark ? Brand.darkTextSecondary : Colors.grey;
     }
@@ -265,7 +266,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
         const SizedBox(width: 10),
         Expanded(child: Text(msg)),
       ]),
-      backgroundColor: isSuccess ? Brand.lightGreen : const Color(0xFFE53935),
+      backgroundColor: isSuccess ? Brand.lightGreen : AdminColors.error,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       margin: const EdgeInsets.all(16),
@@ -359,7 +360,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
               child: Icon(
                 _isFavorite ? Icons.star_rounded : Icons.star_border_rounded,
                 color: _isFavorite
-                    ? const Color(0xFFFF9800)
+                    ? StatusColors.materialOrange
                     : (isDark ? Brand.darkTextSecondary : Brand.subtleLight),
                 size: 20,
               ),
@@ -701,9 +702,9 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
     final svcColor = svcDays == null
         ? (isDark ? Brand.darkTextSecondary : Colors.grey)
         : svcDays < 0
-            ? (isDark ? const Color(0xFFFF6B6B) : const Color(0xFFE53935))
+            ? (isDark ? StatusColors.softRed : AdminColors.error)
             : svcDays <= 7
-                ? (isDark ? const Color(0xFFFFB74D) : const Color(0xFFFF9800))
+                ? (isDark ? StatusColors.warningLight : StatusColors.materialOrange)
                 : (isDark ? Brand.lightGreenBright : Brand.lightGreen);
 
     return Row(children: [
@@ -719,7 +720,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
             ? (isDark ? Brand.darkTextSecondary : Colors.grey)
             : _warrantyValid
                 ? (isDark ? Brand.lightGreenBright : Brand.lightGreen)
-                : (isDark ? const Color(0xFFFF6B6B) : const Color(0xFFE53935)),
+                : (isDark ? StatusColors.softRed : AdminColors.error),
         isDark: isDark,
       ),
       const SizedBox(width: 10),
@@ -740,7 +741,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
         label: 'Favorite',
         value: _isFavorite ? 'Yes' : 'No',
         color: _isFavorite
-            ? const Color(0xFFFF9800)
+            ? StatusColors.materialOrange
             : (isDark ? Brand.darkTextSecondary : Colors.grey),
         isDark: isDark,
       ),
@@ -963,7 +964,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
 
     final warrantyColor = _warrantyValid
         ? (isDark ? Brand.lightGreenBright : Brand.lightGreen)
-        : (isDark ? const Color(0xFFFF6B6B) : const Color(0xFFE53935));
+        : (isDark ? StatusColors.softRed : AdminColors.error);
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -1033,8 +1034,8 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
               valueColor: AlwaysStoppedAnimation<Color>(
                 _warrantyDaysLeft <= 30
                     ? (isDark
-                        ? const Color(0xFFFFB74D)
-                        : const Color(0xFFFF9800))
+                        ? StatusColors.warningLight
+                        : StatusColors.materialOrange)
                     : warrantyColor,
               ),
             ),
@@ -1304,12 +1305,12 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
             border: Border.all(
               color: isOverdue
                   ? (isDark
-                      ? const Color(0xFFFF6B6B).withAlpha(77)
-                      : const Color(0xFFE53935).withAlpha(51))
+                      ? StatusColors.softRed.withAlpha(77)
+                      : AdminColors.error.withAlpha(51))
                   : isDueSoon
                       ? (isDark
-                          ? const Color(0xFFFFB74D).withAlpha(77)
-                          : const Color(0xFFFF9800).withAlpha(51))
+                          ? StatusColors.warningLight.withAlpha(77)
+                          : StatusColors.materialOrange.withAlpha(51))
                       : (isDark ? Brand.darkBorder : Brand.borderLight),
             ),
           ),
@@ -1322,12 +1323,12 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                 decoration: BoxDecoration(
                   color: (isOverdue
                           ? (isDark
-                              ? const Color(0xFFFF6B6B)
-                              : const Color(0xFFE53935))
+                              ? StatusColors.softRed
+                              : AdminColors.error)
                           : isDueSoon
                               ? (isDark
-                                  ? const Color(0xFFFFB74D)
-                                  : const Color(0xFFFF9800))
+                                  ? StatusColors.warningLight
+                                  : StatusColors.materialOrange)
                               : (isDark
                                   ? Brand.lightGreenBright
                                   : Brand.lightGreen))
@@ -1339,12 +1340,12 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                   size: 22,
                   color: isOverdue
                       ? (isDark
-                          ? const Color(0xFFFF6B6B)
-                          : const Color(0xFFE53935))
+                          ? StatusColors.softRed
+                          : AdminColors.error)
                       : isDueSoon
                           ? (isDark
-                              ? const Color(0xFFFFB74D)
-                              : const Color(0xFFFF9800))
+                              ? StatusColors.warningLight
+                              : StatusColors.materialOrange)
                           : (isDark
                               ? Brand.lightGreenBright
                               : Brand.lightGreen),
@@ -1366,12 +1367,12 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                           fontWeight: FontWeight.w700,
                           color: isOverdue
                               ? (isDark
-                                  ? const Color(0xFFFF6B6B)
-                                  : const Color(0xFFE53935))
+                                  ? StatusColors.softRed
+                                  : AdminColors.error)
                               : isDueSoon
                                   ? (isDark
-                                      ? const Color(0xFFFFB74D)
-                                      : const Color(0xFFFF9800))
+                                      ? StatusColors.warningLight
+                                      : StatusColors.materialOrange)
                                   : (isDark
                                       ? Brand.darkTextPrimary
                                       : Brand.royalBlueDark),
@@ -1551,8 +1552,8 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
     showModalBottomSheet(
       context: context,
       backgroundColor: Brand.surface(isDark),
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(Brand.r(28)))),
       builder: (ctx) => Padding(
         padding: const EdgeInsets.all(20),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -1572,7 +1573,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
           _optionItem(
             icon: _isFavorite ? Icons.star_border_rounded : Icons.star_rounded,
             label: _isFavorite ? 'Remove from Favorites' : 'Add to Favorites',
-            color: const Color(0xFFFF9800),
+            color: StatusColors.materialOrange,
             isDark: isDark,
             onTap: () {
               Navigator.pop(ctx);

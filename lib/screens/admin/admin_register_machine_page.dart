@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_register_machine_page.dart
+﻿// lib/screens/admin/admin_register_machine_page.dart
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -88,14 +88,14 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
   Color get _primary => _isDark ? Brand.royalBlueGlow : AdminColors.primary;
   Color get _accent => _isDark ? Brand.lightGreenBright : AdminColors.accent;
   Color get _textPrimary =>
-      _isDark ? Brand.darkTextPrimary : const Color(0xFF1A1A2E);
+      _isDark ? Brand.darkTextPrimary : Brand.darkDeep;
   Color get _textSecondary =>
-      _isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+      _isDark ? Brand.darkTextSecondary : AdminColors.textSecondaryLight;
   Color get _textMuted =>
-      _isDark ? Brand.darkTextTertiary : const Color(0xFF94A3B8);
+      _isDark ? Brand.darkTextTertiary : Brand.subtleLight;
   Color get _border => _isDark ? Brand.darkBorder : Brand.borderLight;
   Color get _handleColor =>
-      _isDark ? Brand.darkBorderLight : const Color(0xFFCBD5E1);
+      _isDark ? Brand.darkBorderLight : Brand.borderMedium;
 
   List<BoxShadow> get _cardShadow => _isDark
       ? []
@@ -403,8 +403,8 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
               height: MediaQuery.of(sheetCtx).size.height * 0.7,
               decoration: BoxDecoration(
                 color: _cardBg,
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(28),
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(Brand.r(28)),
                 ),
               ),
               child: Column(
@@ -539,8 +539,8 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
               height: MediaQuery.of(sheetCtx).size.height * 0.7,
               decoration: BoxDecoration(
                 color: _cardBg,
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(28),
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(Brand.r(28)),
                 ),
               ),
               child: Column(
@@ -1108,7 +1108,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
                     ? _primary.withAlpha(20)
                     : (_isDark
                         ? Brand.darkBorderLight
-                        : const Color(0xFFF1F5F9)),
+                        : Brand.slateLight),
                 borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: Icon(
@@ -1505,7 +1505,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
             style: TextStyle(
               fontSize: 13,
               color: highlight
-                  ? const Color(0xFFFCD34D) // amber-300
+                  ? StatusColors.warningLight // amber-300
                   : Colors.white70,
             ),
           ),
@@ -1515,7 +1515,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
               fontSize: 13,
               fontWeight: bold ? FontWeight.w700 : FontWeight.w500,
               color: highlight
-                  ? const Color(0xFFFCD34D) // amber-300
+                  ? StatusColors.warningLight // amber-300
                   : Colors.white,
             ),
           ),
@@ -1662,7 +1662,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
   // ── Loading skeleton ──
   Widget _buildLoadingSkeleton() {
     final shimmerColor =
-        _isDark ? Brand.darkCardElevated : const Color(0xFFEEF0F5);
+        _isDark ? Brand.darkCardElevated : Brand.slateLight;
 
     return ListView(
       physics: const NeverScrollableScrollPhysics(),
