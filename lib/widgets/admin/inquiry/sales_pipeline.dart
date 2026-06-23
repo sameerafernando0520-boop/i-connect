@@ -29,7 +29,7 @@ class SalesPipeline extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(18),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark

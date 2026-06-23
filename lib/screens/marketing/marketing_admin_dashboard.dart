@@ -98,7 +98,7 @@ class _MarketingAdminDashboardState extends State<MarketingAdminDashboard> {
   Widget _buildBottomNav(bool isDark) {
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(Brand.r(24)),
           topRight: Radius.circular(Brand.r(24)),

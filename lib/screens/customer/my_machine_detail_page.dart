@@ -265,7 +265,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
         const SizedBox(width: 10),
         Expanded(child: Text(msg)),
       ]),
-      backgroundColor: isSuccess ? Brand.lightGreen : const Color(0xFFE53935),
+      backgroundColor: isSuccess ? Brand.lightGreen : StatusColors.danger,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       margin: const EdgeInsets.all(16),

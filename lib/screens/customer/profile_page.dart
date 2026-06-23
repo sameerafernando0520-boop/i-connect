@@ -691,12 +691,12 @@ class _ProfilePageState extends State<ProfilePage>
         context: context,
         builder: (context) => _confirmDialog(
               icon: Icons.warning_rounded,
-              iconColor: isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400,
+              iconColor: isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
               title: 'Sign Out & Contact Support',
               message:
                   'To deactivate your account, please contact support at marketing@ifrontiers.lk after signing out.',
               confirmText: 'Sign Out',
-              confirmColor: Colors.red,
+              confirmColor: StatusColors.danger,
             ));
     if (confirmed != true || !mounted) return;
 
@@ -728,11 +728,11 @@ class _ProfilePageState extends State<ProfilePage>
         context: context,
         builder: (context) => _confirmDialog(
             icon: Icons.logout_rounded,
-            iconColor: _isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400,
+            iconColor: _isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
             title: 'Sign Out?',
             message: 'Are you sure you want to sign out\nof your account?',
             confirmText: t.authLogout,
-            confirmColor: Colors.red));
+            confirmColor: StatusColors.danger));
     if (confirmed != true || !mounted) return;
 
     showDialog(
@@ -785,7 +785,7 @@ class _ProfilePageState extends State<ProfilePage>
           const SizedBox(width: 8),
           Expanded(child: Text(msg)),
         ]),
-        backgroundColor: Colors.red,
+        backgroundColor: StatusColors.danger,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(Brand.r(12)))));
@@ -993,7 +993,7 @@ class _ProfilePageState extends State<ProfilePage>
               systemNavigationBarColor: Brand.darkCard)
           : SystemUiOverlayStyle.dark.copyWith(
               statusBarColor: Colors.transparent,
-              systemNavigationBarColor: Colors.white),
+              systemNavigationBarColor: Brand.scaffoldLight),
       child: PopScope(
         canPop: !(_isEditing && _hasUnsavedChanges),
         onPopInvokedWithResult: (didPop, result) {
@@ -1061,11 +1061,11 @@ class _ProfilePageState extends State<ProfilePage>
             width: 72,
             height: 72,
             decoration: BoxDecoration(
-                color: Colors.red.withAlpha(isDark ? 38 : 26),
+                color: StatusColors.danger.withAlpha(isDark ? 38 : 26),
                 borderRadius: BorderRadius.circular(Brand.r(22))),
             child: Icon(Icons.error_outline,
                 size: 36,
-                color: isDark ? const Color(0xFFFF6B6B) : Colors.red)),
+                color: isDark ? const Color(0xFFFF6B6B) : StatusColors.danger)),
         const SizedBox(height: 20),
         Text(S.of(context)!.profileLoadFailed,
             style: TextStyle(
@@ -1141,7 +1141,7 @@ class _ProfilePageState extends State<ProfilePage>
               title: S.of(context)!.profileDiscardChanges,
               message: 'Your unsaved changes will be lost.',
               confirmText: S.of(context)!.registerDiscard,
-              confirmColor: Colors.red,
+              confirmColor: StatusColors.danger,
               cancelText: S.of(context)!.profileKeepEditing,
             )).then((v) {
       if (v == true) {
@@ -2244,7 +2244,7 @@ class _ProfilePageState extends State<ProfilePage>
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 5),
                               decoration: BoxDecoration(
-                                  color: Colors.red.withAlpha(isDark ? 31 : 15),
+                                  color: StatusColors.danger.withAlpha(isDark ? 31 : 15),
                                   borderRadius:
                                       BorderRadius.circular(Brand.r(10))),
                               child: Row(
@@ -2254,7 +2254,7 @@ class _ProfilePageState extends State<ProfilePage>
                                         size: 14,
                                         color: isDark
                                             ? const Color(0xFFFF6B6B)
-                                            : Colors.red.shade400),
+                                            : StatusColors.danger),
                                     const SizedBox(width: 3),
                                     Text(S.of(context)!.commonCancel,
                                         style: TextStyle(
@@ -2262,7 +2262,7 @@ class _ProfilePageState extends State<ProfilePage>
                                             fontWeight: FontWeight.w700,
                                             color: isDark
                                                 ? const Color(0xFFFF6B6B)
-                                                : Colors.red.shade400)),
+                                                : StatusColors.danger)),
                                   ])))),
               ]),
             ),
@@ -2578,8 +2578,7 @@ class _ProfilePageState extends State<ProfilePage>
                         color: isDark
                             ? Brand.darkTextSecondary
                             : Brand.subtleLight),
-                    dropdownColor:
-                        isDark ? Brand.darkCardElevated : Colors.white,
+                    dropdownColor: Brand.surface(isDark),
                     items: options
                         .map((o) => DropdownMenuItem<String>(
                               value: o,
@@ -3291,8 +3290,8 @@ class _ProfilePageState extends State<ProfilePage>
                               right: 2,
                               child: Container(
                                   padding: const EdgeInsets.all(3),
-                                  decoration: const BoxDecoration(
-                                      color: Colors.red,
+                                  decoration: BoxDecoration(
+                                      color: StatusColors.danger,
                                       shape: BoxShape.circle),
                                   child: Text(badge,
                                       style: const TextStyle(
@@ -3341,14 +3340,14 @@ class _ProfilePageState extends State<ProfilePage>
         decoration: BoxDecoration(
             color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(Brand.r(22)),
-            border: Border.all(color: Colors.red.withAlpha(isDark ? 38 : 26))),
+            border: Border.all(color: StatusColors.danger.withAlpha(isDark ? 38 : 26))),
         child: Column(children: [
           Padding(
               padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
               child: Row(children: [
                 Icon(Icons.warning_amber_rounded,
                     color:
-                        isDark ? const Color(0xFFFF6B6B) : Colors.red.shade300,
+                        isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
                     size: 18),
                 const SizedBox(width: 8),
                 Text('Account',
@@ -3357,7 +3356,7 @@ class _ProfilePageState extends State<ProfilePage>
                         fontWeight: FontWeight.w700,
                         color: isDark
                             ? const Color(0xFFFF6B6B)
-                            : Colors.red.shade300)),
+                            : StatusColors.danger)),
               ])),
           _settingItem(
               Icons.download_rounded,
@@ -3371,7 +3370,7 @@ class _ProfilePageState extends State<ProfilePage>
               Icons.person_off_rounded,
               'Deactivate Account',
               'Temporarily disable your account',
-              isDark ? const Color(0xFFFF6B6B) : Colors.red,
+              isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
               isDark,
               _deactivateAccount),
         ]));
@@ -3393,7 +3392,7 @@ class _ProfilePageState extends State<ProfilePage>
                         color: Brand.surface(isDark),
                         borderRadius: BorderRadius.circular(Brand.r(18)),
                         border: Border.all(
-                            color: Colors.red.withAlpha(isDark ? 64 : 51),
+                            color: StatusColors.danger.withAlpha(isDark ? 64 : 51),
                             width: 1.5)),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -3401,7 +3400,7 @@ class _ProfilePageState extends State<ProfilePage>
                           Icon(Icons.logout_rounded,
                               color: isDark
                                   ? const Color(0xFFFF6B6B)
-                                  : Colors.red.shade400,
+                                  : StatusColors.danger,
                               size: 22),
                           const SizedBox(width: 10),
                           Text(t.authLogout,
@@ -3410,7 +3409,7 @@ class _ProfilePageState extends State<ProfilePage>
                                   fontWeight: FontWeight.w700,
                                   color: isDark
                                       ? const Color(0xFFFF6B6B)
-                                      : Colors.red.shade400)),
+                                      : StatusColors.danger)),
                         ])))));
   }
 
@@ -3593,8 +3592,8 @@ class _ProfilePageState extends State<ProfilePage>
                 Icons.delete_outline_rounded,
                 'Remove Photo',
                 'Use initials instead',
-                Colors.red.withAlpha(isDark ? 26 : 26),
-                isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400,
+                StatusColors.danger.withAlpha(26),
+                isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
                 isDark,
                 () => Navigator.pop(context, 'remove')),
           ],

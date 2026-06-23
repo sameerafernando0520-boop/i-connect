@@ -511,7 +511,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 16, 20, 0),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(14)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -568,7 +568,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                 )
               : null,
           filled: true,
-          fillColor: isDark ? Brand.darkCard : Colors.white,
+          fillColor: Brand.surface(isDark),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           border: OutlineInputBorder(
@@ -620,7 +620,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
               decoration: BoxDecoration(
                 color: isSelected
                     ? filter.color
-                    : (isDark ? Brand.darkCard : Colors.white),
+                    : Brand.surface(isDark),
                 borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                   color: isSelected
@@ -793,7 +793,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(18)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -889,7 +889,7 @@ class _CustomersManagementPageState extends State<CustomersManagementPage> {
                               color: AdminColors.warning,
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: isDark ? Brand.darkCard : Colors.white,
+                                color: Brand.surface(isDark),
                                 width: 2,
                               ),
                             ),

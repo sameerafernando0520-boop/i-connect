@@ -33,7 +33,7 @@ class CustomerNavBar extends StatelessWidget {
     final t = S.of(context)!;
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(28),
           topRight: Radius.circular(28),
@@ -151,7 +151,7 @@ class CustomerNavBar extends StatelessWidget {
                 color: Brand.lime,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: isDark ? Brand.darkCard : Colors.white,
+                  color: Brand.surface(isDark),
                   width: 2.5,
                 ),
               ),

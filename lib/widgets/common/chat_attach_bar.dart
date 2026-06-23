@@ -11,6 +11,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import '../../config/brand_colors.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
 
@@ -281,12 +282,12 @@ class _ChatVoiceRecorderButtonState extends State<ChatVoiceRecorderButton> {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         child: _recording
             ? Row(mainAxisSize: MainAxisSize.min, children: [
-                const Icon(Icons.fiber_manual_record, color: Colors.red, size: 14),
+                Icon(Icons.fiber_manual_record, color: StatusColors.danger, size: 14),
                 const SizedBox(width: 4),
                 Text(
                   '${_elapsed.inMinutes}:${(_elapsed.inSeconds % 60).toString().padLeft(2, '0')}',
-                  style: const TextStyle(
-                      fontSize: 12, fontWeight: FontWeight.w700, color: Colors.red),
+                  style: TextStyle(
+                      fontSize: 12, fontWeight: FontWeight.w700, color: StatusColors.danger),
                 ),
               ])
             : Icon(Icons.mic_rounded, color: widget.accent),

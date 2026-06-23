@@ -265,7 +265,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
                           padding: const EdgeInsets.all(20),
                           child: Text('Error: $_error',
                               style:
-                                  const TextStyle(color: Colors.redAccent)),
+                                  TextStyle(color: StatusColors.danger)),
                         ),
                       )
                     : _assignments.isEmpty
@@ -301,7 +301,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
         decoration: BoxDecoration(
           color: selected
               ? _engAccent
-              : (isDark ? Brand.darkCard : Colors.white),
+              : Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: selected
@@ -381,7 +381,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(18)),
         border: Border.all(
           color: isDone

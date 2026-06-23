@@ -701,7 +701,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                     style: const TextStyle(fontWeight: FontWeight.w600))),
           ],
         ),
-        backgroundColor: const Color(0xFFE53935),
+        backgroundColor: StatusColors.danger,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
       ),
@@ -945,7 +945,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
               systemNavigationBarColor: Brand.darkCard)
           : SystemUiOverlayStyle.dark.copyWith(
               statusBarColor: Colors.transparent,
-              systemNavigationBarColor: Colors.white),
+              systemNavigationBarColor: Brand.scaffoldLight),
       child: PopScope(
         canPop: !_hasUnsavedData,
         onPopInvokedWithResult: (didPop, result) {
@@ -1137,7 +1137,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                     'Discard',
                     style: TextStyle(
                       fontSize: 13,
-                      color: Colors.red.shade400,
+                      color: StatusColors.danger,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -1200,7 +1200,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
             decoration: BoxDecoration(
               color: isActive
                   ? Brand.royalBlue
-                  : (isDark ? Brand.darkCardElevated : Colors.white),
+                  : Brand.surface(isDark),
               shape: BoxShape.circle,
               border: !isActive
                   ? Border.all(
@@ -1980,11 +1980,11 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                     errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(Brand.r(18)),
                         borderSide:
-                            BorderSide(color: Colors.red.shade400)),
+                            BorderSide(color: StatusColors.danger)),
                     focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(Brand.r(18)),
                         borderSide: BorderSide(
-                            color: Colors.red.shade400, width: 1.5)),
+                            color: StatusColors.danger, width: 1.5)),
                     contentPadding: const EdgeInsets.symmetric(
                         horizontal: 16, vertical: 14),
                     counterText: '',
@@ -2073,11 +2073,11 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                     errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(Brand.r(18)),
                         borderSide:
-                            BorderSide(color: Colors.red.shade400)),
+                            BorderSide(color: StatusColors.danger)),
                     focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(Brand.r(18)),
                         borderSide: BorderSide(
-                            color: Colors.red.shade400, width: 1.5)),
+                            color: StatusColors.danger, width: 1.5)),
                     contentPadding: const EdgeInsets.all(16),
                     counterText: '',
                   ),
@@ -2171,14 +2171,14 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                               width: 24,
                               height: 24,
                               decoration: BoxDecoration(
-                                gradient: const LinearGradient(colors: [
-                                  Color(0xFFFF4757),
-                                  Color(0xFFFF6B81)
+                                gradient: LinearGradient(colors: [
+                                  StatusColors.danger,
+                                  StatusColors.danger.withAlpha(180)
                                 ]),
                                 shape: BoxShape.circle,
                                 border: Border.all(
                                     color:
-                                        isDark ? Brand.darkCard : Colors.white,
+                                        Brand.surface(isDark),
                                     width: 2),
                               ),
                               child: const Icon(Icons.close,
@@ -2583,7 +2583,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 14, 20, 14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(28),
           topRight: Radius.circular(28),
@@ -2813,7 +2813,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
               style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w700,
-                  color: Color(0xFFE53935))),
+                  color: StatusColors.danger)),
       ],
     );
   }
@@ -2884,11 +2884,11 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
               width: 76,
               height: 76,
               decoration: BoxDecoration(
-                color: Colors.red.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
+                color: StatusColors.danger.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
                 borderRadius: BorderRadius.circular(Brand.r(22)),
               ),
               child:
-                  const Icon(Icons.error_outline, size: 38, color: Colors.red),
+                  const Icon(Icons.error_outline, size: 38, color: StatusColors.danger),
             ),
             const SizedBox(height: 22),
             Text(

@@ -97,7 +97,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
             Expanded(child: Text(S.of(context)!.quotationLoadFailed)),
           ]),
           behavior: SnackBarBehavior.floating,
-          backgroundColor: const Color(0xFFEF4444),
+          backgroundColor: StatusColors.danger,
         ),
       );
     }
@@ -181,7 +181,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
         decoration: BoxDecoration(
           color: sel
               ? Brand.royalBlue.withAlpha(isDark ? 40 : 25)
-              : (isDark ? Brand.darkCard : Colors.white),
+              : Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: sel
@@ -234,7 +234,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(18)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -353,7 +353,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
 
     final diff = validUntil.difference(DateTime.now()).inDays;
     if (diff < 0) {
-      return ('Expired', const Color(0xFFEF4444));
+      return ('Expired', StatusColors.danger);
     }
     if (diff == 0) {
       return ('Expires today', const Color(0xFFF59E0B));
@@ -395,7 +395,7 @@ class _MyQuotationsPageState extends State<MyQuotationsPage> {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(18)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -526,7 +526,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
             Expanded(child: Text(S.of(context)!.quotationDetailLoadFailed)),
           ]),
           behavior: SnackBarBehavior.floating,
-          backgroundColor: const Color(0xFFEF4444),
+          backgroundColor: StatusColors.danger,
         ),
       );
     }
@@ -585,7 +585,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
             style: FilledButton.styleFrom(
               backgroundColor: response == 'accepted'
                   ? Brand.lightGreen
-                  : const Color(0xFFEF4444),
+                  : StatusColors.danger,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(Brand.r(10))),
             ),
@@ -631,7 +631,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
           SnackBar(
             content: Text(res['error'] ?? 'Failed to update'),
             behavior: SnackBarBehavior.floating,
-            backgroundColor: const Color(0xFFEF4444),
+            backgroundColor: StatusColors.danger,
           ),
         );
       }
@@ -646,7 +646,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
             Expanded(child: Text(S.of(context)!.commonSomethingWentWrong)),
           ]),
           behavior: SnackBarBehavior.floating,
-          backgroundColor: const Color(0xFFEF4444),
+          backgroundColor: StatusColors.danger,
         ),
       );
     }
@@ -795,7 +795,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
       final diff = validUntil.difference(DateTime.now()).inDays;
       if (diff < 0) {
         hint = 'Expired';
-        hintColor = const Color(0xFFEF4444);
+        hintColor = StatusColors.danger;
       } else if (diff == 0) {
         hint = 'Expires today';
         hintColor = const Color(0xFFF59E0B);
@@ -1080,7 +1080,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
             icon: const Icon(Icons.close_rounded, size: 18),
             label: Text(S.of(context)!.quotationReject),
             style: OutlinedButton.styleFrom(
-              foregroundColor: const Color(0xFFEF4444),
+              foregroundColor: StatusColors.danger,
               side: const BorderSide(color: Color(0xFFEF4444)),
               padding: const EdgeInsets.symmetric(vertical: 14),
               shape: RoundedRectangleBorder(
@@ -1129,7 +1129,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
         margin: const EdgeInsets.only(bottom: 16),
         height: 120,
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(18)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -1149,7 +1149,7 @@ class _QuotationDetailPageState extends State<_QuotationDetailPage> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)

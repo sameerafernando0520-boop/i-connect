@@ -205,7 +205,7 @@ class _SettingsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),

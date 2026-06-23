@@ -61,7 +61,7 @@ class EstimateChatCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCardElevated : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: _kQuotationPurple.withAlpha(isDark ? 77 : 51),
@@ -340,7 +340,7 @@ Future<bool?> _confirm(
       final isDark = Theme.of(context).brightness == Brightness.dark;
       return Container(
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius:
               const BorderRadius.vertical(top: Radius.circular(28)),
         ),

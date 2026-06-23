@@ -295,7 +295,7 @@ class _EaReportsPageState extends State<EaReportsPage>
 
   Widget _buildDateFilter(bool isDark) {
     return Container(
-      color: isDark ? Brand.darkCard : Colors.white,
+      color: Brand.surface(isDark),
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -417,7 +417,7 @@ class _EaReportsPageState extends State<EaReportsPage>
 
   Widget _buildTabBar(bool isDark) {
     return Container(
-      color: isDark ? Brand.darkCard : Colors.white,
+      color: Brand.surface(isDark),
       child: Column(
         children: [
           TabBar(
@@ -859,7 +859,7 @@ class _KpiCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
@@ -915,7 +915,7 @@ class _DataCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),

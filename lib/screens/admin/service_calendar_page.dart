@@ -426,7 +426,7 @@ class _ServiceCalendarPageState extends State<ServiceCalendarPage> {
     return Container(
       margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -621,7 +621,7 @@ class _ServiceCalendarPageState extends State<ServiceCalendarPage> {
             },
             selectedColor: color,
             backgroundColor:
-                isDark ? Brand.darkCard : Colors.white,
+                Brand.surface(isDark),
             side: BorderSide(
               color: selected
                   ? color
@@ -775,7 +775,7 @@ class _ServiceCalendarPageState extends State<ServiceCalendarPage> {
       onTap: () => _navigateToDetail(schedule['id'] as String),
       child: Container(
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)

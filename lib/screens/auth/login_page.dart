@@ -196,7 +196,7 @@ class _LoginPageState extends State<LoginPage>
               Expanded(child: Text(_friendlyError(e))),
             ],
           ),
-          backgroundColor: isDark ? const Color(0xFFCF6679) : Colors.red,
+          backgroundColor: isDark ? const Color(0xFFCF6679) : StatusColors.danger,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(Brand.r(12))),
@@ -302,7 +302,7 @@ class _LoginPageState extends State<LoginPage>
                                   ),
                                   backgroundColor: isDark
                                       ? const Color(0xFFCF6679)
-                                      : Colors.red,
+                                      : StatusColors.danger,
                                   behavior: SnackBarBehavior.floating,
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
@@ -1099,11 +1099,11 @@ class _LoginPageState extends State<LoginPage>
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(16)),
-          borderSide: BorderSide(color: Colors.red.shade400),
+          borderSide: BorderSide(color: StatusColors.danger),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(16)),
-          borderSide: BorderSide(color: Colors.red.shade400, width: 1.5),
+          borderSide: BorderSide(color: StatusColors.danger, width: 1.5),
         ),
       ),
     );

@@ -259,7 +259,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
               _buildPhotoOption(
                 Icons.delete_outline_rounded,
                 'Remove Photo',
-                Colors.red,
+                StatusColors.danger,
                 isDark,
                 () {
                   Navigator.pop(sheetCtx);
@@ -789,11 +789,11 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
               width: 68,
               height: 68,
               decoration: BoxDecoration(
-                color: Colors.red.withAlpha(isDark ? 31 : 20),
+                color: StatusColors.danger.withAlpha(isDark ? 31 : 20),
                 borderRadius: BorderRadius.circular(Brand.r(22)),
               ),
               child:
-                  const Icon(Icons.logout_rounded, color: Colors.red, size: 32),
+                  Icon(Icons.logout_rounded, color: StatusColors.danger, size: 32),
             ),
             const SizedBox(height: 18),
             Text(
@@ -843,16 +843,16 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       decoration: BoxDecoration(
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           colors: [
-                            Color(0xFFE53935),
-                            Color(0xFFEF5350),
+                            StatusColors.danger,
+                            const Color(0xFFEF5350),
                           ],
                         ),
                         borderRadius: BorderRadius.circular(Brand.r(14)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.red.withAlpha(89),
+                            color: StatusColors.danger.withAlpha(89),
                             blurRadius: 12,
                             offset: const Offset(0, 5),
                           ),
@@ -938,7 +938,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
             ),
           ],
         ),
-        backgroundColor: isError ? Colors.red.shade400 : Brand.royalBlue,
+        backgroundColor: isError ? StatusColors.danger : Brand.royalBlue,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.all(16),
@@ -1838,8 +1838,8 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                           tooltip: 'Edit',
                         ),
                         IconButton(
-                          icon: const Icon(Icons.delete_outline_rounded,
-                              size: 18, color: Color(0xFFEF4444)),
+                          icon: Icon(Icons.delete_outline_rounded,
+                              size: 18, color: StatusColors.danger),
                           onPressed: () => _deleteContact(c),
                           tooltip: 'Delete',
                         ),
@@ -2066,7 +2066,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                             const SnackBar(
                               content: Text('Label and value are required'),
                               behavior: SnackBarBehavior.floating,
-                              backgroundColor: Color(0xFFEF4444),
+                              backgroundColor: StatusColors.danger,
                             ),
                           );
                           return;
@@ -2173,7 +2173,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           ElevatedButton(
             onPressed: () => Navigator.pop(context, true),
             style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFEF4444),
+                backgroundColor: StatusColors.danger,
                 foregroundColor: Colors.white),
             child: const Text('Delete'),
           ),
@@ -2251,14 +2251,14 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 16),
           decoration: BoxDecoration(
-            color: Colors.red.withAlpha(isDark ? 26 : 15),
+            color: StatusColors.danger.withAlpha(isDark ? 26 : 15),
             borderRadius: BorderRadius.circular(Brand.r(16)),
-            border: Border.all(color: Colors.red.withAlpha(38), width: 1.5),
+            border: Border.all(color: StatusColors.danger.withAlpha(38), width: 1.5),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.logout_rounded, color: Colors.red.shade400, size: 20),
+              Icon(Icons.logout_rounded, color: StatusColors.danger, size: 20),
               const SizedBox(width: 10),
               Text(
                 // FIX-14: null-safe fallback for localization
@@ -2266,7 +2266,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w700,
-                  color: Colors.red.shade400,
+                  color: StatusColors.danger,
                 ),
               ),
             ],

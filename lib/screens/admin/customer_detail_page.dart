@@ -380,7 +380,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
   // ─── Theme helpers — replaces non-existent AdminColors statics ──
   Color _scaffoldBg(bool isDark) => Brand.canvas(isDark);
 
-  Color _cardBg(bool isDark) => isDark ? Brand.darkCard : Colors.white;
+  Color _cardBg(bool isDark) => Brand.surface(isDark);
 
   Color _itemBg(bool isDark) =>
       isDark ? Brand.darkCardElevated : Brand.scaffoldLight;
@@ -3121,7 +3121,7 @@ class _SuggestMachineSheetState extends State<_SuggestMachineSheet> {
   final _noteCtrl = TextEditingController();
   bool _submitting = false;
 
-  Color get _bg => widget.isDark ? Brand.darkCard : Colors.white;
+  Color get _bg => Brand.surface(widget.isDark);
   Color get _textPrimary =>
       widget.isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
   Color get _textSub =>
@@ -3417,7 +3417,7 @@ class _MachinePickerDialogState extends State<_MachinePickerDialog> {
   @override
   Widget build(BuildContext context) {
     final isDark = widget.isDark;
-    final bgColor = isDark ? Brand.darkCard : Colors.white;
+    final bgColor = Brand.surface(isDark);
     final textPrimary =
         isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
     final textSub =

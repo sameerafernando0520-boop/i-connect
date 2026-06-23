@@ -76,7 +76,7 @@ class _PointsHistoryPageState extends State<PointsHistoryPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.error_outline_rounded,
-                            color: Colors.red.shade400, size: 48),
+                            color: StatusColors.danger, size: 48),
                         const SizedBox(height: 16),
                         Text(
                           _errorMessage,
@@ -164,8 +164,8 @@ class _PointsHistoryPageState extends State<PointsHistoryPage> {
                                 height: 44,
                                 decoration: BoxDecoration(
                                   color: (isPositive
-                                          ? const Color(0xFF22C55E)
-                                          : const Color(0xFFEF4444))
+                                          ? StatusColors.success
+                                          : StatusColors.danger)
                                       .withAlpha(isDark ? 30 : 20),
                                   borderRadius: BorderRadius.circular(Brand.r(12)),
                                 ),
@@ -175,8 +175,8 @@ class _PointsHistoryPageState extends State<PointsHistoryPage> {
                                       : Icons.remove_rounded,
                                   size: 24,
                                   color: isPositive
-                                      ? const Color(0xFF22C55E)
-                                      : const Color(0xFFEF4444),
+                                      ? StatusColors.success
+                                      : StatusColors.danger,
                                 ),
                               ),
                               const SizedBox(width: 16),
@@ -215,8 +215,8 @@ class _PointsHistoryPageState extends State<PointsHistoryPage> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700,
                                   color: isPositive
-                                      ? const Color(0xFF22C55E)
-                                      : const Color(0xFFEF4444),
+                                      ? StatusColors.success
+                                      : StatusColors.danger,
                                 ),
                               ),
                             ],

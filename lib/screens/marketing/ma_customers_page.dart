@@ -157,7 +157,7 @@ class _MaCustomersPageState extends State<MaCustomersPage> {
                               color: AdminColors.error.withAlpha(20),
                               shape: BoxShape.circle,
                             ),
-                            child: const Icon(Icons.error_outline_rounded, size: 32, color: Colors.red),
+                            child: Icon(Icons.error_outline_rounded, size: 32, color: StatusColors.danger),
                           ),
                           const SizedBox(height: 16),
                           Text('Something went wrong',

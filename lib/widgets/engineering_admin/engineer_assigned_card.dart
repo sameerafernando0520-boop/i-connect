@@ -39,7 +39,7 @@ class EngineerAssignedCard extends StatelessWidget {
         [];
     final assignedByName = metadata['assigned_by_name'] as String? ?? '';
 
-    final cardBg = isDark ? Brand.darkCard : Colors.white;
+    final cardBg = Brand.surface(isDark);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
     final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
     final textSecondary =

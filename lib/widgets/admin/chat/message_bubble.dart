@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../config/admin_theme.dart';
+import '../../../config/brand_colors.dart';
 import '../../../models/chat_message.dart';
 import '../../../utils/time_utils.dart';
 import '../../common/chat_message_attachments.dart';
@@ -427,8 +428,8 @@ class MessageBubble extends StatelessWidget {
               strokeWidth: 1.5, color: Colors.white70),
         );
       case MessageStatus.failed:
-        return const Icon(Icons.close_rounded,
-            size: 13, color: Colors.redAccent);
+        return Icon(Icons.close_rounded,
+            size: 13, color: StatusColors.danger);
       case MessageStatus.sent:
         if (message.isRead) {
           return const Icon(Icons.done_all_rounded,

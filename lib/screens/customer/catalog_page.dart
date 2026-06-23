@@ -1076,11 +1076,11 @@ class _CatalogPageState extends State<CatalogPage> {
                   child: Container(
                       padding: const EdgeInsets.all(7),
                       decoration: BoxDecoration(
-                          color: Colors.red.withAlpha(20),
+                          color: StatusColors.danger.withAlpha(20),
                           borderRadius: BorderRadius.circular(Brand.r(10)),
-                          border: Border.all(color: Colors.red.withAlpha(38))),
-                      child: Icon(Icons.filter_alt_off_rounded,
-                          size: 16, color: Colors.red.shade400))))
+                          border: Border.all(color: StatusColors.danger.withAlpha(38))),
+                      child: const Icon(Icons.filter_alt_off_rounded,
+                          size: 16, color: StatusColors.danger))))
         ],
       ]),
     );
@@ -2141,10 +2141,10 @@ class _CatalogPageState extends State<CatalogPage> {
                   width: 72,
                   height: 72,
                   decoration: BoxDecoration(
-                      color: Colors.red.withAlpha(26),
+                      color: StatusColors.danger.withAlpha(26),
                       borderRadius: BorderRadius.circular(Brand.r(22))),
                   child: const Icon(Icons.error_outline,
-                      size: 34, color: Colors.red)),
+                      size: 34, color: StatusColors.danger)),
               const SizedBox(height: 20),
               Text(S.of(context)!.commonSomethingWentWrong,
                   style: TextStyle(

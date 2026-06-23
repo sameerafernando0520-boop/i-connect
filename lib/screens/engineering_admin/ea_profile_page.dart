@@ -72,7 +72,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            style: TextButton.styleFrom(foregroundColor: StatusColors.danger),
             child: const Text('Sign Out'),
           ),
         ],
@@ -94,7 +94,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Sign-out failed: $e'),
-          backgroundColor: Colors.red,
+          backgroundColor: StatusColors.danger,
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -269,7 +269,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(18)),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,
@@ -411,7 +411,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
         ),
         Container(
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Colors.white,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(Brand.r(16)),
              border: isDark
              ? Border.all(color: Brand.darkBorder) : null,
@@ -609,9 +609,9 @@ class _EaProfilePageState extends State<EaProfilePage> {
             : const Icon(Icons.logout_rounded, size: 18),
         label: Text(_signingOut ? 'Signing out…' : 'Sign Out'),
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.red.shade600,
+          backgroundColor: StatusColors.danger,
           foregroundColor: Colors.white,
-          disabledBackgroundColor: Colors.red.shade300,
+          disabledBackgroundColor: StatusColors.danger.withAlpha(153),
           padding: const EdgeInsets.symmetric(vertical: 14),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),

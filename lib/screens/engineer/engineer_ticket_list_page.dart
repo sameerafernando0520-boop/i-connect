@@ -289,7 +289,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
                     ? _buildEmptyState(isDark)
                     : RefreshIndicator(
                         color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-                        backgroundColor: isDark ? Brand.darkCard : Colors.white,
+                        backgroundColor: Brand.surface(isDark),
                         onRefresh: _loadTickets,
                         child: ListView.builder(
                           physics: const AlwaysScrollableScrollPhysics(
@@ -972,7 +972,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
   Widget _buildEmptyState(bool isDark) {
     return RefreshIndicator(
       color: isDark ? Brand.darkIconActive : _engAccent,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       onRefresh: _loadTickets,
       child: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(

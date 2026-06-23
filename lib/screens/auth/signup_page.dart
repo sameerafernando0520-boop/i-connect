@@ -221,7 +221,7 @@ class _SignupPageState extends State<SignupPage> {
               Expanded(child: Text(_friendlyError(e))),
             ],
           ),
-          backgroundColor: isDark ? const Color(0xFFCF6679) : Colors.red,
+          backgroundColor: isDark ? const Color(0xFFCF6679) : StatusColors.danger,
           behavior: SnackBarBehavior.floating,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
@@ -732,7 +732,7 @@ class _SignupPageState extends State<SignupPage> {
               color: _referralValid == true
                   ? (isDark ? Brand.lightGreenBright : Brand.lightGreen)
                   : _referralValid == false
-                      ? Colors.red.withAlpha(128)
+                      ? StatusColors.danger.withAlpha(128)
                       : (isDark ? Brand.darkBorderLight : Brand.borderLight),
               width: _referralValid != null ? 1.5 : 1.0,
             ),
@@ -777,7 +777,7 @@ class _SignupPageState extends State<SignupPage> {
                           color: Brand.lightGreenBright, size: 22)
                       : _referralValid == false
                           ? Icon(Icons.cancel_rounded,
-                              color: Colors.red.withAlpha(179), size: 22)
+                              color: StatusColors.danger.withAlpha(179), size: 22)
                           : _referralCodeController.text.trim().isNotEmpty
                               ? IconButton(
                                   icon: Icon(Icons.search_rounded,
@@ -850,7 +850,7 @@ class _SignupPageState extends State<SignupPage> {
               'Invalid or expired referral code',
               style: TextStyle(
                 fontSize: 11,
-                color: Colors.red.withAlpha(isDark ? 204 : 255),
+                color: StatusColors.danger.withAlpha(isDark ? 204 : 255),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -1038,11 +1038,11 @@ class _SignupPageState extends State<SignupPage> {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(16)),
-          borderSide: BorderSide(color: Colors.red.shade400),
+          borderSide: BorderSide(color: StatusColors.danger),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(16)),
-          borderSide: BorderSide(color: Colors.red.shade400, width: 1.5),
+          borderSide: BorderSide(color: StatusColors.danger, width: 1.5),
         ),
       ),
     );
@@ -1107,11 +1107,11 @@ class _SignupPageState extends State<SignupPage> {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(16)),
-          borderSide: BorderSide(color: Colors.red.shade400),
+          borderSide: BorderSide(color: StatusColors.danger),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(16)),
-          borderSide: BorderSide(color: Colors.red.shade400, width: 1.5),
+          borderSide: BorderSide(color: StatusColors.danger, width: 1.5),
         ),
       ),
     );
@@ -1168,7 +1168,7 @@ class _SignupPageState extends State<SignupPage> {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text(error),
                         backgroundColor:
-                            isDark ? const Color(0xFFCF6679) : Colors.red,
+                            isDark ? const Color(0xFFCF6679) : StatusColors.danger,
                         behavior: SnackBarBehavior.floating,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(Brand.r(12))),

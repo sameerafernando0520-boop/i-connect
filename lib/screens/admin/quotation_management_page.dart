@@ -163,7 +163,7 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 14, 20, 0),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(14)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
@@ -194,7 +194,7 @@ class _QuotationManagementPageState extends State<QuotationManagementPage> {
             size: 22,
           ),
           filled: true,
-          fillColor: isDark ? Brand.darkCard : Colors.white,
+          fillColor: Brand.surface(isDark),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           border: OutlineInputBorder(

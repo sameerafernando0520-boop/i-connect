@@ -326,7 +326,7 @@ class _ComposeSheetState extends State<_ComposeSheet> {
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
       ),
       padding: EdgeInsets.fromLTRB(20, 20, 20, 20 + bottomPad),

@@ -11,15 +11,15 @@ import 'request_service_page.dart';
 Color _typeColor(String? type) {
   switch (type) {
     case 'preventive':
-      return const Color(0xFF3B82F6);
+      return StatusColors.open;
     case 'repair':
-      return const Color(0xFFEF4444);
+      return StatusColors.danger;
     case 'inspection':
       return const Color(0xFF14B8A6);
     case 'installation':
       return const Color(0xFF8B5CF6);
     case 'warranty_visit':
-      return const Color(0xFFF59E0B);
+      return StatusColors.warning;
     default:
       return const Color(0xFF6B7280);
   }
@@ -62,17 +62,17 @@ IconData _typeIcon(String? type) {
 Color _statusColor(String? status) {
   switch (status) {
     case 'requested':
-      return const Color(0xFFF59E0B);
+      return StatusColors.warning;
     case 'scheduled':
-      return const Color(0xFF3B82F6);
+      return StatusColors.open;
     case 'confirmed':
       return const Color(0xFF6366F1);
     case 'in_progress':
       return const Color(0xFFF97316);
     case 'completed':
-      return const Color(0xFF22C55E);
+      return StatusColors.success;
     case 'cancelled':
-      return const Color(0xFFEF4444);
+      return StatusColors.danger;
     case 'rescheduled':
       return const Color(0xFF8B5CF6);
     default:
@@ -256,7 +256,7 @@ class _MySchedulePageState extends State<MySchedulePage>
             Expanded(child: Text('Failed to load schedules: $e')),
           ]),
           behavior: SnackBarBehavior.floating,
-          backgroundColor: Colors.red,
+          backgroundColor: StatusColors.danger,
         ),
       );
     }
@@ -283,7 +283,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                 bottom: MediaQuery.of(ctx).viewInsets.bottom,
               ),
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Colors.white,
+                color: Brand.surface(isDark),
                 borderRadius:
                     const BorderRadius.vertical(top: Radius.circular(28)),
               ),
@@ -340,7 +340,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                                   : Icons.star_border_rounded,
                               size: 40,
                               color: i < rating
-                                  ? const Color(0xFFF59E0B)
+                                  ? StatusColors.warning
                                   : (isDark
                                       ? Brand.darkTextTertiary
                                       : Brand.subtleLight),
@@ -368,7 +368,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                             ? (isDark
                                 ? Brand.darkTextTertiary
                                 : Brand.subtleLight)
-                            : const Color(0xFFF59E0B),
+                            : StatusColors.warning,
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -478,7 +478,7 @@ class _MySchedulePageState extends State<MySchedulePage>
             Expanded(child: Text('Failed to submit rating: $e')),
           ]),
           behavior: SnackBarBehavior.floating,
-          backgroundColor: Colors.red,
+          backgroundColor: StatusColors.danger,
         ),
       );
     }
@@ -661,7 +661,7 @@ class _MySchedulePageState extends State<MySchedulePage>
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(16)),
           border: Border.all(
             color: isExpanded
@@ -893,7 +893,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                       engineerName,
                       isDark,
                       valueColor:
-                          engineer != null ? null : const Color(0xFFF59E0B),
+                          engineer != null ? null : StatusColors.warning,
                     ),
                     const SizedBox(height: 10),
 
@@ -949,7 +949,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                         width: double.infinity,
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFEF4444).withAlpha(15),
+                          color: StatusColors.danger.withAlpha(15),
                           borderRadius: BorderRadius.circular(Brand.r(10)),
                         ),
                         child: Column(
@@ -959,7 +959,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
-                                  color: const Color(0xFFEF4444),
+                                  color: StatusColors.danger,
                                 )),
                             const SizedBox(height: 4),
                             Text(
@@ -1033,7 +1033,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                                     ? Icons.star_rounded
                                     : Icons.star_border_rounded,
                                 size: 20,
-                                color: const Color(0xFFF59E0B),
+                                color: StatusColors.warning,
                               ),
                             ),
                           ],
@@ -1062,9 +1062,9 @@ class _MySchedulePageState extends State<MySchedulePage>
                             icon: const Icon(Icons.star_outline, size: 18),
                             label: const Text('Rate This Service'),
                             style: OutlinedButton.styleFrom(
-                              foregroundColor: const Color(0xFFF59E0B),
+                              foregroundColor: StatusColors.warning,
                               side: BorderSide(
-                                color: const Color(0xFFF59E0B).withAlpha(128),
+                                color: StatusColors.warning.withAlpha(128),
                               ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(Brand.r(12)),
@@ -1150,7 +1150,7 @@ class _MySchedulePageState extends State<MySchedulePage>
           child: Container(
             height: 100,
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Colors.white,
+              color: Brand.surface(isDark),
               borderRadius: BorderRadius.circular(Brand.r(16)),
             ),
             child: const Center(

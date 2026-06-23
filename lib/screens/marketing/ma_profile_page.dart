@@ -102,11 +102,11 @@ class _MaProfilePageState extends State<MaProfilePage> {
       context: context,
       builder: (_) => _buildConfirmDialog(
         icon: Icons.logout_rounded,
-        iconColor: isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400,
+        iconColor: isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
         title: 'Sign Out?',
         message: 'Are you sure you want to sign out\nof your account?',
         confirmText: 'Sign Out',
-        confirmColor: Colors.red,
+        confirmColor: StatusColors.danger,
         isDark: isDark,
       ),
     );
@@ -145,7 +145,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
         const SizedBox(width: 8),
         Expanded(child: Text(msg)),
       ]),
-      backgroundColor: Colors.red,
+      backgroundColor: StatusColors.danger,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
     ));
@@ -280,13 +280,13 @@ class _MaProfilePageState extends State<MaProfilePage> {
                   width: 72,
                   height: 72,
                   decoration: BoxDecoration(
-                    color: Colors.red.withAlpha(isDark ? 38 : 26),
+                    color: StatusColors.danger.withAlpha(isDark ? 38 : 26),
                     borderRadius: BorderRadius.circular(Brand.r(22)),
                   ),
                   child: Icon(Icons.error_outline,
                       size: 36,
                       color:
-                          isDark ? const Color(0xFFFF6B6B) : Colors.red),
+                          isDark ? const Color(0xFFFF6B6B) : StatusColors.danger),
                 ),
                 const SizedBox(height: 20),
                 Text(
@@ -985,13 +985,13 @@ class _MaProfilePageState extends State<MaProfilePage> {
           color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(22)),
           border: isDark
-              ? Border.all(color: Colors.red.withAlpha(38))
-              : Border.all(color: Colors.red.withAlpha(20)),
+              ? Border.all(color: StatusColors.danger.withAlpha(38))
+              : Border.all(color: StatusColors.danger.withAlpha(20)),
           boxShadow: isDark
               ? null
               : [
                   BoxShadow(
-                    color: Colors.red.withAlpha(8),
+                    color: StatusColors.danger.withAlpha(8),
                     blurRadius: 16,
                     offset: const Offset(0, 4),
                   ),
@@ -1003,15 +1003,15 @@ class _MaProfilePageState extends State<MaProfilePage> {
               width: 44,
               height: 44,
               decoration: BoxDecoration(
-                color: Colors.red.withAlpha(isDark ? 30 : 15),
+                color: StatusColors.danger.withAlpha(isDark ? 30 : 15),
                 borderRadius: BorderRadius.circular(Brand.r(13)),
                 border: isDark
-                    ? Border.all(color: Colors.red.withAlpha(51))
+                    ? Border.all(color: StatusColors.danger.withAlpha(51))
                     : null,
               ),
               child: Icon(Icons.logout_rounded,
                   size: 22,
-                  color: isDark ? const Color(0xFFFF6B6B) : Colors.red),
+                  color: isDark ? const Color(0xFFFF6B6B) : StatusColors.danger),
             ),
             const SizedBox(width: 14),
             Expanded(
@@ -1023,7 +1023,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
-                      color: isDark ? const Color(0xFFFF6B6B) : Colors.red,
+                      color: isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
                     ),
                   ),
                   const SizedBox(height: 2),
@@ -1042,7 +1042,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
                 size: 22,
                 color: isDark
                     ? const Color(0xFFFF6B6B).withAlpha(128)
-                    : Colors.red.withAlpha(128)),
+                    : StatusColors.danger.withAlpha(128)),
           ],
         ),
       ),
@@ -1117,7 +1117,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
   // ─── PREMIUM CARD DECORATION ─────────────────────────────────
   BoxDecoration _premiumCardDecoration(bool isDark) {
     return BoxDecoration(
-      color: isDark ? Brand.darkCard : Colors.white,
+      color: Brand.surface(isDark),
       borderRadius: BorderRadius.circular(Brand.r(22)),
       border: isDark ? Border.all(color: Brand.darkBorder) : null,
       boxShadow: isDark

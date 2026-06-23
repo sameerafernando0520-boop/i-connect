@@ -175,7 +175,7 @@ class _EaJobRecordsPageState extends State<EaJobRecordsPage> {
       case 'completed':
         return const Color(0xFF10B981);
       case 'cancelled':
-        return const Color(0xFFEF4444);
+        return StatusColors.danger;
       default:
         return const Color(0xFF94A3B8);
     }
@@ -234,7 +234,7 @@ class _EaJobRecordsPageState extends State<EaJobRecordsPage> {
 
   void _showSortSheet() {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final cardBg = isDark ? Brand.darkCard : Colors.white;
+    final cardBg = Brand.surface(isDark);
     final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
     final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
@@ -309,7 +309,7 @@ class _EaJobRecordsPageState extends State<EaJobRecordsPage> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = Brand.canvas(isDark);
-    final cardBg = isDark ? Brand.darkCard : Colors.white;
+    final cardBg = Brand.surface(isDark);
     final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
     final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
@@ -562,7 +562,7 @@ class _JobRecordCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cardBg = isDark ? Brand.darkCard : Colors.white;
+    final cardBg = Brand.surface(isDark);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
     final eng = record['engineer'] as Map<String, dynamic>?;
     final ticket = record['ticket'] as Map<String, dynamic>?;
@@ -805,7 +805,7 @@ class _ErrorView extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(Icons.error_outline_rounded,
-                size: 48, color: Color(0xFFEF4444)),
+                size: 48, color: StatusColors.danger),
             const SizedBox(height: 12),
             Text(
               'Failed to load job records',

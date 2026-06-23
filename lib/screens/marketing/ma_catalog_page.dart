@@ -176,7 +176,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
                                 color: AdminColors.error.withAlpha(20),
                                 shape: BoxShape.circle,
                               ),
-                              child: const Icon(Icons.error_outline_rounded, size: 32, color: Colors.red),
+                              child: Icon(Icons.error_outline_rounded, size: 32, color: StatusColors.danger),
                             ),
                             const SizedBox(height: 16),
                             Text('Something went wrong',
@@ -446,7 +446,7 @@ class _MaCatalogPageState extends State<MaCatalogPage> {
         expand: false,
         builder: (_, scrollCtrl) => Container(
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Colors.white,
+            color: Brand.surface(isDark),
             borderRadius:
                 const BorderRadius.vertical(top: Radius.circular(28)),
           ),

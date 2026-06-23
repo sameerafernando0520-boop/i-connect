@@ -234,7 +234,7 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
             final isDark = Theme.of(context).brightness == Brightness.dark;
             return Container(
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Colors.white,
+                color: Brand.surface(isDark),
                 borderRadius:
                     const BorderRadius.vertical(top: Radius.circular(28)),
               ),
@@ -826,7 +826,7 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),

@@ -99,7 +99,7 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
             Expanded(child: Text(S.of(context)!.invoiceLoadFailed)),
           ]),
           behavior: SnackBarBehavior.floating,
-          backgroundColor: const Color(0xFFEF4444),
+          backgroundColor: StatusColors.danger,
         ),
       );
     }
@@ -188,7 +188,7 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
         decoration: BoxDecoration(
           color: sel
               ? Brand.royalBlue.withAlpha(isDark ? 40 : 25)
-              : (isDark ? Brand.darkCard : Colors.white),
+              : Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(20)),
           border: Border.all(
             color: sel
@@ -352,7 +352,7 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
     final diff = due.difference(DateTime.now()).inDays;
     if (status == 'overdue' || diff < 0) {
       final d = diff.abs();
-      return (t.invoiceOverdueByDays(d), const Color(0xFFEF4444));
+      return (t.invoiceOverdueByDays(d), StatusColors.danger);
     }
     if (diff == 0) return (t.invoiceDueToday, const Color(0xFFF59E0B));
     if (diff <= 7) {

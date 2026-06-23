@@ -100,7 +100,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
   Color get _gridColor => _isDark ? Brand.darkBorder : const Color(0xFFF1F5F9);
   Color get _barBg =>
       _isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9);
-  Color get _tooltipBg => _isDark ? Brand.darkCardElevated : Colors.white;
+  Color get _tooltipBg => Brand.surface(_isDark);
 
   List<BoxShadow> get _cardShadow => _isDark
       ? []
@@ -521,7 +521,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
           ],
         ),
         backgroundColor:
-            isError ? Colors.red.shade400 : (color ?? _primaryColor),
+            isError ? StatusColors.danger : (color ?? _primaryColor),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
@@ -725,7 +725,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                 value: _totalCount > 0
                     ? '${_escalationRate.toStringAsFixed(0)}%'
                     : '—',
-                color: const Color(0xFFEF4444),
+                color: StatusColors.danger,
               ),
             ],
           ),

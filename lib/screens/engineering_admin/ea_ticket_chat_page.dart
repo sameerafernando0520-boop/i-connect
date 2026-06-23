@@ -360,7 +360,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
   void _showDispatchSheet(BuildContext context, bool isDark) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
@@ -397,7 +397,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
       appBar: AppBar(
         backgroundColor: Brand.isWorkshop
             ? Brand.canvas(isDark)
-            : (isDark ? Brand.darkCard : Colors.white),
+            : (Brand.surface(isDark)),
         elevation: 0,
         scrolledUnderElevation: Brand.isWorkshop ? 0 : 0.5,
         surfaceTintColor: Colors.transparent,
@@ -617,7 +617,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
 
   Widget _buildInputBar(BuildContext context, bool isDark) {
     return Container(
-      color: isDark ? Brand.darkCard : Colors.white,
+      color: Brand.surface(isDark),
       padding: EdgeInsets.only(
         left: 12,
         right: 12,
@@ -699,7 +699,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
       backgroundColor: Colors.transparent,
       builder: (sheetCtx) => Container(
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius:
               const BorderRadius.vertical(top: Radius.circular(28)),
         ),
@@ -1348,12 +1348,12 @@ class _UnassignedBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFFEF4444).withAlpha(isDark ? 25 : 15),
+      color: StatusColors.danger.withAlpha(isDark ? 25 : 15),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
         children: [
           const Icon(Icons.warning_amber_rounded,
-              color: Color(0xFFEF4444), size: 18),
+              color: StatusColors.danger, size: 18),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
@@ -1405,7 +1405,7 @@ class _ExpandedHeader extends StatelessWidget {
         (ticket['engineer'] as Map?)?['full_name'] as String? ?? 'Unassigned';
 
     return Container(
-      color: isDark ? Brand.darkCard : Colors.white,
+      color: Brand.surface(isDark),
       padding:
           const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Column(
@@ -1565,7 +1565,7 @@ class _DispatchPanelState extends State<_DispatchPanel> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogCtx) => AlertDialog(
-        backgroundColor: widget.isDark ? Brand.darkCard : Colors.white,
+        backgroundColor: Brand.surface(widget.isDark),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(18))),
         title: Text(
           'Assign Engineer',

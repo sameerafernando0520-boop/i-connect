@@ -315,7 +315,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
             bottom: MediaQuery.of(sheetCtx).viewInsets.bottom,
           ),
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Colors.white,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
           ),
           child: Padding(
@@ -461,7 +461,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                                   Text('Please add a service report'),
                                 ]),
                                 behavior: SnackBarBehavior.floating,
-                                backgroundColor: const Color(0xFFEF4444),
+                                backgroundColor: StatusColors.danger,
                               ),
                             );
                             return;
@@ -523,7 +523,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
             bottom: MediaQuery.of(sheetCtx).viewInsets.bottom,
           ),
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Colors.white,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
           ),
           child: Padding(
@@ -547,11 +547,11 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     Container(
                       width: 40, height: 40,
                       decoration: BoxDecoration(
-                        color: const Color(0xFFEF4444).withAlpha(isDark ? 30 : 20),
+                        color: StatusColors.danger.withAlpha(isDark ? 30 : 20),
                         borderRadius: BorderRadius.circular(Brand.r(10)),
                       ),
                       child: const Icon(Icons.cancel_outlined,
-                          color: Color(0xFFEF4444), size: 22),
+                          color: StatusColors.danger, size: 22),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
@@ -631,7 +631,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                                   Text('Please provide a cancellation reason'),
                                 ]),
                                 behavior: SnackBarBehavior.floating,
-                                backgroundColor: const Color(0xFFEF4444),
+                                backgroundColor: StatusColors.danger,
                               ),
                             );
                             return;
@@ -641,7 +641,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                         icon: const Icon(Icons.cancel, size: 18),
                         label: const Text('Cancel Service'),
                         style: FilledButton.styleFrom(
-                          backgroundColor: const Color(0xFFEF4444),
+                          backgroundColor: StatusColors.danger,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
                           padding: const EdgeInsets.symmetric(vertical: 14),
@@ -710,7 +710,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                 bottom: MediaQuery.of(ctx).viewInsets.bottom,
               ),
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Colors.white,
+                color: Brand.surface(isDark),
                 borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
               ),
               child: Padding(
@@ -992,7 +992,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
             bottom: MediaQuery.of(sheetCtx).viewInsets.bottom,
           ),
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Colors.white,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
           ),
           child: Padding(
@@ -1109,7 +1109,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
         ]),
         behavior: SnackBarBehavior.floating,
         backgroundColor:
-            isError ? const Color(0xFFEF4444) : const Color(0xFF22C55E),
+            isError ? StatusColors.danger : StatusColors.success,
       ),
     );
   }
@@ -1477,7 +1477,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
               padding: const EdgeInsets.only(bottom: 16),
               child: Container(
                 decoration: BoxDecoration(
-                  color: isDark ? Brand.darkCard : Colors.white,
+                  color: Brand.surface(isDark),
                   borderRadius: BorderRadius.circular(Brand.r(16)),
                   border: Border.all(
                     color: isActive
@@ -1782,7 +1782,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     color: isDark ? Brand.darkTextTertiary : Brand.subtleLight),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(Brand.r(12))),
-                color: isDark ? Brand.darkCardElevated : Colors.white,
+                color: Brand.surface(isDark),
                 elevation: isDark ? 4 : 2,
                 onSelected: (v) {
                   if (v == 'cancel') _cancelSchedule(schedule);
@@ -1804,8 +1804,8 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                   PopupMenuItem(
                     value: 'cancel',
                     child: Row(children: [
-                      const Icon(Icons.cancel_outlined,
-                          size: 18, color: Color(0xFFEF4444)),
+                      Icon(Icons.cancel_outlined,
+                          size: 18, color: StatusColors.danger),
                       const SizedBox(width: 10),
                       Text('Cancel',
                           style: TextStyle(
@@ -1859,12 +1859,12 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
               Expanded(
                 child: OutlinedButton.icon(
                   onPressed: _acting ? null : () => _cancelSchedule(schedule),
-                  icon: const Icon(Icons.cancel_outlined, size: 16,
-                      color: Color(0xFFEF4444)),
-                  label: const Text('Cancel',
-                      style: TextStyle(fontSize: 13, color: Color(0xFFEF4444))),
+                  icon: Icon(Icons.cancel_outlined, size: 16,
+                      color: StatusColors.danger),
+                  label: Text('Cancel',
+                      style: TextStyle(fontSize: 13, color: StatusColors.danger)),
                   style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: Color(0xFFEF4444), width: 0.8),
+                    side: BorderSide(color: StatusColors.danger, width: 0.8),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(Brand.r(10))),
                     padding: const EdgeInsets.symmetric(vertical: 10),
@@ -2022,7 +2022,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)

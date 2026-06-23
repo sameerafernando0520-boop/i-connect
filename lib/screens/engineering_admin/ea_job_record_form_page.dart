@@ -187,7 +187,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
 
   void _pickEngineer() {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final cardBg = isDark ? Brand.darkCard : Colors.white;
+    final cardBg = Brand.surface(isDark);
     final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
     final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
@@ -297,7 +297,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
     if (_tickets.isEmpty && !_loadingTickets) _loadTickets();
 
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final cardBg = isDark ? Brand.darkCard : Colors.white;
+    final cardBg = Brand.surface(isDark);
     final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
     final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
@@ -350,7 +350,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
                             Navigator.pop(context);
                           },
                           child: const Text('Clear',
-                              style: TextStyle(color: Color(0xFFEF4444))),
+                              style: TextStyle(color: StatusColors.danger)),
                         ),
                     ],
                   ),

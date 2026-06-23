@@ -99,7 +99,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
           ],
         ),
         // FIX: replaced Colors.red.shade600 with const color
-        backgroundColor: err ? const Color(0xFFDC2626) : Brand.lightGreen,
+        backgroundColor: err ? StatusColors.danger : Brand.lightGreen,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
@@ -464,7 +464,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
           ElevatedButton(
             onPressed: () => Navigator.pop(context, true),
             style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFEF4444),
+                backgroundColor: StatusColors.danger,
                 foregroundColor: Colors.white),
             child: const Text('Reject'),
           ),
@@ -592,9 +592,9 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
         break;
       case 'defaulted':
         bgColor = dk
-            ? const Color(0xFFEF4444).withAlpha(38)
-            : const Color(0xFFEF4444).withAlpha(26);
-        fgColor = const Color(0xFFEF4444);
+            ? StatusColors.danger.withAlpha(38)
+            : StatusColors.danger.withAlpha(26);
+        fgColor = StatusColors.danger;
         icon = Icons.warning_amber_rounded;
         label = 'DEFAULTED';
         break;
@@ -891,7 +891,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                 dotIcon = Icons.check_circle_rounded;
                 break;
               case 'overdue':
-                dotColor = const Color(0xFFEF4444);
+                dotColor = StatusColors.danger;
                 dotIcon = Icons.error_rounded;
                 break;
               case 'submitted':
@@ -910,9 +910,9 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
             switch (status) {
               case 'overdue':
                 itemBg = dk
-                    ? const Color(0xFFEF4444).withAlpha(26)
-                    : const Color(0xFFEF4444).withAlpha(13);
-                itemBorder = const Color(0xFFEF4444).withAlpha(77);
+                    ? StatusColors.danger.withAlpha(26)
+                    : StatusColors.danger.withAlpha(13);
+                itemBorder = StatusColors.danger.withAlpha(77);
                 break;
               case 'paid':
                 itemBg = dk
@@ -1058,7 +1058,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                   'Overdue by $days day(s)',
                                   style: const TextStyle(
                                     fontSize: 12,
-                                    color: Color(0xFFEF4444),
+                                    color: StatusColors.danger,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 );
@@ -1103,9 +1103,9 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                       label: const Text('Reject'),
                                       style: OutlinedButton.styleFrom(
                                         foregroundColor:
-                                            const Color(0xFFEF4444),
+                                            StatusColors.danger,
                                         side: const BorderSide(
-                                            color: Color(0xFFEF4444)),
+                                            color: StatusColors.danger),
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 8),
                                         shape: RoundedRectangleBorder(
@@ -1504,14 +1504,14 @@ class _PaymentReceiptsStripState extends State<_PaymentReceiptsStrip> {
                 width: 70,
                 height: 70,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFEF4444).withAlpha(26),
+                  color: StatusColors.danger.withAlpha(26),
                   borderRadius: BorderRadius.circular(Brand.r(10)),
                   border: Border.all(
-                    color: const Color(0xFFEF4444).withAlpha(102),
+                    color: StatusColors.danger.withAlpha(102),
                   ),
                 ),
                 child: const Icon(Icons.warning_rounded,
-                    size: 20, color: Color(0xFFEF4444)),
+                    size: 20, color: StatusColors.danger),
               ),
             );
           }
@@ -1531,7 +1531,7 @@ class _PaymentReceiptsStripState extends State<_PaymentReceiptsStrip> {
                 child: const Icon(
                   Icons.picture_as_pdf_rounded,
                   size: 26,
-                  color: Color(0xFFEF4444),
+                  color: StatusColors.danger,
                 ),
               ),
             );

@@ -23,7 +23,7 @@ class ConfirmDialog {
       builder: (sheetCtx) => Container(
         padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius:
               const BorderRadius.vertical(top: Radius.circular(28)),
         ),

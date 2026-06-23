@@ -76,7 +76,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
   Color _handleColor(bool d) =>
       d ? Brand.darkBorderLight : Colors.grey.shade300;
 
-  Color _sheetBg(bool d) => d ? Brand.darkCard : Colors.white;
+  Color _sheetBg(bool d) => Brand.surface(d);
 
   Color _primaryColor(bool d) => d ? Brand.royalBlueGlow : AdminColors.primary;
 
@@ -724,7 +724,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
         'icon': Icons.schedule_rounded,
         'text':
             '$noResponse new inquiry${noResponse > 1 ? 's' : ''} > 24h without response',
-        'color': Colors.red,
+        'color': StatusColors.danger,
         'filter': 'new',
       });
     }
@@ -779,7 +779,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                         fontWeight: FontWeight.w500,
                         color: isDark
                             ? Brand.darkTextPrimary
-                            : Colors.red.shade700,
+                            : StatusColors.danger,
                       ),
                     ),
                   ),

@@ -174,7 +174,7 @@ class _EaPerformanceDashboardState extends State<EaPerformanceDashboard>
     final isDark = Theme.of(context).brightness == Brightness.dark;
     showModalBottomSheet(
       context: context,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
@@ -220,7 +220,7 @@ class _EaPerformanceDashboardState extends State<EaPerformanceDashboard>
     final isDark = Theme.of(context).brightness == Brightness.dark;
     showModalBottomSheet(
       context: context,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
@@ -501,7 +501,7 @@ class _KpiCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
         boxShadow: isDark
@@ -560,7 +560,7 @@ class _TopPerformers extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
       ),
@@ -753,7 +753,7 @@ class _AttendancePieCard extends StatelessWidget {
       if (low > 0)
         PieChartSectionData(
           value: low.toDouble(),
-          color: const Color(0xFFEF4444),
+          color: StatusColors.danger,
           title: '$low',
           radius: 55,
           titleStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
@@ -771,7 +771,7 @@ class _AttendancePieCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
       ),
@@ -796,7 +796,7 @@ class _AttendancePieCard extends StatelessWidget {
             children: [
               if (high > 0) _legend('≥80% (Good)', const Color(0xFF10B981)),
               if (medium > 0) _legend('60–79% (Fair)', const Color(0xFFF59E0B)),
-              if (low > 0) _legend('<60% (Poor)', const Color(0xFFEF4444)),
+              if (low > 0) _legend('<60% (Poor)', StatusColors.danger),
               if (noData > 0) _legend('No Data', const Color(0xFF94A3B8)),
             ],
           ),
@@ -870,7 +870,7 @@ class _EngineerKpiCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
         boxShadow: isDark
@@ -1348,7 +1348,7 @@ class _TrendCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
       ),

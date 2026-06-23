@@ -1670,7 +1670,7 @@ class _CreateInvoicePageState extends State<CreateInvoicePage> {
   Widget _card({required bool isDark, required Widget child}) {
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(AdminDimens.cardRadius),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,

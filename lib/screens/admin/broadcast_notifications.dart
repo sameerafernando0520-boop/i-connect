@@ -104,7 +104,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
   ];
 
   // ── Const color aliases ──
-  static const _redColor = Color(0xFFE53935);
+  static const _redColor = Color(0xFFEF4444);
   static const _redLight = Color(0xFFEF5350); // shade400
   static const _greyColor = Color(0xFF607D8B);
   static const _orangeColor = Color(0xFFFF9800);

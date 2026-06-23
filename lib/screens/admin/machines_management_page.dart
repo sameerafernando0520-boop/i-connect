@@ -57,8 +57,8 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
   Color get _borderColor => Brand.cardBorder(_isDark);
   Color get _dividerColor =>
       _isDark ? Brand.darkBorderLight : Colors.grey.shade200;
-  Color get _chipBg => _isDark ? Brand.darkCardElevated : Colors.white;
-  Color get _sheetBg => _isDark ? Brand.darkCard : Colors.white;
+  Color get _chipBg => Brand.surface(_isDark);
+  Color get _sheetBg => Brand.surface(_isDark);
   Color get _handleColor =>
       _isDark ? Brand.darkBorderLight : Colors.grey.shade300;
   Color get _primaryColor =>

@@ -836,23 +836,20 @@ class _MyMachinesPageState extends State<MyMachinesPage>
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
-                color: Colors.red.withAlpha(isDark ? 31 : 15),
+                color: StatusColors.danger.withAlpha(isDark ? 31 : 15),
                 borderRadius: BorderRadius.circular(Brand.r(8)),
-                border: Border.all(color: Colors.red.withAlpha(38)),
+                border: Border.all(color: StatusColors.danger.withAlpha(38)),
               ),
               child: Row(mainAxisSize: MainAxisSize.min, children: [
                 Icon(Icons.close_rounded,
                     size: 16,
-                    color:
-                        isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400),
+                    color: StatusColors.danger),
                 const SizedBox(width: 4),
                 Text(S.of(context)!.commonClear,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w700,
-                        color: isDark
-                            ? const Color(0xFFFF6B6B)
-                            : Colors.red.shade400)),
+                        color: StatusColors.danger)),
               ]),
             ),
           ),
@@ -1202,9 +1199,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                                   ? (isDark
                                       ? Brand.lightGreenBright
                                       : Brand.lightGreen)
-                                  : (isDark
-                                      ? const Color(0xFFFF6B6B)
-                                      : Colors.red.shade400)),
+                                  : StatusColors.danger),
                           const SizedBox(width: 4),
                           Text(
                               warrantyValid
@@ -1217,9 +1212,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                                       ? (isDark
                                           ? Brand.lightGreenBright
                                           : Brand.lightGreen)
-                                      : (isDark
-                                          ? const Color(0xFFFF6B6B)
-                                          : Colors.red.shade400))),
+                                      : StatusColors.danger)),
                         ],
                       ]),
                       if (hasWarranty && warrantyValid) ...[
@@ -1417,7 +1410,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                             ? (isDark
                                 ? Brand.lightGreenBright
                                 : Brand.lightGreen)
-                            : (isDark ? const Color(0xFFFF6B6B) : Colors.red),
+                            : (isDark ? const Color(0xFFFF6B6B) : StatusColors.danger),
                         borderRadius: BorderRadius.circular(Brand.r(10))),
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                       const Icon(Icons.verified_user_rounded,
@@ -1504,9 +1497,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                       if (isOverdue)
                         Icon(Icons.error_rounded,
                             size: 16,
-                            color: isDark
-                                ? const Color(0xFFFF6B6B)
-                                : Colors.red.shade400),
+                            color: StatusColors.danger),
                     ]),
                   ]),
             ),
@@ -1838,15 +1829,14 @@ class _MyMachinesPageState extends State<MyMachinesPage>
               width: 84,
               height: 84,
               decoration: BoxDecoration(
-                  color: Colors.red.withAlpha(isDark ? 31 : 15),
+                  color: StatusColors.danger.withAlpha(isDark ? 31 : 15),
                   borderRadius: BorderRadius.circular(Brand.r(24)),
                   border: isDark
-                      ? Border.all(color: const Color(0xFFFF6B6B).withAlpha(38))
+                      ? Border.all(color: StatusColors.danger.withAlpha(38))
                       : null),
-              child: Icon(Icons.cloud_off_rounded,
+              child: const Icon(Icons.cloud_off_rounded,
                   size: 42,
-                  color:
-                      isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400),
+                  color: StatusColors.danger),
             ),
             const SizedBox(height: 20),
             Text(S.of(context)!.commonSomethingWentWrong,

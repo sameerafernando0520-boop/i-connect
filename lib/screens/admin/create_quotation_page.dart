@@ -1805,7 +1805,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(AdminDimens.cardRadius),
          border: isDark
          ? Border.all(color: Brand.darkBorder) : null,

@@ -245,7 +245,7 @@ class _SubmitPaymentSheetState extends State<SubmitPaymentSheet> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(msg),
-        backgroundColor: isError ? Colors.red : Brand.royalBlue,
+        backgroundColor: isError ? StatusColors.danger : Brand.royalBlue,
         behavior: SnackBarBehavior.floating,
       ),
     );

@@ -209,11 +209,11 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
                 width: 70,
                 height: 70,
                 decoration: BoxDecoration(
-                  color: Colors.red.withAlpha(((isDark ? 0.15 : 0.08) * 255).toInt()),
+                  color: StatusColors.danger.withAlpha(((isDark ? 0.15 : 0.08) * 255).toInt()),
                   borderRadius: BorderRadius.circular(Brand.r(20)),
                 ),
                 child: Icon(Icons.delete_sweep_rounded,
-                    color: Colors.red.shade400, size: 34),
+                    color: StatusColors.danger, size: 34),
               ),
               const SizedBox(height: 20),
               Text(
@@ -272,7 +272,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
                       child: Container(
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: StatusColors.danger,
                           borderRadius: BorderRadius.circular(Brand.r(14)),
                         ),
                         child: const Center(
@@ -409,7 +409,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
             Expanded(child: Text(message)),
           ],
         ),
-        backgroundColor: isError ? Colors.red : Brand.lightGreen,
+        backgroundColor: isError ? StatusColors.danger : Brand.lightGreen,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.all(16),
@@ -601,7 +601,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
             decoration: BoxDecoration(
               color: _notificationsEnabled
                   ? Brand.lightGreen.withAlpha(((isDark ? 0.2 : 1) * 255).toInt())
-                  : Colors.red.withAlpha(((isDark ? 0.2 : 0.8) * 255).toInt()),
+                  : StatusColors.danger.withAlpha(((isDark ? 0.2 : 0.8) * 255).toInt()),
               borderRadius: BorderRadius.circular(Brand.r(20)),
             ),
             child: Text(
@@ -612,7 +612,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
                 color: isDark
                     ? (_notificationsEnabled
                         ? Brand.lightGreenBright
-                        : Colors.red)
+                        : StatusColors.danger)
                     : Colors.white,
               ),
             ),
@@ -1133,7 +1133,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
             icon: Icons.delete_sweep_rounded,
             label: 'Clear All Notifications',
             subtitle: '$_totalNotifications notifications',
-            color: Colors.red,
+            color: StatusColors.danger,
             onTap: _totalNotifications > 0 ? _clearAllNotifications : null,
             enabled: _totalNotifications > 0,
             isSaving: _savingAction == 'clear',

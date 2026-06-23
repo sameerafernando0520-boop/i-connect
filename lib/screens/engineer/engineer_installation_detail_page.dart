@@ -299,7 +299,7 @@ class _EngineerInstallationDetailPageState
         const SizedBox(width: 8),
         Expanded(child: Text(msg)),
       ]),
-      backgroundColor: error ? Colors.red : const Color(0xFF10B981),
+      backgroundColor: error ? StatusColors.danger : const Color(0xFF10B981),
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
     ));
@@ -310,8 +310,7 @@ class _EngineerInstallationDetailPageState
   bool get _isDark =>
       Theme.of(context).brightness == Brightness.dark;
 
-  Color get _cardColor =>
-      _isDark ? Brand.darkCard : Colors.white;
+  Color get _cardColor => Brand.surface(_isDark);
 
   Color get _textPrimary =>
       _isDark ? Brand.darkTextPrimary : Colors.black87;
@@ -354,11 +353,11 @@ class _EngineerInstallationDetailPageState
             Container(
               width: 72, height: 72,
               decoration: BoxDecoration(
-                color: const Color(0xFFEF4444).withAlpha(_isDark ? 25 : 15),
+                color: StatusColors.danger.withAlpha(_isDark ? 25 : 15),
                 shape: BoxShape.circle,
               ),
               child: const Icon(Icons.error_outline,
-                  color: Color(0xFFEF4444), size: 36),
+                  color: StatusColors.danger, size: 36),
             ),
             const SizedBox(height: 16),
             Text('Something went wrong',

@@ -69,7 +69,7 @@ class _EngineerCheckinCardState extends State<EngineerCheckinCard> {
       setState(() => _record = r);
       _snack('Checked in at ${TimeUtils.formatTime(DateTime.now())}', _engGreen);
     } catch (e) {
-      _snack('Check-in failed: $e', const Color(0xFFDC2626));
+      _snack('Check-in failed: $e', StatusColors.danger);
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -84,7 +84,7 @@ class _EngineerCheckinCardState extends State<EngineerCheckinCard> {
       setState(() => _record = r);
       _snack('Checked out at ${TimeUtils.formatTime(DateTime.now())}', _engAmber);
     } catch (e) {
-      _snack('Check-out failed: $e', const Color(0xFFDC2626));
+      _snack('Check-out failed: $e', StatusColors.danger);
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -303,7 +303,7 @@ class _EngineerCheckinCardState extends State<EngineerCheckinCard> {
       child: Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: accent.withAlpha(isDark ? 80 : 55),

@@ -122,7 +122,7 @@ class _EngineeringAdminDashboardState
           setState(() => _currentIndex = i);
         }
       },
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       indicatorColor: _eaAccent.withAlpha(isDark ? 45 : 28),
       surfaceTintColor: Colors.transparent,
       shadowColor: Colors.transparent,
@@ -394,7 +394,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 12),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(22)),
           border: Border.all(
               color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0)),
@@ -467,7 +467,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
   AppBar _buildAppBar(bool isDark) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       elevation: 0,
       scrolledUnderElevation: 0.5,
       surfaceTintColor: Colors.transparent,
@@ -748,7 +748,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
       child: Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(16)),
           border: Border.all(
             color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
@@ -984,7 +984,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     showModalBottomSheet(
       context: context,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
@@ -1111,7 +1111,7 @@ class _EaDashboardTabState extends State<_EaDashboardTab> {
       child: Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(14)),
           border: Border.all(
             color: isUnassigned
@@ -1569,7 +1569,7 @@ class _MoreModuleCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(18)),
           border: Border.all(
             color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),

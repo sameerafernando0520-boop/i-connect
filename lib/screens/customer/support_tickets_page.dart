@@ -144,7 +144,7 @@ class _SupportTicketsPageState extends State<SupportTicketsPage>
               Expanded(child: Text('Error: $e')),
             ],
           ),
-          backgroundColor: Colors.red,
+          backgroundColor: StatusColors.danger,
           behavior: SnackBarBehavior.floating,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),

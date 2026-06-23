@@ -3,6 +3,7 @@
 // its scaffold body.  Subscribes to ConnectivityService.
 
 import 'package:flutter/material.dart';
+import '../../config/brand_colors.dart';
 import '../../services/connectivity_service.dart';
 
 class OfflineBanner extends StatelessWidget {
@@ -54,7 +55,7 @@ class OfflineBanner extends StatelessWidget {
         : (isDark ? const Color(0xFF3F1F1F) : const Color(0xFFFEF2F2));
     final fg = online
         ? const Color(0xFF16A34A)
-        : const Color(0xFFDC2626);
+        : StatusColors.danger;
     final icon = online ? Icons.cloud_done_rounded : Icons.cloud_off_rounded;
     final text = messageOverride ??
         (online
@@ -102,19 +103,19 @@ class OfflinePill extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
           decoration: BoxDecoration(
-            color: const Color(0xFFDC2626).withAlpha(28),
+            color: StatusColors.danger.withAlpha(28),
             borderRadius: BorderRadius.circular(999),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            children: const [
-              Icon(Icons.cloud_off_rounded, size: 12, color: Color(0xFFDC2626)),
-              SizedBox(width: 4),
+            children: [
+              Icon(Icons.cloud_off_rounded, size: 12, color: StatusColors.danger),
+              const SizedBox(width: 4),
               Text('Offline',
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
-                    color: Color(0xFFDC2626),
+                    color: StatusColors.danger,
                   )),
             ],
           ),

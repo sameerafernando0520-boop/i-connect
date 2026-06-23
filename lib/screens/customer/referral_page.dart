@@ -165,7 +165,7 @@ class _ReferralPageState extends State<ReferralPage> {
                 gradient: LinearGradient(
                   colors: isDark
                       ? [Brand.darkCardElevated, Brand.darkCard]
-                      : [Brand.royalBlueSurface, Colors.white],
+                      : [Brand.royalBlueSurface, Brand.scaffoldLight],
                 ),
                 borderRadius: BorderRadius.circular(Brand.r(20)),
                 border: Border.all(
@@ -304,14 +304,14 @@ class _ReferralPageState extends State<ReferralPage> {
         return isDark ? Brand.darkIconActive : Brand.royalBlueLight;
       case 'cooling':
       case 'qualified':
-        return isDark ? const Color(0xFFFFB74D) : Colors.orange;
+        return StatusColors.warning;
       case 'approved':
       case 'paid':
         return isDark ? Brand.lightGreenBright : Brand.lightGreen;
       case 'expired':
         return isDark ? Brand.darkTextSecondary : Brand.subtleLight;
       case 'rejected':
-        return isDark ? const Color(0xFFFF6B6B) : Colors.red;
+        return StatusColors.danger;
       default:
         return isDark ? Brand.darkTextSecondary : Brand.subtleLight;
     }
@@ -381,7 +381,7 @@ class _ReferralPageState extends State<ReferralPage> {
         child: RefreshIndicator(
         onRefresh: _loadAll,
         color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
+        backgroundColor: Brand.surface(isDark),
         child: CustomScrollView(
           physics: const AlwaysScrollableScrollPhysics(
               parent: BouncingScrollPhysics()),
@@ -433,11 +433,11 @@ class _ReferralPageState extends State<ReferralPage> {
           width: 64,
           height: 64,
           decoration: BoxDecoration(
-            color: Colors.amber.withAlpha(isDark ? 31 : 46),
+            color: StatusColors.warning.withAlpha(isDark ? 31 : 46),
             borderRadius: BorderRadius.circular(Brand.r(20)),
           ),
           child: const Icon(Icons.card_giftcard_rounded,
-              color: Colors.amber, size: 32),
+              color: StatusColors.warning, size: 32),
         ),
         const SizedBox(height: 16),
         Text(S.of(context)!.referralHeroTitle,
@@ -570,7 +570,7 @@ class _ReferralPageState extends State<ReferralPage> {
         _shareBtn(
             Icons.qr_code_2_rounded,
             'QR Code',
-            isDark ? const Color(0xFFFFB74D) : Colors.orange,
+            StatusColors.warning,
             isDark,
             _showCodeSheet),
       ]),
@@ -621,7 +621,7 @@ class _ReferralPageState extends State<ReferralPage> {
             'Earned',
             _formatLKR(totalEarned),
             Icons.account_balance_wallet_rounded,
-            isDark ? const Color(0xFFFFB74D) : Colors.orange,
+            StatusColors.warning,
             isDark),
       ]),
     );
@@ -912,7 +912,7 @@ class _ReferralPageState extends State<ReferralPage> {
                         style: TextStyle(
                           fontSize: 11,
                           color:
-                              isDark ? Brand.darkTextTertiary : Colors.black38,
+                              isDark ? Brand.darkTextTertiary : Brand.subtleLight,
                         ),
                       ),
                   ]),

@@ -356,21 +356,21 @@ class _CustomerInstallmentsPageState extends State<CustomerInstallmentsPage> {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.red.withAlpha(((isDark ? 0.1 : 0.05) * 255).toInt()),
+                  color: StatusColors.danger.withAlpha(((isDark ? 0.1 : 0.05) * 255).toInt()),
                   borderRadius: BorderRadius.circular(Brand.r(10)),
-                  border: Border.all(color: Colors.red.withAlpha(((0.2) * 255).toInt())),
+                  border: Border.all(color: StatusColors.danger.withAlpha(((0.2) * 255).toInt())),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.warning_amber_rounded,
-                        size: 16, color: Colors.red),
+                    Icon(Icons.warning_amber_rounded,
+                        size: 16, color: StatusColors.danger),
                     const SizedBox(width: 8),
                     Text(
                       t.installmentPaymentsOverdue(overdueCount.toInt()),
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
-                        color: Colors.red,
+                        color: StatusColors.danger,
                       ),
                     ),
                   ],

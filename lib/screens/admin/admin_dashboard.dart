@@ -689,7 +689,7 @@ class _AdminDashboardState extends State<AdminDashboard>
             width: 44,
             height: 44,
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Colors.white,
+              color: Brand.surface(isDark),
               borderRadius: BorderRadius.circular(Brand.r(14)),
               border: isDark
                   ? Border.all(color: Brand.darkBorder)
@@ -1225,7 +1225,7 @@ class _AdminDashboardState extends State<AdminDashboard>
       child: Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(18)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -1525,7 +1525,7 @@ class _AdminDashboardState extends State<AdminDashboard>
           .map((k) => Container(
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
-                  color: isDark ? Brand.darkCard : Colors.white,
+                  color: Brand.surface(isDark),
                   borderRadius: BorderRadius.circular(Brand.r(18)),
                   border: isDark
                       ? Border.all(color: Brand.darkBorder)
@@ -1665,7 +1665,7 @@ class _AdminDashboardState extends State<AdminDashboard>
   Widget _buildBottomNav(bool isDark) {
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(Brand.r(24)),
           topRight: Radius.circular(Brand.r(24)),

@@ -408,7 +408,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
         child: OfflineBanner(
             child: RefreshIndicator(
       color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       displacement: 60,
       onRefresh: _loadAll,
       child: _isLoading
@@ -500,7 +500,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 12),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(22)),
           border: Border.all(
             color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),
@@ -1523,10 +1523,10 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               width: 80,
               height: 80,
               decoration: BoxDecoration(
-                  color: Colors.red.withAlpha(26),
+                  color: StatusColors.danger.withAlpha(26),
                   borderRadius: BorderRadius.circular(Brand.r(24))),
-              child: const Icon(Icons.cloud_off_rounded,
-                  color: Colors.red, size: 40)),
+              child: Icon(Icons.cloud_off_rounded,
+                  color: StatusColors.danger, size: 40)),
           const SizedBox(height: 20),
           Text('Connection Error',
               style: TextStyle(
@@ -1623,7 +1623,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
     ];
     showModalBottomSheet(
       context: context,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
       builder: (sheetCtx) => Column(
@@ -1695,7 +1695,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
   Widget _buildBottomNav(bool isDark) {
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(28),
           topRight: Radius.circular(28),
@@ -1767,7 +1767,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                       colors: [Color(0xFFFF4757), Color(0xFFFF6B81)]),
                   shape: BoxShape.circle,
                   border: Border.all(
-                      color: isDark ? Brand.darkCard : Colors.white,
+                      color: Brand.surface(isDark),
                       width: 2.5),
                 ),
                 constraints: const BoxConstraints(minWidth: 20, minHeight: 20),

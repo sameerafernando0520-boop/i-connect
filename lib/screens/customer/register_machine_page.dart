@@ -753,7 +753,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
             Expanded(child: Text(message)),
           ],
         ),
-        backgroundColor: isError ? Colors.red : Brand.lightGreen,
+        backgroundColor: isError ? StatusColors.danger : Brand.lightGreen,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
         margin: const EdgeInsets.all(16),
@@ -867,7 +867,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                       child: Container(
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: StatusColors.danger,
                           borderRadius: BorderRadius.circular(Brand.r(12)),
                         ),
                         child: Center(
@@ -1953,7 +1953,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
             borderRadius: BorderRadius.circular(Brand.r(14)),
             border: Border.all(
               color: _duplicateWarning != null
-                  ? Colors.red.withAlpha(((0.5) * 255).toInt())
+                  ? StatusColors.danger.withAlpha(((0.5) * 255).toInt())
                   : _serialValidated
                       ? accent.withAlpha(((0.3) * 255).toInt())
                       : (isDark ? Brand.darkBorder : Brand.borderLight),
@@ -2047,19 +2047,19 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Colors.red.withAlpha(((0.06) * 255).toInt()),
+              color: StatusColors.danger.withAlpha(((0.06) * 255).toInt()),
               borderRadius: BorderRadius.circular(Brand.r(10)),
-              border: Border.all(color: Colors.red.withAlpha(((0.2) * 255).toInt())),
+              border: Border.all(color: StatusColors.danger.withAlpha(((0.2) * 255).toInt())),
             ),
             child: Row(
               children: [
                 Icon(Icons.warning_rounded,
-                    color: Colors.red.shade400, size: 18),
+                    color: StatusColors.danger, size: 18),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     _duplicateWarning!,
-                    style: TextStyle(fontSize: 12, color: Colors.red.shade600),
+                    style: TextStyle(fontSize: 12, color: StatusColors.danger),
                   ),
                 ),
               ],
@@ -2531,7 +2531,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                     width: 22,
                     height: 22,
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: StatusColors.danger,
                       shape: BoxShape.circle,
                       border: Border.all(
                           color: Brand.surface(isDark),
@@ -2952,7 +2952,7 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFFE53935),
+                color: StatusColors.danger,
               )),
         if (isOptional)
           Text(
@@ -3022,11 +3022,11 @@ class _RegisterMachinePageState extends State<RegisterMachinePage>
                   width: 1.5)),
           errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(Brand.r(14)),
-              borderSide: BorderSide(color: Colors.red.shade400)),
+              borderSide: BorderSide(color: StatusColors.danger)),
           focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(Brand.r(14)),
               borderSide:
-                  BorderSide(color: Colors.red.shade400, width: 1.5)),
+                  BorderSide(color: StatusColors.danger, width: 1.5)),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         ),

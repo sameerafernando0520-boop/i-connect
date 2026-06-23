@@ -65,7 +65,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.campaign_rounded,
     label: 'Broadcast',
     subtitle: 'Send notifications',
-    color: const Color(0xFFEF4444),
+    color: StatusColors.danger,
     pageBuilder: () => const MaBroadcastPage(),
   ),
   _NavTile(
@@ -523,7 +523,7 @@ class _MaHomePageState extends State<MaHomePage> {
       margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Brand.r(22)),
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
             ? null
@@ -784,7 +784,7 @@ class _MaHomePageState extends State<MaHomePage> {
     final cards = [
       _KpiData(
         icon: Icons.campaign_rounded,
-        color: const Color(0xFFEF4444),
+        color: StatusColors.danger,
         label: 'Broadcasts',
         value: '$_broadcastsSent',
         badge: 'Sent',
@@ -840,7 +840,7 @@ class _MaHomePageState extends State<MaHomePage> {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark
@@ -1041,7 +1041,7 @@ class _MaHomePageState extends State<MaHomePage> {
         margin: const EdgeInsets.only(bottom: 10),
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark ? Border.all(color: Brand.darkBorder) : null,
           boxShadow: isDark
@@ -1112,7 +1112,7 @@ class _MaHomePageState extends State<MaHomePage> {
     return Container(
       padding: const EdgeInsets.all(28),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
         boxShadow: isDark

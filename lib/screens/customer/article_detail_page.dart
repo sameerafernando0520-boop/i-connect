@@ -205,7 +205,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
           child: Text(msg, style: const TextStyle(fontWeight: FontWeight.w600)),
         ),
       ]),
-      backgroundColor: isError ? Colors.red : Brand.lightGreen,
+      backgroundColor: isError ? StatusColors.danger : Brand.lightGreen,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
       margin: const EdgeInsets.all(16),
@@ -326,13 +326,13 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
-                  color: Colors.red.withAlpha(isDark ? 31 : 15),
+                  color: StatusColors.danger.withAlpha(isDark ? 31 : 15),
                   borderRadius: BorderRadius.circular(Brand.r(24)),
                 ),
                 child: Icon(Icons.article_outlined,
                     size: 38,
                     color:
-                        isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400),
+                        isDark ? const Color(0xFFFF6B6B) : StatusColors.danger),
               ),
               const SizedBox(height: 20),
               Text(

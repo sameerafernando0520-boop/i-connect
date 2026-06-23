@@ -277,7 +277,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
       floating: true,
       snap: true,
       pinned: false,
-      backgroundColor: Brand.isWorkshop ? Brand.canvas(isDark) : (isDark ? Brand.darkCard : Colors.white),
+      backgroundColor: Brand.isWorkshop ? Brand.canvas(isDark) : (Brand.surface(isDark)),
       surfaceTintColor: Colors.transparent,
       scrolledUnderElevation: Brand.isWorkshop ? 0 : null,
       shape: Brand.isWorkshop
@@ -357,7 +357,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
     return Container(
       margin: const EdgeInsets.fromLTRB(12, 8, 12, 0),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(20)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -580,7 +580,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -678,7 +678,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
                         engineerName,
                         isDark,
                         valueColor: engineer == null
-                            ? const Color(0xFFEF4444)
+                            ? StatusColors.danger
                             : null,
                       ),
                       if (loc != null && loc.isNotEmpty) ...[
@@ -796,7 +796,7 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
         SliverAppBar(
           floating: true,
           snap: true,
-          backgroundColor: Brand.isWorkshop ? Brand.canvas(isDark) : (isDark ? Brand.darkCard : Colors.white),
+          backgroundColor: Brand.isWorkshop ? Brand.canvas(isDark) : (Brand.surface(isDark)),
           surfaceTintColor: Colors.transparent,
           scrolledUnderElevation: Brand.isWorkshop ? 0 : null,
           shape: Brand.isWorkshop
@@ -849,8 +849,8 @@ class _EaSchedulePageState extends State<EaSchedulePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline_rounded,
-                size: 48, color: Color(0xFFEF4444)),
+            Icon(Icons.error_outline_rounded,
+                size: 48, color: StatusColors.danger),
             const SizedBox(height: 12),
             Text(
               'Failed to load schedules',

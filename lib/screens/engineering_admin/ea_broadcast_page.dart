@@ -228,7 +228,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
     return await showDialog<bool>(
           context: context,
           builder: (ctx) => AlertDialog(
-            backgroundColor: isDark ? Brand.darkCard : Colors.white,
+            backgroundColor: Brand.surface(isDark),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
             title: Row(children: [
               Container(
@@ -263,7 +263,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(msg),
-      backgroundColor: isError ? const Color(0xFFDC2626) : _eaAccent,
+      backgroundColor: isError ? StatusColors.danger : _eaAccent,
       behavior: SnackBarBehavior.floating,
     ));
   }
@@ -477,7 +477,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final picked = await showModalBottomSheet<Map<String, dynamic>>(
       context: context,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
@@ -621,7 +621,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(20)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),

@@ -352,7 +352,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogCtx) => AlertDialog(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
+        backgroundColor: Brand.surface(isDark),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(16))),
         title: Text(
           'Cancel Schedule',
@@ -495,7 +495,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
           if (_schedule != null)
             PopupMenuButton<String>(
               icon: const Icon(Icons.more_vert, color: Colors.white),
-              color: isDark ? Brand.darkCardElevated : Colors.white,
+              color: Brand.surface(isDark),
               onSelected: (v) {
                 if (v == 'delete') _delete();
               },
@@ -815,7 +815,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -1488,7 +1488,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)

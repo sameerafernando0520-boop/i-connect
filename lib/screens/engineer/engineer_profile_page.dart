@@ -253,7 +253,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
       builder: (sheetCtx) => Container(
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
         ),
         child: Column(
@@ -301,7 +301,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
               _buildPhotoOption(
                 Icons.delete_outline_rounded,
                 'Remove Photo',
-                Colors.red,
+                StatusColors.danger,
                 isDark,
                 () {
                   Navigator.pop(sheetCtx);
@@ -477,7 +477,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
       builder: (sheetCtx) => Container(
         padding: const EdgeInsets.all(28),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
         ),
         child: Column(
@@ -496,12 +496,12 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
               width: 68,
               height: 68,
               decoration: BoxDecoration(
-                color: Colors.red.withAlpha(((0.08) * 255).toInt()),
+                color: StatusColors.danger.withAlpha(20),
                 borderRadius: BorderRadius.circular(Brand.r(22)),
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.logout_rounded,
-                color: Colors.red,
+                color: StatusColors.danger,
                 size: 32,
               ),
             ),
@@ -568,7 +568,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                         borderRadius: BorderRadius.circular(Brand.r(14)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.red.withAlpha(((0.35) * 255).toInt()),
+                            color: StatusColors.danger.withAlpha(89),
                             blurRadius: 12,
                             offset: const Offset(0, 5),
                           ),
@@ -671,7 +671,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
             ),
           ],
         ),
-        backgroundColor: isError ? Colors.red.shade400 : _engAccent,
+        backgroundColor: isError ? StatusColors.danger : _engAccent,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
@@ -730,7 +730,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
 
     return RefreshIndicator(
       color: isDark ? Brand.darkIconActive : _engAccent,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       onRefresh: _loadProfile,
       child: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(
@@ -963,7 +963,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                             color: _availColor(avail),
                             shape: BoxShape.circle,
                             border: Border.all(
-                              color: isDark ? Brand.darkCard : Colors.white,
+                              color: Brand.surface(isDark),
                               width: 3,
                             ),
                             boxShadow: [
@@ -1689,23 +1689,23 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 16),
             decoration: BoxDecoration(
-              color: isDark ? Colors.red.withAlpha(((0.08) * 255).toInt()) : Colors.red.shade50,
+              color: isDark ? StatusColors.danger.withAlpha(20) : StatusColors.danger.withAlpha(20),
               borderRadius: BorderRadius.circular(Brand.r(18)),
-              border: Border.all(color: Colors.red.withAlpha(((0.2) * 255).toInt())),
+              border: Border.all(color: StatusColors.danger.withAlpha(51)),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.logout_rounded,
-                  color: Colors.red.shade400,
+                  color: StatusColors.danger,
                   size: 20,
                 ),
                 const SizedBox(width: 10),
                 Text(
                   'Sign Out',
                   style: TextStyle(
-                    color: Colors.red.shade400,
+                    color: StatusColors.danger,
                     fontWeight: FontWeight.w700,
                     fontSize: 15,
                   ),

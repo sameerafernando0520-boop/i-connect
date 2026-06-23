@@ -532,7 +532,7 @@ class _SectionCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
         boxShadow: [
@@ -764,15 +764,15 @@ class _EngineerSection extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: const Color(0xFFEF4444).withAlpha(12),
+              color: StatusColors.danger.withAlpha(12),
               borderRadius: BorderRadius.circular(Brand.r(12)),
               border: Border.all(
-                  color: const Color(0xFFEF4444).withAlpha(40)),
+                  color: StatusColors.danger.withAlpha(40)),
             ),
             child: Row(
               children: [
                 const Icon(Icons.warning_amber_rounded,
-                    color: Color(0xFFEF4444), size: 20),
+                    color: StatusColors.danger, size: 20),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(

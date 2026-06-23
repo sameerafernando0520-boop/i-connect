@@ -1109,7 +1109,7 @@ class _HomePageState extends State<HomePage>
       child: RefreshIndicator(
         onRefresh: _loadAllData,
         color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
+        backgroundColor: Brand.surface(isDark),
         displacement: 60,
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(
@@ -1466,7 +1466,7 @@ class _HomePageState extends State<HomePage>
                           colors: [Color(0xFFFF4757), Color(0xFFFF6B81)]),
                       shape: BoxShape.circle,
                       border: Border.all(
-                          color: isDark ? Brand.darkCard : Colors.white,
+                          color: Brand.surface(isDark),
                           width: 2.5),
                     ),
                     constraints:
@@ -1492,19 +1492,19 @@ class _HomePageState extends State<HomePage>
       margin: const EdgeInsets.fromLTRB(20, 16, 20, 0),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? const Color(0xFF2D1215) : Colors.red.shade50,
+        color: isDark ? const Color(0xFF2D1215) : StatusColors.danger.withAlpha(20),
         borderRadius: BorderRadius.circular(Brand.r(18)),
-        border: Border.all(color: Colors.red.withAlpha(isDark ? 51 : 38)),
+        border: Border.all(color: StatusColors.danger.withAlpha(isDark ? 51 : 38)),
       ),
       child: Row(children: [
         Container(
           width: 42,
           height: 42,
           decoration: BoxDecoration(
-              color: Colors.red.withAlpha(isDark ? 51 : 38),
+              color: StatusColors.danger.withAlpha(isDark ? 51 : 38),
               borderRadius: BorderRadius.circular(Brand.r(12))),
           child: Icon(Icons.cloud_off_rounded,
-              color: isDark ? const Color(0xFFFF6B6B) : Colors.red, size: 20),
+              color: isDark ? const Color(0xFFFF6B6B) : StatusColors.danger, size: 20),
         ),
         const SizedBox(width: 12),
         Expanded(
@@ -1512,13 +1512,13 @@ class _HomePageState extends State<HomePage>
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(S.of(context)!.homeConnectionIssue,
               style: TextStyle(
-                  color: isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400,
+                  color: isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
                   fontWeight: FontWeight.w700,
                   fontSize: 13)),
           const SizedBox(height: 2),
           Text(_errorMessage,
               style: TextStyle(
-                  color: isDark ? Brand.darkTextSecondary : Colors.red.shade300,
+                  color: isDark ? Brand.darkTextSecondary : StatusColors.danger.withAlpha(179),
                   fontSize: 12)),
         ])),
         Material(
@@ -1536,13 +1536,13 @@ class _HomePageState extends State<HomePage>
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
               decoration: BoxDecoration(
-                  color: Colors.red.withAlpha(isDark ? 38 : 31),
+                  color: StatusColors.danger.withAlpha(isDark ? 38 : 31),
                   borderRadius: BorderRadius.circular(Brand.r(10))),
               child: Text(S.of(context)!.commonRetry,
                   style: TextStyle(
                       color: isDark
                           ? const Color(0xFFFF6B6B)
-                          : Colors.red.shade300,
+                          : StatusColors.danger.withAlpha(179),
                       fontWeight: FontWeight.w700,
                       fontSize: 12)),
             ),
@@ -1566,7 +1566,7 @@ class _HomePageState extends State<HomePage>
               Icons.build_circle_rounded,
               'Service Due Soon',
               '${_nextServiceMachineName!} needs service in $d day${d == 1 ? '' : 's'}',
-              d <= 3 ? Colors.red : Colors.orange,
+              d <= 3 ? StatusColors.danger : Colors.orange,
               isDark,
               () => Navigator.push(
                       context,
@@ -1611,7 +1611,7 @@ class _HomePageState extends State<HomePage>
         title:
             '$_overduePaymentCount Payment${_overduePaymentCount == 1 ? '' : 's'} Overdue',
         subtitle: 'Total overdue: ${_formatLKR(totalOverdue)}',
-        color: Colors.red,
+        color: StatusColors.danger,
         isDark: isDark,
         onTap: () => Navigator.push(
             context,
@@ -1638,7 +1638,7 @@ class _HomePageState extends State<HomePage>
         final Color bannerColor;
         final String timeText;
         if (daysUntil <= 0) {
-          bannerColor = Colors.red;
+          bannerColor = StatusColors.danger;
           timeText = 'Due today!';
         } else if (daysUntil <= 3) {
           bannerColor = Colors.orange;
@@ -1813,7 +1813,7 @@ class _HomePageState extends State<HomePage>
               maxHeight: MediaQuery.of(context).size.height * 0.85,
             ),
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Colors.white,
+              color: Brand.surface(isDark),
               borderRadius:
                   BorderRadius.vertical(top: Radius.circular(28)),
             ),
@@ -2271,8 +2271,8 @@ class _HomePageState extends State<HomePage>
                                 height: 32,
                                 decoration: BoxDecoration(
                                   color: (isPositive
-                                          ? const Color(0xFF22C55E)
-                                          : const Color(0xFFEF4444))
+                                          ? StatusColors.success
+                                          : StatusColors.danger)
                                       .withAlpha(isDark ? 30 : 20),
                                   borderRadius:
                                       BorderRadius.circular(Brand.r(8)),
@@ -2283,8 +2283,8 @@ class _HomePageState extends State<HomePage>
                                       : Icons.remove_rounded,
                                   size: 18,
                                   color: isPositive
-                                      ? const Color(0xFF22C55E)
-                                      : const Color(0xFFEF4444),
+                                      ? StatusColors.success
+                                      : StatusColors.danger,
                                 ),
                               ),
                               const SizedBox(width: 12),
@@ -2325,8 +2325,8 @@ class _HomePageState extends State<HomePage>
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                   color: isPositive
-                                      ? const Color(0xFF22C55E)
-                                      : const Color(0xFFEF4444),
+                                      ? StatusColors.success
+                                      : StatusColors.danger,
                                 ),
                               ),
                             ],
@@ -2873,17 +2873,17 @@ class _HomePageState extends State<HomePage>
                   padding:
                       const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
                   decoration: BoxDecoration(
-                    color: Colors.red.withAlpha(isDark ? 38 : 26),
+                    color: StatusColors.danger.withAlpha(isDark ? 38 : 26),
                     borderRadius: BorderRadius.circular(Brand.r(10)),
                     border: Border.all(
-                        color: Colors.red.withAlpha(isDark ? 64 : 51)),
+                        color: StatusColors.danger.withAlpha(isDark ? 64 : 51)),
                   ),
                   child: Text(q.badge!,
                       style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color:
-                              isDark ? const Color(0xFFFF6B6B) : Colors.red)),
+                              isDark ? const Color(0xFFFF6B6B) : StatusColors.danger)),
                 ),
             ]),
             const Spacer(),

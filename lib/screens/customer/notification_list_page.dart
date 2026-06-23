@@ -49,8 +49,7 @@ class _NType {
       case 'service_reminder':
       case 'service_scheduled':
       case 'service_completed':
-        return _NType(Icons.build_circle_rounded,
-            isDark ? const Color(0xFFFFB74D) : Colors.orange.shade700);
+        return _NType(Icons.build_circle_rounded, StatusColors.warning);
       case 'warranty_expiry':
       case 'warranty_extended':
         return _NType(Icons.shield_rounded,
@@ -64,8 +63,7 @@ class _NType {
       case 'points_earned':
       case 'tier_upgrade':
       case 'free_item':
-        return _NType(Icons.star_rounded,
-            isDark ? const Color(0xFFFFD54F) : Colors.amber.shade700);
+        return _NType(Icons.star_rounded, StatusColors.warning);
       case 'promotion':
       case 'announcement':
       case 'broadcast':
@@ -590,7 +588,7 @@ class _NotificationListPageState extends State<NotificationListPage>
         const SizedBox(width: 8),
         Expanded(child: Text(msg)),
       ]),
-      backgroundColor: isSuccess ? Brand.lightGreen : Colors.red,
+      backgroundColor: isSuccess ? Brand.lightGreen : StatusColors.danger,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(12))),
       margin: const EdgeInsets.all(16),
@@ -805,7 +803,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                     padding:
                         const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: StatusColors.danger,
                       borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Text('$unreadCount',
@@ -840,7 +838,7 @@ class _NotificationListPageState extends State<NotificationListPage>
     return RefreshIndicator(
       onRefresh: _loadNotifications,
       color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       child: ListView.builder(
         padding: const EdgeInsets.fromLTRB(20, 14, 20, 24),
         physics: const AlwaysScrollableScrollPhysics(
@@ -942,7 +940,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                     ElevatedButton(
                         onPressed: () => Navigator.pop(dialogCtx, true),
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red,
+                            backgroundColor: StatusColors.danger,
                             foregroundColor: Colors.white,
                             elevation: 0,
                             shape: RoundedRectangleBorder(
@@ -1012,12 +1010,10 @@ class _NotificationListPageState extends State<NotificationListPage>
                           width: 12,
                           height: 12,
                           decoration: BoxDecoration(
-                            color: Colors.red,
+                            color: StatusColors.danger,
                             shape: BoxShape.circle,
                             border: Border.all(
-                                color: isDark
-                                    ? Brand.darkCardElevated
-                                    : Colors.white,
+                                color: Brand.surface(isDark),
                                 width: 2),
                           ),
                         ),
@@ -1055,7 +1051,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                                 fontSize: 11,
                                 color: isDark
                                     ? Brand.darkTextTertiary
-                                    : Colors.black38,
+                                    : Brand.subtleLight,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -1173,15 +1169,15 @@ class _NotificationListPageState extends State<NotificationListPage>
   Widget _dismissBg(bool isDark) => Container(
         margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
-          color: Colors.red.withAlpha(((isDark ? 0.2 : 0.1) * 255).toInt()),
+          color: StatusColors.danger.withAlpha(((isDark ? 0.2 : 0.1) * 255).toInt()),
           borderRadius: BorderRadius.circular(Brand.r(18)),
-          border: Border.all(color: Colors.red.withAlpha(((isDark ? 0.3 : 0.2) * 255).toInt())),
+          border: Border.all(color: StatusColors.danger.withAlpha(((isDark ? 0.3 : 0.2) * 255).toInt())),
         ),
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.only(right: 20),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           Icon(Icons.delete_outline_rounded,
-              color: isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400,
+              color: StatusColors.danger,
               size: 24),
           const SizedBox(height: 4),
           Text(S.of(context)!.commonDelete,
@@ -1189,7 +1185,7 @@ class _NotificationListPageState extends State<NotificationListPage>
                   fontSize: 11,
                   fontWeight: FontWeight.w700,
                   color:
-                      isDark ? const Color(0xFFFF6B6B) : Colors.red.shade400)),
+                      StatusColors.danger)),
         ]),
       );
 
@@ -1253,12 +1249,12 @@ class _NotificationListPageState extends State<NotificationListPage>
               width: 70,
               height: 70,
               decoration: BoxDecoration(
-                color: Colors.red.withAlpha(((isDark ? 0.15 : 0.1) * 255).toInt()),
+                color: StatusColors.danger.withAlpha(((isDark ? 0.15 : 0.1) * 255).toInt()),
                 borderRadius: BorderRadius.circular(Brand.r(20)),
               ),
               child: Icon(Icons.error_outline,
                   size: 34,
-                  color: isDark ? const Color(0xFFFF6B6B) : Colors.red),
+                  color: StatusColors.danger),
             ),
             const SizedBox(height: 16),
             Text(S.of(context)!.notificationLoadFailed,

@@ -71,11 +71,11 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
   Color get _borderColor => Brand.cardBorder(_isDark);
   Color get _dividerColor =>
       _isDark ? Brand.darkBorderLight : Colors.grey.shade200;
-  Color get _chipBg => _isDark ? Brand.darkCardElevated : Colors.white;
-  Color get _sheetBg => _isDark ? Brand.darkCard : Colors.white;
+  Color get _chipBg => Brand.surface(_isDark);
+  Color get _sheetBg => Brand.surface(_isDark);
   Color get _handleColor =>
       _isDark ? Brand.darkBorderLight : Colors.grey.shade300;
-  Color get _searchFill => _isDark ? Brand.darkCardElevated : Colors.white;
+  Color get _searchFill => Brand.surface(_isDark);
   Color get _primaryColor =>
       _isDark ? Brand.royalBlueGlow : AdminColors.primary;
   Color get _accentColor =>
@@ -1087,7 +1087,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
         'icon': Icons.priority_high_rounded,
         'text':
             '$_escalatedCount escalated ticket${_escalatedCount > 1 ? 's' : ''}',
-        'color': Colors.red.shade700,
+        'color': StatusColors.danger,
         'onTap': () => setState(() {
               _filterStatus = 'escalated';
               _applyFilters();
@@ -1121,7 +1121,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                             fontWeight: FontWeight.w500,
                             color: _isDark
                                 ? Brand.darkTextPrimary
-                                : Colors.red.shade700)),
+                                : StatusColors.danger)),
                   ),
                   Icon(Icons.arrow_forward_ios_rounded,
                       size: 12, color: _textMuted),
@@ -2420,7 +2420,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
           decoration: BoxDecoration(
             color: _isDark
                 ? AdminColors.error.withAlpha(15)
-                : Colors.red.shade50,
+                : StatusColors.danger.withAlpha(20),
             borderRadius: BorderRadius.circular(Brand.r(14)),
           ),
         ),

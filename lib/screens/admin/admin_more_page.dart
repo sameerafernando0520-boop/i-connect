@@ -159,7 +159,7 @@ class AdminMorePage extends StatelessWidget {
                 label: 'Hot Leads',
                 subtitle:
                     'Customers at 75%+ on their next-machine journey',
-                color: const Color(0xFFEF4444),
+                color: StatusColors.danger,
                 page: const AdminHotLeadsPage(),
               ),
               _MoreItem(

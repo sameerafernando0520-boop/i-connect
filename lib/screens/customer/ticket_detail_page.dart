@@ -931,7 +931,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
             child: Text(message,
                 style: const TextStyle(fontWeight: FontWeight.w600))),
       ]),
-      backgroundColor: const Color(0xFFE53935),
+      backgroundColor: StatusColors.danger,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
       margin: const EdgeInsets.all(16),
@@ -1231,11 +1231,11 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                   width: 76,
                   height: 76,
                   decoration: BoxDecoration(
-                    color: Colors.red.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
+                    color: StatusColors.danger.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
                     borderRadius: BorderRadius.circular(Brand.r(22)),
                   ),
-                  child: const Icon(Icons.error_outline_rounded,
-                      size: 38, color: Colors.red),
+                  child: Icon(Icons.error_outline_rounded,
+                      size: 38, color: StatusColors.danger),
                 ),
                 const SizedBox(height: 18),
                 Text(S.of(context)!.ticketLoadFailed,
@@ -1302,7 +1302,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
               systemNavigationBarColor: Brand.darkCard)
           : SystemUiOverlayStyle.dark.copyWith(
               statusBarColor: Colors.transparent,
-              systemNavigationBarColor: Colors.white),
+              systemNavigationBarColor: Brand.scaffoldLight),
       child: Scaffold(
         backgroundColor: Brand.canvas(isDark),
         body: SafeArea(
@@ -1825,7 +1825,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                     _buildBadge(
                       icon: Icons.warning_rounded,
                       label: 'ESCALATED',
-                      color: Colors.red,
+                      color: StatusColors.danger,
                       isDark: isDark,
                     ),
                 ],
@@ -2654,7 +2654,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 decoration: BoxDecoration(
                   color: isFailed
-                      ? Colors.red.withAlpha(((isDark ? 0.1 : 0.06) * 255).toInt())
+                      ? StatusColors.danger.withAlpha(((isDark ? 0.1 : 0.06) * 255).toInt())
                       : isMyMessage
                           // Customer bubble: vibrant royal-blue (Navy Glow)
                           // or ink (Workshop). White text in both.
@@ -2669,7 +2669,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                     bottomRight: Radius.circular(isMyMessage ? 4 : 18),
                   ),
                   border: isFailed
-                      ? Border.all(color: Colors.red.withAlpha(64))
+                      ? Border.all(color: StatusColors.danger.withAlpha(64))
                       : isMyMessage
                           ? null
                           : Border.all(
@@ -2851,18 +2851,18 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         if (isFailed)
-                          const Row(
+                          Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Icon(Icons.error_outline_rounded,
-                                  size: 13, color: Colors.red),
-                              SizedBox(width: 4),
+                                  size: 13, color: StatusColors.danger),
+                              const SizedBox(width: 4),
                               Text('Failed · Tap to retry',
                                   style: TextStyle(
                                       fontSize: 11,
-                                      color: Colors.red,
+                                      color: StatusColors.danger,
                                       fontWeight: FontWeight.w600)),
-                              SizedBox(width: 8),
+                              const SizedBox(width: 8),
                             ],
                           )
                         else if (isSending)
@@ -3199,7 +3199,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(28),
           topRight: Radius.circular(28),
@@ -3457,7 +3457,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(28),
           topRight: Radius.circular(28),
@@ -3686,7 +3686,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
               _buildOptionItem(
                 icon: Icons.cancel_rounded,
                 label: S.of(context)!.ticketClose,
-                color: Colors.red,
+                color: StatusColors.danger,
                 isDark: isDark,
                 onTap: () {
                   Navigator.pop(context);

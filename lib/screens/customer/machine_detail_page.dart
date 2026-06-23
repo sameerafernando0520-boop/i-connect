@@ -440,7 +440,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
       setState(() => _isInquiryLoading = false);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Error: ${e.toString().replaceAll('Exception: ', '')}'),
-          backgroundColor: Colors.red,
+          backgroundColor: StatusColors.danger,
           behavior: SnackBarBehavior.floating));
     }
   }
@@ -611,7 +611,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
       setState(() => _isOrderLoading = false);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Error: ${e.toString().replaceAll('Exception: ', '')}'),
-          backgroundColor: Colors.red,
+          backgroundColor: StatusColors.danger,
           behavior: SnackBarBehavior.floating));
     }
   }
@@ -1479,7 +1479,7 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
           if (brochure != null && brochure.isNotEmpty)
             Expanded(
                 child: _resourceBtn(Icons.picture_as_pdf_rounded, 'Brochure',
-                    Colors.red, isDark, () => _launchUrl(brochure))),
+                    StatusColors.danger, isDark, () => _launchUrl(brochure))),
           if (brochure != null &&
               brochure.isNotEmpty &&
               video != null &&
@@ -2108,8 +2108,8 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
       decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
-          borderRadius: BorderRadius.only(
+          color: Brand.surface(isDark),
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(28), topRight: Radius.circular(28)),
           border: Border(
               top: BorderSide(

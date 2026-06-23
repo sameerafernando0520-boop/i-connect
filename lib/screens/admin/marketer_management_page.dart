@@ -52,7 +52,7 @@ const _permSections = [
     icon: Icons.campaign_rounded,
     label: 'Broadcast Notifications',
     description: 'Send push notifications to all users',
-    color: Color(0xFFEF4444),
+    color: StatusColors.danger,
   ),
   _PermSection(
     key: 'analytics',

@@ -381,7 +381,7 @@ class _EaLeaveDetailPageState extends State<EaLeaveDetailPage> {
             label: const Text('Reject'),
             style: OutlinedButton.styleFrom(
               foregroundColor: AdminColors.error,
-              side: const BorderSide(color: Color(0xFFEF4444)),
+              side: BorderSide(color: StatusColors.danger),
               padding: const EdgeInsets.symmetric(vertical: 12),
               textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
             ),
@@ -480,7 +480,7 @@ class _EaLeaveDetailPageState extends State<EaLeaveDetailPage> {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(color: AdminColors.border(context)),
         boxShadow: isDark

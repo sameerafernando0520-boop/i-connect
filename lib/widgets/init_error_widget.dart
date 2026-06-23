@@ -40,7 +40,7 @@ class InitErrorWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: supabaseError != null
-                          ? Colors.red.shade50
+                          ? StatusColors.danger.withAlpha(20)
                           : Colors.orange.shade50,
                     ),
                     child: Center(
@@ -50,7 +50,7 @@ class InitErrorWidget extends StatelessWidget {
                             : Icons.warning_amber_rounded,
                         size: 50,
                         color: supabaseError != null
-                            ? Colors.red.shade600
+                            ? StatusColors.danger
                             : Colors.orange.shade600,
                       ),
                     ),

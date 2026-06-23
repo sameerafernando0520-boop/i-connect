@@ -507,7 +507,7 @@ class _CreateSchedulePageState extends State<CreateSchedulePage> {
           fontSize: 14,
         ),
         filled: true,
-        fillColor: isDark ? Brand.darkCardElevated : Colors.white,
+        fillColor: Brand.surface(isDark),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide(
@@ -544,7 +544,7 @@ class _CreateSchedulePageState extends State<CreateSchedulePage> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCardElevated : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(12)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -554,7 +554,7 @@ class _CreateSchedulePageState extends State<CreateSchedulePage> {
         child: DropdownButton<String>(
           value: _scheduleType,
           isExpanded: true,
-          dropdownColor: isDark ? Brand.darkCardElevated : Colors.white,
+          dropdownColor: Brand.surface(isDark),
           style: TextStyle(
             color: isDark ? Brand.darkTextPrimary : AdminColors.text(context),
             fontSize: 14,
@@ -602,7 +602,7 @@ class _CreateSchedulePageState extends State<CreateSchedulePage> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCardElevated : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: Border.all(
             color: isSelected
@@ -700,7 +700,7 @@ class _CreateSchedulePageState extends State<CreateSchedulePage> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCardElevated : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -758,7 +758,7 @@ class _CreateSchedulePageState extends State<CreateSchedulePage> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCardElevated : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -809,7 +809,7 @@ class _CreateSchedulePageState extends State<CreateSchedulePage> {
           selected: selected,
           onSelected: (_) => setState(() => _duration = d),
           selectedColor: Brand.royalBlue,
-          backgroundColor: isDark ? Brand.darkCardElevated : Colors.white,
+          backgroundColor: Brand.surface(isDark),
           labelStyle: TextStyle(
             fontSize: 13,
             fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
@@ -838,7 +838,7 @@ class _CreateSchedulePageState extends State<CreateSchedulePage> {
       duration: const Duration(milliseconds: 200),
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCardElevated : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(12)),
         border: Border.all(
           color: _isRecurring
@@ -1060,7 +1060,7 @@ class _PersonPickerSheetState extends State<_PersonPickerSheet> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.72,
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
       ),
       child: Column(
@@ -1389,7 +1389,7 @@ class _MachinePickerSheetState extends State<_MachinePickerSheet> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.58,
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
       ),
       child: Column(

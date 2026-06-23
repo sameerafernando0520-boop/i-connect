@@ -527,7 +527,7 @@ class _EaInstallationPageState extends State<EaInstallationPage> {
                               if (!sheetCtx.mounted) return;
                               ScaffoldMessenger.of(sheetCtx).showSnackBar(SnackBar(
                                 content: Text('Error: $e'),
-                                backgroundColor: const Color(0xFFDC2626),
+                                backgroundColor: StatusColors.danger,
                               ));
                             }
                           },
@@ -567,7 +567,7 @@ class _EaInstallationPageState extends State<EaInstallationPage> {
   Widget _buildStatusChips(bool isDark) {
     return Container(
       height: 48,
-      color: isDark ? Brand.darkCard : Colors.white,
+      color: Brand.surface(isDark),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -676,7 +676,7 @@ class _EaInstallationPageState extends State<EaInstallationPage> {
           margin: const EdgeInsets.only(bottom: 10),
           height: 100,
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Colors.white,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(Brand.r(16)),
           ),
         );
@@ -720,7 +720,7 @@ class _InstallCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)

@@ -597,7 +597,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
             ),
           ],
         ),
-        backgroundColor: isError ? Colors.red.shade400 : _engAccent,
+        backgroundColor: isError ? StatusColors.danger : _engAccent,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
         margin: const EdgeInsets.all(16),

@@ -1010,15 +1010,15 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
-                  color: Colors.red.withAlpha(((isDark ? 0.12 : 0.06) * 255).toInt()),
+                  color: StatusColors.danger.withAlpha(isDark ? 31 : 15),
                   borderRadius: BorderRadius.circular(Brand.r(8)),
-                  border: Border.all(color: Colors.red.withAlpha(((0.15) * 255).toInt()))),
+                  border: Border.all(color: StatusColors.danger.withAlpha(38))),
               child: Row(mainAxisSize: MainAxisSize.min, children: [
-                Icon(Icons.clear_rounded, size: 14, color: Colors.red.shade400),
+                Icon(Icons.clear_rounded, size: 14, color: StatusColors.danger),
                 const SizedBox(width: 4),
                 Text('Clear',
                     style: TextStyle(
-                        color: Colors.red.shade400,
+                        color: StatusColors.danger,
                         fontSize: 11,
                         fontWeight: FontWeight.w700)),
               ]),
@@ -1152,7 +1152,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
     return RefreshIndicator(
       onRefresh: _loadInitialData,
       color: Brand.royalBlue,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       child: ListView(
         controller: _scrollController,
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 100),

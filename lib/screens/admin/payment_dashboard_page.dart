@@ -161,7 +161,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
                 value: 'Rs. ${_fmt.format(_d(s['total_overdue']))}',
                 sub: '${_i(s['overdue_invoices'])} overdue',
                 icon: Icons.warning_amber_rounded,
-                color: const Color(0xFFEF4444),
+                color: StatusColors.danger,
               ),
             ),
             const SizedBox(width: 12),
@@ -722,7 +722,7 @@ class _PaymentDashboardPageState extends State<PaymentDashboardPage> {
                           style: TextStyle(
                             fontSize: 12,
                             color: status == 'overdue'
-                                ? const Color(0xFFEF4444)
+                                ? StatusColors.danger
                                 : isDark
                                     ? Brand.darkTextTertiary
                                     : Brand.subtleLight,

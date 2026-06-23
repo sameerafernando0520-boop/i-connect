@@ -161,7 +161,7 @@ class _EngineerCreateSchedulePageState
         ]),
         behavior: SnackBarBehavior.floating,
         backgroundColor:
-            isError ? const Color(0xFFEF4444) : const Color(0xFF22C55E),
+            isError ? StatusColors.danger : StatusColors.success,
       ),
     );
   }
@@ -274,9 +274,8 @@ class _EngineerCreateSchedulePageState
                       icon: const Icon(Icons.close, size: 18),
                       tooltip: 'Clear machine',
                       style: IconButton.styleFrom(
-                        foregroundColor: const Color(0xFFEF4444),
-                        backgroundColor:
-                            const Color(0xFFEF4444).withAlpha(20),
+                        foregroundColor: StatusColors.danger,
+                        backgroundColor: StatusColors.danger.withAlpha(20),
                       ),
                     ),
                   ],
@@ -375,7 +374,7 @@ class _EngineerCreateSchedulePageState
           fontSize: 14,
         ),
         filled: true,
-        fillColor: isDark ? Brand.darkCardElevated : Colors.white,
+        fillColor: Brand.surface(isDark),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide(
@@ -394,11 +393,11 @@ class _EngineerCreateSchedulePageState
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
-          borderSide: const BorderSide(color: Color(0xFFEF4444)),
+          borderSide: BorderSide(color: StatusColors.danger),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
-          borderSide: const BorderSide(color: Color(0xFFEF4444), width: 1.5),
+          borderSide: BorderSide(color: StatusColors.danger, width: 1.5),
         ),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
@@ -422,7 +421,7 @@ class _EngineerCreateSchedulePageState
           selected: selected,
           onSelected: (_) => setState(() => _scheduleType = t.$1),
           selectedColor: color,
-          backgroundColor: isDark ? Brand.darkCardElevated : Colors.white,
+          backgroundColor: Brand.surface(isDark),
           labelStyle: TextStyle(
             fontSize: 12,
             fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
@@ -458,7 +457,7 @@ class _EngineerCreateSchedulePageState
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCardElevated : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: Border.all(
             color: isSelected
@@ -552,7 +551,7 @@ class _EngineerCreateSchedulePageState
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCardElevated : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -607,7 +606,7 @@ class _EngineerCreateSchedulePageState
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCardElevated : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -655,7 +654,7 @@ class _EngineerCreateSchedulePageState
           selected: selected,
           onSelected: (_) => setState(() => _duration = d),
           selectedColor: _engAccent,
-          backgroundColor: isDark ? Brand.darkCardElevated : Colors.white,
+          backgroundColor: Brand.surface(isDark),
           labelStyle: TextStyle(
             fontSize: 13,
             fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
@@ -794,7 +793,7 @@ class _CustomerPickerSheetState extends State<_CustomerPickerSheet> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.72,
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
       ),
       child: Column(
@@ -1023,7 +1022,7 @@ class _CustomerPickerSheetState extends State<_CustomerPickerSheet> {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(Icons.error_outline,
-                size: 48, color: Color(0xFFEF4444)),
+                size: 48, color: StatusColors.danger),
             const SizedBox(height: 12),
             Text(
               'Failed to load customers',
@@ -1106,7 +1105,7 @@ class _MachinePickerSheetState extends State<_MachinePickerSheet> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.58,
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
       ),
       child: Column(
@@ -1286,7 +1285,7 @@ class _MachinePickerSheetState extends State<_MachinePickerSheet> {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(Icons.error_outline,
-                size: 48, color: Color(0xFFEF4444)),
+                size: 48, color: StatusColors.danger),
             const SizedBox(height: 12),
             Text(
               'Failed to load machines',

@@ -218,7 +218,7 @@ class _TierManagementPageState extends State<TierManagementPage>
                   decoration: BoxDecoration(
                     color: isSelected
                         ? AdminColors.primary
-                        : (isDark ? Brand.darkCard : Colors.white),
+                        : Brand.surface(isDark),
                     borderRadius: BorderRadius.circular(Brand.r(12)),
                     border: Border.all(
                       color: isSelected

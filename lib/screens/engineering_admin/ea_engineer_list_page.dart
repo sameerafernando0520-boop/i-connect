@@ -295,8 +295,8 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(Icons.error_outline_rounded,
-                                size: 48, color: Colors.red),
+                            Icon(Icons.error_outline_rounded,
+                                size: 48, color: StatusColors.danger),
                             const SizedBox(height: 12),
                             Text(_error!),
                             const SizedBox(height: 8),

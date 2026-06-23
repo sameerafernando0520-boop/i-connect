@@ -178,7 +178,7 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
       backgroundColor: Colors.transparent,
       builder: (sheetCtx) => StatefulBuilder(
         builder: (sheetCtx, setSheet) {
-          final cardBg = isDark ? Brand.darkCard : Colors.white;
+          final cardBg = Brand.surface(isDark);
           final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
           final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
 
@@ -424,7 +424,7 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('Confirm', style: TextStyle(color: Colors.red)),
+            child: Text('Confirm', style: TextStyle(color: StatusColors.danger)),
           ),
         ],
       ),
@@ -688,7 +688,7 @@ class _DateBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cardBg = isDark ? Brand.darkCard : Colors.white;
+    final cardBg = Brand.surface(isDark);
     final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
 
@@ -765,7 +765,7 @@ class _SummaryRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cardBg = isDark ? Brand.darkCard : Colors.white;
+    final cardBg = Brand.surface(isDark);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
 
     return Container(
@@ -805,7 +805,7 @@ class _SummaryRow extends StatelessWidget {
             _SummaryChip(
               label: 'Absent',
               count: absent,
-              color: const Color(0xFFEF4444),
+              color: StatusColors.danger,
               selected: selected == 'absent',
               onTap: () => onSelect('absent'),
             ),
@@ -917,7 +917,7 @@ class _AttendanceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final att = eng['att'] as Map<String, dynamic>?;
-    final cardBg = isDark ? Brand.darkCard : Colors.white;
+    final cardBg = Brand.surface(isDark);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
     final photoUrl = eng['profile_photo'] as String?;
     final name = eng['full_name'] as String? ?? 'Unknown';
@@ -1072,7 +1072,7 @@ class _AttendanceCard extends StatelessWidget {
                             if (checkOut != null) ...[
                               Icon(Icons.logout_rounded,
                                   size: 12,
-                                  color: const Color(0xFFEF4444)),
+                                  color: StatusColors.danger),
                               const SizedBox(width: 3),
                               Text(
                                 formatTime(checkOut),
@@ -1152,8 +1152,8 @@ class _ErrorView extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.error_outline_rounded,
-                size: 48, color: Color(0xFFEF4444)),
+            Icon(Icons.error_outline_rounded,
+                size: 48, color: StatusColors.danger),
             const SizedBox(height: 12),
             Text(
               'Failed to load attendance',

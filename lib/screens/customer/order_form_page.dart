@@ -130,7 +130,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
             return Container(
               height: MediaQuery.of(sheetCtx).size.height * 0.75,
               decoration: BoxDecoration(
-                color: isDark ? Brand.darkCard : Colors.white,
+                color: Brand.surface(isDark),
                 borderRadius:
                     const BorderRadius.vertical(top: Radius.circular(28)),
               ),
@@ -356,7 +356,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
               Text('Please select a machine'),
             ],
           ),
-          backgroundColor: Colors.red,
+          backgroundColor: StatusColors.danger,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(Brand.r(12))),
@@ -424,7 +424,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
               Expanded(child: Text('Failed to place order: $e')),
             ],
           ),
-          backgroundColor: Colors.red,
+          backgroundColor: StatusColors.danger,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(Brand.r(12))),
@@ -441,7 +441,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
       context: context,
       barrierDismissible: false,
       builder: (dialogCtx) => AlertDialog(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
+        backgroundColor: Brand.surface(isDark),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(Brand.r(24))),
         content: Column(
@@ -963,11 +963,11 @@ class _OrderFormPageState extends State<OrderFormPage> {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(14)),
-          borderSide: const BorderSide(color: Colors.red),
+          borderSide: const BorderSide(color: StatusColors.danger),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(14)),
-          borderSide: const BorderSide(color: Colors.red, width: 2),
+          borderSide: const BorderSide(color: StatusColors.danger, width: 2),
         ),
       ),
     );

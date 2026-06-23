@@ -348,7 +348,7 @@ class _EaNotificationsPageState extends State<EaNotificationsPage> {
   Widget _buildFilterTabs(bool isDark) {
     return Container(
       height: 48,
-      color: isDark ? Brand.darkCard : Colors.white,
+      color: Brand.surface(isDark),
       child: ListView(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -467,7 +467,7 @@ class _EaNotificationsPageState extends State<EaNotificationsPage> {
   // ── Shimmer ───────────────────────────────────────────────────
 
   Widget _buildShimmer(bool isDark) {
-    final base = isDark ? Brand.darkCard : Colors.white;
+    final base = Brand.surface(isDark);
     return ListView.builder(
       padding: const EdgeInsets.all(12),
       itemCount: 8,
@@ -618,7 +618,7 @@ class _NotificationTile extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
         decoration: BoxDecoration(
           color: isRead
-              ? (isDark ? Brand.darkCard : Colors.white)
+              ? (Brand.surface(isDark))
               : (isDark
                   ? color.withAlpha(20)
                   : color.withAlpha(12)),

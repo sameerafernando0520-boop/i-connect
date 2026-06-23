@@ -181,7 +181,7 @@ class _EngineerRouteMapState extends State<EngineerRouteMap> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
                 decoration: BoxDecoration(
-                  color: (isDark ? Brand.darkCard : Colors.white).withAlpha(235),
+                  color: Brand.surface(isDark).withAlpha(235),
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(

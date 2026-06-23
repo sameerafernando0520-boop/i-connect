@@ -261,7 +261,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius:
             const BorderRadius.vertical(top: Radius.circular(28)),
       ),
@@ -385,7 +385,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
                           padding: const EdgeInsets.all(20),
                           child: Text('Error: $_error',
                               style:
-                                  const TextStyle(color: Colors.redAccent)),
+                                  TextStyle(color: StatusColors.danger)),
                         ),
                       )
                     : filtered.isEmpty

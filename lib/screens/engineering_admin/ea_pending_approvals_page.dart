@@ -213,7 +213,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
     return await showDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
+        backgroundColor: Brand.surface(isDark),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
         title: const Text('Reject schedule'),
         content: TextField(
@@ -338,7 +338,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(18)),
         border: Border.all(
           color: isDark ? Brand.darkBorder : const Color(0xFFE2E8F0),

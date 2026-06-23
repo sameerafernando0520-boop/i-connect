@@ -338,7 +338,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                     ? _skeleton(isDark)
                     : RefreshIndicator(
                         color: isDark ? Brand.darkIconActive : Brand.royalBlue,
-                        backgroundColor: isDark ? Brand.darkCard : Colors.white,
+                        backgroundColor: Brand.surface(isDark),
                         onRefresh: _load,
                         child: _filtered.isEmpty
                             ? _emptyState(isDark)
@@ -679,7 +679,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                         color: aColor,
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: isDark ? Brand.darkCard : Colors.white,
+                          color: Brand.surface(isDark),
                           width: 2,
                         ),
                       ),
@@ -906,7 +906,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
         color: isDark ? Brand.darkTextSecondary : Brand.subtleLight,
         size: 20,
       ),
-      color: isDark ? Brand.darkCard : Colors.white,
+      color: Brand.surface(isDark),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(16))),
       itemBuilder: (_) => [
         _menuItem('edit', 'Edit Details', Icons.edit_rounded,
@@ -1039,7 +1039,7 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
     showDialog(
       context: context,
       builder: (dialogCtx) => AlertDialog(
-        backgroundColor: isDark ? Brand.darkCard : Colors.white,
+        backgroundColor: Brand.surface(isDark),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(20))),
         title: Text(
           'Demote to Customer',
@@ -1466,7 +1466,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
     return Container(
       height: height * 0.92,
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius:
             const BorderRadius.vertical(top: Radius.circular(28)),
       ),
@@ -1772,7 +1772,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
           Container(
             padding: EdgeInsets.fromLTRB(24, 12, 24, viewInsets + 16),
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Colors.white,
+              color: Brand.surface(isDark),
               border: Border(
                 top: BorderSide(
                   color: isDark ? Brand.darkBorder : Brand.borderLight,
@@ -1947,7 +1947,7 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
     return Container(
       height: height * 0.88,
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius:
             const BorderRadius.vertical(top: Radius.circular(28)),
       ),
@@ -2133,7 +2133,7 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
           Container(
             padding: EdgeInsets.fromLTRB(24, 12, 24, viewInsets + 16),
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCard : Colors.white,
+              color: Brand.surface(isDark),
               border: Border(
                 top: BorderSide(
                   color: isDark ? Brand.darkBorder : Brand.borderLight,

@@ -228,7 +228,7 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     showModalBottomSheet(
       context: context,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
@@ -485,7 +485,7 @@ class _SummaryRow extends StatelessWidget {
           const SizedBox(width: 8),
           _SummaryChip(label: 'Approved', count: _count('approved'), color: const Color(0xFF10B981)),
           const SizedBox(width: 8),
-          _SummaryChip(label: 'Rejected', count: _count('rejected'), color: const Color(0xFFEF4444)),
+          _SummaryChip(label: 'Rejected', count: _count('rejected'), color: StatusColors.danger),
         ],
       ),
     );
@@ -575,7 +575,7 @@ class _LeaveCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(16)),
           border: Border.all(color: AdminColors.border(context)),
           boxShadow: isDark
@@ -697,7 +697,7 @@ class _LeaveCard extends StatelessWidget {
                           label: const Text('Reject'),
                           style: OutlinedButton.styleFrom(
                             foregroundColor: AdminColors.error,
-                            side: const BorderSide(color: Color(0xFFEF4444)),
+                            side: BorderSide(color: StatusColors.danger),
                             padding: const EdgeInsets.symmetric(vertical: 8),
                             textStyle: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
                           ),

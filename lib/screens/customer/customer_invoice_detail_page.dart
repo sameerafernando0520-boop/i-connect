@@ -148,7 +148,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
             const Expanded(child: Text('Failed to load details')),
           ]),
           behavior: SnackBarBehavior.floating,
-          backgroundColor: const Color(0xFFEF4444),
+          backgroundColor: StatusColors.danger,
         ),
       );
     }
@@ -304,7 +304,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
             style: TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.w700,
-              color: isDark ? Colors.white : Brand.royalBlueDark,
+              color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
             ),
           ),
 
@@ -362,13 +362,13 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
       final diff = dueDate.difference(DateTime.now()).inDays;
       if (diff < 0) {
         dueHint = 'Overdue by ${diff.abs()} day${diff.abs() == 1 ? '' : 's'}';
-        hintColor = const Color(0xFFEF4444);
+        hintColor = StatusColors.danger;
       } else if (diff == 0) {
         dueHint = 'Due today';
-        hintColor = const Color(0xFFF59E0B);
+        hintColor = StatusColors.warning;
       } else if (diff <= 14) {
         dueHint = 'Due in $diff day${diff == 1 ? '' : 's'}';
-        hintColor = const Color(0xFFF59E0B);
+        hintColor = StatusColors.warning;
       }
     }
 
@@ -518,7 +518,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w700,
-                    color: isDark ? Colors.white : Brand.royalBlueDark,
+                    color: isDark ? Brand.darkTextPrimary : Brand.royalBlueDark,
                   ),
                 ),
               ],
@@ -561,7 +561,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
           if (discAmt > 0) ...[
             const SizedBox(height: 6),
             _summaryRow(discLabel, '- ${_fmtCur(discAmt)}', isDark,
-                valueColor: const Color(0xFFF59E0B)),
+                valueColor: StatusColors.warning),
           ],
           if (taxAmt > 0) ...[
             const SizedBox(height: 6),
@@ -580,7 +580,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
           if (balance > 0) ...[
             const SizedBox(height: 6),
             _summaryRow('Balance Due', _fmtCur(balance), isDark,
-                bold: true, valueColor: const Color(0xFFEF4444)),
+                bold: true, valueColor: StatusColors.danger),
           ],
         ],
       ),
@@ -780,7 +780,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
           padding: const EdgeInsets.all(20),
           height: 120,
           decoration: BoxDecoration(
-            color: isDark ? Brand.darkCard : Colors.white,
+            color: Brand.surface(isDark),
             borderRadius: BorderRadius.circular(Brand.r(18)),
             border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -801,7 +801,7 @@ class _CustomerInvoiceDetailPageState extends State<CustomerInvoiceDetailPage> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.white,
+        color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark
               ? Border.all(color: Brand.darkBorder)

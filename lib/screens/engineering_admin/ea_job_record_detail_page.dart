@@ -128,7 +128,7 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
             style: TextButton.styleFrom(
-                foregroundColor: const Color(0xFFEF4444)),
+                foregroundColor: StatusColors.danger),
             child: const Text('Delete'),
           ),
         ],
@@ -171,7 +171,7 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
       case 'completed':
         return const Color(0xFF10B981);
       case 'cancelled':
-        return const Color(0xFFEF4444);
+        return StatusColors.danger;
       default:
         return const Color(0xFF94A3B8);
     }
@@ -273,10 +273,10 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
                     child: Row(
                       children: [
                         Icon(Icons.delete_rounded,
-                            size: 18, color: Color(0xFFEF4444)),
+                            size: 18, color: StatusColors.danger),
                         SizedBox(width: 8),
                         Text('Delete',
-                            style: TextStyle(color: Color(0xFFEF4444))),
+                            style: TextStyle(color: StatusColors.danger)),
                       ],
                     ),
                   ),
@@ -413,7 +413,7 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
                       _actionChip(
                         label: 'Cancel',
                         icon: Icons.cancel_rounded,
-                        color: const Color(0xFFEF4444),
+                        color: StatusColors.danger,
                         onTap: () => _updateStatus('cancelled'),
                       ),
                     ],
@@ -622,7 +622,7 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
   // ── Widget helpers ────────────────────────────────────────────
 
   Widget _card({required bool isDark, required Widget child}) {
-    final cardBg = isDark ? Brand.darkCard : Colors.white;
+    final cardBg = Brand.surface(isDark);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
     return Container(
       width: double.infinity,
@@ -831,7 +831,7 @@ class _ErrorView extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(Icons.error_outline_rounded,
-                size: 48, color: Color(0xFFEF4444)),
+                size: 48, color: StatusColors.danger),
             const SizedBox(height: 12),
             Text(
               'Failed to load job record',

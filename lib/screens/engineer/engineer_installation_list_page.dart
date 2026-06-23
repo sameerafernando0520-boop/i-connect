@@ -173,7 +173,7 @@ class _EngineerInstallationListPageState
   Widget _buildTabs(bool isDark) {
     return Container(
       height: 48,
-      color: isDark ? Brand.darkCard : Colors.white,
+      color: Brand.surface(isDark),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -218,7 +218,7 @@ class _EngineerInstallationListPageState
               side: BorderSide(
                 color: active ? _engAccent : Colors.grey.withAlpha(80),
               ),
-              backgroundColor: isDark ? Brand.darkCardElevated : Colors.white,
+              backgroundColor: Brand.surface(isDark),
             ),
           );
         },
@@ -279,11 +279,11 @@ class _EngineerInstallationListPageState
             Container(
               width: 72, height: 72,
               decoration: BoxDecoration(
-                color: const Color(0xFFEF4444).withAlpha(isDark ? 25 : 15),
+                color: StatusColors.danger.withAlpha(isDark ? 25 : 15),
                 shape: BoxShape.circle,
               ),
               child: const Icon(Icons.error_outline,
-                  color: Color(0xFFEF4444), size: 36),
+                  color: StatusColors.danger, size: 36),
             ),
             const SizedBox(height: 16),
             Text('Something went wrong',
@@ -365,7 +365,7 @@ class _EngineerInstallationListPageState
         margin: const EdgeInsets.only(bottom: 10),
         height: 110,
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(16)),
         ),
       ),
@@ -424,7 +424,7 @@ class _EngInstallCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(16)),
           border: isDark ? Border.all(color: Brand.darkBorder) : null,
           boxShadow: isDark

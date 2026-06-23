@@ -26,12 +26,12 @@ class _RequestServicePageState extends State<RequestServicePage> {
   bool _saving = false;
 
   static const _scheduleTypes = [
-    ('repair', 'Repair', Icons.handyman, Color(0xFFEF4444)),
+    ('repair', 'Repair', Icons.handyman, StatusColors.danger),
     (
       'preventive',
       'Preventive Maintenance',
       Icons.build_circle_outlined,
-      Color(0xFF3B82F6)
+      StatusColors.open
     ),
     ('inspection', 'Inspection', Icons.search, Color(0xFF14B8A6)),
     (
@@ -44,7 +44,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
       'warranty_visit',
       'Warranty Visit',
       Icons.verified_user,
-      Color(0xFFF59E0B)
+      StatusColors.warning
     ),
   ];
 
@@ -146,7 +146,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
             Expanded(child: Text('Failed to submit: $e')),
           ]),
           behavior: SnackBarBehavior.floating,
-          backgroundColor: Colors.red,
+          backgroundColor: StatusColors.danger,
         ),
       );
       setState(() => _saving = false);
@@ -402,7 +402,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
           color: isDark ? Brand.darkTextTertiary : Brand.subtleLight,
         ),
         filled: true,
-        fillColor: isDark ? Brand.darkCardElevated : Colors.white,
+        fillColor: isDark ? Brand.darkCardElevated : Brand.royalBlueSurface,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
           borderSide: BorderSide(
@@ -421,7 +421,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
-          borderSide: const BorderSide(color: Color(0xFFEF4444)),
+          borderSide: const BorderSide(color: StatusColors.danger),
         ),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
@@ -445,7 +445,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
             decoration: BoxDecoration(
               color: selected
                   ? t.$4.withAlpha(isDark ? 38 : 26)
-                  : (isDark ? Brand.darkCard : Colors.white),
+                  : Brand.surface(isDark),
               borderRadius: BorderRadius.circular(Brand.r(12)),
               border: Border.all(
                 color: selected
@@ -492,7 +492,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
       return Container(
         height: 56,
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -512,7 +512,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
       return Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -558,7 +558,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
               decoration: BoxDecoration(
                 color: selected
                     ? Brand.royalBlue.withAlpha(isDark ? 25 : 15)
-                    : (isDark ? Brand.darkCard : Colors.white),
+                    : Brand.surface(isDark),
                 borderRadius: BorderRadius.circular(Brand.r(12)),
                 border: Border.all(
                   color: selected
@@ -639,7 +639,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)
@@ -685,7 +685,7 @@ class _RequestServicePageState extends State<RequestServicePage> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: isDark
               ? Border.all(color: Brand.darkBorder)

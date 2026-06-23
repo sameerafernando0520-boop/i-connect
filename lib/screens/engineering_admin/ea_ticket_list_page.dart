@@ -424,7 +424,7 @@ class _EaTicketListPageState extends State<EaTicketListPage>
   void _showSortSheet(BuildContext context, bool isDark) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
@@ -498,7 +498,7 @@ class _EaTicketListPageState extends State<EaTicketListPage>
 
     showModalBottomSheet(
       context: context,
-      backgroundColor: isDark ? Brand.darkCard : Colors.white,
+      backgroundColor: Brand.surface(isDark),
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
@@ -538,13 +538,13 @@ class _EaTicketListPageState extends State<EaTicketListPage>
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFEF4444).withAlpha(20),
+                      color: StatusColors.danger.withAlpha(20),
                       borderRadius: BorderRadius.circular(Brand.r(8)),
                     ),
                     child: Text(
                       '${unassigned.length} unassigned',
                       style: const TextStyle(
-                        color: Color(0xFFEF4444),
+                        color: StatusColors.danger,
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                       ),
@@ -587,11 +587,11 @@ class _EaTicketListPageState extends State<EaTicketListPage>
                               width: 40,
                               height: 40,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFEF4444).withAlpha(20),
+                                color: StatusColors.danger.withAlpha(20),
                                 borderRadius: BorderRadius.circular(Brand.r(10)),
                               ),
                               child: const Icon(Icons.warning_amber_rounded,
-                                  color: Color(0xFFEF4444), size: 20),
+                                  color: StatusColors.danger, size: 20),
                             ),
                             title: Text(
                               t['subject'] as String? ?? 'Ticket',
@@ -818,11 +818,11 @@ class _TicketCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.white,
+          color: Brand.surface(isDark),
           borderRadius: BorderRadius.circular(Brand.r(16)),
           border: Border.all(
             color: isUnassigned
-                ? const Color(0xFFEF4444).withAlpha(80)
+                ? StatusColors.danger.withAlpha(80)
                 : AdminColors.border(context),
           ),
           boxShadow: [
@@ -914,15 +914,15 @@ class _TicketCard extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 3),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFEF4444).withAlpha(15),
+                            color: StatusColors.danger.withAlpha(15),
                             borderRadius: BorderRadius.circular(Brand.r(6)),
                             border: Border.all(
-                                color: const Color(0xFFEF4444).withAlpha(40)),
+                                color: StatusColors.danger.withAlpha(40)),
                           ),
                           child: const Text(
                             'Unassigned',
                             style: TextStyle(
-                              color: Color(0xFFEF4444),
+                              color: StatusColors.danger,
                               fontSize: 11,
                               fontWeight: FontWeight.w700,
                             ),
