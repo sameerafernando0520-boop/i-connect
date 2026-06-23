@@ -256,9 +256,10 @@ class _SplashScreenState extends State<SplashScreen>
                               'STAY CONNECTED. STAY AHEAD.',
                               textAlign: TextAlign.center,
                               style: TextStyle(
+                                fontFamily: 'Sportscenter',
                                 color: _tagColor,
                                 fontSize: 8,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w400,
                                 letterSpacing: _tagSpacing.value,
                               ),
                             ),
@@ -333,9 +334,10 @@ class _SplashScreenState extends State<SplashScreen>
       errorBuilder: (_, __, ___) => const Text(
         'iCONNECT',
         style: TextStyle(
+          fontFamily: 'Sportscenter',
           color: Colors.white,
           fontSize: 36,
-          fontWeight: FontWeight.w800,
+          fontWeight: FontWeight.w400,
           letterSpacing: 2,
         ),
       ),

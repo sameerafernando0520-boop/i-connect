@@ -48,9 +48,6 @@ dependencies:
   # Calendar
   table_calendar: ^3.1.2
 
-  # Fonts
-  google_fonts: ^8.1.0
-
   # Export (v24)
   # NOTE: switched from the `excel` package to pure-CSV generation because the
   # excel pkg's pure-Dart source ballooned the Dart frontend compiler's heap
@@ -109,3 +106,21 @@ flutter:
   assets:
     - .env
     - assets/branding/
+    - assets/fonts/
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Montserrat-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Montserrat-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Montserrat-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Montserrat-ExtraBold.ttf
+          weight: 800
+    - family: Sportscenter
+      fonts:
+        - asset: assets/fonts/Sportscenter.ttf
+          weight: 400

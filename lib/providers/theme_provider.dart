@@ -2,7 +2,6 @@
 
 import 'package:flutter/cupertino.dart' show CupertinoPageTransitionsBuilder;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../config/brand_colors.dart';
 
@@ -121,11 +120,13 @@ class ThemeProvider extends ChangeNotifier {
   }
 
   // ─── DS TYPOGRAPHY HELPERS ────────────────────────────────
+  static const String _fontMontserrat = 'Montserrat';
+
   static TextTheme _montserratLight() =>
-      GoogleFonts.montserratTextTheme(ThemeData.light().textTheme);
+      ThemeData.light().textTheme.apply(fontFamily: _fontMontserrat);
 
   static TextTheme _montserratDark() =>
-      GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme);
+      ThemeData.dark().textTheme.apply(fontFamily: _fontMontserrat);
 
   // ─── SHARED MODERN POLISH (both themes) ───────────────────
   // Fade-through page transitions + sparkle ink make navigation and taps
@@ -189,7 +190,7 @@ class ThemeProvider extends ChangeNotifier {
       brightness: Brightness.light,
       primaryColor: Brand.royalBlue,
       scaffoldBackgroundColor: bg,
-      fontFamily: GoogleFonts.montserrat().fontFamily,
+      fontFamily: _fontMontserrat,
       colorScheme: ColorScheme.fromSeed(
         seedColor: Brand.royalBlue,
         primary: Brand.royalBlue,
@@ -209,7 +210,7 @@ class ThemeProvider extends ChangeNotifier {
           borderRadius: BorderRadius.circular(_dialogR),
           side: ws ? BorderSide(color: border, width: bw) : BorderSide.none,
         ),
-        titleTextStyle: GoogleFonts.montserrat(
+        titleTextStyle: TextStyle(fontFamily: _fontMontserrat,
           fontSize: 17,
           fontWeight: FontWeight.w700,
           color: textP,
@@ -241,7 +242,7 @@ class ThemeProvider extends ChangeNotifier {
         elevation: 0,
         scrolledUnderElevation: 0.5,
         centerTitle: !ws,
-        titleTextStyle: GoogleFonts.montserrat(
+        titleTextStyle: TextStyle(fontFamily: _fontMontserrat,
           fontSize: ws ? 20 : 18,
           fontWeight: ws ? FontWeight.w800 : FontWeight.w600,
           color: textP,
@@ -267,7 +268,7 @@ class ThemeProvider extends ChangeNotifier {
             borderRadius: BorderRadius.circular(_btnR),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
-          textStyle: GoogleFonts.montserrat(
+          textStyle: TextStyle(fontFamily: _fontMontserrat,
             fontSize: 14,
             fontWeight: FontWeight.w600,
             letterSpacing: 0.2,
@@ -282,7 +283,7 @@ class ThemeProvider extends ChangeNotifier {
             borderRadius: BorderRadius.circular(_btnR),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
-          textStyle: GoogleFonts.montserrat(
+          textStyle: TextStyle(fontFamily: _fontMontserrat,
             fontSize: 14,
             fontWeight: FontWeight.w600,
           ),
@@ -291,7 +292,7 @@ class ThemeProvider extends ChangeNotifier {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: Brand.royalBlue,
-          textStyle: GoogleFonts.montserrat(
+          textStyle: TextStyle(fontFamily: _fontMontserrat,
             fontSize: 14,
             fontWeight: FontWeight.w600,
           ),
@@ -322,11 +323,11 @@ class ThemeProvider extends ChangeNotifier {
           borderRadius: BorderRadius.circular(_inputR),
           borderSide: const BorderSide(color: Color(0xFFEF4444), width: 1.5),
         ),
-        hintStyle: GoogleFonts.montserrat(
+        hintStyle: TextStyle(fontFamily: _fontMontserrat,
           fontSize: 14,
           color: textS,
         ),
-        labelStyle: GoogleFonts.montserrat(
+        labelStyle: TextStyle(fontFamily: _fontMontserrat,
           fontSize: 14,
           color: textS,
         ),
@@ -334,7 +335,7 @@ class ThemeProvider extends ChangeNotifier {
       chipTheme: ChipThemeData(
         backgroundColor:
             ws ? Brand.workshopInk.withAlpha(15) : Brand.royalBlueSurface,
-        labelStyle: GoogleFonts.montserrat(
+        labelStyle: TextStyle(fontFamily: _fontMontserrat,
           fontSize: 12,
           fontWeight: FontWeight.w600,
           color: ws ? Brand.workshopInk : Brand.royalBlue,
@@ -354,7 +355,7 @@ class ThemeProvider extends ChangeNotifier {
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
         backgroundColor: ws ? Brand.workshopInk : Brand.royalBlueDark,
-        contentTextStyle: GoogleFonts.montserrat(
+        contentTextStyle: TextStyle(fontFamily: _fontMontserrat,
           fontSize: 13,
           fontWeight: FontWeight.w500,
           color: Colors.white,
@@ -381,7 +382,7 @@ class ThemeProvider extends ChangeNotifier {
       brightness: Brightness.dark,
       primaryColor: p.primary,
       scaffoldBackgroundColor: Brand.canvas(true),
-      fontFamily: GoogleFonts.montserrat().fontFamily,
+      fontFamily: _fontMontserrat,
       colorScheme: ColorScheme.fromSeed(
         seedColor: Brand.royalBlue,
         primary: p.primary,
@@ -402,7 +403,7 @@ class ThemeProvider extends ChangeNotifier {
           borderRadius: BorderRadius.circular(_dialogR),
           side: ws ? BorderSide(color: border, width: bw) : BorderSide.none,
         ),
-        titleTextStyle: GoogleFonts.montserrat(
+        titleTextStyle: TextStyle(fontFamily: _fontMontserrat,
           fontSize: 17,
           fontWeight: FontWeight.w700,
           color: textP,
@@ -434,7 +435,7 @@ class ThemeProvider extends ChangeNotifier {
         elevation: 0,
         scrolledUnderElevation: 0.5,
         centerTitle: !ws,
-        titleTextStyle: GoogleFonts.montserrat(
+        titleTextStyle: TextStyle(fontFamily: _fontMontserrat,
           fontSize: ws ? 20 : 18,
           fontWeight: ws ? FontWeight.w800 : FontWeight.w600,
           color: textP,
@@ -459,7 +460,7 @@ class ThemeProvider extends ChangeNotifier {
             borderRadius: BorderRadius.circular(_btnR),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
-          textStyle: GoogleFonts.montserrat(
+          textStyle: TextStyle(fontFamily: _fontMontserrat,
             fontSize: 14,
             fontWeight: FontWeight.w600,
             letterSpacing: 0.2,
@@ -474,7 +475,7 @@ class ThemeProvider extends ChangeNotifier {
             borderRadius: BorderRadius.circular(_btnR),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
-          textStyle: GoogleFonts.montserrat(
+          textStyle: TextStyle(fontFamily: _fontMontserrat,
             fontSize: 14,
             fontWeight: FontWeight.w600,
           ),
@@ -483,7 +484,7 @@ class ThemeProvider extends ChangeNotifier {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: Brand.darkIconActive,
-          textStyle: GoogleFonts.montserrat(
+          textStyle: TextStyle(fontFamily: _fontMontserrat,
             fontSize: 14,
             fontWeight: FontWeight.w600,
           ),
@@ -514,18 +515,18 @@ class ThemeProvider extends ChangeNotifier {
           borderRadius: BorderRadius.circular(_inputR),
           borderSide: const BorderSide(color: Color(0xFFCF6679), width: 1.5),
         ),
-        hintStyle: GoogleFonts.montserrat(
+        hintStyle: TextStyle(fontFamily: _fontMontserrat,
           fontSize: 14,
           color: Brand.darkTextTertiary,
         ),
-        labelStyle: GoogleFonts.montserrat(
+        labelStyle: TextStyle(fontFamily: _fontMontserrat,
           fontSize: 14,
           color: Brand.darkTextTertiary,
         ),
       ),
       chipTheme: ChipThemeData(
         backgroundColor: Brand.royalBlue.withAlpha(40),
-        labelStyle: GoogleFonts.montserrat(
+        labelStyle: TextStyle(fontFamily: _fontMontserrat,
           fontSize: 12,
           fontWeight: FontWeight.w600,
           color: Brand.darkIconActive,
@@ -545,7 +546,7 @@ class ThemeProvider extends ChangeNotifier {
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
         backgroundColor: Brand.darkCardElevated,
-        contentTextStyle: GoogleFonts.montserrat(
+        contentTextStyle: TextStyle(fontFamily: _fontMontserrat,
           fontSize: 13,
           fontWeight: FontWeight.w500,
           color: textP,
