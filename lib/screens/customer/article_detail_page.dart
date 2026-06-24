@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../utils/time_utils.dart';
 
 class ArticleDetailPage extends StatefulWidget {
@@ -332,7 +333,7 @@ class _ArticleDetailPageState extends State<ArticleDetailPage> {
                 child: Icon(Icons.article_outlined,
                     size: 38,
                     color:
-                        isDark ? const Color(0xFFFF6B6B) : StatusColors.danger),
+                        isDark ? StatusColors.danger : StatusColors.danger),
               ),
               const SizedBox(height: 20),
               Text(

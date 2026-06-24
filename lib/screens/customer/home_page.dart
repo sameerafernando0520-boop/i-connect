@@ -34,6 +34,7 @@ import 'package:intl/intl.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../l10n/s.dart';
 import '../../utils/time_utils.dart';
 import '../../utils/string_utils.dart';
@@ -949,29 +950,29 @@ class _HomePageState extends State<HomePage>
         return {
           'label': 'PLATINUM',
           'emoji': '💎',
-          'color': const Color(0xFFE5E4E2),
-          'gradient': [const Color(0xFFE5E4E2), const Color(0xFFB8B8B8)],
+          'color': TierColors.platinum,
+          'gradient': [TierColors.platinum, const Color(0xFFB8B8B8)],
         };
       case 'gold':
         return {
           'label': 'GOLD',
           'emoji': '🥇',
-          'color': const Color(0xFFFFD700),
-          'gradient': [const Color(0xFFFFD700), const Color(0xFFFFA000)],
+          'color': TierColors.gold,
+          'gradient': [TierColors.gold, const Color(0xFFFFA000)],
         };
       case 'silver':
         return {
           'label': 'SILVER',
           'emoji': '🥈',
-          'color': const Color(0xFFC0C0C0),
-          'gradient': [const Color(0xFFC0C0C0), const Color(0xFF9E9E9E)],
+          'color': TierColors.silver,
+          'gradient': [TierColors.silver, AdminColors.textSecondary],
         };
       default:
         return {
           'label': 'BRONZE',
           'emoji': '🥉',
-          'color': const Color(0xFFCD7F32),
-          'gradient': [const Color(0xFFCD7F32), const Color(0xFFA0522D)],
+          'color': TierColors.bronze,
+          'gradient': [TierColors.bronze, const Color(0xFFA0522D)],
         };
     }
   }
@@ -1463,7 +1464,7 @@ class _HomePageState extends State<HomePage>
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                          colors: [Color(0xFFFF4757), Color(0xFFFF6B81)]),
+                          colors: [StatusColors.danger, StatusColors.danger]),
                       shape: BoxShape.circle,
                       border: Border.all(
                           color: Brand.surface(isDark),
@@ -1504,7 +1505,7 @@ class _HomePageState extends State<HomePage>
               color: StatusColors.danger.withAlpha(isDark ? 51 : 38),
               borderRadius: BorderRadius.circular(Brand.r(12))),
           child: Icon(Icons.cloud_off_rounded,
-              color: isDark ? const Color(0xFFFF6B6B) : StatusColors.danger, size: 20),
+              color: isDark ? StatusColors.danger : StatusColors.danger, size: 20),
         ),
         const SizedBox(width: 12),
         Expanded(
@@ -1512,7 +1513,7 @@ class _HomePageState extends State<HomePage>
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(S.of(context)!.homeConnectionIssue,
               style: TextStyle(
-                  color: isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
+                  color: isDark ? StatusColors.danger : StatusColors.danger,
                   fontWeight: FontWeight.w700,
                   fontSize: 13)),
           const SizedBox(height: 2),
@@ -1541,7 +1542,7 @@ class _HomePageState extends State<HomePage>
               child: Text(S.of(context)!.commonRetry,
                   style: TextStyle(
                       color: isDark
-                          ? const Color(0xFFFF6B6B)
+                          ? StatusColors.danger
                           : StatusColors.danger.withAlpha(179),
                       fontWeight: FontWeight.w700,
                       fontSize: 12)),
@@ -1566,7 +1567,7 @@ class _HomePageState extends State<HomePage>
               Icons.build_circle_rounded,
               'Service Due Soon',
               '${_nextServiceMachineName!} needs service in $d day${d == 1 ? '' : 's'}',
-              d <= 3 ? StatusColors.danger : Colors.orange,
+              d <= 3 ? StatusColors.danger : AdminColors.internal,
               isDark,
               () => Navigator.push(
                       context,
@@ -1583,7 +1584,7 @@ class _HomePageState extends State<HomePage>
           Icons.shield_outlined,
           'Warranty Expiring',
           '$_expiringWarrantyCount machine${_expiringWarrantyCount == 1 ? '' : 's'} with warranty expiring within 30 days',
-          Colors.amber.shade700,
+          AdminColors.warning.shade700,
           isDark,
           () => Navigator.push(context,
                       MaterialPageRoute(builder: (_) => const MyMachinesPage()))
@@ -1641,10 +1642,10 @@ class _HomePageState extends State<HomePage>
           bannerColor = StatusColors.danger;
           timeText = 'Due today!';
         } else if (daysUntil <= 3) {
-          bannerColor = Colors.orange;
+          bannerColor = AdminColors.internal;
           timeText = 'Due in $daysUntil day${daysUntil == 1 ? '' : 's'}';
         } else if (daysUntil <= 7) {
-          bannerColor = Colors.amber.shade700;
+          bannerColor = AdminColors.warning.shade700;
           timeText = 'Due in $daysUntil days';
         } else {
           bannerColor = isDark ? Brand.darkIconActive : Brand.royalBlue;
@@ -1887,7 +1888,7 @@ class _HomePageState extends State<HomePage>
                                 style: TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w600,
-                                  color: const Color(0xFFF97316),
+                                  color: AdminColors.internal,
                                 ),
                               ),
                             ],
@@ -2023,7 +2024,7 @@ class _HomePageState extends State<HomePage>
                               ),
                               if (isUnlocked)
                                 const Icon(Icons.check_circle_rounded,
-                                    color: Color(0xFF22C55E), size: 20)
+                                    color: AdminColors.accent, size: 20)
                               else
                                 Icon(Icons.lock_outline_rounded,
                                     color: isDark
@@ -2529,8 +2530,8 @@ class _HomePageState extends State<HomePage>
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                     decoration: BoxDecoration(
                       color: isW
-                          ? Colors.orange.withAlpha(isDark ? 22 : 15)
-                          : Colors.orange.withAlpha(40),
+                          ? AdminColors.internal.withAlpha(isDark ? 22 : 15)
+                          : AdminColors.internal.withAlpha(40),
                       borderRadius: BorderRadius.circular(Brand.r(10)),
                     ),
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
@@ -2540,9 +2541,9 @@ class _HomePageState extends State<HomePage>
                           style: TextStyle(
                             color: isW
                                 ? (isDark
-                                    ? Colors.orange.shade300
-                                    : Colors.orange.shade700)
-                                : Colors.orange.shade200,
+                                    ? AdminColors.internal.shade300
+                                    : AdminColors.internal.shade700)
+                                : AdminColors.internal.shade200,
                             fontSize: 11,
                             fontWeight: FontWeight.w700,
                           )),
@@ -2572,7 +2573,7 @@ class _HomePageState extends State<HomePage>
                     color: isW
                         ? (isDark
                             ? Brand.darkBorderLight.withAlpha(77)
-                            : const Color(0xFFE2E8F0))
+                            : AdminColors.borderLight)
                         : Colors.white.withAlpha(30),
                     borderRadius: BorderRadius.circular(Brand.r(10))),
                 child: Stack(children: [
@@ -2776,7 +2777,7 @@ class _HomePageState extends State<HomePage>
           '$_openTickets open tickets',
           (c) => IcChatGearIcon(color: c, size: 22),
           'support',
-          isDark ? const Color(0xFFFF8A65) : const Color(0xFFE65100),
+          isDark ? AdminColors.internal : AdminColors.internal,
           isDark ? Brand.darkCardElevated : const Color(0xFFFFF3E0),
           _openTickets > 0 ? '$_openTickets' : null),
       _QA(
@@ -2792,7 +2793,7 @@ class _HomePageState extends State<HomePage>
           'Guides & tips',
           (c) => Icon(Icons.auto_stories_rounded, color: c, size: 22),
           'knowledge',
-          isDark ? const Color(0xFFCE93D8) : const Color(0xFF6A1B9A),
+          isDark ? StatusColors.assigned : AdminColors.primary,
           isDark ? Brand.darkCardElevated : const Color(0xFFF3E5F5),
           null),
       _QA(
@@ -2811,7 +2812,7 @@ class _HomePageState extends State<HomePage>
           'Invite friends',
           (c) => Icon(Icons.card_giftcard_rounded, color: c, size: 22),
           'referral',
-          isDark ? const Color(0xFFFFD54F) : const Color(0xFFF57F17),
+          isDark ? AdminColors.warning : AdminColors.warning,
           isDark ? Brand.darkCardElevated : const Color(0xFFFFF8E1),
           null),
     ];
@@ -2883,7 +2884,7 @@ class _HomePageState extends State<HomePage>
                           fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color:
-                              isDark ? const Color(0xFFFF6B6B) : StatusColors.danger)),
+                              isDark ? StatusColors.danger : StatusColors.danger)),
                 ),
             ]),
             const Spacer(),
@@ -3169,8 +3170,8 @@ class _HomePageState extends State<HomePage>
                             _badge(
                                 '${svcDays}d',
                                 isDark
-                                    ? const Color(0xFFFFB74D)
-                                    : Colors.orange,
+                                    ? AdminColors.warning
+                                    : AdminColors.internal,
                                 isDark,
                                 icon: Icons.schedule_rounded),
                         ]),
@@ -3284,7 +3285,7 @@ class _HomePageState extends State<HomePage>
     switch (type) {
       case 'support':
         iconWidget = (c) => IcChatGearIcon(color: c, size: 22);
-        ic = isDark ? const Color(0xFFFF8A65) : const Color(0xFFE65100);
+        ic = isDark ? AdminColors.internal : AdminColors.internal;
         break;
       case 'inquiry':
         iconWidget = (c) => IcChatGearIcon(color: c, size: 22);
@@ -3296,11 +3297,11 @@ class _HomePageState extends State<HomePage>
         break;
       case 'message':
         iconWidget = (c) => Icon(Icons.chat_bubble_outline_rounded, color: c, size: 22);
-        ic = isDark ? const Color(0xFFCE93D8) : const Color(0xFF6A1B9A);
+        ic = isDark ? StatusColors.assigned : AdminColors.primary;
         break;
       default:
         iconWidget = (c) => Icon(Icons.info_outline_rounded, color: c, size: 22);
-        ic = isDark ? Brand.darkTextSecondary : Colors.grey;
+        ic = isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
     }
 
     return Padding(
@@ -3409,9 +3410,9 @@ class _HomePageState extends State<HomePage>
       case 'active':
         return isDark ? Brand.lightGreenBright : Brand.lightGreen;
       case 'service':
-        return isDark ? const Color(0xFFFFB74D) : Colors.orange;
+        return isDark ? AdminColors.warning : AdminColors.internal;
       case 'inactive':
-        return isDark ? const Color(0xFFFF6B6B) : Colors.red;
+        return isDark ? StatusColors.danger : Colors.red;
       default:
         return isDark ? Brand.lightGreenBright : Brand.lightGreen;
     }
@@ -3422,17 +3423,17 @@ class _HomePageState extends State<HomePage>
       case 'open':
         return isDark ? Brand.darkIconActive : Brand.royalBlueLight;
       case 'assigned':
-        return isDark ? const Color(0xFF7986CB) : const Color(0xFF283593);
+        return isDark ? AdminColors.info : AdminColors.primary;
       case 'in_progress':
-        return isDark ? const Color(0xFFFFB74D) : Colors.orange;
+        return isDark ? AdminColors.warning : AdminColors.internal;
       case 'waiting_customer':
-        return isDark ? const Color(0xFFCE93D8) : const Color(0xFF6A1B9A);
+        return isDark ? StatusColors.assigned : AdminColors.primary;
       case 'resolved':
         return isDark ? Brand.lightGreenBright : Brand.lightGreen;
       case 'closed':
-        return isDark ? Brand.darkTextSecondary : Colors.grey;
+        return isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
       default:
-        return isDark ? Brand.darkTextSecondary : Colors.grey;
+        return isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
     }
   }
 
@@ -3634,7 +3635,7 @@ class _HomePageState extends State<HomePage>
                             fontWeight: FontWeight.bold,
                             color: isDark
                                 ? Brand.darkTextPrimary
-                                : const Color(0xFF1A202C),
+                                : Brand.darkCard,
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,

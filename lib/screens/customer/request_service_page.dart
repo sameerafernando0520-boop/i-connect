@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
@@ -33,12 +34,12 @@ class _RequestServicePageState extends State<RequestServicePage> {
       Icons.build_circle_outlined,
       StatusColors.open
     ),
-    ('inspection', 'Inspection', Icons.search, Color(0xFF14B8A6)),
+    ('inspection', 'Inspection', Icons.search, AdminColors.info),
     (
       'installation',
       'Installation',
       Icons.precision_manufacturing,
-      Color(0xFF8B5CF6)
+      StatusColors.assigned
     ),
     (
       'warranty_visit',

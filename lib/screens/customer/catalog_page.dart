@@ -18,6 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../l10n/s.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import 'machine_detail_page.dart';
@@ -678,9 +679,9 @@ class _CatalogPageState extends State<CatalogPage> {
       case 'Digital Printers':
         return Brand.royalBlue;
       case 'CNC Routers':
-        return const Color(0xFFE65100);
+        return AdminColors.internal;
       case 'Laser Cutters':
-        return const Color(0xFF6A1B9A);
+        return AdminColors.primary;
       case 'Finishing Equipment':
         return Brand.lightGreen;
       default:
@@ -766,7 +767,7 @@ class _CatalogPageState extends State<CatalogPage> {
           color: isActive ? Brand.lime.withAlpha(46) : Colors.white.withAlpha(18),
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: Border.all(
-              color: isActive ? Brand.lime : const Color(0xFF2A3F6E)),
+              color: isActive ? Brand.lime : Brand.royalBlue),
         ),
         child: Icon(icon,
             color: isActive ? Brand.lime : Colors.white, size: 19),
@@ -2023,7 +2024,7 @@ class _CatalogPageState extends State<CatalogPage> {
                   Icons.phone_outlined,
                   'Call Sales Team',
                   '0777 244 882',
-                  const Color(0xFF4CAF50),
+                  AdminColors.accent,
                   isDark,
                   () => Navigator.pop(sheetCtx)),
               const SizedBox(height: 16),

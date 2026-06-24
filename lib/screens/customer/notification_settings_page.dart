@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../services/notification_service.dart';
 import '../../utils/app_logger.dart';
@@ -340,7 +341,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
             colorScheme: isDark
                 ? ColorScheme.dark(
                     primary: Brand.darkIconActive,
-                    onPrimary: Color(0xFF1A1F36),
+                    onPrimary: AdminColors.textPrimary,
                     surface: Brand.darkCard,
                     onSurface: Brand.darkTextPrimary,
                   )
@@ -503,7 +504,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
             decoration: BoxDecoration(
               color: Colors.white.withAlpha(20),
               borderRadius: BorderRadius.circular(Brand.r(20)),
-              border: Border.all(color: const Color(0xFF2A3F6E)),
+              border: Border.all(color: Brand.royalBlue),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -656,7 +657,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
             decoration: BoxDecoration(
               color: _notificationsEnabled
                   ? accent.withAlpha(((0.1) * 255).toInt())
-                  : (isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9)),
+                  : (isDark ? Brand.darkCardElevated : AdminColors.background),
               borderRadius: BorderRadius.circular(Brand.r(14)),
             ),
             child: Icon(
@@ -747,7 +748,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
           icon: Icons.build_circle_rounded,
           label: 'Service Reminders',
           subtitle: 'Warranty & maintenance alerts',
-          color: const Color(0xFFFF9800),
+          color: AdminColors.internal,
           value: _pushServiceReminders,
           isDark: isDark,
           onChanged: (val) {
@@ -760,7 +761,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
           icon: Icons.new_releases_rounded,
           label: 'Product Updates',
           subtitle: 'New machines & catalog changes',
-          color: const Color(0xFF4CAF50),
+          color: AdminColors.accent,
           value: _pushProductUpdates,
           isDark: isDark,
           onChanged: (val) {
@@ -773,7 +774,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
           icon: Icons.confirmation_num_rounded,
           label: 'Ticket Updates',
           subtitle: 'Status changes & assignments',
-          color: const Color(0xFF2196F3),
+          color: AdminColors.info,
           value: _pushTicketUpdates,
           isDark: isDark,
           onChanged: (val) {
@@ -786,7 +787,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
           icon: Icons.chat_rounded,
           label: 'New Messages',
           subtitle: 'Chat & support messages',
-          color: const Color(0xFF00BCD4),
+          color: Brand.cyanAccent,
           value: _pushNewMessages,
           isDark: isDark,
           onChanged: (val) {
@@ -799,7 +800,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
           icon: Icons.local_offer_rounded,
           label: 'Promotions & Offers',
           subtitle: 'Special deals & discounts',
-          color: const Color(0xFFE91E63),
+          color: StatusColors.danger,
           value: _pushPromotions,
           isDark: isDark,
           onChanged: (val) {
@@ -835,7 +836,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
           icon: Icons.confirmation_num_outlined,
           label: 'Ticket Updates via Email',
           subtitle: 'Get ticket status changes in email',
-          color: const Color(0xFF2196F3),
+          color: AdminColors.info,
           value: _emailTicketUpdates,
           isDark: isDark,
           onChanged: (val) {
@@ -848,7 +849,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
           icon: Icons.build_outlined,
           label: 'Service Reminders via Email',
           subtitle: 'Maintenance alerts in your inbox',
-          color: const Color(0xFFFF9800),
+          color: AdminColors.internal,
           value: _emailServiceReminders,
           isDark: isDark,
           onChanged: (val) {
@@ -862,7 +863,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
 
   // ── Quiet Hours ──────────────────────────────────────────
   Widget _buildQuietHours(bool isDark) {
-    const quietColor = Color(0xFF5C6BC0);
+    const quietColor = AdminColors.primary;
 
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 14, 20, 0),
@@ -959,7 +960,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
                   decoration: BoxDecoration(
                     color: isDark
                         ? Brand.darkCardElevated
-                        : const Color(0xFFF1F5F9),
+                        : AdminColors.background,
                     shape: BoxShape.circle,
                   ),
                   child: Icon(Icons.arrow_forward_rounded,
@@ -1024,7 +1025,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
       child: Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9),
+          color: isDark ? Brand.darkCardElevated : AdminColors.background,
           borderRadius: BorderRadius.circular(Brand.r(14)),
            border: isDark
            ? Border.all(color: Brand.darkBorder) : null,
@@ -1032,7 +1033,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
         child: Column(
           children: [
             const Icon(Icons.access_time_rounded,
-                color: Color(0xFF5C6BC0), size: 22),
+                color: AdminColors.primary, size: 22),
             const SizedBox(height: 8),
             Text(
               label,
@@ -1068,7 +1069,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
           icon: Icons.volume_up_rounded,
           label: 'Notification Sound',
           subtitle: 'Play sound for notifications',
-          color: const Color(0xFF00BCD4),
+          color: Brand.cyanAccent,
           value: _soundEnabled,
           isDark: isDark,
           onChanged: (val) {
@@ -1081,7 +1082,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
           icon: Icons.vibration_rounded,
           label: 'Vibration',
           subtitle: 'Vibrate for notifications',
-          color: const Color(0xFF795548),
+          color: TierColors.bronze2,
           value: _vibrationEnabled,
           isDark: isDark,
           onChanged: (val) {
@@ -1117,7 +1118,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage>
             icon: Icons.done_all_rounded,
             label: 'Mark All as Read',
             subtitle: '$_unreadCount unread notifications',
-            color: const Color(0xFF4CAF50),
+            color: AdminColors.accent,
             onTap: _unreadCount > 0 ? _markAllAsRead : null,
             enabled: _unreadCount > 0,
             isSaving: _savingAction == 'mark_read',

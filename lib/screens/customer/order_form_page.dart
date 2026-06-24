@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../services/points_service.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
@@ -143,7 +144,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                     margin: const EdgeInsets.only(top: 14, bottom: 16),
                     decoration: BoxDecoration(
                       color:
-                          isDark ? Brand.darkBorderLight : Colors.grey.shade300,
+                          isDark ? Brand.darkBorderLight : AdminColors.textSecondary,
                       borderRadius: BorderRadius.circular(Brand.r(2)),
                     ),
                   ),
@@ -174,13 +175,13 @@ class _OrderFormPageState extends State<OrderFormPage> {
                         hintStyle: TextStyle(
                           color: isDark
                               ? Brand.darkTextTertiary
-                              : Colors.grey.shade400,
+                              : AdminColors.textSecondary,
                         ),
                         prefixIcon: Icon(Icons.search_rounded,
                             color:
-                                isDark ? Brand.darkTextSecondary : Colors.grey),
+                                isDark ? Brand.darkTextSecondary : AdminColors.textSecondary),
                         filled: true,
-                        fillColor: isDark ? Brand.darkBg : Colors.grey.shade50,
+                        fillColor: isDark ? Brand.darkBg : AdminColors.textSecondary,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(Brand.r(14)),
                           borderSide: BorderSide.none,
@@ -206,7 +207,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                               style: TextStyle(
                                 color: isDark
                                     ? Brand.darkTextSecondary
-                                    : Colors.grey,
+                                    : AdminColors.textSecondary,
                               ),
                             ),
                           )
@@ -228,7 +229,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                                           ((isDark ? 0.2 : 0.08) * 255).toInt())
                                       : (isDark
                                           ? Brand.darkCardElevated
-                                          : Colors.grey.shade50),
+                                          : AdminColors.textSecondary),
                                   borderRadius:
                                       BorderRadius.circular(Brand.r(16)),
                                   border: Border.all(
@@ -236,7 +237,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                                         ? Brand.royalBlueLight
                                         : (isDark
                                             ? Brand.darkBorder
-                                            : Colors.grey.shade200),
+                                            : AdminColors.textSecondary),
                                     width: isSelected ? 2 : 1,
                                   ),
                                 ),
@@ -262,7 +263,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                                                     Container(
                                                   color: isDark
                                                       ? Brand.darkBg
-                                                      : Colors.grey.shade200,
+                                                      : AdminColors.textSecondary,
                                                 ),
                                                 errorWidget: (_, __, ___) =>
                                                     _machineIcon(isDark),
@@ -294,7 +295,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                                         fontSize: 12,
                                         color: isDark
                                             ? Brand.darkTextSecondary
-                                            : Colors.grey.shade600,
+                                            : AdminColors.textSecondary,
                                       ),
                                     ),
                                     trailing: m['price'] != null
@@ -329,9 +330,9 @@ class _OrderFormPageState extends State<OrderFormPage> {
   }
 
   Widget _machineIcon(bool isDark) => Container(
-        color: isDark ? Brand.darkBg : Colors.grey.shade100,
+        color: isDark ? Brand.darkBg : AdminColors.textSecondary,
         child: Icon(Icons.precision_manufacturing_rounded,
-            color: isDark ? Brand.darkTextSecondary : Colors.grey.shade400,
+            color: isDark ? Brand.darkTextSecondary : AdminColors.textSecondary,
             size: 26),
       );
 
@@ -472,7 +473,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
-                color: isDark ? Brand.darkTextSecondary : Colors.grey.shade600,
+                color: isDark ? Brand.darkTextSecondary : AdminColors.textSecondary,
                 height: 1.5,
               ),
             ),
@@ -687,7 +688,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
         style: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w700,
-          color: isDark ? Brand.darkTextSecondary : Colors.grey.shade700,
+          color: isDark ? Brand.darkTextSecondary : AdminColors.textSecondary,
         ),
       );
 
@@ -737,7 +738,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                               placeholder: (_, __) => Container(
                                   color: isDark
                                       ? Brand.darkBg
-                                      : Colors.grey.shade200),
+                                      : AdminColors.textSecondary),
                               errorWidget: (_, __, ___) => _machineIcon(isDark),
                             )
                           : _machineIcon(isDark),
@@ -766,7 +767,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
                               fontSize: 13,
                               color: isDark
                                   ? Brand.darkTextSecondary
-                                  : Colors.grey.shade600,
+                                  : AdminColors.textSecondary,
                             ),
                           ),
                         ],
@@ -809,7 +810,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
         color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(18)),
         border: Border.all(
-          color: isDark ? Brand.darkBorder : Colors.grey.shade300,
+          color: isDark ? Brand.darkBorder : AdminColors.textSecondary,
         ),
       ),
       child: Material(
@@ -850,7 +851,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
         color: Brand.surface(isDark),
         borderRadius: BorderRadius.circular(Brand.r(16)),
         border: Border.all(
-          color: isDark ? Brand.darkBorder : Colors.grey.shade300,
+          color: isDark ? Brand.darkBorder : AdminColors.textSecondary,
         ),
       ),
       child: Row(
@@ -938,7 +939,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: TextStyle(
-          color: isDark ? Brand.darkTextTertiary : Colors.grey.shade400,
+          color: isDark ? Brand.darkTextTertiary : AdminColors.textSecondary,
           fontSize: 14,
         ),
         filled: true,
@@ -948,13 +949,13 @@ class _OrderFormPageState extends State<OrderFormPage> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: BorderSide(
-            color: isDark ? Brand.darkBorder : Colors.grey.shade300,
+            color: isDark ? Brand.darkBorder : AdminColors.textSecondary,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(14)),
           borderSide: BorderSide(
-            color: isDark ? Brand.darkBorder : Colors.grey.shade300,
+            color: isDark ? Brand.darkBorder : AdminColors.textSecondary,
           ),
         ),
         focusedBorder: OutlineInputBorder(
@@ -1064,7 +1065,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
             label,
             style: TextStyle(
               fontSize: 13,
-              color: isDark ? Brand.darkTextSecondary : Colors.grey.shade600,
+              color: isDark ? Brand.darkTextSecondary : AdminColors.textSecondary,
             ),
           ),
           Text(
@@ -1082,7 +1083,7 @@ class _OrderFormPageState extends State<OrderFormPage> {
 
   // ── Shimmer ──
   Widget _buildShimmer(bool isDark) {
-    final base = isDark ? Brand.darkCard : Colors.grey.shade200;
+    final base = isDark ? Brand.darkCard : AdminColors.textSecondary;
     Widget box(double w, double h, {double r = 14}) => Container(
           width: w,
           height: h,

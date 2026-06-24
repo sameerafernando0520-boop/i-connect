@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../services/points_service.dart';
@@ -15,13 +16,13 @@ Color _typeColor(String? type) {
     case 'repair':
       return StatusColors.danger;
     case 'inspection':
-      return const Color(0xFF14B8A6);
+      return AdminColors.info;
     case 'installation':
-      return const Color(0xFF8B5CF6);
+      return StatusColors.assigned;
     case 'warranty_visit':
       return StatusColors.warning;
     default:
-      return const Color(0xFF6B7280);
+      return AdminColors.textSecondary;
   }
 }
 
@@ -66,17 +67,17 @@ Color _statusColor(String? status) {
     case 'scheduled':
       return StatusColors.open;
     case 'confirmed':
-      return const Color(0xFF6366F1);
+      return AdminColors.primary;
     case 'in_progress':
-      return const Color(0xFFF97316);
+      return AdminColors.internal;
     case 'completed':
       return StatusColors.success;
     case 'cancelled':
       return StatusColors.danger;
     case 'rescheduled':
-      return const Color(0xFF8B5CF6);
+      return StatusColors.assigned;
     default:
-      return const Color(0xFF6B7280);
+      return AdminColors.textSecondary;
   }
 }
 
@@ -789,7 +790,7 @@ class _MySchedulePageState extends State<MySchedulePage>
                                   fontSize: 11,
                                   fontWeight: FontWeight.w500,
                                   color: daysLabel == 'Today'
-                                      ? const Color(0xFFF97316)
+                                      ? AdminColors.internal
                                       : (isDark
                                           ? Brand.darkTextTertiary
                                           : Brand.subtleLight),

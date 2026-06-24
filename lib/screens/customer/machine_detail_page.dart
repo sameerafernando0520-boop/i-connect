@@ -11,6 +11,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../l10n/s.dart';
 import '../../utils/machine_image_helper.dart';
 import 'ticket_detail_page.dart';
@@ -823,9 +824,9 @@ class _MachineDetailPageState extends State<MachineDetailPage> {
       case 'Digital Printers':
         return Brand.royalBlue;
       case 'CNC Routers':
-        return const Color(0xFFE65100);
+        return AdminColors.internal;
       case 'Laser Cutters':
-        return const Color(0xFF6A1B9A);
+        return AdminColors.primary;
       case 'Finishing Equipment':
         return Brand.lightGreen;
       default:

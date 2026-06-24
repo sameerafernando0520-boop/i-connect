@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/common/ic_icons.dart';
 
 class MyMachineDetailPage extends StatefulWidget {
@@ -171,11 +172,11 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
       case 'active':
         return isDark ? Brand.lightGreenBright : Brand.lightGreen;
       case 'service':
-        return isDark ? const Color(0xFFFFB74D) : const Color(0xFFFF9800);
+        return isDark ? AdminColors.warning : AdminColors.internal;
       case 'inactive':
-        return isDark ? const Color(0xFFFF6B6B) : const Color(0xFFE53935);
+        return isDark ? StatusColors.danger : AdminColors.error;
       default:
-        return isDark ? Brand.darkTextSecondary : Colors.grey;
+        return isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
     }
   }
 
@@ -359,7 +360,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
               child: Icon(
                 _isFavorite ? Icons.star_rounded : Icons.star_border_rounded,
                 color: _isFavorite
-                    ? const Color(0xFFFF9800)
+                    ? AdminColors.internal
                     : (isDark ? Brand.darkTextSecondary : Brand.subtleLight),
                 size: 20,
               ),
@@ -699,11 +700,11 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
   Widget _buildQuickStats(bool isDark) {
     final svcDays = _serviceDaysLeft;
     final svcColor = svcDays == null
-        ? (isDark ? Brand.darkTextSecondary : Colors.grey)
+        ? (isDark ? Brand.darkTextSecondary : AdminColors.textSecondary)
         : svcDays < 0
-            ? (isDark ? const Color(0xFFFF6B6B) : const Color(0xFFE53935))
+            ? (isDark ? StatusColors.danger : AdminColors.error)
             : svcDays <= 7
-                ? (isDark ? const Color(0xFFFFB74D) : const Color(0xFFFF9800))
+                ? (isDark ? AdminColors.warning : AdminColors.internal)
                 : (isDark ? Brand.lightGreenBright : Brand.lightGreen);
 
     return Row(children: [
@@ -716,10 +717,10 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                 ? '${_warrantyDaysLeft}d left'
                 : 'Expired',
         color: _warrantyDate == null
-            ? (isDark ? Brand.darkTextSecondary : Colors.grey)
+            ? (isDark ? Brand.darkTextSecondary : AdminColors.textSecondary)
             : _warrantyValid
                 ? (isDark ? Brand.lightGreenBright : Brand.lightGreen)
-                : (isDark ? const Color(0xFFFF6B6B) : const Color(0xFFE53935)),
+                : (isDark ? StatusColors.danger : AdminColors.error),
         isDark: isDark,
       ),
       const SizedBox(width: 10),
@@ -740,8 +741,8 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
         label: 'Favorite',
         value: _isFavorite ? 'Yes' : 'No',
         color: _isFavorite
-            ? const Color(0xFFFF9800)
-            : (isDark ? Brand.darkTextSecondary : Colors.grey),
+            ? AdminColors.internal
+            : (isDark ? Brand.darkTextSecondary : AdminColors.textSecondary),
         isDark: isDark,
       ),
     ]);
@@ -963,7 +964,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
 
     final warrantyColor = _warrantyValid
         ? (isDark ? Brand.lightGreenBright : Brand.lightGreen)
-        : (isDark ? const Color(0xFFFF6B6B) : const Color(0xFFE53935));
+        : (isDark ? StatusColors.danger : AdminColors.error);
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -1033,8 +1034,8 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
               valueColor: AlwaysStoppedAnimation<Color>(
                 _warrantyDaysLeft <= 30
                     ? (isDark
-                        ? const Color(0xFFFFB74D)
-                        : const Color(0xFFFF9800))
+                        ? AdminColors.warning
+                        : AdminColors.internal)
                     : warrantyColor,
               ),
             ),
@@ -1304,12 +1305,12 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
             border: Border.all(
               color: isOverdue
                   ? (isDark
-                      ? const Color(0xFFFF6B6B).withAlpha(77)
-                      : const Color(0xFFE53935).withAlpha(51))
+                      ? StatusColors.danger.withAlpha(77)
+                      : AdminColors.error.withAlpha(51))
                   : isDueSoon
                       ? (isDark
-                          ? const Color(0xFFFFB74D).withAlpha(77)
-                          : const Color(0xFFFF9800).withAlpha(51))
+                          ? AdminColors.warning.withAlpha(77)
+                          : AdminColors.internal.withAlpha(51))
                       : (isDark ? Brand.darkBorder : Brand.borderLight),
             ),
           ),
@@ -1322,12 +1323,12 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                 decoration: BoxDecoration(
                   color: (isOverdue
                           ? (isDark
-                              ? const Color(0xFFFF6B6B)
-                              : const Color(0xFFE53935))
+                              ? StatusColors.danger
+                              : AdminColors.error)
                           : isDueSoon
                               ? (isDark
-                                  ? const Color(0xFFFFB74D)
-                                  : const Color(0xFFFF9800))
+                                  ? AdminColors.warning
+                                  : AdminColors.internal)
                               : (isDark
                                   ? Brand.lightGreenBright
                                   : Brand.lightGreen))
@@ -1339,12 +1340,12 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                   size: 22,
                   color: isOverdue
                       ? (isDark
-                          ? const Color(0xFFFF6B6B)
-                          : const Color(0xFFE53935))
+                          ? StatusColors.danger
+                          : AdminColors.error)
                       : isDueSoon
                           ? (isDark
-                              ? const Color(0xFFFFB74D)
-                              : const Color(0xFFFF9800))
+                              ? AdminColors.warning
+                              : AdminColors.internal)
                           : (isDark
                               ? Brand.lightGreenBright
                               : Brand.lightGreen),
@@ -1366,12 +1367,12 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
                           fontWeight: FontWeight.w700,
                           color: isOverdue
                               ? (isDark
-                                  ? const Color(0xFFFF6B6B)
-                                  : const Color(0xFFE53935))
+                                  ? StatusColors.danger
+                                  : AdminColors.error)
                               : isDueSoon
                                   ? (isDark
-                                      ? const Color(0xFFFFB74D)
-                                      : const Color(0xFFFF9800))
+                                      ? AdminColors.warning
+                                      : AdminColors.internal)
                                   : (isDark
                                       ? Brand.darkTextPrimary
                                       : Brand.royalBlueDark),
@@ -1572,7 +1573,7 @@ class _MyMachineDetailPageState extends State<MyMachineDetailPage>
           _optionItem(
             icon: _isFavorite ? Icons.star_border_rounded : Icons.star_rounded,
             label: _isFavorite ? 'Remove from Favorites' : 'Add to Favorites',
-            color: const Color(0xFFFF9800),
+            color: AdminColors.internal,
             isDark: isDark,
             onTap: () {
               Navigator.pop(ctx);

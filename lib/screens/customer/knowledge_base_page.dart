@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../utils/time_utils.dart';
 import '../../services/points_service.dart';
 import '../../widgets/customer/customer_nav_bar.dart';
@@ -371,15 +372,15 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
       case 'manual':
         return Brand.royalBlueDark;
       case 'video':
-        return const Color(0xFFE53935);
+        return AdminColors.error;
       case 'troubleshooting':
-        return const Color(0xFFFF9800);
+        return AdminColors.internal;
       case 'faq':
         return Brand.lightGreen;
       case 'guide':
         return Brand.royalBlueLight;
       default:
-        return Colors.grey;
+        return AdminColors.textSecondary;
     }
   }
 
@@ -411,7 +412,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
             child: Text(message,
                 style: const TextStyle(fontWeight: FontWeight.w600))),
       ]),
-      backgroundColor: const Color(0xFFE53935),
+      backgroundColor: AdminColors.error,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Brand.r(14))),
       margin: const EdgeInsets.all(16),
@@ -571,7 +572,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                     style: TextStyle(
                         fontSize: 11,
                         letterSpacing: 0.3,
-                        color: const Color(0xFF8FA3C8),
+                        color: Brand.navyHeroLabel,
                         fontWeight: FontWeight.w500)),
                 const SizedBox(height: 2),
                 const Text('Knowledge Base',
@@ -701,13 +702,13 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
               isDark),
           _buildStatDivider(isDark),
           _buildStatItem(Icons.play_circle_rounded, '$videoCount', 'Videos',
-              const Color(0xFFE53935), isDark),
+              AdminColors.error, isDark),
           _buildStatDivider(isDark),
           _buildStatItem(Icons.visibility_rounded, '$totalViews', 'Views',
               isDark ? Brand.royalBlueGlow : Brand.royalBlueLight, isDark),
           _buildStatDivider(isDark),
           _buildStatItem(Icons.bookmark_rounded, '${_bookmarkedIds.length}',
-              'Saved', Colors.amber, isDark),
+              'Saved', AdminColors.warning, isDark),
         ],
       ),
     );
@@ -1479,7 +1480,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                           ? Icons.bookmark_rounded
                           : Icons.bookmark_border_rounded,
                       color: isBookmarked
-                          ? Colors.amber
+                          ? AdminColors.warning
                           : Colors.white.withAlpha(((0.4) * 255).toInt()),
                       size: 22)),
               const SizedBox(width: 10),
@@ -1758,7 +1759,7 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                             : Icons.bookmark_border_rounded,
                         size: 20,
                         color: isBookmarked
-                            ? Colors.amber
+                            ? AdminColors.warning
                             : (isDark
                                 ? Brand.darkTextTertiary
                                 : Brand.subtleLight.withAlpha(((0.3) * 255).toInt())))),
@@ -1846,11 +1847,11 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                               width: 36,
                               height: 36,
                               decoration: BoxDecoration(
-                                  color: Colors.amber
+                                  color: AdminColors.warning
                                       .withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
                                   borderRadius: BorderRadius.circular(Brand.r(11))),
                               child: const Icon(Icons.bookmark_rounded,
-                                  color: Colors.amber, size: 18)),
+                                  color: AdminColors.warning, size: 18)),
                           const SizedBox(width: 12),
                           Text('Saved Articles (${bookmarked.length})',
                               style: TextStyle(

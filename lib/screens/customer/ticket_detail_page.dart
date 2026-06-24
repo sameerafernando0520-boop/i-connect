@@ -21,6 +21,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/common/estimate_chat_card.dart';
@@ -1061,15 +1062,15 @@ class _TicketDetailPageState extends State<TicketDetailPage>
   Color _getPriorityColor(String priority) {
     switch (priority.toLowerCase()) {
       case 'urgent':
-        return const Color(0xFFE53935);
+        return AdminColors.error;
       case 'high':
-        return const Color(0xFFFF9800);
+        return AdminColors.internal;
       case 'medium':
         return Brand.royalBlueLight;
       case 'low':
         return Brand.lightGreen;
       default:
-        return Colors.grey;
+        return AdminColors.textSecondary;
     }
   }
 
@@ -1322,7 +1323,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                         child: Row(
                           children: [
                             const Icon(Icons.navigation_rounded,
-                                size: 16, color: Color(0xFF16A34A)),
+                                size: 16, color: AdminColors.success),
                             const SizedBox(width: 6),
                             Text(
                               'Your engineer is on the way',
@@ -1472,23 +1473,23 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                             horizontal: 6, vertical: 3),
                         decoration: BoxDecoration(
                           color:
-                              Colors.orange.withAlpha(((isDark ? 0.15 : 0.08) * 255).toInt()),
+                              AdminColors.internal.withAlpha(((isDark ? 0.15 : 0.08) * 255).toInt()),
                           borderRadius: BorderRadius.circular(Brand.r(10)),
                           border:
-                              Border.all(color: Colors.orange.withAlpha(51)),
+                              Border.all(color: AdminColors.internal.withAlpha(51)),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Icon(Icons.priority_high_rounded,
-                                size: 10, color: Colors.orange[700]),
+                                size: 10, color: AdminColors.internal[700]),
                             const SizedBox(width: 2),
                             Text(
                               'ESCALATED',
                               style: TextStyle(
                                 fontSize: 11,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.orange[700],
+                                color: AdminColors.internal[700],
                                 letterSpacing: 0.3,
                               ),
                             ),
@@ -1634,7 +1635,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                         width: 7,
                         height: 7,
                         decoration: const BoxDecoration(
-                          color: Color(0xFF4CAF50),
+                          color: AdminColors.accent,
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -1645,8 +1646,8 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                           fontSize: 11,
                           fontWeight: FontWeight.w600,
                           color: isDark
-                              ? const Color(0xFF4CAF50)
-                              : Colors.green.shade600,
+                              ? AdminColors.accent
+                              : AdminColors.accent.shade600,
                         ),
                       ),
                     ],
@@ -1694,7 +1695,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
     final est = DateTime.parse(_ticket!['estimated_resolution']);
     final remaining = est.difference(DateTime.now());
     final isOverdue = remaining.isNegative;
-    final color = isOverdue ? Colors.orange : Brand.royalBlueLight;
+    final color = isOverdue ? AdminColors.internal : Brand.royalBlueLight;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -1818,7 +1819,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                     _buildBadge(
                       icon: Icons.refresh_rounded,
                       label: 'Reopened ${_ticket!['reopened_count']}x',
-                      color: Colors.orange,
+                      color: AdminColors.internal,
                       isDark: isDark,
                     ),
                   if (_ticket!['escalated'] == true)
@@ -1971,7 +1972,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Icon(Icons.location_on_rounded,
-                    size: 16, color: Colors.orange),
+                    size: 16, color: AdminColors.internal),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
@@ -3330,7 +3331,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                                 : Icons.star_outline_rounded,
                             size: 42,
                             color: rating <= selectedRating
-                                ? Colors.amber
+                                ? AdminColors.warning
                                 : (isDark
                                     ? Brand.darkBorderLight
                                     : Brand.borderLight),
@@ -3353,7 +3354,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w700,
-                    color: Colors.amber.shade700,
+                    color: AdminColors.warning.shade700,
                   ),
                 ),
                 const SizedBox(height: 22),
@@ -3520,7 +3521,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
                                   : Icons.star_outline_rounded,
                               size: 16,
                               color: i < rating
-                                  ? Colors.amber
+                                  ? AdminColors.warning
                                   : (isDark
                                       ? Brand.darkBorderLight
                                       : Brand.borderLight),
@@ -3697,7 +3698,7 @@ class _TicketDetailPageState extends State<TicketDetailPage>
               _buildOptionItem(
                 icon: Icons.refresh_rounded,
                 label: S.of(context)!.ticketReopen,
-                color: Colors.orange,
+                color: AdminColors.internal,
                 isDark: isDark,
                 onTap: () {
                   Navigator.pop(context);

@@ -14,6 +14,7 @@ import 'package:supabase_flutter/supabase_flutter.dart'
         PostgresChangeFilterType;
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../l10n/s.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
@@ -53,7 +54,7 @@ class _NType {
       case 'warranty_expiry':
       case 'warranty_extended':
         return _NType(Icons.shield_rounded,
-            isDark ? const Color(0xFFCE93D8) : const Color(0xFF6A1B9A));
+            isDark ? StatusColors.assigned : AdminColors.primary);
       case 'order_update':
       case 'order_confirmed':
       case 'order_shipped':
@@ -68,12 +69,12 @@ class _NType {
       case 'announcement':
       case 'broadcast':
         return _NType(Icons.campaign_rounded,
-            isDark ? const Color(0xFFFF8A65) : const Color(0xFFE65100));
+            isDark ? AdminColors.internal : AdminColors.internal);
       case 'message':
       case 'chat':
       case 'new_message':
         return _NType(Icons.chat_bubble_rounded,
-            isDark ? const Color(0xFF80CBC4) : const Color(0xFF00695C));
+            isDark ? AdminColors.info : AdminColors.info);
       case 'system':
       default:
         return _NType(Icons.notifications_rounded,
@@ -753,7 +754,7 @@ class _NotificationListPageState extends State<NotificationListPage>
           decoration: BoxDecoration(
             color: Colors.white.withAlpha(18),
             borderRadius: BorderRadius.circular(Brand.r(12)),
-            border: Border.all(color: const Color(0xFF2A3F6E)),
+            border: Border.all(color: Brand.royalBlue),
           ),
           child: Icon(icon, color: Colors.white, size: 19),
         ),

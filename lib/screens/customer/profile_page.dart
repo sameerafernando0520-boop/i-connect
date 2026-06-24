@@ -12,6 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:i_connect/l10n/s.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../providers/theme_provider.dart';
 import '../../providers/locale_provider.dart';
 import '../../services/notification_service.dart';
@@ -691,7 +692,7 @@ class _ProfilePageState extends State<ProfilePage>
         context: context,
         builder: (context) => _confirmDialog(
               icon: Icons.warning_rounded,
-              iconColor: isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
+              iconColor: isDark ? StatusColors.danger : StatusColors.danger,
               title: 'Sign Out & Contact Support',
               message:
                   'To deactivate your account, please contact support at marketing@ifrontiers.lk after signing out.',
@@ -728,7 +729,7 @@ class _ProfilePageState extends State<ProfilePage>
         context: context,
         builder: (context) => _confirmDialog(
             icon: Icons.logout_rounded,
-            iconColor: _isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
+            iconColor: _isDark ? StatusColors.danger : StatusColors.danger,
             title: 'Sign Out?',
             message: 'Are you sure you want to sign out\nof your account?',
             confirmText: t.authLogout,
@@ -826,29 +827,29 @@ class _ProfilePageState extends State<ProfilePage>
         return {
           'label': 'PLATINUM',
           'emoji': '💎',
-          'color': const Color(0xFFE5E4E2),
-          'gradient': [const Color(0xFFE5E4E2), const Color(0xFFB8B8B8)],
+          'color': TierColors.platinum,
+          'gradient': [TierColors.platinum, const Color(0xFFB8B8B8)],
         };
       case 'gold':
         return {
           'label': 'GOLD',
           'emoji': '🥇',
-          'color': const Color(0xFFFFD700),
-          'gradient': [const Color(0xFFFFD700), const Color(0xFFFFA000)],
+          'color': TierColors.gold,
+          'gradient': [TierColors.gold, const Color(0xFFFFA000)],
         };
       case 'silver':
         return {
           'label': 'SILVER',
           'emoji': '🥈',
-          'color': const Color(0xFFC0C0C0),
-          'gradient': [const Color(0xFFC0C0C0), const Color(0xFF9E9E9E)],
+          'color': TierColors.silver,
+          'gradient': [TierColors.silver, AdminColors.textSecondary],
         };
       default:
         return {
           'label': 'BRONZE',
           'emoji': '🥉',
-          'color': const Color(0xFFCD7F32),
-          'gradient': [const Color(0xFFCD7F32), const Color(0xFFA0522D)],
+          'color': TierColors.bronze,
+          'gradient': [TierColors.bronze, const Color(0xFFA0522D)],
         };
     }
   }
@@ -876,10 +877,10 @@ class _ProfilePageState extends State<ProfilePage>
   }
 
   Color _getMilestoneColor() {
-    if (_progressPercentage >= 75) return const Color(0xFF9C27B0);
-    if (_progressPercentage >= 50) return const Color(0xFFFF6D00);
-    if (_progressPercentage >= 25) return const Color(0xFF0097A7);
-    return const Color(0xFF5C6BC0);
+    if (_progressPercentage >= 75) return StatusColors.assigned;
+    if (_progressPercentage >= 50) return AdminColors.internal;
+    if (_progressPercentage >= 25) return Brand.cyanAccentDark;
+    return AdminColors.primary;
   }
 
   IconData _getMilestoneIcon() {
@@ -1065,7 +1066,7 @@ class _ProfilePageState extends State<ProfilePage>
                 borderRadius: BorderRadius.circular(Brand.r(22))),
             child: Icon(Icons.error_outline,
                 size: 36,
-                color: isDark ? const Color(0xFFFF6B6B) : StatusColors.danger)),
+                color: isDark ? StatusColors.danger : StatusColors.danger)),
         const SizedBox(height: 20),
         Text(S.of(context)!.profileLoadFailed,
             style: TextStyle(
@@ -1137,7 +1138,7 @@ class _ProfilePageState extends State<ProfilePage>
         context: context,
         builder: (context) => _confirmDialog(
               icon: Icons.warning_rounded,
-              iconColor: _isDark ? const Color(0xFFFFB74D) : Colors.orange,
+              iconColor: _isDark ? AdminColors.warning : AdminColors.internal,
               title: S.of(context)!.profileDiscardChanges,
               message: 'Your unsaved changes will be lost.',
               confirmText: S.of(context)!.registerDiscard,
@@ -1366,10 +1367,10 @@ class _ProfilePageState extends State<ProfilePage>
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 5),
                       decoration: BoxDecoration(
-                        color: Colors.orange.withAlpha(isDark ? 26 : 31),
+                        color: AdminColors.internal.withAlpha(isDark ? 26 : 31),
                         borderRadius: BorderRadius.circular(Brand.r(10)),
                         border: Border.all(
-                            color: Colors.orange.withAlpha(isDark ? 38 : 46)),
+                            color: AdminColors.internal.withAlpha(isDark ? 38 : 46)),
                       ),
                       child: Row(mainAxisSize: MainAxisSize.min, children: [
                         const Text('🔥', style: TextStyle(fontSize: 11)),
@@ -1377,8 +1378,8 @@ class _ProfilePageState extends State<ProfilePage>
                         Text('$_loginStreak day',
                             style: TextStyle(
                               color: isDark
-                                  ? Colors.orange.shade300
-                                  : Colors.orange.shade700,
+                                  ? AdminColors.internal.shade300
+                                  : AdminColors.internal.shade700,
                               fontSize: 11,
                               fontWeight: FontWeight.w700,
                             )),
@@ -1532,9 +1533,9 @@ class _ProfilePageState extends State<ProfilePage>
       _Stat((c) => IcTicketIcon(color: c, size: 19), '$_totalTickets',
           'Tickets', isDark ? Brand.lightGreenBright : Brand.lightGreen),
       _Stat((c) => IcChatGearIcon(color: c, size: 19), '$_openTickets', 'Open',
-          isDark ? const Color(0xFFFFB74D) : Colors.orange),
+          isDark ? AdminColors.warning : AdminColors.internal),
       _Stat((c) => Icon(Icons.check_circle_rounded, color: c, size: 19),
-          '$_resolvedTickets', 'Resolved', const Color(0xFF4CAF50)),
+          '$_resolvedTickets', 'Resolved', AdminColors.accent),
     ];
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
@@ -1701,10 +1702,10 @@ class _ProfilePageState extends State<ProfilePage>
             }),
         const SizedBox(height: 16),
         Row(children: [
-          _mMarker('Starter', 0, const Color(0xFF5C6BC0), isDark),
-          _mMarker('Explorer', 25, const Color(0xFF0097A7), isDark),
-          _mMarker('Achiever', 50, const Color(0xFFFF6D00), isDark),
-          _mMarker('Champion', 75, const Color(0xFF9C27B0), isDark),
+          _mMarker('Starter', 0, AdminColors.primary, isDark),
+          _mMarker('Explorer', 25, Brand.cyanAccentDark, isDark),
+          _mMarker('Achiever', 50, AdminColors.internal, isDark),
+          _mMarker('Champion', 75, StatusColors.assigned, isDark),
         ]),
       ]),
     );
@@ -1773,22 +1774,22 @@ class _ProfilePageState extends State<ProfilePage>
       'bronze': {
         'label': 'Bronze',
         'emoji': '🥉',
-        'color': const Color(0xFFCD7F32),
+        'color': TierColors.bronze,
       },
       'silver': {
         'label': 'Silver',
         'emoji': '🥈',
-        'color': const Color(0xFF9E9E9E),
+        'color': AdminColors.textSecondary,
       },
       'gold': {
         'label': 'Gold',
         'emoji': '🥇',
-        'color': const Color(0xFFF59E0B),
+        'color': AdminColors.warning,
       },
       'platinum': {
         'label': 'Platinum',
         'emoji': '💎',
-        'color': const Color(0xFF14B8A6),
+        'color': AdminColors.info,
       },
     };
 
@@ -1938,7 +1939,7 @@ class _ProfilePageState extends State<ProfilePage>
                             ? color.withAlpha(isDark ? 38 : 26)
                             : (isDark
                                 ? Brand.darkCardElevated
-                                : const Color(0xFFF1F5F9)),
+                                : AdminColors.background),
                         borderRadius: BorderRadius.circular(Brand.r(10)),
                         border: isUnlocked
                             ? Border.all(
@@ -1950,7 +1951,7 @@ class _ProfilePageState extends State<ProfilePage>
                           isUnlocked ? emoji : '🔒',
                           style: TextStyle(
                             fontSize: 16,
-                            color: isUnlocked ? null : Colors.grey,
+                            color: isUnlocked ? null : AdminColors.textSecondary,
                           ),
                         ),
                       ),
@@ -2042,7 +2043,7 @@ class _ProfilePageState extends State<ProfilePage>
                                             ? color.withAlpha(isDark ? 31 : 20)
                                             : (isDark
                                                 ? Brand.darkCardElevated
-                                                : const Color(0xFFF1F5F9)),
+                                                : AdminColors.background),
                                         borderRadius:
                                             BorderRadius.circular(Brand.r(8)),
                                       ),
@@ -2070,7 +2071,7 @@ class _ProfilePageState extends State<ProfilePage>
                                               color: isUnlocked
                                                   ? (isDark
                                                       ? Brand.darkTextPrimary
-                                                      : const Color(0xFF1E293B))
+                                                      : Brand.darkCard)
                                                   : (isDark
                                                       ? Brand.darkTextTertiary
                                                       : Brand.subtleLight),
@@ -2253,7 +2254,7 @@ class _ProfilePageState extends State<ProfilePage>
                                     Icon(Icons.close_rounded,
                                         size: 14,
                                         color: isDark
-                                            ? const Color(0xFFFF6B6B)
+                                            ? StatusColors.danger
                                             : StatusColors.danger),
                                     const SizedBox(width: 3),
                                     Text(S.of(context)!.commonCancel,
@@ -2261,7 +2262,7 @@ class _ProfilePageState extends State<ProfilePage>
                                             fontSize: 11,
                                             fontWeight: FontWeight.w700,
                                             color: isDark
-                                                ? const Color(0xFFFF6B6B)
+                                                ? StatusColors.danger
                                                 : StatusColors.danger)),
                                   ])))),
               ]),
@@ -2658,7 +2659,7 @@ class _ProfilePageState extends State<ProfilePage>
                 Icons.auto_stories_rounded,
                 'Guides',
                 '',
-                isDark ? const Color(0xFFCE93D8) : const Color(0xFF6A1B9A),
+                isDark ? StatusColors.assigned : AdminColors.primary,
                 isDark,
                 () => CustomerNavController.switchTab(3)),
           ]),
@@ -2765,7 +2766,7 @@ class _ProfilePageState extends State<ProfilePage>
         _documentTile(
           isDark: isDark,
           icon: Icons.request_quote_rounded,
-          accent: isDark ? const Color(0xFFCE93D8) : const Color(0xFF6A1B9A),
+          accent: isDark ? StatusColors.assigned : AdminColors.primary,
           title: S.of(context)!.profileMyQuotations,
           subtitle: S.of(context)!.profileMyQuotationsDesc,
           onTap: () => Navigator.push(
@@ -2883,7 +2884,7 @@ class _ProfilePageState extends State<ProfilePage>
     for (final c in callContacts) {
       contactWidgets.add(_contactBtn(
         Icons.phone_rounded,
-        const Color(0xFF4CAF50),
+        AdminColors.accent,
         c['label'] as String? ?? 'Call',
         () => _launchUrl('tel:${c['value']}'),
         isDark,
@@ -2901,7 +2902,7 @@ class _ProfilePageState extends State<ProfilePage>
     for (final c in emailContacts) {
       contactWidgets.add(_contactBtn(
         Icons.email_rounded,
-        isDark ? const Color(0xFFFF80AB) : const Color(0xFFE91E63),
+        isDark ? const Color(0xFFFF80AB) : StatusColors.danger,
         c['label'] as String? ?? 'Email',
         () => _launchUrl('mailto:${c['value']}'),
         isDark,
@@ -2920,11 +2921,11 @@ class _ProfilePageState extends State<ProfilePage>
     // Fallback if DB contacts not loaded yet
     if (contactWidgets.isEmpty) {
       contactWidgets.addAll([
-        _contactBtn(Icons.phone_rounded, const Color(0xFF4CAF50), 'Call',
+        _contactBtn(Icons.phone_rounded, AdminColors.accent, 'Call',
             () => _launchUrl('tel:0777244882'), isDark),
         _contactBtn(
             Icons.email_rounded,
-            isDark ? const Color(0xFFFF80AB) : const Color(0xFFE91E63),
+            isDark ? const Color(0xFFFF80AB) : StatusColors.danger,
             'Email',
             () => _launchUrl('mailto:marketing@ifrontiers.lk'),
             isDark),
@@ -3184,7 +3185,7 @@ class _ProfilePageState extends State<ProfilePage>
               _unreadNotifications > 0
                   ? '$_unreadNotifications unread'
                   : 'Manage alerts',
-              isDark ? const Color(0xFFFFB74D) : const Color(0xFFFF9800),
+              isDark ? AdminColors.warning : AdminColors.internal,
               isDark, () async {
             await Navigator.push(
                 context,
@@ -3198,7 +3199,7 @@ class _ProfilePageState extends State<ProfilePage>
               Icons.lock_rounded,
               'Change Password',
               'Reset via email link',
-              isDark ? const Color(0xFFCE93D8) : const Color(0xFF6A1B9A),
+              isDark ? StatusColors.assigned : AdminColors.primary,
               isDark,
               _changePassword),
           _sDivider(isDark),
@@ -3240,7 +3241,7 @@ class _ProfilePageState extends State<ProfilePage>
               Icons.description_rounded,
               'Terms & Conditions',
               'Read our terms',
-              const Color(0xFF795548),
+              TierColors.bronze2,
               isDark,
               () => _showInfoPage('Terms & Conditions')),
           _sDivider(isDark),
@@ -3248,7 +3249,7 @@ class _ProfilePageState extends State<ProfilePage>
               Icons.privacy_tip_rounded,
               'Privacy Policy',
               'Your data protection',
-              isDark ? const Color(0xFFCE93D8) : const Color(0xFF9C27B0),
+              isDark ? StatusColors.assigned : StatusColors.assigned,
               isDark,
               () => _showInfoPage('Privacy Policy')),
           _sDivider(isDark),
@@ -3347,7 +3348,7 @@ class _ProfilePageState extends State<ProfilePage>
               child: Row(children: [
                 Icon(Icons.warning_amber_rounded,
                     color:
-                        isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
+                        isDark ? StatusColors.danger : StatusColors.danger,
                     size: 18),
                 const SizedBox(width: 8),
                 Text('Account',
@@ -3355,7 +3356,7 @@ class _ProfilePageState extends State<ProfilePage>
                         fontSize: 12,
                         fontWeight: FontWeight.w700,
                         color: isDark
-                            ? const Color(0xFFFF6B6B)
+                            ? StatusColors.danger
                             : StatusColors.danger)),
               ])),
           _settingItem(
@@ -3370,7 +3371,7 @@ class _ProfilePageState extends State<ProfilePage>
               Icons.person_off_rounded,
               'Deactivate Account',
               'Temporarily disable your account',
-              isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
+              isDark ? StatusColors.danger : StatusColors.danger,
               isDark,
               _deactivateAccount),
         ]));
@@ -3399,7 +3400,7 @@ class _ProfilePageState extends State<ProfilePage>
                         children: [
                           Icon(Icons.logout_rounded,
                               color: isDark
-                                  ? const Color(0xFFFF6B6B)
+                                  ? StatusColors.danger
                                   : StatusColors.danger,
                               size: 22),
                           const SizedBox(width: 10),
@@ -3408,7 +3409,7 @@ class _ProfilePageState extends State<ProfilePage>
                                   fontSize: 15,
                                   fontWeight: FontWeight.w700,
                                   color: isDark
-                                      ? const Color(0xFFFF6B6B)
+                                      ? StatusColors.danger
                                       : StatusColors.danger)),
                         ])))));
   }
@@ -3593,7 +3594,7 @@ class _ProfilePageState extends State<ProfilePage>
                 'Remove Photo',
                 'Use initials instead',
                 StatusColors.danger.withAlpha(26),
-                isDark ? const Color(0xFFFF6B6B) : StatusColors.danger,
+                isDark ? StatusColors.danger : StatusColors.danger,
                 isDark,
                 () => Navigator.pop(context, 'remove')),
           ],

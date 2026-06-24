@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../services/points_service.dart';
 import 'ticket_detail_page.dart';
@@ -60,49 +61,49 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
     {
       'value': 'Technical Issue',
       'icon': Icons.bug_report_rounded,
-      'color': const Color(0xFFE53935),
+      'color': AdminColors.error,
       'desc': 'Software or hardware problems',
     },
     {
       'value': 'Maintenance Request',
       'icon': Icons.build_rounded,
-      'color': const Color(0xFFFF9800),
+      'color': AdminColors.internal,
       'desc': 'Scheduled or preventive service',
     },
     {
       'value': 'Parts Request',
       'icon': Icons.settings_rounded,
-      'color': const Color(0xFF9C27B0),
+      'color': StatusColors.assigned,
       'desc': 'Spare parts or consumables',
     },
     {
       'value': 'Installation Support',
       'icon': Icons.handyman_rounded,
-      'color': const Color(0xFF2196F3),
+      'color': AdminColors.info,
       'desc': 'Setup and configuration help',
     },
     {
       'value': 'Training Request',
       'icon': Icons.school_rounded,
-      'color': const Color(0xFF4CAF50),
+      'color': AdminColors.accent,
       'desc': 'Operator training needed',
     },
     {
       'value': 'Performance Issue',
       'icon': Icons.speed_rounded,
-      'color': const Color(0xFFFF5722),
+      'color': AdminColors.internal,
       'desc': 'Quality or speed problems',
     },
     {
       'value': 'Error/Fault',
       'icon': Icons.error_outline_rounded,
-      'color': const Color(0xFFD32F2F),
+      'color': AdminColors.error,
       'desc': 'Error codes or machine faults',
     },
     {
       'value': 'Other',
       'icon': Icons.more_horiz_rounded,
-      'color': const Color(0xFF607D8B),
+      'color': AdminColors.textSecondary,
       'desc': 'Something else',
     },
   ];
@@ -112,28 +113,28 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
       'value': 'low',
       'label': 'Low',
       'desc': 'Minor issue',
-      'color': const Color(0xFF4CAF50),
+      'color': AdminColors.accent,
       'icon': Icons.arrow_downward_rounded,
     },
     {
       'value': 'medium',
       'label': 'Medium',
       'desc': 'Normal issue',
-      'color': const Color(0xFF2196F3),
+      'color': AdminColors.info,
       'icon': Icons.remove_rounded,
     },
     {
       'value': 'high',
       'label': 'High',
       'desc': 'Affecting work',
-      'color': const Color(0xFFFF9800),
+      'color': AdminColors.internal,
       'icon': Icons.arrow_upward_rounded,
     },
     {
       'value': 'urgent',
       'label': 'Urgent',
       'desc': 'Machine down',
-      'color': const Color(0xFFE53935),
+      'color': AdminColors.error,
       'icon': Icons.priority_high_rounded,
     },
   ];
@@ -930,7 +931,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
     for (var p in _priorities) {
       if (p['value'] == priority) return p['color'] as Color;
     }
-    return Colors.grey;
+    return AdminColors.textSecondary;
   }
 
   // ─── BUILD ─────────────────────────────────────────────────
@@ -1036,11 +1037,11 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                 width: 64,
                 height: 64,
                 decoration: BoxDecoration(
-                  color: Colors.orange.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
+                  color: AdminColors.internal.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
                   borderRadius: BorderRadius.circular(Brand.r(20)),
                 ),
                 child: Icon(Icons.warning_rounded,
-                    color: Colors.orange.shade400, size: 30),
+                    color: AdminColors.internal.shade400, size: 30),
               ),
               const SizedBox(height: 18),
               Text('Leave Ticket?',
@@ -1507,19 +1508,19 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 7, vertical: 3),
                                     decoration: BoxDecoration(
-                                      color: Colors.orange
+                                      color: AdminColors.internal
                                           .withAlpha(((isDark ? 0.15 : 0.08) * 255).toInt()),
                                       borderRadius: BorderRadius.circular(Brand.r(10)),
                                       border: Border.all(
                                           color:
-                                              Colors.orange.withAlpha(((0.15) * 255).toInt())),
+                                              AdminColors.internal.withAlpha(((0.15) * 255).toInt())),
                                     ),
                                     child: const Text(
                                       'IN SERVICE',
                                       style: TextStyle(
                                         fontSize: 11,
                                         fontWeight: FontWeight.w700,
-                                        color: Colors.orange,
+                                        color: AdminColors.internal,
                                         letterSpacing: 0.3,
                                       ),
                                     ),
@@ -1785,9 +1786,9 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
       margin: const EdgeInsets.only(top: 12),
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.orange.withAlpha(((isDark ? 0.08 : 0.05) * 255).toInt()),
+        color: AdminColors.internal.withAlpha(((isDark ? 0.08 : 0.05) * 255).toInt()),
         borderRadius: BorderRadius.circular(Brand.r(16)),
-        border: Border.all(color: Colors.orange.withAlpha(((0.18) * 255).toInt())),
+        border: Border.all(color: AdminColors.internal.withAlpha(((0.18) * 255).toInt())),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1798,11 +1799,11 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                 width: 36,
                 height: 36,
                 decoration: BoxDecoration(
-                  color: Colors.orange.withAlpha(((0.15) * 255).toInt()),
+                  color: AdminColors.internal.withAlpha(((0.15) * 255).toInt()),
                   borderRadius: BorderRadius.circular(Brand.r(10)),
                 ),
                 child: Icon(Icons.warning_amber_rounded,
-                    color: Colors.orange.shade700, size: 18),
+                    color: AdminColors.internal.shade700, size: 18),
               ),
               const SizedBox(width: 10),
               Expanded(
@@ -1811,7 +1812,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
-                    color: Colors.orange.shade700,
+                    color: AdminColors.internal.shade700,
                   ),
                 ),
               ),
@@ -2001,7 +2002,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                         fontWeight: FontWeight.w600,
                         color: _subjectController.text.length >
                                 _subjectMaxLength * 0.9
-                            ? Colors.orange
+                            ? AdminColors.internal
                             : (isDark
                                 ? Brand.darkTextSecondary
                                 : Brand.subtleLight),
@@ -2093,7 +2094,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                         fontWeight: FontWeight.w600,
                         color: _descriptionController.text.length >
                                 _descriptionMaxLength * 0.9
-                            ? Colors.orange
+                            ? AdminColors.internal
                             : (isDark
                                 ? Brand.darkTextSecondary
                                 : Brand.subtleLight),
@@ -2626,7 +2627,7 @@ class _CreateSupportTicketPageState extends State<CreateSupportTicketPage> {
                 gradient: LinearGradient(
                   colors: _canProceedToStep2
                       ? [Brand.royalBlueDark, Brand.royalBlue]
-                      : [Colors.grey, Colors.grey.shade400],
+                      : [AdminColors.textSecondary, AdminColors.textSecondary],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),

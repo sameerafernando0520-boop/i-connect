@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import 'customer_invoice_detail_page.dart';
 import '../../widgets/ds/ds_widgets.dart';
@@ -285,7 +286,7 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
-                  color: const Color(0xFFF59E0B),
+                  color: AdminColors.warning,
                 ),
               ),
             ],
@@ -354,9 +355,9 @@ class _MyInvoicesPageState extends State<MyInvoicesPage> {
       final d = diff.abs();
       return (t.invoiceOverdueByDays(d), StatusColors.danger);
     }
-    if (diff == 0) return (t.invoiceDueToday, const Color(0xFFF59E0B));
+    if (diff == 0) return (t.invoiceDueToday, AdminColors.warning);
     if (diff <= 7) {
-      return (t.invoiceDueInDays(diff), const Color(0xFFF59E0B));
+      return (t.invoiceDueInDays(diff), AdminColors.warning);
     }
     return null;
   }

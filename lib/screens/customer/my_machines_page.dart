@@ -20,6 +20,7 @@ import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../l10n/s.dart';
 import '../../widgets/common/ic_icons.dart';
 import '../../widgets/customer/customer_nav_bar.dart';
@@ -297,11 +298,11 @@ class _MyMachinesPageState extends State<MyMachinesPage>
       case 'active':
         return isDark ? Brand.lightGreenBright : Brand.lightGreen;
       case 'service':
-        return isDark ? const Color(0xFFFFB74D) : const Color(0xFFFF9800);
+        return isDark ? AdminColors.warning : AdminColors.internal;
       case 'inactive':
-        return isDark ? const Color(0xFFFF6B6B) : const Color(0xFFE53935);
+        return isDark ? StatusColors.danger : AdminColors.error;
       default:
-        return isDark ? Brand.darkTextSecondary : Colors.grey;
+        return isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
     }
   }
 
@@ -312,11 +313,11 @@ class _MyMachinesPageState extends State<MyMachinesPage>
       case 'active':
         return isDark ? Brand.lightGreenBright : Brand.lightGreen;
       case 'service':
-        return isDark ? const Color(0xFFFFB74D) : const Color(0xFFFF9800);
+        return isDark ? AdminColors.warning : AdminColors.internal;
       case 'inactive':
-        return isDark ? const Color(0xFFFF6B6B) : const Color(0xFFE53935);
+        return isDark ? StatusColors.danger : AdminColors.error;
       default:
-        return isDark ? Brand.darkTextSecondary : Colors.grey;
+        return isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
     }
   }
 
@@ -515,7 +516,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
               : Colors.white.withAlpha(18),
           borderRadius: BorderRadius.circular(Brand.r(12)),
           border: Border.all(
-            color: active ? Brand.lime : const Color(0xFF2A3F6E),
+            color: active ? Brand.lime : Brand.royalBlue,
           ),
         ),
         child: Icon(icon,
@@ -537,9 +538,9 @@ class _MyMachinesPageState extends State<MyMachinesPage>
       decoration: InputDecoration(
         hintText: 'Search by name, brand, serial number...',
         hintStyle:
-            const TextStyle(color: Color(0xFF8FA3C8), fontSize: 12.5),
+            const TextStyle(color: Brand.navyHeroLabel, fontSize: 12.5),
         prefixIcon: const Icon(Icons.search_rounded,
-            color: Color(0xFF8FA3C8), size: 20),
+            color: Brand.navyHeroLabel, size: 20),
         suffixIcon: _searchQuery.isNotEmpty
             ? GestureDetector(
                 onTap: () {
@@ -547,7 +548,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                   setState(() => _searchQuery = '');
                 },
                 child: const Icon(Icons.close_rounded,
-                    color: Color(0xFF8FA3C8), size: 18),
+                    color: Brand.navyHeroLabel, size: 18),
               )
             : null,
         filled: true,
@@ -557,11 +558,11 @@ class _MyMachinesPageState extends State<MyMachinesPage>
             const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
-          borderSide: const BorderSide(color: Color(0xFF2A3F6E)),
+          borderSide: const BorderSide(color: Brand.royalBlue),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
-          borderSide: const BorderSide(color: Color(0xFF2A3F6E)),
+          borderSide: const BorderSide(color: Brand.royalBlue),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Brand.r(12)),
@@ -596,19 +597,19 @@ class _MyMachinesPageState extends State<MyMachinesPage>
           _buildAlertItem(
               Icons.error_rounded,
               '${serviceOverdue.length} machine${serviceOverdue.length > 1 ? 's' : ''} overdue for service',
-              isDark ? const Color(0xFFFF6B6B) : const Color(0xFFE53935),
+              isDark ? StatusColors.danger : AdminColors.error,
               isDark),
         if (serviceDue.isNotEmpty)
           _buildAlertItem(
               Icons.schedule_rounded,
               '${serviceDue.length} machine${serviceDue.length > 1 ? 's' : ''} due for service this week',
-              isDark ? const Color(0xFFFFB74D) : const Color(0xFFFF9800),
+              isDark ? AdminColors.warning : AdminColors.internal,
               isDark),
         if (warrantyExpiring.isNotEmpty)
           _buildAlertItem(
               Icons.warning_amber_rounded,
               '${warrantyExpiring.length} warranty${warrantyExpiring.length > 1 ? 'ies' : 'y'} expiring within 30 days',
-              isDark ? const Color(0xFFFFB74D) : const Color(0xFFFF9800),
+              isDark ? AdminColors.warning : AdminColors.internal,
               isDark),
       ]),
     );
@@ -922,8 +923,8 @@ class _MyMachinesPageState extends State<MyMachinesPage>
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
           color: isFav
-              ? (isDark ? Brand.darkTextSecondary : Colors.grey.shade400)
-              : const Color(0xFFFF9800),
+              ? (isDark ? Brand.darkTextSecondary : AdminColors.textSecondary)
+              : AdminColors.internal,
           borderRadius: BorderRadius.circular(Brand.r(20)),
         ),
         alignment: Alignment.centerLeft,
@@ -1002,8 +1003,8 @@ class _MyMachinesPageState extends State<MyMachinesPage>
           border: Border.all(
             color: isOverdue
                 ? (isDark
-                    ? const Color(0xFFFF6B6B).withAlpha(77)
-                    : const Color(0xFFE53935).withAlpha(102))
+                    ? StatusColors.danger.withAlpha(77)
+                    : AdminColors.error.withAlpha(102))
                 : (isDark ? Brand.darkBorder : Brand.borderLight),
           ),
           boxShadow: isDark
@@ -1023,11 +1024,11 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                 colors: isOverdue
                     ? [
                         isDark
-                            ? const Color(0xFFFF6B6B)
-                            : const Color(0xFFE53935),
+                            ? StatusColors.danger
+                            : AdminColors.error,
                         isDark
-                            ? const Color(0xFFFF6B6B).withAlpha(153)
-                            : const Color(0xFFFF5252)
+                            ? StatusColors.danger.withAlpha(153)
+                            : StatusColors.danger
                       ]
                     : [statusColor, statusColor.withAlpha(128)],
               ),
@@ -1076,7 +1077,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                     child: Container(
                       padding: const EdgeInsets.all(3),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFF9800),
+                        color: AdminColors.internal,
                         shape: BoxShape.circle,
                         border: Border.all(
                             color: Brand.surface(isDark),
@@ -1228,8 +1229,8 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                             valueColor: AlwaysStoppedAnimation<Color>(
                                 warrantyDays <= 30
                                     ? (isDark
-                                        ? const Color(0xFFFFB74D)
-                                        : const Color(0xFFFF9800))
+                                        ? AdminColors.warning
+                                        : AdminColors.internal)
                                     : (isDark
                                         ? Brand.lightGreenBright
                                         : Brand.lightGreen)),
@@ -1244,11 +1245,11 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                           decoration: BoxDecoration(
                             color: (isOverdue
                                     ? (isDark
-                                        ? const Color(0xFFFF6B6B)
-                                        : const Color(0xFFE53935))
+                                        ? StatusColors.danger
+                                        : AdminColors.error)
                                     : (isDark
-                                        ? const Color(0xFFFFB74D)
-                                        : const Color(0xFFFF9800)))
+                                        ? AdminColors.warning
+                                        : AdminColors.internal))
                                 .withAlpha(isDark ? 26 : 20),
                             borderRadius: BorderRadius.circular(Brand.r(10)),
                           ),
@@ -1260,11 +1261,11 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                                 size: 12,
                                 color: isOverdue
                                     ? (isDark
-                                        ? const Color(0xFFFF6B6B)
-                                        : const Color(0xFFE53935))
+                                        ? StatusColors.danger
+                                        : AdminColors.error)
                                     : (isDark
-                                        ? const Color(0xFFFFB74D)
-                                        : const Color(0xFFFF9800))),
+                                        ? AdminColors.warning
+                                        : AdminColors.internal)),
                             const SizedBox(width: 4),
                             Text(
                                 isOverdue
@@ -1275,11 +1276,11 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                                     fontWeight: FontWeight.w700,
                                     color: isOverdue
                                         ? (isDark
-                                            ? const Color(0xFFFF6B6B)
-                                            : const Color(0xFFE53935))
+                                            ? StatusColors.danger
+                                            : AdminColors.error)
                                         : (isDark
-                                            ? const Color(0xFFFFB74D)
-                                            : const Color(0xFFFF9800)))),
+                                            ? AdminColors.warning
+                                            : AdminColors.internal))),
                           ]),
                         ),
                       ],
@@ -1330,8 +1331,8 @@ class _MyMachinesPageState extends State<MyMachinesPage>
           border: Border.all(
             color: isOverdue
                 ? (isDark
-                    ? const Color(0xFFFF6B6B).withAlpha(77)
-                    : const Color(0xFFE53935).withAlpha(102))
+                    ? StatusColors.danger.withAlpha(77)
+                    : AdminColors.error.withAlpha(102))
                 : (isDark ? Brand.darkBorder : Brand.borderLight),
           ),
           boxShadow: isDark
@@ -1410,7 +1411,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                             ? (isDark
                                 ? Brand.lightGreenBright
                                 : Brand.lightGreen)
-                            : (isDark ? const Color(0xFFFF6B6B) : StatusColors.danger),
+                            : (isDark ? StatusColors.danger : StatusColors.danger),
                         borderRadius: BorderRadius.circular(Brand.r(10))),
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                       const Icon(Icons.verified_user_rounded,
@@ -1432,13 +1433,13 @@ class _MyMachinesPageState extends State<MyMachinesPage>
                   child: Container(
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFF9800),
+                      color: AdminColors.internal,
                       shape: BoxShape.circle,
                       boxShadow: isDark
                           ? null
                           : [
                               BoxShadow(
-                                  color: const Color(0xFFFF9800).withAlpha(77),
+                                  color: AdminColors.internal.withAlpha(77),
                                   blurRadius: 4,
                                   offset: const Offset(0, 2))
                             ],
@@ -1690,7 +1691,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
           label: isFav
               ? S.of(context)!.machineRemoveFavorite
               : S.of(context)!.machineAddFavorite,
-          color: const Color(0xFFFF9800),
+          color: AdminColors.internal,
           isDark: isDark,
           onTap: () {
             Navigator.pop(context);
@@ -1711,7 +1712,7 @@ class _MyMachinesPageState extends State<MyMachinesPage>
         _buildActionItem(
           icon: Icons.description_rounded,
           label: S.of(context)!.machineViewManual,
-          color: isDark ? const Color(0xFF64B5F6) : const Color(0xFF2196F3),
+          color: isDark ? const Color(0xFF64B5F6) : AdminColors.info,
           isDark: isDark,
           onTap: () {
             Navigator.pop(context);
