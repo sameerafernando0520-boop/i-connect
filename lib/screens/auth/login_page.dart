@@ -13,6 +13,7 @@ import '../../config/supabase_config.dart';
 import 'package:supabase_flutter/supabase_flutter.dart'
     show AuthException, AuthResponse;
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../providers/permissions_provider.dart';
 import '../../services/notification_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -135,7 +136,7 @@ class _LoginPageState extends State<LoginPage>
                         'Account not found. Please sign up or contact support.')),
               ],
             ),
-            backgroundColor: Colors.orange.shade700,
+            backgroundColor: AdminColors.internal,
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(Brand.r(12))),
@@ -196,7 +197,7 @@ class _LoginPageState extends State<LoginPage>
               Expanded(child: Text(_friendlyError(e))),
             ],
           ),
-          backgroundColor: isDark ? const Color(0xFFCF6679) : StatusColors.danger,
+          backgroundColor: isDark ? StatusColors.danger : StatusColors.danger,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(Brand.r(12))),
@@ -301,7 +302,7 @@ class _LoginPageState extends State<LoginPage>
                                     ],
                                   ),
                                   backgroundColor: isDark
-                                      ? const Color(0xFFCF6679)
+                                      ? StatusColors.danger
                                       : StatusColors.danger,
                                   behavior: SnackBarBehavior.floating,
                                   shape: RoundedRectangleBorder(
