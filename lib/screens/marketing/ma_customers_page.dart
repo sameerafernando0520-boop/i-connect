@@ -3,13 +3,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import '../../config/brand_colors.dart';
+import '../../config/brand_colors.dart'; // TierColors, StatusColors
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _custColor = Color(0xFF3B82F6);
+const Color _custColor = AdminColors.info;
 
 class MaCustomersPage extends StatefulWidget {
   const MaCustomersPage({super.key});
@@ -323,14 +323,7 @@ class _MaCustomersPageState extends State<MaCustomersPage> {
     );
   }
 
-  Color _tierColorFor(String tier) {
-    switch (tier.toLowerCase()) {
-      case 'silver': return const Color(0xFFC0C0C0);
-      case 'gold': return const Color(0xFFFFD700);
-      case 'platinum': return const Color(0xFF00B4D8);
-      default: return const Color(0xFFCD7F32);
-    }
-  }
+  Color _tierColorFor(String tier) => TierColors.forTier(tier);
 
   String _cap(String s) => s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
 }

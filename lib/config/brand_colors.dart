@@ -187,6 +187,16 @@ class Brand {
   static void setDesign(AppDesign d) => _design = d;
 
   // ── Hero accent families ──────────────────────────────────────
+  static Color get navyHeroLabel => navyHero.label;
+  static Color get violetHeroLabel => violetHero.label;
+  static Color get cyanHeroLabel => cyanHero.label;
+  static Color get emeraldHeroLabel => emeraldHero.label;
+
+  // ── Role accent shorthands ──────────────────────────────────────
+  /// Engineer (field) cyan accent — matches cyan hero family.
+  static const Color cyanAccent = Color(0xFF00B4D8);
+  static const Color cyanAccentDark = Color(0xFF0096B7);
+
   static const HeroPalette navyHero = HeroPalette(
     [splashNavyGlow, splashNavyCore, splashNavyEdge],
     Color(0xD916294F),
@@ -321,4 +331,31 @@ class StatusColors {
   static const Color warningDark = Color(0xFFD97706); // amber-dark
   static const Color danger = Color(0xFFEF4444); // red
   static const Color info = Color(0xFF06B6D4); // cyan
+}
+
+/// Customer tier badge colors — matches DS `--tier-*` tokens.
+class TierColors {
+  TierColors._();
+
+  static const Color bronze = Color(0xFFCD7F32);
+  static const Color bronze2 = Color(0xFFA0522D);
+  static const Color silver = Color(0xFFC0C0C0);
+  static const Color silver2 = Color(0xFF9E9E9E);
+  static const Color gold = Color(0xFFFFD700);
+  static const Color gold2 = Color(0xFFFFA000);
+  static const Color platinum = Color(0xFF00B4D8); // brand cyan for platinum
+  static const Color platinum2 = Color(0xFF0284A8);
+
+  static Color forTier(String tier) {
+    switch (tier.toLowerCase()) {
+      case 'silver':
+        return silver;
+      case 'gold':
+        return gold;
+      case 'platinum':
+        return platinum;
+      default:
+        return bronze; // bronze / free / default
+    }
+  }
 }

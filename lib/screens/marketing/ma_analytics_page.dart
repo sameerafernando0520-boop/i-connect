@@ -8,7 +8,7 @@ import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _anColor = Color(0xFF6366F1);
+const Color _anColor = AdminColors.primary; // analytics accent
 
 class MaAnalyticsPage extends StatefulWidget {
   const MaAnalyticsPage({super.key});
@@ -360,10 +360,10 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
             final colors = [
               _anColor,
               Brand.lightGreen,
-              const Color(0xFFF59E0B),
-              const Color(0xFFEF4444),
-              const Color(0xFF10B981),
-              const Color(0xFFF97316),
+              AdminColors.warning,
+              AdminColors.error,
+              AdminColors.accent,
+              AdminColors.internal,
             ];
             final color = colors[e.key % colors.length];
             return BarChartGroupData(
@@ -547,9 +547,9 @@ class _MaAnalyticsPageState extends State<MaAnalyticsPage>
     final colors = [
       _anColor,
       Brand.lightGreen,
-      const Color(0xFFF59E0B),
-      const Color(0xFFEF4444),
-      const Color(0xFF10B981),
+      AdminColors.warning,
+      AdminColors.error,
+      AdminColors.accent,
     ];
 
     return Container(

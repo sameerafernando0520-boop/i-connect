@@ -7,10 +7,11 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _engAccent = Color(0xFF00B4D8);
+const Color _engAccent = Brand.cyanAccent;
 
 const _typeLabels = {
   'new_install':   'New Install',
@@ -20,11 +21,11 @@ const _typeLabels = {
   'decommission':  'Decommission',
 };
 const _typeColors = {
-  'new_install':   Color(0xFF10B981),
-  'replacement':   Color(0xFF8B5CF6),
-  'upgrade':       Color(0xFF3B82F6),
-  'commissioning': Color(0xFFF59E0B),
-  'decommission':  Color(0xFFEF4444),
+  'new_install':   AdminColors.accent,
+  'replacement':   StatusColors.assigned,
+  'upgrade':       AdminColors.info,
+  'commissioning': AdminColors.warning,
+  'decommission':  AdminColors.error,
 };
 const _statusLabels = {
   'pending':     'Pending',
@@ -34,11 +35,11 @@ const _statusLabels = {
   'cancelled':   'Cancelled',
 };
 const _statusColors = {
-  'pending':     Color(0xFFF59E0B),
-  'scheduled':   Color(0xFF3B82F6),
-  'in_progress': Color(0xFF8B5CF6),
-  'completed':   Color(0xFF10B981),
-  'cancelled':   Color(0xFF6B7280),
+  'pending':     AdminColors.warning,
+  'scheduled':   AdminColors.info,
+  'in_progress': StatusColors.assigned,
+  'completed':   AdminColors.accent,
+  'cancelled':   AdminColors.textSecondary,
 };
 
 class EngineerInstallationDetailPage extends StatefulWidget {
@@ -236,7 +237,7 @@ class _EngineerInstallationDetailPageState
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF10B981)),
+                  backgroundColor: AdminColors.accent),
               onPressed: () => Navigator.pop(ctx, true),
               child: const Text('Submit Completion',
                   style: TextStyle(color: Colors.white)),
@@ -393,8 +394,8 @@ class _EngineerInstallationDetailPageState
     final type     = inst['installation_type'] as String? ?? 'new_install';
     final myStatus = myAssign?['status'] as String? ?? 'assigned';
 
-    final statusColor = _statusColors[status] ?? const Color(0xFF6B7280);
-    final typeColor   = _typeColors[type] ?? const Color(0xFF6B7280);
+    final statusColor = _statusColors[status] ?? AdminColors.textSecondary;
+    final typeColor   = _typeColors[type] ?? AdminColors.textSecondary;
 
     final engineers = ((inst['installation_engineers'] as List?) ?? [])
         .where((e) => (e['status'] as String?) != 'removed')
@@ -491,17 +492,17 @@ class _EngineerInstallationDetailPageState
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF22C55E).withAlpha(_isDark ? 25 : 15),
+                            color: AdminColors.accent.withAlpha(_isDark ? 25 : 15),
                             borderRadius: BorderRadius.circular(Brand.r(8)),
                           ),
                           child: const Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(Icons.phone, size: 14, color: Color(0xFF22C55E)),
+                              Icon(Icons.phone, size: 14, color: AdminColors.accent),
                               SizedBox(width: 4),
                               Text('Call', style: TextStyle(
                                 fontSize: 12, fontWeight: FontWeight.w600,
-                                color: Color(0xFF22C55E),
+                                color: AdminColors.accent,
                               )),
                             ],
                           ),
@@ -678,7 +679,7 @@ class _EngineerInstallationDetailPageState
                               ? _engAccent
                               : _isDark
                                   ? Brand.darkCardElevated
-                                  : const Color(0xFFF1F5F9),
+                                  : AdminColors.background,
                           shape: BoxShape.circle,
                           border: active
                               ? Border.all(
@@ -740,7 +741,7 @@ class _EngineerInstallationDetailPageState
       btn = _actionBtn(
         label: 'Acknowledge Assignment',
         icon: Icons.thumb_up_outlined,
-        color: const Color(0xFF3B82F6),
+        color: AdminColors.info,
         onTap: _acknowledge,
       );
     } else if (myStatus == 'acknowledged' &&
@@ -749,7 +750,7 @@ class _EngineerInstallationDetailPageState
       btn = _actionBtn(
         label: 'Start Installation Work',
         icon: Icons.play_arrow_rounded,
-        color: const Color(0xFF8B5CF6),
+        color: StatusColors.assigned,
         onTap: _startWork,
       );
     } else if (instStatus == 'in_progress') {
@@ -757,7 +758,7 @@ class _EngineerInstallationDetailPageState
       btn = _actionBtn(
         label: 'Submit Completion Report',
         icon: Icons.check_circle_outline,
-        color: const Color(0xFF10B981),
+        color: AdminColors.accent,
         onTap: _complete,
       );
     }
@@ -813,10 +814,10 @@ class _EngineerInstallationDetailPageState
 
     Color dot;
     switch (status) {
-      case 'acknowledged': dot = const Color(0xFF3B82F6); break;
+      case 'acknowledged': dot = AdminColors.info; break;
       case 'in_progress':  dot = _engAccent; break;
-      case 'completed':    dot = const Color(0xFF10B981); break;
-      default:             dot = const Color(0xFFF59E0B);
+      case 'completed':    dot = AdminColors.accent; break;
+      default:             dot = AdminColors.warning;
     }
 
     return Padding(

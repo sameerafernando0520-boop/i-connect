@@ -8,7 +8,7 @@ import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _kbColor = Color(0xFF8B5CF6);
+const Color _kbColor = StatusColors.assigned;
 
 class MaKnowledgeBasePage extends StatefulWidget {
   const MaKnowledgeBasePage({super.key});

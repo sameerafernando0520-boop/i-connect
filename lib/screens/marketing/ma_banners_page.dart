@@ -296,7 +296,7 @@ class _MaBannersPageState extends State<MaBannersPage> {
                 placeholder: (_, __) => Container(height: 140, color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
                     child: const Center(child: CircularProgressIndicator(strokeWidth: 2))),
                 errorWidget: (_, __, ___) => Container(height: 140, color: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
-                    child: const Icon(Icons.broken_image_rounded, color: Colors.grey, size: 40)),
+                    child: Icon(Icons.broken_image_rounded, color: AdminColors.textSub(context), size: 40)),
               ),
             ),
           Padding(
@@ -422,9 +422,9 @@ class _BannerFormDialogState extends State<_BannerFormDialog> {
             child: Container(
               height: 100, width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.grey.withAlpha(30),
+                color: AdminColors.textSub(context).withAlpha(30),
                 borderRadius: BorderRadius.circular(Brand.r(12)),
-                border: Border.all(color: Colors.grey.withAlpha(80)),
+                border: Border.all(color: AdminColors.border(context)),
               ),
               child: _imageFile != null
                   ? ClipRRect(borderRadius: BorderRadius.circular(Brand.r(12)),
@@ -432,10 +432,10 @@ class _BannerFormDialogState extends State<_BannerFormDialog> {
                   : (widget.initial?['image_url'] != null && (widget.initial?['image_url'] as String).isNotEmpty)
                       ? ClipRRect(borderRadius: BorderRadius.circular(Brand.r(12)),
                           child: CachedNetworkImage(imageUrl: widget.initial!['image_url'], fit: BoxFit.cover))
-                      : const Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                          Icon(Icons.add_photo_alternate_rounded, size: 32, color: Colors.grey),
-                          SizedBox(height: 4),
-                          Text('Tap to select image', style: TextStyle(color: Colors.grey, fontSize: 12)),
+                      : Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                          Icon(Icons.add_photo_alternate_rounded, size: 32, color: AdminColors.textSub(context)),
+                          const SizedBox(height: 4),
+                          Text('Tap to select image', style: TextStyle(color: AdminColors.textSub(context), fontSize: 12)),
                         ]),
             ),
           ),

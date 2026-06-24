@@ -7,7 +7,7 @@ import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _tierColor = Color(0xFFF59E0B);
+const Color _tierColor = AdminColors.warning;
 
 class MaTiersPage extends StatefulWidget {
   const MaTiersPage({super.key});
@@ -198,10 +198,10 @@ class _MaTiersPageState extends State<MaTiersPage>
   Widget _buildTierSummary(bool isDark) {
     final tiers = ['Bronze', 'Silver', 'Gold', 'Platinum'];
     final colors = [
-      const Color(0xFFCD7F32),
-      const Color(0xFFC0C0C0),
-      const Color(0xFFFFD700),
-      const Color(0xFF00B4D8),
+      TierColors.bronze,
+      TierColors.silver,
+      TierColors.gold,
+      TierColors.platinum,
     ];
     final icons = [
       Icons.shield_outlined,
@@ -362,7 +362,7 @@ class _MaTiersPageState extends State<MaTiersPage>
           width: 8, height: 8,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: isActive ? color : Colors.grey,
+            color: isActive ? color : AdminColors.textSecondary,
           ),
         ),
         const SizedBox(width: 10),
@@ -390,14 +390,7 @@ class _MaTiersPageState extends State<MaTiersPage>
     );
   }
 
-  Color _tierColorFor(String name) {
-    switch (name.toLowerCase()) {
-      case 'silver': return const Color(0xFFC0C0C0);
-      case 'gold': return const Color(0xFFFFD700);
-      case 'platinum': return const Color(0xFF00B4D8);
-      default: return const Color(0xFFCD7F32); // bronze
-    }
-  }
+  Color _tierColorFor(String name) => TierColors.forTier(name);
 
   String _cap(String s) => s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
 }

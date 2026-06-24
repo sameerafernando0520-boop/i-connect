@@ -8,7 +8,7 @@ import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _catColor = Color(0xFF14B8A6);
+const Color _catColor = AdminColors.info; // catalog teal accent
 
 class MaCatalogPage extends StatefulWidget {
   const MaCatalogPage({super.key});

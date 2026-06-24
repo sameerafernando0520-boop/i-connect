@@ -8,7 +8,7 @@ import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _ptColor = Color(0xFFF97316);
+const Color _ptColor = AdminColors.internal;
 
 class MaPointsPage extends StatefulWidget {
   const MaPointsPage({super.key});

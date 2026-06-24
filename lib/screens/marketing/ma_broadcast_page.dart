@@ -8,7 +8,7 @@ import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _bcColor = Color(0xFFEF4444);
+const Color _bcColor = AdminColors.error;
 
 class MaBroadcastPage extends StatefulWidget {
   const MaBroadcastPage({super.key});
@@ -95,7 +95,7 @@ class _MaBroadcastPageState extends State<MaBroadcastPage> {
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    colors: [Color(0xFFEF4444), Color(0xFFDC2626)],
+                    colors: [AdminColors.error, const Color(0xFFDC2626)],
                     begin: Alignment.topLeft, end: Alignment.bottomRight,
                   ),
                   borderRadius: BorderRadius.circular(Brand.r(18)),

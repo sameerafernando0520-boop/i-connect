@@ -8,7 +8,7 @@ import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _refColor = Color(0xFF10B981);
+const Color _refColor = AdminColors.accent;
 
 class MaReferralPage extends StatefulWidget {
   const MaReferralPage({super.key});
@@ -274,7 +274,7 @@ class _MaReferralPageState extends State<MaReferralPage>
                   style: TextStyle(fontSize: 11, color: AdminColors.textHint(context))),
             ]),
           ),
-          const Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.grey),
+          Icon(Icons.arrow_forward_rounded, size: 16, color: AdminColors.textSub(context)),
           const SizedBox(width: 8),
           Expanded(
             child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
@@ -437,7 +437,7 @@ class _MaReferralPageState extends State<MaReferralPage>
   Color _statusColor(String status) {
     switch (status) {
       case 'approved': return AdminColors.success;
-      case 'paid': return const Color(0xFF10B981);
+      case 'paid': return AdminColors.accent;
       case 'qualified': return AdminColors.info;
       case 'expired': return AdminColors.error;
       case 'rejected': return AdminColors.error;
@@ -498,8 +498,8 @@ class _RuleEditDialogState extends State<_RuleEditDialog> {
             selected: {_commType},
             onSelectionChanged: (v) => setState(() => _commType = v.first),
             style: SegmentedButton.styleFrom(
-              selectedBackgroundColor: const Color(0xFF10B981).withAlpha(30),
-              selectedForegroundColor: const Color(0xFF10B981),
+              selectedBackgroundColor: AdminColors.accent.withAlpha(30),
+              selectedForegroundColor: AdminColors.accent,
             ),
           ),
           const SizedBox(height: 12),
@@ -516,7 +516,7 @@ class _RuleEditDialogState extends State<_RuleEditDialog> {
             title: const Text('Active'),
             value: _isActive,
             onChanged: (v) => setState(() => _isActive = v),
-            activeThumbColor: const Color(0xFF10B981),
+            activeThumbColor: AdminColors.accent,
             contentPadding: EdgeInsets.zero,
           ),
         ]),
@@ -530,7 +530,7 @@ class _RuleEditDialogState extends State<_RuleEditDialog> {
             'is_active': _isActive,
           }),
           style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF10B981), foregroundColor: Colors.white),
+              backgroundColor: AdminColors.accent, foregroundColor: Colors.white),
           child: const Text('Save'),
         ),
       ],

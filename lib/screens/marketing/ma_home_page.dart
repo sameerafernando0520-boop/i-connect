@@ -49,7 +49,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.image_rounded,
     label: 'Banners',
     subtitle: 'Promotional banners',
-    color: const Color(0xFFEC4899),
+    color: const Color(0xFFEC4899), // pink banner accent — no DS token
     pageBuilder: () => const MaBannersPage(),
   ),
   _NavTile(
@@ -57,7 +57,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.menu_book_rounded,
     label: 'Knowledge Base',
     subtitle: 'Articles & guides',
-    color: const Color(0xFF8B5CF6),
+    color: StatusColors.assigned,
     pageBuilder: () => const MaKnowledgeBasePage(),
   ),
   _NavTile(
@@ -73,7 +73,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.share_rounded,
     label: 'Referral',
     subtitle: 'Referral program',
-    color: const Color(0xFF10B981),
+    color: AdminColors.accent,
     pageBuilder: () => const MaReferralPage(),
   ),
   _NavTile(
@@ -81,7 +81,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.star_rounded,
     label: 'Tiers',
     subtitle: 'Loyalty tiers',
-    color: const Color(0xFFF59E0B),
+    color: AdminColors.warning,
     pageBuilder: () => const MaTiersPage(),
   ),
   _NavTile(
@@ -89,7 +89,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.people_rounded,
     label: 'Customers',
     subtitle: 'Customer directory',
-    color: const Color(0xFF3B82F6),
+    color: AdminColors.info,
     pageBuilder: () => const MaCustomersPage(),
   ),
   _NavTile(
@@ -97,7 +97,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.precision_manufacturing_rounded,
     label: 'Catalog',
     subtitle: 'Machine catalog',
-    color: const Color(0xFF14B8A6),
+    color: AdminColors.info, // catalog teal
     pageBuilder: () => const MaCatalogPage(),
   ),
   _NavTile(
@@ -105,7 +105,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.emoji_events_rounded,
     label: 'Points',
     subtitle: 'Points activity',
-    color: const Color(0xFFF97316),
+    color: AdminColors.internal,
     pageBuilder: () => const MaPointsPage(),
   ),
   _NavTile(
@@ -113,7 +113,7 @@ final _allTiles = <_NavTile>[
     icon: Icons.analytics_rounded,
     label: 'Analytics',
     subtitle: 'KB analytics',
-    color: const Color(0xFF6366F1),
+    color: AdminColors.primary,
     pageBuilder: () => const MaAnalyticsPage(),
   ),
 ];
@@ -499,17 +499,17 @@ class _MaHomePageState extends State<MaHomePage> {
         IconButton(
           onPressed: _loadDashboard,
           icon: const Icon(Icons.refresh_rounded,
-              size: 20, color: Color(0xFF8FA3C8)),
+              size: 20, color: Brand.navyHeroLabel),
         ),
         DsHeroAvatar(
           initials: StringUtils.getInitials(_name),
-          color: const Color(0xFF8B5CF6),
+          color: StatusColors.assigned,
           photoUrl: _photoUrl,
         ),
       ]),
       actionCard: DsHeroCard(
         icon: Icons.campaign_rounded,
-        iconColor: const Color(0xFFB79DF8),
+        iconColor: Brand.violetHero.label,
         label: 'Marketing studio',
         title: 'Banners, broadcasts & loyalty',
         onTap: () {},
@@ -708,7 +708,7 @@ class _MaHomePageState extends State<MaHomePage> {
                   decoration: BoxDecoration(
                     color: isDark
                         ? Brand.darkBorderLight.withAlpha(77)
-                        : const Color(0xFFE2E8F0),
+                        : AdminColors.borderLight,
                     borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: Stack(children: [
@@ -791,21 +791,21 @@ class _MaHomePageState extends State<MaHomePage> {
       ),
       _KpiData(
         icon: Icons.people_alt_rounded,
-        color: const Color(0xFF10B981),
+        color: AdminColors.accent,
         label: 'Referrals',
         value: '$_activeReferrals',
         badge: 'Active',
       ),
       _KpiData(
         icon: Icons.emoji_events_rounded,
-        color: const Color(0xFFF97316),
+        color: AdminColors.internal,
         label: 'Points Given',
         value: _formatCompact(_totalPointsDistributed),
         badge: 'Total',
       ),
       _KpiData(
         icon: Icons.precision_manufacturing_rounded,
-        color: const Color(0xFF14B8A6),
+        color: const Color(0xFF14B8A6), // teal catalog accent — no DS token
         label: 'Catalog Items',
         value: '$_totalCatalogItems',
         badge: 'Machines',

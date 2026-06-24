@@ -635,9 +635,9 @@ class _MaProfilePageState extends State<MaProfilePage> {
       _StatItem(Icons.article_rounded, '$_publishedArticles', 'Articles',
           isDark ? Brand.lightGreenBright : Brand.lightGreen),
       _StatItem(Icons.campaign_rounded, '$_broadcastsSent', 'Broadcasts',
-          isDark ? const Color(0xFFFFB74D) : const Color(0xFFEF4444)),
+          isDark ? AdminColors.warning : AdminColors.error),
       _StatItem(Icons.share_rounded, '$_activeReferrals', 'Referrals',
-          const Color(0xFF10B981)),
+          AdminColors.accent),
     ];
 
     return Padding(
@@ -730,13 +730,13 @@ class _MaProfilePageState extends State<MaProfilePage> {
                 height: 1),
             _buildInfoRow(
                 Icons.alternate_email_rounded, 'Username', '@$username', isDark,
-                color: const Color(0xFF8B5CF6)),
+                color: StatusColors.assigned),
           ],
           Divider(
               color: isDark ? Brand.darkBorder : Brand.borderLight, height: 1),
           _buildInfoRow(Icons.calendar_today_rounded, 'Member Since',
               _getMemberSince(), isDark,
-              color: const Color(0xFF10B981)),
+              color: AdminColors.accent),
         ],
       ),
     );
@@ -812,17 +812,17 @@ class _MaProfilePageState extends State<MaProfilePage> {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF6366F1).withAlpha(isDark ? 30 : 15),
+                  color: AdminColors.primary.withAlpha(isDark ? 30 : 15),
                   borderRadius: BorderRadius.circular(Brand.r(13)),
                   border: isDark
                       ? Border.all(
-                          color: const Color(0xFF6366F1).withAlpha(51))
+                          color: AdminColors.primary.withAlpha(51))
                       : null,
                 ),
                 child: Icon(
                   isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
                   size: 22,
-                  color: const Color(0xFF6366F1),
+                  color: AdminColors.primary,
                 ),
               ),
               const SizedBox(width: 14),
@@ -856,8 +856,8 @@ class _MaProfilePageState extends State<MaProfilePage> {
               Switch(
                 value: themeProvider.isDarkMode,
                 onChanged: (_) => themeProvider.toggleTheme(),
-                activeThumbColor: const Color(0xFF6366F1),
-                activeTrackColor: const Color(0xFF6366F1).withAlpha(77),
+                activeThumbColor: AdminColors.primary,
+                activeTrackColor: AdminColors.primary.withAlpha(77),
               ),
             ],
           ),
@@ -868,7 +868,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
             leading: const SizedBox(
               width: 44,
               child: Icon(Icons.style_rounded,
-                  size: 22, color: Color(0xFF6366F1)),
+                  size: 22, color: AdminColors.primary),
             ),
             title: Text(
               'Dark style',
@@ -924,15 +924,15 @@ class _MaProfilePageState extends State<MaProfilePage> {
                   width: 44,
                   height: 44,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF14B8A6).withAlpha(isDark ? 30 : 15),
+                    color: AdminColors.info.withAlpha(isDark ? 30 : 15),
                     borderRadius: BorderRadius.circular(Brand.r(13)),
                     border: isDark
                         ? Border.all(
-                            color: const Color(0xFF14B8A6).withAlpha(51))
+                            color: AdminColors.info.withAlpha(51))
                         : null,
                   ),
                   child: const Icon(Icons.language_rounded,
-                      size: 22, color: Color(0xFF14B8A6)),
+                      size: 22, color: AdminColors.info),
                 ),
                 const SizedBox(width: 14),
                 Expanded(
@@ -1041,7 +1041,7 @@ class _MaProfilePageState extends State<MaProfilePage> {
             Icon(Icons.chevron_right_rounded,
                 size: 22,
                 color: isDark
-                    ? const Color(0xFFFF6B6B).withAlpha(128)
+                    ? StatusColors.danger.withAlpha(128)
                     : StatusColors.danger.withAlpha(128)),
           ],
         ),
