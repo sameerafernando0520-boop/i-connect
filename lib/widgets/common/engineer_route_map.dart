@@ -11,6 +11,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../services/chat_attachment_service.dart';
 
@@ -168,7 +169,7 @@ class _EngineerRouteMapState extends State<EngineerRouteMap> {
                     point: _me!,
                     width: 40,
                     height: 40,
-                    child: _pin(Icons.home_rounded, const Color(0xFF16A34A)),
+                    child: _pin(Icons.home_rounded, AdminColors.success),
                   ),
               ]),
             ],
@@ -212,7 +213,7 @@ class _EngineerRouteMapState extends State<EngineerRouteMap> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF16A34A).withAlpha(230),
+                  color: AdminColors.success.withAlpha(230),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: const Row(mainAxisSize: MainAxisSize.min, children: [
@@ -251,7 +252,7 @@ class _EngineerRouteMapState extends State<EngineerRouteMap> {
         borderRadius: BorderRadius.circular(18),
         child: Container(
           height: widget.height,
-          color: isDark ? Brand.darkCard : const Color(0xFFE2E8F0),
+          color: isDark ? Brand.darkCard : AdminColors.borderLight,
           child: child,
         ),
       );

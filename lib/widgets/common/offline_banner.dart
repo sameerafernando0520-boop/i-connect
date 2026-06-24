@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../services/connectivity_service.dart';
 
 class OfflineBanner extends StatelessWidget {
@@ -54,7 +55,7 @@ class OfflineBanner extends StatelessWidget {
         ? (isDark ? const Color(0xFF1F3A1F) : const Color(0xFFE7F5E7))
         : (isDark ? const Color(0xFF3F1F1F) : const Color(0xFFFEF2F2));
     final fg = online
-        ? const Color(0xFF16A34A)
+        ? AdminColors.success
         : StatusColors.danger;
     final icon = online ? Icons.cloud_done_rounded : Icons.cloud_off_rounded;
     final text = messageOverride ??

@@ -92,7 +92,7 @@ class SalesPipeline extends StatelessWidget {
                   minHeight: 6,
                   backgroundColor: isDark
                       ? Brand.darkCardElevated
-                      : const Color(0xFFF1F5F9),
+                      : AdminColors.background,
                   valueColor: AlwaysStoppedAnimation<Color>(
                     current.value == 'lost' ? AdminColors.error : current.color,
                   ),
@@ -133,7 +133,7 @@ class SalesPipeline extends StatelessWidget {
                           ? (isDark ? Brand.darkBorderLight : Brand.borderLight)
                           : (isDark
                                 ? Brand.darkBorder
-                                : const Color(0xFFE2E8F0)),
+                                : AdminColors.borderLight),
                       width: isSelected ? 2 : 1.5,
                     ),
                   ),
@@ -193,7 +193,7 @@ class SalesPipeline extends StatelessWidget {
               height: 2,
               color: isCompleted
                   ? AdminColors.accent
-                  : (isDark ? Brand.darkBorderLight : const Color(0xFFE2E8F0)),
+                  : (isDark ? Brand.darkBorderLight : AdminColors.borderLight),
             ),
           );
         }
@@ -211,7 +211,7 @@ class SalesPipeline extends StatelessWidget {
                 ? stage.color
                 : isCompleted
                 ? AdminColors.accent
-                : (isDark ? Brand.darkCardElevated : const Color(0xFFE2E8F0)),
+                : (isDark ? Brand.darkCardElevated : AdminColors.borderLight),
             shape: BoxShape.circle,
             border: isCurrent
                 ? Border.all(color: stage.color.withAlpha(75), width: 3)

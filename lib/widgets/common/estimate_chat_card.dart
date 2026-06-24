@@ -18,7 +18,7 @@ import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 
-const Color _kQuotationPurple = Color(0xFF8B5CF6);
+const Color _kQuotationPurple = StatusColors.assigned;
 
 class EstimateChatCard extends StatelessWidget {
   final Map<String, dynamic> message;

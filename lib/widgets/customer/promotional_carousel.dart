@@ -10,6 +10,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 
 class PromotionalCarousel extends StatefulWidget {
   /// Called when a banner links to a machine detail page
@@ -184,13 +185,13 @@ class _PromotionalCarouselState extends State<PromotionalCarousel> {
   Color _getSeasonColor(String? tag) {
     switch (tag) {
       case 'new_year':
-        return const Color(0xFFE91E63);
+        return StatusColors.danger;
       case 'holiday':
-        return const Color(0xFFE53935);
+        return AdminColors.error;
       case 'mid_year':
-        return const Color(0xFFFF9800);
+        return AdminColors.internal;
       case 'special':
-        return const Color(0xFF9C27B0);
+        return StatusColors.assigned;
       default:
         return Brand.royalBlue;
     }
@@ -474,7 +475,7 @@ class _PromotionalCarouselState extends State<PromotionalCarousel> {
         decoration: BoxDecoration(
           color: Theme.of(context).brightness == Brightness.dark
               ? Brand.darkCard
-              : Colors.grey.shade200,
+              : AdminColors.textSecondary,
           borderRadius: BorderRadius.circular(20),
         ),
         child: _ShimmerEffect(

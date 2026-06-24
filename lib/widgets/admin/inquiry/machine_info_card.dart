@@ -46,7 +46,7 @@ class MachineInfoCard extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCardElevated : const Color(0xFFF4F6FA),
+              color: isDark ? Brand.darkCardElevated : AdminColors.background,
               borderRadius: BorderRadius.circular(14),
             ),
             child: Row(
@@ -124,7 +124,7 @@ class MachineInfoCard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: isDark
                               ? Brand.darkTextPrimary
-                              : const Color(0xFF1E293B),
+                              : Brand.darkCard,
                         ),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -156,7 +156,7 @@ class MachineInfoCard extends StatelessWidget {
                 fontSize: 13,
                 color: isDark
                     ? Brand.darkTextSecondary
-                    : const Color(0xFF64748B),
+                    : AdminColors.textSecondary,
                 height: 1.5,
               ),
               maxLines: 3,

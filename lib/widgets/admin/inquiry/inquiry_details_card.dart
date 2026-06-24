@@ -155,7 +155,7 @@ class _DetailRow extends StatelessWidget {
                     color: valueColor ??
                         (isDark
                             ? Brand.darkTextPrimary
-                            : const Color(0xFF1E293B)),
+                            : Brand.darkCard),
                   ),
                 ),
               ],

@@ -135,7 +135,7 @@ class _DealValueCardState extends State<DealValueCard> {
                   decoration: BoxDecoration(
                     color: isDark
                         ? Brand.darkCardElevated
-                        : const Color(0xFFF4F6FA),
+                        : AdminColors.background,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: TextField(
@@ -147,7 +147,7 @@ class _DealValueCardState extends State<DealValueCard> {
                       fontSize: 14,
                       color: isDark
                           ? Brand.darkTextPrimary
-                          : const Color(0xFF1E293B),
+                          : Brand.darkCard,
                     ),
                     decoration: InputDecoration(
                       prefixText: 'Rs. ',
@@ -167,7 +167,7 @@ class _DealValueCardState extends State<DealValueCard> {
                       filled: true,
                       fillColor: isDark
                           ? Brand.darkCardElevated
-                          : const Color(0xFFF4F6FA),
+                          : AdminColors.background,
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: 14,
                         vertical: 14,
@@ -195,7 +195,7 @@ class _DealValueCardState extends State<DealValueCard> {
                         ? AdminColors.accent
                         : (isDark
                               ? Brand.darkBorderLight
-                              : const Color(0xFFCBD5E1)),
+                              : AdminColors.borderLight),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: _isSaving

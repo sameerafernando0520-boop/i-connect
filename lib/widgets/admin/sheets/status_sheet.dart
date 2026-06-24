@@ -22,32 +22,32 @@ class SelectionSheet {
         value: 'open',
         label: 'Open',
         icon: Icons.radio_button_unchecked_rounded,
-        color: Color(0xFF2196F3)),
+        color: AdminColors.info),
     SelectionOption(
         value: 'assigned',
         label: 'Assigned',
         icon: Icons.person_rounded,
-        color: Color(0xFF9C27B0)),
+        color: StatusColors.assigned),
     SelectionOption(
         value: 'in_progress',
         label: 'In Progress',
         icon: Icons.autorenew_rounded,
-        color: Color(0xFFF57C00)),
+        color: AdminColors.internal),
     SelectionOption(
         value: 'waiting_customer',
         label: 'Waiting on Customer',
         icon: Icons.hourglass_top_rounded,
-        color: Color(0xFFFF9800)),
+        color: AdminColors.internal),
     SelectionOption(
         value: 'resolved',
         label: 'Resolved',
         icon: Icons.check_circle_rounded,
-        color: Color(0xFF43A047)),
+        color: AdminColors.accent),
     SelectionOption(
         value: 'closed',
         label: 'Closed',
         icon: Icons.lock_rounded,
-        color: Color(0xFF607D8B)),
+        color: AdminColors.textSecondary),
   ];
 
   // ─── PRIORITY OPTIONS ────────────────────────────
@@ -56,22 +56,22 @@ class SelectionSheet {
         value: 'urgent',
         label: 'Urgent',
         icon: Icons.priority_high_rounded,
-        color: Color(0xFFE53935)),
+        color: AdminColors.error),
     SelectionOption(
         value: 'high',
         label: 'High',
         icon: Icons.arrow_upward_rounded,
-        color: Color(0xFFF57C00)),
+        color: AdminColors.internal),
     SelectionOption(
         value: 'medium',
         label: 'Medium',
         icon: Icons.remove_rounded,
-        color: Color(0xFF2196F3)),
+        color: AdminColors.info),
     SelectionOption(
         value: 'low',
         label: 'Low',
         icon: Icons.arrow_downward_rounded,
-        color: Color(0xFF78909C)),
+        color: AdminColors.textSecondary),
   ];
 
   // ─── SHOW SHEET ──────────────────────────────────

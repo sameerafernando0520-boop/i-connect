@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:i_connect/l10n/s.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../providers/locale_provider.dart';
 
 /// Shows a modal bottom sheet with language options.
@@ -93,7 +94,7 @@ class _LanguageSelectorSheet extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                             color: isDark
                                 ? Brand.darkTextPrimary
-                                : const Color(0xFF1E293B),
+                                : Brand.darkCard,
                           ),
                         ),
                         const SizedBox(height: 2),
@@ -201,7 +202,7 @@ class _LanguageSelectorSheet extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: isDark
                             ? Colors.white.withAlpha(13)
-                            : const Color(0xFFF1F5F9),
+                            : AdminColors.background,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       alignment: Alignment.center,
@@ -229,7 +230,7 @@ class _LanguageSelectorSheet extends StatelessWidget {
                                   ? Brand.royalBlue
                                   : (isDark
                                       ? Brand.darkTextPrimary
-                                      : const Color(0xFF1E293B)),
+                                      : Brand.darkCard),
                             ),
                           ),
                           if (lang.subtitle != lang.native) ...[
@@ -272,7 +273,7 @@ class _LanguageSelectorSheet extends StatelessWidget {
                           border: Border.all(
                             color: isDark
                                 ? Brand.darkBorderLight
-                                : const Color(0xFFCBD5E1),
+                                : AdminColors.borderLight,
                             width: 2,
                           ),
                         ),
@@ -287,7 +288,7 @@ class _LanguageSelectorSheet extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Divider(
                 height: 1,
-                color: isDark ? Brand.darkBorder : const Color(0xFFF1F5F9),
+                color: isDark ? Brand.darkBorder : AdminColors.background,
               ),
             ),
         ],

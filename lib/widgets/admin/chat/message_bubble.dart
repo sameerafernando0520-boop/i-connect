@@ -101,7 +101,7 @@ class MessageBubble extends StatelessWidget {
       textColor = Colors.white;
     } else {
       bubbleColor =
-          isDark ? AdminColors.cardElevated(context) : const Color(0xFFF1F5F9);
+          isDark ? AdminColors.cardElevated(context) : AdminColors.background;
       textColor = AdminColors.text(context);
     }
 
@@ -433,7 +433,7 @@ class MessageBubble extends StatelessWidget {
       case MessageStatus.sent:
         if (message.isRead) {
           return const Icon(Icons.done_all_rounded,
-              size: 14, color: Color(0xFF58A6FF));
+              size: 14, color: AdminColors.info);
         }
         if (message.deliveredAt != null) {
           return const Icon(Icons.done_all_rounded,

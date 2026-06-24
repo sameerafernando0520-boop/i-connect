@@ -13,6 +13,7 @@
 
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 
 class DsHero extends StatelessWidget {
   final String greeting;
@@ -1105,7 +1106,7 @@ class DsInputs {
       isDense: true,
       labelStyle: TextStyle(
         fontSize: 12.5,
-        color: isDark ? Brand.darkTextSecondary : const Color(0xFF64748B),
+        color: isDark ? Brand.darkTextSecondary : AdminColors.textSecondary,
       ),
       hintStyle: TextStyle(
         fontSize: 12.5,

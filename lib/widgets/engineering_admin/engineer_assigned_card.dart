@@ -41,10 +41,10 @@ class EngineerAssignedCard extends StatelessWidget {
 
     final cardBg = Brand.surface(isDark);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkCard;
     final textSecondary =
-        isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
-    final successColor = const Color(0xFF10B981);
+        isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
+    final successColor = AdminColors.accent;
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -132,7 +132,7 @@ class EngineerAssignedCard extends StatelessWidget {
                       Row(
                         children: [
                           const Icon(Icons.star_rounded,
-                              color: Color(0xFFF59E0B), size: 16),
+                              color: AdminColors.warning, size: 16),
                           const SizedBox(width: 3),
                           Text(
                             avgRating.toStringAsFixed(1),
@@ -312,7 +312,7 @@ class _EngineerAvatar extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          color: const Color(0xFF10B981).withAlpha(100),
+          color: AdminColors.accent.withAlpha(100),
           width: 2,
         ),
       ),

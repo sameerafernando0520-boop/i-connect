@@ -12,6 +12,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
 
@@ -119,7 +120,7 @@ class _ChatAttachMenuButtonState extends State<ChatAttachMenuButton> {
             );
         return Container(
           decoration: BoxDecoration(
-            color: isDark ? const Color(0xFF1E293B) : Colors.white,
+            color: isDark ? Brand.darkCard : Colors.white,
             borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           ),
           child: SafeArea(
@@ -129,17 +130,17 @@ class _ChatAttachMenuButtonState extends State<ChatAttachMenuButton> {
                   width: 40,
                   height: 4,
                   decoration: BoxDecoration(
-                      color: Colors.grey.withAlpha(80),
+                      color: AdminColors.textSecondary.withAlpha(80),
                       borderRadius: BorderRadius.circular(2))),
               const SizedBox(height: 8),
-              tile(Icons.image_rounded, 'Photo', const Color(0xFF8B5CF6),
+              tile(Icons.image_rounded, 'Photo', StatusColors.assigned,
                   () => _image(camera: false)),
-              tile(Icons.camera_alt_rounded, 'Camera', const Color(0xFF06B6D4),
+              tile(Icons.camera_alt_rounded, 'Camera', Brand.cyanAccent,
                   () => _image(camera: true)),
               tile(Icons.insert_drive_file_rounded, 'Document',
-                  const Color(0xFFF59E0B), _document),
+                  AdminColors.warning, _document),
               tile(Icons.location_on_rounded, 'Location',
-                  const Color(0xFFEF4444), _location),
+                  AdminColors.error, _location),
               const SizedBox(height: 10),
             ]),
           ),

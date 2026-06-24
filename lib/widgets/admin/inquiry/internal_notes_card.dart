@@ -144,7 +144,7 @@ class _InternalNotesCardState extends State<InternalNotesCard> {
           const SizedBox(height: 14),
           Container(
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCardElevated : const Color(0xFFF4F6FA),
+              color: isDark ? Brand.darkCardElevated : AdminColors.background,
               borderRadius: BorderRadius.circular(12),
             ),
             child: TextField(
@@ -152,7 +152,7 @@ class _InternalNotesCardState extends State<InternalNotesCard> {
               maxLines: 4,
               style: TextStyle(
                 fontSize: 14,
-                color: isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B),
+                color: isDark ? Brand.darkTextPrimary : Brand.darkCard,
               ),
               decoration: InputDecoration(
                 hintText: 'Add notes about this inquiry...',
@@ -163,7 +163,7 @@ class _InternalNotesCardState extends State<InternalNotesCard> {
                 filled: true,
                 fillColor: isDark
                     ? Brand.darkCardElevated
-                    : const Color(0xFFF4F6FA),
+                    : AdminColors.background,
                 contentPadding: const EdgeInsets.all(14),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -184,7 +184,7 @@ class _InternalNotesCardState extends State<InternalNotesCard> {
                     ? AdminColors.primary
                     : (isDark
                           ? Brand.darkBorderLight
-                          : const Color(0xFFCBD5E1)),
+                          : AdminColors.borderLight),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Center(

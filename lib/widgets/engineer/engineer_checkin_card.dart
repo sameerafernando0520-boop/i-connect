@@ -9,12 +9,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../services/attendance_service.dart';
 import '../../utils/time_utils.dart';
 
-const _engAccent = Color(0xFF00B4D8);
-const _engGreen = Color(0xFF16A34A);
-const _engAmber = Color(0xFFF59E0B);
+const _engAccent = Brand.cyanAccent;
+const _engGreen = AdminColors.success;
+const _engAmber = AdminColors.warning;
 
 class EngineerCheckinCard extends StatefulWidget {
   const EngineerCheckinCard({super.key});
@@ -146,7 +147,7 @@ class _EngineerCheckinCardState extends State<EngineerCheckinCard> {
                 Text('Shift complete',
                     style: TextStyle(
                       fontSize: 14, fontWeight: FontWeight.w700,
-                      color: isDark ? Brand.darkTextPrimary : const Color(0xFF0F172A),
+                      color: isDark ? Brand.darkTextPrimary : AdminColors.textPrimary,
                     )),
                 const SizedBox(height: 2),
                 Text(
@@ -156,7 +157,7 @@ class _EngineerCheckinCardState extends State<EngineerCheckinCard> {
                     fontSize: 11,
                     color: isDark
                         ? Brand.darkTextSecondary
-                        : const Color(0xFF64748B),
+                        : AdminColors.textSecondary,
                   ),
                 ),
               ],
@@ -192,7 +193,7 @@ class _EngineerCheckinCardState extends State<EngineerCheckinCard> {
                       fontSize: 14, fontWeight: FontWeight.w700,
                       color: isDark
                           ? Brand.darkTextPrimary
-                          : const Color(0xFF0F172A),
+                          : AdminColors.textPrimary,
                     )),
                 const SizedBox(height: 2),
                 Text(
@@ -201,7 +202,7 @@ class _EngineerCheckinCardState extends State<EngineerCheckinCard> {
                     fontSize: 11,
                     color: isDark
                         ? Brand.darkTextSecondary
-                        : const Color(0xFF64748B),
+                        : AdminColors.textSecondary,
                   ),
                 ),
               ],
@@ -255,7 +256,7 @@ class _EngineerCheckinCardState extends State<EngineerCheckinCard> {
                     fontSize: 14, fontWeight: FontWeight.w700,
                     color: isDark
                         ? Brand.darkTextPrimary
-                        : const Color(0xFF0F172A),
+                        : AdminColors.textPrimary,
                   )),
               const SizedBox(height: 2),
               Text('Tap Check In to mark your arrival',
@@ -263,7 +264,7 @@ class _EngineerCheckinCardState extends State<EngineerCheckinCard> {
                     fontSize: 11,
                     color: isDark
                         ? Brand.darkTextSecondary
-                        : const Color(0xFF64748B),
+                        : AdminColors.textSecondary,
                   )),
             ],
           ),

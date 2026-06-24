@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../config/admin_theme.dart';
 import '../config/brand_colors.dart';
 
 /// [InitErrorWidget] shows a user-friendly error screen when Firebase or Supabase
@@ -41,7 +42,7 @@ class InitErrorWidget extends StatelessWidget {
                       shape: BoxShape.circle,
                       color: supabaseError != null
                           ? StatusColors.danger.withAlpha(20)
-                          : Colors.orange.shade50,
+                          : AdminColors.internal,
                     ),
                     child: Center(
                       child: Icon(
@@ -51,7 +52,7 @@ class InitErrorWidget extends StatelessWidget {
                         size: 50,
                         color: supabaseError != null
                             ? StatusColors.danger
-                            : Colors.orange.shade600,
+                            : AdminColors.internal,
                       ),
                     ),
                   ),
@@ -77,7 +78,7 @@ class InitErrorWidget extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
-                      color: Colors.grey.shade700,
+                      color: AdminColors.textSecondary,
                       height: 1.5,
                     ),
                     textAlign: TextAlign.center,
@@ -92,7 +93,7 @@ class InitErrorWidget extends StatelessWidget {
                       onPressed: isRetrying ? null : onRetry,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Brand.royalBlue,
-                        disabledBackgroundColor: Colors.grey.shade300,
+                        disabledBackgroundColor: AdminColors.textSecondary,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
@@ -128,7 +129,7 @@ class InitErrorWidget extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
-                      color: Colors.grey.shade600,
+                      color: AdminColors.textSecondary,
                     ),
                     textAlign: TextAlign.center,
                   ),
