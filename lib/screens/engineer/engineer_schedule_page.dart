@@ -5,30 +5,31 @@ import 'package:supabase_flutter/supabase_flutter.dart'
     show RealtimeChannel, PostgresChangeEvent, PostgresChangeFilter,
          PostgresChangeFilterType;
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import 'engineer_create_schedule_page.dart';
 
-const Color _engAccent = Color(0xFF00B4D8);
-const Color _engAccentDark = Color(0xFF0096B7);
+const Color _engAccent = Brand.cyanAccent;
+const Color _engAccentDark = Brand.cyanAccentDark;
 
 // ── Schedule Helpers ──
 
 Color _typeColor(String? type) {
   switch (type) {
     case 'preventive':
-      return const Color(0xFF3B82F6);
+      return AdminColors.info;
     case 'repair':
-      return const Color(0xFFEF4444);
+      return AdminColors.error;
     case 'inspection':
-      return const Color(0xFF14B8A6);
+      return AdminColors.success;
     case 'installation':
-      return const Color(0xFF8B5CF6);
+      return StatusColors.assigned;
     case 'warranty_visit':
-      return const Color(0xFFF59E0B);
+      return AdminColors.warning;
     default:
-      return const Color(0xFF6B7280);
+      return AdminColors.textSecondary;
   }
 }
 
@@ -69,21 +70,21 @@ IconData _typeIcon(String? type) {
 Color _statusColor(String? status) {
   switch (status) {
     case 'requested':
-      return const Color(0xFFF59E0B);
+      return AdminColors.warning;
     case 'scheduled':
-      return const Color(0xFF3B82F6);
+      return AdminColors.info;
     case 'confirmed':
-      return const Color(0xFF6366F1);
+      return AdminColors.primary;
     case 'in_progress':
-      return const Color(0xFFF97316);
+      return AdminColors.internal;
     case 'completed':
-      return const Color(0xFF22C55E);
+      return AdminColors.accent;
     case 'cancelled':
-      return const Color(0xFFEF4444);
+      return AdminColors.error;
     case 'rescheduled':
-      return const Color(0xFF8B5CF6);
+      return StatusColors.assigned;
     default:
-      return const Color(0xFF6B7280);
+      return AdminColors.textSecondary;
   }
 }
 
@@ -471,7 +472,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                         icon: const Icon(Icons.check_circle, size: 20),
                         label: const Text('Complete'),
                         style: FilledButton.styleFrom(
-                          backgroundColor: const Color(0xFF22C55E),
+                          backgroundColor: AdminColors.accent,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(Brand.r(12)),
@@ -734,11 +735,11 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                         Container(
                           width: 40, height: 40,
                           decoration: BoxDecoration(
-                            color: const Color(0xFF8B5CF6).withAlpha(isDark ? 30 : 20),
+                            color: StatusColors.assigned.withAlpha(isDark ? 30 : 20),
                             borderRadius: BorderRadius.circular(Brand.r(10)),
                           ),
                           child: const Icon(Icons.schedule_send,
-                              color: Color(0xFF8B5CF6), size: 22),
+                              color: StatusColors.assigned, size: 22),
                         ),
                         const SizedBox(width: 12),
                         Text('Reschedule Service',
@@ -892,7 +893,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                         label: const Text('Reschedule',
                             style: TextStyle(fontWeight: FontWeight.w600)),
                         style: FilledButton.styleFrom(
-                          backgroundColor: const Color(0xFF8B5CF6),
+                          backgroundColor: StatusColors.assigned,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(Brand.r(12))),
@@ -1365,10 +1366,10 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
           Row(
             children: [
               _summaryChip(Icons.pending_actions, '$pending Pending',
-                  const Color(0xFF3B82F6), isDark),
+                  AdminColors.info, isDark),
               const SizedBox(width: 12),
               _summaryChip(Icons.play_circle_outline, '$inProgress Active',
-                  const Color(0xFFF97316), isDark),
+                  AdminColors.internal, isDark),
             ],
           ),
         ],
@@ -1618,7 +1619,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                               width: double.infinity,
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFF59E0B)
+                                color: AdminColors.warning
                                     .withAlpha(isDark ? 20 : 12),
                                 borderRadius: BorderRadius.circular(Brand.r(8)),
                               ),
@@ -1626,7 +1627,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Icon(Icons.note_alt_outlined,
-                                      size: 14, color: Color(0xFFF59E0B)),
+                                      size: 14, color: AdminColors.warning),
                                   const SizedBox(width: 6),
                                   Expanded(
                                     child: Column(
@@ -1637,7 +1638,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                                             style: TextStyle(
                                               fontSize: 11,
                                               fontWeight: FontWeight.w600,
-                                              color: Color(0xFFF59E0B),
+                                              color: AdminColors.warning,
                                             )),
                                         const SizedBox(height: 2),
                                         Text(customerNotes,
@@ -1746,7 +1747,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
               _actionChip(
                 icon: Icons.phone_outlined,
                 label: 'Call',
-                color: const Color(0xFF22C55E),
+                color: AdminColors.accent,
                 isDark: isDark,
                 onTap: _acting ? null : () => _callCustomer(phone),
               ),
@@ -1757,7 +1758,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
               _actionChip(
                 icon: Icons.mail_outline,
                 label: 'Email',
-                color: const Color(0xFF3B82F6),
+                color: AdminColors.info,
                 isDark: isDark,
                 onTap: _acting ? null : () => _emailCustomer(email),
               ),
@@ -1793,7 +1794,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                     value: 'reschedule',
                     child: Row(children: [
                       const Icon(Icons.schedule_send,
-                          size: 18, color: Color(0xFF8B5CF6)),
+                          size: 18, color: StatusColors.assigned),
                       const SizedBox(width: 10),
                       Text('Reschedule',
                           style: TextStyle(
@@ -1830,7 +1831,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                   icon: const Icon(Icons.check, size: 16),
                   label: const Text('Confirm', style: TextStyle(fontSize: 13)),
                   style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFF6366F1),
+                    backgroundColor: AdminColors.primary,
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(Brand.r(10))),
@@ -1846,7 +1847,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                   icon: const Icon(Icons.play_arrow, size: 16),
                   label: const Text('Start Service', style: TextStyle(fontSize: 13)),
                   style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFFF97316),
+                    backgroundColor: AdminColors.internal,
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(Brand.r(10))),
@@ -1879,7 +1880,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                   icon: const Icon(Icons.check_circle, size: 16),
                   label: const Text('Complete', style: TextStyle(fontSize: 13)),
                   style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFF22C55E),
+                    backgroundColor: AdminColors.accent,
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(Brand.r(10))),
@@ -2182,7 +2183,7 @@ class _EngineerSchedulePageState extends State<EngineerSchedulePage>
                                         ? Icons.star_rounded
                                         : Icons.star_border_rounded,
                                     size: 16,
-                                    color: const Color(0xFFF59E0B),
+                                    color: AdminColors.warning,
                                   )),
                           const SizedBox(width: 6),
                           Text('Customer rated $rating/5',

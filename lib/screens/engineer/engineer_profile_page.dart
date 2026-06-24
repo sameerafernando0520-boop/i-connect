@@ -10,6 +10,7 @@ import 'package:supabase_flutter/supabase_flutter.dart' show FileOptions;
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../services/notification_service.dart';
 import '../../utils/string_utils.dart';
 import '../../utils/upload_validator.dart';
@@ -21,9 +22,8 @@ import '../../providers/locale_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../widgets/common/theme_style_sheet.dart';
 
-// ── Engineer accent (per handoff §26 — NOT in Brand class) ──
-const Color _engAccent = Color(0xFF00B4D8);
-const Color _engAccentDark = Color(0xFF0096B7);
+const Color _engAccent = Brand.cyanAccent;
+const Color _engAccentDark = Brand.cyanAccentDark;
 
 // All specializations an engineer can have
 const _allSpecializations = [
@@ -642,7 +642,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
       case 'available':
         return Brand.lightGreenBright;
       case 'busy':
-        return const Color(0xFFFFB74D);
+        return AdminColors.warning;
       default:
         return Brand.darkTextSecondary;
     }
@@ -863,13 +863,13 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
         gradient: LinearGradient(
           colors: isDark
               ? [const Color(0xFF052E16), const Color(0xFF14532D)]
-              : [const Color(0xFF14532D), const Color(0xFF16A34A)],
+              : [const Color(0xFF14532D), AdminColors.success],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         boxShadow: isDark ? null : [
           BoxShadow(
-            color: const Color(0xFF16A34A).withAlpha(89),
+            color: AdminColors.success.withAlpha(89),
             blurRadius: 30,
             offset: const Offset(0, 12),
           ),
@@ -1215,7 +1215,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                   'Open',
                   '$open',
                   Icons.pending_actions_rounded,
-                  const Color(0xFFFFB74D),
+                  AdminColors.warning,
                   isDark,
                 ),
               ),
@@ -1250,7 +1250,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
             decoration: BoxDecoration(
               color: isDark
                   ? Brand.darkBorderLight.withAlpha(((0.4) * 255).toInt())
-                  : Colors.grey.shade100,
+                  : AdminColors.background,
               borderRadius: BorderRadius.circular(Brand.r(10)),
             ),
             child: FractionallySizedBox(
@@ -1293,7 +1293,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                       i < rating.round()
                           ? Icons.star_rounded
                           : Icons.star_outline_rounded,
-                      color: Colors.amber,
+                      color: AdminColors.warning,
                       size: 18,
                     ),
                   ),
@@ -1304,7 +1304,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                   style: const TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
-                    color: Colors.amber,
+                    color: AdminColors.warning,
                   ),
                 ),
                 const SizedBox(width: 4),
@@ -1545,7 +1545,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                               fontWeight: FontWeight.w600,
                               color: isDark
                                   ? Brand.darkTextPrimary
-                                  : const Color(0xFF1E293B),
+                                  : Brand.darkCard,
                             ),
                           ),
                           const SizedBox(height: 2),
@@ -1602,7 +1602,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                       fontWeight: FontWeight.w600,
                       color: isDark
                           ? Brand.darkTextPrimary
-                          : const Color(0xFF1E293B),
+                          : Brand.darkCard,
                     ),
                   ),
                 ),
@@ -1643,7 +1643,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
                             fontWeight: FontWeight.w600,
                             color: isDark
                                 ? Brand.darkTextPrimary
-                                : const Color(0xFF1E293B),
+                                : Brand.darkCard,
                           ),
                         ),
                       ),

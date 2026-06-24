@@ -14,15 +14,15 @@ import 'package:supabase_flutter/supabase_flutter.dart'
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../utils/time_utils.dart';
 import '../../utils/string_utils.dart';
 import '../../widgets/common/chat_attach_bar.dart';
 import '../../widgets/common/chat_message_attachments.dart';
 
-// ── Engineer accent (per handoff §26) ──
-const Color _engAccent = Color(0xFF00B4D8);
-const Color _engAccentDark = Color(0xFF0096B7);
+const Color _engAccent = Brand.cyanAccent;
+const Color _engAccentDark = Brand.cyanAccentDark;
 
 class EngineerTicketDetailPage extends StatefulWidget {
   final String ticketId;
@@ -564,11 +564,11 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
       case 'open':
         return Brand.darkIconActive;
       case 'assigned':
-        return const Color(0xFF7986CB);
+        return AdminColors.info;
       case 'in_progress':
-        return const Color(0xFFFFB74D);
+        return AdminColors.warning;
       case 'waiting_customer':
-        return const Color(0xFFCE93D8);
+        return StatusColors.assigned;
       case 'resolved':
         return Brand.lightGreenBright;
       case 'closed':
@@ -971,9 +971,9 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.orange.withAlpha(((isDark ? 0.08 : 0.05) * 255).toInt()),
+        color: AdminColors.internal.withAlpha(((isDark ? 0.08 : 0.05) * 255).toInt()),
         border: Border(
-          bottom: BorderSide(color: Colors.orange.withAlpha(51)),
+          bottom: BorderSide(color: AdminColors.internal.withAlpha(51)),
         ),
       ),
       child: Row(
@@ -982,11 +982,11 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
             width: 28,
             height: 28,
             decoration: BoxDecoration(
-              color: Colors.orange.withAlpha(38),
+              color: AdminColors.internal.withAlpha(38),
               borderRadius: BorderRadius.circular(Brand.r(8)),
             ),
             child: Icon(Icons.warning_rounded,
-                size: 15, color: Colors.orange[700]),
+                size: 15, color: AdminColors.internal[700]),
           ),
           const SizedBox(width: 10),
           Expanded(
@@ -998,7 +998,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
-                    color: Colors.orange[700],
+                    color: AdminColors.internal[700],
                   ),
                 ),
                 if (_ticket['escalation_reason'] != null)
@@ -1020,7 +1020,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.orange.withAlpha(77)),
+                border: Border.all(color: AdminColors.internal.withAlpha(77)),
                 borderRadius: BorderRadius.circular(Brand.r(8)),
               ),
               child: Text(
@@ -1028,7 +1028,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.w700,
-                  color: Colors.orange[700],
+                  color: AdminColors.internal[700],
                 ),
               ),
             ),
@@ -1078,20 +1078,20 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
               decoration: BoxDecoration(
-                color: Colors.orange.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
+                color: AdminColors.internal.withAlpha(((isDark ? 0.12 : 0.08) * 255).toInt()),
                 borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.lock_rounded, size: 10, color: Colors.orange[700]),
+                  Icon(Icons.lock_rounded, size: 10, color: AdminColors.internal[700]),
                   const SizedBox(width: 3),
                   Text(
                     '$internalCount internal',
                     style: TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.w700,
-                      color: Colors.orange[700],
+                      color: AdminColors.internal[700],
                     ),
                   ),
                 ],
@@ -1107,7 +1107,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                   i < rating ? Icons.star_rounded : Icons.star_outline_rounded,
                   size: 14,
                   color: i < rating
-                      ? Colors.amber
+                      ? AdminColors.warning
                       : (isDark ? Brand.darkBorderLight : Brand.borderLight),
                 );
               }),
@@ -1337,8 +1337,8 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
     Color bubbleColor;
     if (isInternal) {
       bubbleColor = isDark
-          ? Colors.orange.withAlpha(26)
-          : Colors.orange.withAlpha(15);
+          ? AdminColors.internal.withAlpha(26)
+          : AdminColors.internal.withAlpha(15);
     } else if (isMe) {
       bubbleColor = Colors.transparent;
     } else if (isAdmin) {
@@ -1470,14 +1470,14 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(Icons.lock_rounded,
-                            size: 10, color: Colors.orange[700]),
+                            size: 10, color: AdminColors.internal[700]),
                         const SizedBox(width: 3),
                         Text(
                           'Internal Note',
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w700,
-                            color: Colors.orange[700],
+                            color: AdminColors.internal[700],
                           ),
                         ),
                       ],
@@ -1509,7 +1509,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                     ),
                     border: isInternal
                         ? Border.all(
-                            color: Colors.orange.withAlpha(89),
+                            color: AdminColors.internal.withAlpha(89),
                             width: 1,
                           )
                         : (isMe
@@ -1537,14 +1537,14 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Icon(Icons.lock_rounded,
-                                  size: 10, color: Colors.orange[700]),
+                                  size: 10, color: AdminColors.internal[700]),
                               const SizedBox(width: 4),
                               Text(
                                 'INTERNAL NOTE',
                                 style: TextStyle(
                                   fontSize: 11,
                                   fontWeight: FontWeight.w700,
-                                  color: Colors.orange[700],
+                                  color: AdminColors.internal[700],
                                   letterSpacing: 0.3,
                                 ),
                               ),
@@ -1627,7 +1627,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                         Icon(
                           Icons.lock_rounded,
                           size: 11,
-                          color: Colors.orange[700]!.withAlpha(128),
+                          color: AdminColors.internal[700]!.withAlpha(128),
                         )
                       else
                         Builder(builder: (_) {
@@ -1683,7 +1683,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
         border: Border(
           top: BorderSide(
             color: _internalMode
-                ? Colors.orange.withAlpha(128)
+                ? AdminColors.internal.withAlpha(128)
                 : (isDark ? Brand.darkBorder : Brand.borderLight),
             width: _internalMode ? 2 : 1,
           ),
@@ -1704,14 +1704,14 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
               padding: const EdgeInsets.only(bottom: 8),
               child: Row(
                 children: [
-                  Icon(Icons.lock_rounded, size: 13, color: Colors.orange[700]),
+                  Icon(Icons.lock_rounded, size: 13, color: AdminColors.internal[700]),
                   const SizedBox(width: 6),
                   Text(
                     'Internal note — not visible to customer',
                     style: TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.w700,
-                      color: Colors.orange[700],
+                      color: AdminColors.internal[700],
                     ),
                   ),
                 ],
@@ -1730,14 +1730,14 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                     height: 40,
                     decoration: BoxDecoration(
                       color: _internalMode
-                          ? Colors.orange.withAlpha(((isDark ? 0.15 : 0.1) * 255).toInt())
+                          ? AdminColors.internal.withAlpha(((isDark ? 0.15 : 0.1) * 255).toInt())
                           : (isDark
                               ? Brand.darkCardElevated
                               : Brand.scaffoldLight),
                       borderRadius: BorderRadius.circular(Brand.r(12)),
                       border: Border.all(
                         color: _internalMode
-                            ? Colors.orange.withAlpha(102)
+                            ? AdminColors.internal.withAlpha(102)
                             : (isDark
                                 ? Brand.darkBorder
                                 : Brand.royalBlue.withAlpha(26)),
@@ -1749,7 +1749,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                           : Icons.lock_open_rounded,
                       size: 18,
                       color: _internalMode
-                          ? Colors.orange[700]
+                          ? AdminColors.internal[700]
                           : (isDark
                               ? Brand.darkTextTertiary
                               : Brand.subtleLight),
@@ -1781,7 +1781,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                     borderRadius: BorderRadius.circular(Brand.r(24)),
                     border: Border.all(
                       color: _internalMode
-                          ? Colors.orange.withAlpha(77)
+                          ? AdminColors.internal.withAlpha(77)
                           : (isDark
                               ? Brand.darkBorder
                               : Brand.royalBlue.withAlpha(26)),
@@ -1799,7 +1799,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                       fontSize: 14,
                     ),
                     cursorColor:
-                        _internalMode ? Colors.orange[700] : _engAccent,
+                        _internalMode ? AdminColors.internal[700] : _engAccent,
                     decoration: InputDecoration(
                       hintText: _internalMode
                           ? 'Write internal note...'
@@ -1854,8 +1854,8 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                       gradient: _internalMode
                           ? LinearGradient(
                               colors: [
-                                Colors.orange[800]!,
-                                Colors.orange[600]!,
+                                AdminColors.internal[800]!,
+                                AdminColors.internal[600]!,
                               ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
@@ -1871,7 +1871,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                       borderRadius: BorderRadius.circular(Brand.r(16)),
                       boxShadow: [
                         BoxShadow(
-                          color: (_internalMode ? Colors.orange : _engAccent)
+                          color: (_internalMode ? AdminColors.internal : _engAccent)
                               .withAlpha(102),
                           blurRadius: 10,
                           offset: const Offset(0, 4),
@@ -1979,7 +1979,7 @@ class _EngineerTicketDetailPageState extends State<EngineerTicketDetailPage> {
                                   : Icons.star_outline_rounded,
                               size: 14,
                               color: i < rating
-                                  ? Colors.amber
+                                  ? AdminColors.warning
                                   : (isDark
                                       ? Brand.darkBorderLight
                                       : Brand.borderLight),

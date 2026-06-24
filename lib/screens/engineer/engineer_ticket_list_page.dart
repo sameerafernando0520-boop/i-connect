@@ -7,11 +7,11 @@ import 'package:supabase_flutter/supabase_flutter.dart'
          PostgresChangeFilterType;
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import 'engineer_ticket_detail_page.dart';
 
-// ── Engineer accent (per handoff §26) ──
-const Color _engAccent = Color(0xFF00B4D8);
-const Color _engAccentDark = Color(0xFF0096B7);
+const Color _engAccent = Brand.cyanAccent;
+const Color _engAccentDark = Brand.cyanAccentDark;
 
 class EngineerTicketListPage extends StatefulWidget {
   const EngineerTicketListPage({super.key});
@@ -228,9 +228,9 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
   Color _priorityColor(String p) {
     switch (p) {
       case 'urgent':
-        return const Color(0xFFFF4757);
+        return StatusColors.danger;
       case 'high':
-        return const Color(0xFFFFB74D);
+        return AdminColors.warning;
       case 'medium':
         return Brand.lightGreenBright;
       default:
@@ -243,11 +243,11 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
       case 'open':
         return Brand.darkIconActive;
       case 'assigned':
-        return const Color(0xFF7986CB);
+        return AdminColors.info;
       case 'in_progress':
-        return const Color(0xFFFFB74D);
+        return AdminColors.warning;
       case 'waiting_customer':
-        return const Color(0xFFCE93D8);
+        return StatusColors.assigned;
       case 'resolved':
         return Brand.lightGreenBright;
       case 'closed':
@@ -589,27 +589,27 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
       case 'open':
         return (Brand.darkIconActive, Icons.radio_button_unchecked);
       case 'assigned':
-        return (const Color(0xFF7986CB), Icons.person_add_rounded);
+        return (AdminColors.info, Icons.person_add_rounded);
       case 'in_progress':
-        return (const Color(0xFFFFB74D), Icons.autorenew_rounded);
+        return (AdminColors.warning, Icons.autorenew_rounded);
       case 'waiting_customer':
-        return (const Color(0xFFCE93D8), Icons.hourglass_top_rounded);
+        return (StatusColors.assigned, Icons.hourglass_top_rounded);
       case 'resolved':
         return (Brand.lightGreenBright, Icons.check_circle_rounded);
       case 'closed':
         return (Brand.darkTextSecondary, Icons.archive_rounded);
       // Priority
       case 'urgent':
-        return (const Color(0xFFFF4757), Icons.warning_rounded);
+        return (StatusColors.danger, Icons.warning_rounded);
       case 'high':
-        return (const Color(0xFFFFB74D), Icons.arrow_upward_rounded);
+        return (AdminColors.warning, Icons.arrow_upward_rounded);
       case 'medium':
         return (Brand.lightGreenBright, Icons.remove_rounded);
       case 'low':
         return (Brand.darkTextSecondary, Icons.arrow_downward_rounded);
       // Type
       case 'support':
-        return (const Color(0xFFFF8A65), Icons.build_rounded);
+        return (AdminColors.internal, Icons.build_rounded);
       case 'inquiry':
         return (Brand.darkIconActive, Icons.help_outline_rounded);
       case 'order':
@@ -735,7 +735,7 @@ class _EngineerTicketListPageState extends State<EngineerTicketListPage> {
     switch (type) {
       case 'support':
         typeIcon = Icons.build_rounded;
-        typeColor = const Color(0xFFFF8A65);
+        typeColor = AdminColors.internal;
         break;
       case 'inquiry':
         typeIcon = Icons.help_outline_rounded;

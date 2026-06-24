@@ -7,7 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart'; // ← FIXED #2
 // NOTE: supabase_flutter needed for RealtimeChannel, PostgresChangeEvent types
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../../config/brand_colors.dart'; // ← FIXED #1: use Brand
+import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/common/ic_icons.dart';
 import '../../config/supabase_config.dart';
 import '../../services/notification_service.dart'; // ← ADDED: for onLogout
@@ -25,10 +26,9 @@ import '../../widgets/common/offline_banner.dart';
 import '../../widgets/engineer/engineer_checkin_card.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-// ── Engineer-specific colors not in Brand class ──────────────
-const Color _engAccent = Color(0xFF22C55E); // Green (was cyan)
-const Color _engAccentDark = Color(0xFF16A34A); // Dark green (was dark cyan)
-const Color _darkCardHighlight = Color(0xFF22272E);
+const Color _engAccent = AdminColors.accent;
+const Color _engAccentDark = AdminColors.success;
+const Color _darkCardHighlight = Brand.darkCardElevated;
 
 // ── Asset URLs ──────────────────────────────────────────────────
 // TRI Engineering logo (navy/dark background variant)
@@ -318,7 +318,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
       case 'available':
         return Brand.lightGreenBright;
       case 'busy':
-        return const Color(0xFFFFB74D);
+        return AdminColors.warning;
       default:
         return Brand.darkTextSecondary;
     }
@@ -327,9 +327,9 @@ class _EngineerDashboardState extends State<EngineerDashboard>
   Color _priorityColor(String p) {
     switch (p) {
       case 'urgent':
-        return const Color(0xFFFF4757);
+        return StatusColors.danger;
       case 'high':
-        return const Color(0xFFFFB74D);
+        return AdminColors.warning;
       case 'medium':
         return Brand.lightGreenBright;
       default:
@@ -342,11 +342,11 @@ class _EngineerDashboardState extends State<EngineerDashboard>
       case 'open':
         return Brand.darkIconActive;
       case 'assigned':
-        return const Color(0xFF7986CB);
+        return AdminColors.info;
       case 'in_progress':
-        return const Color(0xFFFFB74D);
+        return AdminColors.warning;
       case 'waiting_customer':
-        return const Color(0xFFCE93D8);
+        return StatusColors.assigned;
       case 'resolved':
         return Brand.lightGreenBright;
       case 'closed':
@@ -468,28 +468,28 @@ class _EngineerDashboardState extends State<EngineerDashboard>
       {
         'icon': Icons.event_note_rounded,
         'label': 'My Schedules',
-        'color': const Color(0xFF3B82F6),
+        'color': AdminColors.info,
         'tap': () =>
             _navigateTo(const EngineerMySchedulesPage()),
       },
       {
         'icon': Icons.build_circle_rounded,
         'label': 'Installations',
-        'color': const Color(0xFF8B5CF6),
+        'color': StatusColors.assigned,
         'tap': () =>
             _navigateTo(const EngineerInstallationListPage()),
       },
       {
         'icon': Icons.calendar_month_rounded,
         'label': 'My Calendar',
-        'color': const Color(0xFF14B8A6),
+        'color': AdminColors.info,
         'tap': () =>
             _navigateTo(const EngineerSchedulePage()),
       },
       {
         'icon': Icons.notifications_active_rounded,
         'label': 'Alerts',
-        'color': const Color(0xFFF59E0B),
+        'color': AdminColors.warning,
         'tap': () =>
             _navigateTo(const NotificationListPage(userRole: 'engineer')),
       },
@@ -557,7 +557,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                           height: 1.15,
                           color: isDark
                               ? Brand.darkTextPrimary
-                              : const Color(0xFF0F172A),
+                              : AdminColors.textPrimary,
                         ),
                       ),
                     ],
@@ -658,14 +658,14 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xFF8FA3C8),
+                          color: Brand.navyHeroLabel,
                           letterSpacing: 0.3,
                         )),
                     errorWidget: (_, __, ___) => const Text('TRI Engineering',
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xFF8FA3C8),
+                          color: Brand.navyHeroLabel,
                           letterSpacing: 0.3,
                         )),
                   ),
@@ -769,7 +769,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                               padding: const EdgeInsets.all(3),
                               decoration: BoxDecoration(
                                 gradient: const LinearGradient(colors: [
-                                  Color(0xFFFF4757),
+                                  StatusColors.danger,
                                   Color(0xFFFF6B81)
                                 ]),
                                 shape: BoxShape.circle,
@@ -832,13 +832,13 @@ class _EngineerDashboardState extends State<EngineerDashboard>
         gradient: LinearGradient(
           colors: isDark
               ? [const Color(0xFF052E16), const Color(0xFF14532D)]
-              : [const Color(0xFF14532D), const Color(0xFF16A34A)],
+              : [const Color(0xFF14532D), AdminColors.success],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         boxShadow: isDark ? null : [
           BoxShadow(
-            color: const Color(0xFF16A34A).withAlpha(89),
+            color: AdminColors.success.withAlpha(89),
             blurRadius: 30,
             offset: const Offset(0, 12),
           )
@@ -893,7 +893,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
               const Spacer(),
               if (rating > 0)
                 Row(children: [
-                  const Icon(Icons.star_rounded, color: Colors.amber, size: 16),
+                  const Icon(Icons.star_rounded, color: AdminColors.warning, size: 16),
                   const SizedBox(width: 4),
                   Text(rating.toStringAsFixed(1),
                       style: TextStyle(
@@ -1152,9 +1152,9 @@ class _EngineerDashboardState extends State<EngineerDashboard>
       _StatItem('Today', '${_stats['resolved_today'] ?? 0}',
           Icons.check_circle_rounded, Brand.lightGreenBright),
       _StatItem('Waiting', '${_stats['waiting'] ?? 0}',
-          Icons.hourglass_top_rounded, const Color(0xFFCE93D8)),
+          Icons.hourglass_top_rounded, StatusColors.assigned),
       _StatItem('Urgent', '${_stats['urgent'] ?? 0}', Icons.warning_rounded,
-          const Color(0xFFFF4757)),
+          StatusColors.danger),
     ];
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
@@ -1436,7 +1436,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
     switch (type) {
       case 'support':
         icon = Icons.build_rounded;
-        c = const Color(0xFFFF8A65);
+        c = AdminColors.internal;
         break;
       case 'inquiry':
         icon = Icons.help_outline_rounded;
@@ -1617,7 +1617,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
       _AvailOption('available', 'Available', 'Ready to take new tickets',
           Icons.check_circle_rounded, Brand.lightGreenBright),
       _AvailOption('busy', 'Busy', 'Currently occupied',
-          Icons.do_not_disturb_rounded, const Color(0xFFFFB74D)),
+          Icons.do_not_disturb_rounded, AdminColors.warning),
       _AvailOption('offline', 'Offline', 'Not available right now',
           Icons.offline_bolt_rounded, Brand.darkTextSecondary),
     ];
@@ -1764,7 +1764,7 @@ class _EngineerDashboardState extends State<EngineerDashboard>
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                      colors: [Color(0xFFFF4757), Color(0xFFFF6B81)]),
+                      colors: [StatusColors.danger, Color(0xFFFF6B81)]),
                   shape: BoxShape.circle,
                   border: Border.all(
                       color: Brand.surface(isDark),

@@ -14,12 +14,13 @@ import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import '../../utils/app_logger.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _engAccent = Color(0xFF00B4D8);
+const Color _engAccent = Brand.cyanAccent;
 
 class EngineerMySchedulesPage extends StatefulWidget {
   const EngineerMySchedulesPage({super.key});
@@ -442,7 +443,7 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 7, vertical: 3),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF8B5CF6),
+                    color: const StatusColors.assigned,
                     borderRadius: BorderRadius.circular(Brand.r(10)),
                   ),
                   child: const Text(
@@ -527,17 +528,17 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF22C55E).withAlpha(isDark ? 25 : 15),
+                      color: const AdminColors.accent.withAlpha(isDark ? 25 : 15),
                       borderRadius: BorderRadius.circular(Brand.r(6)),
                     ),
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.phone, size: 12, color: Color(0xFF22C55E)),
+                        Icon(Icons.phone, size: 12, color: AdminColors.accent),
                         SizedBox(width: 3),
                         Text('Call', style: TextStyle(
                           fontSize: 11, fontWeight: FontWeight.w700,
-                          color: Color(0xFF22C55E),
+                          color: AdminColors.accent,
                         )),
                       ],
                     ),
@@ -572,12 +573,12 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
                 if (showTravelling)
                   _actionBtn('On the way',
                       icon: Icons.directions_car_rounded,
-                      color: AdminColorsLite.info,
+                      color: AdminColors.info,
                       onTap: () => _action(a, 'travelling')),
                 if (showArrived)
                   _actionBtn('Arrived',
                       icon: Icons.place_rounded,
-                      color: AdminColorsLite.warning,
+                      color: AdminColors.warning,
                       onTap: () => _action(a, 'arrived')),
                 if (showStart)
                   _actionBtn('Start work',
@@ -628,15 +629,15 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
     switch (s) {
       case 'notified':
       case 'assigned':
-        c = AdminColorsLite.info;
+        c = AdminColors.info;
         label = 'Assigned';
         break;
       case 'acknowledged':
-        c = AdminColorsLite.info;
+        c = AdminColors.info;
         label = 'Acknowledged';
         break;
       case 'travelling':
-        c = AdminColorsLite.warning;
+        c = AdminColors.warning;
         label = 'On the way';
         break;
       case 'on_site':
@@ -705,8 +706,3 @@ class _EngineerMySchedulesPageState extends State<EngineerMySchedulesPage> {
   }
 }
 
-// Minimal local color helper so this file doesn't depend on admin_theme.
-class AdminColorsLite {
-  static const Color info = Color(0xFF3B82F6);
-  static const Color warning = Color(0xFFF59E0B);
-}
