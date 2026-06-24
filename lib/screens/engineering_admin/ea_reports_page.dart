@@ -9,7 +9,7 @@ import '../../widgets/ds/ds_widgets.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 class EaReportsPage extends StatefulWidget {
   const EaReportsPage({super.key});
@@ -483,21 +483,21 @@ class _EaReportsPageState extends State<EaReportsPage>
               _KpiCard(
                 isDark: isDark,
                 icon: Icons.engineering_rounded,
-                iconColor: const Color(0xFF0EA5E9),
+                iconColor: AdminColors.info,
                 label: 'Active Engineers',
                 value: _engineersActive.toString(),
               ),
               _KpiCard(
                 isDark: isDark,
                 icon: Icons.today_rounded,
-                iconColor: const Color(0xFFF59E0B),
+                iconColor: AdminColors.warning,
                 label: 'Attendance Rate',
                 value: '${_attendanceRate.toStringAsFixed(1)}%',
               ),
               _KpiCard(
                 isDark: isDark,
                 icon: Icons.install_desktop_rounded,
-                iconColor: const Color(0xFF8B5CF6),
+                iconColor: StatusColors.assigned,
                 label: 'Installations Done',
                 value: _installationsCompleted.toString(),
               ),
@@ -637,12 +637,12 @@ class _EaReportsPageState extends State<EaReportsPage>
       children: [
         _StatusChip(label: 'Present',  count: counts['present']  ?? 0, color: _eaAccent,                  isDark: isDark),
         const SizedBox(width: 8),
-        _StatusChip(label: 'Late',     count: counts['late']     ?? 0, color: const Color(0xFFF59E0B),    isDark: isDark),
+        _StatusChip(label: 'Late',     count: counts['late']     ?? 0, color: AdminColors.warning,    isDark: isDark),
         const SizedBox(width: 8),
         _StatusChip(label: 'Absent',   count: counts['absent']   ?? 0, color: AdminColors.error,          isDark: isDark),
         const SizedBox(width: 8),
         _StatusChip(label: 'Leave',    count: (counts['leave'] ?? 0) + (counts['on_leave'] ?? 0),
-            color: const Color(0xFF8B5CF6), isDark: isDark),
+            color: StatusColors.assigned, isDark: isDark),
       ],
     );
   }
@@ -812,18 +812,18 @@ class _EaReportsPageState extends State<EaReportsPage>
   Color _statusColor(String s) {
     return switch (s) {
       'present'  => _eaAccent,
-      'late'     => const Color(0xFFF59E0B),
+      'late'     => AdminColors.warning,
       'absent'   => AdminColors.error,
-      'half_day' => const Color(0xFF0EA5E9),
-      _          => const Color(0xFF8B5CF6),
+      'half_day' => AdminColors.info,
+      _          => StatusColors.assigned,
     };
   }
 
   Color _jobStatusColor(String s) {
     return switch (s) {
       'completed'   => _eaAccent,
-      'in_progress' => const Color(0xFF0EA5E9),
-      'pending'     => const Color(0xFFF59E0B),
+      'in_progress' => AdminColors.info,
+      'pending'     => AdminColors.warning,
       _             => AdminColors.textHint(context),
     };
   }
@@ -886,7 +886,7 @@ class _KpiCard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w800,
-                  color: isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B),
+                  color: isDark ? Brand.darkTextPrimary : Brand.darkCard,
                 ),
               ),
               const SizedBox(height: 2),

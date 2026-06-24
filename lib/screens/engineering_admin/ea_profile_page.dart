@@ -14,7 +14,7 @@ import '../../widgets/common/language_selector_sheet.dart';
 import '../auth/login_page.dart';
 import '../../widgets/common/theme_style_sheet.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 class EaProfilePage extends StatefulWidget {
   const EaProfilePage({super.key});
@@ -327,7 +327,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
                     fontWeight: FontWeight.w700,
                     color: isDark
                         ? Brand.darkTextPrimary
-                        : const Color(0xFF0F172A),
+                        : AdminColors.textPrimary,
                   ),
                 ),
                 const SizedBox(height: 3),
@@ -465,7 +465,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
                     fontWeight: FontWeight.w600,
                     color: isDark
                         ? Brand.darkTextPrimary
-                        : const Color(0xFF0F172A),
+                        : AdminColors.textPrimary,
                   ),
                 ),
               ),
@@ -579,7 +579,7 @@ class _EaProfilePageState extends State<EaProfilePage> {
                   fontWeight: FontWeight.w600,
                   color: isDark
                       ? Brand.darkTextPrimary
-                      : const Color(0xFF0F172A),
+                      : AdminColors.textPrimary,
                 ),
               ),
               const SizedBox(width: 6),

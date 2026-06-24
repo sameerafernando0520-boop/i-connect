@@ -15,7 +15,7 @@ import '../../config/supabase_config.dart';
 import '../../utils/time_utils.dart';
 import 'ea_ticket_chat_page.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 class EaTicketDetailPage extends StatefulWidget {
   final String ticketId;

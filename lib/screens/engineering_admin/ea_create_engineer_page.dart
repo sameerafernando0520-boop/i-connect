@@ -8,7 +8,7 @@ import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _eaAccent = Color(0xFF16A34A); // sky blue
+const Color _eaAccent = AdminColors.success; // sky blue
 
 const _allSpecializations = [
   'Digital Printers',

@@ -14,7 +14,7 @@ import '../../config/supabase_config.dart';
 import 'ea_ticket_detail_page.dart';
 import 'ea_leave_detail_page.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 // ── Notification type meta ─────────────────────────────────────
 const _typeIcons = <String, IconData>{
@@ -34,19 +34,19 @@ const _typeIcons = <String, IconData>{
 };
 
 const _typeColors = <String, Color>{
-  'ticket_update':        Color(0xFF3B82F6),
-  'ticket_assigned':      Color(0xFF6366F1),
-  'engineer_dispatch':    Color(0xFF16A34A),
-  'schedule_created':     Color(0xFF14B8A6),
-  'schedule_confirmed':   Color(0xFF10B981),
-  'schedule_cancelled':   Color(0xFFEF4444),
-  'schedule_reminder':    Color(0xFFF59E0B),
-  'leave_approved':       Color(0xFF16A34A),
-  'leave_rejected':       Color(0xFFEF4444),
-  'leave_request':        Color(0xFF8B5CF6),
-  'new_message':          Color(0xFF3B82F6),
-  'broadcast':            Color(0xFFF59E0B),
-  'system':               Color(0xFF6B7280),
+  'ticket_update':        AdminColors.info,
+  'ticket_assigned':      AdminColors.primary,
+  'engineer_dispatch':    AdminColors.success,
+  'schedule_created':     AdminColors.info,
+  'schedule_confirmed':   AdminColors.accent,
+  'schedule_cancelled':   AdminColors.error,
+  'schedule_reminder':    AdminColors.warning,
+  'leave_approved':       AdminColors.success,
+  'leave_rejected':       AdminColors.error,
+  'leave_request':        StatusColors.assigned,
+  'new_message':          AdminColors.info,
+  'broadcast':            AdminColors.warning,
+  'system':               AdminColors.textSecondary,
 };
 
 // ── Filter tabs ────────────────────────────────────────────────
@@ -292,7 +292,7 @@ class _EaNotificationsPageState extends State<EaNotificationsPage> {
   int get _unreadCount => _all.where((n) => n['is_read'] == false).length;
 
   Color _colorForType(String? type) =>
-      _typeColors[type ?? 'system'] ?? const Color(0xFF6B7280);
+      _typeColors[type ?? 'system'] ?? AdminColors.textSecondary;
 
   IconData _iconForType(String? type) =>
       _typeIcons[type ?? 'system'] ?? Icons.notifications_rounded;

@@ -12,7 +12,7 @@ import '../../config/brand_colors.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 
-const Color _eaAccent = Color(0xFF00B4D8);
+const Color _eaAccent = Brand.cyanAccent;
 
 class EaAssignEngineersSheet extends StatefulWidget {
   final String ticketId;
@@ -563,7 +563,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF8B5CF6),
+                            color: StatusColors.assigned,
                             borderRadius: BorderRadius.circular(Brand.r(8)),
                           ),
                           child: const Text('LEAD',
@@ -601,7 +601,7 @@ class _EaAssignEngineersSheetState extends State<EaAssignEngineersSheet> {
                 tooltip: 'Make lead',
                 visualDensity: VisualDensity.compact,
                 icon: const Icon(Icons.star_outline_rounded,
-                    color: Color(0xFF8B5CF6)),
+                    color: StatusColors.assigned),
                 onPressed: () => setState(() => _leadId = id),
               ),
             // Checkbox indicator

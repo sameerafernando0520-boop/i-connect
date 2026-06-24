@@ -11,7 +11,7 @@ import '../../widgets/common/language_selector_sheet.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../widgets/common/theme_style_sheet.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 class EaSettingsPage extends StatelessWidget {
   const EaSettingsPage({super.key});
@@ -68,7 +68,7 @@ class EaSettingsPage extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: isDark
                             ? Brand.darkTextPrimary
-                            : const Color(0xFF0F172A))),
+                            : AdminColors.textPrimary)),
                 subtitle: Text(
                     ThemeProvider.styleName(themeProvider.darkStyle),
                     style: TextStyle(
@@ -96,7 +96,7 @@ class EaSettingsPage extends StatelessWidget {
             children: [
               _ActionRow(
                 icon: Icons.language_rounded,
-                iconColor: const Color(0xFF0EA5E9),
+                iconColor: AdminColors.info,
                 title: 'App Language',
                 subtitle: localeProvider.currentLanguageName,
                 isDark: isDark,
@@ -115,7 +115,7 @@ class EaSettingsPage extends StatelessWidget {
             children: [
               _InfoRow(
                 icon: Icons.notifications_outlined,
-                iconColor: const Color(0xFFF59E0B),
+                iconColor: AdminColors.warning,
                 title: 'Push Notifications',
                 subtitle: 'Manage notification preferences in your device settings',
                 isDark: isDark,
@@ -276,7 +276,7 @@ class _ToggleRow extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B),
+                      color: isDark ? Brand.darkTextPrimary : Brand.darkCard,
                     )),
                 const SizedBox(height: 2),
                 Text(subtitle,
@@ -344,7 +344,7 @@ class _ActionRow extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: isDark
                             ? Brand.darkTextPrimary
-                            : const Color(0xFF1E293B),
+                            : Brand.darkCard,
                       )),
                   const SizedBox(height: 2),
                   Text(subtitle,
@@ -408,7 +408,7 @@ class _InfoRow extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       color: isDark
                           ? Brand.darkTextPrimary
-                          : const Color(0xFF1E293B),
+                          : Brand.darkCard,
                     )),
                 const SizedBox(height: 2),
                 Text(subtitle,

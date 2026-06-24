@@ -15,7 +15,7 @@ import '../../services/export_service.dart';
 import 'ea_ticket_detail_page.dart';
 import 'ea_ticket_chat_page.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 // Filter tabs
 enum _TicketFilter { all, unassigned, inProgress, resolved, closed }
@@ -969,10 +969,10 @@ class _TicketCard extends StatelessWidget {
 
   Color _categoryColor(String category) {
     final c = category.toLowerCase();
-    if (c.contains('witcolor') || c.contains('uv')) return const Color(0xFF8B5CF6);
-    if (c.contains('laser')) return const Color(0xFFEF4444);
-    if (c.contains('cnc')) return const Color(0xFF10B981);
-    if (c.contains('fiber')) return const Color(0xFFF97316);
+    if (c.contains('witcolor') || c.contains('uv')) return StatusColors.assigned;
+    if (c.contains('laser')) return AdminColors.error;
+    if (c.contains('cnc')) return AdminColors.accent;
+    if (c.contains('fiber')) return AdminColors.internal;
     return Brand.royalBlue;
   }
 

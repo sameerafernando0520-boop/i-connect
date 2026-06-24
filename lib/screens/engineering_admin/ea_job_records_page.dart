@@ -8,12 +8,13 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import 'ea_job_record_detail_page.dart';
 import 'ea_job_record_form_page.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 class EaJobRecordsPage extends StatefulWidget {
   // Optional: pre-filter by a specific engineer
@@ -169,15 +170,15 @@ class _EaJobRecordsPageState extends State<EaJobRecordsPage> {
   Color _statusColor(String s) {
     switch (s) {
       case 'pending':
-        return const Color(0xFFF59E0B);
+        return AdminColors.warning;
       case 'in_progress':
-        return const Color(0xFF3B82F6);
+        return AdminColors.info;
       case 'completed':
-        return const Color(0xFF10B981);
+        return AdminColors.accent;
       case 'cancelled':
         return StatusColors.danger;
       default:
-        return const Color(0xFF94A3B8);
+        return AdminColors.textSecondary;
     }
   }
 
@@ -235,7 +236,7 @@ class _EaJobRecordsPageState extends State<EaJobRecordsPage> {
   void _showSortSheet() {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final cardBg = Brand.surface(isDark);
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkCard;
     final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
 
@@ -310,7 +311,7 @@ class _EaJobRecordsPageState extends State<EaJobRecordsPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = Brand.canvas(isDark);
     final cardBg = Brand.surface(isDark);
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkCard;
     final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
 
@@ -810,7 +811,7 @@ class _ErrorView extends StatelessWidget {
             Text(
               'Failed to load job records',
               style: TextStyle(
-                color: isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B),
+                color: isDark ? Brand.darkTextPrimary : Brand.darkCard,
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
               ),
@@ -818,7 +819,7 @@ class _ErrorView extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               error,
-              style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 12),
+              style: const TextStyle(color: AdminColors.textSecondary, fontSize: 12),
               textAlign: TextAlign.center,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
@@ -875,7 +876,7 @@ class _EmptyState extends StatelessWidget {
             Text(
               'Tap + to create the first record',
               style: TextStyle(
-                color: isDark ? Brand.darkTextTertiary : const Color(0xFF94A3B8),
+                color: isDark ? Brand.darkTextTertiary : AdminColors.textSecondary,
                 fontSize: 13,
               ),
             ),

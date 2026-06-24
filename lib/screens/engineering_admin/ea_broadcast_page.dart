@@ -19,7 +19,7 @@ import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 enum _BroadcastAudience {
   allEngineers,
@@ -387,7 +387,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
               title: Text('Also notify customer',
                   style: TextStyle(
                     fontSize: 13, fontWeight: FontWeight.w600,
-                    color: isDark ? Brand.darkTextPrimary : const Color(0xFF0F172A),
+                    color: isDark ? Brand.darkTextPrimary : AdminColors.textPrimary,
                   )),
               subtitle: Text(widget.prefilledCustomerName ?? '',
                   style: TextStyle(
@@ -452,7 +452,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
                 Text(label,
                     style: TextStyle(
                       fontSize: 13, fontWeight: FontWeight.w700,
-                      color: isDark ? Brand.darkTextPrimary : const Color(0xFF0F172A),
+                      color: isDark ? Brand.darkTextPrimary : AdminColors.textPrimary,
                     )),
                 const SizedBox(height: 2),
                 Text(sub,
@@ -493,7 +493,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
             Container(
               width: 40, height: 4,
               decoration: BoxDecoration(
-                color: Colors.grey.withAlpha(80),
+                color: AdminColors.textSecondary.withAlpha(80),
                 borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
@@ -554,7 +554,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
 
   // ── Message card ──────────────────────────────────────────────────────
   Widget _messageCard(bool isDark) {
-    final txtColor = isDark ? Brand.darkTextPrimary : const Color(0xFF0F172A);
+    final txtColor = isDark ? Brand.darkTextPrimary : AdminColors.textPrimary;
     final hintColor = AdminColors.textHint(context);
 
     return _section(
@@ -645,7 +645,7 @@ class _EaBroadcastPageState extends State<EaBroadcastPage> {
             Text(title,
                 style: TextStyle(
                   fontSize: 14, fontWeight: FontWeight.w700,
-                  color: isDark ? Brand.darkTextPrimary : const Color(0xFF0F172A),
+                  color: isDark ? Brand.darkTextPrimary : AdminColors.textPrimary,
                 )),
           ]),
           const SizedBox(height: 12),

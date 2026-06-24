@@ -8,7 +8,7 @@ import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import 'ea_leave_detail_page.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 class EaLeaveManagementPage extends StatefulWidget {
   final String? engineerId;
@@ -137,7 +137,7 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
           TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
           ElevatedButton(
             onPressed: () => Navigator.pop(context, true),
-            style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF10B981)),
+            style: ElevatedButton.styleFrom(backgroundColor: AdminColors.accent),
             child: const Text('Approve', style: TextStyle(color: Colors.white)),
           ),
         ],
@@ -156,7 +156,7 @@ class _EaLeaveManagementPageState extends State<EaLeaveManagementPage> {
       if (!mounted) return;
       _load();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Leave approved'), backgroundColor: Color(0xFF10B981)),
+        const SnackBar(content: Text('Leave approved'), backgroundColor: AdminColors.accent),
       );
     } catch (e) {
       if (!mounted) return;
@@ -432,23 +432,23 @@ String _statusLabel(String s) {
 
 Color _statusColor(String? s) {
   switch (s) {
-    case 'pending': return const Color(0xFFF59E0B);
-    case 'approved': return const Color(0xFF10B981);
-    case 'rejected': return const Color(0xFFEF4444);
-    case 'cancelled': return const Color(0xFF94A3B8);
-    default: return const Color(0xFF94A3B8);
+    case 'pending': return AdminColors.warning;
+    case 'approved': return AdminColors.accent;
+    case 'rejected': return AdminColors.error;
+    case 'cancelled': return AdminColors.textSecondary;
+    default: return AdminColors.textSecondary;
   }
 }
 
 Color _leaveTypeColor(String? t) {
   switch (t) {
-    case 'sick': return const Color(0xFFEF4444);
-    case 'casual': return const Color(0xFF3B82F6);
-    case 'annual': return const Color(0xFF10B981);
-    case 'emergency': return const Color(0xFFEF4444);
+    case 'sick': return AdminColors.error;
+    case 'casual': return AdminColors.info;
+    case 'annual': return AdminColors.accent;
+    case 'emergency': return AdminColors.error;
     case 'maternity': return const Color(0xFFEC4899);
-    case 'paternity': return const Color(0xFF8B5CF6);
-    default: return const Color(0xFF94A3B8);
+    case 'paternity': return StatusColors.assigned;
+    default: return AdminColors.textSecondary;
   }
 }
 
@@ -481,9 +481,9 @@ class _SummaryRow extends StatelessWidget {
         children: [
           _SummaryChip(label: 'Total', count: all.length, color: _eaAccent),
           const SizedBox(width: 8),
-          _SummaryChip(label: 'Pending', count: _count('pending'), color: const Color(0xFFF59E0B)),
+          _SummaryChip(label: 'Pending', count: _count('pending'), color: AdminColors.warning),
           const SizedBox(width: 8),
-          _SummaryChip(label: 'Approved', count: _count('approved'), color: const Color(0xFF10B981)),
+          _SummaryChip(label: 'Approved', count: _count('approved'), color: AdminColors.accent),
           const SizedBox(width: 8),
           _SummaryChip(label: 'Rejected', count: _count('rejected'), color: StatusColors.danger),
         ],
@@ -711,7 +711,7 @@ class _LeaveCard extends StatelessWidget {
                           icon: const Icon(Icons.check_rounded, size: 16),
                           label: const Text('Approve'),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF10B981),
+                            backgroundColor: AdminColors.accent,
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(vertical: 8),
                             elevation: 0,

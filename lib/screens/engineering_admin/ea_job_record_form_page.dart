@@ -8,10 +8,11 @@
 
 import 'package:flutter/material.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 class EaJobRecordFormPage extends StatefulWidget {
   // For edit mode — pass the existing record map
@@ -188,7 +189,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
   void _pickEngineer() {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final cardBg = Brand.surface(isDark);
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkCard;
     final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
 
@@ -298,7 +299,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
 
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final cardBg = Brand.surface(isDark);
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkCard;
     final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
 
@@ -503,7 +504,7 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = Brand.canvas(isDark);
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkCard;
     final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
     final inputFill = isDark ? Brand.darkCardElevated : Brand.scaffoldLight;
@@ -821,15 +822,15 @@ class _EaJobRecordFormPageState extends State<EaJobRecordFormPage> {
   Color _statusColor(String s) {
     switch (s) {
       case 'pending':
-        return const Color(0xFFF59E0B);
+        return AdminColors.warning;
       case 'in_progress':
-        return const Color(0xFF3B82F6);
+        return AdminColors.info;
       case 'completed':
-        return const Color(0xFF10B981);
+        return AdminColors.accent;
       case 'cancelled':
-        return const Color(0xFFEF4444);
+        return AdminColors.error;
       default:
-        return const Color(0xFF94A3B8);
+        return AdminColors.textSecondary;
     }
   }
 }

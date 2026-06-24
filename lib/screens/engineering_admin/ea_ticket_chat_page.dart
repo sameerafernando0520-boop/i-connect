@@ -22,7 +22,7 @@ import '../admin/create_quotation_page.dart';
 import '../admin/admin_quotation_detail_page.dart';
 import 'ea_assign_engineers_sheet.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 class EaTicketChatPage extends StatefulWidget {
   final String ticketId;
@@ -719,7 +719,7 @@ class _EaTicketChatPageState extends State<EaTicketChatPage> {
             ),
             _QuickActionRow(
               icon: Icons.request_quote_rounded,
-              iconColor: const Color(0xFF8B5CF6),
+              iconColor: StatusColors.assigned,
               label: 'Send estimate',
               subtitle: 'Build an itemized quotation and post it in chat',
               onTap: () {
@@ -1725,13 +1725,13 @@ class _DispatchPanelState extends State<_DispatchPanel> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF10B981).withAlpha(20),
+                    color: AdminColors.accent.withAlpha(20),
                     borderRadius: BorderRadius.circular(Brand.r(8)),
                   ),
                   child: Text(
                     '${engineers.length} available',
                     style: const TextStyle(
-                      color: Color(0xFF10B981),
+                      color: AdminColors.accent,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),
@@ -1835,7 +1835,7 @@ class _EngineerDispatchTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(Brand.r(14)),
         border: Border.all(
           color: skillMatch
-              ? const Color(0xFF10B981).withAlpha(60)
+              ? AdminColors.accent.withAlpha(60)
               : AdminColors.border(context),
         ),
       ),
@@ -1852,7 +1852,7 @@ class _EngineerDispatchTile extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(
                     color: skillMatch
-                        ? const Color(0xFF10B981).withAlpha(100)
+                        ? AdminColors.accent.withAlpha(100)
                         : _eaAccent.withAlpha(60),
                   ),
                 ),
@@ -1898,7 +1898,7 @@ class _EngineerDispatchTile extends StatelessWidget {
                         if (avgRating > 0) ...[
                           const Icon(Icons.star_rounded,
                               size: 11,
-                              color: Color(0xFFF59E0B)),
+                              color: AdminColors.warning),
                           Text(
                             avgRating.toStringAsFixed(1),
                             style: TextStyle(
@@ -1977,7 +1977,7 @@ class _EngineerDispatchTile extends StatelessWidget {
               child: Row(
                 children: [
                   const Icon(Icons.warning_amber_rounded,
-                      color: Color(0xFFF59E0B), size: 13),
+                      color: AdminColors.warning, size: 13),
                   const SizedBox(width: 4),
                   Text(
                     'No matching skill for this machine type',
@@ -2061,9 +2061,9 @@ class _EngineerDispatchTile extends StatelessWidget {
   }
 
   Color _scoreColor(double score) {
-    if (score >= 80) return const Color(0xFF10B981);
-    if (score >= 60) return const Color(0xFFF59E0B);
-    return const Color(0xFFEF4444);
+    if (score >= 80) return AdminColors.accent;
+    if (score >= 60) return AdminColors.warning;
+    return AdminColors.error;
   }
 }
 

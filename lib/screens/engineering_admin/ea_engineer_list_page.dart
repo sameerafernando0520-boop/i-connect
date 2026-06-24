@@ -12,7 +12,7 @@ import '../../utils/time_utils.dart';
 import 'ea_engineer_detail_page.dart';
 import 'ea_create_engineer_page.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 // Sort options
 enum _SortBy { name, zone, rating, joinDate }
@@ -480,7 +480,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
                       ),
                       if (rating != null) ...[
                         const Icon(Icons.star_rounded,
-                            size: 14, color: Color(0xFFF59E0B)),
+                            size: 14, color: AdminColors.warning),
                         const SizedBox(width: 2),
                         Text(
                           rating.toStringAsFixed(1),
@@ -898,7 +898,7 @@ class _EaEngineerListPageState extends State<EaEngineerListPage> {
       case 'late':
         return AdminColors.warning;
       case 'half_day':
-        return const Color(0xFF10B981);
+        return AdminColors.accent;
       case 'on_leave':
         return AdminColors.info;
       case 'absent':

@@ -9,7 +9,7 @@ import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 const _typeLabels = {
   'new_install':   'New Install',
@@ -19,11 +19,11 @@ const _typeLabels = {
   'decommission':  'Decommission',
 };
 const _typeColors = {
-  'new_install':   Color(0xFF10B981),
-  'replacement':   Color(0xFF8B5CF6),
-  'upgrade':       Color(0xFF3B82F6),
-  'commissioning': Color(0xFFF59E0B),
-  'decommission':  Color(0xFFEF4444),
+  'new_install':   AdminColors.accent,
+  'replacement':   StatusColors.assigned,
+  'upgrade':       AdminColors.info,
+  'commissioning': AdminColors.warning,
+  'decommission':  AdminColors.error,
 };
 const _statusLabels = {
   'pending':     'Pending',
@@ -33,11 +33,11 @@ const _statusLabels = {
   'cancelled':   'Cancelled',
 };
 const _statusColors = {
-  'pending':     Color(0xFFF59E0B),
-  'scheduled':   Color(0xFF3B82F6),
-  'in_progress': Color(0xFF8B5CF6),
-  'completed':   Color(0xFF10B981),
-  'cancelled':   Color(0xFF6B7280),
+  'pending':     AdminColors.warning,
+  'scheduled':   AdminColors.info,
+  'in_progress': StatusColors.assigned,
+  'completed':   AdminColors.accent,
+  'cancelled':   AdminColors.textSecondary,
 };
 const _engRoleLabels = {
   'lead':       'Lead',
@@ -508,8 +508,8 @@ class _EaInstallationDetailPageState extends State<EaInstallationDetailPage> {
     final status = inst['status'] as String? ?? 'pending';
     final type   = inst['installation_type'] as String? ?? 'new_install';
 
-    final statusColor = _statusColors[status] ?? const Color(0xFF6B7280);
-    final typeColor   = _typeColors[type]   ?? const Color(0xFF6B7280);
+    final statusColor = _statusColors[status] ?? AdminColors.textSecondary;
+    final typeColor   = _typeColors[type]   ?? AdminColors.textSecondary;
 
     final engineers = (inst['installation_engineers'] as List? ?? [])
         .where((e) => (e['status'] as String?) != 'removed')

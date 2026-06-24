@@ -19,8 +19,8 @@ import '../../widgets/ds/ds_widgets.dart';
 import '../../config/brand_colors.dart';
 import '../../config/supabase_config.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
-const Color _eaRed = Color(0xFFEF4444);
+const Color _eaAccent = AdminColors.success;
+const Color _eaRed = AdminColors.error;
 
 class EaPendingApprovalsPage extends StatefulWidget {
   const EaPendingApprovalsPage({super.key});
@@ -374,7 +374,7 @@ class _EaPendingApprovalsPageState extends State<EaPendingApprovalsPage> {
                     fontWeight: FontWeight.w700,
                     color: isDark
                         ? Brand.darkTextPrimary
-                        : const Color(0xFF0F172A),
+                        : AdminColors.textPrimary,
                   )),
             ),
           ]),

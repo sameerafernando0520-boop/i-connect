@@ -7,11 +7,12 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import 'ea_job_record_form_page.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 class EaJobRecordDetailPage extends StatefulWidget {
   final String recordId;
@@ -165,15 +166,15 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
   Color _statusColor(String s) {
     switch (s) {
       case 'pending':
-        return const Color(0xFFF59E0B);
+        return AdminColors.warning;
       case 'in_progress':
-        return const Color(0xFF3B82F6);
+        return AdminColors.info;
       case 'completed':
-        return const Color(0xFF10B981);
+        return AdminColors.accent;
       case 'cancelled':
         return StatusColors.danger;
       default:
-        return const Color(0xFF94A3B8);
+        return AdminColors.textSecondary;
     }
   }
 
@@ -230,7 +231,7 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = Brand.canvas(isDark);
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkCard;
 
     return PopScope(
       canPop: true,
@@ -400,14 +401,14 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
                         _actionChip(
                           label: 'Start Job',
                           icon: Icons.play_arrow_rounded,
-                          color: const Color(0xFF3B82F6),
+                          color: AdminColors.info,
                           onTap: () => _updateStatus('in_progress'),
                         ),
                       if (status == 'in_progress' || status == 'pending')
                         _actionChip(
                           label: 'Complete',
                           icon: Icons.check_rounded,
-                          color: const Color(0xFF10B981),
+                          color: AdminColors.accent,
                           onTap: () => _updateStatus('completed'),
                         ),
                       _actionChip(
@@ -683,7 +684,7 @@ class _EaJobRecordDetailPageState extends State<EaJobRecordDetailPage> {
     required bool isDark,
   }) {
     final textPrimary =
-        isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+        isDark ? Brand.darkTextPrimary : Brand.darkCard;
     final textSecondary =
         isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
@@ -838,7 +839,7 @@ class _ErrorView extends StatelessWidget {
               style: TextStyle(
                 color: isDark
                     ? Brand.darkTextPrimary
-                    : const Color(0xFF1E293B),
+                    : Brand.darkCard,
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
               ),
@@ -846,7 +847,7 @@ class _ErrorView extends StatelessWidget {
             const SizedBox(height: 8),
             Text(error,
                 style: const TextStyle(
-                    color: Color(0xFF94A3B8), fontSize: 12),
+                    color: AdminColors.textSecondary, fontSize: 12),
                 textAlign: TextAlign.center,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis),

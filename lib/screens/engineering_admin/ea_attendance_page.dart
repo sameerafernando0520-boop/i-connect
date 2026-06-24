@@ -7,10 +7,11 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 
-const Color _eaAccent = Color(0xFF16A34A);
+const Color _eaAccent = AdminColors.success;
 
 class EaAttendancePage extends StatefulWidget {
   const EaAttendancePage({super.key});
@@ -179,7 +180,7 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
       builder: (sheetCtx) => StatefulBuilder(
         builder: (sheetCtx, setSheet) {
           final cardBg = Brand.surface(isDark);
-          final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+          final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkCard;
           final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
 
           return Padding(
@@ -496,15 +497,15 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
   Color _attColor(String status) {
     switch (status) {
       case 'present':
-        return const Color(0xFF10B981);
+        return AdminColors.accent;
       case 'late':
-        return const Color(0xFFF59E0B);
+        return AdminColors.warning;
       case 'absent':
-        return const Color(0xFFEF4444);
+        return AdminColors.error;
       case 'on_leave':
-        return const Color(0xFF8B5CF6);
+        return StatusColors.assigned;
       default:
-        return const Color(0xFF94A3B8);
+        return AdminColors.textSecondary;
     }
   }
 
@@ -539,7 +540,7 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = Brand.canvas(isDark);
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkCard;
     final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
 
     return Scaffold(
@@ -628,7 +629,7 @@ class _EaAttendancePageState extends State<EaAttendancePage> {
     required bool isDark,
     required VoidCallback onTap,
   }) {
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkCard;
     final textSecondary = isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
 
     return GestureDetector(
@@ -689,7 +690,7 @@ class _DateBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cardBg = Brand.surface(isDark);
-    final textPrimary = isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+    final textPrimary = isDark ? Brand.darkTextPrimary : Brand.darkCard;
     final borderColor = isDark ? Brand.darkBorder : Brand.borderLight;
 
     return Container(
@@ -789,7 +790,7 @@ class _SummaryRow extends StatelessWidget {
             _SummaryChip(
               label: 'Present',
               count: present,
-              color: const Color(0xFF10B981),
+              color: AdminColors.accent,
               selected: selected == 'present',
               onTap: () => onSelect('present'),
             ),
@@ -797,7 +798,7 @@ class _SummaryRow extends StatelessWidget {
             _SummaryChip(
               label: 'Late',
               count: late,
-              color: const Color(0xFFF59E0B),
+              color: AdminColors.warning,
               selected: selected == 'late',
               onTap: () => onSelect('late'),
             ),
@@ -813,7 +814,7 @@ class _SummaryRow extends StatelessWidget {
             _SummaryChip(
               label: 'On Leave',
               count: onLeave,
-              color: const Color(0xFF8B5CF6),
+              color: StatusColors.assigned,
               selected: selected == 'on_leave',
               onTap: () => onSelect('on_leave'),
             ),
@@ -822,7 +823,7 @@ class _SummaryRow extends StatelessWidget {
               _SummaryChip(
                 label: 'Not Marked',
                 count: notMarked,
-                color: const Color(0xFF94A3B8),
+                color: AdminColors.textSecondary,
                 selected: selected == 'not_marked',
                 onTap: () => onSelect('not_marked'),
               ),
@@ -1058,7 +1059,7 @@ class _AttendanceCard extends StatelessWidget {
                             if (checkIn != null) ...[
                               Icon(Icons.login_rounded,
                                   size: 12,
-                                  color: const Color(0xFF10B981)),
+                                  color: AdminColors.accent),
                               const SizedBox(width: 3),
                               Text(
                                 formatTime(checkIn),
@@ -1160,7 +1161,7 @@ class _ErrorView extends StatelessWidget {
               style: TextStyle(
                 color: Theme.of(context).brightness == Brightness.dark
                     ? Brand.darkTextPrimary
-                    : const Color(0xFF1E293B),
+                    : Brand.darkCard,
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
               ),
@@ -1169,7 +1170,7 @@ class _ErrorView extends StatelessWidget {
             Text(
               error,
               style: const TextStyle(
-                color: Color(0xFF94A3B8),
+                color: AdminColors.textSecondary,
                 fontSize: 12,
               ),
               textAlign: TextAlign.center,
