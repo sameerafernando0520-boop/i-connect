@@ -29,10 +29,10 @@ class _AdminKnowledgeBaseFormPageState
     extends State<AdminKnowledgeBaseFormPage> {
   // ─── Type catalogue ──────────────────────────────────────────
   static const _types = <_KbType>[
-    _KbType('manual',      'Manual',       Icons.menu_book_rounded,        Color(0xFF3B82F6)),
-    _KbType('article',     'Article',      Icons.article_rounded,          Color(0xFF8B5CF6)),
+    _KbType('manual',      'Manual',       Icons.menu_book_rounded,        AdminColors.info),
+    _KbType('article',     'Article',      Icons.article_rounded,          StatusColors.assigned),
     _KbType('testimonial', 'Testimonial',  Icons.format_quote_rounded,     Color(0xFFEC4899)),
-    _KbType('video',       'Video',        Icons.play_circle_fill_rounded, Color(0xFFEF4444)),
+    _KbType('video',       'Video',        Icons.play_circle_fill_rounded, AdminColors.error),
   ];
 
   final _formKey = GlobalKey<FormState>();

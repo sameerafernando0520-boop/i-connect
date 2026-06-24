@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../widgets/common/ic_icons.dart';
 
@@ -20,32 +21,32 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
   static const _accentColor = Brand.lightGreen;
 
   static const _statusColors = {
-    'open': Color(0xFFF59E0B),
-    'assigned': Color(0xFF3B82F6),
+    'open': AdminColors.warning,
+    'assigned': AdminColors.info,
     'in_progress': Brand.royalBlue,
-    'waiting_customer': Color(0xFFEF8C22),
+    'waiting_customer': AdminColors.internal,
     'resolved': Brand.lightGreen,
-    'closed': Color(0xFF6B7280),
+    'closed': AdminColors.textSecondary,
   };
 
   static const _priorityColors = {
-    'urgent': Color(0xFFEF4444),
-    'high': Color(0xFFF97316),
-    'medium': Color(0xFF3B82F6),
-    'low': Color(0xFF22C55E),
+    'urgent': AdminColors.error,
+    'high': AdminColors.internal,
+    'medium': AdminColors.info,
+    'low': AdminColors.accent,
   };
 
   static const _categoryPalette = [
     Brand.royalBlue,
     Brand.lightGreen,
-    Color(0xFF3B82F6),
-    Color(0xFFF59E0B),
-    Color(0xFFEF4444),
-    Color(0xFF8B5CF6),
-    Color(0xFF06B6D4),
+    AdminColors.info,
+    AdminColors.warning,
+    AdminColors.error,
+    StatusColors.assigned,
+    AdminColors.info,
     Color(0xFFEC4899),
-    Color(0xFF14B8A6),
-    Color(0xFFF97316),
+    AdminColors.info,
+    AdminColors.internal,
   ];
 
   // ─── State ─────────────────────────────────────────────────
@@ -91,15 +92,15 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
   Color get _textPrimary =>
       _isDark ? Brand.darkTextPrimary : const Color(0xFF1A1A2E);
   Color get _textSecondary =>
-      _isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+      _isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
   Color get _textMuted =>
-      _isDark ? Brand.darkTextTertiary : const Color(0xFF94A3B8);
+      _isDark ? Brand.darkTextTertiary : AdminColors.textSecondary;
   Color get _borderColor => _isDark ? Brand.darkBorder : Brand.borderLight;
   Color get _dividerColor =>
       _isDark ? Brand.darkBorderLight : const Color(0xFFE2E8F0);
-  Color get _gridColor => _isDark ? Brand.darkBorder : const Color(0xFFF1F5F9);
+  Color get _gridColor => _isDark ? Brand.darkBorder : AdminColors.background;
   Color get _barBg =>
-      _isDark ? Brand.darkCardElevated : const Color(0xFFF1F5F9);
+      _isDark ? Brand.darkCardElevated : AdminColors.background;
   Color get _tooltipBg => Brand.surface(_isDark);
 
   List<BoxShadow> get _cardShadow => _isDark
@@ -684,14 +685,14 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                 value: _avgResolutionHours > 0
                     ? _formatHours(_avgResolutionHours)
                     : '—',
-                color: const Color(0xFF8B5CF6),
+                color: StatusColors.assigned,
               ),
               const SizedBox(width: 10),
               _buildStatCard(
                 icon: Icons.star_rounded,
                 label: 'Satisfaction',
                 value: _ratingCount > 0 ? _avgRating.toStringAsFixed(1) : '—',
-                color: const Color(0xFFF59E0B),
+                color: AdminColors.warning,
                 suffix: _ratingCount > 0 ? '/5' : null,
               ),
             ],
@@ -705,7 +706,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                 value: _avgResponseMinutes > 0
                     ? _formatMinutes(_avgResponseMinutes)
                     : '—',
-                color: const Color(0xFF06B6D4),
+                color: AdminColors.info,
               ),
               const SizedBox(width: 10),
               _buildStatCard(
@@ -823,7 +824,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
         'key': 'inquiry',
         'label': 'Inquiries',
         'icon': Icons.help_outline_rounded,
-        'color': const Color(0xFFF59E0B),
+        'color': AdminColors.warning,
       },
     ];
 
@@ -978,7 +979,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                 return PieChartSectionData(
                   value: e.value.toDouble(),
                   title: isTouched ? '$pct%' : '',
-                  color: _statusColors[e.key] ?? Colors.grey,
+                  color: _statusColors[e.key] ?? AdminColors.textSecondary,
                   radius: isTouched ? 70 : 60,
                   titleStyle: const TextStyle(
                     fontSize: 12,
@@ -999,7 +1000,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: entries.map((e) {
               return _buildLegendItem(
-                color: _statusColors[e.key] ?? Colors.grey,
+                color: _statusColors[e.key] ?? AdminColors.textSecondary,
                 label: _formatStatus(e.key),
                 value: '${e.value}',
               );
@@ -1325,7 +1326,7 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
                     const Icon(
                       Icons.star_rounded,
                       size: 14,
-                      color: Color(0xFFF59E0B),
+                      color: AdminColors.warning,
                     ),
                     const SizedBox(width: 2),
                     Text(

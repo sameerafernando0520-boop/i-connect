@@ -13,8 +13,8 @@ import '../../config/supabase_config.dart';
 import '../../utils/string_utils.dart';
 
 // ── Engineer-specific accent (file-level const, not in Brand) ─
-const Color _engAccent = Color(0xFF00B4D8);
-const Color _engAccentDark = Color(0xFF0077A8);
+const Color _engAccent = Brand.cyanAccent;
+const Color _engAccentDark = Brand.cyanAccentDark;
 
 const _allSpecializations = [
   'Digital Printers',
@@ -791,12 +791,12 @@ class _EngineerManagementPageState extends State<EngineerManagementPage> {
                   Row(
                     children: [
                       const Icon(Icons.star_rounded,
-                          color: Colors.amber, size: 14),
+                          color: AdminColors.warning, size: 14),
                       const SizedBox(width: 3),
                       Text(
                         rating.toStringAsFixed(1),
                         style: const TextStyle(
-                          color: Colors.amber,
+                          color: AdminColors.warning,
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
                         ),
@@ -1477,7 +1477,7 @@ class _AddEngineerSheetState extends State<_AddEngineerSheet> {
             width: 40,
             height: 4,
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkBorderLight : Colors.grey.shade300,
+              color: isDark ? Brand.darkBorderLight : AdminColors.textSecondary,
               borderRadius: BorderRadius.circular(Brand.r(2)),
             ),
           ),
@@ -1958,7 +1958,7 @@ class _EditEngineerSheetState extends State<_EditEngineerSheet> {
             width: 40,
             height: 4,
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkBorderLight : Colors.grey.shade300,
+              color: isDark ? Brand.darkBorderLight : AdminColors.textSecondary,
               borderRadius: BorderRadius.circular(Brand.r(2)),
             ),
           ),

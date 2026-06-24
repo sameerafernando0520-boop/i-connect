@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/supabase_config.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../utils/time_utils.dart';
 
@@ -53,7 +54,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       'all_engineers',
       'All Engineers',
       Icons.engineering_rounded,
-      Color(0xFF00B4D8),
+      Brand.cyanAccent,
     ),
     (
       'all_users',
@@ -65,7 +66,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       'specific_machine',
       'By Machine Category',
       Icons.precision_manufacturing_rounded,
-      Color(0xFFFF9800),
+      AdminColors.internal,
     ),
   ];
 
@@ -74,25 +75,25 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       'new_year',
       'New Year',
       Icons.celebration_rounded,
-      Color(0xFFE91E63),
+      StatusColors.danger,
     ),
     (
       'holiday',
       'Holiday',
       Icons.card_giftcard_rounded,
-      Color(0xFFE53935),
+      AdminColors.error,
     ),
     (
       'mid_year',
       'Mid-Year',
       Icons.local_offer_rounded,
-      Color(0xFFFF9800),
+      AdminColors.internal,
     ),
     (
       'special',
       'Special',
       Icons.star_rounded,
-      Color(0xFF9C27B0),
+      StatusColors.assigned,
     ),
   ];
 
@@ -104,10 +105,10 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
   ];
 
   // ── Const color aliases ──
-  static const _redColor = Color(0xFFEF4444);
-  static const _redLight = Color(0xFFEF5350); // shade400
-  static const _greyColor = Color(0xFF607D8B);
-  static const _orangeColor = Color(0xFFFF9800);
+  static const _redColor = AdminColors.error;
+  static const _redLight = AdminColors.error; // shade400
+  static const _greyColor = AdminColors.textSecondary;
+  static const _orangeColor = AdminColors.internal;
   static const _greyDark = Color(0xFF455A64); // shade700
 
   @override
@@ -928,11 +929,11 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       case 'active':
         return Brand.lightGreen;
       case 'scheduled':
-        return const Color(0xFF2196F3);
+        return AdminColors.info;
       case 'expired':
         return _redColor;
       case 'inactive':
-        // FIX: replaced Colors.grey with const
+        // FIX: replaced AdminColors.textSecondary with const
         return _greyColor;
       default:
         return _greyColor;
@@ -1168,10 +1169,10 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                             width: 40,
                             height: 4,
                             decoration: BoxDecoration(
-                              // FIX: replaced Colors.grey.shade300
+                              // FIX: replaced AdminColors.textSecondary
                               color: isDark
                                   ? Brand.darkBorderLight
-                                  : const Color(0xFFCBD5E1),
+                                  : AdminColors.borderLight,
                               borderRadius: BorderRadius.circular(Brand.r(2)),
                             ),
                           ),
@@ -1836,7 +1837,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
               hintText: 'Notification title...',
               hintStyle: TextStyle(
                 color:
-                    isDark ? Brand.darkTextTertiary : const Color(0xFFCBD5E1),
+                    isDark ? Brand.darkTextTertiary : AdminColors.borderLight,
                 fontWeight: FontWeight.w600,
               ),
               prefixIcon: Icon(
@@ -1872,7 +1873,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
               hintText: 'Write your message...',
               hintStyle: TextStyle(
                 color:
-                    isDark ? Brand.darkTextTertiary : const Color(0xFFCBD5E1),
+                    isDark ? Brand.darkTextTertiary : AdminColors.borderLight,
               ),
               filled: true,
               fillColor: isDark ? Brand.darkCardElevated : Brand.scaffoldLight,
@@ -1998,7 +1999,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                   style: TextStyle(
                     color: isDark
                         ? Brand.darkTextTertiary
-                        : const Color(0xFFCBD5E1),
+                        : AdminColors.borderLight,
                     fontSize: 14,
                   ),
                 ),
@@ -2034,7 +2035,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
 
   Widget _buildRecipientCount(bool isDark) {
     final hasRecipients = _recipientCount > 0;
-    // FIX: replaced Colors.orange with const
+    // FIX: replaced AdminColors.internal with const
     final color = hasRecipients ? Brand.lightGreen : _orangeColor;
 
     return Container(
@@ -2212,7 +2213,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
             Icon(
               Icons.campaign_outlined,
               size: 42,
-              color: isDark ? Brand.darkTextTertiary : const Color(0xFFCBD5E1),
+              color: isDark ? Brand.darkTextTertiary : AdminColors.borderLight,
             ),
             const SizedBox(height: 12),
             Text(
@@ -2305,7 +2306,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                       size: 12,
                       color: isDark
                           ? Brand.darkTextTertiary
-                          : const Color(0xFFCBD5E1),
+                          : AdminColors.borderLight,
                     ),
                     const SizedBox(width: 4),
                     Text(
@@ -2314,7 +2315,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                         fontSize: 12,
                         color: isDark
                             ? Brand.darkTextTertiary
-                            : const Color(0xFFCBD5E1),
+                            : AdminColors.borderLight,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -2328,7 +2329,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
                           fontSize: 12,
                           color: isDark
                               ? Brand.darkTextTertiary
-                              : const Color(0xFFCBD5E1),
+                              : AdminColors.borderLight,
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -2446,7 +2447,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
         _buildStatChip(
           'Scheduled',
           '$scheduled',
-          const Color(0xFF2196F3),
+          AdminColors.info,
           isDark,
         ),
         const SizedBox(width: 8),
@@ -2767,7 +2768,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
             Icon(
               Icons.photo_library_outlined,
               size: 48,
-              color: isDark ? Brand.darkTextTertiary : const Color(0xFFCBD5E1),
+              color: isDark ? Brand.darkTextTertiary : AdminColors.borderLight,
             ),
             const SizedBox(height: 16),
             Text(
@@ -2886,7 +2887,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
           style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w700,
-            // FIX: replaced Colors.grey.shade700 with const
+            // FIX: replaced AdminColors.textSecondary with const
             color: isDark ? Brand.darkTextSecondary : _greyDark,
           ),
         ),
@@ -2909,7 +2910,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: TextStyle(
-          color: isDark ? Brand.darkTextTertiary : const Color(0xFFCBD5E1),
+          color: isDark ? Brand.darkTextTertiary : AdminColors.borderLight,
           fontSize: 13,
         ),
         filled: true,
@@ -3076,7 +3077,7 @@ class _BroadcastNotificationsPageState extends State<BroadcastNotificationsPage>
             'Recommended: 1920×1080 (16:9)',
             style: TextStyle(
               fontSize: 12,
-              color: isDark ? Brand.darkTextTertiary : const Color(0xFFCBD5E1),
+              color: isDark ? Brand.darkTextTertiary : AdminColors.borderLight,
             ),
           ),
         ],

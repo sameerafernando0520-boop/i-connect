@@ -386,13 +386,13 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       isDark ? Brand.darkCardElevated : Brand.scaffoldLight;
 
   Color _textPrimary(bool isDark) =>
-      isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+      isDark ? Brand.darkTextPrimary : Brand.darkCard;
 
   Color _textSub(bool isDark) =>
-      isDark ? Brand.darkTextSecondary : Colors.grey.shade500;
+      isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
 
   Color _textTertiary(bool isDark) =>
-      isDark ? Brand.darkTextTertiary : Colors.grey.shade400;
+      isDark ? Brand.darkTextTertiary : AdminColors.textSecondary;
 
   // ═══════════════════════════════════════════════════════════
   // BUILD
@@ -496,7 +496,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                         fontSize: 14,
                         color: isDark
                             ? Brand.darkTextSecondary
-                            : Colors.grey.shade500,
+                            : AdminColors.textSecondary,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -864,7 +864,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
     final email = _customer!['email']?.toString() ?? 'N/A';
     final phone = _customer!['phone_number']?.toString() ?? 'N/A';
     final cardBg = _cardBg(isDark);
-    final dividerColor = isDark ? Brand.darkBorder : Colors.grey.shade100;
+    final dividerColor = isDark ? Brand.darkBorder : AdminColors.textSecondary;
 
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 14, 20, 0),
@@ -974,7 +974,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
     final district = (_customer?['district'] as String?)?.trim();
     final city = (_customer?['city'] as String?)?.trim();
     final cardBg = _cardBg(isDark);
-    final dividerColor = isDark ? Brand.darkBorder : Colors.grey.shade100;
+    final dividerColor = isDark ? Brand.darkBorder : AdminColors.textSecondary;
 
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 14, 20, 0),
@@ -1203,7 +1203,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                   decoration: BoxDecoration(
                     color: isDark
                         ? Brand.darkBorder
-                        : Colors.grey.withAlpha(77),
+                        : AdminColors.textSecondary.withAlpha(77),
                     borderRadius: BorderRadius.circular(Brand.r(2)),
                   ),
                 ),
@@ -1411,7 +1411,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
             value,
             style: TextStyle(
               fontSize: 14,
-              color: isDark ? Brand.darkTextPrimary : Colors.grey.shade700,
+              color: isDark ? Brand.darkTextPrimary : AdminColors.textSecondary,
             ),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
@@ -1597,7 +1597,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
               controller: _tabController,
               labelColor: isDark ? Brand.darkIconActive : AdminColors.primary,
               unselectedLabelColor:
-                  isDark ? Brand.darkTextTertiary : Colors.grey.shade500,
+                  isDark ? Brand.darkTextTertiary : AdminColors.textSecondary,
               indicatorColor:
                   isDark ? Brand.darkIconActive : AdminColors.primary,
               indicatorWeight: 3,
@@ -2374,7 +2374,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                                 minHeight: 6,
                                 backgroundColor: isDark
                                     ? Brand.darkBorder
-                                    : Colors.grey.shade200,
+                                    : AdminColors.textSecondary,
                                 valueColor: AlwaysStoppedAnimation<Color>(
                                   paymentStatus == 'completed'
                                       ? AdminColors.accent
@@ -2442,17 +2442,17 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
       case 'new':
         return AdminColors.info;
       case 'contacted':
-        return const Color(0xFF8E24AA);
+        return AdminColors.primary;
       case 'quoted':
         return AdminColors.warning;
       case 'negotiating':
-        return const Color(0xFFFF8F00);
+        return AdminColors.warning;
       case 'won':
         return AdminColors.accent;
       case 'lost':
         return AdminColors.error;
       default:
-        return Colors.grey;
+        return AdminColors.textSecondary;
     }
   }
 
@@ -2732,7 +2732,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                   else if (viewedAt != null)
                     _engagementChip('Viewed', AdminColors.info)
                   else
-                    _engagementChip('Not seen', Colors.grey),
+                    _engagementChip('Not seen', AdminColors.textSecondary),
                 ],
               ),
               const SizedBox(height: 16),
@@ -2742,7 +2742,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                   value: progress,
                   minHeight: 8,
                   backgroundColor:
-                      isDark ? Brand.darkBorder : Colors.grey.shade200,
+                      isDark ? Brand.darkBorder : AdminColors.textSecondary,
                   valueColor: AlwaysStoppedAnimation<Color>(
                     score == 100
                         ? AdminColors.success
@@ -2791,7 +2791,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                       activeColor: AdminColors.primary,
                       inactiveColor: isDark
                           ? Brand.darkBorder
-                          : Colors.grey.shade300,
+                          : AdminColors.textSecondary,
                       label: '${_sliderValue.round()}%',
                       onChanged: _updatingScore
                           ? null
@@ -2892,7 +2892,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
         ? AdminColors.success
         : reached
             ? AdminColors.primary
-            : (isDark ? Brand.darkBorder : Colors.grey.shade300);
+            : (isDark ? Brand.darkBorder : AdminColors.textSecondary);
     return Column(
       children: [
         Container(
@@ -2954,7 +2954,7 @@ class _CustomerDetailPageState extends State<CustomerDetailPage>
                 decoration: BoxDecoration(
                   color: isDark
                       ? Brand.darkBorder
-                      : Colors.grey.shade300,
+                      : AdminColors.textSecondary,
                   borderRadius: BorderRadius.circular(Brand.r(2)),
                 ),
               ),
@@ -3123,9 +3123,9 @@ class _SuggestMachineSheetState extends State<_SuggestMachineSheet> {
 
   Color get _bg => Brand.surface(widget.isDark);
   Color get _textPrimary =>
-      widget.isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+      widget.isDark ? Brand.darkTextPrimary : Brand.darkCard;
   Color get _textSub =>
-      widget.isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+      widget.isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
 
   @override
   void dispose() {
@@ -3196,7 +3196,7 @@ class _SuggestMachineSheetState extends State<_SuggestMachineSheet> {
               decoration: BoxDecoration(
                 color: widget.isDark
                     ? Brand.darkBorder
-                    : Colors.grey.shade300,
+                    : AdminColors.textSecondary,
                 borderRadius: BorderRadius.circular(Brand.r(2)),
               ),
             ),
@@ -3419,9 +3419,9 @@ class _MachinePickerDialogState extends State<_MachinePickerDialog> {
     final isDark = widget.isDark;
     final bgColor = Brand.surface(isDark);
     final textPrimary =
-        isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+        isDark ? Brand.darkTextPrimary : Brand.darkCard;
     final textSub =
-        isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+        isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
 
     return Dialog(
       backgroundColor: bgColor,

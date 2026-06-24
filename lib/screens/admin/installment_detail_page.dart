@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../config/brand_colors.dart';
+import '../../config/admin_theme.dart';
 import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 import '../../services/points_service.dart';
@@ -195,7 +196,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                 ? Colors.white
                                 : (dk
                                     ? Brand.darkTextSecondary
-                                    : const Color(0xFF64748B)),
+                                    : AdminColors.textSecondary),
                           ),
                         ),
                         selected: isSelected,
@@ -296,7 +297,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                             ),
                             foregroundColor: dk
                                 ? Brand.darkTextSecondary
-                                : const Color(0xFF64748B),
+                                : AdminColors.textSecondary,
                           ),
                           child: const Text('Cancel'),
                         ),
@@ -895,7 +896,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                 dotIcon = Icons.error_rounded;
                 break;
               case 'submitted':
-                dotColor = const Color(0xFFF59E0B);
+                dotColor = AdminColors.warning;
                 dotIcon = Icons.hourglass_bottom_rounded;
                 break;
               default:
@@ -921,8 +922,8 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                 itemBorder = Brand.lightGreen.withAlpha(77);
                 break;
               case 'submitted':
-                itemBg = const Color(0xFFF59E0B).withAlpha(20);
-                itemBorder = const Color(0xFFF59E0B).withAlpha(77);
+                itemBg = AdminColors.warning.withAlpha(20);
+                itemBorder = AdminColors.warning.withAlpha(77);
                 break;
               default:
                 itemBg = dk ? Brand.darkBg : Brand.scaffoldLight;
@@ -1017,7 +1018,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
                                   fontSize: 13,
                                   color: dk
                                       ? Brand.darkTextSecondary
-                                      : const Color(0xFF64748B),
+                                      : AdminColors.textSecondary,
                                 ),
                               ),
                               Text(
@@ -1225,7 +1226,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
     bool bold = false,
     bool highlight = false,
   }) {
-    // FIX: replaced Colors.amber.shade700 with const color
+    // FIX: replaced AdminColors.warning.shade700 with const color
     const amberColor = Color(0xFFB45309); // amber-700
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
@@ -1238,7 +1239,7 @@ class _InstallmentDetailPageState extends State<InstallmentDetailPage> {
               fontSize: 14,
               color: highlight
                   ? amberColor
-                  : (dk ? Brand.darkTextSecondary : const Color(0xFF64748B)),
+                  : (dk ? Brand.darkTextSecondary : AdminColors.textSecondary),
             ),
           ),
           Text(

@@ -8,7 +8,7 @@ import '../../widgets/admin/shimmer_loading.dart';
 import 'admin_invoice_detail_page.dart';
 
 // Quotation accent — matches create_quotation_page.dart
-const _kQuotationPurple = Color(0xFF8B5CF6);
+const _kQuotationPurple = StatusColors.assigned;
 
 class AdminQuotationDetailPage extends StatefulWidget {
   final String quotationId;
@@ -595,7 +595,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
     final invNumber = _quo['converted_invoice_number']?.toString();
     final invId = _quo['converted_invoice_id']?.toString();
 
-    // FIX: Use AdminColors.info instead of hardcoded Color(0xFF3B82F6)
+    // FIX: Use AdminColors.info instead of hardcoded AdminColors.info
     const bannerColor = AdminColors.info;
 
     return Material(
@@ -803,7 +803,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
               padding: const EdgeInsets.symmetric(vertical: 14),
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [Color(0xFF6D28D9), _kQuotationPurple],
+                  colors: [AdminColors.primary, _kQuotationPurple],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -1161,11 +1161,11 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
   Color _statusColor(String s) {
     switch (s) {
       case 'draft':
-        return const Color(0xFF94A3B8);
+        return AdminColors.textSecondary;
       case 'sent':
         return _kQuotationPurple;
       case 'viewed':
-        return const Color(0xFF06B6D4);
+        return AdminColors.info;
       case 'accepted':
         return AdminColors.success;
       case 'rejected':
@@ -1175,7 +1175,7 @@ class _AdminQuotationDetailPageState extends State<AdminQuotationDetailPage> {
       case 'converted':
         return AdminColors.info;
       default:
-        return const Color(0xFF94A3B8);
+        return AdminColors.textSecondary;
     }
   }
 

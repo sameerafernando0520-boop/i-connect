@@ -8,7 +8,7 @@ import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 import 'create_marketer_page.dart';
 
-const Color _maAccent = Color(0xFFD946EF);
+const Color _maAccent = StatusColors.assigned;
 
 // 9 permission sections — keep in sync with create_marketer_page.dart
 const _permSections = [
@@ -17,21 +17,21 @@ const _permSections = [
     icon: Icons.people_rounded,
     label: 'Customer Directory',
     description: 'View customer profiles and their activity',
-    color: Color(0xFF3B82F6),
+    color: AdminColors.info,
   ),
   _PermSection(
     key: 'referral_program',
     icon: Icons.share_rounded,
     label: 'Referral Program',
     description: 'View and manage referral rules, codes, and payouts',
-    color: Color(0xFF10B981),
+    color: AdminColors.accent,
   ),
   _PermSection(
     key: 'loyalty_tiers',
     icon: Icons.star_rounded,
     label: 'Loyalty Tiers',
     description: 'Configure tier thresholds and benefits',
-    color: Color(0xFFF59E0B),
+    color: AdminColors.warning,
   ),
   _PermSection(
     key: 'banners',
@@ -45,7 +45,7 @@ const _permSections = [
     icon: Icons.menu_book_rounded,
     label: 'Knowledge Base',
     description: 'Manage articles and educational content',
-    color: Color(0xFF8B5CF6),
+    color: StatusColors.assigned,
   ),
   _PermSection(
     key: 'broadcast',
@@ -59,21 +59,21 @@ const _permSections = [
     icon: Icons.analytics_rounded,
     label: 'Analytics',
     description: 'View article views and user engagement data',
-    color: Color(0xFF6366F1),
+    color: AdminColors.primary,
   ),
   _PermSection(
     key: 'machine_catalog',
     icon: Icons.precision_manufacturing_rounded,
     label: 'Machine Catalog',
     description: 'Browse and view machine listings',
-    color: Color(0xFF14B8A6),
+    color: AdminColors.info,
   ),
   _PermSection(
     key: 'point_activities',
     icon: Icons.emoji_events_rounded,
     label: 'Points & Rewards',
     description: 'View point activity and customer reward history',
-    color: Color(0xFFF97316),
+    color: AdminColors.internal,
   ),
 ];
 

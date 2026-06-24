@@ -7,7 +7,7 @@ import '../../widgets/ds/ds_widgets.dart';
 import '../../config/admin_theme.dart';
 import '../../config/supabase_config.dart';
 
-const Color _eaAccent = Color(0xFF0EA5E9); // sky blue
+const Color _eaAccent = AdminColors.info; // sky blue
 
 class CreateEngineeringAdminPage extends StatefulWidget {
   const CreateEngineeringAdminPage({super.key});

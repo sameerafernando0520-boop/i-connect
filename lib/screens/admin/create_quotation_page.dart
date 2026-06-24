@@ -7,7 +7,7 @@ import '../../widgets/ds/ds_widgets.dart';
 import '../../config/supabase_config.dart';
 
 // Quotation accent — matches the purple used across quotation screens
-const _kQuotationPurple = Color(0xFF8B5CF6);
+const _kQuotationPurple = StatusColors.assigned;
 
 class CreateQuotationPage extends StatefulWidget {
   final String? customerId;
@@ -1630,7 +1630,7 @@ class _CreateQuotationPageState extends State<CreateQuotationPage> {
                   gradient: _saving
                       ? null
                       : const LinearGradient(
-                          colors: [Color(0xFF6D28D9), _kQuotationPurple],
+                          colors: [AdminColors.primary, _kQuotationPurple],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),

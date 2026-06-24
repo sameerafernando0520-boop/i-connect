@@ -64,14 +64,14 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
   Color _textPrimary(bool d) =>
       d ? Brand.darkTextPrimary : const Color(0xFF1A1A2E);
   Color _textSecondary(bool d) =>
-      d ? Brand.darkTextSecondary : Colors.grey.shade600;
+      d ? Brand.darkTextSecondary : AdminColors.textSecondary;
   Color _textMuted(bool d) => d ? Brand.darkTextTertiary : Brand.subtleLight;
   Color _borderColor(bool d) => d ? Brand.darkBorder : Brand.borderLight;
   Color _dividerColor(bool d) =>
-      d ? Brand.darkBorderLight : Colors.grey.shade100;
+      d ? Brand.darkBorderLight : AdminColors.textSecondary;
   Color _sheetBg(bool d) => d ? Brand.darkCard : Colors.white;
   Color _handleColor(bool d) =>
-      d ? Brand.darkBorderLight : Colors.grey.shade300;
+      d ? Brand.darkBorderLight : AdminColors.textSecondary;
 
   List<BoxShadow> _cardShadow(bool d) => d
       ? []
@@ -564,7 +564,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
       hintText: hint,
       hintStyle: TextStyle(color: _textMuted(isDark), fontSize: 14),
       filled: true,
-      fillColor: isDark ? Brand.darkCardElevated : Colors.grey.shade50,
+      fillColor: isDark ? Brand.darkCardElevated : AdminColors.textSecondary,
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(Brand.r(12)),
@@ -846,7 +846,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                         gradient: LinearGradient(
                           colors: [
                             StatusColors.danger,
-                            const Color(0xFFEF5350),
+                            AdminColors.error,
                           ],
                         ),
                         borderRadius: BorderRadius.circular(Brand.r(14)),
@@ -1020,7 +1020,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                   gradient: LinearGradient(
                     colors: isDark
                         ? [Brand.darkCard, Brand.darkCardElevated]
-                        : [Colors.grey.shade200, Colors.grey.shade100],
+                        : [AdminColors.textSecondary, AdminColors.textSecondary],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
@@ -1085,7 +1085,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
         height: 14,
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
-          color: isDark ? Brand.darkCard : Colors.grey.shade200,
+          color: isDark ? Brand.darkCard : AdminColors.textSecondary,
           borderRadius: BorderRadius.circular(Brand.r(4)),
         ),
       ),
@@ -1097,7 +1097,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
       margin: const EdgeInsets.symmetric(horizontal: 20),
       height: height,
       decoration: BoxDecoration(
-        color: isDark ? Brand.darkCard : Colors.grey.shade100,
+        color: isDark ? Brand.darkCard : AdminColors.textSecondary,
         borderRadius: BorderRadius.circular(Brand.r(18)),
         border: isDark ? Border.all(color: Brand.darkBorder) : null,
       ),
@@ -1529,7 +1529,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           _buildTileDivider(isDark),
           _buildToggleTile(
             icon: Icons.email_rounded,
-            color: const Color(0xFF3B82F6),
+            color: AdminColors.info,
             title: 'Email Notifications',
             subtitle: 'Receive updates via email',
             value: _emailEnabled,
@@ -1539,7 +1539,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           _buildTileDivider(isDark),
           _buildToggleTile(
             icon: Icons.confirmation_number_rounded,
-            color: const Color(0xFFF59E0B),
+            color: AdminColors.warning,
             title: 'Ticket Updates',
             subtitle: 'Status changes & new assignments',
             value: _ticketUpdates,
@@ -1559,7 +1559,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           _buildTileDivider(isDark),
           _buildToggleTile(
             icon: Icons.campaign_rounded,
-            color: const Color(0xFF8B5CF6),
+            color: StatusColors.assigned,
             title: 'Promotions',
             subtitle: 'Marketing & promotional content',
             value: _promotions,
@@ -1740,7 +1740,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                       size: 36,
                       color: isDark
                           ? Brand.darkTextTertiary
-                          : Colors.grey.shade400),
+                          : AdminColors.textSecondary),
                   const SizedBox(height: 8),
                   Text(
                     'No support contacts yet',
@@ -1766,7 +1766,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
               switch (type) {
                 case 'call':
                   icon = Icons.phone_rounded;
-                  color = const Color(0xFF4CAF50);
+                  color = AdminColors.accent;
                   break;
                 case 'whatsapp':
                   icon = Icons.chat_rounded;
@@ -1774,7 +1774,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                   break;
                 case 'email':
                   icon = Icons.email_rounded;
-                  color = const Color(0xFFE91E63);
+                  color = StatusColors.danger;
                   break;
                 case 'web':
                   icon = Icons.public_rounded;
@@ -1782,7 +1782,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                   break;
                 default:
                   icon = Icons.contact_page;
-                  color = Colors.grey;
+                  color = AdminColors.textSecondary;
               }
 
               return Column(
@@ -1820,7 +1820,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 6, vertical: 2),
                             decoration: BoxDecoration(
-                              color: Colors.orange.withAlpha(20),
+                              color: AdminColors.internal.withAlpha(20),
                               borderRadius: BorderRadius.circular(Brand.r(10)),
                             ),
                             child: const Text('INACTIVE',
@@ -1828,7 +1828,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                                     fontSize: 11,
                                     fontWeight: FontWeight.w700,
                                     letterSpacing: 0.5,
-                                    color: Colors.orange)),
+                                    color: AdminColors.internal)),
                           ),
                         const SizedBox(width: 4),
                         IconButton(
@@ -1941,7 +1941,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                     spacing: 8,
                     children: [
                       _contactTypeChip('call', 'Call', Icons.phone_rounded,
-                          const Color(0xFF4CAF50), type, isDark, (v) {
+                          AdminColors.accent, type, isDark, (v) {
                         setSS(() => type = v);
                       }),
                       _contactTypeChip(
@@ -1954,7 +1954,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
                         setSS(() => type = v);
                       }),
                       _contactTypeChip('email', 'Email', Icons.email_rounded,
-                          const Color(0xFFE91E63), type, isDark, (v) {
+                          StatusColors.danger, type, isDark, (v) {
                         setSS(() => type = v);
                       }),
                       _contactTypeChip('web', 'Web', Icons.public_rounded,
@@ -2208,7 +2208,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
         children: [
           _buildSettingsTile(
             icon: Icons.help_outline_rounded,
-            color: const Color(0xFF3B82F6),
+            color: AdminColors.info,
             title: 'Help & Support',
             subtitle: 'Get help with iFrontiers Connect',
             isDark: isDark,
@@ -2218,7 +2218,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           _buildTileDivider(isDark),
           _buildSettingsTile(
             icon: Icons.privacy_tip_outlined,
-            color: const Color(0xFF8B5CF6),
+            color: StatusColors.assigned,
             title: 'Privacy Policy',
             subtitle: 'View our privacy policy',
             isDark: isDark,
@@ -2227,7 +2227,7 @@ class _AdminSettingsPageState extends State<AdminSettingsPage> {
           _buildTileDivider(isDark),
           _buildSettingsTile(
             icon: Icons.description_outlined,
-            color: const Color(0xFFF59E0B),
+            color: AdminColors.warning,
             title: 'Terms of Service',
             subtitle: 'View terms and conditions',
             isDark: isDark,

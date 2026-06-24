@@ -1525,7 +1525,7 @@ class _AdminTicketDetailPageState extends State<AdminTicketDetailPage>
                     value: progress,
                     minHeight: 4,
                     backgroundColor:
-                        _isDark ? Colors.grey.shade800 : Colors.grey.shade200,
+                        _isDark ? AdminColors.textSecondary : AdminColors.textSecondary,
                     valueColor: AlwaysStoppedAnimation(
                       overdue
                           ? AdminColors.error

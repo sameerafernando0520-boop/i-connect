@@ -37,17 +37,17 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
   // use literal values that exactly match AdminColors statics.
   static const _filters = <(String?, String, Color)>[
     (null, 'All', AdminColors.primary),
-    ('pending', 'Pending', Color(0xFF94A3B8)),
-    ('signed_up', 'Signed Up', Color(0xFF8B5CF6)),
-    ('cooling', 'Cooling', Color(0xFF06B6D4)),
+    ('pending', 'Pending', AdminColors.textSecondary),
+    ('signed_up', 'Signed Up', StatusColors.assigned),
+    ('cooling', 'Cooling', AdminColors.info),
     // FIX: AdminColors.success = 0xFF22C55E
-    ('approved', 'Approved', Color(0xFF22C55E)),
+    ('approved', 'Approved', AdminColors.accent),
     // FIX: AdminColors.info = 0xFF3B82F6
-    ('paid', 'Paid', Color(0xFF3B82F6)),
+    ('paid', 'Paid', AdminColors.info),
     // FIX: AdminColors.error = 0xFFEF4444
-    ('rejected', 'Rejected', Color(0xFFEF4444)),
+    ('rejected', 'Rejected', AdminColors.error),
     // FIX: AdminColors.warning = 0xFFF59E0B
-    ('expired', 'Expired', Color(0xFFF59E0B)),
+    ('expired', 'Expired', AdminColors.warning),
   ];
 
   // ── Lifecycle ──
@@ -1069,11 +1069,11 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
   Color _statusColor(String s) {
     switch (s) {
       case 'pending':
-        return const Color(0xFF94A3B8);
+        return AdminColors.textSecondary;
       case 'signed_up':
-        return const Color(0xFF8B5CF6);
+        return StatusColors.assigned;
       case 'cooling':
-        return const Color(0xFF06B6D4);
+        return AdminColors.info;
       case 'approved':
         return AdminColors.success;
       case 'paid':
@@ -1083,7 +1083,7 @@ class _ReferralManagementPageState extends State<ReferralManagementPage> {
       case 'expired':
         return AdminColors.warning;
       default:
-        return const Color(0xFF94A3B8);
+        return AdminColors.textSecondary;
     }
   }
 

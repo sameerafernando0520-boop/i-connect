@@ -17,19 +17,19 @@ const _typeLabels = {
 };
 
 const _typeColors = {
-  'new_install':   Color(0xFF10B981),
-  'replacement':   Color(0xFF3B82F6),
-  'upgrade':       Color(0xFF8B5CF6),
-  'commissioning': Color(0xFFF59E0B),
-  'decommission':  Color(0xFFEF4444),
+  'new_install':   AdminColors.accent,
+  'replacement':   AdminColors.info,
+  'upgrade':       StatusColors.assigned,
+  'commissioning': AdminColors.warning,
+  'decommission':  AdminColors.error,
 };
 
 const _statusColors = {
-  'pending':     Color(0xFFF59E0B),
-  'scheduled':   Color(0xFF3B82F6),
-  'in_progress': Color(0xFF8B5CF6),
-  'completed':   Color(0xFF10B981),
-  'cancelled':   Color(0xFF6B7280),
+  'pending':     AdminColors.warning,
+  'scheduled':   AdminColors.info,
+  'in_progress': StatusColors.assigned,
+  'completed':   AdminColors.accent,
+  'cancelled':   AdminColors.textSecondary,
 };
 
 // ══════════════════════════════════════════════════════════════
@@ -563,8 +563,8 @@ class _AdminInstallationDetailPageState
     final customer = _install['customer'] as Map? ?? {};
     final machine = _install['machine'] as Map? ?? {};
     final catalog = machine['catalog'] as Map? ?? {};
-    final statusColor = _statusColors[status] ?? Colors.grey;
-    final typeColor = _typeColors[type] ?? Colors.grey;
+    final statusColor = _statusColors[status] ?? AdminColors.textSecondary;
+    final typeColor = _typeColors[type] ?? AdminColors.textSecondary;
     final activeEngineers = _engineers
         .where((e) => e['status'] != 'removed')
         .toList();
@@ -623,11 +623,11 @@ class _AdminInstallationDetailPageState
                   children: [
                     if (status == 'scheduled')
                       _actionBtn('Mark In Progress',
-                          const Color(0xFF8B5CF6), Icons.play_arrow,
+                          StatusColors.assigned, Icons.play_arrow,
                           () => _updateStatus('in_progress')),
                     if (status == 'in_progress')
                       _actionBtn('Mark Completed',
-                          const Color(0xFF10B981), Icons.check_circle,
+                          AdminColors.accent, Icons.check_circle,
                           () => _updateStatus('completed')),
                     _actionBtn('Cancel Installation',
                         AdminColors.error, Icons.cancel,
@@ -726,7 +726,7 @@ class _AdminInstallationDetailPageState
                       e['role'] as String? ?? 'technician';
                   final engStatus = e['status'] as String? ?? '';
                   final roleColor = roleStr == 'lead'
-                      ? const Color(0xFFF59E0B)
+                      ? AdminColors.warning
                       : roleStr == 'technician'
                           ? AdminColors.primary
                           : AdminColors.info;

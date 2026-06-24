@@ -14,17 +14,17 @@ import 'schedule_detail_page.dart';
 Color _typeColor(String? type) {
   switch (type) {
     case 'preventive':
-      return const Color(0xFF3B82F6);
+      return AdminColors.info;
     case 'repair':
-      return const Color(0xFFEF4444);
+      return AdminColors.error;
     case 'inspection':
-      return const Color(0xFF14B8A6);
+      return AdminColors.info;
     case 'installation':
-      return const Color(0xFF8B5CF6);
+      return StatusColors.assigned;
     case 'warranty_visit':
-      return const Color(0xFFF59E0B);
+      return AdminColors.warning;
     default:
-      return const Color(0xFF6B7280);
+      return AdminColors.textSecondary;
   }
 }
 
@@ -48,21 +48,21 @@ String _typeLabel(String? type) {
 Color _statusColor(String? status) {
   switch (status) {
     case 'requested':
-      return const Color(0xFFF59E0B);
+      return AdminColors.warning;
     case 'scheduled':
-      return const Color(0xFF3B82F6);
+      return AdminColors.info;
     case 'confirmed':
-      return const Color(0xFF6366F1);
+      return AdminColors.primary;
     case 'in_progress':
-      return const Color(0xFFF97316);
+      return AdminColors.internal;
     case 'completed':
-      return const Color(0xFF22C55E);
+      return AdminColors.accent;
     case 'cancelled':
-      return const Color(0xFFEF4444);
+      return AdminColors.error;
     case 'rescheduled':
-      return const Color(0xFF8B5CF6);
+      return StatusColors.assigned;
     default:
-      return const Color(0xFF6B7280);
+      return AdminColors.textSecondary;
   }
 }
 

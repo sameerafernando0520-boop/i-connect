@@ -90,12 +90,12 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
   Color get _textPrimary =>
       _isDark ? Brand.darkTextPrimary : const Color(0xFF1A1A2E);
   Color get _textSecondary =>
-      _isDark ? Brand.darkTextSecondary : const Color(0xFF64748B);
+      _isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
   Color get _textMuted =>
-      _isDark ? Brand.darkTextTertiary : const Color(0xFF94A3B8);
+      _isDark ? Brand.darkTextTertiary : AdminColors.textSecondary;
   Color get _border => _isDark ? Brand.darkBorder : Brand.borderLight;
   Color get _handleColor =>
-      _isDark ? Brand.darkBorderLight : const Color(0xFFCBD5E1);
+      _isDark ? Brand.darkBorderLight : AdminColors.borderLight;
 
   List<BoxShadow> get _cardShadow => _isDark
       ? []
@@ -1108,7 +1108,7 @@ class _AdminRegisterMachinePageState extends State<AdminRegisterMachinePage> {
                     ? _primary.withAlpha(20)
                     : (_isDark
                         ? Brand.darkBorderLight
-                        : const Color(0xFFF1F5F9)),
+                        : AdminColors.background),
                 borderRadius: BorderRadius.circular(Brand.r(10)),
               ),
               child: Icon(

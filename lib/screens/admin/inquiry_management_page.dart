@@ -64,17 +64,17 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
       d ? Brand.darkTextPrimary : Brand.royalBlueDark;
 
   Color _textSecondary(bool d) =>
-      d ? Brand.darkTextSecondary : Colors.grey.shade600;
+      d ? Brand.darkTextSecondary : AdminColors.textSecondary;
 
-  Color _textMuted(bool d) => d ? Brand.darkTextTertiary : Colors.grey.shade400;
+  Color _textMuted(bool d) => d ? Brand.darkTextTertiary : AdminColors.textSecondary;
 
-  Color _borderColor(bool d) => d ? Brand.darkBorder : Colors.grey.shade200;
+  Color _borderColor(bool d) => d ? Brand.darkBorder : AdminColors.textSecondary;
 
   Color _borderLight(bool d) =>
-      d ? Brand.darkBorderLight : Colors.grey.shade100;
+      d ? Brand.darkBorderLight : AdminColors.textSecondary;
 
   Color _handleColor(bool d) =>
-      d ? Brand.darkBorderLight : Colors.grey.shade300;
+      d ? Brand.darkBorderLight : AdminColors.textSecondary;
 
   Color _sheetBg(bool d) => Brand.surface(d);
 
@@ -86,7 +86,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
   Color _primaryLight(bool d) => d ? Brand.royalBlue : Brand.royalBlueLight;
 
   // FIX: AdminColors.info doesn't exist → const value
-  static const Color _infoColor = Color(0xFF3B82F6);
+  static const Color _infoColor = AdminColors.info;
 
   List<BoxShadow> _softShadow(bool d) => d
       ? []
@@ -416,7 +416,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
       final isDark = Theme.of(context).brightness == Brightness.dark;
       _showSnackBar(
         newValue ? '🔥 Marked as hot lead' : 'Hot lead flag removed',
-        color: newValue ? Colors.orange : Colors.grey,
+        color: newValue ? AdminColors.internal : AdminColors.textSecondary,
         isDark: isDark,
       );
       await _loadInquiries(silent: true);
@@ -448,25 +448,25 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
   Color _getStageColor(String stage) {
     switch (stage) {
       case 'new':
-        return const Color(0xFF3B82F6);
+        return AdminColors.info;
       case 'contacted':
-        return const Color(0xFF8B5CF6);
+        return StatusColors.assigned;
       case 'quoted':
-        return const Color(0xFFF59E0B);
+        return AdminColors.warning;
       case 'negotiating':
-        return const Color(0xFFEF8C22);
+        return AdminColors.internal;
       case 'won':
         return AdminColors.accent;
       case 'lost':
         return AdminColors.error;
       case 'hot':
-        return const Color(0xFFFF6B35);
+        return AdminColors.internal;
       case 'overdue':
-        return const Color(0xFFDC2626);
+        return AdminColors.error;
       case 'needs_attention':
-        return const Color(0xFFCA8A04);
+        return AdminColors.warning;
       default:
-        return Colors.grey;
+        return AdminColors.textSecondary;
     }
   }
 
@@ -732,7 +732,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
       alerts.add({
         'icon': Icons.warning_amber_rounded,
         'text': '$overdueCount overdue follow-up${overdueCount > 1 ? 's' : ''}',
-        'color': Colors.orange,
+        'color': AdminColors.internal,
         'filter': 'overdue',
       });
     }
@@ -741,7 +741,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
         'icon': Icons.timer_off_rounded,
         'text':
             '$quotesExpiring quote${quotesExpiring > 1 ? 's' : ''} expiring within 7 days',
-        'color': Colors.amber.shade700,
+        'color': AdminColors.warning.shade700,
         'filter': 'quoted',
       });
     }
@@ -937,7 +937,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                     _formatCurrency(totalDealValue), 'Won Value', Colors.white),
                 _buildPipelineDivider(),
                 _buildPipelineStat(
-                    _formatCurrency(pendingValue), 'In Pipeline', Colors.amber),
+                    _formatCurrency(pendingValue), 'In Pipeline', AdminColors.warning),
                 _buildPipelineDivider(),
                 _buildPipelineStat(
                     '${avgDaysToClose}d', 'Avg Close', Colors.lightBlueAccent),
@@ -1354,7 +1354,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
           border: isHotLead
               ? Border.all(
                   // FIX: .withOpacity() → .withAlpha()
-                  color: Colors.orange.withAlpha(isDark ? 102 : 77),
+                  color: AdminColors.internal.withAlpha(isDark ? 102 : 77),
                   width: 1.5)
               : isOverdueFollowUp
                   ? Border.all(
@@ -1367,7 +1367,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
               ? [
                   BoxShadow(
                     // FIX: .withOpacity() → .withAlpha()
-                    color: Colors.orange.withAlpha(isDark ? 26 : 20),
+                    color: AdminColors.internal.withAlpha(isDark ? 26 : 20),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   )
@@ -1419,21 +1419,21 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                                 horizontal: 6, vertical: 3),
                             decoration: BoxDecoration(
                               // FIX: .withOpacity() → .withAlpha()
-                              color: Colors.orange.withAlpha(isDark ? 38 : 26),
+                              color: AdminColors.internal.withAlpha(isDark ? 38 : 26),
                               borderRadius: BorderRadius.circular(Brand.r(10)),
                             ),
                             child: const Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Icon(Icons.local_fire_department_rounded,
-                                    size: 12, color: Colors.orange),
+                                    size: 12, color: AdminColors.internal),
                                 SizedBox(width: 2),
                                 Text('HOT',
                                     style: TextStyle(
                                         fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         letterSpacing: 0.5,
-                                        color: Colors.orange)),
+                                        color: AdminColors.internal)),
                               ],
                             ),
                           ),
@@ -1455,7 +1455,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                             // FIX: .withOpacity() → .withAlpha()
                             color: (daysOpen > 14
                                     ? AdminColors.error
-                                    : Colors.orange)
+                                    : AdminColors.internal)
                                 .withAlpha(isDark ? 38 : 26),
                             borderRadius: BorderRadius.circular(Brand.r(10)),
                           ),
@@ -1467,7 +1467,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                               letterSpacing: 0.5,
                               color: daysOpen > 14
                                   ? AdminColors.error
-                                  : Colors.orange.shade700,
+                                  : AdminColors.internal.shade700,
                             ),
                           ),
                         ),
@@ -1606,7 +1606,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                               decoration: BoxDecoration(
                                 // FIX: .withOpacity() → .withAlpha()
                                 color:
-                                    Colors.orange.withAlpha(isDark ? 38 : 26),
+                                    AdminColors.internal.withAlpha(isDark ? 38 : 26),
                                 borderRadius: BorderRadius.circular(Brand.r(8)),
                               ),
                               child: Text(
@@ -1614,7 +1614,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                                 style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.orange.shade700),
+                                    color: AdminColors.internal.shade700),
                               ),
                             ),
                           if (assignedName != null) ...[
@@ -1866,7 +1866,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
               decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.vertical(bottom: Radius.circular(Brand.r(18))),
-                color: isDark ? Brand.darkBorder : Colors.grey.shade100,
+                color: isDark ? Brand.darkBorder : AdminColors.textSecondary,
               ),
               child: LayoutBuilder(builder: (context, constraints) {
                 return Stack(
@@ -2006,7 +2006,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                     ? Icons.local_fire_department_rounded
                     : Icons.local_fire_department_outlined,
                 label: isHotLead ? 'Remove Hot Lead' : 'Mark as Hot Lead',
-                color: Colors.orange,
+                color: AdminColors.internal,
                 isDark: isDark,
                 onTap: () {
                   Navigator.pop(sheetCtx);
@@ -2084,7 +2084,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
             gradient: LinearGradient(
               colors: isDark
                   ? [Brand.darkCard, Brand.darkCardElevated]
-                  : [Colors.grey.shade200, Colors.grey.shade100],
+                  : [AdminColors.textSecondary, AdminColors.textSecondary],
             ),
             borderRadius: BorderRadius.circular(Brand.r(18)),
           ),
@@ -2100,7 +2100,7 @@ class _InquiryManagementPageState extends State<InquiryManagementPage>
                 height: 36,
                 margin: const EdgeInsets.only(right: 8),
                 decoration: BoxDecoration(
-                  color: isDark ? Brand.darkCard : Colors.grey.shade100,
+                  color: isDark ? Brand.darkCard : AdminColors.textSecondary,
                   borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
               ),

@@ -65,23 +65,23 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
   Color get _textPrimary =>
       _isDark ? Brand.darkTextPrimary : AdminColors.textPrimary;
   Color get _textSecondary =>
-      _isDark ? Brand.darkTextSecondary : Colors.grey.shade600;
+      _isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
   Color get _textMuted =>
-      _isDark ? Brand.darkTextTertiary : Colors.grey.shade400;
+      _isDark ? Brand.darkTextTertiary : AdminColors.textSecondary;
   Color get _borderColor => Brand.cardBorder(_isDark);
   Color get _dividerColor =>
-      _isDark ? Brand.darkBorderLight : Colors.grey.shade200;
+      _isDark ? Brand.darkBorderLight : AdminColors.textSecondary;
   Color get _chipBg => Brand.surface(_isDark);
   Color get _sheetBg => Brand.surface(_isDark);
   Color get _handleColor =>
-      _isDark ? Brand.darkBorderLight : Colors.grey.shade300;
+      _isDark ? Brand.darkBorderLight : AdminColors.textSecondary;
   Color get _searchFill => Brand.surface(_isDark);
   Color get _primaryColor =>
       _isDark ? Brand.royalBlueGlow : AdminColors.primary;
   Color get _accentColor =>
       _isDark ? Brand.lightGreenBright : AdminColors.accent;
   Color get _elevatedFill =>
-      _isDark ? const Color(0xFF22272E) : Colors.grey.shade100;
+      _isDark ? const Color(0xFF22272E) : AdminColors.textSecondary;
 
   List<BoxShadow> get _cardShadow => _isDark
       ? []
@@ -727,9 +727,9 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
       case 'resolved':
         return AdminColors.accent;
       case 'closed':
-        return Colors.grey;
+        return AdminColors.textSecondary;
       default:
-        return Colors.grey;
+        return AdminColors.textSecondary;
     }
   }
 
@@ -757,13 +757,13 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
       case 'urgent':
         return AdminColors.error;
       case 'high':
-        return const Color(0xFFF97316);
+        return AdminColors.internal;
       case 'medium':
         return AdminColors.info;
       case 'low':
-        return const Color(0xFF22C55E);
+        return AdminColors.accent;
       default:
-        return Colors.grey;
+        return AdminColors.textSecondary;
     }
   }
 
@@ -1075,7 +1075,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
         'icon': Icons.person_off_rounded,
         'text':
             '$_unassignedCount unassigned ticket${_unassignedCount > 1 ? 's' : ''}',
-        'color': Colors.orange,
+        'color': AdminColors.internal,
         'onTap': () => setState(() {
               _filterStatus = 'unassigned';
               _applyFilters();
@@ -1216,7 +1216,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
           _buildStatItem(
             'Today',
             '+$_createdToday / ✓$_resolvedToday',
-            const Color(0xFF8B5CF6),
+            StatusColors.assigned,
           ),
         ],
       ),
@@ -1300,7 +1300,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
               : key == 'escalated'
                   ? AdminColors.error
                   : key == 'unassigned'
-                      ? Colors.orange
+                      ? AdminColors.internal
                       : _getStatusColor(key);
           final count = _getFilterCount(key);
 
@@ -1611,15 +1611,15 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                     color: _primaryColor)),
             const SizedBox(height: 20),
             _buildPriorityOption(
-                ctx, 'all', 'All Priorities', Icons.flag_rounded, Colors.grey),
+                ctx, 'all', 'All Priorities', Icons.flag_rounded, AdminColors.textSecondary),
             _buildPriorityOption(ctx, 'urgent', 'Urgent', Icons.error_rounded,
                 AdminColors.error),
             _buildPriorityOption(ctx, 'high', 'High', Icons.warning_rounded,
-                const Color(0xFFF97316)),
+                AdminColors.internal),
             _buildPriorityOption(
                 ctx, 'medium', 'Medium', Icons.info_rounded, AdminColors.info),
             _buildPriorityOption(ctx, 'low', 'Low', Icons.check_circle_rounded,
-                const Color(0xFF22C55E)),
+                AdminColors.accent),
             const SizedBox(height: 12),
           ],
         ),
@@ -1819,7 +1819,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 6, vertical: 3),
                               decoration: BoxDecoration(
-                                  color: Colors.orange
+                                  color: AdminColors.internal
                                       .withAlpha(((_isDark ? 0.15 : 0.1) * 255).toInt()),
                                   borderRadius: BorderRadius.circular(Brand.r(10))),
                               child: Text('${daysOpen}d',
@@ -1827,7 +1827,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                                       fontSize: 11,
                                       fontWeight: FontWeight.w700,
                                       letterSpacing: 0.5,
-                                      color: Colors.orange.shade700)),
+                                      color: AdminColors.internal.shade700)),
                             ),
                           ],
                           const Spacer(),
@@ -1964,24 +1964,24 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 8, vertical: 4),
                                   decoration: BoxDecoration(
-                                      color: Colors.orange
+                                      color: AdminColors.internal
                                           .withAlpha(((_isDark ? 0.12 : 0.08) * 255).toInt()),
                                       borderRadius: BorderRadius.circular(Brand.r(10)),
                                       border: Border.all(
                                           color:
-                                              Colors.orange.withAlpha(38))),
+                                              AdminColors.internal.withAlpha(38))),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Icon(Icons.person_add_rounded,
                                           size: 12,
-                                          color: Colors.orange.shade700),
+                                          color: AdminColors.internal.shade700),
                                       const SizedBox(width: 4),
                                       Text('Assign',
                                           style: TextStyle(
                                               fontSize: 12,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.orange.shade700)),
+                                              color: AdminColors.internal.shade700)),
                                     ],
                                   ),
                                 ),
@@ -2350,14 +2350,14 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 6, vertical: 2),
                               decoration: BoxDecoration(
-                                  color: Colors.orange
+                                  color: AdminColors.internal
                                       .withAlpha(((_isDark ? 0.15 : 0.1) * 255).toInt()),
                                   borderRadius: BorderRadius.circular(Brand.r(4))),
                               child: Text('Busy',
                                   style: TextStyle(
                                       fontSize: 11,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.orange.shade700)),
+                                      color: AdminColors.internal.shade700)),
                             ),
                           ],
                         ],
@@ -2370,7 +2370,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                             style: TextStyle(
                                 fontSize: 12,
                                 color: activeCount > 5
-                                    ? Colors.orange
+                                    ? AdminColors.internal
                                     : _textMuted),
                           ),
                           if (specializations.isNotEmpty)
@@ -2457,7 +2457,7 @@ class _TicketsManagementPageState extends State<TicketsManagementPage> {
                 margin: const EdgeInsets.only(right: 8),
                 decoration: BoxDecoration(
                   color:
-                      _isDark ? Brand.darkCardElevated : Colors.grey.shade100,
+                      _isDark ? Brand.darkCardElevated : AdminColors.textSecondary,
                   borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
               ),

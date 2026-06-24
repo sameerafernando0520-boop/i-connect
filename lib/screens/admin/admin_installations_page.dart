@@ -18,19 +18,19 @@ const _typeLabels = {
 };
 
 const _typeColors = {
-  'new_install':   Color(0xFF10B981),
-  'replacement':   Color(0xFF3B82F6),
-  'upgrade':       Color(0xFF8B5CF6),
-  'commissioning': Color(0xFFF59E0B),
-  'decommission':  Color(0xFFEF4444),
+  'new_install':   AdminColors.accent,
+  'replacement':   AdminColors.info,
+  'upgrade':       StatusColors.assigned,
+  'commissioning': AdminColors.warning,
+  'decommission':  AdminColors.error,
 };
 
 const _statusColors = {
-  'pending':     Color(0xFFF59E0B),
-  'scheduled':   Color(0xFF3B82F6),
-  'in_progress': Color(0xFF8B5CF6),
-  'completed':   Color(0xFF10B981),
-  'cancelled':   Color(0xFF6B7280),
+  'pending':     AdminColors.warning,
+  'scheduled':   AdminColors.info,
+  'in_progress': StatusColors.assigned,
+  'completed':   AdminColors.accent,
+  'cancelled':   AdminColors.textSecondary,
 };
 
 // ══════════════════════════════════════════════════════════════
@@ -787,11 +787,11 @@ class _InstallationCard extends StatelessWidget {
                 children: [
                   _badge(
                       _typeLabels[type] ?? type,
-                      _typeColors[type] ?? Colors.grey),
+                      _typeColors[type] ?? AdminColors.textSecondary),
                   const SizedBox(width: 8),
                   _badge(
                       _fmtStatus(status),
-                      _statusColors[status] ?? Colors.grey),
+                      _statusColors[status] ?? AdminColors.textSecondary),
                   const Spacer(),
                   Icon(Icons.chevron_right,
                       color: AdminColors.textHint(context),

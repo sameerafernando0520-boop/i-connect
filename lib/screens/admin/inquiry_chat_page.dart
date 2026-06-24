@@ -82,11 +82,11 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
       d ? Brand.darkTextPrimary : Brand.royalBlueDark;
 
   Color _textSecondary(bool d) =>
-      d ? Brand.darkTextSecondary : Colors.grey.shade500;
+      d ? Brand.darkTextSecondary : AdminColors.textSecondary;
 
-  Color _textMuted(bool d) => d ? Brand.darkTextTertiary : Colors.grey.shade400;
+  Color _textMuted(bool d) => d ? Brand.darkTextTertiary : AdminColors.textSecondary;
 
-  Color _borderColor(bool d) => d ? Brand.darkBorder : Colors.grey.shade200;
+  Color _borderColor(bool d) => d ? Brand.darkBorder : AdminColors.textSecondary;
 
   Color _primaryColor(bool d) => d ? Brand.royalBlueGlow : AdminColors.primary;
 
@@ -721,7 +721,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
               color: isRight
                   // FIX: .withOpacity() → .withAlpha()
                   ? AdminColors.primary.withAlpha(isDark ? 38 : 20)
-                  : (isDark ? Brand.darkCardElevated : Colors.grey.shade100),
+                  : (isDark ? Brand.darkCardElevated : AdminColors.textSecondary),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(Brand.r(18)),
                 topRight: Radius.circular(Brand.r(18)),
@@ -808,7 +808,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
             margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 40),
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             decoration: BoxDecoration(
-              color: isDark ? Brand.darkCardElevated : Colors.grey.shade100,
+              color: isDark ? Brand.darkCardElevated : AdminColors.textSecondary,
               borderRadius: BorderRadius.circular(Brand.r(20)),
               border: isDark ? Border.all(color: Brand.darkBorderLight) : null,
             ),
@@ -1020,7 +1020,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                                 : isInternal
                                     ? (isDark
                                         ? _warningColor
-                                        : Colors.orange.shade800)
+                                        : AdminColors.internal.shade800)
                                     : isAdmin
                                         ? Colors.white
                                         : _textPrimary(isDark),
@@ -1072,7 +1072,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                                   // Blue double tick = read
                                   return const Icon(Icons.done_all_rounded,
                                       size: 14,
-                                      color: Color(0xFF58A6FF));
+                                      color: AdminColors.info);
                                 }
                                 if (delivered) {
                                   // Grey double tick = delivered
@@ -1283,7 +1283,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                 border: Border.all(
                   color: _isInternalMode
                       ? _warningColor.withAlpha(isDark ? 102 : 77)
-                      : (isDark ? Brand.darkBorderLight : Colors.grey.shade200),
+                      : (isDark ? Brand.darkBorderLight : AdminColors.textSecondary),
                 ),
               ),
               child: Icon(
@@ -1360,7 +1360,7 @@ class _InquiryChatPageState extends State<InquiryChatPage> {
                     : null,
                 color: _hasText && !_isSendingMessage
                     ? null
-                    : (isDark ? Brand.darkBorder : Colors.grey.shade300),
+                    : (isDark ? Brand.darkBorder : AdminColors.textSecondary),
                 borderRadius: BorderRadius.circular(Brand.r(14)),
                 boxShadow: _hasText && !_isSendingMessage
                     ? [

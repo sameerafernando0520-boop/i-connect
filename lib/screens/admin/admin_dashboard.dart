@@ -490,7 +490,7 @@ class _AdminDashboardState extends State<AdminDashboard>
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 13,
-                color: isDark ? Brand.darkTextSecondary : Colors.grey.shade500,
+                color: isDark ? Brand.darkTextSecondary : AdminColors.textSecondary,
               ),
             ),
             const SizedBox(height: 24),
@@ -756,7 +756,7 @@ class _AdminDashboardState extends State<AdminDashboard>
         gradient: LinearGradient(
           colors: isDark
               ? [Brand.darkCard, Brand.darkCardElevated]
-              : [const Color(0xFF1A56DB), const Color(0xFF3B82F6)],
+              : [const Color(0xFF1A56DB), AdminColors.info],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
@@ -1021,9 +1021,9 @@ class _AdminDashboardState extends State<AdminDashboard>
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             // FIX: .withOpacity() → .withAlpha()
-            color: Colors.orange.withAlpha(isDark ? 26 : 15),
+            color: AdminColors.internal.withAlpha(isDark ? 26 : 15),
             borderRadius: BorderRadius.circular(Brand.r(16)),
-            border: Border.all(color: Colors.orange.withAlpha(64)),
+            border: Border.all(color: AdminColors.internal.withAlpha(64)),
           ),
           child: Row(
             children: [
@@ -1032,11 +1032,11 @@ class _AdminDashboardState extends State<AdminDashboard>
                 height: 42,
                 decoration: BoxDecoration(
                   // FIX: .withOpacity() → .withAlpha()
-                  color: Colors.orange.withAlpha(38),
+                  color: AdminColors.internal.withAlpha(38),
                   borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
                 child: Icon(Icons.warning_rounded,
-                    color: Colors.orange[700], size: 22),
+                    color: AdminColors.internal[700], size: 22),
               ),
               const SizedBox(width: 14),
               Expanded(
@@ -1048,7 +1048,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
-                          color: Colors.orange[700]),
+                          color: AdminColors.internal[700]),
                     ),
                     const SizedBox(height: 2),
                     Text(
@@ -1057,7 +1057,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                           fontSize: 12,
                           color: isDark
                               ? Brand.darkTextSecondary
-                              : Colors.grey[600]),
+                              : AdminColors.textSecondary[600]),
                     ),
                   ],
                 ),
@@ -1065,7 +1065,7 @@ class _AdminDashboardState extends State<AdminDashboard>
               Icon(
                 Icons.arrow_forward_ios_rounded,
                 size: 16,
-                color: isDark ? Brand.darkTextSecondary : Colors.grey[400],
+                color: isDark ? Brand.darkTextSecondary : AdminColors.textSecondary[400],
               ),
             ],
           ),
@@ -1120,7 +1120,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                           fontSize: 12,
                           color: isDark
                               ? Brand.darkTextSecondary
-                              : Colors.grey[600]),
+                              : AdminColors.textSecondary[600]),
                     ),
                   ],
                 ),
@@ -1128,7 +1128,7 @@ class _AdminDashboardState extends State<AdminDashboard>
               Icon(
                 Icons.arrow_forward_ios_rounded,
                 size: 16,
-                color: isDark ? Brand.darkTextSecondary : Colors.grey[400],
+                color: isDark ? Brand.darkTextSecondary : AdminColors.textSecondary[400],
               ),
             ],
           ),
@@ -1178,7 +1178,7 @@ class _AdminDashboardState extends State<AdminDashboard>
       if (_pendingReferralCount > 0)
         _OverviewKpi(
           iconWidget: (c) => Icon(Icons.people_alt_rounded, color: c, size: 24),
-          color: const Color(0xFF06B6D4),
+          color: AdminColors.info,
           label: 'Pending Referrals',
           value: '$_pendingReferralCount',
           badge: 'Awaiting review',
@@ -1318,19 +1318,19 @@ class _AdminDashboardState extends State<AdminDashboard>
       _QuickAction(
         'Engineers',
         Icons.engineering_rounded,
-        const Color(0xFF00B4D8),
+        Brand.cyanAccent,
         () => _navigateTo(const EngineerManagementPage()),
       ),
       _QuickAction(
         'Analytics',
         Icons.analytics_rounded,
-        const Color(0xFF8B5CF6),
+        StatusColors.assigned,
         () => _navigateTo(const AnalyticsDashboardPage()),
       ),
       _QuickAction(
         'Broadcast',
         Icons.campaign_rounded,
-        const Color(0xFFAB47BC),
+        StatusColors.assigned,
         () => _navigateTo(const BroadcastNotificationsPage()),
       ),
     ];
@@ -1405,7 +1405,7 @@ class _AdminDashboardState extends State<AdminDashboard>
               fontSize: 12,
               fontWeight: FontWeight.w600,
               height: 1.2,
-              color: isDark ? Brand.darkTextSecondary : Colors.grey.shade700,
+              color: isDark ? Brand.darkTextSecondary : AdminColors.textSecondary,
             ),
           ),
         ],
@@ -1494,13 +1494,13 @@ class _AdminDashboardState extends State<AdminDashboard>
       ),
       _HubKpi(
         icon: Icons.account_balance_wallet_rounded,
-        color: const Color(0xFFF59E0B),
+        color: AdminColors.warning,
         label: 'Outstanding',
         value: _formatCompactCurrency(_hubOutstandingReceivables),
       ),
       _HubKpi(
         icon: Icons.request_quote_rounded,
-        color: const Color(0xFF8B5CF6),
+        color: StatusColors.assigned,
         label: 'Pending Quotations',
         value: '$_hubPendingQuotations',
       ),
@@ -1809,7 +1809,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                       decoration: BoxDecoration(
                         color: isDark
                             ? Brand.darkBorder
-                            : Colors.grey.withAlpha(77),
+                            : AdminColors.textSecondary.withAlpha(77),
                         borderRadius: BorderRadius.circular(Brand.r(2)),
                       ),
                     ),
@@ -1838,7 +1838,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                     isDark,
                     Icons.description_rounded,
                     'Create Quotation',
-                    const Color(0xFF8B5CF6),
+                    StatusColors.assigned,
                     () => _navigateTo(const CreateQuotationPage()),
                   ),
                   _quickCreateTile(
@@ -1854,7 +1854,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                     isDark,
                     Icons.calendar_month_rounded,
                     'Create Schedule',
-                    const Color(0xFF14B8A6),
+                    AdminColors.info,
                     () => _navigateTo(const CreateSchedulePage()),
                   ),
                 ],
@@ -1934,7 +1934,7 @@ class _AdminDashboardState extends State<AdminDashboard>
     final isSelected = _selectedIndex == index;
     final iconColor = isSelected
         ? (isDark ? Brand.royalBlueGlow : AdminColors.primary)
-        : (isDark ? Brand.darkTextTertiary : Colors.grey.shade400);
+        : (isDark ? Brand.darkTextTertiary : AdminColors.textSecondary);
 
     return GestureDetector(
       onTap: () {
@@ -2020,7 +2020,7 @@ class _AdminDashboardState extends State<AdminDashboard>
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
                 color: isSelected
                     ? (isDark ? Brand.royalBlueGlow : AdminColors.primary)
-                    : (isDark ? Brand.darkTextTertiary : Colors.grey.shade400),
+                    : (isDark ? Brand.darkTextTertiary : AdminColors.textSecondary),
               ),
             ),
           ],

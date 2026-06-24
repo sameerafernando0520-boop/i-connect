@@ -15,17 +15,17 @@ import '../../widgets/admin/confirm_dialog.dart';
 Color _typeColor(String? t) {
   switch (t) {
     case 'preventive':
-      return const Color(0xFF3B82F6);
+      return AdminColors.info;
     case 'repair':
-      return const Color(0xFFEF4444);
+      return AdminColors.error;
     case 'inspection':
-      return const Color(0xFF14B8A6);
+      return AdminColors.info;
     case 'installation':
-      return const Color(0xFF8B5CF6);
+      return StatusColors.assigned;
     case 'warranty_visit':
-      return const Color(0xFFF59E0B);
+      return AdminColors.warning;
     default:
-      return const Color(0xFF6B7280);
+      return AdminColors.textSecondary;
   }
 }
 
@@ -792,7 +792,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
           isDark: isDark,
           person: _schedule!['engineer'] as Map<String, dynamic>?,
           label: 'Engineer',
-          color: const Color(0xFF14B8A6),
+          color: AdminColors.info,
           fallbackIcon: Icons.engineering_outlined,
         )),
       ],
@@ -1012,13 +1012,13 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
         width: 56,
         height: 56,
         decoration: BoxDecoration(
-          color: const Color(0xFF8B5CF6).withAlpha(26),
+          color: StatusColors.assigned.withAlpha(26),
           borderRadius: BorderRadius.circular(Brand.r(10)),
         ),
         child: const Icon(
           Icons.precision_manufacturing,
           size: 28,
-          color: Color(0xFF8B5CF6),
+          color: StatusColors.assigned,
         ),
       );
 
@@ -1156,7 +1156,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
               'Engineer',
               engineerNotes,
               Icons.engineering_outlined,
-              const Color(0xFF14B8A6),
+              AdminColors.info,
               isDark,
             ),
         ],
@@ -1238,7 +1238,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
                 (i) => Icon(
                   i < rating ? Icons.star_rounded : Icons.star_outline_rounded,
                   size: 22,
-                  color: const Color(0xFFF59E0B),
+                  color: AdminColors.warning,
                 ),
               ),
               const SizedBox(width: 8),
@@ -1382,7 +1382,7 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
             'label': 'Confirm & Schedule',
             'action': 'confirmed',
             'icon': Icons.check_circle,
-            'color': const Color(0xFF6366F1),
+            'color': AdminColors.primary,
             'primary': true,
           },
           {
@@ -1399,14 +1399,14 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
             'label': 'Confirm Schedule',
             'action': 'confirmed',
             'icon': Icons.check_circle,
-            'color': const Color(0xFF6366F1),
+            'color': AdminColors.primary,
             'primary': true,
           },
           {
             'label': 'Reschedule',
             'action': 'reschedule',
             'icon': Icons.update,
-            'color': const Color(0xFF8B5CF6),
+            'color': StatusColors.assigned,
             'primary': false,
           },
           {
@@ -1423,14 +1423,14 @@ class _ScheduleDetailPageState extends State<ScheduleDetailPage> {
             'label': 'Start Service',
             'action': 'in_progress',
             'icon': Icons.play_arrow_rounded,
-            'color': const Color(0xFFF97316),
+            'color': AdminColors.internal,
             'primary': true,
           },
           {
             'label': 'Reschedule',
             'action': 'reschedule',
             'icon': Icons.update,
-            'color': const Color(0xFF8B5CF6),
+            'color': StatusColors.assigned,
             'primary': false,
           },
           {

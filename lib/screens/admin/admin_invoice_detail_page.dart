@@ -1267,17 +1267,17 @@ class _AdminInvoiceDetailPageState extends State<AdminInvoiceDetailPage> {
       case 'sent':
         return Brand.royalBlueLight;
       case 'viewed':
-        return const Color(0xFF06B6D4);
+        return AdminColors.info;
       case 'overdue':
         return AdminColors.error;
       case 'draft':
-        return const Color(0xFF6B7280);
+        return AdminColors.textSecondary;
       case 'cancelled':
-        return const Color(0xFF6B7280);
+        return AdminColors.textSecondary;
       case 'refunded':
         return AdminColors.warning;
       default:
-        return const Color(0xFF6B7280);
+        return AdminColors.textSecondary;
     }
   }
 

@@ -49,24 +49,24 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
   Color get _scaffoldBg => Brand.canvas(_isDark);
   Color get _cardBg => Brand.surface(_isDark);
   Color get _textPrimary =>
-      _isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+      _isDark ? Brand.darkTextPrimary : Brand.darkCard;
   Color get _textSecondary =>
-      _isDark ? Brand.darkTextSecondary : Colors.grey.shade600;
+      _isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
   Color get _textMuted =>
-      _isDark ? Brand.darkTextTertiary : Colors.grey.shade400;
+      _isDark ? Brand.darkTextTertiary : AdminColors.textSecondary;
   Color get _borderColor => Brand.cardBorder(_isDark);
   Color get _dividerColor =>
-      _isDark ? Brand.darkBorderLight : Colors.grey.shade200;
+      _isDark ? Brand.darkBorderLight : AdminColors.textSecondary;
   Color get _chipBg => Brand.surface(_isDark);
   Color get _sheetBg => Brand.surface(_isDark);
   Color get _handleColor =>
-      _isDark ? Brand.darkBorderLight : Colors.grey.shade300;
+      _isDark ? Brand.darkBorderLight : AdminColors.textSecondary;
   Color get _primaryColor =>
       _isDark ? Brand.royalBlueGlow : AdminColors.primary;
   Color get _accentColor =>
       _isDark ? Brand.lightGreenBright : AdminColors.accent;
   Color get _elevatedFill =>
-      _isDark ? const Color(0xFF22272E) : Colors.grey.shade100;
+      _isDark ? const Color(0xFF22272E) : AdminColors.textSecondary;
 
   List<BoxShadow> get _cardShadow => _isDark
       ? []
@@ -424,7 +424,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
       case 'Finishing Equipment':
         return AdminColors.info;
       default:
-        return Colors.grey;
+        return AdminColors.textSecondary;
     }
   }
 
@@ -1681,7 +1681,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
                 Icons.copy_rounded,
                 'Duplicate',
                 'Create a copy of this machine',
-                const Color(0xFF8B5CF6),
+                StatusColors.assigned,
                 () {
                   Navigator.pop(sheetCtx);
                   _duplicateMachine(machine);
@@ -1835,7 +1835,7 @@ class _MachinesManagementPageState extends State<MachinesManagementPage> {
                 height: 36,
                 margin: const EdgeInsets.only(right: 8),
                 decoration: BoxDecoration(
-                  color: isDark ? Brand.darkCardElevated : Colors.grey.shade100,
+                  color: isDark ? Brand.darkCardElevated : AdminColors.textSecondary,
                   borderRadius: BorderRadius.circular(Brand.r(12)),
                 ),
               ),
@@ -1987,9 +1987,9 @@ class _MachineDetailSheetState extends State<_MachineDetailSheet> {
   Color get _cardBg => Brand.surface(_isDark);
   // ✅ AdminColors.textPrimary does NOT exist → use explicit color
   Color get _textPrimary =>
-      _isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+      _isDark ? Brand.darkTextPrimary : Brand.darkCard;
   Color get _textMuted =>
-      _isDark ? Brand.darkTextTertiary : Colors.grey.shade400;
+      _isDark ? Brand.darkTextTertiary : AdminColors.textSecondary;
   Color get _borderColor => Brand.cardBorder(_isDark);
   Color get _primaryColor =>
       _isDark ? Brand.royalBlueGlow : AdminColors.primary;
@@ -2138,13 +2138,13 @@ class _MachineDetailSheetState extends State<_MachineDetailSheet> {
                   width: double.infinity,
                   placeholder: (_, __) => Container(
                     color:
-                        _isDark ? Brand.darkCardElevated : Colors.grey.shade100,
+                        _isDark ? Brand.darkCardElevated : AdminColors.textSecondary,
                     child:
                         Icon(Icons.image_rounded, size: 48, color: _textMuted),
                   ),
                   errorWidget: (_, __, ___) => Container(
                     color:
-                        _isDark ? Brand.darkCardElevated : Colors.grey.shade100,
+                        _isDark ? Brand.darkCardElevated : AdminColors.textSecondary,
                     child: Icon(Icons.broken_image_rounded,
                         size: 48, color: _textMuted),
                   ),
@@ -2170,7 +2170,7 @@ class _MachineDetailSheetState extends State<_MachineDetailSheet> {
                 _buildStatChip('Won', '${stats['won_deals'] ?? 0}',
                     Icons.emoji_events_rounded, _accentColor),
                 _buildStatChip('Support', '${stats['support_tickets'] ?? 0}',
-                    Icons.build_rounded, const Color(0xFF8B5CF6)),
+                    Icons.build_rounded, StatusColors.assigned),
               ],
             ),
           ),
@@ -2551,14 +2551,14 @@ class _MachineEditorPageState extends State<MachineEditorPage> {
   Color get _cardBg => Brand.surface(_isDark);
   // ✅ AdminColors.textPrimary does NOT exist
   Color get _textPrimary =>
-      _isDark ? Brand.darkTextPrimary : const Color(0xFF1E293B);
+      _isDark ? Brand.darkTextPrimary : Brand.darkCard;
   Color get _textSecondary =>
-      _isDark ? Brand.darkTextSecondary : Colors.grey.shade600;
+      _isDark ? Brand.darkTextSecondary : AdminColors.textSecondary;
   Color get _textMuted =>
-      _isDark ? Brand.darkTextTertiary : Colors.grey.shade400;
+      _isDark ? Brand.darkTextTertiary : AdminColors.textSecondary;
   Color get _borderColor => Brand.cardBorder(_isDark);
   Color get _elevatedFill =>
-      _isDark ? const Color(0xFF22272E) : Colors.grey.shade100;
+      _isDark ? const Color(0xFF22272E) : AdminColors.textSecondary;
   Color get _primaryColor =>
       _isDark ? Brand.royalBlueGlow : AdminColors.primary;
   Color get _accentColor =>
