@@ -221,9 +221,7 @@ class _EngineerProfilePageState extends State<EngineerProfilePage> {
     const marker = '/profile-photos/';
     final idx = url.indexOf(marker);
     if (idx == -1) {
-      // URL doesn't contain the profile-photos bucket marker
-      // This might be a CDN URL or the format has changed
-      debugPrint('⚠️ Storage path extraction: URL format unexpected: $url');
+      AppLogger.warn('ProfilePage', 'Storage URL format unexpected — path extraction skipped: $url');
       return null;
     }
     return url.substring(idx + marker.length);

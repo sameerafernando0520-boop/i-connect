@@ -70,9 +70,14 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     } on AuthException catch (e) {
       if (!mounted) return;
       setState(() => _submitting = false);
+      final msg = (e.message.toLowerCase().contains('expired') ||
+              e.message.toLowerCase().contains('invalid') ||
+              e.message.toLowerCase().contains('session'))
+          ? 'Your reset link has expired. Please request a new password reset.'
+          : e.message;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(e.message),
+          content: Text(msg),
           backgroundColor: StatusColors.danger,
           behavior: SnackBarBehavior.floating,
         ),

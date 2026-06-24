@@ -243,9 +243,9 @@ class _AdminDashboardState extends State<AdminDashboard>
       'overdueInstallments': 0,
     };
     try {
-      final now = DateTime.now();
+      final now = DateTime.now().toUtc();
       final monthStart =
-          DateTime(now.year, now.month, 1).toIso8601String().substring(0, 10);
+          DateTime.utc(now.year, now.month, 1).toIso8601String().substring(0, 10);
       final today = now.toIso8601String().substring(0, 10);
 
       final responses = await Future.wait<dynamic>([

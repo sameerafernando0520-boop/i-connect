@@ -326,15 +326,15 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
   void _computeVolumeTrend() {
     _volumeLabels = [];
     _volumeValues = [];
-    final now = DateTime.now();
+    final nowUtc = DateTime.now().toUtc();
+    final now = DateTime.utc(nowUtc.year, nowUtc.month, nowUtc.day);
 
     switch (_period) {
       case '7d':
         for (int i = 6; i >= 0; i--) {
-          final date = DateTime(now.year, now.month, now.day)
-              .subtract(Duration(days: i));
+          final date = now.subtract(Duration(days: i));
           final count = _filteredTickets.where((t) {
-            final d = DateTime.tryParse(t['created_at'] ?? '');
+            final d = DateTime.tryParse(t['created_at'] ?? '')?.toUtc();
             return d != null &&
                 d.year == date.year &&
                 d.month == date.month &&
@@ -347,11 +347,10 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
 
       case '30d':
         for (int i = 5; i >= 0; i--) {
-          final end = DateTime(now.year, now.month, now.day)
-              .subtract(Duration(days: i * 5));
+          final end = now.subtract(Duration(days: i * 5));
           final start = end.subtract(const Duration(days: 5));
           final count = _filteredTickets.where((t) {
-            final d = DateTime.tryParse(t['created_at'] ?? '');
+            final d = DateTime.tryParse(t['created_at'] ?? '')?.toUtc();
             return d != null && d.isAfter(start) && !d.isAfter(end);
           }).length;
           _volumeLabels.add('${end.day}/${end.month}');
@@ -361,11 +360,10 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
 
       case '90d':
         for (int i = 6; i >= 0; i--) {
-          final end = DateTime(now.year, now.month, now.day)
-              .subtract(Duration(days: i * 13));
+          final end = now.subtract(Duration(days: i * 13));
           final start = end.subtract(const Duration(days: 13));
           final count = _filteredTickets.where((t) {
-            final d = DateTime.tryParse(t['created_at'] ?? '');
+            final d = DateTime.tryParse(t['created_at'] ?? '')?.toUtc();
             return d != null && d.isAfter(start) && !d.isAfter(end);
           }).length;
           _volumeLabels.add('${end.day}/${end.month}');
@@ -421,8 +419,8 @@ class _AnalyticsDashboardPageState extends State<AnalyticsDashboardPage> {
       );
 
     final oldest =
-        DateTime.tryParse(sorted.first['created_at'] ?? '') ?? DateTime.now();
-    final now = DateTime.now();
+        (DateTime.tryParse(sorted.first['created_at'] ?? '') ?? DateTime.now()).toUtc();
+    final now = DateTime.now().toUtc();
     var current = DateTime(oldest.year, oldest.month, 1);
     int cumulative = 0;
     const months = [

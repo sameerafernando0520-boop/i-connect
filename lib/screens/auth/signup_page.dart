@@ -692,7 +692,7 @@ class _SignupPageState extends State<SignupPage> {
               if (v == null || v.isEmpty) return 'Please enter email';
               // H9: proper RFC-ish shape check; the previous contains('@')
               // guard accepted "a@" and "@b" which both fail at Supabase.
-              if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(v.trim())) {
+              if (!RegExp(r'^(?!.*\.\.)[a-zA-Z0-9][a-zA-Z0-9._%+\-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$').hasMatch(v.trim())) {
                 return 'Enter a valid email';
               }
               return null;
@@ -1157,7 +1157,7 @@ class _SignupPageState extends State<SignupPage> {
                     } else if (company.isEmpty) {
                       error = 'Please enter your company name';
                     } else if (email.isEmpty ||
-                        !RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
+                        !RegExp(r'^(?!.*\.\.)[a-zA-Z0-9][a-zA-Z0-9._%+\-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
                             .hasMatch(email)) {
                       error = 'Please enter a valid email address';
                     } else if (phone.isEmpty) {

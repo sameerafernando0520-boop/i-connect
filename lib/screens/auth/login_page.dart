@@ -393,7 +393,7 @@ class _LoginPageState extends State<LoginPage>
                 // H9: reject "a@b." / "a@b" / "a@.b" / whitespace — these
                 // all satisfied the old contains() check but are not valid
                 // addresses and only fail later against Supabase Auth.
-                if (!RegExp(r'^[^@\s.][^@\s]*@[^@\s]+\.[a-zA-Z]{2,}$').hasMatch(v.trim())) {
+                if (!RegExp(r'^(?!.*\.\.)[a-zA-Z0-9][a-zA-Z0-9._%+\-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$').hasMatch(v.trim())) {
                   return 'Please enter a valid email';
                 }
                 return null;
